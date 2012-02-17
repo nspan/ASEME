@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<genmodel:GenModel xmi:version="2.0"
+    xmlns:xmi="http://www.omg.org/XMI" xmlns:ecore="http://www.eclipse.org/emf/2002/Ecore"
+    xmlns:genmodel="http://www.eclipse.org/emf/2002/GenModel" modelDirectory="/AIPdesign/src"
+    modelPluginID="AIPdesign" modelName="AIP" importerID="org.eclipse.emf.importer.ecore"
+    complianceLevel="6.0" copyrightFields="false">
+  <foreignModel>AIP.ecore</foreignModel>
+  <genPackages prefix="AIP" disposableProviderFactory="true" ecorePackage="AIP.ecore#/">
+    <genClasses ecoreClass="AIP.ecore#//AIPmodel">
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference AIP.ecore#//AIPmodel/participants"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference AIP.ecore#//AIPmodel/protocols"/>
+    </genClasses>
+    <genClasses ecoreClass="AIP.ecore#//Protocol">
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference AIP.ecore#//Protocol/participants"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute AIP.ecore#//Protocol/name"/>
+    </genClasses>
+    <genClasses ecoreClass="AIP.ecore#//Participant">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute AIP.ecore#//Participant/name"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute AIP.ecore#//Participant/engaging_rules"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute AIP.ecore#//Participant/outcomes"/>
+      <genFeatures createChild="false" propertyMultiLine="true" ecoreFeature="ecore:EAttribute AIP.ecore#//Participant/liveness"/>
+    </genClasses>
+  </genPackages>
+</genmodel:GenModel>

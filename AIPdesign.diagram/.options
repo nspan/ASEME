@@ -1,0 +1,7 @@
+# Tracing options for the AIPdesign.diagram plug-in
+
+# Common issues
+AIPdesign.diagram/debug=false
+
+# Visual IDs
+AIPdesign.diagram/debug/visualID=false

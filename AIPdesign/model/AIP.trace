@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<trace:TraceModel xmi:version="2.0"
+    xmlns:xmi="http://www.omg.org/XMI"
+    xmlns:trace="http://www.eclipse.org/gmf/2006/Trace">
+  <nodeTraces
+      visualID="2003"
+      queryText="(let _eClass_:ecore::EClass = modelFacet.metaClass.ecoreClass in _eClass_.ePackage.nsURI = 'http://www.acml.tuc.gr/aseme/metamodels/AIP' and _eClass_.name = 'Participant') and (let _containmentMF_:ecore::EStructuralFeature = modelFacet.containmentMetaFeature.ecoreFeature in (let _eClass_:ecore::EClass = _containmentMF_.eContainingClass in _eClass_.ePackage.nsURI = 'http://www.acml.tuc.gr/aseme/metamodels/AIP' and _eClass_.name = 'AIPmodel') and _containmentMF_.name = 'participants')">
+    <nodeLabelTraces
+        visualID="5006"
+        queryText="true"/>
+    <nodeLabelTraces
+        visualID="5007"
+        queryText="true"/>
+    <nodeLabelTraces
+        visualID="5008"
+        queryText="true"/>
+    <nodeLabelTraces
+        visualID="5009"
+        queryText="true"/>
+  </nodeTraces>
+  <nodeTraces
+      visualID="2004"
+      queryText="(let _eClass_:ecore::EClass = modelFacet.metaClass.ecoreClass in _eClass_.ePackage.nsURI = 'http://www.acml.tuc.gr/aseme/metamodels/AIP' and _eClass_.name = 'Protocol') and (let _containmentMF_:ecore::EStructuralFeature = modelFacet.containmentMetaFeature.ecoreFeature in (let _eClass_:ecore::EClass = _containmentMF_.eContainingClass in _eClass_.ePackage.nsURI = 'http://www.acml.tuc.gr/aseme/metamodels/AIP' and _eClass_.name = 'AIPmodel') and _containmentMF_.name = 'protocols')">
+    <nodeLabelTraces
+        visualID="5010"
+        queryText="true"/>
+  </nodeTraces>
+  <linkTraces
+      visualID="4002"
+      queryText="modelFacet.oclIsKindOf(gmfgen::FeatureLinkModelFacet) and (let _feature_:ecore::EStructuralFeature = modelFacet.oclAsType(gmfgen::FeatureLinkModelFacet).metaFeature.ecoreFeature in (let _eClass_:ecore::EClass = _feature_.eContainingClass in _eClass_.ePackage.nsURI = 'http://www.acml.tuc.gr/aseme/metamodels/AIP' and _eClass_.name = 'Protocol') and _feature_.name = 'participants')"/>
+</trace:TraceModel>

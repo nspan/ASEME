@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?eclipse version="3.0"?>
+
+<!--
+ <copyright>
+ </copyright>
+
+ $Id$
+-->
+
+<plugin>
+
+   <extension point="org.eclipse.ui.newWizards">
+      <category
+            id="org.eclipse.emf.ecore.Wizard.category.ID"
+            name="%_UI_Wizard_category"/>
+      <wizard
+            id="AIP.presentation.AIPModelWizardID"
+            name="%_UI_AIPModelWizard_label"
+            class="AIP.presentation.AIPModelWizard"
+            category="org.eclipse.emf.ecore.Wizard.category.ID"
+            icon="icons/full/obj16/AIPModelFile.gif">
+         <description>%_UI_AIPModelWizard_description</description>
+         <selection class="org.eclipse.core.resources.IResource"/>
+      </wizard>
+   </extension>
+
+   <extension point="org.eclipse.ui.editors">
+      <editor
+            id="AIP.presentation.AIPEditorID"
+            name="%_UI_AIPEditor_label"
+            icon="icons/full/obj16/AIPModelFile.gif"
+            extensions="aip"
+            class="AIP.presentation.AIPEditor"
+            contributorClass="AIP.presentation.AIPActionBarContributor">
+      </editor>
+   </extension>
+
+</plugin>
