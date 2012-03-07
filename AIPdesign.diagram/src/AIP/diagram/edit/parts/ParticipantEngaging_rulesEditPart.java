@@ -111,6 +111,7 @@ public class ParticipantEngaging_rulesEditPart extends CompartmentEditPart
 	 */
 	protected void setLabelTextHelper(IFigure figure, String text) {
 		if (figure instanceof WrappingLabel) {
+			((WrappingLabel) figure).setTextWrap(true);
 			((WrappingLabel) figure).setText(text);
 		} else {
 			((Label) figure).setText(text);

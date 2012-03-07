@@ -67,7 +67,6 @@ public class ProtocolParticipantsEditPart extends ConnectionNodeEditPart
 		 * @generated
 		 */
 		public ProtocolParticipantsFigure() {
-			this.setLineWidth(1);
 
 			setTargetDecoration(createTargetDecoration());
 		}
@@ -77,7 +76,6 @@ public class ProtocolParticipantsEditPart extends ConnectionNodeEditPart
 		 */
 		private RotatableDecoration createTargetDecoration() {
 			PolylineDecoration df = new PolylineDecoration();
-			df.setLineWidth(1);
 			return df;
 		}
 

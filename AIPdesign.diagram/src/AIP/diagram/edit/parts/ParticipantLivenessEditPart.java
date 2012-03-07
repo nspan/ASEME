@@ -111,6 +111,7 @@ public class ParticipantLivenessEditPart extends CompartmentEditPart implements
 	 */
 	protected void setLabelTextHelper(IFigure figure, String text) {
 		if (figure instanceof WrappingLabel) {
+			((WrappingLabel) figure).setTextWrap(true);
 			((WrappingLabel) figure).setText(text);
 		} else {
 			((Label) figure).setText(text);

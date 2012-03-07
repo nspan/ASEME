@@ -86,18 +86,18 @@ public class AIPNavigatorLabelProvider extends LabelProvider implements
 	 */
 	public Image getImage(View view) {
 		switch (AIPVisualIDRegistry.getVisualID(view)) {
-		case ProtocolEditPart.VISUAL_ID:
-			return getImage(
-					"Navigator?TopLevelNode?http://www.acml.tuc.gr/aseme/metamodels/AIP?Protocol", AIPElementTypes.Protocol_2004); //$NON-NLS-1$
-		case ParticipantEditPart.VISUAL_ID:
-			return getImage(
-					"Navigator?TopLevelNode?http://www.acml.tuc.gr/aseme/metamodels/AIP?Participant", AIPElementTypes.Participant_2003); //$NON-NLS-1$
 		case ProtocolParticipantsEditPart.VISUAL_ID:
 			return getImage(
 					"Navigator?Link?http://www.acml.tuc.gr/aseme/metamodels/AIP?Protocol?participants", AIPElementTypes.ProtocolParticipants_4002); //$NON-NLS-1$
 		case AIPmodelEditPart.VISUAL_ID:
 			return getImage(
 					"Navigator?Diagram?http://www.acml.tuc.gr/aseme/metamodels/AIP?AIPmodel", AIPElementTypes.AIPmodel_1000); //$NON-NLS-1$
+		case ProtocolEditPart.VISUAL_ID:
+			return getImage(
+					"Navigator?TopLevelNode?http://www.acml.tuc.gr/aseme/metamodels/AIP?Protocol", AIPElementTypes.Protocol_2004); //$NON-NLS-1$
+		case ParticipantEditPart.VISUAL_ID:
+			return getImage(
+					"Navigator?TopLevelNode?http://www.acml.tuc.gr/aseme/metamodels/AIP?Participant", AIPElementTypes.Participant_2003); //$NON-NLS-1$
 		}
 		return getImage("Navigator?UnknownElement", null); //$NON-NLS-1$
 	}
@@ -150,14 +150,14 @@ public class AIPNavigatorLabelProvider extends LabelProvider implements
 			return getUnresolvedDomainElementProxyText(view);
 		}
 		switch (AIPVisualIDRegistry.getVisualID(view)) {
-		case ProtocolEditPart.VISUAL_ID:
-			return getProtocol_2004Text(view);
-		case ParticipantEditPart.VISUAL_ID:
-			return getParticipant_2003Text(view);
 		case ProtocolParticipantsEditPart.VISUAL_ID:
 			return getProtocolParticipants_4002Text(view);
 		case AIPmodelEditPart.VISUAL_ID:
 			return getAIPmodel_1000Text(view);
+		case ProtocolEditPart.VISUAL_ID:
+			return getProtocol_2004Text(view);
+		case ParticipantEditPart.VISUAL_ID:
+			return getParticipant_2003Text(view);
 		}
 		return getUnknownElementText(view);
 	}

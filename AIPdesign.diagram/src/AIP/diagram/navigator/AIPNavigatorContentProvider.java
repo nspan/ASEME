@@ -192,9 +192,6 @@ public class AIPNavigatorContentProvider implements ICommonContentProvider {
 					topViews.add((View) o);
 				}
 			}
-			result.addAll(createNavigatorItems(
-					selectViewsByType(topViews, AIPmodelEditPart.MODEL_ID),
-					file, false));
 			return result.toArray();
 		}
 
@@ -219,42 +216,6 @@ public class AIPNavigatorContentProvider implements ICommonContentProvider {
 	 */
 	private Object[] getViewChildren(View view, Object parentElement) {
 		switch (AIPVisualIDRegistry.getVisualID(view)) {
-
-		case ProtocolEditPart.VISUAL_ID: {
-			LinkedList<AIPAbstractNavigatorItem> result = new LinkedList<AIPAbstractNavigatorItem>();
-			Node sv = (Node) view;
-			AIPNavigatorGroup outgoinglinks = new AIPNavigatorGroup(
-					Messages.NavigatorGroupName_Protocol_2004_outgoinglinks,
-					"icons/outgoingLinksNavigatorGroup.gif", parentElement); //$NON-NLS-1$
-			Collection<View> connectedViews;
-			connectedViews = getOutgoingLinksByType(Collections.singleton(sv),
-					AIPVisualIDRegistry
-							.getType(ProtocolParticipantsEditPart.VISUAL_ID));
-			outgoinglinks.addChildren(createNavigatorItems(connectedViews,
-					outgoinglinks, true));
-			if (!outgoinglinks.isEmpty()) {
-				result.add(outgoinglinks);
-			}
-			return result.toArray();
-		}
-
-		case ParticipantEditPart.VISUAL_ID: {
-			LinkedList<AIPAbstractNavigatorItem> result = new LinkedList<AIPAbstractNavigatorItem>();
-			Node sv = (Node) view;
-			AIPNavigatorGroup incominglinks = new AIPNavigatorGroup(
-					Messages.NavigatorGroupName_Participant_2003_incominglinks,
-					"icons/incomingLinksNavigatorGroup.gif", parentElement); //$NON-NLS-1$
-			Collection<View> connectedViews;
-			connectedViews = getIncomingLinksByType(Collections.singleton(sv),
-					AIPVisualIDRegistry
-							.getType(ProtocolParticipantsEditPart.VISUAL_ID));
-			incominglinks.addChildren(createNavigatorItems(connectedViews,
-					incominglinks, true));
-			if (!incominglinks.isEmpty()) {
-				result.add(incominglinks);
-			}
-			return result.toArray();
-		}
 
 		case ProtocolParticipantsEditPart.VISUAL_ID: {
 			LinkedList<AIPAbstractNavigatorItem> result = new LinkedList<AIPAbstractNavigatorItem>();
@@ -304,6 +265,42 @@ public class AIPNavigatorContentProvider implements ICommonContentProvider {
 			links.addChildren(createNavigatorItems(connectedViews, links, false));
 			if (!links.isEmpty()) {
 				result.add(links);
+			}
+			return result.toArray();
+		}
+
+		case ProtocolEditPart.VISUAL_ID: {
+			LinkedList<AIPAbstractNavigatorItem> result = new LinkedList<AIPAbstractNavigatorItem>();
+			Node sv = (Node) view;
+			AIPNavigatorGroup outgoinglinks = new AIPNavigatorGroup(
+					Messages.NavigatorGroupName_Protocol_2004_outgoinglinks,
+					"icons/outgoingLinksNavigatorGroup.gif", parentElement); //$NON-NLS-1$
+			Collection<View> connectedViews;
+			connectedViews = getOutgoingLinksByType(Collections.singleton(sv),
+					AIPVisualIDRegistry
+							.getType(ProtocolParticipantsEditPart.VISUAL_ID));
+			outgoinglinks.addChildren(createNavigatorItems(connectedViews,
+					outgoinglinks, true));
+			if (!outgoinglinks.isEmpty()) {
+				result.add(outgoinglinks);
+			}
+			return result.toArray();
+		}
+
+		case ParticipantEditPart.VISUAL_ID: {
+			LinkedList<AIPAbstractNavigatorItem> result = new LinkedList<AIPAbstractNavigatorItem>();
+			Node sv = (Node) view;
+			AIPNavigatorGroup incominglinks = new AIPNavigatorGroup(
+					Messages.NavigatorGroupName_Participant_2003_incominglinks,
+					"icons/incomingLinksNavigatorGroup.gif", parentElement); //$NON-NLS-1$
+			Collection<View> connectedViews;
+			connectedViews = getIncomingLinksByType(Collections.singleton(sv),
+					AIPVisualIDRegistry
+							.getType(ProtocolParticipantsEditPart.VISUAL_ID));
+			incominglinks.addChildren(createNavigatorItems(connectedViews,
+					incominglinks, true));
+			if (!incominglinks.isEmpty()) {
+				result.add(incominglinks);
 			}
 			return result.toArray();
 		}

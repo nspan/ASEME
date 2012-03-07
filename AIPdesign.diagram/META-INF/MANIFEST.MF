@@ -7,7 +7,7 @@ Bundle-ClassPath: .
 Bundle-Activator: AIP.diagram.part.AIPDiagramEditorPlugin
 Bundle-Vendor: %providerName
 Bundle-Localization: plugin
-Export-Package: AIP.diagram.edit.parts, 
+Export-Package: AIP.diagram.edit.parts,
  AIP.diagram.part,
  AIP.diagram.providers
 Require-Bundle: org.eclipse.core.runtime,

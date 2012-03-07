@@ -54,19 +54,19 @@
         <children
             xsi:type="gmfgraph:Label"
             name="ParticipantNameFigure"
-            text="&lt;...>"/>
+            text="&lt;Insert Name>"/>
         <children
             xsi:type="gmfgraph:Label"
             name="ParticipantEngaging_rulesFigure"
-            text="&lt;...>"/>
+            text="&lt;Insert Engaging rules>"/>
         <children
             xsi:type="gmfgraph:Label"
             name="ParticipantOutcomesFigure"
-            text="&lt;...>"/>
+            text="&lt;Insert Outcomes>"/>
         <children
             xsi:type="gmfgraph:Label"
             name="ParticipantLivenessFigure"
-            text="&lt;...>"/>
+            text="&lt;Insert Liveness property>"/>
       </actualFigure>
       <accessors
           figure="//@figures.0/@descriptors.2/@actualFigure/@children.0"/>

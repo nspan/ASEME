@@ -335,7 +335,6 @@ public class ParticipantEditPart extends ShapeNodeEditPart {
 
 			this.setLayoutManager(layoutThis);
 
-			this.setLineWidth(1);
 			this.setForegroundColor(THIS_FORE);
 			this.setBackgroundColor(THIS_BACK);
 			createContents();
@@ -347,44 +346,27 @@ public class ParticipantEditPart extends ShapeNodeEditPart {
 		private void createContents() {
 
 			fFigureParticipantNameFigure = new WrappingLabel();
-			fFigureParticipantNameFigure.setText("<...>");
+			fFigureParticipantNameFigure.setText("<Insert Name>");
 
 			this.add(fFigureParticipantNameFigure);
 
 			fFigureParticipantEngaging_rulesFigure = new WrappingLabel();
-			fFigureParticipantEngaging_rulesFigure.setText("<...>");
+			fFigureParticipantEngaging_rulesFigure
+					.setText("<Insert Engaging rules>");
 
 			this.add(fFigureParticipantEngaging_rulesFigure);
 
 			fFigureParticipantOutcomesFigure = new WrappingLabel();
-			fFigureParticipantOutcomesFigure.setText("<...>");
+			fFigureParticipantOutcomesFigure.setText("<Insert Outcomes>");
 
 			this.add(fFigureParticipantOutcomesFigure);
 
 			fFigureParticipantLivenessFigure = new WrappingLabel();
-			fFigureParticipantLivenessFigure.setText("<...>");
+			fFigureParticipantLivenessFigure
+					.setText("<Insert Liveness property>");
 
 			this.add(fFigureParticipantLivenessFigure);
 
-		}
-
-		/**
-		 * @generated
-		 */
-		private boolean myUseLocalCoordinates = false;
-
-		/**
-		 * @generated
-		 */
-		protected boolean useLocalCoordinates() {
-			return myUseLocalCoordinates;
-		}
-
-		/**
-		 * @generated
-		 */
-		protected void setUseLocalCoordinates(boolean useLocalCoordinates) {
-			myUseLocalCoordinates = useLocalCoordinates;
 		}
 
 		/**
