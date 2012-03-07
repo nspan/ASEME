@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<classpath>
+	<classpathentry kind="src" path="src"/>
+	<classpathentry kind="src" path="src-gen"/>
+	<classpathentry kind="con" path="org.eclipse.jdt.launching.JRE_CONTAINER"/>
+	<classpathentry kind="lib" path="C:/Users/Nikos/workspace/IAC_EMF.generator2/lib/jade.jar"/>
+	<classpathentry combineaccessrules="false" kind="src" path="/IACdesign"/>
+	<classpathentry combineaccessrules="false" kind="src" path="/IACdesign.edit"/>
+	<classpathentry combineaccessrules="false" kind="src" path="/IACdesign.editor"/>
+	<classpathentry kind="con" path="org.eclipse.pde.core.requiredPlugins"/>
+	<classpathentry kind="output" path="bin"/>
+</classpath>
