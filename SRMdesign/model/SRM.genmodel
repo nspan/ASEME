@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<genmodel:GenModel xmi:version="2.0"
+    xmlns:xmi="http://www.omg.org/XMI" xmlns:ecore="http://www.eclipse.org/emf/2002/Ecore"
+    xmlns:genmodel="http://www.eclipse.org/emf/2002/GenModel" modelDirectory="/SRMdesign/src"
+    modelPluginID="SRMdesign" modelName="SRM" importerID="org.eclipse.emf.importer.ecore"
+    complianceLevel="6.0" copyrightFields="false">
+  <foreignModel>SRM.ecore</foreignModel>
+  <genPackages prefix="SRM" disposableProviderFactory="true" ecorePackage="SRM.ecore#/">
+    <genClasses ecoreClass="SRM.ecore#//SRMmodel">
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference SRM.ecore#//SRMmodel/activities"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference SRM.ecore#//SRMmodel/capabilities"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference SRM.ecore#//SRMmodel/roles"/>
+    </genClasses>
+    <genClasses ecoreClass="SRM.ecore#//Role">
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference SRM.ecore#//Role/activities"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute SRM.ecore#//Role/liveness"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute SRM.ecore#//Role/name"/>
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference SRM.ecore#//Role/capabilities"/>
+    </genClasses>
+    <genClasses ecoreClass="SRM.ecore#//Activity">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute SRM.ecore#//Activity/name"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute SRM.ecore#//Activity/functionality"/>
+    </genClasses>
+    <genClasses ecoreClass="SRM.ecore#//Capability">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute SRM.ecore#//Capability/name"/>
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference SRM.ecore#//Capability/activities"/>
+    </genClasses>
+  </genPackages>
+</genmodel:GenModel>

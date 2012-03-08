@@ -1,0 +1,7 @@
+# Tracing options for the SAGdesign.diagram plug-in
+
+# Common issues
+SAGdesign.diagram/debug=false
+
+# Visual IDs
+SAGdesign.diagram/debug/visualID=false

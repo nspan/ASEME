@@ -1,0 +1,69 @@
+<?xml version="1.0" encoding="ASCII"?>
+<gmfgraph:Canvas xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:gmfgraph="http://www.eclipse.org/gmf/2006/GraphicalDefinition" name="IAC">
+  <figures name="Default">
+    <figures xsi:type="gmfgraph:PolylineDecoration" name="NodeVariablesTargetDecoration" lineWidth="3"/>
+    <figures xsi:type="gmfgraph:PolylineDecoration" name="Transition_target" lineWidth="3">
+      <layout xsi:type="gmfgraph:FlowLayout"/>
+      <foregroundColor xsi:type="gmfgraph:RGBColor" red="255"/>
+      <template x="-2" y="-1"/>
+      <template/>
+      <template x="-2" y="1"/>
+    </figures>
+    <figures xsi:type="gmfgraph:PolylineDecoration" name="NodeFather_ofTargetDecoration" lineWidth="3"/>
+    <descriptors name="NodeVariablesFigure">
+      <actualFigure xsi:type="gmfgraph:PolylineConnection" name="NodeVariablesFigure" lineWidth="3" targetDecoration="//@figures.0/@figures.0"/>
+    </descriptors>
+    <descriptors name="VariableFigure">
+      <actualFigure xsi:type="gmfgraph:Rectangle" name="VariableFigure" lineWidth="3">
+        <layout xsi:type="gmfgraph:FlowLayout"/>
+        <children xsi:type="gmfgraph:Label" name="VariableNameFigure" text="&lt;...>"/>
+        <children xsi:type="gmfgraph:Label" name="VariableTypeFigure" text="&lt;...>"/>
+      </actualFigure>
+      <accessors figure="//@figures.0/@descriptors.1/@actualFigure/@children.0"/>
+      <accessors figure="//@figures.0/@descriptors.1/@actualFigure/@children.1"/>
+    </descriptors>
+    <descriptors name="TransitionFigure">
+      <actualFigure xsi:type="gmfgraph:PolylineConnection" name="TransitionFigure" lineWidth="3" targetDecoration="//@figures.0/@figures.1">
+        <layout xsi:type="gmfgraph:FlowLayout"/>
+        <foregroundColor xsi:type="gmfgraph:RGBColor" red="255"/>
+        <children xsi:type="gmfgraph:Label" name="TransitionTEFigure" text="&lt;...>"/>
+        <children xsi:type="gmfgraph:Label" name="TransitionNameFigure" text="&lt;...>"/>
+      </actualFigure>
+      <accessors figure="//@figures.0/@descriptors.2/@actualFigure/@children.0"/>
+      <accessors figure="//@figures.0/@descriptors.2/@actualFigure/@children.1"/>
+    </descriptors>
+    <descriptors name="NodeFather_ofFigure">
+      <actualFigure xsi:type="gmfgraph:PolylineConnection" name="NodeFather_ofFigure" lineWidth="3" targetDecoration="//@figures.0/@figures.2"/>
+    </descriptors>
+  </figures>
+  <figures name="Custom">
+    <descriptors name="NodeFigureCustom">
+      <actualFigure xsi:type="gmfgraph:Ellipse" name="NodeFigureCustom" lineWidth="3">
+        <foregroundColor xsi:type="gmfgraph:RGBColor"/>
+        <backgroundColor xsi:type="gmfgraph:RGBColor" red="214" green="249" blue="218"/>
+        <size x="7" y="7"/>
+        <children xsi:type="gmfgraph:Label" name="NodeNameFigureCustom"/>
+        <children xsi:type="gmfgraph:Label" name="NodeTypeFigureCustom"/>
+        <children xsi:type="gmfgraph:Label" name="NodeLabelFigureCustom"/>
+        <children xsi:type="gmfgraph:Label" name="NodeActivityFigureCustom"/>
+      </actualFigure>
+      <accessors accessor="getFigureNodeNameFigureCustom" figure="//@figures.1/@descriptors.0/@actualFigure/@children.0"/>
+      <accessors accessor="getFigureNodeTypeFigureCustom" figure="//@figures.1/@descriptors.0/@actualFigure/@children.1"/>
+      <accessors accessor="getFigureNodeLabelFigureCustom" figure="//@figures.1/@descriptors.0/@actualFigure/@children.2"/>
+      <accessors accessor="getFigureNodeActivityFigureCustom" figure="//@figures.1/@descriptors.0/@actualFigure/@children.3"/>
+    </descriptors>
+  </figures>
+  <nodes name="Variable" figure="VariableFigure"/>
+  <nodes name="Node" figure="NodeFigureCustom"/>
+  <connections name="NodeVariables" figure="NodeVariablesFigure"/>
+  <connections name="Transition" figure="TransitionFigure"/>
+  <connections name="NodeFather_of" figure="NodeFather_ofFigure"/>
+  <labels name="NodeName" figure="NodeFigureCustom" accessor="//@figures.1/@descriptors.0/@accessors.0"/>
+  <labels name="NodeType" figure="NodeFigureCustom" accessor="//@figures.1/@descriptors.0/@accessors.1"/>
+  <labels name="NodeLabel" figure="NodeFigureCustom" accessor="//@figures.1/@descriptors.0/@accessors.2"/>
+  <labels name="NodeActivity" figure="NodeFigureCustom" accessor="//@figures.1/@descriptors.0/@accessors.3"/>
+  <labels name="VariableName" figure="VariableFigure" accessor="//@figures.0/@descriptors.1/@accessors.0"/>
+  <labels name="VariableType" figure="VariableFigure" accessor="//@figures.0/@descriptors.1/@accessors.1"/>
+  <labels name="TransitionTE" figure="TransitionFigure" accessor="//@figures.0/@descriptors.2/@accessors.0"/>
+  <labels name="TransitionName" figure="TransitionFigure" accessor="//@figures.0/@descriptors.2/@accessors.1"/>
+</gmfgraph:Canvas>

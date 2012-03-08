@@ -1,0 +1,7 @@
+# Tracing options for the SRMdesign.diagram plug-in
+
+# Common issues
+SRMdesign.diagram/debug=false
+
+# Visual IDs
+SRMdesign.diagram/debug/visualID=false

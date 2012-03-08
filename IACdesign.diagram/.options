@@ -1,0 +1,7 @@
+# Tracing options for the IACdesign.diagram plug-in
+
+# Common issues
+IACdesign.diagram/debug=false
+
+# Visual IDs
+IACdesign.diagram/debug/visualID=false

@@ -1,0 +1,7 @@
+# Tracing options for the SUCdesign.diagram plug-in
+
+# Common issues
+SUCdesign.diagram/debug=false
+
+# Visual IDs
+SUCdesign.diagram/debug/visualID=false

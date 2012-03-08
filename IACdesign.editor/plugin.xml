@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?eclipse version="3.0"?>
+
+<!--
+ <copyright>
+ </copyright>
+
+ $Id$
+-->
+
+<plugin>
+
+   <extension point="org.eclipse.ui.newWizards">
+      <category
+            id="org.eclipse.emf.ecore.Wizard.category.ID"
+            name="%_UI_Wizard_category"/>
+      <wizard
+            id="IAC.presentation.IACModelWizardID"
+            name="%_UI_IACModelWizard_label"
+            class="IAC.presentation.IACModelWizard"
+            category="org.eclipse.emf.ecore.Wizard.category.ID"
+            icon="icons/full/obj16/IACModelFile.gif">
+         <description>%_UI_IACModelWizard_description</description>
+         <selection class="org.eclipse.core.resources.IResource"/>
+      </wizard>
+   </extension>
+
+   <extension point="org.eclipse.ui.editors">
+      <editor
+            id="IAC.presentation.IACEditorID"
+            name="%_UI_IACEditor_label"
+            icon="icons/full/obj16/IACModelFile.gif"
+            extensions="iac"
+            class="IAC.presentation.IACEditor"
+            contributorClass="IAC.presentation.IACActionBarContributor">
+      </editor>
+   </extension>
+
+</plugin>
