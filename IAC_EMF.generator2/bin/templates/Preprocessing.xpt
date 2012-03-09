@@ -1,0 +1,8 @@
+«IMPORT IAC»
+«EXTENSION aseme::m2t::IACmodel::packageHelper»
+
+«DEFINE pathProperty FOR IAC::Model»
+   «FILE "path.properties"»
+path=«packagePath()»
+   «ENDFILE»
+«ENDDEFINE»

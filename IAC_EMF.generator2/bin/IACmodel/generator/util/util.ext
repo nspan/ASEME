@@ -1,0 +1,4 @@
+String timestamp() :
+  JAVA IACmodel.generator.util.TemplateUtils.timestamp();
+
+  
