@@ -146,9 +146,9 @@ public class ModelCanonicalEditPolicy extends CanonicalEditPolicy {
 	}
 
 	/**
-	 * @generated
+	 * @generated NOT
 	 */
-	protected void refreshSemantic() {
+	public void refreshSemantic() {
 		if (resolveSemanticElement() == null) {
 			return;
 		}
@@ -285,9 +285,9 @@ public class ModelCanonicalEditPolicy extends CanonicalEditPolicy {
 	}
 
 	/**
-	 * @generated
+	 * @generated NOT
 	 */
-	private Collection<IAdaptable> refreshConnections() {
+	public Collection<IAdaptable> refreshConnections() {
 		Map<EObject, View> domain2NotationMap = new HashMap<EObject, View>();
 		Collection<StateChartLinkDescriptor> linkDescriptors = collectAllLinks(
 				getDiagram(), domain2NotationMap);

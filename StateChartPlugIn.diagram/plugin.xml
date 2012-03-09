@@ -113,7 +113,7 @@ ibm, apache and eclipse is used.
          </ViewId>
       </GlobalActionHandlerProvider>
       <GlobalActionHandlerProvider
-            class="org.eclipse.gmf.runtime.diagram.ui.render.providers.DiagramUIRenderGlobalActionHandlerProvider"
+            class="statechart.diagram.providers.StateChartActionProvider"
             id="StateChartRender">
          <Priority name="Lowest"/>
          <ViewId id="statechart.diagram.part.StateChartDiagramEditorID">
