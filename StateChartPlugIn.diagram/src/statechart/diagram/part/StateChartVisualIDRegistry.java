@@ -342,23 +342,18 @@ public class StateChartVisualIDRegistry {
 				return true;
 			}
 			break;
-		case Node4EditPart.VISUAL_ID:
-			if (WrappingLabelEditPart.VISUAL_ID == nodeVisualID) {
-				return true;
-			}
-			break;
 		case Node5EditPart.VISUAL_ID:
 			if (NodeName3EditPart.VISUAL_ID == nodeVisualID) {
 				return true;
 			}
 			break;
 		case Node6EditPart.VISUAL_ID:
-			if (WrappingLabel2EditPart.VISUAL_ID == nodeVisualID) {
+			if (WrappingLabelEditPart.VISUAL_ID == nodeVisualID) {
 				return true;
 			}
 			break;
 		case Node7EditPart.VISUAL_ID:
-			if (WrappingLabel3EditPart.VISUAL_ID == nodeVisualID) {
+			if (WrappingLabel2EditPart.VISUAL_ID == nodeVisualID) {
 				return true;
 			}
 			break;
@@ -380,11 +375,6 @@ public class StateChartVisualIDRegistry {
 				return true;
 			}
 			if (NodeNodeAndCompEditPart.VISUAL_ID == nodeVisualID) {
-				return true;
-			}
-			break;
-		case Node12EditPart.VISUAL_ID:
-			if (WrappingLabel4EditPart.VISUAL_ID == nodeVisualID) {
 				return true;
 			}
 			break;

@@ -125,55 +125,6 @@ public class Node12EditPart extends ShapeNodeEditPart {
 	/**
 	 * @generated
 	 */
-	protected boolean addFixedChild(EditPart childEditPart) {
-		if (childEditPart instanceof WrappingLabel4EditPart) {
-			((WrappingLabel4EditPart) childEditPart).setLabel(getPrimaryShape()
-					.getFigureEndLabel());
-			return true;
-		}
-		return false;
-	}
-
-	/**
-	 * @generated
-	 */
-	protected boolean removeFixedChild(EditPart childEditPart) {
-		if (childEditPart instanceof WrappingLabel4EditPart) {
-			return true;
-		}
-		return false;
-	}
-
-	/**
-	 * @generated
-	 */
-	protected void addChildVisual(EditPart childEditPart, int index) {
-		if (addFixedChild(childEditPart)) {
-			return;
-		}
-		super.addChildVisual(childEditPart, -1);
-	}
-
-	/**
-	 * @generated
-	 */
-	protected void removeChildVisual(EditPart childEditPart) {
-		if (removeFixedChild(childEditPart)) {
-			return;
-		}
-		super.removeChildVisual(childEditPart);
-	}
-
-	/**
-	 * @generated
-	 */
-	protected IFigure getContentPaneFor(IGraphicalEditPart editPart) {
-		return getContentPane();
-	}
-
-	/**
-	 * @generated
-	 */
 	protected NodeFigure createNodePlate() {
 		DefaultSizeNodeFigure result = new DefaultSizeNodeFigure(35, 35);
 		return result;
@@ -203,11 +154,6 @@ public class Node12EditPart extends ShapeNodeEditPart {
 	 * @generated
 	 */
 	protected IFigure setupContentPane(IFigure nodeShape) {
-		if (nodeShape.getLayoutManager() == null) {
-			ConstrainedToolbarLayout layout = new ConstrainedToolbarLayout();
-			layout.setSpacing(5);
-			nodeShape.setLayoutManager(layout);
-		}
 		return nodeShape; // use nodeShape itself as contentPane
 	}
 
@@ -255,14 +201,6 @@ public class Node12EditPart extends ShapeNodeEditPart {
 		if (primaryShape instanceof Shape) {
 			((Shape) primaryShape).setLineStyle(style);
 		}
-	}
-
-	/**
-	 * @generated
-	 */
-	public EditPart getPrimaryChildEditPart() {
-		return getChildBySemanticHint(StateChartVisualIDRegistry
-				.getType(WrappingLabel4EditPart.VISUAL_ID));
 	}
 
 	/**
@@ -380,7 +318,7 @@ public class Node12EditPart extends ShapeNodeEditPart {
 		/**
 		 * @generated
 		 */
-		private WrappingLabel fFigureEndLabel;
+		private Ellipse fFigureBlack;
 
 		/**
 		 * @generated
@@ -399,6 +337,10 @@ public class Node12EditPart extends ShapeNodeEditPart {
 					getMapMode().DPtoLP(35)));
 			this.setMinimumSize(new Dimension(getMapMode().DPtoLP(30),
 					getMapMode().DPtoLP(30)));
+
+			this.setBorder(new MarginBorder(getMapMode().DPtoLP(10),
+					getMapMode().DPtoLP(10), getMapMode().DPtoLP(10),
+					getMapMode().DPtoLP(10)));
 			createContents();
 		}
 
@@ -407,32 +349,20 @@ public class Node12EditPart extends ShapeNodeEditPart {
 		 */
 		private void createContents() {
 
-			fFigureEndLabel = new WrappingLabel();
-			fFigureEndLabel.setText("\u2022");
+			fFigureBlack = new Ellipse();
+			fFigureBlack.setBackgroundColor(ColorConstants.black);
 
-			fFigureEndLabel.setFont(FFIGUREENDLABEL_FONT);
-
-			fFigureEndLabel.setBorder(new MarginBorder(getMapMode().DPtoLP(0),
-					getMapMode().DPtoLP(7), getMapMode().DPtoLP(5),
-					getMapMode().DPtoLP(0)));
-
-			this.add(fFigureEndLabel, BorderLayout.CENTER);
+			this.add(fFigureBlack, BorderLayout.CENTER);
 
 		}
 
 		/**
 		 * @generated
 		 */
-		public WrappingLabel getFigureEndLabel() {
-			return fFigureEndLabel;
+		public Ellipse getFigureBlack() {
+			return fFigureBlack;
 		}
 
 	}
-
-	/**
-	 * @generated
-	 */
-	static final Font FFIGUREENDLABEL_FONT = new Font(Display.getCurrent(),
-			"dfr", 25, SWT.BOLD);
 
 }

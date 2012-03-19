@@ -115,51 +115,51 @@ public class StateChartNavigatorLabelProvider extends LabelProvider implements
 	 */
 	public Image getImage(View view) {
 		switch (StateChartVisualIDRegistry.getVisualID(view)) {
+		case Node10EditPart.VISUAL_ID:
+			return getImage(
+					"Navigator?Node?http://statechart/1.0?Node", StateChartElementTypes.Node_3004); //$NON-NLS-1$
 		case Node11EditPart.VISUAL_ID:
 			return getImage(
 					"Navigator?Node?http://statechart/1.0?Node", StateChartElementTypes.Node_3005); //$NON-NLS-1$
+		case Node5EditPart.VISUAL_ID:
+			return getImage(
+					"Navigator?TopLevelNode?http://statechart/1.0?Node", StateChartElementTypes.Node_2006); //$NON-NLS-1$
 		case Node2EditPart.VISUAL_ID:
 			return getImage(
 					"Navigator?TopLevelNode?http://statechart/1.0?Node", StateChartElementTypes.Node_2002); //$NON-NLS-1$
 		case Node12EditPart.VISUAL_ID:
 			return getImage(
 					"Navigator?Node?http://statechart/1.0?Node", StateChartElementTypes.Node_3006); //$NON-NLS-1$
-		case NodeEditPart.VISUAL_ID:
-			return getImage(
-					"Navigator?TopLevelNode?http://statechart/1.0?Node", StateChartElementTypes.Node_2001); //$NON-NLS-1$
-		case Node8EditPart.VISUAL_ID:
-			return getImage(
-					"Navigator?Node?http://statechart/1.0?Node", StateChartElementTypes.Node_3002); //$NON-NLS-1$
-		case VariableEditPart.VISUAL_ID:
-			return getImage(
-					"Navigator?TopLevelNode?http://statechart/1.0?Variable", StateChartElementTypes.Variable_2003); //$NON-NLS-1$
-		case Node5EditPart.VISUAL_ID:
-			return getImage(
-					"Navigator?TopLevelNode?http://statechart/1.0?Node", StateChartElementTypes.Node_2006); //$NON-NLS-1$
-		case Node3EditPart.VISUAL_ID:
-			return getImage(
-					"Navigator?TopLevelNode?http://statechart/1.0?Node", StateChartElementTypes.Node_2004); //$NON-NLS-1$
 		case Node6EditPart.VISUAL_ID:
 			return getImage(
 					"Navigator?TopLevelNode?http://statechart/1.0?Node", StateChartElementTypes.Node_2007); //$NON-NLS-1$
-		case Node9EditPart.VISUAL_ID:
+		case Node3EditPart.VISUAL_ID:
 			return getImage(
-					"Navigator?Node?http://statechart/1.0?Node", StateChartElementTypes.Node_3003); //$NON-NLS-1$
-		case Node10EditPart.VISUAL_ID:
+					"Navigator?TopLevelNode?http://statechart/1.0?Node", StateChartElementTypes.Node_2004); //$NON-NLS-1$
+		case VariableEditPart.VISUAL_ID:
 			return getImage(
-					"Navigator?Node?http://statechart/1.0?Node", StateChartElementTypes.Node_3004); //$NON-NLS-1$
+					"Navigator?TopLevelNode?http://statechart/1.0?Variable", StateChartElementTypes.Variable_2003); //$NON-NLS-1$
 		case TransitionEditPart.VISUAL_ID:
 			return getImage(
 					"Navigator?Link?http://statechart/1.0?Transition", StateChartElementTypes.Transition_4001); //$NON-NLS-1$
+		case Node4EditPart.VISUAL_ID:
+			return getImage(
+					"Navigator?TopLevelNode?http://statechart/1.0?Node", StateChartElementTypes.Node_2005); //$NON-NLS-1$
 		case Node7EditPart.VISUAL_ID:
 			return getImage(
 					"Navigator?Node?http://statechart/1.0?Node", StateChartElementTypes.Node_3001); //$NON-NLS-1$
 		case ModelEditPart.VISUAL_ID:
 			return getImage(
 					"Navigator?Diagram?http://statechart/1.0?Model", StateChartElementTypes.Model_1000); //$NON-NLS-1$
-		case Node4EditPart.VISUAL_ID:
+		case Node9EditPart.VISUAL_ID:
 			return getImage(
-					"Navigator?TopLevelNode?http://statechart/1.0?Node", StateChartElementTypes.Node_2005); //$NON-NLS-1$
+					"Navigator?Node?http://statechart/1.0?Node", StateChartElementTypes.Node_3003); //$NON-NLS-1$
+		case Node8EditPart.VISUAL_ID:
+			return getImage(
+					"Navigator?Node?http://statechart/1.0?Node", StateChartElementTypes.Node_3002); //$NON-NLS-1$
+		case NodeEditPart.VISUAL_ID:
+			return getImage(
+					"Navigator?TopLevelNode?http://statechart/1.0?Node", StateChartElementTypes.Node_2001); //$NON-NLS-1$
 		}
 		return getImage("Navigator?UnknownElement", null); //$NON-NLS-1$
 	}
@@ -212,36 +212,36 @@ public class StateChartNavigatorLabelProvider extends LabelProvider implements
 			return getUnresolvedDomainElementProxyText(view);
 		}
 		switch (StateChartVisualIDRegistry.getVisualID(view)) {
+		case Node10EditPart.VISUAL_ID:
+			return getNode_3004Text(view);
 		case Node11EditPart.VISUAL_ID:
 			return getNode_3005Text(view);
+		case Node5EditPart.VISUAL_ID:
+			return getNode_2006Text(view);
 		case Node2EditPart.VISUAL_ID:
 			return getNode_2002Text(view);
 		case Node12EditPart.VISUAL_ID:
 			return getNode_3006Text(view);
-		case NodeEditPart.VISUAL_ID:
-			return getNode_2001Text(view);
-		case Node8EditPart.VISUAL_ID:
-			return getNode_3002Text(view);
-		case VariableEditPart.VISUAL_ID:
-			return getVariable_2003Text(view);
-		case Node5EditPart.VISUAL_ID:
-			return getNode_2006Text(view);
-		case Node3EditPart.VISUAL_ID:
-			return getNode_2004Text(view);
 		case Node6EditPart.VISUAL_ID:
 			return getNode_2007Text(view);
-		case Node9EditPart.VISUAL_ID:
-			return getNode_3003Text(view);
-		case Node10EditPart.VISUAL_ID:
-			return getNode_3004Text(view);
+		case Node3EditPart.VISUAL_ID:
+			return getNode_2004Text(view);
+		case VariableEditPart.VISUAL_ID:
+			return getVariable_2003Text(view);
 		case TransitionEditPart.VISUAL_ID:
 			return getTransition_4001Text(view);
+		case Node4EditPart.VISUAL_ID:
+			return getNode_2005Text(view);
 		case Node7EditPart.VISUAL_ID:
 			return getNode_3001Text(view);
 		case ModelEditPart.VISUAL_ID:
 			return getModel_1000Text(view);
-		case Node4EditPart.VISUAL_ID:
-			return getNode_2005Text(view);
+		case Node9EditPart.VISUAL_ID:
+			return getNode_3003Text(view);
+		case Node8EditPart.VISUAL_ID:
+			return getNode_3002Text(view);
+		case NodeEditPart.VISUAL_ID:
+			return getNode_2001Text(view);
 		}
 		return getUnknownElementText(view);
 	}
@@ -290,18 +290,12 @@ public class StateChartNavigatorLabelProvider extends LabelProvider implements
 	 * @generated
 	 */
 	private String getNode_3006Text(View view) {
-		IParser parser = StateChartParserProvider.getParser(
-				StateChartElementTypes.Node_3006,
-				view.getElement() != null ? view.getElement() : view,
-				StateChartVisualIDRegistry
-						.getType(WrappingLabel4EditPart.VISUAL_ID));
-		if (parser != null) {
-			return parser.getPrintString(new EObjectAdapter(
-					view.getElement() != null ? view.getElement() : view),
-					ParserOptions.NONE.intValue());
+		Node domainModelElement = (Node) view.getElement();
+		if (domainModelElement != null) {
+			return domainModelElement.getName();
 		} else {
 			StateChartDiagramEditorPlugin.getInstance().logError(
-					"Parser was not found for label " + 5004); //$NON-NLS-1$
+					"No domain element for view with visualID = " + 3006); //$NON-NLS-1$
 			return ""; //$NON-NLS-1$
 		}
 	}
@@ -407,7 +401,7 @@ public class StateChartNavigatorLabelProvider extends LabelProvider implements
 				StateChartElementTypes.Node_2007,
 				view.getElement() != null ? view.getElement() : view,
 				StateChartVisualIDRegistry
-						.getType(WrappingLabel2EditPart.VISUAL_ID));
+						.getType(WrappingLabelEditPart.VISUAL_ID));
 		if (parser != null) {
 			return parser.getPrintString(new EObjectAdapter(
 					view.getElement() != null ? view.getElement() : view),
@@ -481,7 +475,7 @@ public class StateChartNavigatorLabelProvider extends LabelProvider implements
 				StateChartElementTypes.Node_3001,
 				view.getElement() != null ? view.getElement() : view,
 				StateChartVisualIDRegistry
-						.getType(WrappingLabel3EditPart.VISUAL_ID));
+						.getType(WrappingLabel2EditPart.VISUAL_ID));
 		if (parser != null) {
 			return parser.getPrintString(new EObjectAdapter(
 					view.getElement() != null ? view.getElement() : view),
@@ -511,18 +505,12 @@ public class StateChartNavigatorLabelProvider extends LabelProvider implements
 	 * @generated
 	 */
 	private String getNode_2005Text(View view) {
-		IParser parser = StateChartParserProvider.getParser(
-				StateChartElementTypes.Node_2005,
-				view.getElement() != null ? view.getElement() : view,
-				StateChartVisualIDRegistry
-						.getType(WrappingLabelEditPart.VISUAL_ID));
-		if (parser != null) {
-			return parser.getPrintString(new EObjectAdapter(
-					view.getElement() != null ? view.getElement() : view),
-					ParserOptions.NONE.intValue());
+		Node domainModelElement = (Node) view.getElement();
+		if (domainModelElement != null) {
+			return domainModelElement.getName();
 		} else {
 			StateChartDiagramEditorPlugin.getInstance().logError(
-					"Parser was not found for label " + 5010); //$NON-NLS-1$
+					"No domain element for view with visualID = " + 2005); //$NON-NLS-1$
 			return ""; //$NON-NLS-1$
 		}
 	}

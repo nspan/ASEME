@@ -125,8 +125,8 @@ public class Node6EditPart extends ShapeNodeEditPart {
 	 * @generated
 	 */
 	protected boolean addFixedChild(EditPart childEditPart) {
-		if (childEditPart instanceof WrappingLabel2EditPart) {
-			((WrappingLabel2EditPart) childEditPart).setLabel(getPrimaryShape()
+		if (childEditPart instanceof WrappingLabelEditPart) {
+			((WrappingLabelEditPart) childEditPart).setLabel(getPrimaryShape()
 					.getFigureCondSymbol());
 			return true;
 		}
@@ -137,7 +137,7 @@ public class Node6EditPart extends ShapeNodeEditPart {
 	 * @generated
 	 */
 	protected boolean removeFixedChild(EditPart childEditPart) {
-		if (childEditPart instanceof WrappingLabel2EditPart) {
+		if (childEditPart instanceof WrappingLabelEditPart) {
 			return true;
 		}
 		return false;
@@ -261,7 +261,7 @@ public class Node6EditPart extends ShapeNodeEditPart {
 	 */
 	public EditPart getPrimaryChildEditPart() {
 		return getChildBySemanticHint(StateChartVisualIDRegistry
-				.getType(WrappingLabel2EditPart.VISUAL_ID));
+				.getType(WrappingLabelEditPart.VISUAL_ID));
 	}
 
 	/**

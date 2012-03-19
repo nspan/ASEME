@@ -59,7 +59,7 @@ public class WrappingLabel2EditPart extends CompartmentEditPart implements
 	/**
 	 * @generated
 	 */
-	public static final int VISUAL_ID = 5012;
+	public static final int VISUAL_ID = 5001;
 
 	/**
 	 * @generated
@@ -299,7 +299,7 @@ public class WrappingLabel2EditPart extends CompartmentEditPart implements
 		if (parser == null) {
 			parser = StateChartParserProvider
 					.getParser(
-							StateChartElementTypes.Node_2007,
+							StateChartElementTypes.Node_3001,
 							getParserElement(),
 							StateChartVisualIDRegistry
 									.getType(statechart.diagram.edit.parts.WrappingLabel2EditPart.VISUAL_ID));

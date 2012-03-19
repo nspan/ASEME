@@ -276,7 +276,7 @@ ibm, apache and eclipse is used.
             <method name="getType()" value="4001"/>
          </object>
          <object class="org.eclipse.gmf.runtime.notation.Node" id="generated-labels">
-            <method name="getType()" value="5006,5007,5008,5009,5010,5011,5012,5001,5002,5005,5003,5004"/>
+            <method name="getType()" value="5006,5007,5008,5009,5011,5012,5001,5002,5005,5003"/>
          </object>
          <object class="org.eclipse.gmf.runtime.notation.Node" id="generated-compartments">
             <method name="getType()" value="7001,7002,7003,7004"/>
@@ -798,6 +798,23 @@ ibm, apache and eclipse is used.
 
    <extension point="org.eclipse.ui.handlers" id="menu-handlers">
       <?gmfgen generated="true"?>
+   </extension>
+   <extension
+         point="org.eclipse.ui.actionSets">
+      <actionSet
+            id="StateChartPlugIn.diagram.actionSet1"
+            label="ASEME"
+            visible="true">
+         <action
+               class="statechart.diagram.part.GenerateAction"
+               id="StateChartPlugIn.diagram.action1"
+               label="Generate"
+               menubarPath="ASEME"
+               style="push"
+               toolbarPath="ASEME"
+               tooltip="ASEME generation">
+         </action>
+      </actionSet>
    </extension>
 
    <!-- optionally, specify keybindings -->

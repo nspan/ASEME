@@ -244,21 +244,19 @@
         <preferredSize
             dx="35"
             dy="35"/>
+        <insets
+            top="10"
+            left="10"
+            bottom="10"
+            right="10"/>
         <children
-            xsi:type="gmfgraph:Label"
-            name="EndLabel"
-            text="\u2022">
+            xsi:type="gmfgraph:Ellipse"
+            name="black">
           <layoutData
-              xsi:type="gmfgraph:BorderLayoutData"
-              vertical="true"/>
-          <font
-              xsi:type="gmfgraph:BasicFont"
-              faceName="dfr"
-              height="25"
-              style="BOLD"/>
-          <insets
-              left="7"
-              bottom="5"/>
+              xsi:type="gmfgraph:BorderLayoutData"/>
+          <backgroundColor
+              xsi:type="gmfgraph:ConstantColor"
+              value="black"/>
         </children>
       </actualFigure>
       <accessors
@@ -459,11 +457,6 @@
       figure="NodeANDFigure"
       elementIcon="false"
       accessor="//@figures.0/@descriptors.1/@accessors.0"/>
-  <labels
-      name="EndLabel"
-      figure="NodeEndFigure"
-      elementIcon="false"
-      accessor="//@figures.0/@descriptors.4/@accessors.0"/>
   <labels
       name="NodeNameBasic"
       figure="NodeBasicFigure"

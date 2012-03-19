@@ -211,10 +211,6 @@
               body="'END'"/>
         </initializers>
       </domainInitializer>
-      <labelMappings>
-        <diagramLabel
-            href="StateChart.gmfgraph#EndLabel"/>
-      </labelMappings>
       <tool
           xsi:type="gmftool:CreationTool"
           href="StateChart.gmftool#//@palette/@tools.0/@tools.5"/>

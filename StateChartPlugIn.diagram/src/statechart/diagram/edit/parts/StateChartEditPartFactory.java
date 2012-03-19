@@ -65,9 +65,6 @@ public class StateChartEditPartFactory implements EditPartFactory {
 			case Node4EditPart.VISUAL_ID:
 				return new Node4EditPart(view);
 
-			case WrappingLabelEditPart.VISUAL_ID:
-				return new WrappingLabelEditPart(view);
-
 			case Node5EditPart.VISUAL_ID:
 				return new Node5EditPart(view);
 
@@ -77,14 +74,14 @@ public class StateChartEditPartFactory implements EditPartFactory {
 			case Node6EditPart.VISUAL_ID:
 				return new Node6EditPart(view);
 
-			case WrappingLabel2EditPart.VISUAL_ID:
-				return new WrappingLabel2EditPart(view);
+			case WrappingLabelEditPart.VISUAL_ID:
+				return new WrappingLabelEditPart(view);
 
 			case Node7EditPart.VISUAL_ID:
 				return new Node7EditPart(view);
 
-			case WrappingLabel3EditPart.VISUAL_ID:
-				return new WrappingLabel3EditPart(view);
+			case WrappingLabel2EditPart.VISUAL_ID:
+				return new WrappingLabel2EditPart(view);
 
 			case Node8EditPart.VISUAL_ID:
 				return new Node8EditPart(view);
@@ -109,9 +106,6 @@ public class StateChartEditPartFactory implements EditPartFactory {
 
 			case Node12EditPart.VISUAL_ID:
 				return new Node12EditPart(view);
-
-			case WrappingLabel4EditPart.VISUAL_ID:
-				return new WrappingLabel4EditPart(view);
 
 			case NodeNodeOrCompEditPart.VISUAL_ID:
 				return new NodeNodeOrCompEditPart(view);

@@ -531,9 +531,6 @@ public class StateChartViewProvider extends AbstractProvider implements
 			nodeFontStyle.setFontColor(FigureUtilities.RGBToInteger(fontRGB)
 					.intValue());
 		}
-		Node label5010 = createLabel(node,
-				StateChartVisualIDRegistry
-						.getType(WrappingLabelEditPart.VISUAL_ID));
 		return node;
 	}
 
@@ -608,7 +605,7 @@ public class StateChartViewProvider extends AbstractProvider implements
 		}
 		Node label5012 = createLabel(node,
 				StateChartVisualIDRegistry
-						.getType(WrappingLabel2EditPart.VISUAL_ID));
+						.getType(WrappingLabelEditPart.VISUAL_ID));
 		return node;
 	}
 
@@ -645,7 +642,7 @@ public class StateChartViewProvider extends AbstractProvider implements
 		}
 		Node label5001 = createLabel(node,
 				StateChartVisualIDRegistry
-						.getType(WrappingLabel3EditPart.VISUAL_ID));
+						.getType(WrappingLabel2EditPart.VISUAL_ID));
 		return node;
 	}
 
@@ -837,9 +834,6 @@ public class StateChartViewProvider extends AbstractProvider implements
 			nodeFontStyle.setFontColor(FigureUtilities.RGBToInteger(fontRGB)
 					.intValue());
 		}
-		Node label5004 = createLabel(node,
-				StateChartVisualIDRegistry
-						.getType(WrappingLabel4EditPart.VISUAL_ID));
 		return node;
 	}
 

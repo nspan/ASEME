@@ -102,6 +102,7 @@ public class StateChartValidationProvider {
 			return isInDefaultEditorContext(object);
 		}
 	}
+
 	/**
 	 * @generated NOT
 	 */
@@ -341,7 +342,7 @@ public class StateChartValidationProvider {
 				return ctx.createSuccessStatus();
 			}
 			boolean active = false;
-			if(active){
+			if (active) {
 				if (te != null) {
 					if (CheckSyntaxForCondition(te)) {
 						return ctx.createSuccessStatus();
@@ -378,7 +379,7 @@ public class StateChartValidationProvider {
 				return Status.OK_STATUS;
 			}
 			boolean active = false;
-			if(active){
+			if (active) {
 				String te = (String) context;
 				if (te != null) {
 					if (CheckSyntaxForAction(te))
@@ -393,7 +394,7 @@ public class StateChartValidationProvider {
 						return ctx.createFailureStatus(0);
 					}
 				}
-			}	
+			}
 			return ctx.createSuccessStatus();
 		}
 	}
@@ -411,12 +412,12 @@ public class StateChartValidationProvider {
 		public IStatus validate(IValidationContext ctx) {
 			final Object context = ctx.getTarget().eGet(
 					StatechartPackage.eINSTANCE.getVariable_Type());
-			boolean active =false;
+			boolean active = false;
 			if (context == null) {
 				return ctx.createFailureStatus(new Object[] { formatElement(ctx
 						.getTarget()) });
 			}
-			if(active){	
+			if (active) {
 				String type = (String) context;
 				Pattern varPattern = Pattern.compile("(\\w+?(\\.\\w+?){2})");
 				Matcher varMatcher = varPattern.matcher(type);
@@ -428,12 +429,14 @@ public class StateChartValidationProvider {
 					JOptionPane.showMessageDialog(
 							null,
 							ctx.getTarget().eGet(
-									StatechartPackage.eINSTANCE.getVariable_Name())
+									StatechartPackage.eINSTANCE
+											.getVariable_Name())
 									+ " has a syntax error in variable type.");
-					return ctx.createFailureStatus(new Object[] { formatElement(ctx
-							.getTarget()) });
+					return ctx
+							.createFailureStatus(new Object[] { formatElement(ctx
+									.getTarget()) });
 				}
-			}else
+			} else
 				return ctx.createSuccessStatus();
 		}
 	}
@@ -472,7 +475,6 @@ public class StateChartValidationProvider {
 			}
 		}
 	}
-
 
 	/**
 	 * @generated
