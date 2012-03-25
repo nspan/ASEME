@@ -1,4 +1,0 @@
-import IAC;
-
-String packagePath( Model e ) :
-   JAVA aseme.m2t.IACmodel.PackageHelper.packagePath(IAC.Model);
