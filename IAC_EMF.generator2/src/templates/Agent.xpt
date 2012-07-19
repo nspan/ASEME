@@ -1,111 +1,115 @@
-«IMPORT IAC»
-«EXTENSION aseme::m2t::IACmodel::nodeHelper»
-«EXTENSION aseme::m2t::IACmodel::ComplexBehaviourHelper»
+Â«IMPORT IACÂ»
+Â«EXTENSION aseme::m2t::IACmodel::nodeHelperÂ»
+Â«EXTENSION aseme::m2t::IACmodel::ComplexBehaviourHelperÂ»
 
-«DEFINE javaClass FOR IAC::Model»
-	«LET name AS packageName»
-		«EXPAND nodeClass(packageName, this) FOREACH nodes»
-		«EXPAND variableHolderClass(packageName, this) FOREACH variables»
-	«ENDLET»
-«ENDDEFINE»
+Â«DEFINE javaClass FOR ListÂ»
+	Â«EXPAND javaClass FOR ((List)this.last())Â»					
+Â«ENDDEFINEÂ»
 
-«DEFINE variableHolderClass(String packageName, Model model) FOR IAC::Variable»
-	«FILE variableHolderFileName()»
-	package «packageName»;
+Â«DEFINE javaClass FOR IAC::ModelÂ»
+	Â«LET name AS packageNameÂ»
+		Â«EXPAND nodeClass(packageName, this) FOREACH nodesÂ»
+		Â«EXPAND variableHolderClass(packageName, this) FOREACH variablesÂ»
+	Â«ENDLETÂ»
+Â«ENDDEFINEÂ»
+
+Â«DEFINE variableHolderClass(String packageName, Model model) FOR IAC::VariableÂ»
+	Â«FILE variableHolderFileName()Â»
+	package Â«packageNameÂ»;
 	import jade.core.behaviours.Behaviour;
 
-	«IF type.compareTo("ACLMessage")==0»import jade.lang.acl.ACLMessage;«ENDIF»
+	Â«IF type.compareTo("ACLMessage")==0Â»import jade.lang.acl.ACLMessage;Â«ENDIFÂ»
 	
-	public class «type»Holder {
-		«type» «lowerCaseFirstCharacterOfVariable(this)» = null;
+	public class Â«typeÂ»Holder {
+		Â«typeÂ» Â«lowerCaseFirstCharacterOfVariable(this)Â» = null;
 		Behaviour owner;
 	
-		public «type»Holder(Behaviour owner) {
+		public Â«typeÂ»Holder(Behaviour owner) {
 			super();
 			this.owner = owner;
 		}
 	
-		public «type» get«type»() {
-			return «lowerCaseFirstCharacterOfVariable(this)»;
+		public Â«typeÂ» getÂ«typeÂ»() {
+			return Â«lowerCaseFirstCharacterOfVariable(this)Â»;
 		}
 	
-		public void set«type»(«type» «lowerCaseFirstCharacterOfVariable(this)») {
-			this.«lowerCaseFirstCharacterOfVariable(this)» = «lowerCaseFirstCharacterOfVariable(this)»;
+		public void setÂ«typeÂ»(Â«typeÂ» Â«lowerCaseFirstCharacterOfVariable(this)Â») {
+			this.Â«lowerCaseFirstCharacterOfVariable(this)Â» = Â«lowerCaseFirstCharacterOfVariable(this)Â»;
 		}
 	
 		public Behaviour getOwner() {
 			return owner;
 		}
 	}
-	«ENDFILE»
-«ENDDEFINE»
+	Â«ENDFILEÂ»
+Â«ENDDEFINEÂ»
 
-«DEFINE nodeClass(String packageName, Model model) FOR IAC::Node»
-	«IF !name.startsWith("0")»
-		«IF label.compareTo("0")==0»
-			«EXPAND agentClass(packageName, model) FOR this»
-		«ELSE»
-			«EXPAND behaviourClass(packageName, model) FOR this»
-		«ENDIF»
-	«ENDIF»
-«ENDDEFINE»
+Â«DEFINE nodeClass(String packageName, Model model) FOR IAC::NodeÂ»
+	Â«IF !name.startsWith("0")Â»
+		Â«IF label.compareTo("0")==0Â»
+			Â«EXPAND agentClass(packageName, model) FOR thisÂ»
+		Â«ELSEÂ»
+			Â«EXPAND behaviourClass(packageName, model) FOR thisÂ»
+		Â«ENDIFÂ»
+	Â«ENDIFÂ»
+Â«ENDDEFINEÂ»
 
-«DEFINE agentClass(String packageName, Model model) FOR IAC::Node»
-   «FILE classFileName()»
-   		package «packageName»;
+Â«DEFINE agentClass(String packageName, Model model) FOR IAC::NodeÂ»
+  Â«FILE classFileName()Â»
+   		package Â«packageNameÂ»;
    		
 		import jade.core.Agent;
 		
-      	public class «className()» extends Agent{
+      	public class Â«className()Â» extends Agent{
   		
   		public void setup(){
      		//add behaviour
-     		addBehaviour(«getAgentBehaviour(this,model)»);
+     		addBehaviour(Â«getAgentBehaviour(this,model)Â»);
      	}
      	protected void takeDown() {
 			doDelete();
 		}
 	}
-   «ENDFILE»
-«ENDDEFINE»
+  Â«ENDFILEÂ»
+Â«ENDDEFINEÂ»
 
-«DEFINE behaviourClass(String packageName, Model model) FOR IAC::Node»
-	«IF type.compareTo("BASIC")==0»
-		«EXPAND simpleBehaviourClass(packageName, model) FOR this»
-	«ELSE»
-		«IF determineBehaviourType(this,model).compareTo("parallel")==0»
-			«EXPAND parallelBehaviourClass(packageName, model) FOR this»
-		«ELSEIF (determineBehaviourType(this,model).compareTo("sequence")==0) || (determineBehaviourType(this,model).compareTo("or")==0)»
-			«EXPAND sequenceBehaviourClass(packageName, model) FOR this»
-		«ELSEIF determineBehaviourType(this,model).compareTo("forever")==0»
-			«EXPAND cyclicBehaviourClass(packageName, model) FOR this»
-		«ELSEIF determineBehaviourType(this,model).compareTo("one_or_more_times")==0»
-			«EXPAND simpleOneOrMoreBehaviourClass(packageName, model) FOR this»
-		«ELSEIF determineBehaviourType(this,model).compareTo("zero_or_more_times")==0»
-			«EXPAND simpleZeroOrMoreBehaviourClass(packageName, model) FOR this»
-		«ENDIF»
-	«ENDIF»
-«ENDDEFINE»
+Â«DEFINE behaviourClass(String packageName, Model model) FOR IAC::NodeÂ»
+	Â«IF type.compareTo("BASIC")==0Â»
+		Â«EXPAND simpleBehaviourClass(packageName, model) FOR thisÂ»
+	Â«ELSEÂ»
+		Â«IF determineBehaviourType(this,model).compareTo("parallel")==0Â»
+			Â«EXPAND parallelBehaviourClass(packageName, model) FOR thisÂ»
+		Â«ELSEIF (determineBehaviourType(this,model).compareTo("sequence")==0) || (determineBehaviourType(this,model).compareTo("or")==0)Â»
+			Â«EXPAND sequenceBehaviourClass(packageName, model) FOR thisÂ»
+		Â«ELSEIF determineBehaviourType(this,model).compareTo("forever")==0Â»
+			Â«EXPAND cyclicBehaviourClass(packageName, model) FOR thisÂ»
+		Â«ELSEIF determineBehaviourType(this,model).compareTo("one_or_more_times")==0Â»
+			Â«EXPAND simpleOneOrMoreBehaviourClass(packageName, model) FOR thisÂ»
+		Â«ELSEIF determineBehaviourType(this,model).compareTo("zero_or_more_times")==0Â»
+			Â«EXPAND simpleZeroOrMoreBehaviourClass(packageName, model) FOR thisÂ»
+		Â«ENDIFÂ»
+	Â«ENDIFÂ»
+Â«ENDDEFINEÂ»
 
-«DEFINE simpleZeroOrMoreBehaviourClass(String packageName, Model model) FOR IAC::Node»
-   «FILE classFileName()»
-   		package «packageName»;
+Â«DEFINE simpleZeroOrMoreBehaviourClass(String packageName, Model model) FOR IAC::NodeÂ»
+  Â«FILE classFileName()Â»
+   		package Â«packageNameÂ»;
    		
 		import jade.core.Agent;
 		import jade.core.behaviours.Behaviour;
 		import jade.core.behaviours.SimpleBehaviour;
 
-		public class «className()» extends SimpleBehaviour{
+		public class Â«className()Â» extends SimpleBehaviour{
 
-      		«addVariables(this,model)»
+      		Â«addVariables(this,model)Â»
       		protected boolean finished;
       		Behaviour simpleZeroOrMoreTimesBehaviour = null;
 
-         	public «className()»(Agent a«getParams(this,model)»){
+         	public Â«className()Â»(Agent aÂ«getParams(this,model)Â»){
 				super(a);
-				«instantiateParams(this,model)»
-        		if («getTransitionToChildOf(this,model)»){
-					simpleZeroOrMoreTimesBehaviour = new «getCyclicBehaviour(this,model)»;
+				Â«instantiateParams(this,model)Â»
+        		if (Â«getTransitionToChildOf(this,model)Â»){
+					simpleZeroOrMoreTimesBehaviour = new Â«getCyclicBehaviour(this,model)Â»;
 					myAgent.addBehaviour(simpleZeroOrMoreTimesBehaviour);
 					finished = false;
 				}
@@ -114,8 +118,8 @@
 
  	        public void action(){
  	        	if (simpleZeroOrMoreTimesBehaviour.done()){
- 	        		if («getTransitionToSelfConditionOfChild(this,model)»){
-						simpleZeroOrMoreTimesBehaviour = new «getCyclicBehaviour(this,model)»;
+ 	        		if (Â«getTransitionToSelfConditionOfChild(this,model)Â»){
+						simpleZeroOrMoreTimesBehaviour = new Â«getCyclicBehaviour(this,model)Â»;
 						myAgent.addBehaviour(simpleZeroOrMoreTimesBehaviour);
 					}
 					else finished = true;
@@ -127,35 +131,35 @@
   			}
  	        
    	  }
-	   «ENDFILE»
-«ENDDEFINE»
+	  Â«ENDFILEÂ»
+Â«ENDDEFINEÂ»
 
-«DEFINE simpleOneOrMoreBehaviourClass(String packageName, Model model) FOR IAC::Node»
-   «FILE classFileName()»
-   		package «packageName»;
+Â«DEFINE simpleOneOrMoreBehaviourClass(String packageName, Model model) FOR IAC::NodeÂ»
+  Â«FILE classFileName()Â»
+   		package Â«packageNameÂ»;
    		
 		import jade.core.Agent;
 		import jade.core.behaviours.Behaviour;
 		import jade.core.behaviours.SimpleBehaviour;
 
-		public class «className()» extends SimpleBehaviour{
+		public class Â«className()Â» extends SimpleBehaviour{
 
-      		«addVariables(this,model)»
+      		Â«addVariables(this,model)Â»
       		protected boolean finished;
       		Behaviour simpleOneOrMoreTimesBehaviour = null;
 
-         	public «className()»(Agent a«getParams(this,model)»){
+         	public Â«className()Â»(Agent aÂ«getParams(this,model)Â»){
 				super(a);
-				«instantiateParams(this,model)»
+				Â«instantiateParams(this,model)Â»
 				finished = false;
-				simpleOneOrMoreTimesBehaviour = new «getCyclicBehaviour(this,model)»;
+				simpleOneOrMoreTimesBehaviour = new Â«getCyclicBehaviour(this,model)Â»;
 				myAgent.addBehaviour(simpleOneOrMoreTimesBehaviour);
     	     }
 
  	        public void action(){
  	        	if (simpleOneOrMoreTimesBehaviour.done()){
- 	        		if («getTransitionToSelfConditionOfChild(this,model)»){
-						simpleOneOrMoreTimesBehaviour = new «getCyclicBehaviour(this,model)»;
+ 	        		if (Â«getTransitionToSelfConditionOfChild(this,model)Â»){
+						simpleOneOrMoreTimesBehaviour = new Â«getCyclicBehaviour(this,model)Â»;
 						myAgent.addBehaviour(simpleOneOrMoreTimesBehaviour);
 					}
 					else finished = true;
@@ -167,106 +171,106 @@
   			}
  	        
    	  }
-	   «ENDFILE»
-«ENDDEFINE»
+	  Â«ENDFILEÂ»
+Â«ENDDEFINEÂ»
 
-«DEFINE cyclicBehaviourClass(String packageName, Model model) FOR IAC::Node»
-   «FILE classFileName()»
-   	package «packageName»;
+Â«DEFINE cyclicBehaviourClass(String packageName, Model model) FOR IAC::NodeÂ»
+  Â«FILE classFileName()Â»
+   	package Â«packageNameÂ»;
    		
 	import jade.core.Agent;
 	import jade.core.behaviours.Behaviour;
 	import jade.core.behaviours.CyclicBehaviour;
 	
-	public class «className()» extends CyclicBehaviour{
+	public class Â«className()Â» extends CyclicBehaviour{
 
-   		«addVariables(this,model)»
+   		Â«addVariables(this,model)Â»
    		Behaviour foreverBehaviour = null;
 
-		public «className()»(Agent a«getParams(this, model)») {
+		public Â«className()Â»(Agent aÂ«getParams(this, model)Â») {
 			super(a);
-			«instantiateParams(this,model)»
-			foreverBehaviour = new «getCyclicBehaviour(this,model)»;
+			Â«instantiateParams(this,model)Â»
+			foreverBehaviour = new Â«getCyclicBehaviour(this,model)Â»;
 			myAgent.addBehaviour(foreverBehaviour);
 		}
 		public void action() {
 			if (foreverBehaviour.done()){
-				foreverBehaviour = new «getCyclicBehaviour(this,model)»;
+				foreverBehaviour = new Â«getCyclicBehaviour(this,model)Â»;
 				myAgent.addBehaviour(foreverBehaviour);
 			}
 		}
 	}
-   «ENDFILE»
-«ENDDEFINE»
+  Â«ENDFILEÂ»
+Â«ENDDEFINEÂ»
 
-«DEFINE sequenceBehaviourClass(String packageName, Model model) FOR IAC::Node»
-   «FILE classFileName()»
-   	package «packageName»;
+Â«DEFINE sequenceBehaviourClass(String packageName, Model model) FOR IAC::NodeÂ»
+  Â«FILE classFileName()Â»
+   	package Â«packageNameÂ»;
    		
 	import jade.core.Agent;
 	import jade.core.behaviours.SequentialBehaviour;
 	
-	public class «className()» extends SequentialBehaviour {
+	public class Â«className()Â» extends SequentialBehaviour {
 	
-   		«addVariables(this,model)»
+   		Â«addVariables(this,model)Â»
 
-		public «className()»(Agent a«getParams(this, model)») {
+		public Â«className()Â»(Agent aÂ«getParams(this, model)Â») {
 			super(a);
-			«instantiateParams(this,model)»
-			«IF determineBehaviourType(this,model).compareTo("or")==0»
-				«addConditionalSubBehaviour(this,model)»
-			«ELSE»
-				«addSubBehaviours(this,model)»
-			«ENDIF»
+			Â«instantiateParams(this,model)Â»
+			Â«IF determineBehaviourType(this,model).compareTo("or")==0Â»
+				Â«addConditionalSubBehaviour(this,model)Â»
+			Â«ELSEÂ»
+				Â«addSubBehaviours(this,model)Â»
+			Â«ENDIFÂ»
 		}
 	}
-   «ENDFILE»
-«ENDDEFINE»
+  Â«ENDFILEÂ»
+Â«ENDDEFINEÂ»
 
-«DEFINE parallelBehaviourClass(String packageName, Model model) FOR IAC::Node»
-   «FILE classFileName()»
-   	package «packageName»;
+Â«DEFINE parallelBehaviourClass(String packageName, Model model) FOR IAC::NodeÂ»
+  Â«FILE classFileName()Â»
+   	package Â«packageNameÂ»;
    		
 	import jade.core.Agent;
 	import jade.core.behaviours.ParallelBehaviour;
 	import jade.core.behaviours.ThreadedBehaviourFactory;
 
-	public class «className()» extends ParallelBehaviour{
+	public class Â«className()Â» extends ParallelBehaviour{
 	
 		ThreadedBehaviourFactory tbf = null;
-   		«addVariables(this,model)»
+   		Â«addVariables(this,model)Â»
    		
-       	public «className()»(Agent a«getParams(this, model)»){
+       	public Â«className()Â»(Agent aÂ«getParams(this, model)Â»){
 			super(a,ParallelBehaviour.WHEN_ALL);
-			«instantiateParams(this,model)»
+			Â«instantiateParams(this,model)Â»
 			tbf = new ThreadedBehaviourFactory();
-			«addParallelBehaviours(this,model)»
+			Â«addParallelBehaviours(this,model)Â»
    	    }
    	}
-   «ENDFILE»
-«ENDDEFINE»
+  Â«ENDFILEÂ»
+Â«ENDDEFINEÂ»
 
-«DEFINE simpleBehaviourClass(String packageName, Model model) FOR IAC::Node»
-   «FILE classFileName()»
-   		package «packageName»;
+Â«DEFINE simpleBehaviourClass(String packageName, Model model) FOR IAC::NodeÂ»
+  Â«FILE classFileName()Â»
+   		package Â«packageNameÂ»;
    		
 		import jade.core.Agent;
 		import jade.core.behaviours.SimpleBehaviour;
-		«importMessageClasses(this)»
+		Â«importMessageClasses(this)Â»
 
-		public class «className()» extends SimpleBehaviour{
+		public class Â«className()Â» extends SimpleBehaviour{
 
-      		«addVariables(this,model)»
-			«addMessageTemplateVariable(this)»
+      		Â«addVariables(this,model)Â»
+			Â«addMessageTemplateVariable(this)Â»
 			boolean finished = false;
 
-         	public «className()»(Agent a«getParams(this,model)»){
+         	public Â«className()Â»(Agent aÂ«getParams(this,model)Â»){
 				super(a);
-				«instantiateParams(this,model)»
+				Â«instantiateParams(this,model)Â»
     	     }
 
  	        public void action(){
-       		  	«addAction(this, model)»
+       		  	Â«addAction(this, model)Â»
  	        }
  	        
  	        public boolean done() {
@@ -274,5 +278,5 @@
   			}
  	        
    	  }
-	   «ENDFILE»
-«ENDDEFINE»
+	  Â«ENDFILEÂ»
+Â«ENDDEFINEÂ»
