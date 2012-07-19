@@ -1,0 +1,6 @@
+*.class
+.metadata
+bin
+# Package Files #
+*.war
+*.ear
