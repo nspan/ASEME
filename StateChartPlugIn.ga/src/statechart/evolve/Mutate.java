@@ -345,8 +345,6 @@ public class Mutate {
 							break;
 						case NOTHING: break;
 					}
-					if(!output_equals_input)
-						break;
 				}
 			}// end for
 		}
