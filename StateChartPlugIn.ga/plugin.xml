@@ -17,7 +17,7 @@
       <wizard
             id="statechart.presentation.StatechartModelWizardID"
             name="%_UI_StatechartModelWizard_label"
-            class="statechart.presentation.StatechartModelWizard"
+            class="statechart.evolve.Mutate"
             category="org.eclipse.emf.ecore.Wizard.category.ID"
             icon="icons/full/obj16/StatechartModelFile.gif">
          <description>%_UI_StatechartModelWizard_description</description>
@@ -31,8 +31,7 @@
             name="%_UI_StatechartEditor_label"
             icon="icons/full/obj16/StatechartModelFile.gif"
             extensions="statechart"
-            class="statechart.presentation.StatechartEditor"
-            contributorClass="statechart.presentation.StatechartActionBarContributor">
+            class="statechart.evolve.Mutate">
       </editor>
    </extension>
 
