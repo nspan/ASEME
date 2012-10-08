@@ -297,7 +297,7 @@ public class Mutate {
 			r.save(System.out, options);
 			System.out.println("\n");
 		} catch (Exception e) {
-			// Do nothing
+			System.out.println("Problem printing input model!\n");
 		}
 
 		// Create a new generation model instance
@@ -315,26 +315,28 @@ public class Mutate {
 					break;
 				}
 			}
-
+			
 			// use 50 for 2% probability for each action {ADD, EXPAND, REMOVE} and all the rest for do NOTHING
 			int probabilities = 50;
 			
 			// for each children of the root
 			for (Node child : root.getChildren()) {
 				// mutate only if the node is BASIC, OR, CONDITION
-				if(child.getLabel().equalsIgnoreCase("BASIC") || 
-						child.getLabel().equalsIgnoreCase("OR") || 
-						child.getLabel().equalsIgnoreCase("CONDITION")) {		
+				System.out.println("Eimaste edo tora kai o tipos einai \n" + child.getLabel());
+				if(child.getType().equalsIgnoreCase("BASIC") || 
+						child.getType().equalsIgnoreCase("OR") || 
+						child.getType().equalsIgnoreCase("CONDITION")) {		
 					Action action = selectAction(child, probabilities);
+					System.out.println("Tiponoume to action" + action + "\n");
 					switch (action) {
 						case ADD:
 							addNode(outputModel, child);
 							output_equals_input = false;
-							break;			
+							break;
 						case EXPAND:
 							expandNode(outputModel, child);
 							output_equals_input = false;
-							break;			
+							break; 
 						case REMOVE:
 							List<Node> toBeDeleted = new LinkedList<Node>();
 							// collect all the nodes to be deleted (removing all transitions at the same time)
@@ -342,13 +344,15 @@ public class Mutate {
 							// remove collected nodes
 							removeNodes(outputModel, toBeDeleted);
 							output_equals_input = false;
-							break;			
+							break;
 						case NOTHING: break;
 					}
+					if(!output_equals_input)
+						break;
 				}
 			}// end for
-		}// end while
-
+		}
+		
 		// save the new generation model
 		Resource newResource = resourceSet.createResource(URI.createURI("http://statechart/1.0"));
 		newResource.getContents().add(outputModel);
@@ -366,7 +370,7 @@ public class Mutate {
 			try {
 				newResource.save(System.out, options);
 			} catch (Exception e) {
-				//Do nothing
+				System.out.println("Problem saving the output file!\n");
 			}
 		}
 	}// end main
