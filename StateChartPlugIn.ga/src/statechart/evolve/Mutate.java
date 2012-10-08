@@ -322,12 +322,10 @@ public class Mutate {
 			// for each children of the root
 			for (Node child : root.getChildren()) {
 				// mutate only if the node is BASIC, OR, CONDITION
-				System.out.println("Eimaste edo tora kai o tipos einai \n" + child.getLabel());
 				if(child.getType().equalsIgnoreCase("BASIC") || 
 						child.getType().equalsIgnoreCase("OR") || 
 						child.getType().equalsIgnoreCase("CONDITION")) {		
 					Action action = selectAction(child, probabilities);
-					System.out.println("Tiponoume to action" + action + "\n");
 					switch (action) {
 						case ADD:
 							addNode(outputModel, child);
