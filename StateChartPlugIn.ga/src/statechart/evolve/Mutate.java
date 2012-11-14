@@ -291,7 +291,7 @@ public class Mutate {
 		else
 			r = resourceSet.getResource(URI.createFileURI("testAnd.sct"), true);
 		Model inputModel = (Model) r.getContents().get(0);
-		
+
 		//print inputModel to the console (just debugging)
 		try {
 			r.save(System.out, options);
@@ -315,7 +315,7 @@ public class Mutate {
 					break;
 				}
 			}
-			
+
 			// use 50 for 2% probability for each action {ADD, EXPAND, REMOVE} and all the rest for do NOTHING
 			int probabilities = 50;
 			
@@ -348,7 +348,7 @@ public class Mutate {
 				}
 			}// end for
 		}
-		
+
 		// save the new generation model
 		Resource newResource = resourceSet.createResource(URI.createURI("http://statechart/1.0"));
 		newResource.getContents().add(outputModel);
