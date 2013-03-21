@@ -75,7 +75,7 @@ public class Mutate {
 			for (Node children : node.getChildren()) {
 				removeTransitions(model, children);
 				toBeDeleted.add(children);
-				collectNodes(model, node, toBeDeleted);
+				collectNodes(model, children, toBeDeleted);
 			}
 		}
 	}
@@ -136,9 +136,10 @@ public class Mutate {
 		// creating a List with all the nodes that could potentially be connected
 		List<Node> nodes = new LinkedList<Node>();
 		for (Node iterator : model.getNodes()) {
-			if (!iterator.getType().equalsIgnoreCase("START") && 
-					!iterator.equals(newNode) && 
-					iterator.getFather_of().equals(node.getFather_of()))
+			if (!iterator.getLabel().equalsIgnoreCase("0") &&
+					iterator.getFather_of().equals(newNode.getFather_of()) &&
+					!iterator.equals(newNode) &&
+					!iterator.getType().equalsIgnoreCase("START"))
 				nodes.add(iterator);
 		}
 		// if there are other nodes define randomly transitions and TE, else newNode is BASIC
@@ -204,37 +205,35 @@ public class Mutate {
 	public static void expandNode(Model model, Node node) {
 		int chooseTemplate = randomGenerator(NrTemplates);
 		switch (chooseTemplate) {
-		case 1:
-			int n1 = randomGenerator(MaxNodesTemp4);
-			sequentialMatcher(model, node, n1);
-			break;			
-		case 2:
-			int n2 = randomGenerator(MaxNodesTemp1);
-			orMatcher(model, node, n2);
-			break;			
-		case 3:
-			int n3 = randomGenerator(MaxNodesTemp8);
-			parallelMatcher(model, node, n3);
-			break;			
-		case 4:
-			complexOptionalTermMatcher(model, node);
-			break;			
-		case 5:
-			zeroOrMoreTimesTermMatcher(model, node);
-			break;			
-		case 6:
-			foreverTermMatcher(model, node);
-			break;			
-		case 7:
-			oneOrMoreTimesTermMatcher(model, node);
-			break;			
-		case 8:
-			int n4 = randomGenerator(MaxNodesTemp7);
-			parallelManyTimesTermMatcher(model, node, n4);
-			break;			
-	}
-
-		// FIX ME
+			case 1:
+				int n1 = randomGenerator(MaxNodesTemp4);
+				sequentialMatcher(model, node, n1);
+				break;			
+			case 2:
+				int n2 = randomGenerator(MaxNodesTemp1);
+				orMatcher(model, node, n2);
+				break;			
+			case 3:
+				int n3 = randomGenerator(MaxNodesTemp8);
+				parallelMatcher(model, node, n3);
+				break;			
+			case 4:
+				complexOptionalTermMatcher(model, node);
+				break;			
+			case 5:
+				zeroOrMoreTimesTermMatcher(model, node);
+				break;			
+			case 6:
+				foreverTermMatcher(model, node);
+				break;			
+			case 7:
+				oneOrMoreTimesTermMatcher(model, node);
+				break;			
+			case 8:
+				int n4 = randomGenerator(MaxNodesTemp7);
+				parallelManyTimesTermMatcher(model, node, n4);
+				break;			
+		}
 	}
 	
 	// generate random integer between 1 and bound
@@ -280,7 +279,7 @@ public class Mutate {
 
 		// Options for XML???
 		Map<String, Object> options = new HashMap<String, Object>();
-		options.put(XMLResource.OPTION_ENCODING, "UTF8");
+		options.put(XMLResource.OPTION_ENCODING, "UTF-8");
 		options.put(XMLResource.OPTION_SCHEMA_LOCATION, Boolean.TRUE);
 		options.put(XMLResource.OPTION_SCHEMA_LOCATION_IMPLEMENTATION, Boolean.TRUE);
 
@@ -317,36 +316,42 @@ public class Mutate {
 			}
 
 			// use 50 for 2% probability for each action {ADD, EXPAND, REMOVE} and all the rest for do NOTHING
-			int probabilities = 50;
+			int probabilities = 5;
 			
-			// for each children of the root
-			for (Node child : root.getChildren()) {
-				// mutate only if the node is BASIC, OR, CONDITION
-				if(child.getType().equalsIgnoreCase("BASIC") || 
-						child.getType().equalsIgnoreCase("OR") || 
-						child.getType().equalsIgnoreCase("CONDITION")) {		
-					Action action = selectAction(child, probabilities);
-					switch (action) {
-						case ADD:
-							addNode(outputModel, child);
-							output_equals_input = false;
-							break;
-						case EXPAND:
-							expandNode(outputModel, child);
-							output_equals_input = false;
-							break; 
-						case REMOVE:
-							List<Node> toBeDeleted = new LinkedList<Node>();
-							// collect all the nodes to be deleted (removing all transitions at the same time)
-							collectNodes(outputModel, child, toBeDeleted);
-							// remove collected nodes
-							removeNodes(outputModel, toBeDeleted);
-							output_equals_input = false;
-							break;
-						case NOTHING: break;
+			// the for loop below can break sometimes as the tree is changing dynamically
+			// adding a children somewhere at random could break the iterator
+			try {
+				// for each children of the root
+				for (Node child : root.getChildren()) {
+					// mutate only if the node is BASIC, OR, CONDITION
+					if(child.getType().equalsIgnoreCase("BASIC") || 
+							child.getType().equalsIgnoreCase("OR") || 
+							child.getType().equalsIgnoreCase("CONDITION")) {		
+						Action action = selectAction(child, probabilities);
+						switch (action) {
+							case ADD:
+								addNode(outputModel, child);
+								output_equals_input = false;
+								break;
+							case EXPAND:
+								expandNode(outputModel, child);
+								output_equals_input = false;
+								break; 
+							case REMOVE:
+								List<Node> toBeDeleted = new LinkedList<Node>();
+								// collect all the nodes to be deleted (removing all transitions at the same time)
+								collectNodes(outputModel, child, toBeDeleted);
+								// remove collected nodes
+								removeNodes(outputModel, toBeDeleted);
+								output_equals_input = false;
+								break;
+							case NOTHING: break;
+						}
 					}
-				}
-			}// end for
+				}// end for
+			} catch (Exception e) {
+				break; // exit for loop; the model is already mutated and this for is problematic
+			}
 		}
 
 		// save the new generation model
@@ -374,6 +379,7 @@ public class Mutate {
 	// PDF file: Template 4
 	public static void sequentialMatcher(Model model, Node father, int n) {
 		father.setType("OR");
+		//@SuppressWarnings("unused")
 		@SuppressWarnings("unused")
 		Node newNode1 = newNode(model, father, "START");
 		for (int k=1; k<=n; k++) {
@@ -385,7 +391,7 @@ public class Mutate {
 		Node newNode3 = newNode(model, father, "END");
 		newTransition(model, getNodeByLabel(father, new String(father
 				.getLabel()
-				+ "." + n+1)), newNode3);
+				+ "." + (n+1))), newNode3);
 	}
 
 	// PDF file: Template 1
