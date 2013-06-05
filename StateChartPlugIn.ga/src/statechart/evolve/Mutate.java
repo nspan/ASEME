@@ -12,6 +12,8 @@ import statechart.Transition;
 
 public class Mutate {
 
+//////These are parameters that can be changed by the user. Ideally they should go in a resource file!//////
+
 	// list of attributes that could be randomly selected
 	public static enum Attribute {
 		TE, TYPE, ACTIVITY
@@ -52,6 +54,8 @@ public class Mutate {
 	public static int MaxNodesTemp1 = 5;
 	public static int MaxNodesTemp8 = 5;
 	public static int MaxNodesTemp7 = 5;
+	
+///////////////////////////////////////////////////////////////////////////////////////////////////////
 
 	// collect all the nodes of the branch below the selected node (also remove transitions)
 	public static void collectNodes(Model model, Node node, List<Node> toBeDeleted) {
@@ -157,9 +161,6 @@ public class Mutate {
 		father.getChildren().add(newNode);
 		return newNode;
 	}
-	// Giati o Node exei kai onoma kai label? Einai panta to idio ektos an???
-	// Otan svinoume ena Node ap to dentro den allazoume analoga ta onomata ton paidion tou, opote
-	// sta onomata tha iparxoun tripes meta apo kapoies gennies. Iparxei problem me auto??
 
 	// creating a new transition (given source and target) and adding it to the model
 	public static void newTransition(Model model, Node source, Node target) {
@@ -275,7 +276,7 @@ public class Mutate {
 	}
 
 	// PDF file: Template 1
-	private static void orMatcher(Model model, Node father, int n) {
+	public static void orMatcher(Model model, Node father, int n) {
 		father.setType("OR");
 		Node newNode1 = newNode(model, father, "START");
 		Node newNode2 = newNode(model, father, "CONDITION");
@@ -293,7 +294,7 @@ public class Mutate {
 	}
 
 	// PDF file: Template 8
-	private static void parallelMatcher(Model model, Node father, int n) {
+	public static void parallelMatcher(Model model, Node father, int n) {
 		father.setType("OR");
 		Node newNode1 = newNode(model, father, "START");
 		Node newNode2 = newNode(model, father, "AND");
@@ -307,7 +308,7 @@ public class Mutate {
 	}
 
 	// PDF file: Template 6
-	private static void complexOptionalTermMatcher(Model model, Node father) {
+	public static void complexOptionalTermMatcher(Model model, Node father) {
 		father.setType("OR");
 		Node newNode1 = newNode(model, father, "START");
 		Node newNode2 = newNode(model, father, "CONDITION");
@@ -320,7 +321,7 @@ public class Mutate {
 	}
 
 	// PDF file: Template 2
-	private static void zeroOrMoreTimesTermMatcher(Model model, Node father) {
+	public static void zeroOrMoreTimesTermMatcher(Model model, Node father) {
 		father.setType("OR");
 		Node newNode1 = newNode(model, father, "START");
 		Node newNode2 = newNode(model, father, "CONDITION");
@@ -334,7 +335,7 @@ public class Mutate {
 	}
 
 	// PDF file: Template 3
-	private static void foreverTermMatcher(Model model, Node father) {
+	public static void foreverTermMatcher(Model model, Node father) {
 		father.setType("OR");
 		Node newNode1 = newNode(model, father, "START");
 		Node newNode2 = newNode(model, father, "BASIC");
@@ -343,7 +344,7 @@ public class Mutate {
 	}
 
 	// PDF file: Template 5
-	private static void oneOrMoreTimesTermMatcher(Model model, Node father) {
+	public static void oneOrMoreTimesTermMatcher(Model model, Node father) {
 		father.setType("OR");
 		Node newNode1 = newNode(model, father, "START");
 		Node newNode2 = newNode(model, father, "BASIC");
@@ -354,7 +355,7 @@ public class Mutate {
 	}
 
 	// PDF file: Template 7
-	private static void parallelManyTimesTermMatcher(Model model, Node father, int n) {
+	public static void parallelManyTimesTermMatcher(Model model, Node father, int n) {
 		father.setType("OR");
 		Node newNode1 = newNode(model, father, "START");
 		Node newNode2 = newNode(model, father, "AND");
@@ -388,6 +389,113 @@ public class Mutate {
 			}
 		}
 		return null;
+	}
+	
+	// relabel the whole model
+	public static void performRelabelling(Model m){
+		Node node = StatechartFactory.eINSTANCE.createNode();
+		node = m.getNodes().get(0);
+		node.setLabel("0");
+		labelingChildren(m, node);
+		labelingTransitions(m);
+	}
+
+	// label the transitions of a model
+	// (method copied from Angeliki -- KSE/StateChartDesign.diagram/src/statechart/diagram/edit/commands/)
+	public static void labelingTransitions(Model m){
+		Transition t = StatechartFactory.eINSTANCE.createTransition();
+		for(int i=0; i<m.getTransitions().size(); i++){
+			t = m.getTransitions().get(i);
+			if(t.getSource().getName()!=null && t.getTarget().getName()!=null)
+				t.setName(t.getSource().getName()+ "_TO_" + t.getTarget().getName());
+			else
+				t.setName("transition_"+i);
+			m.getTransitions().set(i, t);
+		}
+	}
+	
+	// label all the children of the root of a model
+	// (method copied from Angeliki -- KSE/StateChartDesign.diagram/src/statechart/diagram/edit/commands/)	
+	public static void labelingChildren(Model m, Node parent){
+		int order = 1;
+		int i=0;
+		int start = -1;
+		int end = -1;
+		for( i=0; i<parent.getChildren().size(); i++){
+			if(parent.getChildren().get(i).getType().equals("START")){
+				start = i;
+				if(end!=-1)
+					break;
+			}
+			if(parent.getChildren().get(i).getType().equals("END")){
+				end = i;
+				if(start!=-1)
+					break;
+			}
+		}
+		if(end!=-1)
+				parent.getChildren().get(end).setLabel(parent.getLabel()+"."+parent.getChildren().size());
+		//search target nodes of transitions with start source
+		LinkedList<Integer> index = new LinkedList<Integer>();
+		for(int q=0; q<m.getTransitions().size(); q++){
+			if(m.getTransitions().get(q).getSource().getLabel().equals(parent.getChildren().get(start).getLabel()))
+				index.add(q);
+		}
+
+		//set proper label for start
+		parent.getChildren().get(start).setLabel(parent.getLabel()+"."+Integer.toString(order));
+		order++;
+
+		i = start;
+		boolean done = true;
+		for(int o =0; o<parent.getChildren().size(); o++){
+			if(!parent.getChildren().get(o).getLabel().contains(".")){
+				done = false;
+				System.out.println("false");
+				break;
+			}
+		}
+		if(done)
+			return;
+		LinkedList<Integer> newIndex = new LinkedList<Integer>();
+		LinkedList<Integer> nodes = new LinkedList<Integer>();
+		while(!done){
+			for (int u=0; u<index.size(); u++){
+				if( parent.getChildren().contains(((Transition)m.getTransitions().get((Integer)index.get(u))).getTarget()) &&
+						!((Transition)m.getTransitions().get((Integer)index.get(u))).getTarget().getLabel().contains(".")){
+					for(int q=0; q<m.getTransitions().size(); q++){
+						if(m.getTransitions().get(q).getSource().getLabel().equals(((Transition)m.getTransitions().get((Integer)index.get(u))).getTarget().getLabel())){
+							newIndex.add(q);
+							nodes.add(parent.getChildren().indexOf(m.getTransitions().get(q).getTarget()));
+						}
+					}
+					parent.getChildren().get(parent.getChildren().indexOf(((Transition)m.getTransitions().get((Integer)index.get(u))).getTarget())).setLabel(parent.getLabel()+"."+Integer.toString(order));
+					if(parent.getChildren().get(parent.getChildren().indexOf(((Transition)m.getTransitions().get((Integer)index.get(u))).getTarget())).getName()==null ||
+							!parent.getChildren().get(parent.getChildren().indexOf(((Transition)m.getTransitions().get((Integer)index.get(u))).getTarget())).getType().equals("BASIC"))
+						parent.getChildren().get(parent.getChildren().indexOf(((Transition)m.getTransitions().get((Integer)index.get(u))).getTarget())).setName(parent.getChildren().get(parent.getChildren().indexOf(((Transition)m.getTransitions().get((Integer)index.get(u))).getTarget())).getLabel());
+
+					order++;
+				}
+			}
+			done = true;
+			for(int o =0; o<parent.getChildren().size(); o++){
+				if(!parent.getChildren().get(o).getLabel().contains(".")){
+					done = false;
+					System.out.println("false");
+					break;
+				}
+			}
+			index = newIndex;
+			if(!nodes.isEmpty()){
+				i = (Integer) nodes.remove(0);
+			}else
+				break;
+		}
+
+		for(int k =0;  k<parent.getChildren().size(); k++){
+			if(!parent.getChildren().get(k).getChildren().isEmpty())
+			labelingChildren(m, parent.getChildren().get(k));
+		}
 	}
 
 }// end Mutate

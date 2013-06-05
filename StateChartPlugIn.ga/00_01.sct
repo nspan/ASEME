@@ -1,10 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<statechart:Model xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:statechart="http://statechart/1.0" xsi:schemaLocation="http://statechart/1.0 java://statechart.StatechartPackage" name="testAnd">
+<statechart:Model xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:statechart="http://statechart/1.0" name="testAnd">
   <nodes name="goalkeeper" label="0" type="OR">
     <Children name="0.1" label="0.1" type="START"/>
-    <Children name="Init" label="0.2" type="BASIC">
-      <Children name="0.2.1" label="0.2.1" type="BASIC" activity="FollowBall"/>
-    </Children>
+    <Children name="Init" label="0.2" type="BASIC"/>
     <Children name="decision" label="0.3" type="OR">
       <Children name="0.3.1" label="0.3.1" type="START"/>
       <Children name="play_forever__parallel_nonPlaying_forever_" label="0.3.2" type="AND">
@@ -50,7 +48,7 @@
     <Children name="0.4" label="0.4" type="END"/>
   </nodes>
   <transitions name="0.1TOInit" source="//@nodes.0/@Children.0" target="//@nodes.0/@Children.1"/>
-  <transitions name="InitTOdecision" source="//@nodes.0/@Children.1" target="//@nodes.0/@Children.1/@Children.0"/>
+  <transitions name="InitTOdecision" source="//@nodes.0/@Children.1" target="//@nodes.0/@Children.2"/>
   <transitions name="decisionTO0.4" source="//@nodes.0/@Children.2" target="//@nodes.0/@Children.3"/>
   <transitions name="0.3.1TOplay_forever__parallel_nonPlaying_forever_" source="//@nodes.0/@Children.2/@Children.0" target="//@nodes.0/@Children.2/@Children.1"/>
   <transitions name="play_forever__parallel_nonPlaying_forever_TO0.3.3" source="//@nodes.0/@Children.2/@Children.1" target="//@nodes.0/@Children.2/@Children.2"/>
@@ -77,5 +75,4 @@
   <transitions name="GoToPosition_one_or_more_times_TO0.3.2.2.2.2.3.4" source="//@nodes.0/@Children.2/@Children.1/@Children.1/@Children.1/@Children.1/@Children.2/@Children.2" target="//@nodes.0/@Children.2/@Children.1/@Children.1/@Children.1/@Children.1/@Children.2/@Children.3"/>
   <transitions name="0.3.2.2.2.1TOnonPlaying" source="//@nodes.0/@Children.2/@Children.1/@Children.1/@Children.1/@Children.0" target="//@nodes.0/@Children.2/@Children.1/@Children.1/@Children.1/@Children.1"/>
   <transitions name="nonPlayingTOnonPlaying" source="//@nodes.0/@Children.2/@Children.1/@Children.1/@Children.1/@Children.1" target="//@nodes.0/@Children.2/@Children.1/@Children.1/@Children.1/@Children.1"/>
-  <transitions TE="BallFound == true" name="0.2.1TOdecision" source="//@nodes.0/@Children.1/@Children.0" target="//@nodes.0/@Children.2"/>
 </statechart:Model>
