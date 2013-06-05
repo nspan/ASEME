@@ -20,9 +20,38 @@ import statechart.StatechartPackage;
 import statechart.evolve.Mutate.Action;
 
 public class Runner {
-
 	
-	public static void main(String[] args) {	
+//////These are parameters that can be changed by the user. Ideally they should go in a resource file!//////
+
+	// each action {ADD, EXPAND, REMOVE} has probability 1/probabilities to happen for every node; the rest goes to do NOTHING
+	private static int probabilities = 100;
+	private static int maxNumGenerations = 10;
+	private static int maxNumIncrPopulation = 5;
+
+///////////////////////////////////////////////////////////////////////////////////////////////////////
+	
+	public static void main(String[] args) {
+		for (int gen=0; gen<maxNumGenerations; gen++) {
+			int maxPop = (int)Math.min(Math.pow(2,gen), Math.pow(2,maxNumIncrPopulation));
+			for (int pop=1; pop<=maxPop; pop++) {
+				String input = (gen < 10 ? "0" : "") + gen + "_" + (pop < 10 ? "0" : "") + pop + ".sct";
+				String output1 = (gen+1 < 10 ? "0" : "") + (gen+1) + "_" + (pop < 10 ? "0" : "") + pop + ".sct";
+				//System.out.println("Calling mutate with:: " + input + " " + output1);
+				System.out.println("Calling mutate with:1:" + input);
+				generateNewModel(input, output1);
+				if(gen < maxNumIncrPopulation) {
+					int new_pop= (int)(Math.pow(2,gen)+pop);
+					String output2 = "0" + (gen+1) + "_" + (new_pop < 10 ? "0" : "") + new_pop + ".sct";
+					//System.out.println("Calling mutate with:: " + input + " " + output2);
+					System.out.println("Calling mutate with:2:" + input);
+					generateNewModel(input, output2);
+				}
+			}
+		}
+	}
+	
+	// gets an input model and outputs an output model of the next generation (after mutation)
+	public static void generateNewModel(String inputName, String outputName) {
 		ResourceSet resourceSet = new ResourceSetImpl();
 		// Register the appropriate resource factory to handle all file extensions
 		resourceSet.getResourceFactoryRegistry().getExtensionToFactoryMap().put(Resource.Factory.Registry.DEFAULT_EXTENSION,
@@ -37,12 +66,8 @@ public class Runner {
 		options.put(XMLResource.OPTION_SCHEMA_LOCATION, Boolean.TRUE);
 		options.put(XMLResource.OPTION_SCHEMA_LOCATION_IMPLEMENTATION, Boolean.TRUE);
 
-		// load last generation model
-		Resource r = null;
-		if (args != null && args.length > 1) 
-			r = resourceSet.getResource(URI.createFileURI(args[0]), true);
-		else
-			r = resourceSet.getResource(URI.createFileURI("testAnd.sct"), true);
+		// load input model
+		Resource r = resourceSet.getResource(URI.createFileURI(inputName), true);
 		Model inputModel = (Model) r.getContents().get(0);
 
 		//print inputModel to the console (just debugging)
@@ -67,11 +92,7 @@ public class Runner {
 					root = iterator;
 					break;
 				}
-			}
-
-			// use 50 for 2% probability for each action {ADD, EXPAND, REMOVE} and all the rest for do NOTHING
-			int probabilities = 50;
-			
+			}		
 			// the for loop below can break sometimes as the tree is changing dynamically
 			// adding a children somewhere at random could break the iterator
 			try {
@@ -85,10 +106,12 @@ public class Runner {
 						switch (action) {
 							case ADD:
 								Mutate.addNode(outputModel, child);
+								Mutate.performRelabelling(outputModel);
 								output_equals_input = false;
 								break;
 							case EXPAND:
 								Mutate.expandNode(outputModel, child);
+								Mutate.performRelabelling(outputModel);
 								output_equals_input = false;
 								break; 
 							case REMOVE:
@@ -97,6 +120,7 @@ public class Runner {
 								Mutate.collectNodes(outputModel, child, toBeDeleted);
 								// remove collected nodes
 								Mutate.removeNodes(outputModel, toBeDeleted);
+								Mutate.performRelabelling(outputModel);
 								output_equals_input = false;
 								break;
 							case NOTHING: break;
@@ -107,16 +131,11 @@ public class Runner {
 				break; // exit for loop; the model is already mutated and this for is problematic
 			}
 		}
-
-		// save the new generation model
+		// save the output model
 		Resource newResource = resourceSet.createResource(URI.createURI("http://statechart/1.0"));
 		newResource.getContents().add(outputModel);
 		try {
-			FileOutputStream out = null;
-			if (args != null && args.length > 1)
-				out = new FileOutputStream(new File(args[1]));
-			else
-				out = new FileOutputStream(new File("testAndMutated.sct"));
+			FileOutputStream out = new FileOutputStream(new File(outputName));
 			newResource.save(out, options);
 		} catch (Exception e) {
 			System.out.println("Problem saving the output .xml file!\n");
@@ -128,5 +147,5 @@ public class Runner {
 				System.out.println("Problem saving the output file!\n");
 			}
 		}
-	}// end main
-}
+	}// end generateNewModel
+}// end Runner
