@@ -49,7 +49,7 @@ public class Runner {
 			}
 		}
 	}
-	
+
 	// gets an input model and outputs an output model of the next generation (after mutation)
 	public static void generateNewModel(String inputName, String outputName) {
 		ResourceSet resourceSet = new ResourceSetImpl();
@@ -60,39 +60,23 @@ public class Runner {
 		// Register the package to ensure it is available during loading.
 		resourceSet.getPackageRegistry().put(StatechartPackage.eNS_URI, StatechartPackage.eINSTANCE);
 
-		// Options for XML???
-		Map<String, Object> options = new HashMap<String, Object>();
-		options.put(XMLResource.OPTION_ENCODING, "UTF-8");
-		options.put(XMLResource.OPTION_SCHEMA_LOCATION, Boolean.TRUE);
-		options.put(XMLResource.OPTION_SCHEMA_LOCATION_IMPLEMENTATION, Boolean.TRUE);
-
 		// load input model
 		Resource r = resourceSet.getResource(URI.createFileURI(inputName), true);
 		Model inputModel = (Model) r.getContents().get(0);
 
 		//print inputModel to the console (just debugging)
-		try {
-			r.save(System.out, options);
-			System.out.println("\n");
-		} catch (Exception e) {
-			System.out.println("Problem printing input model!\n");
-		}
+		printModel(r);
 
 		// Create a new generation model instance
 		Model outputModel = inputModel;
 
 		// mutation code:
 		boolean output_equals_input = true;
+		boolean isMutable;
 		// run until at least one change is made to the outputModel
 		while(output_equals_input) {
 			// find the root of the tree
-			Node root = null;
-			for (Node iterator : outputModel.getNodes()) {
-				if(iterator.getLabel().equalsIgnoreCase("0")) {
-					root = iterator;
-					break;
-				}
-			}		
+			Node root = findRoot(outputModel);
 			// the for loop below can break sometimes as the tree is changing dynamically
 			// adding a children somewhere at random could break the iterator
 			try {
@@ -107,12 +91,20 @@ public class Runner {
 							case ADD:
 								Mutate.addNode(outputModel, child);
 								Mutate.performRelabelling(outputModel);
-								output_equals_input = false;
+								isMutable = checkModelSuitability(outputModel);
+								if(isMutable)
+									output_equals_input = false;
+								else
+									outputModel = inputModel;
 								break;
 							case EXPAND:
 								Mutate.expandNode(outputModel, child);
 								Mutate.performRelabelling(outputModel);
-								output_equals_input = false;
+								isMutable = checkModelSuitability(outputModel);
+								if(isMutable)
+									output_equals_input = false;
+								else
+									outputModel = inputModel;
 								break; 
 							case REMOVE:
 								List<Node> toBeDeleted = new LinkedList<Node>();
@@ -121,7 +113,11 @@ public class Runner {
 								// remove collected nodes
 								Mutate.removeNodes(outputModel, toBeDeleted);
 								Mutate.performRelabelling(outputModel);
-								output_equals_input = false;
+								isMutable = checkModelSuitability(outputModel);
+								if(isMutable)
+									output_equals_input = false;
+								else
+									outputModel = inputModel;
 								break;
 							case NOTHING: break;
 						}
@@ -131,21 +127,79 @@ public class Runner {
 				break; // exit for loop; the model is already mutated and this for is problematic
 			}
 		}
+		
+		// check if the model can be further mutated; if not go back and change the mutation
+		isMutable = checkModelSuitability(outputModel);
+		if(!isMutable){
+			generateNewModel(inputName, outputName);
+		}
+		
 		// save the output model
 		Resource newResource = resourceSet.createResource(URI.createURI("http://statechart/1.0"));
 		newResource.getContents().add(outputModel);
 		try {
 			FileOutputStream out = new FileOutputStream(new File(outputName));
-			newResource.save(out, options);
+			newResource.save(out, getOptions());
 		} catch (Exception e) {
 			System.out.println("Problem saving the output .xml file!\n");
 			e.printStackTrace();
 		} finally {
-			try {
-				newResource.save(System.out, options);
-			} catch (Exception e) {
-				System.out.println("Problem saving the output file!\n");
-			}
+			//print outputModel to the console (just debugging)
+			printModel(newResource);
 		}
 	}// end generateNewModel
+	
+	// returns the root of a tree (model)
+	public static Node findRoot(Model tree) {
+		Node root = null;
+		for (Node iterator : tree.getNodes()) {
+			if(iterator.getLabel().equalsIgnoreCase("0")) {
+				root = iterator;
+				break;
+			}
+		}
+		return root;
+	}
+
+	// define Options for XML resources
+	public static Map<String, Object> getOptions() {
+		// Options for XML
+		Map<String, Object> options = new HashMap<String, Object>();
+		options.put(XMLResource.OPTION_ENCODING, "UTF-8");
+		options.put(XMLResource.OPTION_SCHEMA_LOCATION, Boolean.TRUE);
+		options.put(XMLResource.OPTION_SCHEMA_LOCATION_IMPLEMENTATION, Boolean.TRUE);
+		return options;
+	}
+	
+	// print a model to the console
+	public static void printModel(Resource resource) {
+		Map<String, Object> options = getOptions();
+		try {
+			resource.save(System.out, options);
+			System.out.println("\n");
+		} catch (Exception e) {
+			System.out.println("Problem printing input model!\n");
+		}
+	}
+	
+	// we may end up with a model that cannot be further mutated and we don't want that
+	// so if a model like this appears at some generation, we don't accept it and go back
+	// to the previous model and mutate again
+	// (this method returns the number of nodes that can be further mutated for this model)
+	public static boolean checkModelSuitability(Model model) {
+		Node output_root = findRoot(model);
+		int count_mutable_nodes = 0;
+		// for each children of the root
+		for (Node children : output_root.getChildren()) {
+			if(children.getType().equalsIgnoreCase("BASIC") ||
+					children.getType().equalsIgnoreCase("OR") ||
+					children.getType().equalsIgnoreCase("CONDITION")) {
+				count_mutable_nodes += 1;
+			}
+		}
+		if (count_mutable_nodes<3)
+			return false;
+		else
+			return true;
+	}
 }// end Runner
