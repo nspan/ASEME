@@ -26,7 +26,7 @@ public class Runner {
 	// each action {ADD, EXPAND, REMOVE} has probability 1/probabilities to happen for every node; the rest goes to do NOTHING
 	private static int probabilities = 100;
 	private static int maxNumGenerations = 10;
-	private static int maxNumIncrPopulation = 5;
+	private static int maxNumIncrPopulation = 6;
 
 ///////////////////////////////////////////////////////////////////////////////////////////////////////
 	
@@ -36,43 +36,29 @@ public class Runner {
 			for (int pop=1; pop<=maxPop; pop++) {
 				String input = (gen < 10 ? "0" : "") + gen + "_" + (pop < 10 ? "0" : "") + pop + ".sct";
 				String output1 = (gen+1 < 10 ? "0" : "") + (gen+1) + "_" + (pop < 10 ? "0" : "") + pop + ".sct";
-				//System.out.println("Calling mutate with:: " + input + " " + output1);
-				System.out.println("Calling mutate with:1:" + input);
 				generateNewModel(input, output1);
 				if(gen < maxNumIncrPopulation) {
 					int new_pop= (int)(Math.pow(2,gen)+pop);
 					String output2 = "0" + (gen+1) + "_" + (new_pop < 10 ? "0" : "") + new_pop + ".sct";
-					//System.out.println("Calling mutate with:: " + input + " " + output2);
-					System.out.println("Calling mutate with:2:" + input);
 					generateNewModel(input, output2);
 				}
 			}
+			int numModels = gen < maxNumIncrPopulation ? 2*maxPop : maxPop;
+			System.out.println("Finished generation " + (gen+1 < 10 ? "0" : "") + (gen+1) + ": " + (numModels < 10 ? "0" : "") + numModels + " models produced (filenames: " + (gen+1 < 10 ? "0" : "") + (gen+1) + "_xx.sct)");
 		}
 	}
 
 	// gets an input model and outputs an output model of the next generation (after mutation)
 	public static void generateNewModel(String inputName, String outputName) {
-		ResourceSet resourceSet = new ResourceSetImpl();
-		// Register the appropriate resource factory to handle all file extensions
-		resourceSet.getResourceFactoryRegistry().getExtensionToFactoryMap().put(Resource.Factory.Registry.DEFAULT_EXTENSION,
-						new XMIResourceFactoryImpl());
-
-		// Register the package to ensure it is available during loading.
-		resourceSet.getPackageRegistry().put(StatechartPackage.eNS_URI, StatechartPackage.eINSTANCE);
-
-		// load input model
-		Resource r = resourceSet.getResource(URI.createFileURI(inputName), true);
-		Model inputModel = (Model) r.getContents().get(0);
-
-		//print inputModel to the console (just debugging)
-		printModel(r);
-
 		// Create a new generation model instance
-		Model outputModel = inputModel;
+		Model outputModel = getResourceModel(inputName);
+
+		//print the model to the console (just debugging)
+		//printModel(r);
 
 		// mutation code:
 		boolean output_equals_input = true;
-		boolean isMutable;
+		boolean isMutable = true;
 		// run until at least one change is made to the outputModel
 		while(output_equals_input) {
 			// find the root of the tree
@@ -85,27 +71,27 @@ public class Runner {
 					// mutate only if the node is BASIC, OR, CONDITION
 					if(child.getType().equalsIgnoreCase("BASIC") || 
 							child.getType().equalsIgnoreCase("OR") || 
-							child.getType().equalsIgnoreCase("CONDITION")) {		
+							child.getType().equalsIgnoreCase("CONDITION")) {
 						Action action = Mutate.selectAction(child, probabilities);
 						switch (action) {
 							case ADD:
 								Mutate.addNode(outputModel, child);
 								Mutate.performRelabelling(outputModel);
 								isMutable = checkModelSuitability(outputModel);
-								if(isMutable)
+								if(isMutable==true)
 									output_equals_input = false;
 								else
-									outputModel = inputModel;
+									outputModel = getResourceModel(inputName);
 								break;
 							case EXPAND:
 								Mutate.expandNode(outputModel, child);
 								Mutate.performRelabelling(outputModel);
 								isMutable = checkModelSuitability(outputModel);
-								if(isMutable)
+								if(isMutable==true)
 									output_equals_input = false;
 								else
-									outputModel = inputModel;
-								break; 
+									outputModel = getResourceModel(inputName);
+								break;
 							case REMOVE:
 								List<Node> toBeDeleted = new LinkedList<Node>();
 								// collect all the nodes to be deleted (removing all transitions at the same time)
@@ -114,10 +100,10 @@ public class Runner {
 								Mutate.removeNodes(outputModel, toBeDeleted);
 								Mutate.performRelabelling(outputModel);
 								isMutable = checkModelSuitability(outputModel);
-								if(isMutable)
+								if(isMutable==true)
 									output_equals_input = false;
 								else
-									outputModel = inputModel;
+									outputModel = getResourceModel(inputName);
 								break;
 							case NOTHING: break;
 						}
@@ -127,14 +113,9 @@ public class Runner {
 				break; // exit for loop; the model is already mutated and this for is problematic
 			}
 		}
-		
-		// check if the model can be further mutated; if not go back and change the mutation
-		isMutable = checkModelSuitability(outputModel);
-		if(!isMutable){
-			generateNewModel(inputName, outputName);
-		}
-		
+
 		// save the output model
+		ResourceSet resourceSet = getResourceSet();
 		Resource newResource = resourceSet.createResource(URI.createURI("http://statechart/1.0"));
 		newResource.getContents().add(outputModel);
 		try {
@@ -145,7 +126,7 @@ public class Runner {
 			e.printStackTrace();
 		} finally {
 			//print outputModel to the console (just debugging)
-			printModel(newResource);
+			//printModel(newResource);
 		}
 	}// end generateNewModel
 	
@@ -197,9 +178,28 @@ public class Runner {
 				count_mutable_nodes += 1;
 			}
 		}
-		if (count_mutable_nodes<3)
+		if (count_mutable_nodes<1)
 			return false;
 		else
 			return true;
+	}
+
+	// returns input model from resource file
+	public static ResourceSet getResourceSet() {
+		ResourceSet resourceSet = new ResourceSetImpl();
+		// Register the appropriate resource factory to handle all file extensions
+		resourceSet.getResourceFactoryRegistry().getExtensionToFactoryMap().put(Resource.Factory.Registry.DEFAULT_EXTENSION,
+						new XMIResourceFactoryImpl());
+		// Register the package to ensure it is available during loading.
+		resourceSet.getPackageRegistry().put(StatechartPackage.eNS_URI, StatechartPackage.eINSTANCE);
+		return resourceSet;
+	}
+
+	// returns input model from resource file
+	public static Model getResourceModel(String inputFile) {
+		ResourceSet rSet = getResourceSet();
+		Resource r = rSet.getResource(URI.createFileURI(inputFile), true);
+		Model inputModel = (Model) r.getContents().get(0);
+		return inputModel;
 	}
 }// end Runner
