@@ -16,11 +16,13 @@ import org.eclipse.gef.handles.MoveHandle;
 import org.eclipse.gmf.runtime.diagram.ui.editpolicies.NonResizableEditPolicyEx;
 import org.eclipse.gmf.runtime.diagram.ui.tools.DragEditPartsTrackerEx;
 import org.eclipse.gmf.runtime.draw2d.ui.figures.WrappingLabel;
+import org.eclipse.gmf.tooling.runtime.edit.policies.labels.IRefreshableFeedbackEditPolicy;
 
 /**
  * @generated
  */
-public class SUCTextNonResizableEditPolicy extends NonResizableEditPolicyEx {
+public class SUCTextNonResizableEditPolicy extends NonResizableEditPolicyEx
+		implements IRefreshableFeedbackEditPolicy {
 
 	/**
 	 * @generated
@@ -194,6 +196,7 @@ public class SUCTextNonResizableEditPolicy extends NonResizableEditPolicyEx {
 	/**
 	 * @generated
 	 */
+	@Override
 	public void refreshFeedback() {
 		refreshSelectionFeedback();
 		refreshFocusFeedback();
@@ -222,4 +225,5 @@ public class SUCTextNonResizableEditPolicy extends NonResizableEditPolicyEx {
 		moveHandle.setDragTracker(new DragEditPartsTrackerEx(getHost()));
 		return Collections.singletonList(moveHandle);
 	}
+
 }

@@ -1,12 +1,9 @@
 /**
- * <copyright>
- * </copyright>
- *
- * $Id$
  */
 package SUC.impl;
 
 import SUC.Role;
+import SUC.RoleType;
 import SUC.SUCPackage;
 import SUC.UseCase;
 
@@ -35,6 +32,7 @@ import org.eclipse.emf.ecore.util.InternalEList;
  * <ul>
  *   <li>{@link SUC.impl.RoleImpl#getParticipates_in <em>Participates in</em>}</li>
  *   <li>{@link SUC.impl.RoleImpl#getName <em>Name</em>}</li>
+ *   <li>{@link SUC.impl.RoleImpl#getType <em>Type</em>}</li>
  * </ul>
  * </p>
  *
@@ -70,6 +68,26 @@ public class RoleImpl extends EObjectImpl implements Role {
 	 * @ordered
 	 */
 	protected String name = NAME_EDEFAULT;
+
+	/**
+	 * The default value of the '{@link #getType() <em>Type</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getType()
+	 * @generated
+	 * @ordered
+	 */
+	protected static final RoleType TYPE_EDEFAULT = RoleType.SYSTEM;
+
+	/**
+	 * The cached value of the '{@link #getType() <em>Type</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getType()
+	 * @generated
+	 * @ordered
+	 */
+	protected RoleType type = TYPE_EDEFAULT;
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -128,6 +146,27 @@ public class RoleImpl extends EObjectImpl implements Role {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	public RoleType getType() {
+		return type;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public void setType(RoleType newType) {
+		RoleType oldType = type;
+		type = newType == null ? TYPE_EDEFAULT : newType;
+		if (eNotificationRequired())
+			eNotify(new ENotificationImpl(this, Notification.SET, SUCPackage.ROLE__TYPE, oldType, type));
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
 	@SuppressWarnings("unchecked")
 	@Override
 	public NotificationChain eInverseAdd(InternalEObject otherEnd, int featureID, NotificationChain msgs) {
@@ -164,6 +203,8 @@ public class RoleImpl extends EObjectImpl implements Role {
 				return getParticipates_in();
 			case SUCPackage.ROLE__NAME:
 				return getName();
+			case SUCPackage.ROLE__TYPE:
+				return getType();
 		}
 		return super.eGet(featureID, resolve, coreType);
 	}
@@ -184,6 +225,9 @@ public class RoleImpl extends EObjectImpl implements Role {
 			case SUCPackage.ROLE__NAME:
 				setName((String)newValue);
 				return;
+			case SUCPackage.ROLE__TYPE:
+				setType((RoleType)newValue);
+				return;
 		}
 		super.eSet(featureID, newValue);
 	}
@@ -202,6 +246,9 @@ public class RoleImpl extends EObjectImpl implements Role {
 			case SUCPackage.ROLE__NAME:
 				setName(NAME_EDEFAULT);
 				return;
+			case SUCPackage.ROLE__TYPE:
+				setType(TYPE_EDEFAULT);
+				return;
 		}
 		super.eUnset(featureID);
 	}
@@ -218,6 +265,8 @@ public class RoleImpl extends EObjectImpl implements Role {
 				return participates_in != null && !participates_in.isEmpty();
 			case SUCPackage.ROLE__NAME:
 				return NAME_EDEFAULT == null ? name != null : !NAME_EDEFAULT.equals(name);
+			case SUCPackage.ROLE__TYPE:
+				return type != TYPE_EDEFAULT;
 		}
 		return super.eIsSet(featureID);
 	}
@@ -234,6 +283,8 @@ public class RoleImpl extends EObjectImpl implements Role {
 		StringBuffer result = new StringBuffer(super.toString());
 		result.append(" (name: ");
 		result.append(name);
+		result.append(", type: ");
+		result.append(type);
 		result.append(')');
 		return result.toString();
 	}

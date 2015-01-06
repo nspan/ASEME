@@ -1,9 +1,5 @@
 package SUC.diagram.edit.parts;
 
-import java.util.ArrayList;
-import java.util.LinkedList;
-import java.util.List;
-
 import org.eclipse.draw2d.Ellipse;
 import org.eclipse.draw2d.IFigure;
 import org.eclipse.draw2d.Shape;
@@ -20,7 +16,6 @@ import org.eclipse.gmf.runtime.diagram.ui.editparts.ShapeNodeEditPart;
 import org.eclipse.gmf.runtime.diagram.ui.editpolicies.EditPolicyRoles;
 import org.eclipse.gmf.runtime.draw2d.ui.figures.ConstrainedToolbarLayout;
 import org.eclipse.gmf.runtime.draw2d.ui.figures.WrappingLabel;
-import org.eclipse.gmf.runtime.emf.type.core.IElementType;
 import org.eclipse.gmf.runtime.gef.ui.figures.DefaultSizeNodeFigure;
 import org.eclipse.gmf.runtime.gef.ui.figures.NodeFigure;
 import org.eclipse.gmf.runtime.notation.View;
@@ -28,7 +23,6 @@ import org.eclipse.swt.graphics.Color;
 
 import SUC.diagram.edit.policies.UseCaseItemSemanticEditPolicy;
 import SUC.diagram.part.SUCVisualIDRegistry;
-import SUC.diagram.providers.SUCElementTypes;
 
 /**
  * @generated
@@ -38,7 +32,7 @@ public class UseCaseEditPart extends ShapeNodeEditPart {
 	/**
 	 * @generated
 	 */
-	public static final int VISUAL_ID = 2009;
+	public static final int VISUAL_ID = 2002;
 
 	/**
 	 * @generated
@@ -264,79 +258,21 @@ public class UseCaseEditPart extends ShapeNodeEditPart {
 	/**
 	 * @generated
 	 */
-	public List<IElementType> getMARelTypesOnSource() {
-		ArrayList<IElementType> types = new ArrayList<IElementType>(1);
-		types.add(SUCElementTypes.UseCaseInclude_4009);
-		return types;
-	}
-
-	/**
-	 * @generated
-	 */
-	public List<IElementType> getMARelTypesOnSourceAndTarget(
-			IGraphicalEditPart targetEditPart) {
-		LinkedList<IElementType> types = new LinkedList<IElementType>();
-		if (targetEditPart instanceof SUC.diagram.edit.parts.UseCaseEditPart) {
-			types.add(SUCElementTypes.UseCaseInclude_4009);
-		}
-		return types;
-	}
-
-	/**
-	 * @generated
-	 */
-	public List<IElementType> getMATypesForTarget(IElementType relationshipType) {
-		LinkedList<IElementType> types = new LinkedList<IElementType>();
-		if (relationshipType == SUCElementTypes.UseCaseInclude_4009) {
-			types.add(SUCElementTypes.UseCase_2009);
-		}
-		return types;
-	}
-
-	/**
-	 * @generated
-	 */
-	public List<IElementType> getMARelTypesOnTarget() {
-		ArrayList<IElementType> types = new ArrayList<IElementType>(2);
-		types.add(SUCElementTypes.RoleParticipates_in_4008);
-		types.add(SUCElementTypes.UseCaseInclude_4009);
-		return types;
-	}
-
-	/**
-	 * @generated
-	 */
-	public List<IElementType> getMATypesForSource(IElementType relationshipType) {
-		LinkedList<IElementType> types = new LinkedList<IElementType>();
-		if (relationshipType == SUCElementTypes.RoleParticipates_in_4008) {
-			types.add(SUCElementTypes.SystemRole_2007);
-			types.add(SUCElementTypes.HumanRole_2008);
-			types.add(SUCElementTypes.Role_2010);
-		} else if (relationshipType == SUCElementTypes.UseCaseInclude_4009) {
-			types.add(SUCElementTypes.UseCase_2009);
-		}
-		return types;
-	}
-
-	/**
-	 * @generated
-	 */
 	public class UseCaseFigureCustom extends Ellipse {
 
 		/**
 		 * @generated
 		 */
-		private WrappingLabel fFigureUseCaseNameFigureCustom;
+		private WrappingLabel fFigureUseCaseSpecified_byFigureCustom;
 		/**
 		 * @generated
 		 */
-		private WrappingLabel fFigureUseCaseSpecified_byFigureCustom;
+		private WrappingLabel fFigureUseCaseNameFigureCustom;
 
 		/**
 		 * @generated
 		 */
 		public UseCaseFigureCustom() {
-			this.setLineWidth(3);
 			this.setForegroundColor(THIS_FORE);
 			this.setBackgroundColor(THIS_BACK);
 			this.setSize(getMapMode().DPtoLP(10), getMapMode().DPtoLP(10));
@@ -349,11 +285,13 @@ public class UseCaseEditPart extends ShapeNodeEditPart {
 		private void createContents() {
 
 			fFigureUseCaseNameFigureCustom = new WrappingLabel();
+
 			fFigureUseCaseNameFigureCustom.setText("");
 
 			this.add(fFigureUseCaseNameFigureCustom);
 
 			fFigureUseCaseSpecified_byFigureCustom = new WrappingLabel();
+
 			fFigureUseCaseSpecified_byFigureCustom.setText("");
 
 			this.add(fFigureUseCaseSpecified_byFigureCustom);
@@ -363,15 +301,15 @@ public class UseCaseEditPart extends ShapeNodeEditPart {
 		/**
 		 * @generated
 		 */
-		public WrappingLabel getFigureUseCaseNameFigureCustom() {
-			return fFigureUseCaseNameFigureCustom;
+		public WrappingLabel getFigureUseCaseSpecified_byFigureCustom() {
+			return fFigureUseCaseSpecified_byFigureCustom;
 		}
 
 		/**
 		 * @generated
 		 */
-		public WrappingLabel getFigureUseCaseSpecified_byFigureCustom() {
-			return fFigureUseCaseSpecified_byFigureCustom;
+		public WrappingLabel getFigureUseCaseNameFigureCustom() {
+			return fFigureUseCaseNameFigureCustom;
 		}
 
 	}
@@ -384,6 +322,6 @@ public class UseCaseEditPart extends ShapeNodeEditPart {
 	/**
 	 * @generated
 	 */
-	static final Color THIS_BACK = new Color(null, 150, 250, 180);
+	static final Color THIS_BACK = new Color(null, 180, 250, 150);
 
 }

@@ -5,21 +5,18 @@ import org.eclipse.emf.ecore.EAnnotation;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.gmf.runtime.notation.Diagram;
 import org.eclipse.gmf.runtime.notation.View;
+import org.eclipse.gmf.tooling.runtime.structure.DiagramStructure;
 
 import SUC.SUCPackage;
 import SUC.SUCmodel;
-import SUC.diagram.edit.parts.HumanRoleEditPart;
-import SUC.diagram.edit.parts.HumanRoleNameEditPart;
+import SUC.diagram.edit.parts.LabelEditPart;
 import SUC.diagram.edit.parts.RoleEditPart;
 import SUC.diagram.edit.parts.RoleNameEditPart;
 import SUC.diagram.edit.parts.SUCmodelEditPart;
-import SUC.diagram.edit.parts.SystemRoleEditPart;
-import SUC.diagram.edit.parts.SystemRoleNameEditPart;
 import SUC.diagram.edit.parts.UseCaseEditPart;
 import SUC.diagram.edit.parts.UseCaseIncludeEditPart;
 import SUC.diagram.edit.parts.UseCaseNameEditPart;
 import SUC.diagram.edit.parts.UseCaseSpecified_byEditPart;
-import SUC.diagram.edit.parts.WrappingLabelEditPart;
 
 /**
  * This registry is used to determine which type of visual object should be
@@ -128,21 +125,13 @@ public class SUCVisualIDRegistry {
 		}
 		switch (containerVisualID) {
 		case SUCmodelEditPart.VISUAL_ID:
-			if (SUCPackage.eINSTANCE.getSystemRole().isSuperTypeOf(
+			if (SUCPackage.eINSTANCE.getRole().isSuperTypeOf(
 					domainElement.eClass())) {
-				return SystemRoleEditPart.VISUAL_ID;
-			}
-			if (SUCPackage.eINSTANCE.getHumanRole().isSuperTypeOf(
-					domainElement.eClass())) {
-				return HumanRoleEditPart.VISUAL_ID;
+				return RoleEditPart.VISUAL_ID;
 			}
 			if (SUCPackage.eINSTANCE.getUseCase().isSuperTypeOf(
 					domainElement.eClass())) {
 				return UseCaseEditPart.VISUAL_ID;
-			}
-			if (SUCPackage.eINSTANCE.getRole().isSuperTypeOf(
-					domainElement.eClass())) {
-				return RoleEditPart.VISUAL_ID;
 			}
 			break;
 		}
@@ -171,26 +160,15 @@ public class SUCVisualIDRegistry {
 		}
 		switch (containerVisualID) {
 		case SUCmodelEditPart.VISUAL_ID:
-			if (SystemRoleEditPart.VISUAL_ID == nodeVisualID) {
-				return true;
-			}
-			if (HumanRoleEditPart.VISUAL_ID == nodeVisualID) {
+			if (RoleEditPart.VISUAL_ID == nodeVisualID) {
 				return true;
 			}
 			if (UseCaseEditPart.VISUAL_ID == nodeVisualID) {
 				return true;
 			}
-			if (RoleEditPart.VISUAL_ID == nodeVisualID) {
-				return true;
-			}
 			break;
-		case SystemRoleEditPart.VISUAL_ID:
-			if (SystemRoleNameEditPart.VISUAL_ID == nodeVisualID) {
-				return true;
-			}
-			break;
-		case HumanRoleEditPart.VISUAL_ID:
-			if (HumanRoleNameEditPart.VISUAL_ID == nodeVisualID) {
+		case RoleEditPart.VISUAL_ID:
+			if (RoleNameEditPart.VISUAL_ID == nodeVisualID) {
 				return true;
 			}
 			break;
@@ -202,13 +180,8 @@ public class SUCVisualIDRegistry {
 				return true;
 			}
 			break;
-		case RoleEditPart.VISUAL_ID:
-			if (RoleNameEditPart.VISUAL_ID == nodeVisualID) {
-				return true;
-			}
-			break;
 		case UseCaseIncludeEditPart.VISUAL_ID:
-			if (WrappingLabelEditPart.VISUAL_ID == nodeVisualID) {
+			if (LabelEditPart.VISUAL_ID == nodeVisualID) {
 				return true;
 			}
 			break;
@@ -235,5 +208,99 @@ public class SUCVisualIDRegistry {
 	private static boolean isDiagram(SUCmodel element) {
 		return true;
 	}
+
+	/**
+	 * @generated
+	 */
+	public static boolean checkNodeVisualID(View containerView,
+			EObject domainElement, int candidate) {
+		if (candidate == -1) {
+			//unrecognized id is always bad
+			return false;
+		}
+		int basic = getNodeVisualID(containerView, domainElement);
+		return basic == candidate;
+	}
+
+	/**
+	 * @generated
+	 */
+	public static boolean isCompartmentVisualID(int visualID) {
+		return false;
+	}
+
+	/**
+	 * @generated
+	 */
+	public static boolean isSemanticLeafVisualID(int visualID) {
+		switch (visualID) {
+		case SUCmodelEditPart.VISUAL_ID:
+			return false;
+		case RoleEditPart.VISUAL_ID:
+		case UseCaseEditPart.VISUAL_ID:
+			return true;
+		default:
+			break;
+		}
+		return false;
+	}
+
+	/**
+	 * @generated
+	 */
+	public static final DiagramStructure TYPED_INSTANCE = new DiagramStructure() {
+		/**
+		 * @generated
+		 */
+		@Override
+		public int getVisualID(View view) {
+			return SUC.diagram.part.SUCVisualIDRegistry.getVisualID(view);
+		}
+
+		/**
+		 * @generated
+		 */
+		@Override
+		public String getModelID(View view) {
+			return SUC.diagram.part.SUCVisualIDRegistry.getModelID(view);
+		}
+
+		/**
+		 * @generated
+		 */
+		@Override
+		public int getNodeVisualID(View containerView, EObject domainElement) {
+			return SUC.diagram.part.SUCVisualIDRegistry.getNodeVisualID(
+					containerView, domainElement);
+		}
+
+		/**
+		 * @generated
+		 */
+		@Override
+		public boolean checkNodeVisualID(View containerView,
+				EObject domainElement, int candidate) {
+			return SUC.diagram.part.SUCVisualIDRegistry.checkNodeVisualID(
+					containerView, domainElement, candidate);
+		}
+
+		/**
+		 * @generated
+		 */
+		@Override
+		public boolean isCompartmentVisualID(int visualID) {
+			return SUC.diagram.part.SUCVisualIDRegistry
+					.isCompartmentVisualID(visualID);
+		}
+
+		/**
+		 * @generated
+		 */
+		@Override
+		public boolean isSemanticLeafVisualID(int visualID) {
+			return SUC.diagram.part.SUCVisualIDRegistry
+					.isSemanticLeafVisualID(visualID);
+		}
+	};
 
 }

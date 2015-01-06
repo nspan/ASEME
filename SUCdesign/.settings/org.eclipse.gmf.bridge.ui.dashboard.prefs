@@ -1,0 +1,7 @@
+eclipse.preferences.version=1
+gmf_dashboard/domainGenerationModel=platform\:/resource/SUCdesign/model/SUC.genmodel
+gmf_dashboard/domainModel=platform\:/resource/SUCdesign/model/SUC.ecore
+gmf_dashboard/generationModel=platform\:/resource/SUCdesign/model/SUC.gmfgen
+gmf_dashboard/graphicalDefinitionModel=platform\:/resource/SUCdesign/model/SUC.gmfgraph
+gmf_dashboard/mappingModel=platform\:/resource/SUCdesign/model/SUC.gmfmap
+gmf_dashboard/toolingDefinitionModel=platform\:/resource/SUCdesign/model/SUC.gmftool

@@ -4,13 +4,13 @@
 
    <extension point="org.eclipse.team.core.fileTypes" id="repo-ftype">
       <?gmfgen generated="true"?>
-      <fileTypes type="text" extension="sucd"/>
+      <fileTypes type="text" extension="suc_diagram"/>
    </extension>
 
    <extension point="org.eclipse.emf.ecore.extension_parser" id="resource-factory">
       <?gmfgen generated="true"?>
       <parser
-         type="sucd"
+         type="suc_diagram"
          class="org.eclipse.gmf.runtime.emf.core.resources.GMFResourceFactory">
       </parser>
    </extension>
@@ -21,7 +21,7 @@
          id="SUC.diagram.part.SUCDiagramEditorID"
          name="%editorName"
          icon="icons/obj16/SUCDiagramFile.gif"
-         extensions="sucd"
+         extensions="suc_diagram"
          default="true"
          class="SUC.diagram.part.SUCDiagramEditor"
          matchingStrategy="SUC.diagram.part.SUCMatchingStrategy"
@@ -217,8 +217,8 @@
       <viewProvider class="SUC.diagram.providers.SUCViewProvider">
          <Priority name="Lowest"/>
          <context viewClass="org.eclipse.gmf.runtime.notation.Diagram" semanticHints="SUC"/>
-         <context viewClass="org.eclipse.gmf.runtime.notation.Node" semanticHints="2007,2008,2009,2010"/>
-         <context viewClass="org.eclipse.gmf.runtime.notation.Edge" semanticHints="4008,4009"/>
+         <context viewClass="org.eclipse.gmf.runtime.notation.Node" semanticHints="2001,2002"/>
+         <context viewClass="org.eclipse.gmf.runtime.notation.Edge" semanticHints="4003,4001"/>
       </viewProvider>
    </extension>
 
@@ -230,13 +230,13 @@
             <method name="getType()" value="SUC"/>
          </object>
          <object class="org.eclipse.gmf.runtime.notation.Node" id="generated-nodes">
-            <method name="getType()" value="2007,2008,2009,2010"/>
+            <method name="getType()" value="2001,2002"/>
          </object>
          <object class="org.eclipse.gmf.runtime.notation.Edge" id="generated-links">
-            <method name="getType()" value="4008,4009"/>
+            <method name="getType()" value="4003,4001"/>
          </object>
          <object class="org.eclipse.gmf.runtime.notation.Node" id="generated-labels">
-            <method name="getType()" value="5009,5010,5011,5012,5013"/>
+            <method name="getType()" value="5001,5002,5004"/>
          </object>
          <object class="org.eclipse.gmf.runtime.notation.Node" id="generated-compartments">
             <method name="getType()" value=""/>
@@ -245,18 +245,27 @@
       </editpartProvider>
    </extension>
 
+   
    <extension point="org.eclipse.gmf.runtime.emf.ui.modelingAssistantProviders" id="modelassist-provider">
       <?gmfgen generated="true"?>
-      <modelingAssistantProvider class="SUC.diagram.providers.SUCModelingAssistantProvider">
+      <modelingAssistantProvider class="SUC.diagram.providers.assistants.SUCModelingAssistantProviderOfSUCmodelEditPart">
          <Priority name="Lowest"/>
          <object class="SUC.diagram.edit.parts.SUCmodelEditPart" id="SUCmodel_1000"/>
-         <object class="SUC.diagram.edit.parts.SystemRoleEditPart" id="SystemRole_2007"/>
-         <object class="SUC.diagram.edit.parts.HumanRoleEditPart" id="HumanRole_2008"/>
-         <object class="SUC.diagram.edit.parts.UseCaseEditPart" id="UseCase_2009"/>
-         <object class="SUC.diagram.edit.parts.RoleEditPart" id="Role_2010"/>
-         <context elements="SUCmodel_1000,SystemRole_2007,HumanRole_2008,UseCase_2009,Role_2010"/>
+         <context elements="SUCmodel_1000"/>
       </modelingAssistantProvider>
+            <modelingAssistantProvider class="SUC.diagram.providers.assistants.SUCModelingAssistantProviderOfRoleEditPart">
+         <Priority name="Lowest"/>
+         <object class="SUC.diagram.edit.parts.RoleEditPart" id="Role_2001"/>
+         <context elements="Role_2001"/>
+      </modelingAssistantProvider>
+            <modelingAssistantProvider class="SUC.diagram.providers.assistants.SUCModelingAssistantProviderOfUseCaseEditPart">
+         <Priority name="Lowest"/>
+         <object class="SUC.diagram.edit.parts.UseCaseEditPart" id="UseCase_2002"/>
+         <context elements="UseCase_2002"/>
+      </modelingAssistantProvider>
+      
    </extension>
+
 
    <extension point="org.eclipse.gmf.runtime.common.ui.services.iconProviders" id="icon-provider">
       <?gmfgen generated="true"?>
@@ -286,60 +295,40 @@
       </metamodel>
       <metamodel nsURI="http://www.amcl.tuc.gr/aseme/metamodels/SUC">
          <metamodelType
-               id="SUCdesign.diagram.SystemRole_2007"
-               name="%metatype.name.SystemRole_2007"
-               kind="org.eclipse.gmf.runtime.emf.type.core.IHintedType"
-               eclass="SystemRole"
-               edithelper="SUC.diagram.edit.helpers.SystemRoleEditHelper">
-            <param name="semanticHint" value="2007"/>
-         </metamodelType>
-      </metamodel>
-      <metamodel nsURI="http://www.amcl.tuc.gr/aseme/metamodels/SUC">
-         <metamodelType
-               id="SUCdesign.diagram.HumanRole_2008"
-               name="%metatype.name.HumanRole_2008"
-               kind="org.eclipse.gmf.runtime.emf.type.core.IHintedType"
-               eclass="HumanRole"
-               edithelper="SUC.diagram.edit.helpers.HumanRoleEditHelper">
-            <param name="semanticHint" value="2008"/>
-         </metamodelType>
-      </metamodel>
-      <metamodel nsURI="http://www.amcl.tuc.gr/aseme/metamodels/SUC">
-         <metamodelType
-               id="SUCdesign.diagram.UseCase_2009"
-               name="%metatype.name.UseCase_2009"
-               kind="org.eclipse.gmf.runtime.emf.type.core.IHintedType"
-               eclass="UseCase"
-               edithelper="SUC.diagram.edit.helpers.UseCaseEditHelper">
-            <param name="semanticHint" value="2009"/>
-         </metamodelType>
-      </metamodel>
-      <metamodel nsURI="http://www.amcl.tuc.gr/aseme/metamodels/SUC">
-         <metamodelType
-               id="SUCdesign.diagram.Role_2010"
-               name="%metatype.name.Role_2010"
+               id="SUCdesign.diagram.Role_2001"
+               name="%metatype.name.Role_2001"
                kind="org.eclipse.gmf.runtime.emf.type.core.IHintedType"
                eclass="Role"
                edithelper="SUC.diagram.edit.helpers.RoleEditHelper">
-            <param name="semanticHint" value="2010"/>
+            <param name="semanticHint" value="2001"/>
+         </metamodelType>
+      </metamodel>
+      <metamodel nsURI="http://www.amcl.tuc.gr/aseme/metamodels/SUC">
+         <metamodelType
+               id="SUCdesign.diagram.UseCase_2002"
+               name="%metatype.name.UseCase_2002"
+               kind="org.eclipse.gmf.runtime.emf.type.core.IHintedType"
+               eclass="UseCase"
+               edithelper="SUC.diagram.edit.helpers.UseCaseEditHelper">
+            <param name="semanticHint" value="2002"/>
          </metamodelType>
       </metamodel>
       <metamodel nsURI="http://www.amcl.tuc.gr/aseme/metamodels/SUC">
          <specializationType
-               id="SUCdesign.diagram.RoleParticipates_in_4008"
-               name="%metatype.name.RoleParticipates_in_4008"
+               id="SUCdesign.diagram.UseCaseInclude_4003"
+               name="%metatype.name.UseCaseInclude_4003"
                kind="org.eclipse.gmf.runtime.emf.type.core.IHintedType">
             <specializes id="org.eclipse.gmf.runtime.emf.type.core.null"/>
-            <param name="semanticHint" value="4008"/>
+            <param name="semanticHint" value="4003"/>
          </specializationType>
       </metamodel>
       <metamodel nsURI="http://www.amcl.tuc.gr/aseme/metamodels/SUC">
          <specializationType
-               id="SUCdesign.diagram.UseCaseInclude_4009"
-               name="%metatype.name.UseCaseInclude_4009"
+               id="SUCdesign.diagram.RoleParticipates_in_4001"
+               name="%metatype.name.RoleParticipates_in_4001"
                kind="org.eclipse.gmf.runtime.emf.type.core.IHintedType">
             <specializes id="org.eclipse.gmf.runtime.emf.type.core.null"/>
-            <param name="semanticHint" value="4009"/>
+            <param name="semanticHint" value="4001"/>
          </specializationType>
       </metamodel>
    </extension>
@@ -355,12 +344,10 @@
       </clientContext> 
       <binding context="SUCdesign.diagram.TypeContext">
          <elementType ref="SUCdesign.diagram.SUCmodel_1000"/>
-         <elementType ref="SUCdesign.diagram.SystemRole_2007"/>
-         <elementType ref="SUCdesign.diagram.HumanRole_2008"/>
-         <elementType ref="SUCdesign.diagram.UseCase_2009"/>
-         <elementType ref="SUCdesign.diagram.Role_2010"/>
-         <elementType ref="SUCdesign.diagram.RoleParticipates_in_4008"/>
-         <elementType ref="SUCdesign.diagram.UseCaseInclude_4009"/>
+         <elementType ref="SUCdesign.diagram.Role_2001"/>
+         <elementType ref="SUCdesign.diagram.UseCase_2002"/>
+         <elementType ref="SUCdesign.diagram.UseCaseInclude_4003"/>
+         <elementType ref="SUCdesign.diagram.RoleParticipates_in_4001"/>
          <advice ref="org.eclipse.gmf.runtime.diagram.core.advice.notationDepdendents"/>
       </binding>
    </extension>
@@ -405,7 +392,7 @@
             <or>
 	           <and>
     	          <instanceof value="org.eclipse.core.resources.IFile"/>
-        	      <test property="org.eclipse.core.resources.extension" value="sucd"/>
+        	      <test property="org.eclipse.core.resources.extension" value="suc_diagram"/>
                </and>
                <instanceof value="SUC.diagram.navigator.SUCAbstractNavigatorItem"/>
             </or>
@@ -422,7 +409,7 @@
                <or>
 	              <and>
     	             <instanceof value="org.eclipse.core.resources.IFile"/>
-        	         <test property="org.eclipse.core.resources.extension" value="sucd"/>
+        	         <test property="org.eclipse.core.resources.extension" value="suc_diagram"/>
                   </and>
                   <instanceof value="SUC.diagram.navigator.SUCAbstractNavigatorItem"/>
                </or>

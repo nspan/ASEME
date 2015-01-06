@@ -20,23 +20,23 @@ public class Activator extends AbstractUIPlugin {
 	// The plug-in ID
 	public static final String PLUGIN_ID = "ASEMEDashboardView"; //$NON-NLS-1$
 	
-	public static final String GMF_LOGO_IMAGE = "C:\\Documents and Settings\\Shabana Shaikh\\workspace\\ASEMEDashboardView\\icons\\sample.gif"; //$NON-NLS-1$
+	public static final String GMF_LOGO_IMAGE = "icons\\sample.gif"; //$NON-NLS-1$
 
-	public static final String SYNC_ICON = "C:\\Documents and Settings\\Shabana Shaikh\\workspace\\ASEMEDashboardView\\icons\\sample.gif"; //$NON-NLS-1$
+	public static final String SYNC_ICON = "icons\\sample.gif"; //$NON-NLS-1$
 
-	public static final String SAG_ICON = "C:\\Documents and Settings\\Shabana Shaikh\\workspace\\ASEMEDashboardView\\icons\\sample.gif"; //$NON-NLS-1$	
+	public static final String SAG_ICON = "icons\\sample.gif"; //$NON-NLS-1$	
 	
-	public static final String SUC_ICON = "C:\\Documents and Settings\\Shabana Shaikh\\workspace\\ASEMEDashboardView\\icons\\sample.gif"; //$NON-NLS-1$
+	public static final String SUC_ICON = "icons\\sample.gif"; //$NON-NLS-1$
 
-	public static final String AIP_ICON = "C:\\Documents and Settings\\Shabana Shaikh\\workspace\\ASEMEDashboardView\\icons\\sample.gif"; //$NON-NLS-1$
+	public static final String AIP_ICON = "icons\\sample.gif"; //$NON-NLS-1$
 
-	public static final String SRM_ICON = "C:\\Documents and Settings\\Shabana Shaikh\\workspace\\ASEMEDashboardView\\icons\\sample.gif"; //$NON-NLS-1$
+	public static final String SRM_ICON = "icons\\sample.gif"; //$NON-NLS-1$
 
-	public static final String EAC_ICON = "C:\\Documents and Settings\\Shabana Shaikh\\workspace\\ASEMEDashboardView\\icons\\sample.gif"; //$NON-NLS-1$
+	public static final String EAC_ICON = "icons\\sample.gif"; //$NON-NLS-1$
 
-	public static final String IAC_ICON = "C:\\Documents and Settings\\Shabana Shaikh\\workspace\\ASEMEDashboardView\\icons\\sample.gif"; //$NON-NLS-1$
+	public static final String IAC_ICON = "icons\\sample.gif"; //$NON-NLS-1$
 	
-	public static final String JADE_ICON = "C:\\Documents and Settings\\Shabana Shaikh\\workspace\\ASEMEDashboardView\\icons\\sample.gif"; //$NON-NLS-1$
+	public static final String JADE_ICON = "icons\\sample.gif"; //$NON-NLS-1$
 	// The shared instance
 	private static Activator plugin;
 	private ASEMEActionRegistry daRegistry;

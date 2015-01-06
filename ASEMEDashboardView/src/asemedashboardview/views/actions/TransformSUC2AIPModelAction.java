@@ -19,7 +19,6 @@ import SUC.Role;
 import SUC.SUCFactory;
 import SUC.SUCPackage;
 import SUC.SUCmodel;
-import SUC.SystemRole;
 import SUC.UseCase;
 import asemedashboardview.views.ASEMEAction;
 import asemedashboardview.views.ASEMEFacade;
@@ -84,19 +83,19 @@ public class TransformSUC2AIPModelAction implements ASEMEAction {
 		// transformation code:
 		for (Iterator<UseCase> iterator = sucModel.getUsecases().iterator(); iterator.hasNext();) {
 			UseCase usecase = iterator.next();
-			List<SystemRole> systemRoleUseCaseParticipants = new LinkedList<SystemRole>();
+			List<Role> systemRoleUseCaseParticipants = new LinkedList<Role>();
 			for (Iterator<Role> iterator2 = usecase.getParticipant().iterator(); iterator2.hasNext();) {
 				Role role =  iterator2.next();
-				if (role instanceof SystemRole)
-					systemRoleUseCaseParticipants.add(((SystemRole) role));
+				if (role.getType().getLiteral() == "System")
+					systemRoleUseCaseParticipants.add(((Role) role));
 			}
 			if (systemRoleUseCaseParticipants.size() > 1) {
 				Protocol tmpProtocol = AIPFactory.eINSTANCE.createProtocol();
 				tmpProtocol.setName(usecase.getName());
 				HashMap<String, Participant> participants = new HashMap<String, Participant>();
-				for (Iterator<SystemRole> iterator2 = systemRoleUseCaseParticipants
+				for (Iterator<Role> iterator2 = systemRoleUseCaseParticipants
 						.iterator(); iterator2.hasNext();) {
-					SystemRole systemRole =  iterator2.next();
+					Role systemRole =  iterator2.next();
 					Participant tmpParticipant = AIPFactory.eINSTANCE.createParticipant();
 					tmpParticipant.setName(new String(tmpProtocol.getName()
 							+ "_" + systemRole.getName()));

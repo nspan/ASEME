@@ -1,14 +1,11 @@
 /**
- * <copyright>
- * </copyright>
- *
- * $Id$
  */
 package SUC.impl;
 
 import SUC.*;
 
 import org.eclipse.emf.ecore.EClass;
+import org.eclipse.emf.ecore.EDataType;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.EPackage;
 
@@ -31,7 +28,7 @@ public class SUCFactoryImpl extends EFactoryImpl implements SUCFactory {
 	 */
 	public static SUCFactory init() {
 		try {
-			SUCFactory theSUCFactory = (SUCFactory)EPackage.Registry.INSTANCE.getEFactory("http://www.amcl.tuc.gr/aseme/metamodels/SUC"); 
+			SUCFactory theSUCFactory = (SUCFactory)EPackage.Registry.INSTANCE.getEFactory(SUCPackage.eNS_URI);
 			if (theSUCFactory != null) {
 				return theSUCFactory;
 			}
@@ -63,10 +60,38 @@ public class SUCFactoryImpl extends EFactoryImpl implements SUCFactory {
 			case SUCPackage.SU_CMODEL: return createSUCmodel();
 			case SUCPackage.USE_CASE: return createUseCase();
 			case SUCPackage.ROLE: return createRole();
-			case SUCPackage.HUMAN_ROLE: return createHumanRole();
-			case SUCPackage.SYSTEM_ROLE: return createSystemRole();
 			default:
 				throw new IllegalArgumentException("The class '" + eClass.getName() + "' is not a valid classifier");
+		}
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public Object createFromString(EDataType eDataType, String initialValue) {
+		switch (eDataType.getClassifierID()) {
+			case SUCPackage.ROLE_TYPE:
+				return createRoleTypeFromString(eDataType, initialValue);
+			default:
+				throw new IllegalArgumentException("The datatype '" + eDataType.getName() + "' is not a valid classifier");
+		}
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public String convertToString(EDataType eDataType, Object instanceValue) {
+		switch (eDataType.getClassifierID()) {
+			case SUCPackage.ROLE_TYPE:
+				return convertRoleTypeToString(eDataType, instanceValue);
+			default:
+				throw new IllegalArgumentException("The datatype '" + eDataType.getName() + "' is not a valid classifier");
 		}
 	}
 
@@ -105,9 +130,10 @@ public class SUCFactoryImpl extends EFactoryImpl implements SUCFactory {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public HumanRole createHumanRole() {
-		HumanRoleImpl humanRole = new HumanRoleImpl();
-		return humanRole;
+	public RoleType createRoleTypeFromString(EDataType eDataType, String initialValue) {
+		RoleType result = RoleType.get(initialValue);
+		if (result == null) throw new IllegalArgumentException("The value '" + initialValue + "' is not a valid enumerator of '" + eDataType.getName() + "'");
+		return result;
 	}
 
 	/**
@@ -115,9 +141,8 @@ public class SUCFactoryImpl extends EFactoryImpl implements SUCFactory {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public SystemRole createSystemRole() {
-		SystemRoleImpl systemRole = new SystemRoleImpl();
-		return systemRole;
+	public String convertRoleTypeToString(EDataType eDataType, Object instanceValue) {
+		return instanceValue == null ? null : instanceValue.toString();
 	}
 
 	/**

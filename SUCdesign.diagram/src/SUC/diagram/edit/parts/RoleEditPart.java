@@ -1,9 +1,5 @@
 package SUC.diagram.edit.parts;
 
-import java.util.ArrayList;
-import java.util.LinkedList;
-import java.util.List;
-
 import org.eclipse.draw2d.FlowLayout;
 import org.eclipse.draw2d.IFigure;
 import org.eclipse.draw2d.RectangleFigure;
@@ -20,7 +16,6 @@ import org.eclipse.gmf.runtime.diagram.ui.editpolicies.EditPolicyRoles;
 import org.eclipse.gmf.runtime.diagram.ui.editpolicies.FlowLayoutEditPolicy;
 import org.eclipse.gmf.runtime.draw2d.ui.figures.ConstrainedToolbarLayout;
 import org.eclipse.gmf.runtime.draw2d.ui.figures.WrappingLabel;
-import org.eclipse.gmf.runtime.emf.type.core.IElementType;
 import org.eclipse.gmf.runtime.gef.ui.figures.DefaultSizeNodeFigure;
 import org.eclipse.gmf.runtime.gef.ui.figures.NodeFigure;
 import org.eclipse.gmf.runtime.notation.View;
@@ -28,7 +23,6 @@ import org.eclipse.swt.graphics.Color;
 
 import SUC.diagram.edit.policies.RoleItemSemanticEditPolicy;
 import SUC.diagram.part.SUCVisualIDRegistry;
-import SUC.diagram.providers.SUCElementTypes;
 
 /**
  * @generated
@@ -38,7 +32,7 @@ public class RoleEditPart extends ShapeNodeEditPart {
 	/**
 	 * @generated
 	 */
-	public static final int VISUAL_ID = 2010;
+	public static final int VISUAL_ID = 2001;
 
 	/**
 	 * @generated
@@ -252,44 +246,16 @@ public class RoleEditPart extends ShapeNodeEditPart {
 	/**
 	 * @generated
 	 */
-	public List<IElementType> getMARelTypesOnSource() {
-		ArrayList<IElementType> types = new ArrayList<IElementType>(1);
-		types.add(SUCElementTypes.RoleParticipates_in_4008);
-		return types;
-	}
-
-	/**
-	 * @generated
-	 */
-	public List<IElementType> getMARelTypesOnSourceAndTarget(
-			IGraphicalEditPart targetEditPart) {
-		LinkedList<IElementType> types = new LinkedList<IElementType>();
-		if (targetEditPart instanceof UseCaseEditPart) {
-			types.add(SUCElementTypes.RoleParticipates_in_4008);
-		}
-		return types;
-	}
-
-	/**
-	 * @generated
-	 */
-	public List<IElementType> getMATypesForTarget(IElementType relationshipType) {
-		LinkedList<IElementType> types = new LinkedList<IElementType>();
-		if (relationshipType == SUCElementTypes.RoleParticipates_in_4008) {
-			types.add(SUCElementTypes.UseCase_2009);
-		}
-		return types;
-	}
-
-	/**
-	 * @generated
-	 */
 	public class RoleFigure extends RectangleFigure {
 
 		/**
 		 * @generated
 		 */
 		private WrappingLabel fFigureRoleNameFigure;
+		/**
+		 * @generated
+		 */
+		private WrappingLabel fFigureRoleTypeFigure;
 
 		/**
 		 * @generated
@@ -307,7 +273,6 @@ public class RoleEditPart extends ShapeNodeEditPart {
 
 			this.setLayoutManager(layoutThis);
 
-			this.setOutline(false);
 			createContents();
 		}
 
@@ -317,9 +282,16 @@ public class RoleEditPart extends ShapeNodeEditPart {
 		private void createContents() {
 
 			fFigureRoleNameFigure = new WrappingLabel();
+
 			fFigureRoleNameFigure.setText("<...>");
 
 			this.add(fFigureRoleNameFigure);
+
+			fFigureRoleTypeFigure = new WrappingLabel();
+
+			fFigureRoleTypeFigure.setText("<...>");
+
+			this.add(fFigureRoleTypeFigure);
 
 		}
 
@@ -328,6 +300,13 @@ public class RoleEditPart extends ShapeNodeEditPart {
 		 */
 		public WrappingLabel getFigureRoleNameFigure() {
 			return fFigureRoleNameFigure;
+		}
+
+		/**
+		 * @generated
+		 */
+		public WrappingLabel getFigureRoleTypeFigure() {
+			return fFigureRoleTypeFigure;
 		}
 
 	}

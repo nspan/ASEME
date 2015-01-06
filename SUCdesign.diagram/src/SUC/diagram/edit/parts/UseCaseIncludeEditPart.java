@@ -3,7 +3,6 @@ package SUC.diagram.edit.parts;
 import org.eclipse.draw2d.Connection;
 import org.eclipse.draw2d.PolylineDecoration;
 import org.eclipse.draw2d.RotatableDecoration;
-import org.eclipse.gef.EditPart;
 import org.eclipse.gmf.runtime.diagram.ui.editparts.ConnectionNodeEditPart;
 import org.eclipse.gmf.runtime.diagram.ui.editparts.ITreeBranchEditPart;
 import org.eclipse.gmf.runtime.diagram.ui.editpolicies.EditPolicyRoles;
@@ -22,7 +21,7 @@ public class UseCaseIncludeEditPart extends ConnectionNodeEditPart implements
 	/**
 	 * @generated
 	 */
-	public static final int VISUAL_ID = 4009;
+	public static final int VISUAL_ID = 4003;
 
 	/**
 	 * @generated
@@ -38,48 +37,6 @@ public class UseCaseIncludeEditPart extends ConnectionNodeEditPart implements
 		super.createDefaultEditPolicies();
 		installEditPolicy(EditPolicyRoles.SEMANTIC_ROLE,
 				new UseCaseIncludeItemSemanticEditPolicy());
-	}
-
-	/**
-	 * @generated
-	 */
-	protected boolean addFixedChild(EditPart childEditPart) {
-		if (childEditPart instanceof WrappingLabelEditPart) {
-			((WrappingLabelEditPart) childEditPart).setLabel(getPrimaryShape()
-					.getFigureIncludeLabel());
-			return true;
-		}
-		return false;
-	}
-
-	/**
-	 * @generated
-	 */
-	protected void addChildVisual(EditPart childEditPart, int index) {
-		if (addFixedChild(childEditPart)) {
-			return;
-		}
-		super.addChildVisual(childEditPart, index);
-	}
-
-	/**
-	 * @generated
-	 */
-	protected boolean removeFixedChild(EditPart childEditPart) {
-		if (childEditPart instanceof WrappingLabelEditPart) {
-			return true;
-		}
-		return false;
-	}
-
-	/**
-	 * @generated
-	 */
-	protected void removeChildVisual(EditPart childEditPart) {
-		if (removeFixedChild(childEditPart)) {
-			return;
-		}
-		super.removeChildVisual(childEditPart);
 	}
 
 	/**
@@ -116,8 +73,6 @@ public class UseCaseIncludeEditPart extends ConnectionNodeEditPart implements
 		 * @generated
 		 */
 		public UseCaseIncludeFigure() {
-			this.setFill(false);
-			this.setLineWidth(3);
 
 			createContents();
 			setTargetDecoration(createTargetDecoration());
@@ -129,6 +84,7 @@ public class UseCaseIncludeEditPart extends ConnectionNodeEditPart implements
 		private void createContents() {
 
 			fFigureIncludeLabel = new WrappingLabel();
+
 			fFigureIncludeLabel.setText("<<includes>>");
 
 			this.add(fFigureIncludeLabel);
@@ -140,7 +96,6 @@ public class UseCaseIncludeEditPart extends ConnectionNodeEditPart implements
 		 */
 		private RotatableDecoration createTargetDecoration() {
 			PolylineDecoration df = new PolylineDecoration();
-			df.setLineWidth(3);
 			return df;
 		}
 

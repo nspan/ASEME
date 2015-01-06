@@ -21,7 +21,6 @@ import SRM.SRMPackage;
 import SRM.SRMmodel;
 import SUC.SUCPackage;
 import SUC.SUCmodel;
-import SUC.SystemRole;
 import SUC.UseCase;
 import asemedashboardview.views.ASEMEAction;
 import asemedashboardview.views.ASEMEFacade;
@@ -50,11 +49,12 @@ public class TransformSUC2SRMModelAction implements ASEMEAction {
 	public void run() {
 		ASEMEState state = context.getState(); 
 		URI suc = state.getSUC();
-		URI srm = state.getSRM();
-		if (srm == null) {
-			srm = suc.trimFileExtension().appendFileExtension("srm"); //$NON-NLS-1$
-			state.setSRM(srm);
-		}
+		//URI srm = state.getSRM();
+		
+		//if (srm == null) {
+		//	srm = suc.trimFileExtension().appendFileExtension("srm"); //$NON-NLS-1$
+		//	state.setSRM(srm);
+		//}
 		ResourceSet resourceSet = new ResourceSetImpl();
 		resourceSet
 		.getResourceFactoryRegistry()
@@ -71,15 +71,16 @@ public class TransformSUC2SRMModelAction implements ASEMEAction {
 		SUCmodel sucModel = (SUCmodel) resource.getContents().get(0);
 		Iterator<SUC.Role> iterator = sucModel.getRoles().iterator();
 		for(SUC.Role sucRole = iterator.next(); iterator.hasNext();sucRole = iterator.next()) {
-			if (sucRole instanceof SystemRole) {
+			if (sucRole.getType().getLiteral() == "System") {
+					
 				SRMmodel srmModel = SRMFactory.eINSTANCE.createSRMmodel();
 				SRM.Role srmRole = SRMFactory.eINSTANCE.createRole();
 				srmModel.getRoles().add(srmRole);
 				srmRole.setName(sucRole.getName());
-				String srmString = state.getSRM().toString();
-				srmString =  srmString.substring(0, srmString.length() - 4);
-				srmString = srmString + srmRole.getName() + ".srm";
-				srm = URI.createURI(srmString);
+				String srmString = 	sucRole.getName() +".srm";								//state.getSRM().toString();
+				//srmString =  srmString.substring(0, srmString.length() - 4);
+				//srmString = srmString + srmRole.getName() + ".srm";
+				URI srm = URI.createURI(srmString);
 				Resource newResource = resourceSet.createResource(srm);
 				newResource.getContents().add(srmModel);
 				newResource.getContents().add(srmRole);

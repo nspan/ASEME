@@ -1,13 +1,10 @@
 /**
- * <copyright>
- * </copyright>
- *
- * $Id$
  */
 package SUC;
 
 import org.eclipse.emf.ecore.EAttribute;
 import org.eclipse.emf.ecore.EClass;
+import org.eclipse.emf.ecore.EEnum;
 import org.eclipse.emf.ecore.EPackage;
 import org.eclipse.emf.ecore.EReference;
 
@@ -180,87 +177,32 @@ public interface SUCPackage extends EPackage {
 	int ROLE__NAME = 1;
 
 	/**
+	 * The feature id for the '<em><b>Type</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int ROLE__TYPE = 2;
+
+	/**
 	 * The number of structural features of the '<em>Role</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int ROLE_FEATURE_COUNT = 2;
+	int ROLE_FEATURE_COUNT = 3;
 
 	/**
-	 * The meta object id for the '{@link SUC.impl.HumanRoleImpl <em>Human Role</em>}' class.
+	 * The meta object id for the '{@link SUC.RoleType <em>Role Type</em>}' enum.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @see SUC.impl.HumanRoleImpl
-	 * @see SUC.impl.SUCPackageImpl#getHumanRole()
+	 * @see SUC.RoleType
+	 * @see SUC.impl.SUCPackageImpl#getRoleType()
 	 * @generated
 	 */
-	int HUMAN_ROLE = 3;
-
-	/**
-	 * The feature id for the '<em><b>Participates in</b></em>' reference list.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int HUMAN_ROLE__PARTICIPATES_IN = ROLE__PARTICIPATES_IN;
-
-	/**
-	 * The feature id for the '<em><b>Name</b></em>' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int HUMAN_ROLE__NAME = ROLE__NAME;
-
-	/**
-	 * The number of structural features of the '<em>Human Role</em>' class.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int HUMAN_ROLE_FEATURE_COUNT = ROLE_FEATURE_COUNT + 0;
-
-	/**
-	 * The meta object id for the '{@link SUC.impl.SystemRoleImpl <em>System Role</em>}' class.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see SUC.impl.SystemRoleImpl
-	 * @see SUC.impl.SUCPackageImpl#getSystemRole()
-	 * @generated
-	 */
-	int SYSTEM_ROLE = 4;
-
-	/**
-	 * The feature id for the '<em><b>Participates in</b></em>' reference list.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int SYSTEM_ROLE__PARTICIPATES_IN = ROLE__PARTICIPATES_IN;
-
-	/**
-	 * The feature id for the '<em><b>Name</b></em>' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int SYSTEM_ROLE__NAME = ROLE__NAME;
-
-	/**
-	 * The number of structural features of the '<em>System Role</em>' class.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int SYSTEM_ROLE_FEATURE_COUNT = ROLE_FEATURE_COUNT + 0;
+	int ROLE_TYPE = 3;
 
 
 	/**
@@ -382,24 +324,25 @@ public interface SUCPackage extends EPackage {
 	EAttribute getRole_Name();
 
 	/**
-	 * Returns the meta object for class '{@link SUC.HumanRole <em>Human Role</em>}'.
+	 * Returns the meta object for the attribute '{@link SUC.Role#getType <em>Type</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @return the meta object for class '<em>Human Role</em>'.
-	 * @see SUC.HumanRole
+	 * @return the meta object for the attribute '<em>Type</em>'.
+	 * @see SUC.Role#getType()
+	 * @see #getRole()
 	 * @generated
 	 */
-	EClass getHumanRole();
+	EAttribute getRole_Type();
 
 	/**
-	 * Returns the meta object for class '{@link SUC.SystemRole <em>System Role</em>}'.
+	 * Returns the meta object for enum '{@link SUC.RoleType <em>Role Type</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @return the meta object for class '<em>System Role</em>'.
-	 * @see SUC.SystemRole
+	 * @return the meta object for enum '<em>Role Type</em>'.
+	 * @see SUC.RoleType
 	 * @generated
 	 */
-	EClass getSystemRole();
+	EEnum getRoleType();
 
 	/**
 	 * Returns the factory that creates the instances of the model.
@@ -518,24 +461,22 @@ public interface SUCPackage extends EPackage {
 		EAttribute ROLE__NAME = eINSTANCE.getRole_Name();
 
 		/**
-		 * The meta object literal for the '{@link SUC.impl.HumanRoleImpl <em>Human Role</em>}' class.
+		 * The meta object literal for the '<em><b>Type</b></em>' attribute feature.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
-		 * @see SUC.impl.HumanRoleImpl
-		 * @see SUC.impl.SUCPackageImpl#getHumanRole()
 		 * @generated
 		 */
-		EClass HUMAN_ROLE = eINSTANCE.getHumanRole();
+		EAttribute ROLE__TYPE = eINSTANCE.getRole_Type();
 
 		/**
-		 * The meta object literal for the '{@link SUC.impl.SystemRoleImpl <em>System Role</em>}' class.
+		 * The meta object literal for the '{@link SUC.RoleType <em>Role Type</em>}' enum.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
-		 * @see SUC.impl.SystemRoleImpl
-		 * @see SUC.impl.SUCPackageImpl#getSystemRole()
+		 * @see SUC.RoleType
+		 * @see SUC.impl.SUCPackageImpl#getRoleType()
 		 * @generated
 		 */
-		EClass SYSTEM_ROLE = eINSTANCE.getSystemRole();
+		EEnum ROLE_TYPE = eINSTANCE.getRoleType();
 
 	}
 

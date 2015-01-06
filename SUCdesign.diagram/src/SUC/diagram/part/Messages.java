@@ -258,32 +258,32 @@ public class Messages extends NLS {
 	/**
 	 * @generated
 	 */
-	public static String UseCaseInclude2CreationTool_title;
+	public static String RoleParticipates_in2CreationTool_title;
 
 	/**
 	 * @generated
 	 */
-	public static String UseCaseInclude2CreationTool_desc;
+	public static String RoleParticipates_in2CreationTool_desc;
 
 	/**
 	 * @generated
 	 */
-	public static String Role3CreationTool_title;
+	public static String UseCaseInclude3CreationTool_title;
 
 	/**
 	 * @generated
 	 */
-	public static String Role3CreationTool_desc;
+	public static String UseCaseInclude3CreationTool_desc;
 
 	/**
 	 * @generated
 	 */
-	public static String RoleParticipates_in4CreationTool_title;
+	public static String Role4CreationTool_title;
 
 	/**
 	 * @generated
 	 */
-	public static String RoleParticipates_in4CreationTool_desc;
+	public static String Role4CreationTool_desc;
 
 	/**
 	 * @generated
@@ -293,72 +293,47 @@ public class Messages extends NLS {
 	/**
 	 * @generated
 	 */
-	public static String NavigatorGroupName_Role_2010_outgoinglinks;
-
-	/**
-	 * @generated
-	 */
-	public static String NavigatorGroupName_SystemRole_2007_outgoinglinks;
-
-	/**
-	 * @generated
-	 */
 	public static String NavigatorGroupName_SUCmodel_1000_links;
 
 	/**
 	 * @generated
 	 */
-	public static String NavigatorGroupName_RoleParticipates_in_4008_target;
+	public static String NavigatorGroupName_Role_2001_outgoinglinks;
 
 	/**
 	 * @generated
 	 */
-	public static String NavigatorGroupName_RoleParticipates_in_4008_source;
+	public static String NavigatorGroupName_UseCase_2002_incominglinks;
 
 	/**
 	 * @generated
 	 */
-	public static String NavigatorGroupName_UseCase_2009_incominglinks;
+	public static String NavigatorGroupName_UseCase_2002_outgoinglinks;
 
 	/**
 	 * @generated
 	 */
-	public static String NavigatorGroupName_UseCase_2009_outgoinglinks;
+	public static String NavigatorGroupName_RoleParticipates_in_4001_target;
 
 	/**
 	 * @generated
 	 */
-	public static String NavigatorGroupName_HumanRole_2008_outgoinglinks;
+	public static String NavigatorGroupName_RoleParticipates_in_4001_source;
 
 	/**
 	 * @generated
 	 */
-	public static String NavigatorGroupName_UseCaseInclude_4009_target;
+	public static String NavigatorGroupName_UseCaseInclude_4003_target;
 
 	/**
 	 * @generated
 	 */
-	public static String NavigatorGroupName_UseCaseInclude_4009_source;
+	public static String NavigatorGroupName_UseCaseInclude_4003_source;
 
 	/**
 	 * @generated
 	 */
 	public static String NavigatorActionProvider_OpenDiagramActionName;
-
-	/**
-	 * @generated
-	 */
-	public static String AbstractParser_UnexpectedValueType;
-
-	/**
-	 * @generated
-	 */
-	public static String AbstractParser_WrongStringConversion;
-
-	/**
-	 * @generated
-	 */
-	public static String AbstractParser_UnknownLiteral;
 
 	/**
 	 * @generated

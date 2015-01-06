@@ -17,7 +17,7 @@ public class SUCUriEditorInputTester extends PropertyTester {
 			return false;
 		}
 		URIEditorInput editorInput = (URIEditorInput) receiver;
-		return "sucd".equals(editorInput.getURI().fileExtension()); //$NON-NLS-1$
+		return "suc_diagram".equals(editorInput.getURI().fileExtension()); //$NON-NLS-1$
 	}
 
 }

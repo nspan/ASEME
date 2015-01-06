@@ -8,11 +8,13 @@ Require-Bundle: org.eclipse.ui,
  org.eclipse.core.runtime,
  org.eclipse.draw2d,
  org.eclipse.gmf.bridge.ui,
- org.eclipse.emf.ecore.xmi
+ org.eclipse.emf.ecore.xmi,
+ org.eclipse.equinox.registry
 Bundle-ActivationPolicy: lazy
 Bundle-RequiredExecutionEnvironment: JavaSE-1.6
 Import-Package: AIP,
  AIP.diagram.part,
+ IAC,
  SAG,
  SAG.diagram.part,
  SAG.presentation,
@@ -37,4 +39,7 @@ Import-Package: AIP,
  org.eclipse.gmf.mappings.presentation,
  org.eclipse.gmf.runtime.notation,
  org.eclipse.gmf.tooldef.presentation,
- org.eclipse.ui.part
+ org.eclipse.ui.part,
+ statechart,
+ statechart.diagram.part,
+ statechart.presentation

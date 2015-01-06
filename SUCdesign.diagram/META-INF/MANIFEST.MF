@@ -7,7 +7,7 @@ Bundle-ClassPath: .
 Bundle-Activator: SUC.diagram.part.SUCDiagramEditorPlugin
 Bundle-Vendor: %providerName
 Bundle-Localization: plugin
-Export-Package: SUC.diagram.edit.parts,
+Export-Package: SUC.diagram.edit.parts, 
  SUC.diagram.part,
  SUC.diagram.providers
 Require-Bundle: org.eclipse.core.runtime,
@@ -31,6 +31,7 @@ Require-Bundle: org.eclipse.core.runtime,
  org.eclipse.gmf.runtime.diagram.ui.render,
  org.eclipse.gmf.runtime.diagram.ui.resources.editor,
  org.eclipse.gmf.runtime.diagram.ui.resources.editor.ide,
+ org.eclipse.gmf.tooling.runtime;visibility:=reexport,
  org.eclipse.draw2d;visibility:=reexport,
  org.eclipse.gmf.runtime.draw2d.ui;visibility:=reexport,
  SUCdesign;visibility:=reexport,

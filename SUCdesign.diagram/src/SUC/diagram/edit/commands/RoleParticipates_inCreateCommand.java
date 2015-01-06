@@ -55,7 +55,7 @@ public class RoleParticipates_inCreateCommand extends EditElementCommand {
 		}
 		// target may be null here but it's possible to check constraint
 		return SUCBaseItemSemanticEditPolicy.getLinkConstraints()
-				.canCreateRoleParticipates_in_4008(getSource(), getTarget());
+				.canCreateRoleParticipates_in_4001(getSource(), getTarget());
 	}
 
 	/**

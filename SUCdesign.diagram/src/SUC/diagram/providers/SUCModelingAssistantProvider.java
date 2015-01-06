@@ -1,11 +1,8 @@
 package SUC.diagram.providers;
 
-import java.util.ArrayList;
 import java.util.Collection;
-import java.util.Collections;
 import java.util.HashSet;
 import java.util.Iterator;
-import java.util.List;
 
 import org.eclipse.core.runtime.IAdaptable;
 import org.eclipse.emf.ecore.EObject;
@@ -21,11 +18,6 @@ import org.eclipse.swt.widgets.Display;
 import org.eclipse.swt.widgets.Shell;
 import org.eclipse.ui.dialogs.ElementListSelectionDialog;
 
-import SUC.diagram.edit.parts.HumanRoleEditPart;
-import SUC.diagram.edit.parts.RoleEditPart;
-import SUC.diagram.edit.parts.SUCmodelEditPart;
-import SUC.diagram.edit.parts.SystemRoleEditPart;
-import SUC.diagram.edit.parts.UseCaseEditPart;
 import SUC.diagram.part.Messages;
 import SUC.diagram.part.SUCDiagramEditorPlugin;
 
@@ -33,125 +25,6 @@ import SUC.diagram.part.SUCDiagramEditorPlugin;
  * @generated
  */
 public class SUCModelingAssistantProvider extends ModelingAssistantProvider {
-
-	/**
-	 * @generated
-	 */
-	public List getTypesForPopupBar(IAdaptable host) {
-		IGraphicalEditPart editPart = (IGraphicalEditPart) host
-				.getAdapter(IGraphicalEditPart.class);
-		if (editPart instanceof SUCmodelEditPart) {
-			ArrayList<IElementType> types = new ArrayList<IElementType>(4);
-			types.add(SUCElementTypes.SystemRole_2007);
-			types.add(SUCElementTypes.HumanRole_2008);
-			types.add(SUCElementTypes.UseCase_2009);
-			types.add(SUCElementTypes.Role_2010);
-			return types;
-		}
-		return Collections.EMPTY_LIST;
-	}
-
-	/**
-	 * @generated
-	 */
-	public List getRelTypesOnSource(IAdaptable source) {
-		IGraphicalEditPart sourceEditPart = (IGraphicalEditPart) source
-				.getAdapter(IGraphicalEditPart.class);
-		if (sourceEditPart instanceof SystemRoleEditPart) {
-			return ((SystemRoleEditPart) sourceEditPart)
-					.getMARelTypesOnSource();
-		}
-		if (sourceEditPart instanceof HumanRoleEditPart) {
-			return ((HumanRoleEditPart) sourceEditPart).getMARelTypesOnSource();
-		}
-		if (sourceEditPart instanceof UseCaseEditPart) {
-			return ((UseCaseEditPart) sourceEditPart).getMARelTypesOnSource();
-		}
-		if (sourceEditPart instanceof RoleEditPart) {
-			return ((RoleEditPart) sourceEditPart).getMARelTypesOnSource();
-		}
-		return Collections.EMPTY_LIST;
-	}
-
-	/**
-	 * @generated
-	 */
-	public List getRelTypesOnTarget(IAdaptable target) {
-		IGraphicalEditPart targetEditPart = (IGraphicalEditPart) target
-				.getAdapter(IGraphicalEditPart.class);
-		if (targetEditPart instanceof UseCaseEditPart) {
-			return ((UseCaseEditPart) targetEditPart).getMARelTypesOnTarget();
-		}
-		return Collections.EMPTY_LIST;
-	}
-
-	/**
-	 * @generated
-	 */
-	public List getRelTypesOnSourceAndTarget(IAdaptable source,
-			IAdaptable target) {
-		IGraphicalEditPart sourceEditPart = (IGraphicalEditPart) source
-				.getAdapter(IGraphicalEditPart.class);
-		IGraphicalEditPart targetEditPart = (IGraphicalEditPart) target
-				.getAdapter(IGraphicalEditPart.class);
-		if (sourceEditPart instanceof SystemRoleEditPart) {
-			return ((SystemRoleEditPart) sourceEditPart)
-					.getMARelTypesOnSourceAndTarget(targetEditPart);
-		}
-		if (sourceEditPart instanceof HumanRoleEditPart) {
-			return ((HumanRoleEditPart) sourceEditPart)
-					.getMARelTypesOnSourceAndTarget(targetEditPart);
-		}
-		if (sourceEditPart instanceof UseCaseEditPart) {
-			return ((UseCaseEditPart) sourceEditPart)
-					.getMARelTypesOnSourceAndTarget(targetEditPart);
-		}
-		if (sourceEditPart instanceof RoleEditPart) {
-			return ((RoleEditPart) sourceEditPart)
-					.getMARelTypesOnSourceAndTarget(targetEditPart);
-		}
-		return Collections.EMPTY_LIST;
-	}
-
-	/**
-	 * @generated
-	 */
-	public List getTypesForSource(IAdaptable target,
-			IElementType relationshipType) {
-		IGraphicalEditPart targetEditPart = (IGraphicalEditPart) target
-				.getAdapter(IGraphicalEditPart.class);
-		if (targetEditPart instanceof UseCaseEditPart) {
-			return ((UseCaseEditPart) targetEditPart)
-					.getMATypesForSource(relationshipType);
-		}
-		return Collections.EMPTY_LIST;
-	}
-
-	/**
-	 * @generated
-	 */
-	public List getTypesForTarget(IAdaptable source,
-			IElementType relationshipType) {
-		IGraphicalEditPart sourceEditPart = (IGraphicalEditPart) source
-				.getAdapter(IGraphicalEditPart.class);
-		if (sourceEditPart instanceof SystemRoleEditPart) {
-			return ((SystemRoleEditPart) sourceEditPart)
-					.getMATypesForTarget(relationshipType);
-		}
-		if (sourceEditPart instanceof HumanRoleEditPart) {
-			return ((HumanRoleEditPart) sourceEditPart)
-					.getMATypesForTarget(relationshipType);
-		}
-		if (sourceEditPart instanceof UseCaseEditPart) {
-			return ((UseCaseEditPart) sourceEditPart)
-					.getMATypesForTarget(relationshipType);
-		}
-		if (sourceEditPart instanceof RoleEditPart) {
-			return ((RoleEditPart) sourceEditPart)
-					.getMATypesForTarget(relationshipType);
-		}
-		return Collections.EMPTY_LIST;
-	}
 
 	/**
 	 * @generated
@@ -228,4 +101,5 @@ public class SUCModelingAssistantProvider extends ModelingAssistantProvider {
 		}
 		return selected;
 	}
+
 }

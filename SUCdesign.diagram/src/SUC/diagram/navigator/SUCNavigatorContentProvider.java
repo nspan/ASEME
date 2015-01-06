@@ -23,11 +23,9 @@ import org.eclipse.ui.IMemento;
 import org.eclipse.ui.navigator.ICommonContentExtensionSite;
 import org.eclipse.ui.navigator.ICommonContentProvider;
 
-import SUC.diagram.edit.parts.HumanRoleEditPart;
 import SUC.diagram.edit.parts.RoleEditPart;
 import SUC.diagram.edit.parts.RoleParticipates_inEditPart;
 import SUC.diagram.edit.parts.SUCmodelEditPart;
-import SUC.diagram.edit.parts.SystemRoleEditPart;
 import SUC.diagram.edit.parts.UseCaseEditPart;
 import SUC.diagram.edit.parts.UseCaseIncludeEditPart;
 import SUC.diagram.part.Messages;
@@ -195,6 +193,9 @@ public class SUCNavigatorContentProvider implements ICommonContentProvider {
 					topViews.add((View) o);
 				}
 			}
+			result.addAll(createNavigatorItems(
+					selectViewsByType(topViews, SUCmodelEditPart.MODEL_ID),
+					file, false));
 			return result.toArray();
 		}
 
@@ -220,27 +221,100 @@ public class SUCNavigatorContentProvider implements ICommonContentProvider {
 	private Object[] getViewChildren(View view, Object parentElement) {
 		switch (SUCVisualIDRegistry.getVisualID(view)) {
 
+		case SUCmodelEditPart.VISUAL_ID: {
+			LinkedList<SUCAbstractNavigatorItem> result = new LinkedList<SUCAbstractNavigatorItem>();
+			Diagram sv = (Diagram) view;
+			SUCNavigatorGroup links = new SUCNavigatorGroup(
+					Messages.NavigatorGroupName_SUCmodel_1000_links,
+					"icons/linksNavigatorGroup.gif", parentElement); //$NON-NLS-1$
+			Collection<View> connectedViews;
+			connectedViews = getChildrenByType(Collections.singleton(sv),
+					SUCVisualIDRegistry.getType(RoleEditPart.VISUAL_ID));
+			result.addAll(createNavigatorItems(connectedViews, parentElement,
+					false));
+			connectedViews = getChildrenByType(Collections.singleton(sv),
+					SUCVisualIDRegistry.getType(UseCaseEditPart.VISUAL_ID));
+			result.addAll(createNavigatorItems(connectedViews, parentElement,
+					false));
+			connectedViews = getDiagramLinksByType(Collections.singleton(sv),
+					SUCVisualIDRegistry
+							.getType(UseCaseIncludeEditPart.VISUAL_ID));
+			links.addChildren(createNavigatorItems(connectedViews, links, false));
+			connectedViews = getDiagramLinksByType(Collections.singleton(sv),
+					SUCVisualIDRegistry
+							.getType(RoleParticipates_inEditPart.VISUAL_ID));
+			links.addChildren(createNavigatorItems(connectedViews, links, false));
+			if (!links.isEmpty()) {
+				result.add(links);
+			}
+			return result.toArray();
+		}
+
+		case RoleEditPart.VISUAL_ID: {
+			LinkedList<SUCAbstractNavigatorItem> result = new LinkedList<SUCAbstractNavigatorItem>();
+			Node sv = (Node) view;
+			SUCNavigatorGroup outgoinglinks = new SUCNavigatorGroup(
+					Messages.NavigatorGroupName_Role_2001_outgoinglinks,
+					"icons/outgoingLinksNavigatorGroup.gif", parentElement); //$NON-NLS-1$
+			Collection<View> connectedViews;
+			connectedViews = getOutgoingLinksByType(Collections.singleton(sv),
+					SUCVisualIDRegistry
+							.getType(RoleParticipates_inEditPart.VISUAL_ID));
+			outgoinglinks.addChildren(createNavigatorItems(connectedViews,
+					outgoinglinks, true));
+			if (!outgoinglinks.isEmpty()) {
+				result.add(outgoinglinks);
+			}
+			return result.toArray();
+		}
+
+		case UseCaseEditPart.VISUAL_ID: {
+			LinkedList<SUCAbstractNavigatorItem> result = new LinkedList<SUCAbstractNavigatorItem>();
+			Node sv = (Node) view;
+			SUCNavigatorGroup incominglinks = new SUCNavigatorGroup(
+					Messages.NavigatorGroupName_UseCase_2002_incominglinks,
+					"icons/incomingLinksNavigatorGroup.gif", parentElement); //$NON-NLS-1$
+			SUCNavigatorGroup outgoinglinks = new SUCNavigatorGroup(
+					Messages.NavigatorGroupName_UseCase_2002_outgoinglinks,
+					"icons/outgoingLinksNavigatorGroup.gif", parentElement); //$NON-NLS-1$
+			Collection<View> connectedViews;
+			connectedViews = getIncomingLinksByType(Collections.singleton(sv),
+					SUCVisualIDRegistry
+							.getType(UseCaseIncludeEditPart.VISUAL_ID));
+			incominglinks.addChildren(createNavigatorItems(connectedViews,
+					incominglinks, true));
+			connectedViews = getOutgoingLinksByType(Collections.singleton(sv),
+					SUCVisualIDRegistry
+							.getType(UseCaseIncludeEditPart.VISUAL_ID));
+			outgoinglinks.addChildren(createNavigatorItems(connectedViews,
+					outgoinglinks, true));
+			connectedViews = getIncomingLinksByType(Collections.singleton(sv),
+					SUCVisualIDRegistry
+							.getType(RoleParticipates_inEditPart.VISUAL_ID));
+			incominglinks.addChildren(createNavigatorItems(connectedViews,
+					incominglinks, true));
+			if (!incominglinks.isEmpty()) {
+				result.add(incominglinks);
+			}
+			if (!outgoinglinks.isEmpty()) {
+				result.add(outgoinglinks);
+			}
+			return result.toArray();
+		}
+
 		case RoleParticipates_inEditPart.VISUAL_ID: {
 			LinkedList<SUCAbstractNavigatorItem> result = new LinkedList<SUCAbstractNavigatorItem>();
 			Edge sv = (Edge) view;
 			SUCNavigatorGroup target = new SUCNavigatorGroup(
-					Messages.NavigatorGroupName_RoleParticipates_in_4008_target,
+					Messages.NavigatorGroupName_RoleParticipates_in_4001_target,
 					"icons/linkTargetNavigatorGroup.gif", parentElement); //$NON-NLS-1$
 			SUCNavigatorGroup source = new SUCNavigatorGroup(
-					Messages.NavigatorGroupName_RoleParticipates_in_4008_source,
+					Messages.NavigatorGroupName_RoleParticipates_in_4001_source,
 					"icons/linkSourceNavigatorGroup.gif", parentElement); //$NON-NLS-1$
 			Collection<View> connectedViews;
 			connectedViews = getLinksTargetByType(Collections.singleton(sv),
 					SUCVisualIDRegistry.getType(UseCaseEditPart.VISUAL_ID));
 			target.addChildren(createNavigatorItems(connectedViews, target,
-					true));
-			connectedViews = getLinksSourceByType(Collections.singleton(sv),
-					SUCVisualIDRegistry.getType(SystemRoleEditPart.VISUAL_ID));
-			source.addChildren(createNavigatorItems(connectedViews, source,
-					true));
-			connectedViews = getLinksSourceByType(Collections.singleton(sv),
-					SUCVisualIDRegistry.getType(HumanRoleEditPart.VISUAL_ID));
-			source.addChildren(createNavigatorItems(connectedViews, source,
 					true));
 			connectedViews = getLinksSourceByType(Collections.singleton(sv),
 					SUCVisualIDRegistry.getType(RoleEditPart.VISUAL_ID));
@@ -259,10 +333,10 @@ public class SUCNavigatorContentProvider implements ICommonContentProvider {
 			LinkedList<SUCAbstractNavigatorItem> result = new LinkedList<SUCAbstractNavigatorItem>();
 			Edge sv = (Edge) view;
 			SUCNavigatorGroup target = new SUCNavigatorGroup(
-					Messages.NavigatorGroupName_UseCaseInclude_4009_target,
+					Messages.NavigatorGroupName_UseCaseInclude_4003_target,
 					"icons/linkTargetNavigatorGroup.gif", parentElement); //$NON-NLS-1$
 			SUCNavigatorGroup source = new SUCNavigatorGroup(
-					Messages.NavigatorGroupName_UseCaseInclude_4009_source,
+					Messages.NavigatorGroupName_UseCaseInclude_4003_source,
 					"icons/linkSourceNavigatorGroup.gif", parentElement); //$NON-NLS-1$
 			Collection<View> connectedViews;
 			connectedViews = getLinksTargetByType(Collections.singleton(sv),
@@ -278,131 +352,6 @@ public class SUCNavigatorContentProvider implements ICommonContentProvider {
 			}
 			if (!source.isEmpty()) {
 				result.add(source);
-			}
-			return result.toArray();
-		}
-
-		case HumanRoleEditPart.VISUAL_ID: {
-			LinkedList<SUCAbstractNavigatorItem> result = new LinkedList<SUCAbstractNavigatorItem>();
-			Node sv = (Node) view;
-			SUCNavigatorGroup outgoinglinks = new SUCNavigatorGroup(
-					Messages.NavigatorGroupName_HumanRole_2008_outgoinglinks,
-					"icons/outgoingLinksNavigatorGroup.gif", parentElement); //$NON-NLS-1$
-			Collection<View> connectedViews;
-			connectedViews = getOutgoingLinksByType(Collections.singleton(sv),
-					SUCVisualIDRegistry
-							.getType(RoleParticipates_inEditPart.VISUAL_ID));
-			outgoinglinks.addChildren(createNavigatorItems(connectedViews,
-					outgoinglinks, true));
-			if (!outgoinglinks.isEmpty()) {
-				result.add(outgoinglinks);
-			}
-			return result.toArray();
-		}
-
-		case RoleEditPart.VISUAL_ID: {
-			LinkedList<SUCAbstractNavigatorItem> result = new LinkedList<SUCAbstractNavigatorItem>();
-			Node sv = (Node) view;
-			SUCNavigatorGroup outgoinglinks = new SUCNavigatorGroup(
-					Messages.NavigatorGroupName_Role_2010_outgoinglinks,
-					"icons/outgoingLinksNavigatorGroup.gif", parentElement); //$NON-NLS-1$
-			Collection<View> connectedViews;
-			connectedViews = getOutgoingLinksByType(Collections.singleton(sv),
-					SUCVisualIDRegistry
-							.getType(RoleParticipates_inEditPart.VISUAL_ID));
-			outgoinglinks.addChildren(createNavigatorItems(connectedViews,
-					outgoinglinks, true));
-			if (!outgoinglinks.isEmpty()) {
-				result.add(outgoinglinks);
-			}
-			return result.toArray();
-		}
-
-		case UseCaseEditPart.VISUAL_ID: {
-			LinkedList<SUCAbstractNavigatorItem> result = new LinkedList<SUCAbstractNavigatorItem>();
-			Node sv = (Node) view;
-			SUCNavigatorGroup incominglinks = new SUCNavigatorGroup(
-					Messages.NavigatorGroupName_UseCase_2009_incominglinks,
-					"icons/incomingLinksNavigatorGroup.gif", parentElement); //$NON-NLS-1$
-			SUCNavigatorGroup outgoinglinks = new SUCNavigatorGroup(
-					Messages.NavigatorGroupName_UseCase_2009_outgoinglinks,
-					"icons/outgoingLinksNavigatorGroup.gif", parentElement); //$NON-NLS-1$
-			Collection<View> connectedViews;
-			connectedViews = getIncomingLinksByType(Collections.singleton(sv),
-					SUCVisualIDRegistry
-							.getType(RoleParticipates_inEditPart.VISUAL_ID));
-			incominglinks.addChildren(createNavigatorItems(connectedViews,
-					incominglinks, true));
-			connectedViews = getIncomingLinksByType(Collections.singleton(sv),
-					SUCVisualIDRegistry
-							.getType(UseCaseIncludeEditPart.VISUAL_ID));
-			incominglinks.addChildren(createNavigatorItems(connectedViews,
-					incominglinks, true));
-			connectedViews = getOutgoingLinksByType(Collections.singleton(sv),
-					SUCVisualIDRegistry
-							.getType(UseCaseIncludeEditPart.VISUAL_ID));
-			outgoinglinks.addChildren(createNavigatorItems(connectedViews,
-					outgoinglinks, true));
-			if (!incominglinks.isEmpty()) {
-				result.add(incominglinks);
-			}
-			if (!outgoinglinks.isEmpty()) {
-				result.add(outgoinglinks);
-			}
-			return result.toArray();
-		}
-
-		case SystemRoleEditPart.VISUAL_ID: {
-			LinkedList<SUCAbstractNavigatorItem> result = new LinkedList<SUCAbstractNavigatorItem>();
-			Node sv = (Node) view;
-			SUCNavigatorGroup outgoinglinks = new SUCNavigatorGroup(
-					Messages.NavigatorGroupName_SystemRole_2007_outgoinglinks,
-					"icons/outgoingLinksNavigatorGroup.gif", parentElement); //$NON-NLS-1$
-			Collection<View> connectedViews;
-			connectedViews = getOutgoingLinksByType(Collections.singleton(sv),
-					SUCVisualIDRegistry
-							.getType(RoleParticipates_inEditPart.VISUAL_ID));
-			outgoinglinks.addChildren(createNavigatorItems(connectedViews,
-					outgoinglinks, true));
-			if (!outgoinglinks.isEmpty()) {
-				result.add(outgoinglinks);
-			}
-			return result.toArray();
-		}
-
-		case SUCmodelEditPart.VISUAL_ID: {
-			LinkedList<SUCAbstractNavigatorItem> result = new LinkedList<SUCAbstractNavigatorItem>();
-			Diagram sv = (Diagram) view;
-			SUCNavigatorGroup links = new SUCNavigatorGroup(
-					Messages.NavigatorGroupName_SUCmodel_1000_links,
-					"icons/linksNavigatorGroup.gif", parentElement); //$NON-NLS-1$
-			Collection<View> connectedViews;
-			connectedViews = getChildrenByType(Collections.singleton(sv),
-					SUCVisualIDRegistry.getType(SystemRoleEditPart.VISUAL_ID));
-			result.addAll(createNavigatorItems(connectedViews, parentElement,
-					false));
-			connectedViews = getChildrenByType(Collections.singleton(sv),
-					SUCVisualIDRegistry.getType(HumanRoleEditPart.VISUAL_ID));
-			result.addAll(createNavigatorItems(connectedViews, parentElement,
-					false));
-			connectedViews = getChildrenByType(Collections.singleton(sv),
-					SUCVisualIDRegistry.getType(UseCaseEditPart.VISUAL_ID));
-			result.addAll(createNavigatorItems(connectedViews, parentElement,
-					false));
-			connectedViews = getChildrenByType(Collections.singleton(sv),
-					SUCVisualIDRegistry.getType(RoleEditPart.VISUAL_ID));
-			result.addAll(createNavigatorItems(connectedViews, parentElement,
-					false));
-			connectedViews = getDiagramLinksByType(Collections.singleton(sv),
-					SUCVisualIDRegistry
-							.getType(RoleParticipates_inEditPart.VISUAL_ID));
-			links.addChildren(createNavigatorItems(connectedViews, links, false));
-			connectedViews = getDiagramLinksByType(Collections.singleton(sv),
-					SUCVisualIDRegistry
-							.getType(UseCaseIncludeEditPart.VISUAL_ID));
-			links.addChildren(createNavigatorItems(connectedViews, links, false));
-			if (!links.isEmpty()) {
-				result.add(links);
 			}
 			return result.toArray();
 		}

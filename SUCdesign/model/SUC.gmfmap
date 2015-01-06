@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<gmfmap:Mapping xmi:version="2.0"
+<gmfmap:Mapping
+    xmi:version="2.0"
     xmlns:xmi="http://www.omg.org/XMI"
     xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
     xmlns:ecore="http://www.eclipse.org/emf/2002/Ecore"
@@ -10,10 +11,9 @@
         href="SUC.ecore#//SUCmodel/roles"/>
     <ownedChild>
       <domainMetaElement
-          href="SUC.ecore#//SystemRole"/>
+          href="SUC.ecore#//Role"/>
       <labelMappings
-          xsi:type="gmfmap:FeatureLabelMapping"
-          editPattern="">
+          xsi:type="gmfmap:FeatureLabelMapping">
         <diagramLabel
             href="SUC.gmfgraph#RoleName"/>
         <features
@@ -21,30 +21,7 @@
       </labelMappings>
       <tool
           xsi:type="gmftool:CreationTool"
-          href="SUC.gmftool#//@palette/@tools.0/@tools.2"/>
-      <diagramNode
-          href="SUC.gmfgraph#Role"/>
-    </ownedChild>
-  </nodes>
-  <nodes>
-    <containmentFeature
-        href="SUC.ecore#//SUCmodel/roles"/>
-    <ownedChild>
-      <domainMetaElement
-          href="SUC.ecore#//HumanRole"/>
-      <labelMappings
-          xsi:type="gmfmap:FeatureLabelMapping"
-          viewPattern=""
-          editorPattern=""
-          editPattern="">
-        <diagramLabel
-            href="SUC.gmfgraph#RoleName"/>
-        <features
-            href="SUC.ecore#//Role/name"/>
-      </labelMappings>
-      <tool
-          xsi:type="gmftool:CreationTool"
-          href="SUC.gmftool#//@palette/@tools.0/@tools.2"/>
+          href="SUC.gmftool#//@palette/@tools.0/@tools.3"/>
       <diagramNode
           href="SUC.gmfgraph#Role"/>
     </ownedChild>
@@ -76,39 +53,6 @@
           href="SUC.gmfgraph#UseCase"/>
     </ownedChild>
   </nodes>
-  <nodes>
-    <containmentFeature
-        href="SUC.ecore#//SUCmodel/roles"/>
-    <ownedChild>
-      <domainMetaElement
-          href="SUC.ecore#//Role"/>
-      <labelMappings
-          xsi:type="gmfmap:FeatureLabelMapping"
-          viewPattern=""
-          editorPattern=""
-          editPattern="">
-        <diagramLabel
-            href="SUC.gmfgraph#RoleName"/>
-        <features
-            href="SUC.ecore#//Role/name"/>
-      </labelMappings>
-      <tool
-          xsi:type="gmftool:CreationTool"
-          href="SUC.gmftool#//@palette/@tools.0/@tools.2"/>
-      <diagramNode
-          href="SUC.gmfgraph#Role"/>
-    </ownedChild>
-  </nodes>
-  <links>
-    <tool
-        xsi:type="gmftool:CreationTool"
-        href="SUC.gmftool#//@palette/@tools.0/@tools.3"/>
-    <diagramLink
-        href="SUC.gmfgraph#RoleParticipates_in"/>
-    <linkMetaFeature
-        xsi:type="ecore:EReference"
-        href="SUC.ecore#//Role/participates_in"/>
-  </links>
   <links>
     <labelMappings>
       <diagramLabel
@@ -116,12 +60,22 @@
     </labelMappings>
     <tool
         xsi:type="gmftool:CreationTool"
-        href="SUC.gmftool#//@palette/@tools.0/@tools.1"/>
+        href="SUC.gmftool#//@palette/@tools.0/@tools.2"/>
     <diagramLink
         href="SUC.gmfgraph#UseCaseInclude"/>
     <linkMetaFeature
         xsi:type="ecore:EReference"
         href="SUC.ecore#//UseCase/include"/>
+  </links>
+  <links>
+    <tool
+        xsi:type="gmftool:CreationTool"
+        href="SUC.gmftool#//@palette/@tools.0/@tools.1"/>
+    <diagramLink
+        href="SUC.gmfgraph#RoleParticipates_in"/>
+    <linkMetaFeature
+        xsi:type="ecore:EReference"
+        href="SUC.ecore#//Role/participates_in"/>
   </links>
   <diagram>
     <diagramCanvas

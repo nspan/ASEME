@@ -1,8 +1,4 @@
 /**
- * <copyright>
- * </copyright>
- *
- * $Id$
  */
 package SUC;
 
@@ -51,24 +47,6 @@ public interface SUCFactory extends EFactory {
 	 * @generated
 	 */
 	Role createRole();
-
-	/**
-	 * Returns a new object of class '<em>Human Role</em>'.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return a new object of class '<em>Human Role</em>'.
-	 * @generated
-	 */
-	HumanRole createHumanRole();
-
-	/**
-	 * Returns a new object of class '<em>System Role</em>'.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return a new object of class '<em>System Role</em>'.
-	 * @generated
-	 */
-	SystemRole createSystemRole();
 
 	/**
 	 * Returns the package supported by this factory.

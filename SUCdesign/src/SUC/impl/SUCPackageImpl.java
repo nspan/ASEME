@@ -1,21 +1,17 @@
 /**
- * <copyright>
- * </copyright>
- *
- * $Id$
  */
 package SUC.impl;
 
-import SUC.HumanRole;
 import SUC.Role;
+import SUC.RoleType;
 import SUC.SUCFactory;
 import SUC.SUCPackage;
 import SUC.SUCmodel;
-import SUC.SystemRole;
 import SUC.UseCase;
 
 import org.eclipse.emf.ecore.EAttribute;
 import org.eclipse.emf.ecore.EClass;
+import org.eclipse.emf.ecore.EEnum;
 import org.eclipse.emf.ecore.EPackage;
 import org.eclipse.emf.ecore.EReference;
 
@@ -54,14 +50,7 @@ public class SUCPackageImpl extends EPackageImpl implements SUCPackage {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	private EClass humanRoleEClass = null;
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	private EClass systemRoleEClass = null;
+	private EEnum roleTypeEEnum = null;
 
 	/**
 	 * Creates an instance of the model <b>Package</b>, registered with
@@ -228,8 +217,8 @@ public class SUCPackageImpl extends EPackageImpl implements SUCPackage {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EClass getHumanRole() {
-		return humanRoleEClass;
+	public EAttribute getRole_Type() {
+		return (EAttribute)roleEClass.getEStructuralFeatures().get(2);
 	}
 
 	/**
@@ -237,8 +226,8 @@ public class SUCPackageImpl extends EPackageImpl implements SUCPackage {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EClass getSystemRole() {
-		return systemRoleEClass;
+	public EEnum getRoleType() {
+		return roleTypeEEnum;
 	}
 
 	/**
@@ -282,10 +271,10 @@ public class SUCPackageImpl extends EPackageImpl implements SUCPackage {
 		roleEClass = createEClass(ROLE);
 		createEReference(roleEClass, ROLE__PARTICIPATES_IN);
 		createEAttribute(roleEClass, ROLE__NAME);
+		createEAttribute(roleEClass, ROLE__TYPE);
 
-		humanRoleEClass = createEClass(HUMAN_ROLE);
-
-		systemRoleEClass = createEClass(SYSTEM_ROLE);
+		// Create enums
+		roleTypeEEnum = createEEnum(ROLE_TYPE);
 	}
 
 	/**
@@ -316,8 +305,6 @@ public class SUCPackageImpl extends EPackageImpl implements SUCPackage {
 		// Set bounds for type parameters
 
 		// Add supertypes to classes
-		humanRoleEClass.getESuperTypes().add(this.getRole());
-		systemRoleEClass.getESuperTypes().add(this.getRole());
 
 		// Initialize classes and features; add operations and parameters
 		initEClass(suCmodelEClass, SUCmodel.class, "SUCmodel", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
@@ -333,10 +320,14 @@ public class SUCPackageImpl extends EPackageImpl implements SUCPackage {
 		initEClass(roleEClass, Role.class, "Role", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 		initEReference(getRole_Participates_in(), this.getUseCase(), this.getUseCase_Participant(), "participates_in", null, 0, -1, Role.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, !IS_ORDERED);
 		initEAttribute(getRole_Name(), ecorePackage.getEString(), "name", null, 0, 1, Role.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getRole_Type(), this.getRoleType(), "type", null, 0, 1, Role.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
-		initEClass(humanRoleEClass, HumanRole.class, "HumanRole", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-
-		initEClass(systemRoleEClass, SystemRole.class, "SystemRole", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+		// Initialize enums and add enum literals
+		initEEnum(roleTypeEEnum, RoleType.class, "RoleType");
+		addEEnumLiteral(roleTypeEEnum, RoleType.SYSTEM);
+		addEEnumLiteral(roleTypeEEnum, RoleType.LEGACY_SYSTEM);
+		addEEnumLiteral(roleTypeEEnum, RoleType.EXTERNAL_SYSTEM);
+		addEEnumLiteral(roleTypeEEnum, RoleType.HUMAN);
 
 		// Create resource
 		createResource(eNS_URI);

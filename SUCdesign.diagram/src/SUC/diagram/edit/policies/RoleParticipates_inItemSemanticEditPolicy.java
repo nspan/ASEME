@@ -16,7 +16,7 @@ public class RoleParticipates_inItemSemanticEditPolicy extends
 	 * @generated
 	 */
 	public RoleParticipates_inItemSemanticEditPolicy() {
-		super(SUCElementTypes.RoleParticipates_in_4008);
+		super(SUCElementTypes.RoleParticipates_in_4001);
 	}
 
 	/**

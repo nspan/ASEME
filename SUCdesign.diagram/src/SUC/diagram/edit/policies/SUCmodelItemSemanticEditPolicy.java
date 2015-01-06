@@ -7,9 +7,7 @@ import org.eclipse.gmf.runtime.emf.commands.core.commands.DuplicateEObjectsComma
 import org.eclipse.gmf.runtime.emf.type.core.requests.CreateElementRequest;
 import org.eclipse.gmf.runtime.emf.type.core.requests.DuplicateElementsRequest;
 
-import SUC.diagram.edit.commands.HumanRoleCreateCommand;
 import SUC.diagram.edit.commands.RoleCreateCommand;
-import SUC.diagram.edit.commands.SystemRoleCreateCommand;
 import SUC.diagram.edit.commands.UseCaseCreateCommand;
 import SUC.diagram.providers.SUCElementTypes;
 
@@ -30,17 +28,11 @@ public class SUCmodelItemSemanticEditPolicy extends
 	 * @generated
 	 */
 	protected Command getCreateCommand(CreateElementRequest req) {
-		if (SUCElementTypes.SystemRole_2007 == req.getElementType()) {
-			return getGEFWrapper(new SystemRoleCreateCommand(req));
-		}
-		if (SUCElementTypes.HumanRole_2008 == req.getElementType()) {
-			return getGEFWrapper(new HumanRoleCreateCommand(req));
-		}
-		if (SUCElementTypes.UseCase_2009 == req.getElementType()) {
-			return getGEFWrapper(new UseCaseCreateCommand(req));
-		}
-		if (SUCElementTypes.Role_2010 == req.getElementType()) {
+		if (SUCElementTypes.Role_2001 == req.getElementType()) {
 			return getGEFWrapper(new RoleCreateCommand(req));
+		}
+		if (SUCElementTypes.UseCase_2002 == req.getElementType()) {
+			return getGEFWrapper(new UseCaseCreateCommand(req));
 		}
 		return super.getCreateCommand(req);
 	}

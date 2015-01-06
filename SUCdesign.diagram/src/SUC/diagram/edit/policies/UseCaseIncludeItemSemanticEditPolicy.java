@@ -16,7 +16,7 @@ public class UseCaseIncludeItemSemanticEditPolicy extends
 	 * @generated
 	 */
 	public UseCaseIncludeItemSemanticEditPolicy() {
-		super(SUCElementTypes.UseCaseInclude_4009);
+		super(SUCElementTypes.UseCaseInclude_4003);
 	}
 
 	/**

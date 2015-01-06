@@ -52,6 +52,10 @@ public final class ASEMEState {
 
 	private IProject project;
 
+	public IProject getProject() {
+		return project;
+	}
+
 	public ASEMEState() {
 		enabledOptions = new HashSet<String>();
 	}

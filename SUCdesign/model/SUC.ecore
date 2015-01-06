@@ -1,8 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<ecore:EPackage xmi:version="2.0"
-    xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-    xmlns:ecore="http://www.eclipse.org/emf/2002/Ecore" name="SUC"
-    nsURI="http://www.amcl.tuc.gr/aseme/metamodels/SUC" nsPrefix="SUC">
+<ecore:EPackage xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xmlns:ecore="http://www.eclipse.org/emf/2002/Ecore" name="SUC" nsURI="http://www.amcl.tuc.gr/aseme/metamodels/SUC" nsPrefix="SUC">
   <eClassifiers xsi:type="ecore:EClass" name="SUCmodel">
     <eStructuralFeatures xsi:type="ecore:EReference" name="roles" lowerBound="2" upperBound="-1"
         eType="#//Role" containment="true"/>
@@ -21,7 +19,12 @@
     <eStructuralFeatures xsi:type="ecore:EReference" name="participates_in" ordered="false"
         upperBound="-1" eType="#//UseCase" eOpposite="#//UseCase/participant"/>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="name" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="type" eType="#//RoleType"/>
   </eClassifiers>
-  <eClassifiers xsi:type="ecore:EClass" name="HumanRole" eSuperTypes="#//Role"/>
-  <eClassifiers xsi:type="ecore:EClass" name="SystemRole" eSuperTypes="#//Role"/>
+  <eClassifiers xsi:type="ecore:EEnum" name="RoleType">
+    <eLiterals name="System"/>
+    <eLiterals name="Legacy_System" value="1"/>
+    <eLiterals name="External_System" value="2"/>
+    <eLiterals name="Human" value="3"/>
+  </eClassifiers>
 </ecore:EPackage>

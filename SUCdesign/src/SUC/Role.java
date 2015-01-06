@@ -1,8 +1,4 @@
 /**
- * <copyright>
- * </copyright>
- *
- * $Id$
  */
 package SUC;
 
@@ -20,6 +16,7 @@ import org.eclipse.emf.ecore.EObject;
  * <ul>
  *   <li>{@link SUC.Role#getParticipates_in <em>Participates in</em>}</li>
  *   <li>{@link SUC.Role#getName <em>Name</em>}</li>
+ *   <li>{@link SUC.Role#getType <em>Type</em>}</li>
  * </ul>
  * </p>
  *
@@ -71,5 +68,34 @@ public interface Role extends EObject {
 	 * @generated
 	 */
 	void setName(String value);
+
+	/**
+	 * Returns the value of the '<em><b>Type</b></em>' attribute.
+	 * The literals are from the enumeration {@link SUC.RoleType}.
+	 * <!-- begin-user-doc -->
+	 * <p>
+	 * If the meaning of the '<em>Type</em>' attribute isn't clear,
+	 * there really should be more of a description here...
+	 * </p>
+	 * <!-- end-user-doc -->
+	 * @return the value of the '<em>Type</em>' attribute.
+	 * @see SUC.RoleType
+	 * @see #setType(RoleType)
+	 * @see SUC.SUCPackage#getRole_Type()
+	 * @model
+	 * @generated
+	 */
+	RoleType getType();
+
+	/**
+	 * Sets the value of the '{@link SUC.Role#getType <em>Type</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @param value the new value of the '<em>Type</em>' attribute.
+	 * @see SUC.RoleType
+	 * @see #getType()
+	 * @generated
+	 */
+	void setType(RoleType value);
 
 } // Role

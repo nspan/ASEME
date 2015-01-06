@@ -73,7 +73,7 @@ public class UseCaseIncludeReorientCommand extends EditElementCommand {
 			return false;
 		}
 		return SUCBaseItemSemanticEditPolicy.getLinkConstraints()
-				.canExistUseCaseInclude_4009(getNewSource(), getOldTarget());
+				.canExistUseCaseInclude_4003(getNewSource(), getOldTarget());
 	}
 
 	/**
@@ -84,7 +84,7 @@ public class UseCaseIncludeReorientCommand extends EditElementCommand {
 			return false;
 		}
 		return SUCBaseItemSemanticEditPolicy.getLinkConstraints()
-				.canExistUseCaseInclude_4009(getOldSource(), getNewTarget());
+				.canExistUseCaseInclude_4003(getOldSource(), getNewTarget());
 	}
 
 	/**

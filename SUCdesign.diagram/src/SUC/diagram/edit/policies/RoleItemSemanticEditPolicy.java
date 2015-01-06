@@ -30,7 +30,7 @@ public class RoleItemSemanticEditPolicy extends SUCBaseItemSemanticEditPolicy {
 	 * @generated
 	 */
 	public RoleItemSemanticEditPolicy() {
-		super(SUCElementTypes.Role_2010);
+		super(SUCElementTypes.Role_2001);
 	}
 
 	/**
@@ -79,7 +79,7 @@ public class RoleItemSemanticEditPolicy extends SUCBaseItemSemanticEditPolicy {
 	 */
 	protected Command getStartCreateRelationshipCommand(
 			CreateRelationshipRequest req) {
-		if (SUCElementTypes.RoleParticipates_in_4008 == req.getElementType()) {
+		if (SUCElementTypes.RoleParticipates_in_4001 == req.getElementType()) {
 			return getGEFWrapper(new RoleParticipates_inCreateCommand(req,
 					req.getSource(), req.getTarget()));
 		}
@@ -91,7 +91,7 @@ public class RoleItemSemanticEditPolicy extends SUCBaseItemSemanticEditPolicy {
 	 */
 	protected Command getCompleteCreateRelationshipCommand(
 			CreateRelationshipRequest req) {
-		if (SUCElementTypes.RoleParticipates_in_4008 == req.getElementType()) {
+		if (SUCElementTypes.RoleParticipates_in_4001 == req.getElementType()) {
 			return null;
 		}
 		return null;

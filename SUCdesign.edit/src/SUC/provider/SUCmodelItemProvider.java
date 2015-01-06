@@ -1,8 +1,4 @@
 /**
- * <copyright>
- * </copyright>
- *
- * $Id$
  */
 package SUC.provider;
 
@@ -36,7 +32,7 @@ import org.eclipse.emf.edit.provider.ViewerNotification;
  * <!-- end-user-doc -->
  * @generated
  */
-public class SUCmodelItemProvider
+public class SUCmodelItemProvider 
 	extends ItemProviderAdapter
 	implements
 		IEditingDomainItemProvider,
@@ -121,6 +117,7 @@ public class SUCmodelItemProvider
 	public String getText(Object object) {
 		return getString("_UI_SUCmodel_type");
 	}
+	
 
 	/**
 	 * This handles model notifications by calling {@link #updateChildren} to update any cached
@@ -157,16 +154,6 @@ public class SUCmodelItemProvider
 			(createChildParameter
 				(SUCPackage.Literals.SU_CMODEL__ROLES,
 				 SUCFactory.eINSTANCE.createRole()));
-
-		newChildDescriptors.add
-			(createChildParameter
-				(SUCPackage.Literals.SU_CMODEL__ROLES,
-				 SUCFactory.eINSTANCE.createHumanRole()));
-
-		newChildDescriptors.add
-			(createChildParameter
-				(SUCPackage.Literals.SU_CMODEL__ROLES,
-				 SUCFactory.eINSTANCE.createSystemRole()));
 
 		newChildDescriptors.add
 			(createChildParameter

@@ -82,7 +82,7 @@ public class SUCNewDiagramFileWizard extends Wizard {
 		}
 		myFileCreationPage.setContainerFullPath(filePath);
 		myFileCreationPage.setFileName(SUCDiagramEditorUtil.getUniqueFileName(
-				filePath, fileName, "sucd")); //$NON-NLS-1$
+				filePath, fileName, "suc_diagram")); //$NON-NLS-1$
 
 		diagramRootElementSelectionPage = new DiagramRootElementSelectionPage(
 				Messages.SUCNewDiagramFileWizard_RootSelectionPageName);
@@ -181,13 +181,13 @@ public class SUCNewDiagramFileWizard extends Wizard {
 		 * @generated
 		 */
 		protected boolean validatePage() {
-			if (selectedModelElement == null) {
+			if (getModelElement() == null) {
 				setErrorMessage(Messages.SUCNewDiagramFileWizard_RootSelectionPageNoSelectionMessage);
 				return false;
 			}
 			boolean result = ViewService.getInstance().provides(
 					new CreateDiagramViewOperation(new EObjectAdapter(
-							selectedModelElement), SUCmodelEditPart.MODEL_ID,
+							getModelElement()), SUCmodelEditPart.MODEL_ID,
 							SUCDiagramEditorPlugin.DIAGRAM_PREFERENCES_HINT));
 			setErrorMessage(result ? null
 					: Messages.SUCNewDiagramFileWizard_RootSelectionPageInvalidSelectionMessage);

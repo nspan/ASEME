@@ -2,15 +2,12 @@
 <?eclipse version="3.0"?>
 
 <!--
- <copyright>
- </copyright>
-
- $Id$
 -->
 
 <plugin>
 
    <extension point="org.eclipse.ui.newWizards">
+      <!-- @generated SUC -->
       <category
             id="org.eclipse.emf.ecore.Wizard.category.ID"
             name="%_UI_Wizard_category"/>
@@ -26,6 +23,7 @@
    </extension>
 
    <extension point="org.eclipse.ui.editors">
+      <!-- @generated SUC -->
       <editor
             id="SUC.presentation.SUCEditorID"
             name="%_UI_SUCEditor_label"

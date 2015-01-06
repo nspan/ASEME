@@ -54,7 +54,7 @@ public class UseCaseIncludeCreateCommand extends EditElementCommand {
 		}
 		// target may be null here but it's possible to check constraint
 		return SUCBaseItemSemanticEditPolicy.getLinkConstraints()
-				.canCreateUseCaseInclude_4009(getSource(), getTarget());
+				.canCreateUseCaseInclude_4003(getSource(), getTarget());
 	}
 
 	/**

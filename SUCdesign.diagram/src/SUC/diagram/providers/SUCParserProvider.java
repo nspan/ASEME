@@ -14,9 +14,7 @@ import org.eclipse.gmf.runtime.emf.ui.services.parser.ParserHintAdapter;
 import org.eclipse.gmf.runtime.notation.View;
 
 import SUC.SUCPackage;
-import SUC.diagram.edit.parts.HumanRoleNameEditPart;
 import SUC.diagram.edit.parts.RoleNameEditPart;
-import SUC.diagram.edit.parts.SystemRoleNameEditPart;
 import SUC.diagram.edit.parts.UseCaseNameEditPart;
 import SUC.diagram.edit.parts.UseCaseSpecified_byEditPart;
 import SUC.diagram.parsers.MessageFormatParser;
@@ -31,91 +29,55 @@ public class SUCParserProvider extends AbstractProvider implements
 	/**
 	 * @generated
 	 */
-	private IParser systemRoleName_5009Parser;
+	private IParser roleName_5001Parser;
 
 	/**
 	 * @generated
 	 */
-	private IParser getSystemRoleName_5009Parser() {
-		if (systemRoleName_5009Parser == null) {
+	private IParser getRoleName_5001Parser() {
+		if (roleName_5001Parser == null) {
 			EAttribute[] features = new EAttribute[] { SUCPackage.eINSTANCE
 					.getRole_Name() };
 			MessageFormatParser parser = new MessageFormatParser(features);
-			systemRoleName_5009Parser = parser;
+			roleName_5001Parser = parser;
 		}
-		return systemRoleName_5009Parser;
+		return roleName_5001Parser;
 	}
 
 	/**
 	 * @generated
 	 */
-	private IParser humanRoleName_5010Parser;
+	private IParser useCaseName_5002Parser;
 
 	/**
 	 * @generated
 	 */
-	private IParser getHumanRoleName_5010Parser() {
-		if (humanRoleName_5010Parser == null) {
-			EAttribute[] features = new EAttribute[] { SUCPackage.eINSTANCE
-					.getRole_Name() };
-			MessageFormatParser parser = new MessageFormatParser(features);
-			humanRoleName_5010Parser = parser;
-		}
-		return humanRoleName_5010Parser;
-	}
-
-	/**
-	 * @generated
-	 */
-	private IParser useCaseName_5011Parser;
-
-	/**
-	 * @generated
-	 */
-	private IParser getUseCaseName_5011Parser() {
-		if (useCaseName_5011Parser == null) {
+	private IParser getUseCaseName_5002Parser() {
+		if (useCaseName_5002Parser == null) {
 			EAttribute[] features = new EAttribute[] { SUCPackage.eINSTANCE
 					.getUseCase_Name() };
 			MessageFormatParser parser = new MessageFormatParser(features);
-			useCaseName_5011Parser = parser;
+			useCaseName_5002Parser = parser;
 		}
-		return useCaseName_5011Parser;
+		return useCaseName_5002Parser;
 	}
 
 	/**
 	 * @generated
 	 */
-	private IParser useCaseSpecified_by_5012Parser;
+	private IParser useCaseSpecified_by_5004Parser;
 
 	/**
 	 * @generated
 	 */
-	private IParser getUseCaseSpecified_by_5012Parser() {
-		if (useCaseSpecified_by_5012Parser == null) {
+	private IParser getUseCaseSpecified_by_5004Parser() {
+		if (useCaseSpecified_by_5004Parser == null) {
 			EAttribute[] features = new EAttribute[] { SUCPackage.eINSTANCE
 					.getUseCase_Specified_by() };
 			MessageFormatParser parser = new MessageFormatParser(features);
-			useCaseSpecified_by_5012Parser = parser;
+			useCaseSpecified_by_5004Parser = parser;
 		}
-		return useCaseSpecified_by_5012Parser;
-	}
-
-	/**
-	 * @generated
-	 */
-	private IParser roleName_5013Parser;
-
-	/**
-	 * @generated
-	 */
-	private IParser getRoleName_5013Parser() {
-		if (roleName_5013Parser == null) {
-			EAttribute[] features = new EAttribute[] { SUCPackage.eINSTANCE
-					.getRole_Name() };
-			MessageFormatParser parser = new MessageFormatParser(features);
-			roleName_5013Parser = parser;
-		}
-		return roleName_5013Parser;
+		return useCaseSpecified_by_5004Parser;
 	}
 
 	/**
@@ -123,16 +85,12 @@ public class SUCParserProvider extends AbstractProvider implements
 	 */
 	protected IParser getParser(int visualID) {
 		switch (visualID) {
-		case SystemRoleNameEditPart.VISUAL_ID:
-			return getSystemRoleName_5009Parser();
-		case HumanRoleNameEditPart.VISUAL_ID:
-			return getHumanRoleName_5010Parser();
-		case UseCaseNameEditPart.VISUAL_ID:
-			return getUseCaseName_5011Parser();
-		case UseCaseSpecified_byEditPart.VISUAL_ID:
-			return getUseCaseSpecified_by_5012Parser();
 		case RoleNameEditPart.VISUAL_ID:
-			return getRoleName_5013Parser();
+			return getRoleName_5001Parser();
+		case UseCaseNameEditPart.VISUAL_ID:
+			return getUseCaseName_5002Parser();
+		case UseCaseSpecified_byEditPart.VISUAL_ID:
+			return getUseCaseSpecified_by_5004Parser();
 		}
 		return null;
 	}

@@ -74,7 +74,7 @@ public class RoleParticipates_inReorientCommand extends EditElementCommand {
 			return false;
 		}
 		return SUCBaseItemSemanticEditPolicy.getLinkConstraints()
-				.canExistRoleParticipates_in_4008(getNewSource(),
+				.canExistRoleParticipates_in_4001(getNewSource(),
 						getOldTarget());
 	}
 
@@ -86,7 +86,7 @@ public class RoleParticipates_inReorientCommand extends EditElementCommand {
 			return false;
 		}
 		return SUCBaseItemSemanticEditPolicy.getLinkConstraints()
-				.canExistRoleParticipates_in_4008(getOldSource(),
+				.canExistRoleParticipates_in_4001(getOldSource(),
 						getNewTarget());
 	}
 

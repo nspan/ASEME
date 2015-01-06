@@ -1,8 +1,4 @@
 /**
- * <copyright>
- * </copyright>
- *
- * $Id$
  */
 package SUC.provider;
 
@@ -145,52 +141,6 @@ public class SUCItemProviderAdapterFactory extends SUCAdapterFactory implements 
 	}
 
 	/**
-	 * This keeps track of the one adapter used for all {@link SUC.HumanRole} instances.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	protected HumanRoleItemProvider humanRoleItemProvider;
-
-	/**
-	 * This creates an adapter for a {@link SUC.HumanRole}.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	@Override
-	public Adapter createHumanRoleAdapter() {
-		if (humanRoleItemProvider == null) {
-			humanRoleItemProvider = new HumanRoleItemProvider(this);
-		}
-
-		return humanRoleItemProvider;
-	}
-
-	/**
-	 * This keeps track of the one adapter used for all {@link SUC.SystemRole} instances.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	protected SystemRoleItemProvider systemRoleItemProvider;
-
-	/**
-	 * This creates an adapter for a {@link SUC.SystemRole}.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	@Override
-	public Adapter createSystemRoleAdapter() {
-		if (systemRoleItemProvider == null) {
-			systemRoleItemProvider = new SystemRoleItemProvider(this);
-		}
-
-		return systemRoleItemProvider;
-	}
-
-	/**
 	 * This returns the root adapter factory that contains this factory.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -292,8 +242,6 @@ public class SUCItemProviderAdapterFactory extends SUCAdapterFactory implements 
 		if (suCmodelItemProvider != null) suCmodelItemProvider.dispose();
 		if (useCaseItemProvider != null) useCaseItemProvider.dispose();
 		if (roleItemProvider != null) roleItemProvider.dispose();
-		if (humanRoleItemProvider != null) humanRoleItemProvider.dispose();
-		if (systemRoleItemProvider != null) systemRoleItemProvider.dispose();
 	}
 
 }

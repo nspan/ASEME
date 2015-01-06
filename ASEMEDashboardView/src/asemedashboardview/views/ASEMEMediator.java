@@ -1,7 +1,6 @@
 package asemedashboardview.views;
 
 import java.text.MessageFormat;
-
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
@@ -25,6 +24,7 @@ import org.eclipse.emf.importer.ui.EMFModelWizard;
 import org.eclipse.emf.importer.ui.GenModelReloadActionDelegate;
 import org.eclipse.gmf.codegen.gmfgen.presentation.GMFGenModelWizard;
 import org.eclipse.emf.workspace.util.WorkspaceSynchronizer;
+
 import SAG.diagram.part.SAGCreationWizard;
 import SAG.diagram.part.SAGNewDiagramFileWizard;
 import SAG.presentation.SAGModelWizard;
@@ -32,12 +32,14 @@ import SUC.diagram.part.SUCCreationWizard;
 import AIP.diagram.part.AIPCreationWizard;
 import SRM.diagram.part.SRMCreationWizard;
 import asemedashboardview.views.ASEMEActionRegistry.ASEMEActionDescriptor;
+import asemedashboardview.views.actions.TransformAIP2EACModelAction;
+import asemedashboardview.views.actions.TransformSRM2IACModelAction;
 import asemedashboardview.views.actions.TransformSAG2SUCModelAction;
 import asemedashboardview.views.actions.TransformSUC2AIPModelAction;
 import asemedashboardview.views.actions.TransformSUC2SRMModelAction;
+
 import org.eclipse.emf.transaction.TransactionalEditingDomain;
 import org.eclipse.emf.workspace.util.WorkspaceSynchronizer;
-
 import org.eclipse.gmf.internal.bridge.wizards.GMFGraphSimpleModelWizard;
 import org.eclipse.gmf.internal.bridge.wizards.GMFMapGuideModelWizard;
 import org.eclipse.gmf.internal.bridge.wizards.GMFToolSimpleModelWizard;
@@ -63,6 +65,7 @@ import org.eclipse.ui.IWorkbenchWizard;
 import org.eclipse.ui.PartInitException;
 import org.eclipse.ui.PlatformUI;
 import org.eclipse.ui.part.FileEditorInput;
+
 import asemedashboardview.Activator;
 
 public class ASEMEMediator implements ASEMEFacade {
@@ -120,6 +123,7 @@ public class ASEMEMediator implements ASEMEFacade {
 		view.getSRMFigure().addAction(createLinkFigure(Messages.ASEMEMediator_Select, new SelectSRMAction()));
 		view.getSRMFigure().addAction(createLinkFigure(Messages.ASEMEMediator_Edit, new EditSRMAction()));
 		view.getSRMFigure().addAction(createLinkFigure(Messages.ASEMEMediator_Create, new CreateSRMAction()));
+		//view.getSRMFigure().addAction(createLinkFigure(Messages.ASEMEMediator_Export, new CreateSRMAction()));
 		view.getEACFigure().addAction(createLinkFigure(Messages.ASEMEMediator_Select, new SelectEACAction()));
 		view.getEACFigure().addAction(createLinkFigure(Messages.ASEMEMediator_Edit, new EditEACAction()));
 		view.getEACFigure().addAction(createLinkFigure(Messages.ASEMEMediator_Create, new CreateEACAction()));
@@ -157,8 +161,8 @@ public class ASEMEMediator implements ASEMEFacade {
 		view.getSAG2SUCFigure().addAction(createLinkFigure(Messages.ASEMEMediator_Transform, new TransformSAG2SUCModelAction()));
 		view.getSUC2AIPFigure().addAction(createLinkFigure(Messages.ASEMEMediator_Transform, new TransformSUC2AIPModelAction()));
 		view.getSUC2SRMFigure().addAction(createLinkFigure(Messages.ASEMEMediator_Transform, new TransformSUC2SRMModelAction()));
-//		view.getAIP2EACFigure().addAction(createLinkFigure(Messages.ASEMEMediator_Transform, new TransformAIP2EACModelAction()));
-//		view.getEAC2IACFigure().addAction(createLinkFigure(Messages.ASEMEMediator_Transform, new TransformEAC2IACModelAction()));
+		view.getAIP2EACFigure().addAction(createLinkFigure(Messages.ASEMEMediator_Transform, new TransformAIP2EACModelAction()));
+		view.getSRM2IACFigure().addAction(createLinkFigure(Messages.ASEMEMediator_Transform, new TransformSRM2IACModelAction()));
 //		view.getIAC2JADEFigure().addAction(createLinkFigure(Messages.ASEMEMediator_Transform, new TransformIAC2JADEModelAction()));
 		ASEMEActionDescriptor[] descriptors = Activator.getDefault().getDashboardActionRegistry().getDescriptors();
 		for (ASEMEActionDescriptor descriptor : descriptors) {
@@ -313,6 +317,7 @@ public class ASEMEMediator implements ASEMEFacade {
 			} catch (PartInitException pie) {
 				String msg = MessageFormat.format(Messages.ASEMEMediator_FailToOpen, new Object[] { getURI() });
 				MessageDialog.openError(workbenchWindow.getShell(), msg, pie.getMessage());
+				//System.err.println(modelFile.getFullPath().toString());
 			}
 		}
 
@@ -541,7 +546,7 @@ public class ASEMEMediator implements ASEMEFacade {
 		}
 
 		protected void wizardFinished(IWizard wizard) {
-			IFile file = ((SAGModelWizard) wizard).getModelFile();
+			
 			//			URI domainModelURI = URI.createPlatformResourceURI(file.toString(), false);
 			//			EObject diagramRoot = null;
 			//			TransactionalEditingDomain editingDomain = null;
@@ -570,6 +575,7 @@ public class ASEMEMediator implements ASEMEFacade {
 			//				e.printStackTrace();
 			//			}
 			//			state.setSAG(uri);
+			IFile file = ((SAGModelWizard) wizard).getModelFile();
 			state.setSAG(file);
 			updateStatus();
 		}

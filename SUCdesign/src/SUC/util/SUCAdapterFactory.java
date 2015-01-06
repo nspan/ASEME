@@ -1,8 +1,4 @@
 /**
- * <copyright>
- * </copyright>
- *
- * $Id$
  */
 package SUC.util;
 
@@ -84,14 +80,6 @@ public class SUCAdapterFactory extends AdapterFactoryImpl {
 				return createRoleAdapter();
 			}
 			@Override
-			public Adapter caseHumanRole(HumanRole object) {
-				return createHumanRoleAdapter();
-			}
-			@Override
-			public Adapter caseSystemRole(SystemRole object) {
-				return createSystemRoleAdapter();
-			}
-			@Override
 			public Adapter defaultCase(EObject object) {
 				return createEObjectAdapter();
 			}
@@ -150,34 +138,6 @@ public class SUCAdapterFactory extends AdapterFactoryImpl {
 	 * @generated
 	 */
 	public Adapter createRoleAdapter() {
-		return null;
-	}
-
-	/**
-	 * Creates a new adapter for an object of class '{@link SUC.HumanRole <em>Human Role</em>}'.
-	 * <!-- begin-user-doc -->
-	 * This default implementation returns null so that we can easily ignore cases;
-	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
-	 * <!-- end-user-doc -->
-	 * @return the new adapter.
-	 * @see SUC.HumanRole
-	 * @generated
-	 */
-	public Adapter createHumanRoleAdapter() {
-		return null;
-	}
-
-	/**
-	 * Creates a new adapter for an object of class '{@link SUC.SystemRole <em>System Role</em>}'.
-	 * <!-- begin-user-doc -->
-	 * This default implementation returns null so that we can easily ignore cases;
-	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
-	 * <!-- end-user-doc -->
-	 * @return the new adapter.
-	 * @see SUC.SystemRole
-	 * @generated
-	 */
-	public Adapter createSystemRoleAdapter() {
 		return null;
 	}
 

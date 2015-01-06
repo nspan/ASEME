@@ -102,7 +102,7 @@ public class SUCCreationWizard extends Wizard implements INewWizard {
 	 */
 	public void addPages() {
 		diagramModelFilePage = new SUCCreationWizardPage(
-				"DiagramModelFile", getSelection(), "sucd"); //$NON-NLS-1$ //$NON-NLS-2$
+				"DiagramModelFile", getSelection(), "suc_diagram"); //$NON-NLS-1$ //$NON-NLS-2$
 		diagramModelFilePage
 				.setTitle(Messages.SUCCreationWizard_DiagramModelFilePageTitle);
 		diagramModelFilePage
@@ -116,7 +116,7 @@ public class SUCCreationWizard extends Wizard implements INewWizard {
 				if (visible) {
 					String fileName = diagramModelFilePage.getFileName();
 					fileName = fileName.substring(0, fileName.length()
-							- ".sucd".length()); //$NON-NLS-1$
+							- ".suc_diagram".length()); //$NON-NLS-1$
 					setFileName(SUCDiagramEditorUtil.getUniqueFileName(
 							getContainerFullPath(), fileName, "suc")); //$NON-NLS-1$
 				}

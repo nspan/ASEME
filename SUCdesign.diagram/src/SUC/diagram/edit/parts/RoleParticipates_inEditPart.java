@@ -20,7 +20,7 @@ public class RoleParticipates_inEditPart extends ConnectionNodeEditPart
 	/**
 	 * @generated
 	 */
-	public static final int VISUAL_ID = 4008;
+	public static final int VISUAL_ID = 4001;
 
 	/**
 	 * @generated
@@ -67,7 +67,6 @@ public class RoleParticipates_inEditPart extends ConnectionNodeEditPart
 		 * @generated
 		 */
 		public RoleParticipates_inFigure() {
-			this.setLineWidth(3);
 
 			setTargetDecoration(createTargetDecoration());
 		}
@@ -77,7 +76,6 @@ public class RoleParticipates_inEditPart extends ConnectionNodeEditPart
 		 */
 		private RotatableDecoration createTargetDecoration() {
 			PolylineDecoration df = new PolylineDecoration();
-			df.setLineWidth(3);
 			return df;
 		}
 
