@@ -1,5 +1,6 @@
 package aseme.m2t.IACmodel;
 
+import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.StringTokenizer;
 import java.util.regex.Matcher;
@@ -8,10 +9,18 @@ import java.util.regex.Pattern;
 import org.eclipse.emf.common.util.BasicEList;
 import org.eclipse.emf.common.util.EList;
 
-import IAC.Model;
-import IAC.Node;
-import IAC.Transition;
-import IAC.Variable;
+//import IAC.Model;
+//import IAC.Node;
+//import IAC.Transition;
+//import IAC.Variable;
+
+//import NodeHelper;
+
+
+import statechart.Model;
+import statechart.Node;
+import statechart.Transition;
+import statechart.Variable;
 
 public class ComplexBehaviourHelper {
 
@@ -21,6 +30,8 @@ public class ComplexBehaviourHelper {
 	public static final String TYPE_SEQUENCE = "sequence";
 	public static final String TYPE_OR = "or";
 	public static final String TYPE_PARALLEL = "parallel";
+	
+	public static ArrayList<Node> nodeList = NodeHelper.p;
 
 	public static boolean existConditionInSubNodesOf(Node e, Model m) {
 		boolean result = false;
@@ -190,15 +201,15 @@ public class ComplexBehaviourHelper {
 			} else {
 				if (i == 0) {
 					result = result
-							+ "\nif ("
+							+ "\n\t\tif ("
 							+ (condition.equalsIgnoreCase("null") ? "/*insert condition*/"
 									: "/*" + condition + "*/") + ") ";
 				} else if ((i == tmp.size() - 1)
 						&& (condition.equalsIgnoreCase("null"))) {
-					result = result + "\nelse ";
+					result = result + "\n\t\telse ";
 				} else {
 					result = result
-							+ "\nelse if("
+							+ "\n\t\telse if("
 							+ (condition.equalsIgnoreCase("null") ? "/*insert condition*/"
 									: "/*" + condition + "*/") + ") ";
 				}
@@ -370,38 +381,52 @@ public class ComplexBehaviourHelper {
 				if ((tmp.getSource().getLabel().equalsIgnoreCase(e.getLabel()))
 						&& (!(tmp.getTarget().getLabel().equalsIgnoreCase(e
 								.getLabel())))) {
-					Pattern messagePattern = Pattern
-							.compile("[a-z]+\\([a-z,]+\\)");
-					Matcher messageMatcher = messagePattern
-							.matcher(getEventOfExpression(tmp.getTE()));
-					boolean firstPerformative = true;
-					while (messageMatcher.find()) {
-						String nextEvent = messageMatcher.group();
-						if (firstPerformative) {
-							firstPerformative = false;
-							result = result
-									+ "\t\tmt = MessageTemplate.MatchPerformative(ACLMessage."
-									+ nextEvent.substring(0,
-											nextEvent.indexOf("("))
-											.toUpperCase() + ");";
-						} else {
-							result = result
-									+ "\n\t\tmt = MessageTemplate.or(mt,MessageTemplate.MatchPerformative(ACLMessage."
-									+ nextEvent.substring(0,
-											nextEvent.indexOf("("))
-											.toUpperCase() + "));";
-						}
-					}
-					if (firstPerformative) {
+					
+					if (tmp.getTE()==null){
 						result = result
-								+ "\t\t/*insert MessageTemplate code here*/";
+								+ "\n\t\tACLMessage msg = myAgent.receive(mt);"
+								+ "\n\t\tif (msg != null) {"
+								+ "\n\t\t//insert message handling code"
+								+ "\n\t\t\tfinished = true;" + "\n\t\t}else {"
+								+ "\n\t\t\tblock();" + "\n\t\t}";
 					}
-					result = result
-							+ "\n\t\tACLMessage msg = myAgent.receive(mt);"
-							+ "\n\t\tif (msg != null) {"
-							+ "\n\t\t//insert message handling code"
-							+ "\n\t\t\tfinished = true;" + "\n\t\t}else {"
-							+ "\n\t\t\tblock();" + "\n\t\t}";
+					
+					else{
+						Pattern messagePattern = Pattern
+								.compile("[a-z]+\\([a-z,]+\\)");
+						Matcher messageMatcher = messagePattern
+								.matcher(getEventOfExpression(tmp.getTE()));
+						boolean firstPerformative = true;
+						while (messageMatcher.find()) {
+							String nextEvent = messageMatcher.group();
+							if (firstPerformative) {
+								firstPerformative = false;
+								result = result
+										+ "\t\tmt = MessageTemplate.MatchPerformative(ACLMessage."
+										+ nextEvent.substring(0,
+												nextEvent.indexOf("("))
+												.toUpperCase() + ");";
+							} else {
+								result = result
+										+ "\n\t\tmt = MessageTemplate.or(mt,MessageTemplate.MatchPerformative(ACLMessage."
+										+ nextEvent.substring(0,
+												nextEvent.indexOf("("))
+												.toUpperCase() + "));";
+							}
+						}
+						if (firstPerformative) {
+							result = result
+									+ "\t\t/*insert MessageTemplate code here*/";
+						}
+						result = result
+								+ "\n\t\tACLMessage msg = myAgent.receive(mt);"
+								+ "\n\t\tif (msg != null) {"
+								+ "\n\t\t//insert message handling code"
+								+ "\n\t\t\tfinished = true;" + "\n\t\t}else {"
+								+ "\n\t\t\tblock();" + "\n\t\t}";
+					}
+					
+					
 				}
 			}
 		} else if (e.getName().startsWith("Send")) {
@@ -411,35 +436,46 @@ public class ComplexBehaviourHelper {
 				if ((tmp.getSource().getLabel().equalsIgnoreCase(e.getLabel()))
 						&& (!(tmp.getTarget().getLabel().equalsIgnoreCase(e
 								.getLabel())))) {
-					Pattern messagePattern = Pattern
-							.compile("[a-z]+\\([a-z,]+\\)");
-					Matcher messageMatcher = messagePattern
-							.matcher(getEventOfExpression(tmp.getTE()));
-					boolean firstPerformative = true;
-					result = result + "ACLMessage msg = null;";
-					while (messageMatcher.find()) {
-						String nextEvent = messageMatcher.group();
-						if (firstPerformative) {
-							firstPerformative = false;
-							result = result
-									+ "\n\t\tif (/*insert condition*/) {"
-									+ "\n\t\t\tmsg = new ACLMessage(ACLMessage."
-									+ nextEvent.substring(0,
-											nextEvent.indexOf("("))
-											.toUpperCase() + ");" + "\n\t\t}";
-						} else {
-							result = result
-									+ "\n\t\telse if (/*insert condition*/) {"
-									+ "\n\t\t\tmsg = new ACLMessage(ACLMessage."
-									+ nextEvent.substring(0,
-											nextEvent.indexOf("("))
-											.toUpperCase() + ");" + "\n\t\t}";
-						}
+					
+					if (tmp.getTE()==null){
+						result = result + "ACLMessage msg = null;"
+								+ "\n\t\t//insert message initialization code"
+								+ "\n\t\tmyAgent.send(msg);"
+								+ "\n\t\tfinished = true;";
 					}
-					result = result
-							+ "\n\t\t//insert message initialization code"
-							+ "\n\t\tmyAgent.send(msg);"
-							+ "\n\t\tfinished = true;";
+					else{
+						Pattern messagePattern = Pattern
+								.compile("[a-z]+\\([a-z,]+\\)");
+						Matcher messageMatcher = messagePattern
+								.matcher(getEventOfExpression(tmp.getTE()));
+						boolean firstPerformative = true;
+						result = result + "ACLMessage msg = null;";
+						while (messageMatcher.find()) {
+							String nextEvent = messageMatcher.group();
+							if (firstPerformative) {
+								firstPerformative = false;
+								result = result
+										+ "\n\t\tif (/*insert condition*/) {"
+										+ "\n\t\t\tmsg = new ACLMessage(ACLMessage."
+										+ nextEvent.substring(0,
+												nextEvent.indexOf("("))
+												.toUpperCase() + ");" + "\n\t\t}";
+							} else {
+								result = result
+										+ "\n\t\telse if (/*insert condition*/) {"
+										+ "\n\t\t\tmsg = new ACLMessage(ACLMessage."
+										+ nextEvent.substring(0,
+												nextEvent.indexOf("("))
+												.toUpperCase() + ");" + "\n\t\t}";
+							}
+						}
+						result = result
+								+ "\n\t\t//insert message initialization code"
+								+ "\n\t\tmyAgent.send(msg);"
+								+ "\n\t\tfinished = true;";
+					}
+					
+					
 				}
 			}
 		} else {
@@ -506,7 +542,7 @@ public class ComplexBehaviourHelper {
 
 	public static EList<Node> subNodesOf(Node e, Model m) {
 		EList<Node> results = new BasicEList<Node>();
-		for (Iterator<Node> iterator = m.getNodes().iterator(); iterator
+		for (Iterator<Node> iterator = NodeHelper.p.iterator(); iterator	// ComplexBehaviourHelper.nodeList.iterator()
 				.hasNext();) {
 			Node node = iterator.next();
 			if ((node.getLabel().startsWith(e.getLabel()))
@@ -519,7 +555,7 @@ public class ComplexBehaviourHelper {
 
 	public static EList<Node> subBehavioursOf(Node e, Model m) {
 		EList<Node> results = new BasicEList<Node>();
-		for (Iterator<Node> iterator = m.getNodes().iterator(); iterator
+		for (Iterator<Node> iterator = NodeHelper.p.iterator(); iterator
 				.hasNext();) {
 			Node node = iterator.next();
 			if ((node.getLabel().startsWith(e.getLabel()))
@@ -558,43 +594,59 @@ public class ComplexBehaviourHelper {
 	}
 
 	public static String getConditionOfExpression(String expression) {
-		// pattern for conditions
-		Pattern conditionPattern = Pattern
-				.compile("^([\\w\\W&&[^/\\[\\]]]+)?(\\[[\\w\\W&&[^\\[\\]]]+\\])(/[\\w\\W]+)?$");
-		Matcher conditionMatcher = conditionPattern.matcher(expression);
-		if (conditionMatcher.find()
-				&& (conditionMatcher.group().length() == expression.length())) {
-			StringTokenizer st = new StringTokenizer(expression, "]");
-			String condition = st.nextToken();
-			condition = condition.substring(condition.indexOf("[") + 1);
-			return condition;
+		if (expression == null)
+			return null;
+		else{
+			// pattern for conditions
+			Pattern conditionPattern = Pattern
+					.compile("^([\\w\\W&&[^/\\[\\]]]+)?(\\[[\\w\\W&&[^\\[\\]]]+\\])(/[\\w\\W]+)?$");
+			Matcher conditionMatcher = conditionPattern.matcher(expression);
+			if (conditionMatcher.find()
+					&& (conditionMatcher.group().length() == expression.length())) {
+				StringTokenizer st = new StringTokenizer(expression, "]");
+				String condition = st.nextToken();
+				condition = condition.substring(condition.indexOf("[") + 1);
+				return condition;
+			}
 		}
+		
 		return null;
 	}
 
 	public static String getEventOfExpression(String expression) {
-		// pattern for events
-		Pattern eventPattern = Pattern
-				.compile("^[\\w\\W&&[^/\\[\\]]]+(\\[[\\w\\W&&[^\\[\\]]]+\\])?(/[\\w\\W]+)?$");
-		Matcher eventMatcher = eventPattern.matcher(expression);
-		if (eventMatcher.find()
-				&& (eventMatcher.group().length() == expression.length())) {
-			StringTokenizer st = new StringTokenizer(expression, "[]/");
-			return st.nextToken();
+		
+		if (expression == null)
+			return null;
+		else{
+			// pattern for events
+			Pattern eventPattern = Pattern
+					.compile("^[\\w\\W&&[^/\\[\\]]]+(\\[[\\w\\W&&[^\\[\\]]]+\\])?(/[\\w\\W]+)?$");
+			Matcher eventMatcher = eventPattern.matcher(expression);
+			if (eventMatcher.find()
+					&& (eventMatcher.group().length() == expression.length())) {
+				StringTokenizer st = new StringTokenizer(expression, "[]/");
+				return st.nextToken();
+			}
 		}
+		
 		return null;
 	}
 
 	public static String getActionOfExpression(String expression) {
-		// pattern for actions
-		Pattern actionPattern = Pattern
-				.compile("^([\\w\\W&&[^/\\[\\]]]+)?(\\[[\\w\\W&&[^\\[\\]]]+\\])?(/[\\w\\W]+)$");
-		Matcher actionMatcher = actionPattern.matcher(expression);
-		if (actionMatcher.find()
-				&& (actionMatcher.group().length() == expression.length())) {
-			String action = expression
-					.substring(expression.lastIndexOf("/") + 1);
-			return action;
+		
+		if (expression == null)
+			return null;
+		else{
+			// pattern for actions
+			Pattern actionPattern = Pattern
+					.compile("^([\\w\\W&&[^/\\[\\]]]+)?(\\[[\\w\\W&&[^\\[\\]]]+\\])?(/[\\w\\W]+)$");
+			Matcher actionMatcher = actionPattern.matcher(expression);
+			if (actionMatcher.find()
+					&& (actionMatcher.group().length() == expression.length())) {
+				String action = expression
+						.substring(expression.lastIndexOf("/") + 1);
+				return action;
+			}
 		}
 		return null;
 	}

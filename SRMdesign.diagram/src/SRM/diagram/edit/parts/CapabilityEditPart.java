@@ -1,8 +1,5 @@
 package SRM.diagram.edit.parts;
 
-import java.util.ArrayList;
-import java.util.List;
-
 import org.eclipse.draw2d.FlowLayout;
 import org.eclipse.draw2d.IFigure;
 import org.eclipse.draw2d.RectangleFigure;
@@ -11,15 +8,14 @@ import org.eclipse.draw2d.StackLayout;
 import org.eclipse.gef.EditPart;
 import org.eclipse.gef.EditPolicy;
 import org.eclipse.gef.commands.Command;
-import org.eclipse.gef.editpolicies.FlowLayoutEditPolicy;
 import org.eclipse.gef.editpolicies.LayoutEditPolicy;
 import org.eclipse.gef.requests.CreateRequest;
 import org.eclipse.gmf.runtime.diagram.ui.editparts.IGraphicalEditPart;
 import org.eclipse.gmf.runtime.diagram.ui.editparts.ShapeNodeEditPart;
 import org.eclipse.gmf.runtime.diagram.ui.editpolicies.EditPolicyRoles;
+import org.eclipse.gmf.runtime.diagram.ui.editpolicies.FlowLayoutEditPolicy;
 import org.eclipse.gmf.runtime.draw2d.ui.figures.ConstrainedToolbarLayout;
 import org.eclipse.gmf.runtime.draw2d.ui.figures.WrappingLabel;
-import org.eclipse.gmf.runtime.emf.type.core.IElementType;
 import org.eclipse.gmf.runtime.gef.ui.figures.DefaultSizeNodeFigure;
 import org.eclipse.gmf.runtime.gef.ui.figures.NodeFigure;
 import org.eclipse.gmf.runtime.notation.View;
@@ -27,7 +23,6 @@ import org.eclipse.swt.graphics.Color;
 
 import SRM.diagram.edit.policies.CapabilityItemSemanticEditPolicy;
 import SRM.diagram.part.SRMVisualIDRegistry;
-import SRM.diagram.providers.SRMElementTypes;
 
 /**
  * @generated
@@ -37,7 +32,7 @@ public class CapabilityEditPart extends ShapeNodeEditPart {
 	/**
 	 * @generated
 	 */
-	public static final int VISUAL_ID = 2004;
+	public static final int VISUAL_ID = 2001;
 
 	/**
 	 * @generated
@@ -95,15 +90,14 @@ public class CapabilityEditPart extends ShapeNodeEditPart {
 	 * @generated
 	 */
 	protected IFigure createNodeShape() {
-		CapabilityFigureCustom figure = new CapabilityFigureCustom();
-		return primaryShape = figure;
+		return primaryShape = new CapabilityFigure();
 	}
 
 	/**
 	 * @generated
 	 */
-	public CapabilityFigureCustom getPrimaryShape() {
-		return (CapabilityFigureCustom) primaryShape;
+	public CapabilityFigure getPrimaryShape() {
+		return (CapabilityFigure) primaryShape;
 	}
 
 	/**
@@ -112,7 +106,7 @@ public class CapabilityEditPart extends ShapeNodeEditPart {
 	protected boolean addFixedChild(EditPart childEditPart) {
 		if (childEditPart instanceof CapabilityNameEditPart) {
 			((CapabilityNameEditPart) childEditPart).setLabel(getPrimaryShape()
-					.getFigureCapabilityNameFigureCustom());
+					.getFigureCapabilityNameFigure());
 			return true;
 		}
 		return false;
@@ -252,71 +246,17 @@ public class CapabilityEditPart extends ShapeNodeEditPart {
 	/**
 	 * @generated
 	 */
-	public List/*<org.eclipse.gmf.runtime.emf.type.core.IElementType>*/getMARelTypesOnSource() {
-		List/*<org.eclipse.gmf.runtime.emf.type.core.IElementType>*/types = new ArrayList/*<org.eclipse.gmf.runtime.emf.type.core.IElementType>*/();
-		types.add(SRMElementTypes.CapabilityActivities_4006);
-		return types;
-	}
-
-	/**
-	 * @generated
-	 */
-	public List/*<org.eclipse.gmf.runtime.emf.type.core.IElementType>*/getMARelTypesOnSourceAndTarget(
-			IGraphicalEditPart targetEditPart) {
-		List/*<org.eclipse.gmf.runtime.emf.type.core.IElementType>*/types = new ArrayList/*<org.eclipse.gmf.runtime.emf.type.core.IElementType>*/();
-		if (targetEditPart instanceof ActivityEditPart) {
-			types.add(SRMElementTypes.CapabilityActivities_4006);
-		}
-		return types;
-	}
-
-	/**
-	 * @generated
-	 */
-	public List/*<org.eclipse.gmf.runtime.emf.type.core.IElementType>*/getMATypesForTarget(
-			IElementType relationshipType) {
-		List/*<org.eclipse.gmf.runtime.emf.type.core.IElementType>*/types = new ArrayList/*<org.eclipse.gmf.runtime.emf.type.core.IElementType>*/();
-		if (relationshipType == SRMElementTypes.CapabilityActivities_4006) {
-			types.add(SRMElementTypes.Activity_2006);
-		}
-		return types;
-	}
-
-	/**
-	 * @generated
-	 */
-	public List/*<org.eclipse.gmf.runtime.emf.type.core.IElementType>*/getMARelTypesOnTarget() {
-		List/*<org.eclipse.gmf.runtime.emf.type.core.IElementType>*/types = new ArrayList/*<org.eclipse.gmf.runtime.emf.type.core.IElementType>*/();
-		types.add(SRMElementTypes.RoleCapabilities_4004);
-		return types;
-	}
-
-	/**
-	 * @generated
-	 */
-	public List/*<org.eclipse.gmf.runtime.emf.type.core.IElementType>*/getMATypesForSource(
-			IElementType relationshipType) {
-		List/*<org.eclipse.gmf.runtime.emf.type.core.IElementType>*/types = new ArrayList/*<org.eclipse.gmf.runtime.emf.type.core.IElementType>*/();
-		if (relationshipType == SRMElementTypes.RoleCapabilities_4004) {
-			types.add(SRMElementTypes.Role_2005);
-		}
-		return types;
-	}
-
-	/**
-	 * @generated
-	 */
-	public class CapabilityFigureCustom extends RectangleFigure {
+	public class CapabilityFigure extends RectangleFigure {
 
 		/**
 		 * @generated
 		 */
-		private WrappingLabel fFigureCapabilityNameFigureCustom;
+		private WrappingLabel fFigureCapabilityNameFigure;
 
 		/**
 		 * @generated
 		 */
-		public CapabilityFigureCustom() {
+		public CapabilityFigure() {
 
 			FlowLayout layoutThis = new FlowLayout();
 			layoutThis.setStretchMinorAxis(false);
@@ -329,9 +269,6 @@ public class CapabilityEditPart extends ShapeNodeEditPart {
 
 			this.setLayoutManager(layoutThis);
 
-			this.setLineWidth(3);
-			this.setForegroundColor(THIS_FORE);
-			this.setBackgroundColor(THIS_BACK);
 			createContents();
 		}
 
@@ -340,49 +277,21 @@ public class CapabilityEditPart extends ShapeNodeEditPart {
 		 */
 		private void createContents() {
 
-			fFigureCapabilityNameFigureCustom = new WrappingLabel();
-			fFigureCapabilityNameFigureCustom.setText("");
+			fFigureCapabilityNameFigure = new WrappingLabel();
 
-			this.add(fFigureCapabilityNameFigureCustom);
+			fFigureCapabilityNameFigure.setText("<...>");
+
+			this.add(fFigureCapabilityNameFigure);
 
 		}
 
 		/**
 		 * @generated
 		 */
-		private boolean myUseLocalCoordinates = false;
-
-		/**
-		 * @generated
-		 */
-		protected boolean useLocalCoordinates() {
-			return myUseLocalCoordinates;
-		}
-
-		/**
-		 * @generated
-		 */
-		protected void setUseLocalCoordinates(boolean useLocalCoordinates) {
-			myUseLocalCoordinates = useLocalCoordinates;
-		}
-
-		/**
-		 * @generated
-		 */
-		public WrappingLabel getFigureCapabilityNameFigureCustom() {
-			return fFigureCapabilityNameFigureCustom;
+		public WrappingLabel getFigureCapabilityNameFigure() {
+			return fFigureCapabilityNameFigure;
 		}
 
 	}
-
-	/**
-	 * @generated
-	 */
-	static final Color THIS_FORE = new Color(null, 0, 0, 0);
-
-	/**
-	 * @generated
-	 */
-	static final Color THIS_BACK = new Color(null, 255, 255, 32);
 
 }

@@ -20,7 +20,7 @@ public class RoleCapabilitiesEditPart extends ConnectionNodeEditPart implements
 	/**
 	 * @generated
 	 */
-	public static final int VISUAL_ID = 4004;
+	public static final int VISUAL_ID = 4002;
 
 	/**
 	 * @generated
@@ -67,7 +67,7 @@ public class RoleCapabilitiesEditPart extends ConnectionNodeEditPart implements
 		 * @generated
 		 */
 		public RoleCapabilitiesFigure() {
-			this.setLineWidth(1);
+			this.setLineWidth(3);
 
 			setTargetDecoration(createTargetDecoration());
 		}
@@ -77,7 +77,6 @@ public class RoleCapabilitiesEditPart extends ConnectionNodeEditPart implements
 		 */
 		private RotatableDecoration createTargetDecoration() {
 			PolylineDecoration df = new PolylineDecoration();
-			df.setLineWidth(1);
 			return df;
 		}
 

@@ -229,20 +229,20 @@ public class SUCNavigatorContentProvider implements ICommonContentProvider {
 					"icons/linksNavigatorGroup.gif", parentElement); //$NON-NLS-1$
 			Collection<View> connectedViews;
 			connectedViews = getChildrenByType(Collections.singleton(sv),
-					SUCVisualIDRegistry.getType(RoleEditPart.VISUAL_ID));
-			result.addAll(createNavigatorItems(connectedViews, parentElement,
-					false));
-			connectedViews = getChildrenByType(Collections.singleton(sv),
 					SUCVisualIDRegistry.getType(UseCaseEditPart.VISUAL_ID));
 			result.addAll(createNavigatorItems(connectedViews, parentElement,
 					false));
-			connectedViews = getDiagramLinksByType(Collections.singleton(sv),
-					SUCVisualIDRegistry
-							.getType(UseCaseIncludeEditPart.VISUAL_ID));
-			links.addChildren(createNavigatorItems(connectedViews, links, false));
+			connectedViews = getChildrenByType(Collections.singleton(sv),
+					SUCVisualIDRegistry.getType(RoleEditPart.VISUAL_ID));
+			result.addAll(createNavigatorItems(connectedViews, parentElement,
+					false));
 			connectedViews = getDiagramLinksByType(Collections.singleton(sv),
 					SUCVisualIDRegistry
 							.getType(RoleParticipates_inEditPart.VISUAL_ID));
+			links.addChildren(createNavigatorItems(connectedViews, links, false));
+			connectedViews = getDiagramLinksByType(Collections.singleton(sv),
+					SUCVisualIDRegistry
+							.getType(UseCaseIncludeEditPart.VISUAL_ID));
 			links.addChildren(createNavigatorItems(connectedViews, links, false));
 			if (!links.isEmpty()) {
 				result.add(links);
@@ -280,6 +280,11 @@ public class SUCNavigatorContentProvider implements ICommonContentProvider {
 			Collection<View> connectedViews;
 			connectedViews = getIncomingLinksByType(Collections.singleton(sv),
 					SUCVisualIDRegistry
+							.getType(RoleParticipates_inEditPart.VISUAL_ID));
+			incominglinks.addChildren(createNavigatorItems(connectedViews,
+					incominglinks, true));
+			connectedViews = getIncomingLinksByType(Collections.singleton(sv),
+					SUCVisualIDRegistry
 							.getType(UseCaseIncludeEditPart.VISUAL_ID));
 			incominglinks.addChildren(createNavigatorItems(connectedViews,
 					incominglinks, true));
@@ -288,11 +293,6 @@ public class SUCNavigatorContentProvider implements ICommonContentProvider {
 							.getType(UseCaseIncludeEditPart.VISUAL_ID));
 			outgoinglinks.addChildren(createNavigatorItems(connectedViews,
 					outgoinglinks, true));
-			connectedViews = getIncomingLinksByType(Collections.singleton(sv),
-					SUCVisualIDRegistry
-							.getType(RoleParticipates_inEditPart.VISUAL_ID));
-			incominglinks.addChildren(createNavigatorItems(connectedViews,
-					incominglinks, true));
 			if (!incominglinks.isEmpty()) {
 				result.add(incominglinks);
 			}

@@ -12,8 +12,8 @@ import org.eclipse.gmf.runtime.notation.View;
 public class AIPNavigatorItem extends AIPAbstractNavigatorItem {
 
 	/**
-	 * @generated
-	 */
+	* @generated
+	*/
 	static {
 		final Class[] supportedTypes = new Class[] { View.class, EObject.class };
 		Platform.getAdapterManager().registerAdapters(new IAdapterFactory() {
@@ -21,8 +21,7 @@ public class AIPNavigatorItem extends AIPAbstractNavigatorItem {
 			public Object getAdapter(Object adaptableObject, Class adapterType) {
 				if (adaptableObject instanceof AIP.diagram.navigator.AIPNavigatorItem
 						&& (adapterType == View.class || adapterType == EObject.class)) {
-					return ((AIP.diagram.navigator.AIPNavigatorItem) adaptableObject)
-							.getView();
+					return ((AIP.diagram.navigator.AIPNavigatorItem) adaptableObject).getView();
 				}
 				return null;
 			}
@@ -34,18 +33,18 @@ public class AIPNavigatorItem extends AIPAbstractNavigatorItem {
 	}
 
 	/**
-	 * @generated
-	 */
+	* @generated
+	*/
 	private View myView;
 
 	/**
-	 * @generated
-	 */
+	* @generated
+	*/
 	private boolean myLeaf = false;
 
 	/**
-	 * @generated
-	 */
+	* @generated
+	*/
 	public AIPNavigatorItem(View view, Object parent, boolean isLeaf) {
 		super(parent);
 		myView = view;
@@ -53,36 +52,33 @@ public class AIPNavigatorItem extends AIPAbstractNavigatorItem {
 	}
 
 	/**
-	 * @generated
-	 */
+	* @generated
+	*/
 	public View getView() {
 		return myView;
 	}
 
 	/**
-	 * @generated
-	 */
+	* @generated
+	*/
 	public boolean isLeaf() {
 		return myLeaf;
 	}
 
 	/**
-	 * @generated
-	 */
+	* @generated
+	*/
 	public boolean equals(Object obj) {
 		if (obj instanceof AIP.diagram.navigator.AIPNavigatorItem) {
-			return EcoreUtil
-					.getURI(getView())
-					.equals(EcoreUtil
-							.getURI(((AIP.diagram.navigator.AIPNavigatorItem) obj)
-									.getView()));
+			return EcoreUtil.getURI(getView())
+					.equals(EcoreUtil.getURI(((AIP.diagram.navigator.AIPNavigatorItem) obj).getView()));
 		}
 		return super.equals(obj);
 	}
 
 	/**
-	 * @generated
-	 */
+	* @generated
+	*/
 	public int hashCode() {
 		return EcoreUtil.getURI(getView()).hashCode();
 	}

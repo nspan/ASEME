@@ -190,7 +190,6 @@ public class SUCTextSelectionEditPolicy extends SelectionEditPolicy implements
 	/**
 	 * @generated
 	 */
-	@Override
 	public void refreshFeedback() {
 		refreshSelectionFeedback();
 		refreshFocusFeedback();

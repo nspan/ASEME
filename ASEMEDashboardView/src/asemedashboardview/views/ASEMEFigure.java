@@ -50,12 +50,16 @@ public class ASEMEFigure extends RectangleFigure {
 	private ModelFigure aipFigure;
 
 	private ModelFigure srmFigure;
+	
+	private ModelFigure xpdlFigure;
 
 	private ModelFigure eacFigure;
 
 	private ModelFigure iacFigure;
 
 	private ModelFigure jadeFigure;
+	
+	private ModelFigure ggFigure;
 
 	// flows
 	
@@ -70,10 +74,15 @@ public class ASEMEFigure extends RectangleFigure {
 	private FlowFigure eac2iacFlow;
 
 	private FlowFigure srm2iacFlow;
+	
+	private FlowFigure srm2xpdlFlow;
 
 	private FlowFigure aip2srmFlow;
 
 	private FlowFigure iac2jadeFlow;
+	
+	private FlowFigure iac2ggFlow;
+	
 
 	// flow actions
 	
@@ -86,29 +95,37 @@ public class ASEMEFigure extends RectangleFigure {
 	private FlowActionFigure aip2eacFigure;
 	
 	private FlowActionFigure srm2iacFigure;
+	
+	private FlowActionFigure srm2xpdlFigure;
 
 	private FlowActionFigure iac2jadeFigure;
+	
+	private FlowActionFigure iac2ggFigure;
 
 	public ASEMEFigure() {
-//		add(logoFigure = new ImageFigure() {
-//
-//			protected void paintFigure(Graphics graphics) {
-//				if (getImage() != null) {
-//					graphics.drawImage(getImage(), new Rectangle(getImage().getBounds()), getBounds());
-//				}
-//			}
-//		});
-//		Image logoImage = Activator.getDefault().getImageRegistry().get(Activator.GMF_LOGO_IMAGE);
-//		if (logoImage != null) {
-//			logoFigure.setImage(logoImage);
-//		}
+		add(logoFigure = new ImageFigure() {
+
+			protected void paintFigure(Graphics graphics) {
+				if (getImage() != null) {
+					graphics.drawImage(getImage(), new Rectangle(getImage().getBounds()), getBounds());
+				}
+			}
+		});
+		Image logoImage = Activator.getDefault().getImageRegistry().get(Activator.GMF_LOGO_IMAGE);
+		if (logoImage != null) {
+			logoFigure.setImage(logoImage);
+		}
+		//Image logoImage = Activator.getDefault().getImageRegistry().get(Activator.GMF_LOGO_IMAGE);
+		//add(logoFigure = new ImageFigure(logoImage));
 		add(sagFigure = createModelFigure(Messages.ASEMEFigure_SAG, Activator.SAG_ICON));
 		add(sucFigure = createModelFigure(Messages.ASEMEFigure_SUC, Activator.SUC_ICON));
 		add(aipFigure = createModelFigure(Messages.ASEMEFigure_AIP, Activator.AIP_ICON));
 		add(srmFigure = createModelFigure(Messages.ASEMEFigure_SRM, Activator.SRM_ICON));
+		add(xpdlFigure = createModelFigure(Messages.ASEMEFigure_XPDL, Activator.XPDL_ICON));
 		add(eacFigure = createModelFigure(Messages.ASEMEFigure_EAC, Activator.EAC_ICON));
 		add(iacFigure = createModelFigure(Messages.ASEMEFigure_IAC, Activator.IAC_ICON));
 		add(jadeFigure = createModelFigure(Messages.ASEMEFigure_JADE, Activator.JADE_ICON));
+		add(ggFigure = createModelFigure(Messages.ASEMEFigure_GG, Activator.GG_ICON));
 		add(sag2sucFlow = createFlowFigure(true, false));
 		add(suc2aipFlow = createFlowFigure(true, true));
 		add(suc2srmFlow = createFlowFigure(true, false));
@@ -116,13 +133,17 @@ public class ASEMEFigure extends RectangleFigure {
 		add(aip2eacFlow = createFlowFigure(true, false));
 		add(eac2iacFlow = createFlowFigure(true, true));
 		add(srm2iacFlow = createFlowFigure(true, false));
+		add(srm2xpdlFlow=  createFlowFigure(true, false)); ///
 		add(iac2jadeFlow = createFlowFigure(true, false));
+		add(iac2ggFlow = createFlowFigure(true, false));
 		add(sag2sucFigure = createFlowActionFigure());
 		add(suc2aipFigure = createFlowActionFigure());
 		add(suc2srmFigure = createFlowActionFigure());
 		add(aip2eacFigure = createFlowActionFigure());
 		add(srm2iacFigure = createFlowActionFigure());
+		add(srm2xpdlFigure = createFlowActionFigure());		///
 		add(iac2jadeFigure = createFlowActionFigure());
+		add(iac2ggFigure = createFlowActionFigure());
 		add(statusFigure = new Figure());
 		statusFigure.setFont(JFaceResources.getBannerFont());
 		ToolbarLayout statusLayout = new ToolbarLayout();
@@ -151,6 +172,10 @@ public class ASEMEFigure extends RectangleFigure {
 	public ModelFigure getSRMFigure() {
 		return srmFigure;
 	}
+	
+	public ModelFigure getXPDLFigure() {
+		return xpdlFigure;
+	}
 
 	public ModelFigure getEACFigure() {
 		return eacFigure;
@@ -162,6 +187,10 @@ public class ASEMEFigure extends RectangleFigure {
 
 	public ModelFigure getJADEFigure() {
 		return jadeFigure;
+	}
+	
+	public ModelFigure getGGFigure() {
+		return ggFigure;
 	}
 
 	public FlowActionFigure getSAG2SUCFigure() {
@@ -180,12 +209,21 @@ public class ASEMEFigure extends RectangleFigure {
 		return aip2eacFigure;
 	}
 
+		
 	public FlowActionFigure getSRM2IACFigure() {
-		return srm2iacFigure;
+			return srm2iacFigure;
+	}
+	
+	public FlowActionFigure getSRM2XPDLFigure(){	///
+		return srm2xpdlFigure;
 	}
 
 	public FlowActionFigure getIAC2JADEFigure() {
 		return iac2jadeFigure;
+	}
+	
+	public FlowActionFigure getIAC2GGFigure() {
+		return iac2ggFigure;
 	}
 
 	public Label getStatusLine(int i) {
@@ -270,27 +308,53 @@ public class ASEMEFigure extends RectangleFigure {
 			Dimension srmSize = srmFigure.getPreferredSize();
 			srmSize.width = Math.min(srmSize.width, MAX_BOX_WIDTH);
 			Dimension eacSize = eacFigure.getPreferredSize();
+			
+			Dimension xpdlSize = xpdlFigure.getPreferredSize();
+			xpdlSize.width = Math.min(xpdlSize.width, MAX_BOX_WIDTH);
+			
 			eacSize.width = Math.min(eacSize.width, MAX_BOX_WIDTH);;
 			Dimension iacSize = iacFigure.getPreferredSize();
 			iacSize.width = Math.min(iacSize.width, MAX_BOX_WIDTH);
 			Dimension jadeSize = jadeFigure.getPreferredSize();
 			jadeSize.width = Math.min(jadeSize.width, MAX_BOX_WIDTH);
+			
+			Dimension ggSize = ggFigure.getPreferredSize();
+			ggSize.width = Math.min(ggSize.width, MAX_BOX_WIDTH);
+			
 			Dimension sag2sucSize = sag2sucFigure.getPreferredSize();
 			Dimension suc2aipSize = suc2aipFigure.getPreferredSize();
 			Dimension suc2srmSize = suc2srmFigure.getPreferredSize();
 			Dimension aip2eacSize = aip2eacFigure.getPreferredSize();
 			Dimension srm2iacSize = srm2iacFigure.getPreferredSize();
+			Dimension srm2xpdlSize = srm2xpdlFigure.getPreferredSize();
 			Dimension iac2jadeSize = iac2jadeFigure.getPreferredSize();
-			
+			Dimension iac2ggSize = iac2jadeFigure.getPreferredSize();
 			LayoutData data = new LayoutData();
 
 			// boxes
-			int sagX = 0;
-			int sagY = 0;
+			
+			Dimension logoSize = logoFigure.getPreferredSize();
+			//if (logoSize.width > logoMaxWidth || logoSize.height > logoMaxHeight) {
+				//double scale = Math.min((double) logoMaxWidth / logoSize.width, (double) logoMaxHeight / logoSize.height);
+				//logoSize.width *= scale;
+				//logoSize.height *= scale;
+			//}
+			data.logoBox = new Rectangle(0, 0, logoSize.width, logoSize.height);
+			Dimension statusSize = statusFigure.getPreferredSize();
+			int statusX = data.logoBox.getLeft().x + data.logoBox.width + BOX_SPACING;	//data.suc2aipBox.x + data.suc2aipBox.width + BOX_SPACING;
+			int statusY = data.logoBox.y;		//data.sucBox.y;
+			data.statusBox = new Rectangle(statusX, statusY, statusSize.width, statusSize.height);
+			
+			int sagX = data.logoBox.x;
+			int sagY = data.logoBox.getBottom().y + BOX_SPACING/5;
 			int sucX = sagX + sagSize.width + BOX_SPACING;
-			int sucY = 0;
+			int sucY = sagY;
 			int srmX = sucX;
 			int srmY = sucY + sucSize.height + BOX_SPACING ;
+			
+			int xpdlX = srmX -xpdlSize.width - BOX_SPACING;
+			int xpdlY = srmY;
+			
 			int aipX = sucX + sucSize.width + BOX_SPACING;
 			int aipY = sucY + sucSize.height + (BOX_SPACING - aipSize.height)/2 ;
 			int eacX = aipX;
@@ -299,13 +363,23 @@ public class ASEMEFigure extends RectangleFigure {
 			int iacY = srmY + srmSize.height + BOX_SPACING;
 			int jadeX = iacX - (jadeSize.width + BOX_SPACING);
 			int jadeY = iacY;
+			
+			int ggX = jadeX;
+			int ggY = jadeY + BOX_SPACING;
+			
 			data.sagBox = new Rectangle(sagX, sagY, sagSize.width, sagSize.height);
 			data.sucBox = new Rectangle(sucX, sucY, sucSize.width, sucSize.height);
 			data.aipBox = new Rectangle(aipX, aipY, aipSize.width, aipSize.height);
 			data.srmBox = new Rectangle(srmX, srmY, srmSize.width, srmSize.height);
+			
+			data.xpdlBox = new Rectangle(xpdlX, xpdlY, xpdlSize.width, xpdlSize.height);
+			
 			data.eacBox = new Rectangle(eacX, eacY, eacSize.width, eacSize.height);
 			data.iacBox = new Rectangle(iacX, iacY, iacSize.width, iacSize.height);
 			data.jadeBox = new Rectangle(jadeX, jadeY, jadeSize.width, jadeSize.height);
+			
+			data.ggBox = new Rectangle(ggX, ggY, ggSize.width, ggSize.height);
+			
 //			int dmY = gdmSize.height + BOX_SPACING;
 //			int dgmY = dmY + dmSize.height + BOX_SPACING;
 //			data.dgmBox = new Rectangle(0, dgmY, dgmSize.width, dgmSize.height);
@@ -332,8 +406,14 @@ public class ASEMEFigure extends RectangleFigure {
 			data.suc2srmBox = new Rectangle(data.sucBox.x + (data.sucBox.width - suc2srmSize.width)/2, data.sucBox.y + data.sucBox.height + (BOX_SPACING - suc2srmSize.height)/2 , suc2srmSize.width, suc2srmSize.height);
 			data.aip2eacBox = new Rectangle(data.aipBox.x + (data.aipBox.width - aip2eacSize.width)/2, data.aipBox.y + data.aipBox.height + (BOX_SPACING - aip2eacSize.height)/ 2, aip2eacSize.width, aip2eacSize.height);
 			data.srm2iacBox = new Rectangle(data.srmBox.x + (data.srmBox.width - srm2iacSize.width)/2, data.srmBox.y + data.srmBox.height + (BOX_SPACING - srm2iacSize.height)/2, srm2iacSize.width, srm2iacSize.height);
-			data.iac2jadeBox = new Rectangle(data.iacBox.x - BOX_SPACING/5,  data.iacBox.y + (data.iacBox.height - iac2jadeSize.height) / 2, iac2jadeSize.width, iac2jadeSize.height);
-			//			data.gmBox = new Rectangle(data.mm2gmBox.x - (gmSize.width - mm2gmSize.width) / 2, gmY, gmSize.width, gmSize.height);
+			
+			//data.srm2xpdlBox = new Rectangle(data.srmBox.getLeft().x()- 50, data.srmBox.getLeft().y(), srm2iacSize.width, srm2iacSize.height);
+			data.srm2xpdlBox = new Rectangle(data.xpdlBox.x + data.xpdlBox.width + BOX_SPACING/5,  data.xpdlBox.y + (data.xpdlBox.height - srm2xpdlSize.height) / 2, srm2xpdlSize.width, srm2xpdlSize.height);
+			
+			data.iac2jadeBox = new Rectangle(data.jadeBox.x +data.jadeBox.width + BOX_SPACING/5,  data.iacBox.y + (data.iacBox.height - iac2jadeSize.height) / 2, iac2jadeSize.width, iac2jadeSize.height);
+			
+			data.iac2ggBox = new Rectangle(data.iacBox.getBottom().x - data.iac2jadeBox.width/2, data.ggBox.getRight().y- data.iac2jadeBox.height/2, iac2ggSize.width, iac2ggSize.height);
+					//data.gmBox = new Rectangle(data.mm2gmBox.x - (gmSize.width - mm2gmSize.width) / 2, gmY, gmSize.width, gmSize.height);
 //			int gap2 = data.gmBox.x - (data.tdmBox.x + data.tdmBox.width);
 //			if (gap2 < BOX_SPACING) {
 //				int delta = BOX_SPACING - gap2;
@@ -389,13 +469,23 @@ public class ASEMEFigure extends RectangleFigure {
 			int eac2boxPointsY = data.srm2iacBox.y + data.srm2iacBox.height/2;
 			data.eac2iacPoints = new PointList(2);
 			data.eac2iacPoints.addPoint(eacPointsX, eacPointsY);
-			data.eac2iacPoints.addPoint(eac2boxPointsX, eac2boxPointsY);			srmPointsX = data.srmBox.x + data.srmBox.width/2;
+			data.eac2iacPoints.addPoint(eac2boxPointsX, eac2boxPointsY);			
+			srmPointsX = data.srmBox.x + data.srmBox.width/2;
 			srmPointsY = data.srmBox.y + data.srmBox.height;
 			int iacPointsX = srmPointsX;
 			int iacPointsY = data.iacBox.y;
 			data.srm2iacPoints = new PointList(2);
 			data.srm2iacPoints.addPoint(srmPointsX, srmPointsY);
 			data.srm2iacPoints.addPoint(iacPointsX, iacPointsY);
+			
+			int xpdlPointsX = data.xpdlBox.x + data.xpdlBox.width;					
+			int xpdlPpointsY = data.xpdlBox.y + data.xpdlBox.height/2;
+			data.srm2xpdlPoints = new PointList(2);
+			data.srm2xpdlPoints.addPoint(data.srmBox.getLeft());//, srmPointsY);
+			data.srm2xpdlPoints.addPoint(data.xpdlBox.getRight());
+			//data.srm2xpdlPoints.addPoint(xpdlPointsX, xpdlPpointsY);
+			//data.srm2xpdlPoints.addPoint(data.srmBox.getLeft().x()-100, data.srmBox.getLeft().y());
+			
 			iacPointsX = data.iacBox.x;
 			iacPointsY = data.iacBox.y + data.iacBox.height / 2;
 			int jadePointsX = data.jadeBox.x + data.jadeBox.width;
@@ -403,6 +493,15 @@ public class ASEMEFigure extends RectangleFigure {
 			data.iac2jadePoints = new PointList(2);
 			data.iac2jadePoints.addPoint(iacPointsX, iacPointsY);
 			data.iac2jadePoints.addPoint(jadePointsX, jadePointsY);
+			
+			
+			
+			
+			data.iac2ggPoints = new PointList(4);
+			data.iac2ggPoints.addPoint(data.iacBox.getBottom());
+			data.iac2ggPoints.addPoint(data.iac2ggBox.getTop());
+			data.iac2ggPoints.addPoint(data.iac2ggBox.getLeft());
+			data.iac2ggPoints.addPoint(data.ggBox.getRight());
 			
 //			int pointsY = data.dmBox.y + data.dmBox.height / 2;
 //			data.dm2dgmPoints = new PointList(3);
@@ -437,21 +536,11 @@ public class ASEMEFigure extends RectangleFigure {
 //			data.sag2sucPoints.addPoint(data.sag2sucBox.x + data.sag2sucBox.width, pointsY);
 			
 			// logo and status
-//			int logoMaxWidth = data.sag2sucBox.x - BOX_SPACING;
-//			int logoMaxHeight = data.sagBox.y - BOX_SPACING;
+			//int logoMaxWidth = data.sag2sucBox.x - BOX_SPACING;
+			//int logoMaxHeight = data.sagBox.y - BOX_SPACING;
 //			int logoMaxWidth = data.dm2gdmBox.x - BOX_SPACING;
 //			int logoMaxHeight = data.dmBox.y - BOX_SPACING;
-//			Dimension logoSize = logoFigure.getPreferredSize();
-//			if (logoSize.width > logoMaxWidth || logoSize.height > logoMaxHeight) {
-//				double scale = Math.min((double) logoMaxWidth / logoSize.width, (double) logoMaxHeight / logoSize.height);
-//				logoSize.width *= scale;
-//				logoSize.height *= scale;
-//			}
-//			data.logoBox = new Rectangle(0, 0, logoSize.width, logoSize.height);
-			Dimension statusSize = statusFigure.getPreferredSize();
-			int statusX = data.suc2aipBox.x + data.suc2aipBox.width + BOX_SPACING;
-			int statusY = data.sucBox.y;
-			data.statusBox = new Rectangle(statusX, statusY, statusSize.width, statusSize.height);
+			
 
 			return data;
 		}
@@ -469,12 +558,16 @@ public class ASEMEFigure extends RectangleFigure {
 			public Rectangle aipBox;
 			
 			public Rectangle srmBox;
+			
+			public Rectangle xpdlBox;
 
 			public Rectangle eacBox;
 
 			public Rectangle iacBox;
 
 			public Rectangle jadeBox;
+			
+			public Rectangle ggBox;
 
 			public PointList sag2sucPoints;
 			
@@ -489,8 +582,12 @@ public class ASEMEFigure extends RectangleFigure {
 			public PointList eac2iacPoints;
 
 			public PointList srm2iacPoints;
+			
+			public PointList srm2xpdlPoints; ///
 
 			public PointList iac2jadePoints;
+			
+			public PointList iac2ggPoints;
 
 			public Rectangle sag2sucBox;
 			
@@ -501,19 +598,25 @@ public class ASEMEFigure extends RectangleFigure {
 			public Rectangle aip2eacBox;
 
 			public Rectangle srm2iacBox;
+			
+			public Rectangle srm2xpdlBox; ///
 
 			public Rectangle iac2jadeBox;
+			
+			public Rectangle iac2ggBox;
 
 			public void apply(Point offset) {
-			//	logoFigure.setBounds(logoBox.getTranslated(offset));
+				logoFigure.setBounds(logoBox.getTranslated(offset));
 				statusFigure.setBounds(statusBox.getTranslated(offset));
 				sagFigure.setBounds(sagBox.getTranslated(offset));
 				sucFigure.setBounds(sucBox.getTranslated(offset));
 				aipFigure.setBounds(aipBox.getTranslated(offset));
-				srmFigure.setBounds(srmBox.getTranslated(offset));				
+				srmFigure.setBounds(srmBox.getTranslated(offset));
+				xpdlFigure.setBounds(xpdlBox.getTranslated(offset));
  				eacFigure.setBounds(eacBox.getTranslated(offset));
 				iacFigure.setBounds(iacBox.getTranslated(offset));
 				jadeFigure.setBounds(jadeBox.getTranslated(offset));
+				ggFigure.setBounds(ggBox.getTranslated(offset));
 				sag2sucFlow.setPoints(getTranslated(sag2sucPoints, offset));
 				suc2aipFlow.setPoints(getTranslated(suc2aipPoints, offset));
 				suc2srmFlow.setPoints(getTranslated(suc2srmPoints, offset));
@@ -521,13 +624,17 @@ public class ASEMEFigure extends RectangleFigure {
 				aip2eacFlow.setPoints(getTranslated(aip2eacPoints, offset));
 				eac2iacFlow.setPoints(getTranslated(eac2iacPoints, offset));
 				srm2iacFlow.setPoints(getTranslated(srm2iacPoints, offset));
+				srm2xpdlFlow.setPoints(getTranslated(srm2xpdlPoints, offset));	///
 				iac2jadeFlow.setPoints(getTranslated(iac2jadePoints, offset));
+				iac2ggFlow.setPoints(getTranslated(iac2ggPoints, offset));
 				sag2sucFigure.setBounds(sag2sucBox.getTranslated(offset));
 				suc2aipFigure.setBounds(suc2aipBox.getTranslated(offset));
 				suc2srmFigure.setBounds(suc2srmBox.getTranslated(offset));
 				aip2eacFigure.setBounds(aip2eacBox.getTranslated(offset));
 				srm2iacFigure.setBounds(srm2iacBox.getTranslated(offset));
+				srm2xpdlFigure.setBounds(srm2xpdlBox.getTranslated(offset)); ///
 				iac2jadeFigure.setBounds(iac2jadeBox.getTranslated(offset));
+				iac2ggFigure.setBounds(iac2ggBox.getTranslated(offset));
 
 			}
 
@@ -539,16 +646,18 @@ public class ASEMEFigure extends RectangleFigure {
 			}
 
 			public Dimension getSize() {
-				Rectangle bounds = statusBox.getCopy();
-//				Rectangle bounds = logoBox.getCopy();
-//				bounds.union(statusBox);
+				//Rectangle bounds = statusBox.getCopy();
+				Rectangle bounds = logoBox.getCopy();
+				bounds.union(statusBox);
 				bounds.union(sagBox);
 				bounds.union(sucBox);
 				bounds.union(aipBox);
 				bounds.union(srmBox);
+				bounds.union(xpdlBox);
 				bounds.union(eacBox);
 				bounds.union(iacBox);
 				bounds.union(jadeBox);
+				bounds.union(ggBox);
 				return bounds.getSize();
 				
 			}

@@ -69,9 +69,9 @@ public class SUCmodelCanonicalEditPolicy extends CanonicalEditPolicy {
 		if (myFeaturesToSynchronize == null) {
 			myFeaturesToSynchronize = new HashSet<EStructuralFeature>();
 			myFeaturesToSynchronize.add(SUCPackage.eINSTANCE
-					.getSUCmodel_Roles());
-			myFeaturesToSynchronize.add(SUCPackage.eINSTANCE
 					.getSUCmodel_Usecases());
+			myFeaturesToSynchronize.add(SUCPackage.eINSTANCE
+					.getSUCmodel_Roles());
 		}
 		return myFeaturesToSynchronize;
 	}
@@ -105,8 +105,8 @@ public class SUCmodelCanonicalEditPolicy extends CanonicalEditPolicy {
 	 */
 	private boolean isMyDiagramElement(View view) {
 		int visualID = SUCVisualIDRegistry.getVisualID(view);
-		return visualID == RoleEditPart.VISUAL_ID
-				|| visualID == UseCaseEditPart.VISUAL_ID;
+		return visualID == UseCaseEditPart.VISUAL_ID
+				|| visualID == RoleEditPart.VISUAL_ID;
 	}
 
 	/**
@@ -262,18 +262,18 @@ public class SUCmodelCanonicalEditPolicy extends CanonicalEditPolicy {
 			domain2NotationMap.putView(view.getElement(), view);
 			break;
 		}
-		case RoleEditPart.VISUAL_ID: {
-			if (!domain2NotationMap.containsKey(view.getElement())) {
-				result.addAll(SUCDiagramUpdater
-						.getRole_2001ContainedLinks(view));
-			}
-			domain2NotationMap.putView(view.getElement(), view);
-			break;
-		}
 		case UseCaseEditPart.VISUAL_ID: {
 			if (!domain2NotationMap.containsKey(view.getElement())) {
 				result.addAll(SUCDiagramUpdater
 						.getUseCase_2002ContainedLinks(view));
+			}
+			domain2NotationMap.putView(view.getElement(), view);
+			break;
+		}
+		case RoleEditPart.VISUAL_ID: {
+			if (!domain2NotationMap.containsKey(view.getElement())) {
+				result.addAll(SUCDiagramUpdater
+						.getRole_2001ContainedLinks(view));
 			}
 			domain2NotationMap.putView(view.getElement(), view);
 			break;

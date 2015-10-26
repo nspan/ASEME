@@ -9,10 +9,9 @@ import org.eclipse.emf.common.ui.URIEditorInput;
 public class AIPUriEditorInputTester extends PropertyTester {
 
 	/**
-	 * @generated
-	 */
-	public boolean test(Object receiver, String method, Object[] args,
-			Object expectedValue) {
+	* @generated
+	*/
+	public boolean test(Object receiver, String method, Object[] args, Object expectedValue) {
 		if (false == receiver instanceof URIEditorInput) {
 			return false;
 		}

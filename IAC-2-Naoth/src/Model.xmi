@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="ASCII"?>
+<IAC:Model xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:IAC="http://www.amcl.tuc.gr/aseme/metamodels/IAC" xsi:schemaLocation="http://www.amcl.tuc.gr/aseme/metamodels/IAC IAC.ecore" name="malks">
+  <variables name="Testing" type="java.lang.String"/>
+  <nodes name="SampleAgent" type="OR" label="0"/>
+  <nodes name="Play" type="OR" label="0.2.3" Father_of="//@nodes.4"/>
+  <nodes name="0.2.1" type="START" label="0.2.1" Father_of="//@nodes.4"/>
+  <nodes name="0.3" type="END" label="0.3" Father_of="//@nodes.0"/>
+  <nodes name="_open_group_Play_or_NoPlay_close_group_" type="OR" label="0.2" Father_of="//@nodes.0"/>
+  <nodes name="0.1" type="START" label="0.1" Father_of="//@nodes.0"/>
+  <nodes name="0.2.2" type="CONDITION" label="0.2.2" Father_of="//@nodes.4"/>
+  <nodes name="NoPlay" type="BASIC" label="0.2.4" Father_of="//@nodes.4"/>
+  <nodes name="0.2.5" type="END" label="0.2.5" Father_of="//@nodes.4"/>
+  <nodes name="0.2.3.1" type="START" label="0.2.3.1" Father_of="//@nodes.1"/>
+  <nodes name="0.2.3.2" type="CONDITION" label="0.2.3.2" Father_of="//@nodes.1"/>
+  <nodes name="SitDownAndStare" type="BASIC" label="0.2.3.3" variables="//@variables.0" Father_of="//@nodes.1"/>
+  <nodes name="StandUpAndScan" type="BASIC" label="0.2.3.4" Father_of="//@nodes.1"/>
+  <nodes name="0.2.3.5" type="END" label="0.2.3.5" Father_of="//@nodes.1"/>
+  <transitions TE="" source="//@nodes.5" target="//@nodes.4" name="0.1TO_open_group_Play_or_NoPlay_close_group_"/>
+  <transitions source="//@nodes.6" target="//@nodes.1" name="0.2.2TOPlay"/>
+  <transitions source="//@nodes.2" target="//@nodes.6" name="0.2.1TO0.2.2"/>
+  <transitions TE="" source="//@nodes.6" target="//@nodes.7" name="0.2.2TONoPlay"/>
+  <transitions source="//@nodes.9" target="//@nodes.10" name="0.2.3.1TO0.2.3.2"/>
+  <transitions source="//@nodes.10" target="//@nodes.11" name="0.2.3.2TOSitDownAndStare"/>
+  <transitions source="//@nodes.10" target="//@nodes.12" name="0.2.3.2TOStandUpAndScan"/>
+  <transitions TE="[wasSeen==true]" source="//@nodes.11" target="//@nodes.13" name="SitDownAndStareTO0.2.3.5"/>
+  <transitions source="//@nodes.12" target="//@nodes.13" name="StandUpAndScanTO0.2.3.5"/>
+  <transitions TE="[wasSeen==false]" source="//@nodes.1" target="//@nodes.8" name="NoPlayTO0.2.5"/>
+  <transitions source="//@nodes.1" target="//@nodes.8" name="PlayTO0.2.5"/>
+  <transitions TE="[playerState!=FINISHED]/TimeoutAction.behavior.200" source="//@nodes.4" target="//@nodes.4" name="_open_group_Play_or_NoPlay_close_group_TO_open_group_Play_or_NoPlay_close_group_"/>
+  <transitions TE="[vf==12]/TimeoutAction.behavior.200" source="//@nodes.4" target="//@nodes.3" name="_open_group_Play_or_NoPlay_close_group_TO0.3"/>
+</IAC:Model>

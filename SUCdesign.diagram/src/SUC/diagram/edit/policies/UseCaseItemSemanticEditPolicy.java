@@ -47,7 +47,7 @@ public class UseCaseItemSemanticEditPolicy extends
 		cmd.setTransactionNestingEnabled(false);
 		for (Iterator<?> it = view.getTargetEdges().iterator(); it.hasNext();) {
 			Edge incomingLink = (Edge) it.next();
-			if (SUCVisualIDRegistry.getVisualID(incomingLink) == UseCaseIncludeEditPart.VISUAL_ID) {
+			if (SUCVisualIDRegistry.getVisualID(incomingLink) == RoleParticipates_inEditPart.VISUAL_ID) {
 				DestroyReferenceRequest r = new DestroyReferenceRequest(
 						incomingLink.getSource().getElement(), null,
 						incomingLink.getTarget().getElement(), false);
@@ -55,7 +55,7 @@ public class UseCaseItemSemanticEditPolicy extends
 				cmd.add(new DeleteCommand(getEditingDomain(), incomingLink));
 				continue;
 			}
-			if (SUCVisualIDRegistry.getVisualID(incomingLink) == RoleParticipates_inEditPart.VISUAL_ID) {
+			if (SUCVisualIDRegistry.getVisualID(incomingLink) == UseCaseIncludeEditPart.VISUAL_ID) {
 				DestroyReferenceRequest r = new DestroyReferenceRequest(
 						incomingLink.getSource().getElement(), null,
 						incomingLink.getTarget().getElement(), false);
@@ -102,12 +102,12 @@ public class UseCaseItemSemanticEditPolicy extends
 	 */
 	protected Command getStartCreateRelationshipCommand(
 			CreateRelationshipRequest req) {
+		if (SUCElementTypes.RoleParticipates_in_4001 == req.getElementType()) {
+			return null;
+		}
 		if (SUCElementTypes.UseCaseInclude_4003 == req.getElementType()) {
 			return getGEFWrapper(new UseCaseIncludeCreateCommand(req,
 					req.getSource(), req.getTarget()));
-		}
-		if (SUCElementTypes.RoleParticipates_in_4001 == req.getElementType()) {
-			return null;
 		}
 		return null;
 	}
@@ -117,12 +117,12 @@ public class UseCaseItemSemanticEditPolicy extends
 	 */
 	protected Command getCompleteCreateRelationshipCommand(
 			CreateRelationshipRequest req) {
-		if (SUCElementTypes.UseCaseInclude_4003 == req.getElementType()) {
-			return getGEFWrapper(new UseCaseIncludeCreateCommand(req,
-					req.getSource(), req.getTarget()));
-		}
 		if (SUCElementTypes.RoleParticipates_in_4001 == req.getElementType()) {
 			return getGEFWrapper(new RoleParticipates_inCreateCommand(req,
+					req.getSource(), req.getTarget()));
+		}
+		if (SUCElementTypes.UseCaseInclude_4003 == req.getElementType()) {
+			return getGEFWrapper(new UseCaseIncludeCreateCommand(req,
 					req.getSource(), req.getTarget()));
 		}
 		return null;
@@ -137,10 +137,10 @@ public class UseCaseItemSemanticEditPolicy extends
 	protected Command getReorientReferenceRelationshipCommand(
 			ReorientReferenceRelationshipRequest req) {
 		switch (getVisualID(req)) {
-		case UseCaseIncludeEditPart.VISUAL_ID:
-			return getGEFWrapper(new UseCaseIncludeReorientCommand(req));
 		case RoleParticipates_inEditPart.VISUAL_ID:
 			return getGEFWrapper(new RoleParticipates_inReorientCommand(req));
+		case UseCaseIncludeEditPart.VISUAL_ID:
+			return getGEFWrapper(new UseCaseIncludeReorientCommand(req));
 		}
 		return super.getReorientReferenceRelationshipCommand(req);
 	}

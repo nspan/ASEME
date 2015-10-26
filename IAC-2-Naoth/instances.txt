@@ -1,0 +1,2 @@
+BallPercept theBallPercept;  /*ballPercept*/
+MotionRequest theMotionRequest;  /*request for motion from file*/ 

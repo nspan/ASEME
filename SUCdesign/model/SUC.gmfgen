@@ -22,6 +22,54 @@
     <domainDiagramElement
         href="SUC.genmodel#//SUC/SUCmodel"/>
     <topLevelNodes
+        visualID="2002"
+        editPartClassName="UseCaseEditPart"
+        itemSemanticEditPolicyClassName="UseCaseItemSemanticEditPolicy"
+        canonicalEditPolicyClassName="UseCaseCanonicalEditPolicy"
+        graphicalNodeEditPolicyClassName="UseCaseGraphicalNodeEditPolicy"
+        createCommandClassName="UseCaseCreateCommand">
+      <diagramRunTimeClass
+          href="../../../plugin/org.eclipse.gmf.runtime.notation/model/notation.genmodel#//notation/Node"/>
+      <elementType
+          xsi:type="gmfgen:MetamodelType"
+          editHelperClassName="UseCaseEditHelper"/>
+      <viewmap
+          xsi:type="gmfgen:InnerClassViewmap"
+          className="UseCaseFigureCustom"
+          classBody="&#xA;/**&#xA; * @generated&#xA; */&#xA;public class UseCaseFigureCustom extends org.eclipse.draw2d.Ellipse {&#xA;&#xA;&#xA;&#x9;/**&#xA;&#x9; * @generated&#xA;&#x9; */&#xA;&#x9;private org.eclipse.gmf.runtime.draw2d.ui.figures.WrappingLabel fFigureUseCaseSpecified_byFigureCustom; &#xA;&#x9;/**&#xA;&#x9; * @generated&#xA;&#x9; */&#xA;&#x9;private org.eclipse.gmf.runtime.draw2d.ui.figures.WrappingLabel fFigureUseCaseNameFigureCustom; &#xA;&#xA;&#xA;&#xA;&#xA;&#x9;/**&#xA;&#x9; * @generated&#xA;&#x9; */&#xA;&#x9;public UseCaseFigureCustom() {&#xA;&#x9;&#x9;&#x9;&#x9;this.setLineWidth(3);&#xA;&#x9;this.setForegroundColor(THIS_FORE&#xA;);&#xA;&#x9;this.setBackgroundColor(THIS_BACK&#xA;);&#xA;this.setSize(getMapMode().DPtoLP(10)&#xA;, getMapMode().DPtoLP(10)&#xA;);&#xA;&#x9;&#x9;createContents();&#xA;&#x9;}&#xA;&#x9;/**&#xA;&#x9; * @generated&#xA;&#x9; */&#xA;&#x9;private void createContents(){&#xA;&#xA;&#xA;fFigureUseCaseNameFigureCustom = new org.eclipse.gmf.runtime.draw2d.ui.figures.WrappingLabel();&#xA;&#xA;fFigureUseCaseNameFigureCustom.setText(&quot;&quot;);&#xA;&#xA;this.add(fFigureUseCaseNameFigureCustom);&#xA;&#xA;&#xA;&#xA;fFigureUseCaseSpecified_byFigureCustom = new org.eclipse.gmf.runtime.draw2d.ui.figures.WrappingLabel();&#xA;&#xA;fFigureUseCaseSpecified_byFigureCustom.setText(&quot;&quot;);&#xA;&#xA;this.add(fFigureUseCaseSpecified_byFigureCustom);&#xA;&#xA;&#xA;&#x9;}&#xA;&#xA;&#xA;&#xA;&#xA;&#xA;&#x9;/**&#xA;&#x9; * @generated&#xA;&#x9; */&#xA;&#x9;public org.eclipse.gmf.runtime.draw2d.ui.figures.WrappingLabel getFigureUseCaseSpecified_byFigureCustom() {&#xA;&#x9;&#x9;return fFigureUseCaseSpecified_byFigureCustom;&#xA;&#x9;}&#xA;&#x9;/**&#xA;&#x9; * @generated&#xA;&#x9; */&#xA;&#x9;public org.eclipse.gmf.runtime.draw2d.ui.figures.WrappingLabel getFigureUseCaseNameFigureCustom() {&#xA;&#x9;&#x9;return fFigureUseCaseNameFigureCustom;&#xA;&#x9;}&#xA;&#xA;&#xA;}&#xA;&#xA;/**&#xA; * @generated&#xA; */&#xA;static final org.eclipse.swt.graphics.Color THIS_FORE = new org.eclipse.swt.graphics.Color(null, 47, 124, 157);&#xA;&#xA;/**&#xA; * @generated&#xA; */&#xA;static final org.eclipse.swt.graphics.Color THIS_BACK = new org.eclipse.swt.graphics.Color(null, 180, 250, 150);&#xA;&#xA;">
+        <attributes
+            xsi:type="gmfgen:StyleAttributes"
+            fixedForeground="true"
+            fixedBackground="true"/>
+      </viewmap>
+      <modelFacet>
+        <metaClass
+            href="SUC.genmodel#//SUC/UseCase"/>
+        <containmentMetaFeature
+            href="SUC.genmodel#//SUC/SUCmodel/usecases"/>
+        <childMetaFeature
+            href="SUC.genmodel#//SUC/SUCmodel/usecases"/>
+      </modelFacet>
+      <labels
+          visualID="5002"
+          editPartClassName="UseCaseNameEditPart"
+          itemSemanticEditPolicyClassName="UseCaseNameItemSemanticEditPolicy"
+          elementIcon="true">
+        <diagramRunTimeClass
+            href="../../../plugin/org.eclipse.gmf.runtime.notation/model/notation.genmodel#//notation/Node"/>
+        <viewmap
+            xsi:type="gmfgen:ParentAssignedViewmap"
+            getterName="getFigureUseCaseNameFigureCustom"
+            figureQualifiedClassName="org.eclipse.gmf.runtime.draw2d.ui.figures.WrappingLabel"/>
+        <modelFacet
+            xsi:type="gmfgen:FeatureLabelModelFacet"
+            parser="//@labelParsers/@implementations.0">
+          <metaFeatures
+              href="SUC.genmodel#//SUC/UseCase/name"/>
+        </modelFacet>
+      </labels>
+    </topLevelNodes>
+    <topLevelNodes
         visualID="2001"
         editPartClassName="RoleEditPart"
         itemSemanticEditPolicyClassName="RoleItemSemanticEditPolicy"
@@ -65,72 +113,26 @@
         </modelFacet>
       </labels>
     </topLevelNodes>
-    <topLevelNodes
-        visualID="2002"
-        editPartClassName="UseCaseEditPart"
-        itemSemanticEditPolicyClassName="UseCaseItemSemanticEditPolicy"
-        canonicalEditPolicyClassName="UseCaseCanonicalEditPolicy"
-        graphicalNodeEditPolicyClassName="UseCaseGraphicalNodeEditPolicy"
-        createCommandClassName="UseCaseCreateCommand">
+    <links
+        visualID="4001"
+        editPartClassName="RoleParticipates_inEditPart"
+        itemSemanticEditPolicyClassName="RoleParticipates_inItemSemanticEditPolicy"
+        createCommandClassName="RoleParticipates_inCreateCommand"
+        reorientCommandClassName="RoleParticipates_inReorientCommand">
       <diagramRunTimeClass
-          href="../../../plugin/org.eclipse.gmf.runtime.notation/model/notation.genmodel#//notation/Node"/>
+          href="../../../plugin/org.eclipse.gmf.runtime.notation/model/notation.genmodel#//notation/Edge"/>
       <elementType
-          xsi:type="gmfgen:MetamodelType"
-          editHelperClassName="UseCaseEditHelper"/>
+          xsi:type="gmfgen:SpecializationType"/>
       <viewmap
           xsi:type="gmfgen:InnerClassViewmap"
-          className="UseCaseFigureCustom"
-          classBody="&#xA;/**&#xA; * @generated&#xA; */&#xA;public class UseCaseFigureCustom extends org.eclipse.draw2d.Ellipse {&#xA;&#xA;&#xA;&#x9;/**&#xA;&#x9; * @generated&#xA;&#x9; */&#xA;&#x9;private org.eclipse.gmf.runtime.draw2d.ui.figures.WrappingLabel fFigureUseCaseSpecified_byFigureCustom; &#xA;&#x9;/**&#xA;&#x9; * @generated&#xA;&#x9; */&#xA;&#x9;private org.eclipse.gmf.runtime.draw2d.ui.figures.WrappingLabel fFigureUseCaseNameFigureCustom; &#xA;&#xA;&#xA;&#xA;&#xA;&#x9;/**&#xA;&#x9; * @generated&#xA;&#x9; */&#xA;&#x9;public UseCaseFigureCustom() {&#xA;&#x9;&#x9;&#x9;&#x9;&#x9;this.setForegroundColor(THIS_FORE&#xA;);&#xA;&#x9;this.setBackgroundColor(THIS_BACK&#xA;);&#xA;this.setSize(getMapMode().DPtoLP(10)&#xA;, getMapMode().DPtoLP(10)&#xA;);&#xA;&#x9;&#x9;createContents();&#xA;&#x9;}&#xA;&#x9;/**&#xA;&#x9; * @generated&#xA;&#x9; */&#xA;&#x9;private void createContents(){&#xA;&#xA;&#xA;fFigureUseCaseNameFigureCustom = new org.eclipse.gmf.runtime.draw2d.ui.figures.WrappingLabel();&#xA;&#xA;fFigureUseCaseNameFigureCustom.setText(&quot;&quot;);&#xA;&#xA;this.add(fFigureUseCaseNameFigureCustom);&#xA;&#xA;&#xA;&#xA;fFigureUseCaseSpecified_byFigureCustom = new org.eclipse.gmf.runtime.draw2d.ui.figures.WrappingLabel();&#xA;&#xA;fFigureUseCaseSpecified_byFigureCustom.setText(&quot;&quot;);&#xA;&#xA;this.add(fFigureUseCaseSpecified_byFigureCustom);&#xA;&#xA;&#xA;&#x9;}&#xA;&#xA;&#xA;&#xA;&#xA;&#xA;&#x9;/**&#xA;&#x9; * @generated&#xA;&#x9; */&#xA;&#x9;public org.eclipse.gmf.runtime.draw2d.ui.figures.WrappingLabel getFigureUseCaseSpecified_byFigureCustom() {&#xA;&#x9;&#x9;return fFigureUseCaseSpecified_byFigureCustom;&#xA;&#x9;}&#xA;&#x9;/**&#xA;&#x9; * @generated&#xA;&#x9; */&#xA;&#x9;public org.eclipse.gmf.runtime.draw2d.ui.figures.WrappingLabel getFigureUseCaseNameFigureCustom() {&#xA;&#x9;&#x9;return fFigureUseCaseNameFigureCustom;&#xA;&#x9;}&#xA;&#xA;&#xA;}&#xA;&#xA;/**&#xA; * @generated&#xA; */&#xA;static final org.eclipse.swt.graphics.Color THIS_FORE = new org.eclipse.swt.graphics.Color(null, 47, 124, 157);&#xA;&#xA;/**&#xA; * @generated&#xA; */&#xA;static final org.eclipse.swt.graphics.Color THIS_BACK = new org.eclipse.swt.graphics.Color(null, 180, 250, 150);&#xA;&#xA;">
-        <attributes
-            xsi:type="gmfgen:StyleAttributes"
-            fixedForeground="true"
-            fixedBackground="true"/>
-      </viewmap>
-      <modelFacet>
-        <metaClass
-            href="SUC.genmodel#//SUC/UseCase"/>
-        <containmentMetaFeature
-            href="SUC.genmodel#//SUC/SUCmodel/usecases"/>
-        <childMetaFeature
-            href="SUC.genmodel#//SUC/SUCmodel/usecases"/>
+          className="RoleParticipates_inFigure"
+          classBody="&#xA;/**&#xA; * @generated&#xA; */&#xA;public class RoleParticipates_inFigure extends org.eclipse.gmf.runtime.draw2d.ui.figures.PolylineConnectionEx {&#xA;&#xA;&#xA;&#xA;&#xA;&#xA;&#xA;&#x9;/**&#xA;&#x9; * @generated&#xA;&#x9; */&#xA;&#x9;public RoleParticipates_inFigure() {&#xA;&#x9;&#x9;this.setLineWidth(3);&#xA;&#xA;&#x9;&#x9;setTargetDecoration(createTargetDecoration());&#xA;&#x9;}&#xA;&#xA;&#x9;/**&#xA;&#x9; * @generated&#xA;&#x9; */&#xA;&#x9;private org.eclipse.draw2d.RotatableDecoration createTargetDecoration() {&#xA;&#x9;&#x9;org.eclipse.draw2d.PolylineDecoration df = new org.eclipse.draw2d.PolylineDecoration();&#xA;df.setLineWidth(3);&#xA;&#x9;&#x9;return df;&#xA;&#x9;}&#xA;&#xA;&#xA;&#xA;&#xA;}&#xA;&#xA;"/>
+      <modelFacet
+          xsi:type="gmfgen:FeatureLinkModelFacet">
+        <metaFeature
+            href="SUC.genmodel#//SUC/Role/participates_in"/>
       </modelFacet>
-      <labels
-          visualID="5002"
-          editPartClassName="UseCaseNameEditPart"
-          itemSemanticEditPolicyClassName="UseCaseNameItemSemanticEditPolicy"
-          elementIcon="true">
-        <diagramRunTimeClass
-            href="../../../plugin/org.eclipse.gmf.runtime.notation/model/notation.genmodel#//notation/Node"/>
-        <viewmap
-            xsi:type="gmfgen:ParentAssignedViewmap"
-            getterName="getFigureUseCaseNameFigureCustom"
-            figureQualifiedClassName="org.eclipse.gmf.runtime.draw2d.ui.figures.WrappingLabel"/>
-        <modelFacet
-            xsi:type="gmfgen:FeatureLabelModelFacet"
-            parser="//@labelParsers/@implementations.0">
-          <metaFeatures
-              href="SUC.genmodel#//SUC/UseCase/name"/>
-        </modelFacet>
-      </labels>
-      <labels
-          visualID="5004"
-          editPartClassName="UseCaseSpecified_byEditPart"
-          itemSemanticEditPolicyClassName="UseCaseSpecified_byItemSemanticEditPolicy"
-          elementIcon="true">
-        <diagramRunTimeClass
-            href="../../../plugin/org.eclipse.gmf.runtime.notation/model/notation.genmodel#//notation/Node"/>
-        <viewmap
-            xsi:type="gmfgen:ParentAssignedViewmap"
-            getterName="getFigureUseCaseSpecified_byFigureCustom"
-            figureQualifiedClassName="org.eclipse.gmf.runtime.draw2d.ui.figures.WrappingLabel"/>
-        <modelFacet
-            xsi:type="gmfgen:FeatureLabelModelFacet"
-            parser="//@labelParsers/@implementations.0">
-          <metaFeatures
-              href="SUC.genmodel#//SUC/UseCase/specified_by"/>
-        </modelFacet>
-      </labels>
-    </topLevelNodes>
+    </links>
     <links
         visualID="4003"
         editPartClassName="UseCaseIncludeEditPart"
@@ -144,7 +146,7 @@
       <viewmap
           xsi:type="gmfgen:InnerClassViewmap"
           className="UseCaseIncludeFigure"
-          classBody="&#xA;/**&#xA; * @generated&#xA; */&#xA;public class UseCaseIncludeFigure extends org.eclipse.gmf.runtime.draw2d.ui.figures.PolylineConnectionEx {&#xA;&#xA;&#xA;&#x9;/**&#xA;&#x9; * @generated&#xA;&#x9; */&#xA;&#x9;private org.eclipse.gmf.runtime.draw2d.ui.figures.WrappingLabel fFigureIncludeLabel; &#xA;&#xA;&#xA;&#xA;&#xA;&#x9;/**&#xA;&#x9; * @generated&#xA;&#x9; */&#xA;&#x9;public UseCaseIncludeFigure() {&#xA;&#x9;&#x9;&#xA;&#x9;&#x9;createContents();&#xA;&#x9;&#x9;setTargetDecoration(createTargetDecoration());&#xA;&#x9;}&#xA;&#xA;&#xA;&#x9;/**&#xA;&#x9; * @generated&#xA;&#x9; */&#xA;&#x9;private void createContents(){&#xA;&#xA;&#xA;fFigureIncludeLabel = new org.eclipse.gmf.runtime.draw2d.ui.figures.WrappingLabel();&#xA;&#xA;fFigureIncludeLabel.setText(&quot;&lt;&lt;includes>>&quot;);&#xA;&#xA;this.add(fFigureIncludeLabel);&#xA;&#xA;&#xA;&#x9;}&#xA;&#xA;&#x9;/**&#xA;&#x9; * @generated&#xA;&#x9; */&#xA;&#x9;private org.eclipse.draw2d.RotatableDecoration createTargetDecoration() {&#xA;&#x9;&#x9;org.eclipse.draw2d.PolylineDecoration df = new org.eclipse.draw2d.PolylineDecoration();&#xA;&#x9;&#x9;return df;&#xA;&#x9;}&#xA;&#xA;&#xA;&#x9;/**&#xA;&#x9; * @generated&#xA;&#x9; */&#xA;&#x9;public org.eclipse.gmf.runtime.draw2d.ui.figures.WrappingLabel getFigureIncludeLabel() {&#xA;&#x9;&#x9;return fFigureIncludeLabel;&#xA;&#x9;}&#xA;&#xA;&#xA;}&#xA;&#xA;"/>
+          classBody="&#xA;/**&#xA; * @generated&#xA; */&#xA;public class UseCaseIncludeFigure extends org.eclipse.gmf.runtime.draw2d.ui.figures.PolylineConnectionEx {&#xA;&#xA;&#xA;&#x9;/**&#xA;&#x9; * @generated&#xA;&#x9; */&#xA;&#x9;private org.eclipse.gmf.runtime.draw2d.ui.figures.WrappingLabel fFigureIncludeLabel; &#xA;&#xA;&#xA;&#xA;&#xA;&#x9;/**&#xA;&#x9; * @generated&#xA;&#x9; */&#xA;&#x9;public UseCaseIncludeFigure() {&#xA;&#x9;&#x9;this.setLineWidth(3);&#xA;&#xA;&#x9;&#x9;createContents();&#xA;&#x9;&#x9;setTargetDecoration(createTargetDecoration());&#xA;&#x9;}&#xA;&#xA;&#xA;&#x9;/**&#xA;&#x9; * @generated&#xA;&#x9; */&#xA;&#x9;private void createContents(){&#xA;&#xA;&#xA;fFigureIncludeLabel = new org.eclipse.gmf.runtime.draw2d.ui.figures.WrappingLabel();&#xA;&#xA;fFigureIncludeLabel.setText(&quot;&lt;&lt;includes>>&quot;);&#xA;&#xA;this.add(fFigureIncludeLabel);&#xA;&#xA;&#xA;&#x9;}&#xA;&#xA;&#x9;/**&#xA;&#x9; * @generated&#xA;&#x9; */&#xA;&#x9;private org.eclipse.draw2d.RotatableDecoration createTargetDecoration() {&#xA;&#x9;&#x9;org.eclipse.draw2d.PolylineDecoration df = new org.eclipse.draw2d.PolylineDecoration();&#xA;df.setLineWidth(3);&#xA;&#x9;&#x9;return df;&#xA;&#x9;}&#xA;&#xA;&#xA;&#x9;/**&#xA;&#x9; * @generated&#xA;&#x9; */&#xA;&#x9;public org.eclipse.gmf.runtime.draw2d.ui.figures.WrappingLabel getFigureIncludeLabel() {&#xA;&#x9;&#x9;return fFigureIncludeLabel;&#xA;&#x9;}&#xA;&#xA;&#xA;}&#xA;&#xA;"/>
       <modelFacet
           xsi:type="gmfgen:FeatureLinkModelFacet">
         <metaFeature
@@ -168,26 +170,6 @@
             parser="//@labelParsers/@implementations.1"/>
       </labels>
     </links>
-    <links
-        visualID="4001"
-        editPartClassName="RoleParticipates_inEditPart"
-        itemSemanticEditPolicyClassName="RoleParticipates_inItemSemanticEditPolicy"
-        createCommandClassName="RoleParticipates_inCreateCommand"
-        reorientCommandClassName="RoleParticipates_inReorientCommand">
-      <diagramRunTimeClass
-          href="../../../plugin/org.eclipse.gmf.runtime.notation/model/notation.genmodel#//notation/Edge"/>
-      <elementType
-          xsi:type="gmfgen:SpecializationType"/>
-      <viewmap
-          xsi:type="gmfgen:InnerClassViewmap"
-          className="RoleParticipates_inFigure"
-          classBody="&#xA;/**&#xA; * @generated&#xA; */&#xA;public class RoleParticipates_inFigure extends org.eclipse.gmf.runtime.draw2d.ui.figures.PolylineConnectionEx {&#xA;&#xA;&#xA;&#xA;&#xA;&#xA;&#xA;&#x9;/**&#xA;&#x9; * @generated&#xA;&#x9; */&#xA;&#x9;public RoleParticipates_inFigure() {&#xA;&#x9;&#x9;&#xA;&#x9;&#x9;setTargetDecoration(createTargetDecoration());&#xA;&#x9;}&#xA;&#xA;&#x9;/**&#xA;&#x9; * @generated&#xA;&#x9; */&#xA;&#x9;private org.eclipse.draw2d.RotatableDecoration createTargetDecoration() {&#xA;&#x9;&#x9;org.eclipse.draw2d.PolylineDecoration df = new org.eclipse.draw2d.PolylineDecoration();&#xA;&#x9;&#x9;return df;&#xA;&#x9;}&#xA;&#xA;&#xA;&#xA;&#xA;}&#xA;&#xA;"/>
-      <modelFacet
-          xsi:type="gmfgen:FeatureLinkModelFacet">
-        <metaFeature
-            href="SUC.genmodel#//SUC/Role/participates_in"/>
-      </modelFacet>
-    </links>
     <palette>
       <groups
           title="SUC">
@@ -195,24 +177,24 @@
             xsi:type="gmfgen:ToolEntry"
             title="UseCase"
             description="Create new UseCase"
-            genNodes="//@diagram/@topLevelNodes.1"/>
+            genNodes="//@diagram/@topLevelNodes.0"
+            genLinks="//@diagram/@links.1"/>
         <entries
             xsi:type="gmfgen:ToolEntry"
             title="RoleParticipates_in"
             description="Create new RoleParticipates_in"
-            genLinks="//@diagram/@links.1"/>
+            genNodes="//@diagram/@topLevelNodes.1"/>
         <entries
             xsi:type="gmfgen:ToolEntry"
             title="UseCaseInclude"
-            description="Create new UseCaseInclude"
-            genLinks="//@diagram/@links.0"/>
+            description="Create new UseCaseInclude"/>
         <entries
             xsi:type="gmfgen:ToolEntry"
             title="Role"
             description="Create new Role"
             largeIconPath="/Suc_design.edit/icons/full/obj16/Role.gif"
             smallIconPath="/Suc_design.edit/icons/full/obj16/Role.gif"
-            genNodes="//@diagram/@topLevelNodes.0"/>
+            genLinks="//@diagram/@links.0"/>
       </groups>
     </palette>
     <preferencePages
@@ -263,12 +245,12 @@
         groupIcon="icons/linksNavigatorGroup.gif"/>
     <childReferences
         parent="//@diagram/@links.0"
-        child="//@diagram/@topLevelNodes.1"
+        child="//@diagram/@topLevelNodes.0"
         referenceType="out_target"
         groupName="target"
         groupIcon="icons/linkTargetNavigatorGroup.gif"/>
     <childReferences
-        parent="//@diagram/@topLevelNodes.1"
+        parent="//@diagram/@topLevelNodes.0"
         child="//@diagram/@links.0"
         referenceType="in_source"
         groupName="incoming links"
@@ -292,12 +274,12 @@
         groupIcon="icons/linksNavigatorGroup.gif"/>
     <childReferences
         parent="//@diagram/@links.1"
-        child="//@diagram/@topLevelNodes.1"
+        child="//@diagram/@topLevelNodes.0"
         referenceType="out_target"
         groupName="target"
         groupIcon="icons/linkTargetNavigatorGroup.gif"/>
     <childReferences
-        parent="//@diagram/@topLevelNodes.1"
+        parent="//@diagram/@topLevelNodes.0"
         child="//@diagram/@links.1"
         referenceType="in_source"
         groupName="incoming links"
@@ -341,10 +323,10 @@
       extensibleViaService="true">
     <implementations
         xsi:type="gmfgen:PredefinedParser"
-        uses="//@diagram/@topLevelNodes.0/@labels.0/@modelFacet //@diagram/@topLevelNodes.1/@labels.0/@modelFacet //@diagram/@topLevelNodes.1/@labels.1/@modelFacet"/>
+        uses="//@diagram/@topLevelNodes.0/@labels.0/@modelFacet //@diagram/@topLevelNodes.1/@labels.0/@modelFacet"/>
     <implementations
         xsi:type="gmfgen:ExternalParser"
-        uses="//@diagram/@links.0/@labels.0/@modelFacet"/>
+        uses="//@diagram/@links.1/@labels.0/@modelFacet"/>
   </labelParsers>
   <contextMenus
       context="//@diagram">

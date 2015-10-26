@@ -54,8 +54,8 @@ public class RoleCapabilitiesCreateCommand extends EditElementCommand {
 			return true; // link creation is in progress; source is not defined yet
 		}
 		// target may be null here but it's possible to check constraint
-		return SRMBaseItemSemanticEditPolicy.LinkConstraints
-				.canCreateRoleCapabilities_4004(getSource(), getTarget());
+		return SRMBaseItemSemanticEditPolicy.getLinkConstraints()
+				.canCreateRoleCapabilities_4002(getSource(), getTarget());
 	}
 
 	/**

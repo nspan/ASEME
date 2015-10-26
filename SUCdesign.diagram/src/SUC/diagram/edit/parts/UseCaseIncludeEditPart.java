@@ -1,6 +1,7 @@
 package SUC.diagram.edit.parts;
 
 import org.eclipse.draw2d.Connection;
+import org.eclipse.draw2d.MidpointLocator;
 import org.eclipse.draw2d.PolylineDecoration;
 import org.eclipse.draw2d.RotatableDecoration;
 import org.eclipse.gmf.runtime.diagram.ui.editparts.ConnectionNodeEditPart;
@@ -73,6 +74,7 @@ public class UseCaseIncludeEditPart extends ConnectionNodeEditPart implements
 		 * @generated
 		 */
 		public UseCaseIncludeFigure() {
+			this.setLineWidth(3);
 
 			createContents();
 			setTargetDecoration(createTargetDecoration());
@@ -87,7 +89,7 @@ public class UseCaseIncludeEditPart extends ConnectionNodeEditPart implements
 
 			fFigureIncludeLabel.setText("<<includes>>");
 
-			this.add(fFigureIncludeLabel);
+			this.add(fFigureIncludeLabel, new MidpointLocator(this, 0));
 
 		}
 
@@ -96,6 +98,7 @@ public class UseCaseIncludeEditPart extends ConnectionNodeEditPart implements
 		 */
 		private RotatableDecoration createTargetDecoration() {
 			PolylineDecoration df = new PolylineDecoration();
+			df.setLineWidth(3);
 			return df;
 		}
 

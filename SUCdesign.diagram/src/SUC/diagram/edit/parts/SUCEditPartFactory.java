@@ -25,29 +25,26 @@ public class SUCEditPartFactory implements EditPartFactory {
 			case SUCmodelEditPart.VISUAL_ID:
 				return new SUCmodelEditPart(view);
 
-			case RoleEditPart.VISUAL_ID:
-				return new RoleEditPart(view);
-
-			case RoleNameEditPart.VISUAL_ID:
-				return new RoleNameEditPart(view);
-
 			case UseCaseEditPart.VISUAL_ID:
 				return new UseCaseEditPart(view);
 
 			case UseCaseNameEditPart.VISUAL_ID:
 				return new UseCaseNameEditPart(view);
 
-			case UseCaseSpecified_byEditPart.VISUAL_ID:
-				return new UseCaseSpecified_byEditPart(view);
+			case RoleEditPart.VISUAL_ID:
+				return new RoleEditPart(view);
+
+			case RoleNameEditPart.VISUAL_ID:
+				return new RoleNameEditPart(view);
+
+			case RoleParticipates_inEditPart.VISUAL_ID:
+				return new RoleParticipates_inEditPart(view);
 
 			case UseCaseIncludeEditPart.VISUAL_ID:
 				return new UseCaseIncludeEditPart(view);
 
 			case LabelEditPart.VISUAL_ID:
 				return new LabelEditPart(view);
-
-			case RoleParticipates_inEditPart.VISUAL_ID:
-				return new RoleParticipates_inEditPart(view);
 
 			}
 		}

@@ -73,10 +73,9 @@ public class SRMNavigatorItem extends SRMAbstractNavigatorItem {
 		if (obj instanceof SRM.diagram.navigator.SRMNavigatorItem) {
 			return EcoreUtil
 					.getURI(getView())
-					.equals(
-							EcoreUtil
-									.getURI(((SRM.diagram.navigator.SRMNavigatorItem) obj)
-											.getView()));
+					.equals(EcoreUtil
+							.getURI(((SRM.diagram.navigator.SRMNavigatorItem) obj)
+									.getView()));
 		}
 		return super.equals(obj);
 	}

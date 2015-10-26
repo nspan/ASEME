@@ -77,7 +77,7 @@ public class RoleImpl extends EObjectImpl implements Role {
 	 * @generated
 	 * @ordered
 	 */
-	protected static final RoleType TYPE_EDEFAULT = RoleType.SYSTEM;
+	protected static final RoleType TYPE_EDEFAULT = RoleType.ABSTRACT;
 
 	/**
 	 * The cached value of the '{@link #getType() <em>Type</em>}' attribute.

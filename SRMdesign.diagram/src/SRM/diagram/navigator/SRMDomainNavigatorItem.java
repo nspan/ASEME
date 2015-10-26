@@ -96,10 +96,9 @@ public class SRMDomainNavigatorItem extends PlatformObject {
 		if (obj instanceof SRM.diagram.navigator.SRMDomainNavigatorItem) {
 			return EcoreUtil
 					.getURI(getEObject())
-					.equals(
-							EcoreUtil
-									.getURI(((SRM.diagram.navigator.SRMDomainNavigatorItem) obj)
-											.getEObject()));
+					.equals(EcoreUtil
+							.getURI(((SRM.diagram.navigator.SRMDomainNavigatorItem) obj)
+									.getEObject()));
 		}
 		return super.equals(obj);
 	}

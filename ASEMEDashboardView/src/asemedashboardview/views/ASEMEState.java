@@ -12,6 +12,7 @@ import org.eclipse.emf.common.util.URI;
 import org.osgi.service.prefs.BackingStoreException;
 import org.osgi.service.prefs.Preferences;
 
+import aseme.transformations.AsemeModelSaveHelper;
 import asemedashboardview.Activator;
 
 public final class ASEMEState {
@@ -27,6 +28,8 @@ public final class ASEMEState {
 	private static final String AIP_KEY = "aip"; //$NON-NLS-1$
 
 	private static final String SRM_KEY = "srm"; //$NON-NLS-1$
+	
+	private static final String XPDL_KEY = "xpdl"; //$NON-NLS-1$
 
 	private static final String EAC_KEY = "eac"; //$NON-NLS-1$
 
@@ -41,6 +44,8 @@ public final class ASEMEState {
 	private URI aip;
 	
 	private URI srm;
+	
+	private URI xpdl;
 
 	private URI eac;
 
@@ -74,6 +79,7 @@ public final class ASEMEState {
 			iac = read(prefs, IAC_KEY);
 			jade = read(prefs, JADE_KEY);
 		}
+		AsemeModelSaveHelper.init();
 	}
 	
 	public URI getSAG() {
@@ -90,6 +96,10 @@ public final class ASEMEState {
 	
 	public URI getSRM() {
 		return srm;
+	}
+	
+	public URI getXPDL() {
+		return xpdl;
 	}
 	
 	public URI getEAC() {
@@ -123,6 +133,11 @@ public final class ASEMEState {
 		srm = uri;
 		write(SRM_KEY, srm);
 	}
+	
+	public void setXPDL(URI uri) {
+		xpdl = uri;
+		write(XPDL_KEY, xpdl);
+		}
 
 	public void setEAC(URI uri) {
 		eac = uri;

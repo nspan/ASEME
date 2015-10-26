@@ -1,0 +1,15 @@
+Manifest-Version: 1.0
+Bundle-ManifestVersion: 2
+Bundle-Name: ASEME_Transformations
+Bundle-SymbolicName: ASEME_Transformations
+Bundle-Version: 1.1.1
+Bundle-RequiredExecutionEnvironment: JavaSE-1.8
+Require-Bundle: StateChartPlugIn;bundle-version="1.0.0",
+ AIPdesign;bundle-version="1.0.0",
+ SRMdesign,
+ org.eclipse.emf.ecore.xmi,
+ SAGdesign,
+ SUCdesign,
+ org.eclipse.core.resources
+Export-Package: aseme.transformations
+Import-Package: org.eclipse.core.runtime

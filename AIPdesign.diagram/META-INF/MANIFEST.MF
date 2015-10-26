@@ -2,12 +2,12 @@ Manifest-Version: 1.0
 Bundle-ManifestVersion: 2
 Bundle-Name: %pluginName
 Bundle-SymbolicName: AIPdesign.diagram; singleton:=true
-Bundle-Version: 1.0.0.qualifier
+Bundle-Version: 1.0.0
 Bundle-ClassPath: .
 Bundle-Activator: AIP.diagram.part.AIPDiagramEditorPlugin
 Bundle-Vendor: %providerName
 Bundle-Localization: plugin
-Export-Package: AIP.diagram.edit.parts,
+Export-Package: AIP.diagram.edit.parts, 
  AIP.diagram.part,
  AIP.diagram.providers
 Require-Bundle: org.eclipse.core.runtime,
@@ -35,6 +35,7 @@ Require-Bundle: org.eclipse.core.runtime,
  org.eclipse.gmf.runtime.draw2d.ui;visibility:=reexport,
  AIPdesign;visibility:=reexport,
  AIPdesign.edit;visibility:=reexport,
+ org.eclipse.gmf.tooling.runtime;visibility:=reexport,
  org.eclipse.gef;visibility:=reexport
 Bundle-ActivationPolicy: lazy
-Bundle-RequiredExecutionEnvironment: JavaSE-1.6
+Bundle-RequiredExecutionEnvironment: JavaSE-1.8

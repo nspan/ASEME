@@ -12,14 +12,12 @@ public class ElementInitializers {
 	}
 
 	/**
-	 * @generated
-	 */
+	* @generated
+	*/
 	public static ElementInitializers getInstance() {
-		ElementInitializers cached = AIPDiagramEditorPlugin.getInstance()
-				.getElementInitializers();
+		ElementInitializers cached = AIPDiagramEditorPlugin.getInstance().getElementInitializers();
 		if (cached == null) {
-			AIPDiagramEditorPlugin.getInstance().setElementInitializers(
-					cached = new ElementInitializers());
+			AIPDiagramEditorPlugin.getInstance().setElementInitializers(cached = new ElementInitializers());
 		}
 		return cached;
 	}

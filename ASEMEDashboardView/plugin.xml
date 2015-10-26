@@ -34,5 +34,29 @@
             file="contexts.xml">
       </contexts>
    </extension>
+   <extension
+         id="product"
+         point="org.eclipse.core.runtime.products">
+      <product
+            application="org.eclipse.ui.ide.workbench"
+            name="ASEME">
+      </product>
+   </extension>
+   <extension
+         id="product1"
+         point="org.eclipse.core.runtime.products">
+      <product
+            application="org.eclipse.ant.core.antRunner"
+            name="dash.product">
+      </product>
+   </extension>
+   <extension
+         id="dash"
+         point="org.eclipse.core.runtime.products">
+      <product
+            application="org.eclipse.ui.ide.workbench"
+            name="dash.product">
+      </product>
+   </extension>
 
 </plugin>

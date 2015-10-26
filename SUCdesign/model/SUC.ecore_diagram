@@ -63,20 +63,24 @@
     <children xmi:type="notation:DecorationNode" xmi:id="_yWgSkotGEeS_38QtEjo5Cg" type="5005"/>
     <children xmi:type="notation:BasicCompartment" xmi:id="_yWgSk4tGEeS_38QtEjo5Cg" type="7011">
       <children xmi:type="notation:Node" xmi:id="_3XPokItGEeS_38QtEjo5Cg" type="3009">
-        <element xmi:type="ecore:EEnumLiteral" href="SUC.ecore#//RoleType/System"/>
+        <element xmi:type="ecore:EEnumLiteral" href="SUC.ecore#//RoleType/Abstract"/>
         <layoutConstraint xmi:type="notation:Location" xmi:id="_3XPokYtGEeS_38QtEjo5Cg"/>
       </children>
       <children xmi:type="notation:Node" xmi:id="_4_4aUItGEeS_38QtEjo5Cg" type="3009">
-        <element xmi:type="ecore:EEnumLiteral" href="SUC.ecore#//RoleType/Legacy_System"/>
+        <element xmi:type="ecore:EEnumLiteral" href="SUC.ecore#//RoleType/System"/>
         <layoutConstraint xmi:type="notation:Location" xmi:id="_4_4aUYtGEeS_38QtEjo5Cg"/>
       </children>
       <children xmi:type="notation:Node" xmi:id="_8QoZYItGEeS_38QtEjo5Cg" type="3009">
-        <element xmi:type="ecore:EEnumLiteral" href="SUC.ecore#//RoleType/External_System"/>
+        <element xmi:type="ecore:EEnumLiteral" href="SUC.ecore#//RoleType/Legacy_System"/>
         <layoutConstraint xmi:type="notation:Location" xmi:id="_8QoZYYtGEeS_38QtEjo5Cg"/>
       </children>
       <children xmi:type="notation:Node" xmi:id="_9smBEItGEeS_38QtEjo5Cg" type="3009">
-        <element xmi:type="ecore:EEnumLiteral" href="SUC.ecore#//RoleType/Human"/>
+        <element xmi:type="ecore:EEnumLiteral" href="SUC.ecore#//RoleType/External_System"/>
         <layoutConstraint xmi:type="notation:Location" xmi:id="_9smBEYtGEeS_38QtEjo5Cg"/>
+      </children>
+      <children xmi:type="notation:Node" xmi:id="_5IAqIPQWEeS_CeYhaojXIg" type="3009">
+        <element xmi:type="ecore:EEnumLiteral" href="SUC.ecore#//RoleType/Human"/>
+        <layoutConstraint xmi:type="notation:Location" xmi:id="_5IAqIfQWEeS_CeYhaojXIg"/>
       </children>
       <styles xmi:type="notation:SortingStyle" xmi:id="_yWgSlItGEeS_38QtEjo5Cg"/>
       <styles xmi:type="notation:FilteringStyle" xmi:id="_yWgSlYtGEeS_38QtEjo5Cg"/>

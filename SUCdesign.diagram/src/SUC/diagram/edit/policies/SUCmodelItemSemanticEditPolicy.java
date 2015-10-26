@@ -28,11 +28,11 @@ public class SUCmodelItemSemanticEditPolicy extends
 	 * @generated
 	 */
 	protected Command getCreateCommand(CreateElementRequest req) {
-		if (SUCElementTypes.Role_2001 == req.getElementType()) {
-			return getGEFWrapper(new RoleCreateCommand(req));
-		}
 		if (SUCElementTypes.UseCase_2002 == req.getElementType()) {
 			return getGEFWrapper(new UseCaseCreateCommand(req));
+		}
+		if (SUCElementTypes.Role_2001 == req.getElementType()) {
+			return getGEFWrapper(new RoleCreateCommand(req));
 		}
 		return super.getCreateCommand(req);
 	}

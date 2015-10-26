@@ -15,14 +15,18 @@ import java.util.Collection;
 
 import org.eclipse.emf.common.notify.Notification;
 
+import org.eclipse.emf.common.notify.NotificationChain;
 import org.eclipse.emf.common.util.EList;
 
 import org.eclipse.emf.ecore.EClass;
 
+import org.eclipse.emf.ecore.InternalEObject;
 import org.eclipse.emf.ecore.impl.ENotificationImpl;
 import org.eclipse.emf.ecore.impl.EObjectImpl;
 
+import org.eclipse.emf.ecore.util.EObjectContainmentEList;
 import org.eclipse.emf.ecore.util.EObjectResolvingEList;
+import org.eclipse.emf.ecore.util.InternalEList;
 
 /**
  * <!-- begin-user-doc -->
@@ -31,7 +35,7 @@ import org.eclipse.emf.ecore.util.EObjectResolvingEList;
  * <p>
  * The following features are implemented:
  * <ul>
- *   <li>{@link SRM.impl.RoleImpl#getActivities <em>Activities</em>}</li>
+ *   <li>{@link SRM.impl.RoleImpl#getRole_activities <em>Role activities</em>}</li>
  *   <li>{@link SRM.impl.RoleImpl#getLiveness <em>Liveness</em>}</li>
  *   <li>{@link SRM.impl.RoleImpl#getName <em>Name</em>}</li>
  *   <li>{@link SRM.impl.RoleImpl#getCapabilities <em>Capabilities</em>}</li>
@@ -42,14 +46,14 @@ import org.eclipse.emf.ecore.util.EObjectResolvingEList;
  */
 public class RoleImpl extends EObjectImpl implements Role {
 	/**
-	 * The cached value of the '{@link #getActivities() <em>Activities</em>}' reference list.
+	 * The cached value of the '{@link #getRole_activities() <em>Role activities</em>}' reference list.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @see #getActivities()
+	 * @see #getRole_activities()
 	 * @generated
 	 * @ordered
 	 */
-	protected EList<Activity> activities;
+	protected EList<Activity> role_activities;
 
 	/**
 	 * The default value of the '{@link #getLiveness() <em>Liveness</em>}' attribute.
@@ -125,11 +129,11 @@ public class RoleImpl extends EObjectImpl implements Role {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EList<Activity> getActivities() {
-		if (activities == null) {
-			activities = new EObjectResolvingEList<Activity>(Activity.class, this, SRMPackage.ROLE__ACTIVITIES);
+	public EList<Activity> getRole_activities() {
+		if (role_activities == null) {
+			role_activities = new EObjectResolvingEList<Activity>(Activity.class, this, SRMPackage.ROLE__ROLE_ACTIVITIES);
 		}
-		return activities;
+		return role_activities;
 	}
 
 	/**
@@ -194,8 +198,8 @@ public class RoleImpl extends EObjectImpl implements Role {
 	@Override
 	public Object eGet(int featureID, boolean resolve, boolean coreType) {
 		switch (featureID) {
-			case SRMPackage.ROLE__ACTIVITIES:
-				return getActivities();
+			case SRMPackage.ROLE__ROLE_ACTIVITIES:
+				return getRole_activities();
 			case SRMPackage.ROLE__LIVENESS:
 				return getLiveness();
 			case SRMPackage.ROLE__NAME:
@@ -215,9 +219,9 @@ public class RoleImpl extends EObjectImpl implements Role {
 	@Override
 	public void eSet(int featureID, Object newValue) {
 		switch (featureID) {
-			case SRMPackage.ROLE__ACTIVITIES:
-				getActivities().clear();
-				getActivities().addAll((Collection<? extends Activity>)newValue);
+			case SRMPackage.ROLE__ROLE_ACTIVITIES:
+				getRole_activities().clear();
+				getRole_activities().addAll((Collection<? extends Activity>)newValue);
 				return;
 			case SRMPackage.ROLE__LIVENESS:
 				setLiveness((String)newValue);
@@ -241,8 +245,8 @@ public class RoleImpl extends EObjectImpl implements Role {
 	@Override
 	public void eUnset(int featureID) {
 		switch (featureID) {
-			case SRMPackage.ROLE__ACTIVITIES:
-				getActivities().clear();
+			case SRMPackage.ROLE__ROLE_ACTIVITIES:
+				getRole_activities().clear();
 				return;
 			case SRMPackage.ROLE__LIVENESS:
 				setLiveness(LIVENESS_EDEFAULT);
@@ -265,8 +269,8 @@ public class RoleImpl extends EObjectImpl implements Role {
 	@Override
 	public boolean eIsSet(int featureID) {
 		switch (featureID) {
-			case SRMPackage.ROLE__ACTIVITIES:
-				return activities != null && !activities.isEmpty();
+			case SRMPackage.ROLE__ROLE_ACTIVITIES:
+				return role_activities != null && !role_activities.isEmpty();
 			case SRMPackage.ROLE__LIVENESS:
 				return LIVENESS_EDEFAULT == null ? liveness != null : !LIVENESS_EDEFAULT.equals(liveness);
 			case SRMPackage.ROLE__NAME:

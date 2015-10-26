@@ -5,6 +5,7 @@
   <foreignModel>SUC.ecore</foreignModel>
   <genPackages prefix="SUC" disposableProviderFactory="true" ecorePackage="SUC.ecore#/">
     <genEnums typeSafeEnumCompatible="false" ecoreEnum="SUC.ecore#//RoleType">
+      <genEnumLiterals ecoreEnumLiteral="SUC.ecore#//RoleType/Abstract"/>
       <genEnumLiterals ecoreEnumLiteral="SUC.ecore#//RoleType/System"/>
       <genEnumLiterals ecoreEnumLiteral="SUC.ecore#//RoleType/Legacy_System"/>
       <genEnumLiterals ecoreEnumLiteral="SUC.ecore#//RoleType/External_System"/>

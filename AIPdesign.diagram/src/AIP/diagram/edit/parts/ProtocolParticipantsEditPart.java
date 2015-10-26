@@ -14,46 +14,44 @@ import AIP.diagram.edit.policies.ProtocolParticipantsItemSemanticEditPolicy;
 /**
  * @generated
  */
-public class ProtocolParticipantsEditPart extends ConnectionNodeEditPart
-		implements ITreeBranchEditPart {
+public class ProtocolParticipantsEditPart extends ConnectionNodeEditPart implements ITreeBranchEditPart {
 
 	/**
-	 * @generated
-	 */
+	* @generated
+	*/
 	public static final int VISUAL_ID = 4002;
 
 	/**
-	 * @generated
-	 */
+	* @generated
+	*/
 	public ProtocolParticipantsEditPart(View view) {
 		super(view);
 	}
 
 	/**
-	 * @generated
-	 */
+	* @generated
+	*/
 	protected void createDefaultEditPolicies() {
 		super.createDefaultEditPolicies();
-		installEditPolicy(EditPolicyRoles.SEMANTIC_ROLE,
-				new ProtocolParticipantsItemSemanticEditPolicy());
+		installEditPolicy(EditPolicyRoles.SEMANTIC_ROLE, new ProtocolParticipantsItemSemanticEditPolicy());
 	}
 
 	/**
-	 * Creates figure for this edit part.
-	 * 
-	 * Body of this method does not depend on settings in generation model
-	 * so you may safely remove <i>generated</i> tag and modify it.
-	 * 
-	 * @generated
-	 */
+	* Creates figure for this edit part.
+	* 
+	* Body of this method does not depend on settings in generation model
+	* so you may safely remove <i>generated</i> tag and modify it.
+	* 
+	* @generated
+	*/
 
 	protected Connection createConnectionFigure() {
 		return new ProtocolParticipantsFigure();
 	}
 
 	/**
-	 * @generated
-	 */
+	* @generated
+	*/
 	public ProtocolParticipantsFigure getPrimaryShape() {
 		return (ProtocolParticipantsFigure) getFigure();
 	}

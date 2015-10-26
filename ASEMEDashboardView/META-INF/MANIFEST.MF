@@ -2,19 +2,20 @@ Manifest-Version: 1.0
 Bundle-ManifestVersion: 2
 Bundle-Name: ASEMEDashboardView
 Bundle-SymbolicName: ASEMEDashboardView; singleton:=true
-Bundle-Version: 1.0.0.qualifier
+Bundle-Version: 1.1.0
 Bundle-Activator: asemedashboardview.Activator
 Require-Bundle: org.eclipse.ui,
  org.eclipse.core.runtime,
  org.eclipse.draw2d,
  org.eclipse.gmf.bridge.ui,
  org.eclipse.emf.ecore.xmi,
- org.eclipse.equinox.registry
+ IAC_EMF.generator2,
+ SRM2Xpdl;bundle-version="1.0.0",
+ IAC-2-Naoth;bundle-version="1.0.0"
 Bundle-ActivationPolicy: lazy
-Bundle-RequiredExecutionEnvironment: JavaSE-1.6
+Bundle-RequiredExecutionEnvironment: JavaSE-1.8
 Import-Package: AIP,
  AIP.diagram.part,
- IAC,
  SAG,
  SAG.diagram.part,
  SAG.presentation,
@@ -22,7 +23,7 @@ Import-Package: AIP,
  SRM.diagram.part,
  SUC,
  SUC.diagram.part,
- SUC.presentation,
+ aseme.transformations,
  org.eclipse.core.resources,
  org.eclipse.draw2d,
  org.eclipse.emf.common.util,
@@ -40,6 +41,7 @@ Import-Package: AIP,
  org.eclipse.gmf.runtime.notation,
  org.eclipse.gmf.tooldef.presentation,
  org.eclipse.ui.part,
- statechart,
- statechart.diagram.part,
- statechart.presentation
+ statechart
+Export-Package: asemedashboardview,
+ asemedashboardview.views,
+ asemedashboardview.views.actions

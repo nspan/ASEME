@@ -17,7 +17,7 @@ public class SRMUriEditorInputTester extends PropertyTester {
 			return false;
 		}
 		URIEditorInput editorInput = (URIEditorInput) receiver;
-		return "srmd".equals(editorInput.getURI().fileExtension()); //$NON-NLS-1$
+		return "fg".equals(editorInput.getURI().fileExtension()); //$NON-NLS-1$
 	}
 
 }

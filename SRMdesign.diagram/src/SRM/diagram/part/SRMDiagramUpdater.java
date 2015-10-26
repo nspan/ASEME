@@ -7,19 +7,23 @@ import java.util.LinkedList;
 import java.util.List;
 import java.util.Map;
 
+import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.EStructuralFeature;
 import org.eclipse.emf.ecore.util.EcoreUtil;
 import org.eclipse.gmf.runtime.notation.View;
+import org.eclipse.gmf.tooling.runtime.update.DiagramUpdater;
 
 import SRM.Activity;
 import SRM.Capability;
+import SRM.Functionality;
 import SRM.Role;
 import SRM.SRMPackage;
 import SRM.SRMmodel;
 import SRM.diagram.edit.parts.ActivityEditPart;
-import SRM.diagram.edit.parts.CapabilityActivitiesEditPart;
+import SRM.diagram.edit.parts.CapabilityCapability_activitiesEditPart;
 import SRM.diagram.edit.parts.CapabilityEditPart;
-import SRM.diagram.edit.parts.RoleActivitiesEditPart;
+import SRM.diagram.edit.parts.FunctionalityActivitiesEditPart;
+import SRM.diagram.edit.parts.FunctionalityEditPart;
 import SRM.diagram.edit.parts.RoleCapabilitiesEditPart;
 import SRM.diagram.edit.parts.RoleEditPart;
 import SRM.diagram.edit.parts.SRMmodelEditPart;
@@ -33,43 +37,25 @@ public class SRMDiagramUpdater {
 	/**
 	 * @generated
 	 */
-	public static List getSemanticChildren(View view) {
+	public static List<SRMNodeDescriptor> getSemanticChildren(View view) {
 		switch (SRMVisualIDRegistry.getVisualID(view)) {
 		case SRMmodelEditPart.VISUAL_ID:
 			return getSRMmodel_1000SemanticChildren(view);
 		}
-		return Collections.EMPTY_LIST;
+		return Collections.emptyList();
 	}
 
 	/**
 	 * @generated
 	 */
-	public static List getSRMmodel_1000SemanticChildren(View view) {
+	public static List<SRMNodeDescriptor> getSRMmodel_1000SemanticChildren(
+			View view) {
 		if (!view.isSetElement()) {
-			return Collections.EMPTY_LIST;
+			return Collections.emptyList();
 		}
 		SRMmodel modelElement = (SRMmodel) view.getElement();
-		List result = new LinkedList();
-		for (Iterator it = modelElement.getCapabilities().iterator(); it
-				.hasNext();) {
-			Capability childElement = (Capability) it.next();
-			int visualID = SRMVisualIDRegistry.getNodeVisualID(view,
-					childElement);
-			if (visualID == CapabilityEditPart.VISUAL_ID) {
-				result.add(new SRMNodeDescriptor(childElement, visualID));
-				continue;
-			}
-		}
-		for (Iterator it = modelElement.getRoles().iterator(); it.hasNext();) {
-			Role childElement = (Role) it.next();
-			int visualID = SRMVisualIDRegistry.getNodeVisualID(view,
-					childElement);
-			if (visualID == RoleEditPart.VISUAL_ID) {
-				result.add(new SRMNodeDescriptor(childElement, visualID));
-				continue;
-			}
-		}
-		for (Iterator it = modelElement.getActivities().iterator(); it
+		LinkedList<SRMNodeDescriptor> result = new LinkedList<SRMNodeDescriptor>();
+		for (Iterator<?> it = modelElement.getActivities().iterator(); it
 				.hasNext();) {
 			Activity childElement = (Activity) it.next();
 			int visualID = SRMVisualIDRegistry.getNodeVisualID(view,
@@ -79,175 +65,258 @@ public class SRMDiagramUpdater {
 				continue;
 			}
 		}
+		for (Iterator<?> it = modelElement.getFunctionalities().iterator(); it
+				.hasNext();) {
+			Functionality childElement = (Functionality) it.next();
+			int visualID = SRMVisualIDRegistry.getNodeVisualID(view,
+					childElement);
+			if (visualID == FunctionalityEditPart.VISUAL_ID) {
+				result.add(new SRMNodeDescriptor(childElement, visualID));
+				continue;
+			}
+		}
+		for (Iterator<?> it = modelElement.getRoles().iterator(); it.hasNext();) {
+			Role childElement = (Role) it.next();
+			int visualID = SRMVisualIDRegistry.getNodeVisualID(view,
+					childElement);
+			if (visualID == RoleEditPart.VISUAL_ID) {
+				result.add(new SRMNodeDescriptor(childElement, visualID));
+				continue;
+			}
+		}
+		for (Iterator<?> it = modelElement.getCapabilities().iterator(); it
+				.hasNext();) {
+			Capability childElement = (Capability) it.next();
+			int visualID = SRMVisualIDRegistry.getNodeVisualID(view,
+					childElement);
+			if (visualID == CapabilityEditPart.VISUAL_ID) {
+				result.add(new SRMNodeDescriptor(childElement, visualID));
+				continue;
+			}
+		}
 		return result;
 	}
 
 	/**
 	 * @generated
 	 */
-	public static List getContainedLinks(View view) {
+	public static List<SRMLinkDescriptor> getContainedLinks(View view) {
 		switch (SRMVisualIDRegistry.getVisualID(view)) {
 		case SRMmodelEditPart.VISUAL_ID:
 			return getSRMmodel_1000ContainedLinks(view);
-		case CapabilityEditPart.VISUAL_ID:
-			return getCapability_2004ContainedLinks(view);
-		case RoleEditPart.VISUAL_ID:
-			return getRole_2005ContainedLinks(view);
 		case ActivityEditPart.VISUAL_ID:
-			return getActivity_2006ContainedLinks(view);
+			return getActivity_2004ContainedLinks(view);
+		case FunctionalityEditPart.VISUAL_ID:
+			return getFunctionality_2003ContainedLinks(view);
+		case RoleEditPart.VISUAL_ID:
+			return getRole_2002ContainedLinks(view);
+		case CapabilityEditPart.VISUAL_ID:
+			return getCapability_2001ContainedLinks(view);
 		}
-		return Collections.EMPTY_LIST;
+		return Collections.emptyList();
 	}
 
 	/**
 	 * @generated
 	 */
-	public static List getIncomingLinks(View view) {
+	public static List<SRMLinkDescriptor> getIncomingLinks(View view) {
 		switch (SRMVisualIDRegistry.getVisualID(view)) {
-		case CapabilityEditPart.VISUAL_ID:
-			return getCapability_2004IncomingLinks(view);
-		case RoleEditPart.VISUAL_ID:
-			return getRole_2005IncomingLinks(view);
 		case ActivityEditPart.VISUAL_ID:
-			return getActivity_2006IncomingLinks(view);
+			return getActivity_2004IncomingLinks(view);
+		case FunctionalityEditPart.VISUAL_ID:
+			return getFunctionality_2003IncomingLinks(view);
+		case RoleEditPart.VISUAL_ID:
+			return getRole_2002IncomingLinks(view);
+		case CapabilityEditPart.VISUAL_ID:
+			return getCapability_2001IncomingLinks(view);
 		}
-		return Collections.EMPTY_LIST;
+		return Collections.emptyList();
 	}
 
 	/**
 	 * @generated
 	 */
-	public static List getOutgoingLinks(View view) {
+	public static List<SRMLinkDescriptor> getOutgoingLinks(View view) {
 		switch (SRMVisualIDRegistry.getVisualID(view)) {
-		case CapabilityEditPart.VISUAL_ID:
-			return getCapability_2004OutgoingLinks(view);
-		case RoleEditPart.VISUAL_ID:
-			return getRole_2005OutgoingLinks(view);
 		case ActivityEditPart.VISUAL_ID:
-			return getActivity_2006OutgoingLinks(view);
+			return getActivity_2004OutgoingLinks(view);
+		case FunctionalityEditPart.VISUAL_ID:
+			return getFunctionality_2003OutgoingLinks(view);
+		case RoleEditPart.VISUAL_ID:
+			return getRole_2002OutgoingLinks(view);
+		case CapabilityEditPart.VISUAL_ID:
+			return getCapability_2001OutgoingLinks(view);
 		}
-		return Collections.EMPTY_LIST;
+		return Collections.emptyList();
 	}
 
 	/**
 	 * @generated
 	 */
-	public static List getSRMmodel_1000ContainedLinks(View view) {
-		return Collections.EMPTY_LIST;
+	public static List<SRMLinkDescriptor> getSRMmodel_1000ContainedLinks(
+			View view) {
+		return Collections.emptyList();
 	}
 
 	/**
 	 * @generated
 	 */
-	public static List getCapability_2004ContainedLinks(View view) {
-		Capability modelElement = (Capability) view.getElement();
-		List result = new LinkedList();
-		result
-				.addAll(getOutgoingFeatureModelFacetLinks_Capability_Activities_4006(modelElement));
+	public static List<SRMLinkDescriptor> getActivity_2004ContainedLinks(
+			View view) {
+		return Collections.emptyList();
+	}
+
+	/**
+	 * @generated
+	 */
+	public static List<SRMLinkDescriptor> getFunctionality_2003ContainedLinks(
+			View view) {
+		Functionality modelElement = (Functionality) view.getElement();
+		LinkedList<SRMLinkDescriptor> result = new LinkedList<SRMLinkDescriptor>();
+		result.addAll(getOutgoingFeatureModelFacetLinks_Functionality_Activities_4001(modelElement));
 		return result;
 	}
 
 	/**
 	 * @generated
 	 */
-	public static List getRole_2005ContainedLinks(View view) {
+	public static List<SRMLinkDescriptor> getRole_2002ContainedLinks(View view) {
 		Role modelElement = (Role) view.getElement();
-		List result = new LinkedList();
-		result
-				.addAll(getOutgoingFeatureModelFacetLinks_Role_Capabilities_4004(modelElement));
-		result
-				.addAll(getOutgoingFeatureModelFacetLinks_Role_Activities_4005(modelElement));
+		LinkedList<SRMLinkDescriptor> result = new LinkedList<SRMLinkDescriptor>();
+		result.addAll(getOutgoingFeatureModelFacetLinks_Role_Capabilities_4002(modelElement));
 		return result;
 	}
 
 	/**
 	 * @generated
 	 */
-	public static List getActivity_2006ContainedLinks(View view) {
-		return Collections.EMPTY_LIST;
-	}
-
-	/**
-	 * @generated
-	 */
-	public static List getCapability_2004IncomingLinks(View view) {
+	public static List<SRMLinkDescriptor> getCapability_2001ContainedLinks(
+			View view) {
 		Capability modelElement = (Capability) view.getElement();
-		Map crossReferences = EcoreUtil.CrossReferencer.find(view.eResource()
-				.getResourceSet().getResources());
-		List result = new LinkedList();
-		result.addAll(getIncomingFeatureModelFacetLinks_Role_Capabilities_4004(
-				modelElement, crossReferences));
+		LinkedList<SRMLinkDescriptor> result = new LinkedList<SRMLinkDescriptor>();
+		result.addAll(getOutgoingFeatureModelFacetLinks_Capability_Capability_activities_4003(modelElement));
 		return result;
 	}
 
 	/**
 	 * @generated
 	 */
-	public static List getRole_2005IncomingLinks(View view) {
-		return Collections.EMPTY_LIST;
-	}
-
-	/**
-	 * @generated
-	 */
-	public static List getActivity_2006IncomingLinks(View view) {
+	public static List<SRMLinkDescriptor> getActivity_2004IncomingLinks(
+			View view) {
 		Activity modelElement = (Activity) view.getElement();
-		Map crossReferences = EcoreUtil.CrossReferencer.find(view.eResource()
-				.getResourceSet().getResources());
-		List result = new LinkedList();
-		result.addAll(getIncomingFeatureModelFacetLinks_Role_Activities_4005(
+		Map<EObject, Collection<EStructuralFeature.Setting>> crossReferences = EcoreUtil.CrossReferencer
+				.find(view.eResource().getResourceSet().getResources());
+		LinkedList<SRMLinkDescriptor> result = new LinkedList<SRMLinkDescriptor>();
+		result.addAll(getIncomingFeatureModelFacetLinks_Functionality_Activities_4001(
 				modelElement, crossReferences));
-		result
-				.addAll(getIncomingFeatureModelFacetLinks_Capability_Activities_4006(
-						modelElement, crossReferences));
+		result.addAll(getIncomingFeatureModelFacetLinks_Capability_Capability_activities_4003(
+				modelElement, crossReferences));
 		return result;
 	}
 
 	/**
 	 * @generated
 	 */
-	public static List getCapability_2004OutgoingLinks(View view) {
+	public static List<SRMLinkDescriptor> getFunctionality_2003IncomingLinks(
+			View view) {
+		return Collections.emptyList();
+	}
+
+	/**
+	 * @generated
+	 */
+	public static List<SRMLinkDescriptor> getRole_2002IncomingLinks(View view) {
+		return Collections.emptyList();
+	}
+
+	/**
+	 * @generated
+	 */
+	public static List<SRMLinkDescriptor> getCapability_2001IncomingLinks(
+			View view) {
 		Capability modelElement = (Capability) view.getElement();
-		List result = new LinkedList();
-		result
-				.addAll(getOutgoingFeatureModelFacetLinks_Capability_Activities_4006(modelElement));
+		Map<EObject, Collection<EStructuralFeature.Setting>> crossReferences = EcoreUtil.CrossReferencer
+				.find(view.eResource().getResourceSet().getResources());
+		LinkedList<SRMLinkDescriptor> result = new LinkedList<SRMLinkDescriptor>();
+		result.addAll(getIncomingFeatureModelFacetLinks_Role_Capabilities_4002(
+				modelElement, crossReferences));
 		return result;
 	}
 
 	/**
 	 * @generated
 	 */
-	public static List getRole_2005OutgoingLinks(View view) {
+	public static List<SRMLinkDescriptor> getActivity_2004OutgoingLinks(
+			View view) {
+		return Collections.emptyList();
+	}
+
+	/**
+	 * @generated
+	 */
+	public static List<SRMLinkDescriptor> getFunctionality_2003OutgoingLinks(
+			View view) {
+		Functionality modelElement = (Functionality) view.getElement();
+		LinkedList<SRMLinkDescriptor> result = new LinkedList<SRMLinkDescriptor>();
+		result.addAll(getOutgoingFeatureModelFacetLinks_Functionality_Activities_4001(modelElement));
+		return result;
+	}
+
+	/**
+	 * @generated
+	 */
+	public static List<SRMLinkDescriptor> getRole_2002OutgoingLinks(View view) {
 		Role modelElement = (Role) view.getElement();
-		List result = new LinkedList();
-		result
-				.addAll(getOutgoingFeatureModelFacetLinks_Role_Capabilities_4004(modelElement));
-		result
-				.addAll(getOutgoingFeatureModelFacetLinks_Role_Activities_4005(modelElement));
+		LinkedList<SRMLinkDescriptor> result = new LinkedList<SRMLinkDescriptor>();
+		result.addAll(getOutgoingFeatureModelFacetLinks_Role_Capabilities_4002(modelElement));
 		return result;
 	}
 
 	/**
 	 * @generated
 	 */
-	public static List getActivity_2006OutgoingLinks(View view) {
-		return Collections.EMPTY_LIST;
+	public static List<SRMLinkDescriptor> getCapability_2001OutgoingLinks(
+			View view) {
+		Capability modelElement = (Capability) view.getElement();
+		LinkedList<SRMLinkDescriptor> result = new LinkedList<SRMLinkDescriptor>();
+		result.addAll(getOutgoingFeatureModelFacetLinks_Capability_Capability_activities_4003(modelElement));
+		return result;
 	}
 
 	/**
 	 * @generated
 	 */
-	private static Collection getIncomingFeatureModelFacetLinks_Role_Capabilities_4004(
-			Capability target, Map crossReferences) {
-		Collection result = new LinkedList();
-		Collection settings = (Collection) crossReferences.get(target);
-		for (Iterator it = settings.iterator(); it.hasNext();) {
-			EStructuralFeature.Setting setting = (EStructuralFeature.Setting) it
-					.next();
+	private static Collection<SRMLinkDescriptor> getIncomingFeatureModelFacetLinks_Functionality_Activities_4001(
+			Activity target,
+			Map<EObject, Collection<EStructuralFeature.Setting>> crossReferences) {
+		LinkedList<SRMLinkDescriptor> result = new LinkedList<SRMLinkDescriptor>();
+		Collection<EStructuralFeature.Setting> settings = crossReferences
+				.get(target);
+		for (EStructuralFeature.Setting setting : settings) {
+			if (setting.getEStructuralFeature() == SRMPackage.eINSTANCE
+					.getFunctionality_Activities()) {
+				result.add(new SRMLinkDescriptor(setting.getEObject(), target,
+						SRMElementTypes.FunctionalityActivities_4001,
+						FunctionalityActivitiesEditPart.VISUAL_ID));
+			}
+		}
+		return result;
+	}
+
+	/**
+	 * @generated
+	 */
+	private static Collection<SRMLinkDescriptor> getIncomingFeatureModelFacetLinks_Role_Capabilities_4002(
+			Capability target,
+			Map<EObject, Collection<EStructuralFeature.Setting>> crossReferences) {
+		LinkedList<SRMLinkDescriptor> result = new LinkedList<SRMLinkDescriptor>();
+		Collection<EStructuralFeature.Setting> settings = crossReferences
+				.get(target);
+		for (EStructuralFeature.Setting setting : settings) {
 			if (setting.getEStructuralFeature() == SRMPackage.eINSTANCE
 					.getRole_Capabilities()) {
 				result.add(new SRMLinkDescriptor(setting.getEObject(), target,
-						SRMElementTypes.RoleCapabilities_4004,
+						SRMElementTypes.RoleCapabilities_4002,
 						RoleCapabilitiesEditPart.VISUAL_ID));
 			}
 		}
@@ -257,18 +326,18 @@ public class SRMDiagramUpdater {
 	/**
 	 * @generated
 	 */
-	private static Collection getIncomingFeatureModelFacetLinks_Role_Activities_4005(
-			Activity target, Map crossReferences) {
-		Collection result = new LinkedList();
-		Collection settings = (Collection) crossReferences.get(target);
-		for (Iterator it = settings.iterator(); it.hasNext();) {
-			EStructuralFeature.Setting setting = (EStructuralFeature.Setting) it
-					.next();
+	private static Collection<SRMLinkDescriptor> getIncomingFeatureModelFacetLinks_Capability_Capability_activities_4003(
+			Activity target,
+			Map<EObject, Collection<EStructuralFeature.Setting>> crossReferences) {
+		LinkedList<SRMLinkDescriptor> result = new LinkedList<SRMLinkDescriptor>();
+		Collection<EStructuralFeature.Setting> settings = crossReferences
+				.get(target);
+		for (EStructuralFeature.Setting setting : settings) {
 			if (setting.getEStructuralFeature() == SRMPackage.eINSTANCE
-					.getRole_Activities()) {
+					.getCapability_Capability_activities()) {
 				result.add(new SRMLinkDescriptor(setting.getEObject(), target,
-						SRMElementTypes.RoleActivities_4005,
-						RoleActivitiesEditPart.VISUAL_ID));
+						SRMElementTypes.CapabilityCapability_activities_4003,
+						CapabilityCapability_activitiesEditPart.VISUAL_ID));
 			}
 		}
 		return result;
@@ -277,19 +346,15 @@ public class SRMDiagramUpdater {
 	/**
 	 * @generated
 	 */
-	private static Collection getIncomingFeatureModelFacetLinks_Capability_Activities_4006(
-			Activity target, Map crossReferences) {
-		Collection result = new LinkedList();
-		Collection settings = (Collection) crossReferences.get(target);
-		for (Iterator it = settings.iterator(); it.hasNext();) {
-			EStructuralFeature.Setting setting = (EStructuralFeature.Setting) it
-					.next();
-			if (setting.getEStructuralFeature() == SRMPackage.eINSTANCE
-					.getCapability_Activities()) {
-				result.add(new SRMLinkDescriptor(setting.getEObject(), target,
-						SRMElementTypes.CapabilityActivities_4006,
-						CapabilityActivitiesEditPart.VISUAL_ID));
-			}
+	private static Collection<SRMLinkDescriptor> getOutgoingFeatureModelFacetLinks_Functionality_Activities_4001(
+			Functionality source) {
+		LinkedList<SRMLinkDescriptor> result = new LinkedList<SRMLinkDescriptor>();
+		for (Iterator<?> destinations = source.getActivities().iterator(); destinations
+				.hasNext();) {
+			Activity destination = (Activity) destinations.next();
+			result.add(new SRMLinkDescriptor(source, destination,
+					SRMElementTypes.FunctionalityActivities_4001,
+					FunctionalityActivitiesEditPart.VISUAL_ID));
 		}
 		return result;
 	}
@@ -297,14 +362,14 @@ public class SRMDiagramUpdater {
 	/**
 	 * @generated
 	 */
-	private static Collection getOutgoingFeatureModelFacetLinks_Role_Capabilities_4004(
+	private static Collection<SRMLinkDescriptor> getOutgoingFeatureModelFacetLinks_Role_Capabilities_4002(
 			Role source) {
-		Collection result = new LinkedList();
-		for (Iterator destinations = source.getCapabilities().iterator(); destinations
+		LinkedList<SRMLinkDescriptor> result = new LinkedList<SRMLinkDescriptor>();
+		for (Iterator<?> destinations = source.getCapabilities().iterator(); destinations
 				.hasNext();) {
 			Capability destination = (Capability) destinations.next();
 			result.add(new SRMLinkDescriptor(source, destination,
-					SRMElementTypes.RoleCapabilities_4004,
+					SRMElementTypes.RoleCapabilities_4002,
 					RoleCapabilitiesEditPart.VISUAL_ID));
 		}
 		return result;
@@ -313,15 +378,15 @@ public class SRMDiagramUpdater {
 	/**
 	 * @generated
 	 */
-	private static Collection getOutgoingFeatureModelFacetLinks_Role_Activities_4005(
-			Role source) {
-		Collection result = new LinkedList();
-		for (Iterator destinations = source.getActivities().iterator(); destinations
-				.hasNext();) {
+	private static Collection<SRMLinkDescriptor> getOutgoingFeatureModelFacetLinks_Capability_Capability_activities_4003(
+			Capability source) {
+		LinkedList<SRMLinkDescriptor> result = new LinkedList<SRMLinkDescriptor>();
+		for (Iterator<?> destinations = source.getCapability_activities()
+				.iterator(); destinations.hasNext();) {
 			Activity destination = (Activity) destinations.next();
 			result.add(new SRMLinkDescriptor(source, destination,
-					SRMElementTypes.RoleActivities_4005,
-					RoleActivitiesEditPart.VISUAL_ID));
+					SRMElementTypes.CapabilityCapability_activities_4003,
+					CapabilityCapability_activitiesEditPart.VISUAL_ID));
 		}
 		return result;
 	}
@@ -329,17 +394,38 @@ public class SRMDiagramUpdater {
 	/**
 	 * @generated
 	 */
-	private static Collection getOutgoingFeatureModelFacetLinks_Capability_Activities_4006(
-			Capability source) {
-		Collection result = new LinkedList();
-		for (Iterator destinations = source.getActivities().iterator(); destinations
-				.hasNext();) {
-			Activity destination = (Activity) destinations.next();
-			result.add(new SRMLinkDescriptor(source, destination,
-					SRMElementTypes.CapabilityActivities_4006,
-					CapabilityActivitiesEditPart.VISUAL_ID));
+	public static final DiagramUpdater TYPED_INSTANCE = new DiagramUpdater() {
+		/**
+		 * @generated
+		 */
+		@Override
+		public List<SRMNodeDescriptor> getSemanticChildren(View view) {
+			return SRMDiagramUpdater.getSemanticChildren(view);
 		}
-		return result;
-	}
+
+		/**
+		 * @generated
+		 */
+		@Override
+		public List<SRMLinkDescriptor> getContainedLinks(View view) {
+			return SRMDiagramUpdater.getContainedLinks(view);
+		}
+
+		/**
+		 * @generated
+		 */
+		@Override
+		public List<SRMLinkDescriptor> getIncomingLinks(View view) {
+			return SRMDiagramUpdater.getIncomingLinks(view);
+		}
+
+		/**
+		 * @generated
+		 */
+		@Override
+		public List<SRMLinkDescriptor> getOutgoingLinks(View view) {
+			return SRMDiagramUpdater.getOutgoingLinks(view);
+		}
+	};
 
 }

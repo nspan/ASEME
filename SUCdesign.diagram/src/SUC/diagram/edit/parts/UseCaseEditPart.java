@@ -112,12 +112,6 @@ public class UseCaseEditPart extends ShapeNodeEditPart {
 					.getFigureUseCaseNameFigureCustom());
 			return true;
 		}
-		if (childEditPart instanceof UseCaseSpecified_byEditPart) {
-			((UseCaseSpecified_byEditPart) childEditPart)
-					.setLabel(getPrimaryShape()
-							.getFigureUseCaseSpecified_byFigureCustom());
-			return true;
-		}
 		return false;
 	}
 
@@ -126,9 +120,6 @@ public class UseCaseEditPart extends ShapeNodeEditPart {
 	 */
 	protected boolean removeFixedChild(EditPart childEditPart) {
 		if (childEditPart instanceof UseCaseNameEditPart) {
-			return true;
-		}
-		if (childEditPart instanceof UseCaseSpecified_byEditPart) {
 			return true;
 		}
 		return false;
@@ -273,6 +264,7 @@ public class UseCaseEditPart extends ShapeNodeEditPart {
 		 * @generated
 		 */
 		public UseCaseFigureCustom() {
+			this.setLineWidth(3);
 			this.setForegroundColor(THIS_FORE);
 			this.setBackgroundColor(THIS_BACK);
 			this.setSize(getMapMode().DPtoLP(10), getMapMode().DPtoLP(10));

@@ -245,16 +245,27 @@
       </editpartProvider>
    </extension>
 
+   
    <extension point="org.eclipse.gmf.runtime.emf.ui.modelingAssistantProviders" id="modelassist-provider">
       <?gmfgen generated="true"?>
-      <modelingAssistantProvider class="AIP.diagram.providers.AIPModelingAssistantProvider">
+      <modelingAssistantProvider class="AIP.diagram.providers.assistants.AIPModelingAssistantProviderOfAIPmodelEditPart">
          <Priority name="Lowest"/>
          <object class="AIP.diagram.edit.parts.AIPmodelEditPart" id="AIPmodel_1000"/>
-         <object class="AIP.diagram.edit.parts.ParticipantEditPart" id="Participant_2003"/>
-         <object class="AIP.diagram.edit.parts.ProtocolEditPart" id="Protocol_2004"/>
-         <context elements="AIPmodel_1000,Participant_2003,Protocol_2004"/>
+         <context elements="AIPmodel_1000"/>
       </modelingAssistantProvider>
+            <modelingAssistantProvider class="AIP.diagram.providers.assistants.AIPModelingAssistantProviderOfParticipantEditPart">
+         <Priority name="Lowest"/>
+         <object class="AIP.diagram.edit.parts.ParticipantEditPart" id="Participant_2003"/>
+         <context elements="Participant_2003"/>
+      </modelingAssistantProvider>
+            <modelingAssistantProvider class="AIP.diagram.providers.assistants.AIPModelingAssistantProviderOfProtocolEditPart">
+         <Priority name="Lowest"/>
+         <object class="AIP.diagram.edit.parts.ProtocolEditPart" id="Protocol_2004"/>
+         <context elements="Protocol_2004"/>
+      </modelingAssistantProvider>
+      
    </extension>
+
 
    <extension point="org.eclipse.gmf.runtime.common.ui.services.iconProviders" id="icon-provider">
       <?gmfgen generated="true"?>

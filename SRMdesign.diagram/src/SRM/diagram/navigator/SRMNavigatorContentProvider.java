@@ -4,10 +4,11 @@ import java.util.ArrayList;
 import java.util.Collection;
 import java.util.Collections;
 import java.util.HashMap;
-import java.util.Iterator;
+import java.util.LinkedList;
 
 import org.eclipse.core.resources.IFile;
 import org.eclipse.emf.common.util.URI;
+import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.resource.Resource;
 import org.eclipse.emf.edit.domain.AdapterFactoryEditingDomain;
 import org.eclipse.emf.transaction.TransactionalEditingDomain;
@@ -15,6 +16,7 @@ import org.eclipse.emf.workspace.util.WorkspaceSynchronizer;
 import org.eclipse.gmf.runtime.emf.core.GMFEditingDomainFactory;
 import org.eclipse.gmf.runtime.notation.Diagram;
 import org.eclipse.gmf.runtime.notation.Edge;
+import org.eclipse.gmf.runtime.notation.Node;
 import org.eclipse.gmf.runtime.notation.View;
 import org.eclipse.jface.viewers.Viewer;
 import org.eclipse.ui.IMemento;
@@ -22,9 +24,10 @@ import org.eclipse.ui.navigator.ICommonContentExtensionSite;
 import org.eclipse.ui.navigator.ICommonContentProvider;
 
 import SRM.diagram.edit.parts.ActivityEditPart;
-import SRM.diagram.edit.parts.CapabilityActivitiesEditPart;
+import SRM.diagram.edit.parts.CapabilityCapability_activitiesEditPart;
 import SRM.diagram.edit.parts.CapabilityEditPart;
-import SRM.diagram.edit.parts.RoleActivitiesEditPart;
+import SRM.diagram.edit.parts.FunctionalityActivitiesEditPart;
+import SRM.diagram.edit.parts.FunctionalityEditPart;
 import SRM.diagram.edit.parts.RoleCapabilitiesEditPart;
 import SRM.diagram.edit.parts.RoleEditPart;
 import SRM.diagram.edit.parts.SRMmodelEditPart;
@@ -64,6 +67,7 @@ public class SRMNavigatorContentProvider implements ICommonContentProvider {
 	/**
 	 * @generated
 	 */
+	@SuppressWarnings({ "unchecked", "serial", "rawtypes" })
 	public SRMNavigatorContentProvider() {
 		TransactionalEditingDomain editingDomain = GMFEditingDomainFactory.INSTANCE
 				.createEditingDomain();
@@ -89,42 +93,21 @@ public class SRMNavigatorContentProvider implements ICommonContentProvider {
 					}
 
 					public boolean handleResourceChanged(final Resource resource) {
-						for (Iterator it = myEditingDomain.getResourceSet()
-								.getResources().iterator(); it.hasNext();) {
-							Resource nextResource = (Resource) it.next();
-							nextResource.unload();
-						}
-						if (myViewer != null) {
-							myViewer.getControl().getDisplay().asyncExec(
-									myViewerRefreshRunnable);
-						}
+						unloadAllResources();
+						asyncRefresh();
 						return true;
 					}
 
 					public boolean handleResourceDeleted(Resource resource) {
-						for (Iterator it = myEditingDomain.getResourceSet()
-								.getResources().iterator(); it.hasNext();) {
-							Resource nextResource = (Resource) it.next();
-							nextResource.unload();
-						}
-						if (myViewer != null) {
-							myViewer.getControl().getDisplay().asyncExec(
-									myViewerRefreshRunnable);
-						}
+						unloadAllResources();
+						asyncRefresh();
 						return true;
 					}
 
 					public boolean handleResourceMoved(Resource resource,
 							final URI newURI) {
-						for (Iterator it = myEditingDomain.getResourceSet()
-								.getResources().iterator(); it.hasNext();) {
-							Resource nextResource = (Resource) it.next();
-							nextResource.unload();
-						}
-						if (myViewer != null) {
-							myViewer.getControl().getDisplay().asyncExec(
-									myViewerRefreshRunnable);
-						}
+						unloadAllResources();
+						asyncRefresh();
 						return true;
 					}
 				});
@@ -137,11 +120,8 @@ public class SRMNavigatorContentProvider implements ICommonContentProvider {
 		myWorkspaceSynchronizer.dispose();
 		myWorkspaceSynchronizer = null;
 		myViewerRefreshRunnable = null;
-		for (Iterator it = myEditingDomain.getResourceSet().getResources()
-				.iterator(); it.hasNext();) {
-			Resource resource = (Resource) it.next();
-			resource.unload();
-		}
+		myViewer = null;
+		unloadAllResources();
 		((TransactionalEditingDomain) myEditingDomain).dispose();
 		myEditingDomain = null;
 	}
@@ -151,6 +131,26 @@ public class SRMNavigatorContentProvider implements ICommonContentProvider {
 	 */
 	public void inputChanged(Viewer viewer, Object oldInput, Object newInput) {
 		myViewer = viewer;
+	}
+
+	/**
+	 * @generated
+	 */
+	void unloadAllResources() {
+		for (Resource nextResource : myEditingDomain.getResourceSet()
+				.getResources()) {
+			nextResource.unload();
+		}
+	}
+
+	/**
+	 * @generated
+	 */
+	void asyncRefresh() {
+		if (myViewer != null && !myViewer.getControl().isDisposed()) {
+			myViewer.getControl().getDisplay()
+					.asyncExec(myViewerRefreshRunnable);
+		}
 	}
 
 	/**
@@ -188,9 +188,17 @@ public class SRMNavigatorContentProvider implements ICommonContentProvider {
 					.toString(), true);
 			Resource resource = myEditingDomain.getResourceSet().getResource(
 					fileURI, true);
-			Collection result = new ArrayList();
-			result.addAll(createNavigatorItems(selectViewsByType(resource
-					.getContents(), SRMmodelEditPart.MODEL_ID), file, false));
+			ArrayList<SRMNavigatorItem> result = new ArrayList<SRMNavigatorItem>();
+			ArrayList<View> topViews = new ArrayList<View>(resource
+					.getContents().size());
+			for (EObject o : resource.getContents()) {
+				if (o instanceof View) {
+					topViews.add((View) o);
+				}
+			}
+			result.addAll(createNavigatorItems(
+					selectViewsByType(topViews, SRMmodelEditPart.MODEL_ID),
+					file, false));
 			return result.toArray();
 		}
 
@@ -217,41 +225,42 @@ public class SRMNavigatorContentProvider implements ICommonContentProvider {
 		switch (SRMVisualIDRegistry.getVisualID(view)) {
 
 		case SRMmodelEditPart.VISUAL_ID: {
-			Collection result = new ArrayList();
+			LinkedList<SRMAbstractNavigatorItem> result = new LinkedList<SRMAbstractNavigatorItem>();
+			Diagram sv = (Diagram) view;
 			SRMNavigatorGroup links = new SRMNavigatorGroup(
 					Messages.NavigatorGroupName_SRMmodel_1000_links,
 					"icons/linksNavigatorGroup.gif", parentElement); //$NON-NLS-1$
-			Collection connectedViews = getChildrenByType(Collections
-					.singleton(view), SRMVisualIDRegistry
-					.getType(CapabilityEditPart.VISUAL_ID));
-			result.addAll(createNavigatorItems(connectedViews, parentElement,
-					false));
-			connectedViews = getChildrenByType(Collections.singleton(view),
-					SRMVisualIDRegistry.getType(RoleEditPart.VISUAL_ID));
-			result.addAll(createNavigatorItems(connectedViews, parentElement,
-					false));
-			connectedViews = getChildrenByType(Collections.singleton(view),
+			Collection<View> connectedViews;
+			connectedViews = getChildrenByType(Collections.singleton(sv),
 					SRMVisualIDRegistry.getType(ActivityEditPart.VISUAL_ID));
 			result.addAll(createNavigatorItems(connectedViews, parentElement,
 					false));
-			connectedViews = getDiagramLinksByType(Collections.singleton(view),
+			connectedViews = getChildrenByType(Collections.singleton(sv),
+					SRMVisualIDRegistry
+							.getType(FunctionalityEditPart.VISUAL_ID));
+			result.addAll(createNavigatorItems(connectedViews, parentElement,
+					false));
+			connectedViews = getChildrenByType(Collections.singleton(sv),
+					SRMVisualIDRegistry.getType(RoleEditPart.VISUAL_ID));
+			result.addAll(createNavigatorItems(connectedViews, parentElement,
+					false));
+			connectedViews = getChildrenByType(Collections.singleton(sv),
+					SRMVisualIDRegistry.getType(CapabilityEditPart.VISUAL_ID));
+			result.addAll(createNavigatorItems(connectedViews, parentElement,
+					false));
+			connectedViews = getDiagramLinksByType(Collections.singleton(sv),
+					SRMVisualIDRegistry
+							.getType(FunctionalityActivitiesEditPart.VISUAL_ID));
+			links.addChildren(createNavigatorItems(connectedViews, links, false));
+			connectedViews = getDiagramLinksByType(Collections.singleton(sv),
 					SRMVisualIDRegistry
 							.getType(RoleCapabilitiesEditPart.VISUAL_ID));
-			links
-					.addChildren(createNavigatorItems(connectedViews, links,
-							false));
-			connectedViews = getDiagramLinksByType(Collections.singleton(view),
+			links.addChildren(createNavigatorItems(connectedViews, links, false));
+			connectedViews = getDiagramLinksByType(
+					Collections.singleton(sv),
 					SRMVisualIDRegistry
-							.getType(RoleActivitiesEditPart.VISUAL_ID));
-			links
-					.addChildren(createNavigatorItems(connectedViews, links,
-							false));
-			connectedViews = getDiagramLinksByType(Collections.singleton(view),
-					SRMVisualIDRegistry
-							.getType(CapabilityActivitiesEditPart.VISUAL_ID));
-			links
-					.addChildren(createNavigatorItems(connectedViews, links,
-							false));
+							.getType(CapabilityCapability_activitiesEditPart.VISUAL_ID));
+			links.addChildren(createNavigatorItems(connectedViews, links, false));
 			if (!links.isEmpty()) {
 				result.add(links);
 			}
@@ -259,21 +268,24 @@ public class SRMNavigatorContentProvider implements ICommonContentProvider {
 		}
 
 		case CapabilityEditPart.VISUAL_ID: {
-			Collection result = new ArrayList();
+			LinkedList<SRMAbstractNavigatorItem> result = new LinkedList<SRMAbstractNavigatorItem>();
+			Node sv = (Node) view;
 			SRMNavigatorGroup incominglinks = new SRMNavigatorGroup(
-					Messages.NavigatorGroupName_Capability_2004_incominglinks,
+					Messages.NavigatorGroupName_Capability_2001_incominglinks,
 					"icons/incomingLinksNavigatorGroup.gif", parentElement); //$NON-NLS-1$
 			SRMNavigatorGroup outgoinglinks = new SRMNavigatorGroup(
-					Messages.NavigatorGroupName_Capability_2004_outgoinglinks,
+					Messages.NavigatorGroupName_Capability_2001_outgoinglinks,
 					"icons/outgoingLinksNavigatorGroup.gif", parentElement); //$NON-NLS-1$
-			Collection connectedViews = getIncomingLinksByType(Collections
-					.singleton(view), SRMVisualIDRegistry
-					.getType(RoleCapabilitiesEditPart.VISUAL_ID));
+			Collection<View> connectedViews;
+			connectedViews = getIncomingLinksByType(Collections.singleton(sv),
+					SRMVisualIDRegistry
+							.getType(RoleCapabilitiesEditPart.VISUAL_ID));
 			incominglinks.addChildren(createNavigatorItems(connectedViews,
 					incominglinks, true));
 			connectedViews = getOutgoingLinksByType(
-					Collections.singleton(view), SRMVisualIDRegistry
-							.getType(CapabilityActivitiesEditPart.VISUAL_ID));
+					Collections.singleton(sv),
+					SRMVisualIDRegistry
+							.getType(CapabilityCapability_activitiesEditPart.VISUAL_ID));
 			outgoinglinks.addChildren(createNavigatorItems(connectedViews,
 					outgoinglinks, true));
 			if (!incominglinks.isEmpty()) {
@@ -286,18 +298,33 @@ public class SRMNavigatorContentProvider implements ICommonContentProvider {
 		}
 
 		case RoleEditPart.VISUAL_ID: {
-			Collection result = new ArrayList();
+			LinkedList<SRMAbstractNavigatorItem> result = new LinkedList<SRMAbstractNavigatorItem>();
+			Node sv = (Node) view;
 			SRMNavigatorGroup outgoinglinks = new SRMNavigatorGroup(
-					Messages.NavigatorGroupName_Role_2005_outgoinglinks,
+					Messages.NavigatorGroupName_Role_2002_outgoinglinks,
 					"icons/outgoingLinksNavigatorGroup.gif", parentElement); //$NON-NLS-1$
-			Collection connectedViews = getOutgoingLinksByType(Collections
-					.singleton(view), SRMVisualIDRegistry
-					.getType(RoleCapabilitiesEditPart.VISUAL_ID));
+			Collection<View> connectedViews;
+			connectedViews = getOutgoingLinksByType(Collections.singleton(sv),
+					SRMVisualIDRegistry
+							.getType(RoleCapabilitiesEditPart.VISUAL_ID));
 			outgoinglinks.addChildren(createNavigatorItems(connectedViews,
 					outgoinglinks, true));
-			connectedViews = getOutgoingLinksByType(
-					Collections.singleton(view), SRMVisualIDRegistry
-							.getType(RoleActivitiesEditPart.VISUAL_ID));
+			if (!outgoinglinks.isEmpty()) {
+				result.add(outgoinglinks);
+			}
+			return result.toArray();
+		}
+
+		case FunctionalityEditPart.VISUAL_ID: {
+			LinkedList<SRMAbstractNavigatorItem> result = new LinkedList<SRMAbstractNavigatorItem>();
+			Node sv = (Node) view;
+			SRMNavigatorGroup outgoinglinks = new SRMNavigatorGroup(
+					Messages.NavigatorGroupName_Functionality_2003_outgoinglinks,
+					"icons/outgoingLinksNavigatorGroup.gif", parentElement); //$NON-NLS-1$
+			Collection<View> connectedViews;
+			connectedViews = getOutgoingLinksByType(Collections.singleton(sv),
+					SRMVisualIDRegistry
+							.getType(FunctionalityActivitiesEditPart.VISUAL_ID));
 			outgoinglinks.addChildren(createNavigatorItems(connectedViews,
 					outgoinglinks, true));
 			if (!outgoinglinks.isEmpty()) {
@@ -307,18 +334,21 @@ public class SRMNavigatorContentProvider implements ICommonContentProvider {
 		}
 
 		case ActivityEditPart.VISUAL_ID: {
-			Collection result = new ArrayList();
+			LinkedList<SRMAbstractNavigatorItem> result = new LinkedList<SRMAbstractNavigatorItem>();
+			Node sv = (Node) view;
 			SRMNavigatorGroup incominglinks = new SRMNavigatorGroup(
-					Messages.NavigatorGroupName_Activity_2006_incominglinks,
+					Messages.NavigatorGroupName_Activity_2004_incominglinks,
 					"icons/incomingLinksNavigatorGroup.gif", parentElement); //$NON-NLS-1$
-			Collection connectedViews = getIncomingLinksByType(Collections
-					.singleton(view), SRMVisualIDRegistry
-					.getType(RoleActivitiesEditPart.VISUAL_ID));
+			Collection<View> connectedViews;
+			connectedViews = getIncomingLinksByType(Collections.singleton(sv),
+					SRMVisualIDRegistry
+							.getType(FunctionalityActivitiesEditPart.VISUAL_ID));
 			incominglinks.addChildren(createNavigatorItems(connectedViews,
 					incominglinks, true));
 			connectedViews = getIncomingLinksByType(
-					Collections.singleton(view), SRMVisualIDRegistry
-							.getType(CapabilityActivitiesEditPart.VISUAL_ID));
+					Collections.singleton(sv),
+					SRMVisualIDRegistry
+							.getType(CapabilityCapability_activitiesEditPart.VISUAL_ID));
 			incominglinks.addChildren(createNavigatorItems(connectedViews,
 					incominglinks, true));
 			if (!incominglinks.isEmpty()) {
@@ -327,20 +357,49 @@ public class SRMNavigatorContentProvider implements ICommonContentProvider {
 			return result.toArray();
 		}
 
+		case FunctionalityActivitiesEditPart.VISUAL_ID: {
+			LinkedList<SRMAbstractNavigatorItem> result = new LinkedList<SRMAbstractNavigatorItem>();
+			Edge sv = (Edge) view;
+			SRMNavigatorGroup target = new SRMNavigatorGroup(
+					Messages.NavigatorGroupName_FunctionalityActivities_4001_target,
+					"icons/linkTargetNavigatorGroup.gif", parentElement); //$NON-NLS-1$
+			SRMNavigatorGroup source = new SRMNavigatorGroup(
+					Messages.NavigatorGroupName_FunctionalityActivities_4001_source,
+					"icons/linkSourceNavigatorGroup.gif", parentElement); //$NON-NLS-1$
+			Collection<View> connectedViews;
+			connectedViews = getLinksTargetByType(Collections.singleton(sv),
+					SRMVisualIDRegistry.getType(ActivityEditPart.VISUAL_ID));
+			target.addChildren(createNavigatorItems(connectedViews, target,
+					true));
+			connectedViews = getLinksSourceByType(Collections.singleton(sv),
+					SRMVisualIDRegistry
+							.getType(FunctionalityEditPart.VISUAL_ID));
+			source.addChildren(createNavigatorItems(connectedViews, source,
+					true));
+			if (!target.isEmpty()) {
+				result.add(target);
+			}
+			if (!source.isEmpty()) {
+				result.add(source);
+			}
+			return result.toArray();
+		}
+
 		case RoleCapabilitiesEditPart.VISUAL_ID: {
-			Collection result = new ArrayList();
+			LinkedList<SRMAbstractNavigatorItem> result = new LinkedList<SRMAbstractNavigatorItem>();
+			Edge sv = (Edge) view;
 			SRMNavigatorGroup target = new SRMNavigatorGroup(
-					Messages.NavigatorGroupName_RoleCapabilities_4004_target,
+					Messages.NavigatorGroupName_RoleCapabilities_4002_target,
 					"icons/linkTargetNavigatorGroup.gif", parentElement); //$NON-NLS-1$
 			SRMNavigatorGroup source = new SRMNavigatorGroup(
-					Messages.NavigatorGroupName_RoleCapabilities_4004_source,
+					Messages.NavigatorGroupName_RoleCapabilities_4002_source,
 					"icons/linkSourceNavigatorGroup.gif", parentElement); //$NON-NLS-1$
-			Collection connectedViews = getLinksTargetByType(Collections
-					.singleton(view), SRMVisualIDRegistry
-					.getType(CapabilityEditPart.VISUAL_ID));
+			Collection<View> connectedViews;
+			connectedViews = getLinksTargetByType(Collections.singleton(sv),
+					SRMVisualIDRegistry.getType(CapabilityEditPart.VISUAL_ID));
 			target.addChildren(createNavigatorItems(connectedViews, target,
 					true));
-			connectedViews = getLinksSourceByType(Collections.singleton(view),
+			connectedViews = getLinksSourceByType(Collections.singleton(sv),
 					SRMVisualIDRegistry.getType(RoleEditPart.VISUAL_ID));
 			source.addChildren(createNavigatorItems(connectedViews, source,
 					true));
@@ -353,46 +412,21 @@ public class SRMNavigatorContentProvider implements ICommonContentProvider {
 			return result.toArray();
 		}
 
-		case RoleActivitiesEditPart.VISUAL_ID: {
-			Collection result = new ArrayList();
+		case CapabilityCapability_activitiesEditPart.VISUAL_ID: {
+			LinkedList<SRMAbstractNavigatorItem> result = new LinkedList<SRMAbstractNavigatorItem>();
+			Edge sv = (Edge) view;
 			SRMNavigatorGroup target = new SRMNavigatorGroup(
-					Messages.NavigatorGroupName_RoleActivities_4005_target,
+					Messages.NavigatorGroupName_CapabilityCapability_activities_4003_target,
 					"icons/linkTargetNavigatorGroup.gif", parentElement); //$NON-NLS-1$
 			SRMNavigatorGroup source = new SRMNavigatorGroup(
-					Messages.NavigatorGroupName_RoleActivities_4005_source,
+					Messages.NavigatorGroupName_CapabilityCapability_activities_4003_source,
 					"icons/linkSourceNavigatorGroup.gif", parentElement); //$NON-NLS-1$
-			Collection connectedViews = getLinksTargetByType(Collections
-					.singleton(view), SRMVisualIDRegistry
-					.getType(ActivityEditPart.VISUAL_ID));
+			Collection<View> connectedViews;
+			connectedViews = getLinksTargetByType(Collections.singleton(sv),
+					SRMVisualIDRegistry.getType(ActivityEditPart.VISUAL_ID));
 			target.addChildren(createNavigatorItems(connectedViews, target,
 					true));
-			connectedViews = getLinksSourceByType(Collections.singleton(view),
-					SRMVisualIDRegistry.getType(RoleEditPart.VISUAL_ID));
-			source.addChildren(createNavigatorItems(connectedViews, source,
-					true));
-			if (!target.isEmpty()) {
-				result.add(target);
-			}
-			if (!source.isEmpty()) {
-				result.add(source);
-			}
-			return result.toArray();
-		}
-
-		case CapabilityActivitiesEditPart.VISUAL_ID: {
-			Collection result = new ArrayList();
-			SRMNavigatorGroup target = new SRMNavigatorGroup(
-					Messages.NavigatorGroupName_CapabilityActivities_4006_target,
-					"icons/linkTargetNavigatorGroup.gif", parentElement); //$NON-NLS-1$
-			SRMNavigatorGroup source = new SRMNavigatorGroup(
-					Messages.NavigatorGroupName_CapabilityActivities_4006_source,
-					"icons/linkSourceNavigatorGroup.gif", parentElement); //$NON-NLS-1$
-			Collection connectedViews = getLinksTargetByType(Collections
-					.singleton(view), SRMVisualIDRegistry
-					.getType(ActivityEditPart.VISUAL_ID));
-			target.addChildren(createNavigatorItems(connectedViews, target,
-					true));
-			connectedViews = getLinksSourceByType(Collections.singleton(view),
+			connectedViews = getLinksSourceByType(Collections.singleton(sv),
 					SRMVisualIDRegistry.getType(CapabilityEditPart.VISUAL_ID));
 			source.addChildren(createNavigatorItems(connectedViews, source,
 					true));
@@ -411,10 +445,10 @@ public class SRMNavigatorContentProvider implements ICommonContentProvider {
 	/**
 	 * @generated
 	 */
-	private Collection getLinksSourceByType(Collection edges, String type) {
-		Collection result = new ArrayList();
-		for (Iterator it = edges.iterator(); it.hasNext();) {
-			Edge nextEdge = (Edge) it.next();
+	private Collection<View> getLinksSourceByType(Collection<Edge> edges,
+			String type) {
+		LinkedList<View> result = new LinkedList<View>();
+		for (Edge nextEdge : edges) {
 			View nextEdgeSource = nextEdge.getSource();
 			if (type.equals(nextEdgeSource.getType())
 					&& isOwnView(nextEdgeSource)) {
@@ -427,10 +461,10 @@ public class SRMNavigatorContentProvider implements ICommonContentProvider {
 	/**
 	 * @generated
 	 */
-	private Collection getLinksTargetByType(Collection edges, String type) {
-		Collection result = new ArrayList();
-		for (Iterator it = edges.iterator(); it.hasNext();) {
-			Edge nextEdge = (Edge) it.next();
+	private Collection<View> getLinksTargetByType(Collection<Edge> edges,
+			String type) {
+		LinkedList<View> result = new LinkedList<View>();
+		for (Edge nextEdge : edges) {
 			View nextEdgeTarget = nextEdge.getTarget();
 			if (type.equals(nextEdgeTarget.getType())
 					&& isOwnView(nextEdgeTarget)) {
@@ -443,10 +477,10 @@ public class SRMNavigatorContentProvider implements ICommonContentProvider {
 	/**
 	 * @generated
 	 */
-	private Collection getOutgoingLinksByType(Collection nodes, String type) {
-		Collection result = new ArrayList();
-		for (Iterator it = nodes.iterator(); it.hasNext();) {
-			View nextNode = (View) it.next();
+	private Collection<View> getOutgoingLinksByType(
+			Collection<? extends View> nodes, String type) {
+		LinkedList<View> result = new LinkedList<View>();
+		for (View nextNode : nodes) {
 			result.addAll(selectViewsByType(nextNode.getSourceEdges(), type));
 		}
 		return result;
@@ -455,10 +489,10 @@ public class SRMNavigatorContentProvider implements ICommonContentProvider {
 	/**
 	 * @generated
 	 */
-	private Collection getIncomingLinksByType(Collection nodes, String type) {
-		Collection result = new ArrayList();
-		for (Iterator it = nodes.iterator(); it.hasNext();) {
-			View nextNode = (View) it.next();
+	private Collection<View> getIncomingLinksByType(
+			Collection<? extends View> nodes, String type) {
+		LinkedList<View> result = new LinkedList<View>();
+		for (View nextNode : nodes) {
 			result.addAll(selectViewsByType(nextNode.getTargetEdges(), type));
 		}
 		return result;
@@ -467,10 +501,10 @@ public class SRMNavigatorContentProvider implements ICommonContentProvider {
 	/**
 	 * @generated
 	 */
-	private Collection getChildrenByType(Collection nodes, String type) {
-		Collection result = new ArrayList();
-		for (Iterator it = nodes.iterator(); it.hasNext();) {
-			View nextNode = (View) it.next();
+	private Collection<View> getChildrenByType(
+			Collection<? extends View> nodes, String type) {
+		LinkedList<View> result = new LinkedList<View>();
+		for (View nextNode : nodes) {
 			result.addAll(selectViewsByType(nextNode.getChildren(), type));
 		}
 		return result;
@@ -479,22 +513,23 @@ public class SRMNavigatorContentProvider implements ICommonContentProvider {
 	/**
 	 * @generated
 	 */
-	private Collection getDiagramLinksByType(Collection diagrams, String type) {
-		Collection result = new ArrayList();
-		for (Iterator it = diagrams.iterator(); it.hasNext();) {
-			Diagram nextDiagram = (Diagram) it.next();
+	private Collection<View> getDiagramLinksByType(
+			Collection<Diagram> diagrams, String type) {
+		ArrayList<View> result = new ArrayList<View>();
+		for (Diagram nextDiagram : diagrams) {
 			result.addAll(selectViewsByType(nextDiagram.getEdges(), type));
 		}
 		return result;
 	}
 
+	// TODO refactor as static method
 	/**
 	 * @generated
 	 */
-	private Collection selectViewsByType(Collection views, String type) {
-		Collection result = new ArrayList();
-		for (Iterator it = views.iterator(); it.hasNext();) {
-			View nextView = (View) it.next();
+	private Collection<View> selectViewsByType(Collection<View> views,
+			String type) {
+		ArrayList<View> result = new ArrayList<View>();
+		for (View nextView : views) {
 			if (type.equals(nextView.getType()) && isOwnView(nextView)) {
 				result.add(nextView);
 			}
@@ -513,11 +548,12 @@ public class SRMNavigatorContentProvider implements ICommonContentProvider {
 	/**
 	 * @generated
 	 */
-	private Collection createNavigatorItems(Collection views, Object parent,
-			boolean isLeafs) {
-		Collection result = new ArrayList();
-		for (Iterator it = views.iterator(); it.hasNext();) {
-			result.add(new SRMNavigatorItem((View) it.next(), parent, isLeafs));
+	private Collection<SRMNavigatorItem> createNavigatorItems(
+			Collection<View> views, Object parent, boolean isLeafs) {
+		ArrayList<SRMNavigatorItem> result = new ArrayList<SRMNavigatorItem>(
+				views.size());
+		for (View nextView : views) {
+			result.add(new SRMNavigatorItem(nextView, parent, isLeafs));
 		}
 		return result;
 	}

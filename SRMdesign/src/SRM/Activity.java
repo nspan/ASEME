@@ -53,29 +53,31 @@ public interface Activity extends EObject {
 	void setName(String value);
 
 	/**
-	 * Returns the value of the '<em><b>Functionality</b></em>' attribute.
+	 * Returns the value of the '<em><b>Functionality</b></em>' reference.
+	 * It is bidirectional and its opposite is '{@link SRM.Functionality#getActivities <em>Activities</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <p>
 	 * If the meaning of the '<em>Functionality</em>' attribute isn't clear,
 	 * there really should be more of a description here...
 	 * </p>
 	 * <!-- end-user-doc -->
-	 * @return the value of the '<em>Functionality</em>' attribute.
-	 * @see #setFunctionality(String)
+	 * @return the value of the '<em>Functionality</em>' reference.
+	 * @see #setFunctionality(Functionality)
 	 * @see SRM.SRMPackage#getActivity_Functionality()
-	 * @model unique="false" ordered="false"
+	 * @see SRM.Functionality#getActivities
+	 * @model opposite="activities" required="true"
 	 * @generated
 	 */
-	String getFunctionality();
+	Functionality getFunctionality();
 
 	/**
-	 * Sets the value of the '{@link SRM.Activity#getFunctionality <em>Functionality</em>}' attribute.
+	 * Sets the value of the '{@link SRM.Activity#getFunctionality <em>Functionality</em>}' reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @param value the new value of the '<em>Functionality</em>' attribute.
+	 * @param value the new value of the '<em>Functionality</em>' reference.
 	 * @see #getFunctionality()
 	 * @generated
 	 */
-	void setFunctionality(String value);
+	void setFunctionality(Functionality value);
 
 } // Activity

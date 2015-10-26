@@ -10,10 +10,9 @@ import AIP.diagram.part.AIPDiagramEditorPlugin;
 public class DiagramPrintingPreferencePage extends PrintingPreferencePage {
 
 	/**
-	 * @generated
-	 */
+	* @generated
+	*/
 	public DiagramPrintingPreferencePage() {
-		setPreferenceStore(AIPDiagramEditorPlugin.getInstance()
-				.getPreferenceStore());
+		setPreferenceStore(AIPDiagramEditorPlugin.getInstance().getPreferenceStore());
 	}
 }

@@ -102,7 +102,7 @@ public class SRMCreationWizard extends Wizard implements INewWizard {
 	 */
 	public void addPages() {
 		diagramModelFilePage = new SRMCreationWizardPage(
-				"DiagramModelFile", getSelection(), "srmd"); //$NON-NLS-1$ //$NON-NLS-2$
+				"DiagramModelFile", getSelection(), "fg"); //$NON-NLS-1$ //$NON-NLS-2$
 		diagramModelFilePage
 				.setTitle(Messages.SRMCreationWizard_DiagramModelFilePageTitle);
 		diagramModelFilePage
@@ -115,8 +115,8 @@ public class SRMCreationWizard extends Wizard implements INewWizard {
 			public void setVisible(boolean visible) {
 				if (visible) {
 					String fileName = diagramModelFilePage.getFileName();
-					fileName = fileName.substring(0, fileName.length()
-							- ".srmd".length()); //$NON-NLS-1$
+					fileName = fileName.substring(0,
+							fileName.length() - ".fg".length()); //$NON-NLS-1$
 					setFileName(SRMDiagramEditorUtil.getUniqueFileName(
 							getContainerFullPath(), fileName, "srm")); //$NON-NLS-1$
 				}
@@ -139,8 +139,8 @@ public class SRMCreationWizard extends Wizard implements INewWizard {
 			protected void execute(IProgressMonitor monitor)
 					throws CoreException, InterruptedException {
 				diagram = SRMDiagramEditorUtil.createDiagram(
-						diagramModelFilePage.getURI(), domainModelFilePage
-								.getURI(), monitor);
+						diagramModelFilePage.getURI(),
+						domainModelFilePage.getURI(), monitor);
 				if (isOpenNewlyCreatedDiagramEditor() && diagram != null) {
 					try {
 						SRMDiagramEditorUtil.openDiagram(diagram);

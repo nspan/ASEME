@@ -1,11 +1,8 @@
 package SRM.diagram.providers;
 
-import java.util.ArrayList;
 import java.util.Collection;
-import java.util.Collections;
 import java.util.HashSet;
 import java.util.Iterator;
-import java.util.List;
 
 import org.eclipse.core.runtime.IAdaptable;
 import org.eclipse.emf.ecore.EObject;
@@ -21,10 +18,6 @@ import org.eclipse.swt.widgets.Display;
 import org.eclipse.swt.widgets.Shell;
 import org.eclipse.ui.dialogs.ElementListSelectionDialog;
 
-import SRM.diagram.edit.parts.ActivityEditPart;
-import SRM.diagram.edit.parts.CapabilityEditPart;
-import SRM.diagram.edit.parts.RoleEditPart;
-import SRM.diagram.edit.parts.SRMmodelEditPart;
 import SRM.diagram.part.Messages;
 import SRM.diagram.part.SRMDiagramEditorPlugin;
 
@@ -36,114 +29,10 @@ public class SRMModelingAssistantProvider extends ModelingAssistantProvider {
 	/**
 	 * @generated
 	 */
-	public List getTypesForPopupBar(IAdaptable host) {
-		IGraphicalEditPart editPart = (IGraphicalEditPart) host
-				.getAdapter(IGraphicalEditPart.class);
-		if (editPart instanceof SRMmodelEditPart) {
-			ArrayList types = new ArrayList(3);
-			types.add(SRMElementTypes.Capability_2004);
-			types.add(SRMElementTypes.Role_2005);
-			types.add(SRMElementTypes.Activity_2006);
-			return types;
-		}
-		return Collections.EMPTY_LIST;
-	}
-
-	/**
-	 * @generated
-	 */
-	public List getRelTypesOnSource(IAdaptable source) {
-		IGraphicalEditPart sourceEditPart = (IGraphicalEditPart) source
-				.getAdapter(IGraphicalEditPart.class);
-		if (sourceEditPart instanceof CapabilityEditPart) {
-			return ((CapabilityEditPart) sourceEditPart)
-					.getMARelTypesOnSource();
-		}
-		if (sourceEditPart instanceof RoleEditPart) {
-			return ((RoleEditPart) sourceEditPart).getMARelTypesOnSource();
-		}
-		return Collections.EMPTY_LIST;
-	}
-
-	/**
-	 * @generated
-	 */
-	public List getRelTypesOnTarget(IAdaptable target) {
-		IGraphicalEditPart targetEditPart = (IGraphicalEditPart) target
-				.getAdapter(IGraphicalEditPart.class);
-		if (targetEditPart instanceof CapabilityEditPart) {
-			return ((CapabilityEditPart) targetEditPart)
-					.getMARelTypesOnTarget();
-		}
-		if (targetEditPart instanceof ActivityEditPart) {
-			return ((ActivityEditPart) targetEditPart).getMARelTypesOnTarget();
-		}
-		return Collections.EMPTY_LIST;
-	}
-
-	/**
-	 * @generated
-	 */
-	public List getRelTypesOnSourceAndTarget(IAdaptable source,
-			IAdaptable target) {
-		IGraphicalEditPart sourceEditPart = (IGraphicalEditPart) source
-				.getAdapter(IGraphicalEditPart.class);
-		IGraphicalEditPart targetEditPart = (IGraphicalEditPart) target
-				.getAdapter(IGraphicalEditPart.class);
-		if (sourceEditPart instanceof CapabilityEditPart) {
-			return ((CapabilityEditPart) sourceEditPart)
-					.getMARelTypesOnSourceAndTarget(targetEditPart);
-		}
-		if (sourceEditPart instanceof RoleEditPart) {
-			return ((RoleEditPart) sourceEditPart)
-					.getMARelTypesOnSourceAndTarget(targetEditPart);
-		}
-		return Collections.EMPTY_LIST;
-	}
-
-	/**
-	 * @generated
-	 */
-	public List getTypesForSource(IAdaptable target,
-			IElementType relationshipType) {
-		IGraphicalEditPart targetEditPart = (IGraphicalEditPart) target
-				.getAdapter(IGraphicalEditPart.class);
-		if (targetEditPart instanceof CapabilityEditPart) {
-			return ((CapabilityEditPart) targetEditPart)
-					.getMATypesForSource(relationshipType);
-		}
-		if (targetEditPart instanceof ActivityEditPart) {
-			return ((ActivityEditPart) targetEditPart)
-					.getMATypesForSource(relationshipType);
-		}
-		return Collections.EMPTY_LIST;
-	}
-
-	/**
-	 * @generated
-	 */
-	public List getTypesForTarget(IAdaptable source,
-			IElementType relationshipType) {
-		IGraphicalEditPart sourceEditPart = (IGraphicalEditPart) source
-				.getAdapter(IGraphicalEditPart.class);
-		if (sourceEditPart instanceof CapabilityEditPart) {
-			return ((CapabilityEditPart) sourceEditPart)
-					.getMATypesForTarget(relationshipType);
-		}
-		if (sourceEditPart instanceof RoleEditPart) {
-			return ((RoleEditPart) sourceEditPart)
-					.getMATypesForTarget(relationshipType);
-		}
-		return Collections.EMPTY_LIST;
-	}
-
-	/**
-	 * @generated
-	 */
 	public EObject selectExistingElementForSource(IAdaptable target,
 			IElementType relationshipType) {
-		return selectExistingElement(target, getTypesForSource(target,
-				relationshipType));
+		return selectExistingElement(target,
+				getTypesForSource(target, relationshipType));
 	}
 
 	/**
@@ -151,8 +40,8 @@ public class SRMModelingAssistantProvider extends ModelingAssistantProvider {
 	 */
 	public EObject selectExistingElementForTarget(IAdaptable source,
 			IElementType relationshipType) {
-		return selectExistingElement(source, getTypesForTarget(source,
-				relationshipType));
+		return selectExistingElement(source,
+				getTypesForTarget(source, relationshipType));
 	}
 
 	/**
@@ -168,9 +57,10 @@ public class SRMModelingAssistantProvider extends ModelingAssistantProvider {
 			return null;
 		}
 		Diagram diagram = (Diagram) editPart.getRoot().getContents().getModel();
-		Collection elements = new HashSet();
-		for (Iterator it = diagram.getElement().eAllContents(); it.hasNext();) {
-			EObject element = (EObject) it.next();
+		HashSet<EObject> elements = new HashSet<EObject>();
+		for (Iterator<EObject> it = diagram.getElement().eAllContents(); it
+				.hasNext();) {
+			EObject element = it.next();
 			if (isApplicableElement(element, types)) {
 				elements.add(element);
 			}
@@ -211,4 +101,5 @@ public class SRMModelingAssistantProvider extends ModelingAssistantProvider {
 		}
 		return selected;
 	}
+
 }

@@ -8,6 +8,7 @@ package SRM.impl;
 
 import SRM.Activity;
 import SRM.Capability;
+import SRM.Functionality;
 import SRM.Role;
 import SRM.SRMPackage;
 import SRM.SRMmodel;
@@ -36,6 +37,7 @@ import org.eclipse.emf.ecore.util.InternalEList;
  *   <li>{@link SRM.impl.SRMmodelImpl#getActivities <em>Activities</em>}</li>
  *   <li>{@link SRM.impl.SRMmodelImpl#getCapabilities <em>Capabilities</em>}</li>
  *   <li>{@link SRM.impl.SRMmodelImpl#getRoles <em>Roles</em>}</li>
+ *   <li>{@link SRM.impl.SRMmodelImpl#getFunctionalities <em>Functionalities</em>}</li>
  * </ul>
  * </p>
  *
@@ -71,6 +73,16 @@ public class SRMmodelImpl extends EObjectImpl implements SRMmodel {
 	 * @ordered
 	 */
 	protected EList<Role> roles;
+
+	/**
+	 * The cached value of the '{@link #getFunctionalities() <em>Functionalities</em>}' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getFunctionalities()
+	 * @generated
+	 * @ordered
+	 */
+	protected EList<Functionality> functionalities;
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -132,6 +144,18 @@ public class SRMmodelImpl extends EObjectImpl implements SRMmodel {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	public EList<Functionality> getFunctionalities() {
+		if (functionalities == null) {
+			functionalities = new EObjectContainmentEList<Functionality>(Functionality.class, this, SRMPackage.SR_MMODEL__FUNCTIONALITIES);
+		}
+		return functionalities;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
 	@Override
 	public NotificationChain eInverseRemove(InternalEObject otherEnd, int featureID, NotificationChain msgs) {
 		switch (featureID) {
@@ -141,6 +165,8 @@ public class SRMmodelImpl extends EObjectImpl implements SRMmodel {
 				return ((InternalEList<?>)getCapabilities()).basicRemove(otherEnd, msgs);
 			case SRMPackage.SR_MMODEL__ROLES:
 				return ((InternalEList<?>)getRoles()).basicRemove(otherEnd, msgs);
+			case SRMPackage.SR_MMODEL__FUNCTIONALITIES:
+				return ((InternalEList<?>)getFunctionalities()).basicRemove(otherEnd, msgs);
 		}
 		return super.eInverseRemove(otherEnd, featureID, msgs);
 	}
@@ -159,6 +185,8 @@ public class SRMmodelImpl extends EObjectImpl implements SRMmodel {
 				return getCapabilities();
 			case SRMPackage.SR_MMODEL__ROLES:
 				return getRoles();
+			case SRMPackage.SR_MMODEL__FUNCTIONALITIES:
+				return getFunctionalities();
 		}
 		return super.eGet(featureID, resolve, coreType);
 	}
@@ -184,6 +212,10 @@ public class SRMmodelImpl extends EObjectImpl implements SRMmodel {
 				getRoles().clear();
 				getRoles().addAll((Collection<? extends Role>)newValue);
 				return;
+			case SRMPackage.SR_MMODEL__FUNCTIONALITIES:
+				getFunctionalities().clear();
+				getFunctionalities().addAll((Collection<? extends Functionality>)newValue);
+				return;
 		}
 		super.eSet(featureID, newValue);
 	}
@@ -205,6 +237,9 @@ public class SRMmodelImpl extends EObjectImpl implements SRMmodel {
 			case SRMPackage.SR_MMODEL__ROLES:
 				getRoles().clear();
 				return;
+			case SRMPackage.SR_MMODEL__FUNCTIONALITIES:
+				getFunctionalities().clear();
+				return;
 		}
 		super.eUnset(featureID);
 	}
@@ -223,6 +258,8 @@ public class SRMmodelImpl extends EObjectImpl implements SRMmodel {
 				return capabilities != null && !capabilities.isEmpty();
 			case SRMPackage.SR_MMODEL__ROLES:
 				return roles != null && !roles.isEmpty();
+			case SRMPackage.SR_MMODEL__FUNCTIONALITIES:
+				return functionalities != null && !functionalities.isEmpty();
 		}
 		return super.eIsSet(featureID);
 	}

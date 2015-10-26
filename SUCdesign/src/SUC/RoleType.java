@@ -19,6 +19,14 @@ import org.eclipse.emf.common.util.Enumerator;
  */
 public enum RoleType implements Enumerator {
 	/**
+	 * The '<em><b>Abstract</b></em>' literal object.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #ABSTRACT_VALUE
+	 * @generated
+	 * @ordered
+	 */
+	ABSTRACT(0, "Abstract", "Abstract"), /**
 	 * The '<em><b>System</b></em>' literal object.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -26,7 +34,7 @@ public enum RoleType implements Enumerator {
 	 * @generated
 	 * @ordered
 	 */
-	SYSTEM(0, "System", "System"),
+	SYSTEM(1, "System", "System"),
 
 	/**
 	 * The '<em><b>Legacy System</b></em>' literal object.
@@ -36,7 +44,7 @@ public enum RoleType implements Enumerator {
 	 * @generated
 	 * @ordered
 	 */
-	LEGACY_SYSTEM(1, "Legacy_System", "Legacy_System"),
+	LEGACY_SYSTEM(2, "Legacy_System", "Legacy_System"),
 
 	/**
 	 * The '<em><b>External System</b></em>' literal object.
@@ -46,7 +54,7 @@ public enum RoleType implements Enumerator {
 	 * @generated
 	 * @ordered
 	 */
-	EXTERNAL_SYSTEM(2, "External_System", "External_System"),
+	EXTERNAL_SYSTEM(3, "External_System", "External_System"),
 
 	/**
 	 * The '<em><b>Human</b></em>' literal object.
@@ -56,7 +64,22 @@ public enum RoleType implements Enumerator {
 	 * @generated
 	 * @ordered
 	 */
-	HUMAN(3, "Human", "Human");
+	HUMAN(4, "Human", "Human");
+
+	/**
+	 * The '<em><b>Abstract</b></em>' literal value.
+	 * <!-- begin-user-doc -->
+	 * <p>
+	 * If the meaning of '<em><b>Abstract</b></em>' literal object isn't clear,
+	 * there really should be more of a description here...
+	 * </p>
+	 * <!-- end-user-doc -->
+	 * @see #ABSTRACT
+	 * @model name="Abstract"
+	 * @generated
+	 * @ordered
+	 */
+	public static final int ABSTRACT_VALUE = 0;
 
 	/**
 	 * The '<em><b>System</b></em>' literal value.
@@ -71,7 +94,7 @@ public enum RoleType implements Enumerator {
 	 * @generated
 	 * @ordered
 	 */
-	public static final int SYSTEM_VALUE = 0;
+	public static final int SYSTEM_VALUE = 1;
 
 	/**
 	 * The '<em><b>Legacy System</b></em>' literal value.
@@ -86,7 +109,7 @@ public enum RoleType implements Enumerator {
 	 * @generated
 	 * @ordered
 	 */
-	public static final int LEGACY_SYSTEM_VALUE = 1;
+	public static final int LEGACY_SYSTEM_VALUE = 2;
 
 	/**
 	 * The '<em><b>External System</b></em>' literal value.
@@ -101,7 +124,7 @@ public enum RoleType implements Enumerator {
 	 * @generated
 	 * @ordered
 	 */
-	public static final int EXTERNAL_SYSTEM_VALUE = 2;
+	public static final int EXTERNAL_SYSTEM_VALUE = 3;
 
 	/**
 	 * The '<em><b>Human</b></em>' literal value.
@@ -116,7 +139,7 @@ public enum RoleType implements Enumerator {
 	 * @generated
 	 * @ordered
 	 */
-	public static final int HUMAN_VALUE = 3;
+	public static final int HUMAN_VALUE = 4;
 
 	/**
 	 * An array of all the '<em><b>Role Type</b></em>' enumerators.
@@ -126,6 +149,7 @@ public enum RoleType implements Enumerator {
 	 */
 	private static final RoleType[] VALUES_ARRAY =
 		new RoleType[] {
+			ABSTRACT,
 			SYSTEM,
 			LEGACY_SYSTEM,
 			EXTERNAL_SYSTEM,
@@ -180,6 +204,7 @@ public enum RoleType implements Enumerator {
 	 */
 	public static RoleType get(int value) {
 		switch (value) {
+			case ABSTRACT_VALUE: return ABSTRACT;
 			case SYSTEM_VALUE: return SYSTEM;
 			case LEGACY_SYSTEM_VALUE: return LEGACY_SYSTEM;
 			case EXTERNAL_SYSTEM_VALUE: return EXTERNAL_SYSTEM;

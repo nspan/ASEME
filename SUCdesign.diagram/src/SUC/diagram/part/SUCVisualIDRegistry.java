@@ -16,7 +16,6 @@ import SUC.diagram.edit.parts.SUCmodelEditPart;
 import SUC.diagram.edit.parts.UseCaseEditPart;
 import SUC.diagram.edit.parts.UseCaseIncludeEditPart;
 import SUC.diagram.edit.parts.UseCaseNameEditPart;
-import SUC.diagram.edit.parts.UseCaseSpecified_byEditPart;
 
 /**
  * This registry is used to determine which type of visual object should be
@@ -125,13 +124,13 @@ public class SUCVisualIDRegistry {
 		}
 		switch (containerVisualID) {
 		case SUCmodelEditPart.VISUAL_ID:
-			if (SUCPackage.eINSTANCE.getRole().isSuperTypeOf(
-					domainElement.eClass())) {
-				return RoleEditPart.VISUAL_ID;
-			}
 			if (SUCPackage.eINSTANCE.getUseCase().isSuperTypeOf(
 					domainElement.eClass())) {
 				return UseCaseEditPart.VISUAL_ID;
+			}
+			if (SUCPackage.eINSTANCE.getRole().isSuperTypeOf(
+					domainElement.eClass())) {
+				return RoleEditPart.VISUAL_ID;
 			}
 			break;
 		}
@@ -160,15 +159,10 @@ public class SUCVisualIDRegistry {
 		}
 		switch (containerVisualID) {
 		case SUCmodelEditPart.VISUAL_ID:
-			if (RoleEditPart.VISUAL_ID == nodeVisualID) {
-				return true;
-			}
 			if (UseCaseEditPart.VISUAL_ID == nodeVisualID) {
 				return true;
 			}
-			break;
-		case RoleEditPart.VISUAL_ID:
-			if (RoleNameEditPart.VISUAL_ID == nodeVisualID) {
+			if (RoleEditPart.VISUAL_ID == nodeVisualID) {
 				return true;
 			}
 			break;
@@ -176,7 +170,9 @@ public class SUCVisualIDRegistry {
 			if (UseCaseNameEditPart.VISUAL_ID == nodeVisualID) {
 				return true;
 			}
-			if (UseCaseSpecified_byEditPart.VISUAL_ID == nodeVisualID) {
+			break;
+		case RoleEditPart.VISUAL_ID:
+			if (RoleNameEditPart.VISUAL_ID == nodeVisualID) {
 				return true;
 			}
 			break;

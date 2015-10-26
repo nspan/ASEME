@@ -11,6 +11,7 @@ import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.EStructuralFeature;
 import org.eclipse.emf.ecore.util.EcoreUtil;
 import org.eclipse.gmf.runtime.notation.View;
+import org.eclipse.gmf.tooling.runtime.update.DiagramUpdater;
 
 import AIP.AIPPackage;
 import AIP.AIPmodel;
@@ -28,8 +29,8 @@ import AIP.diagram.providers.AIPElementTypes;
 public class AIPDiagramUpdater {
 
 	/**
-	 * @generated
-	 */
+	* @generated
+	*/
 	public static List<AIPNodeDescriptor> getSemanticChildren(View view) {
 		switch (AIPVisualIDRegistry.getVisualID(view)) {
 		case AIPmodelEditPart.VISUAL_ID:
@@ -39,30 +40,25 @@ public class AIPDiagramUpdater {
 	}
 
 	/**
-	 * @generated
-	 */
-	public static List<AIPNodeDescriptor> getAIPmodel_1000SemanticChildren(
-			View view) {
+	* @generated
+	*/
+	public static List<AIPNodeDescriptor> getAIPmodel_1000SemanticChildren(View view) {
 		if (!view.isSetElement()) {
 			return Collections.emptyList();
 		}
 		AIPmodel modelElement = (AIPmodel) view.getElement();
 		LinkedList<AIPNodeDescriptor> result = new LinkedList<AIPNodeDescriptor>();
-		for (Iterator<?> it = modelElement.getParticipants().iterator(); it
-				.hasNext();) {
+		for (Iterator<?> it = modelElement.getParticipants().iterator(); it.hasNext();) {
 			Participant childElement = (Participant) it.next();
-			int visualID = AIPVisualIDRegistry.getNodeVisualID(view,
-					childElement);
+			int visualID = AIPVisualIDRegistry.getNodeVisualID(view, childElement);
 			if (visualID == ParticipantEditPart.VISUAL_ID) {
 				result.add(new AIPNodeDescriptor(childElement, visualID));
 				continue;
 			}
 		}
-		for (Iterator<?> it = modelElement.getProtocols().iterator(); it
-				.hasNext();) {
+		for (Iterator<?> it = modelElement.getProtocols().iterator(); it.hasNext();) {
 			Protocol childElement = (Protocol) it.next();
-			int visualID = AIPVisualIDRegistry.getNodeVisualID(view,
-					childElement);
+			int visualID = AIPVisualIDRegistry.getNodeVisualID(view, childElement);
 			if (visualID == ProtocolEditPart.VISUAL_ID) {
 				result.add(new AIPNodeDescriptor(childElement, visualID));
 				continue;
@@ -72,8 +68,8 @@ public class AIPDiagramUpdater {
 	}
 
 	/**
-	 * @generated
-	 */
+	* @generated
+	*/
 	public static List<AIPLinkDescriptor> getContainedLinks(View view) {
 		switch (AIPVisualIDRegistry.getVisualID(view)) {
 		case AIPmodelEditPart.VISUAL_ID:
@@ -87,8 +83,8 @@ public class AIPDiagramUpdater {
 	}
 
 	/**
-	 * @generated
-	 */
+	* @generated
+	*/
 	public static List<AIPLinkDescriptor> getIncomingLinks(View view) {
 		switch (AIPVisualIDRegistry.getVisualID(view)) {
 		case ParticipantEditPart.VISUAL_ID:
@@ -100,8 +96,8 @@ public class AIPDiagramUpdater {
 	}
 
 	/**
-	 * @generated
-	 */
+	* @generated
+	*/
 	public static List<AIPLinkDescriptor> getOutgoingLinks(View view) {
 		switch (AIPVisualIDRegistry.getVisualID(view)) {
 		case ParticipantEditPart.VISUAL_ID:
@@ -115,24 +111,21 @@ public class AIPDiagramUpdater {
 	/**
 	 * @generated
 	 */
-	public static List<AIPLinkDescriptor> getAIPmodel_1000ContainedLinks(
-			View view) {
+	public static List<AIPLinkDescriptor> getAIPmodel_1000ContainedLinks(View view) {
 		return Collections.emptyList();
 	}
 
 	/**
 	 * @generated
 	 */
-	public static List<AIPLinkDescriptor> getParticipant_2003ContainedLinks(
-			View view) {
+	public static List<AIPLinkDescriptor> getParticipant_2003ContainedLinks(View view) {
 		return Collections.emptyList();
 	}
 
 	/**
 	 * @generated
 	 */
-	public static List<AIPLinkDescriptor> getProtocol_2004ContainedLinks(
-			View view) {
+	public static List<AIPLinkDescriptor> getProtocol_2004ContainedLinks(View view) {
 		Protocol modelElement = (Protocol) view.getElement();
 		LinkedList<AIPLinkDescriptor> result = new LinkedList<AIPLinkDescriptor>();
 		result.addAll(getOutgoingFeatureModelFacetLinks_Protocol_Participants_4002(modelElement));
@@ -142,38 +135,33 @@ public class AIPDiagramUpdater {
 	/**
 	 * @generated
 	 */
-	public static List<AIPLinkDescriptor> getParticipant_2003IncomingLinks(
-			View view) {
+	public static List<AIPLinkDescriptor> getParticipant_2003IncomingLinks(View view) {
 		Participant modelElement = (Participant) view.getElement();
 		Map<EObject, Collection<EStructuralFeature.Setting>> crossReferences = EcoreUtil.CrossReferencer
 				.find(view.eResource().getResourceSet().getResources());
 		LinkedList<AIPLinkDescriptor> result = new LinkedList<AIPLinkDescriptor>();
-		result.addAll(getIncomingFeatureModelFacetLinks_Protocol_Participants_4002(
-				modelElement, crossReferences));
+		result.addAll(getIncomingFeatureModelFacetLinks_Protocol_Participants_4002(modelElement, crossReferences));
 		return result;
 	}
 
 	/**
 	 * @generated
 	 */
-	public static List<AIPLinkDescriptor> getProtocol_2004IncomingLinks(
-			View view) {
+	public static List<AIPLinkDescriptor> getProtocol_2004IncomingLinks(View view) {
 		return Collections.emptyList();
 	}
 
 	/**
 	 * @generated
 	 */
-	public static List<AIPLinkDescriptor> getParticipant_2003OutgoingLinks(
-			View view) {
+	public static List<AIPLinkDescriptor> getParticipant_2003OutgoingLinks(View view) {
 		return Collections.emptyList();
 	}
 
 	/**
 	 * @generated
 	 */
-	public static List<AIPLinkDescriptor> getProtocol_2004OutgoingLinks(
-			View view) {
+	public static List<AIPLinkDescriptor> getProtocol_2004OutgoingLinks(View view) {
 		Protocol modelElement = (Protocol) view.getElement();
 		LinkedList<AIPLinkDescriptor> result = new LinkedList<AIPLinkDescriptor>();
 		result.addAll(getOutgoingFeatureModelFacetLinks_Protocol_Participants_4002(modelElement));
@@ -184,36 +172,63 @@ public class AIPDiagramUpdater {
 	 * @generated
 	 */
 	private static Collection<AIPLinkDescriptor> getIncomingFeatureModelFacetLinks_Protocol_Participants_4002(
-			Participant target,
-			Map<EObject, Collection<EStructuralFeature.Setting>> crossReferences) {
+			Participant target, Map<EObject, Collection<EStructuralFeature.Setting>> crossReferences) {
 		LinkedList<AIPLinkDescriptor> result = new LinkedList<AIPLinkDescriptor>();
-		Collection<EStructuralFeature.Setting> settings = crossReferences
-				.get(target);
+		Collection<EStructuralFeature.Setting> settings = crossReferences.get(target);
 		for (EStructuralFeature.Setting setting : settings) {
-			if (setting.getEStructuralFeature() == AIPPackage.eINSTANCE
-					.getProtocol_Participants()) {
+			if (setting.getEStructuralFeature() == AIPPackage.eINSTANCE.getProtocol_Participants()) {
 				result.add(new AIPLinkDescriptor(setting.getEObject(), target,
-						AIPElementTypes.ProtocolParticipants_4002,
-						ProtocolParticipantsEditPart.VISUAL_ID));
+						AIPElementTypes.ProtocolParticipants_4002, ProtocolParticipantsEditPart.VISUAL_ID));
 			}
 		}
 		return result;
 	}
 
 	/**
-	 * @generated
-	 */
+	* @generated
+	*/
 	private static Collection<AIPLinkDescriptor> getOutgoingFeatureModelFacetLinks_Protocol_Participants_4002(
 			Protocol source) {
 		LinkedList<AIPLinkDescriptor> result = new LinkedList<AIPLinkDescriptor>();
-		for (Iterator<?> destinations = source.getParticipants().iterator(); destinations
-				.hasNext();) {
+		for (Iterator<?> destinations = source.getParticipants().iterator(); destinations.hasNext();) {
 			Participant destination = (Participant) destinations.next();
-			result.add(new AIPLinkDescriptor(source, destination,
-					AIPElementTypes.ProtocolParticipants_4002,
+			result.add(new AIPLinkDescriptor(source, destination, AIPElementTypes.ProtocolParticipants_4002,
 					ProtocolParticipantsEditPart.VISUAL_ID));
 		}
 		return result;
 	}
+
+	/**
+	* @generated
+	*/
+	public static final DiagramUpdater TYPED_INSTANCE = new DiagramUpdater() {
+		/**
+		* @generated
+		*/
+		public List<AIPNodeDescriptor> getSemanticChildren(View view) {
+			return AIPDiagramUpdater.getSemanticChildren(view);
+		}
+
+		/**
+		* @generated
+		*/
+		public List<AIPLinkDescriptor> getContainedLinks(View view) {
+			return AIPDiagramUpdater.getContainedLinks(view);
+		}
+
+		/**
+		* @generated
+		*/
+		public List<AIPLinkDescriptor> getIncomingLinks(View view) {
+			return AIPDiagramUpdater.getIncomingLinks(view);
+		}
+
+		/**
+		* @generated
+		*/
+		public List<AIPLinkDescriptor> getOutgoingLinks(View view) {
+			return AIPDiagramUpdater.getOutgoingLinks(view);
+		}
+	};
 
 }

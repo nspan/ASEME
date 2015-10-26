@@ -196,7 +196,6 @@ public class SUCTextNonResizableEditPolicy extends NonResizableEditPolicyEx
 	/**
 	 * @generated
 	 */
-	@Override
 	public void refreshFeedback() {
 		refreshSelectionFeedback();
 		refreshFocusFeedback();

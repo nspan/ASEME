@@ -18,7 +18,7 @@ import org.eclipse.emf.ecore.EObject;
  * <p>
  * The following features are supported:
  * <ul>
- *   <li>{@link SRM.Role#getActivities <em>Activities</em>}</li>
+ *   <li>{@link SRM.Role#getRole_activities <em>Role activities</em>}</li>
  *   <li>{@link SRM.Role#getLiveness <em>Liveness</em>}</li>
  *   <li>{@link SRM.Role#getName <em>Name</em>}</li>
  *   <li>{@link SRM.Role#getCapabilities <em>Capabilities</em>}</li>
@@ -31,20 +31,20 @@ import org.eclipse.emf.ecore.EObject;
  */
 public interface Role extends EObject {
 	/**
-	 * Returns the value of the '<em><b>Activities</b></em>' reference list.
+	 * Returns the value of the '<em><b>Role activities</b></em>' reference list.
 	 * The list contents are of type {@link SRM.Activity}.
 	 * <!-- begin-user-doc -->
 	 * <p>
-	 * If the meaning of the '<em>Activities</em>' reference list isn't clear,
+	 * If the meaning of the '<em>Role activities</em>' containment reference list isn't clear,
 	 * there really should be more of a description here...
 	 * </p>
 	 * <!-- end-user-doc -->
-	 * @return the value of the '<em>Activities</em>' reference list.
-	 * @see SRM.SRMPackage#getRole_Activities()
+	 * @return the value of the '<em>Role activities</em>' reference list.
+	 * @see SRM.SRMPackage#getRole_Role_activities()
 	 * @model required="true" ordered="false"
 	 * @generated
 	 */
-	EList<Activity> getActivities();
+	EList<Activity> getRole_activities();
 
 	/**
 	 * Returns the value of the '<em><b>Liveness</b></em>' attribute.

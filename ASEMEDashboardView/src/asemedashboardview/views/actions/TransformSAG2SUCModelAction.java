@@ -1,28 +1,25 @@
 package asemedashboardview.views.actions;
 
 
-import java.util.HashMap;
-import java.util.Iterator;
-import java.util.Map;
-
-import SAG.Actor;
-import SAG.Goal;
-import SAG.SAGPackage;
 import SAG.SAGmodel;
-import SUC.Role;
-import SUC.SUCFactory;
 import SUC.SUCPackage;
-import SUC.SUCmodel;
-import SUC.UseCase;
+import aseme.transformations.AsemeModelSaveHelper;
+import aseme.transformations.SAG2SUC;
 import asemedashboardview.views.ASEMEAction;
 import asemedashboardview.views.ASEMEFacade;
 import asemedashboardview.views.ASEMEState;
+
+import org.eclipse.core.runtime.MultiStatus;
+import org.eclipse.emf.common.util.Diagnostic;
 import org.eclipse.emf.common.util.URI;
 import org.eclipse.emf.ecore.resource.Resource;
 import org.eclipse.emf.ecore.resource.ResourceSet;
 import org.eclipse.emf.ecore.resource.impl.ResourceSetImpl;
 import org.eclipse.emf.ecore.xmi.XMLResource;
 import org.eclipse.emf.ecore.xmi.impl.XMIResourceFactoryImpl;
+import org.eclipse.emf.ecore.util.Diagnostician;
+import org.eclipse.jface.dialogs.ErrorDialog;
+import org.eclipse.jface.dialogs.MessageDialog;
 
 public class TransformSAG2SUCModelAction implements ASEMEAction {
 
@@ -49,7 +46,7 @@ public class TransformSAG2SUCModelAction implements ASEMEAction {
 		URI suc = state.getSUC();
 		if (suc == null) {
 			suc = sag.trimFileExtension().appendFileExtension("suc"); //$NON-NLS-1$
-			state.setSUC(suc);
+			//state.setSUC(suc);
 		}
 		ResourceSet resourceSet = new ResourceSetImpl();
 		// Register the appropriate resource factory to handle all file
@@ -66,56 +63,35 @@ public class TransformSAG2SUCModelAction implements ASEMEAction {
 		// Register the package to ensure it is available during loading.
 		//
 		resourceSet.getPackageRegistry().put(SUCPackage.eNS_URI, SUCPackage.eINSTANCE);
-		resourceSet.getPackageRegistry().put(SAGPackage.eNS_URI, SAGPackage.eINSTANCE);
+		
 		// load SUC model
 
 		Resource resource = resourceSet.getResource(state.getSAG(), true);	
 		SAGmodel sagModel = (SAGmodel) resource.getContents().get(0);
 
-		// Create a new SUC model instance
-		Resource newResource = resourceSet.createResource(state.getSUC());
-		SUCmodel sucModel = SUCFactory.eINSTANCE.createSUCmodel();
-		newResource.getContents().add(sucModel);
-		// transformation code:
-		HashMap<String, Role> roles = new HashMap<String, Role>();
-		int xmiID=1;
-		for (Iterator<Actor> iterator = sagModel.getActors().iterator(); iterator.hasNext();) {
-			Actor tmpActor = iterator.next();
-			Role tmpRole = SUCFactory.eINSTANCE.createRole();
-			tmpRole.setName(tmpActor.getName());
-			newResource.getContents().add(tmpRole);
-			ASEMEXmlHelper.setXmlId(tmpRole, new String("role"+xmiID));
-			xmiID++;
-			sucModel.getRoles().add(tmpRole);
-			roles.put(tmpRole.getName(), tmpRole);
-			//newResource.getContents().add(tmpRole);
+		
+		URI test = sag.trimFileExtension().appendFileExtension("suc"); 
+		
+		//String[] temp = state.getSAG().toString().split("/");
+		
+		//String name = temp[temp.length -1];
+		
+		//String filename="/"+state.getProject().getName() + "/" + name + ".suc";
+		
+		try{
+		AsemeModelSaveHelper.saveURI(SAG2SUC.transformSag2Suc(sagModel), test);	
 		}
-		xmiID=1;
-		for (Iterator<Goal> iterator = sagModel.getGoals().iterator(); iterator.hasNext();) {
-			Goal tmpGoal = iterator.next();
-			UseCase tmpUsecase = SUCFactory.eINSTANCE.createUseCase();
-			tmpUsecase.setName(tmpGoal.getName());
-			newResource.getContents().add(tmpUsecase);
-			ASEMEXmlHelper.setXmlId(tmpUsecase, new String("usecase"+xmiID));
-			xmiID++;
-			sucModel.getUsecases().add(tmpUsecase);
-			tmpUsecase.getParticipant().add(roles.get(tmpGoal.getDepender().getName()));
-			for (Iterator<Actor> iterator2 = tmpGoal.getDependee().iterator(); iterator2
-					.hasNext();) {
-				tmpUsecase.getParticipant().add(roles.get(iterator2.next().getName()));
+		catch( NullPointerException e){
+			//Diagnostician.INSTANCE.validate(sagModel).getMessage();
+			//MultiStatus status = createMultiStatus(e.getLocalizedMessage(), e);
+			//ErrorDialog.openError(context.getShell(), "SAG2SUC Error", Diagnostician.INSTANCE.validate(sagModel).getMessage(), null);
+			Diagnostic diag = Diagnostician.INSTANCE.validate(sagModel);
+			if (diag.getCode() == 0){
+				MessageDialog.openError(context.getShell(), "Error", "Error in validating SAG model" );
 			}
-			tmpUsecase.setSpecified_by(tmpGoal.getRequirements());
-		}
-		// save the SUC model
-		try {
-			Map<String, Object> options = new HashMap<String, Object>();
-		    options.put( XMLResource.OPTION_ENCODING, "UTF8" );
-	        options.put( XMLResource.OPTION_SCHEMA_LOCATION, Boolean.TRUE);
-	        options.put( XMLResource.OPTION_SCHEMA_LOCATION_IMPLEMENTATION , Boolean.TRUE);
-			newResource.save(options);
-		} catch (Exception e) {
-			// TODO: handle exception
-			e.printStackTrace();
+			else{
+				MessageDialog.openError(context.getShell(), "Error", "Error in SAG2SUC transformation" );
+			}
 		}
 	}
 

@@ -57,19 +57,19 @@ public class SUCElementTypes {
 	/**
 	 * @generated
 	 */
-	public static final IElementType Role_2001 = getElementType("SUCdesign.diagram.Role_2001"); //$NON-NLS-1$
-	/**
-	 * @generated
-	 */
 	public static final IElementType UseCase_2002 = getElementType("SUCdesign.diagram.UseCase_2002"); //$NON-NLS-1$
 	/**
 	 * @generated
 	 */
-	public static final IElementType UseCaseInclude_4003 = getElementType("SUCdesign.diagram.UseCaseInclude_4003"); //$NON-NLS-1$
+	public static final IElementType Role_2001 = getElementType("SUCdesign.diagram.Role_2001"); //$NON-NLS-1$
 	/**
 	 * @generated
 	 */
 	public static final IElementType RoleParticipates_in_4001 = getElementType("SUCdesign.diagram.RoleParticipates_in_4001"); //$NON-NLS-1$
+	/**
+	 * @generated
+	 */
+	public static final IElementType UseCaseInclude_4003 = getElementType("SUCdesign.diagram.UseCaseInclude_4003"); //$NON-NLS-1$
 
 	/**
 	 * @generated
@@ -111,15 +111,15 @@ public class SUCElementTypes {
 
 			elements.put(SUCmodel_1000, SUCPackage.eINSTANCE.getSUCmodel());
 
-			elements.put(Role_2001, SUCPackage.eINSTANCE.getRole());
-
 			elements.put(UseCase_2002, SUCPackage.eINSTANCE.getUseCase());
 
-			elements.put(UseCaseInclude_4003,
-					SUCPackage.eINSTANCE.getUseCase_Include());
+			elements.put(Role_2001, SUCPackage.eINSTANCE.getRole());
 
 			elements.put(RoleParticipates_in_4001,
 					SUCPackage.eINSTANCE.getRole_Participates_in());
+
+			elements.put(UseCaseInclude_4003,
+					SUCPackage.eINSTANCE.getUseCase_Include());
 		}
 		return (ENamedElement) elements.get(type);
 	}
@@ -138,10 +138,10 @@ public class SUCElementTypes {
 		if (KNOWN_ELEMENT_TYPES == null) {
 			KNOWN_ELEMENT_TYPES = new HashSet<IElementType>();
 			KNOWN_ELEMENT_TYPES.add(SUCmodel_1000);
-			KNOWN_ELEMENT_TYPES.add(Role_2001);
 			KNOWN_ELEMENT_TYPES.add(UseCase_2002);
-			KNOWN_ELEMENT_TYPES.add(UseCaseInclude_4003);
+			KNOWN_ELEMENT_TYPES.add(Role_2001);
 			KNOWN_ELEMENT_TYPES.add(RoleParticipates_in_4001);
+			KNOWN_ELEMENT_TYPES.add(UseCaseInclude_4003);
 		}
 		return KNOWN_ELEMENT_TYPES.contains(elementType);
 	}
@@ -153,14 +153,14 @@ public class SUCElementTypes {
 		switch (visualID) {
 		case SUCmodelEditPart.VISUAL_ID:
 			return SUCmodel_1000;
-		case RoleEditPart.VISUAL_ID:
-			return Role_2001;
 		case UseCaseEditPart.VISUAL_ID:
 			return UseCase_2002;
-		case UseCaseIncludeEditPart.VISUAL_ID:
-			return UseCaseInclude_4003;
+		case RoleEditPart.VISUAL_ID:
+			return Role_2001;
 		case RoleParticipates_inEditPart.VISUAL_ID:
 			return RoleParticipates_in_4001;
+		case UseCaseIncludeEditPart.VISUAL_ID:
+			return UseCaseInclude_4003;
 		}
 		return null;
 	}

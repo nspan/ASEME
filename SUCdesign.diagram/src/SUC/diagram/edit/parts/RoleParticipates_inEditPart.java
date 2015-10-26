@@ -67,6 +67,7 @@ public class RoleParticipates_inEditPart extends ConnectionNodeEditPart
 		 * @generated
 		 */
 		public RoleParticipates_inFigure() {
+			this.setLineWidth(3);
 
 			setTargetDecoration(createTargetDecoration());
 		}
@@ -76,6 +77,7 @@ public class RoleParticipates_inEditPart extends ConnectionNodeEditPart
 		 */
 		private RotatableDecoration createTargetDecoration() {
 			PolylineDecoration df = new PolylineDecoration();
+			df.setLineWidth(3);
 			return df;
 		}
 

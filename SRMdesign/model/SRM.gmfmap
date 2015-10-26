@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<gmfmap:Mapping xmi:version="2.0"
+<gmfmap:Mapping
+    xmi:version="2.0"
     xmlns:xmi="http://www.omg.org/XMI"
     xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
     xmlns:ecore="http://www.eclipse.org/emf/2002/Ecore"
@@ -7,22 +8,42 @@
     xmlns:gmftool="http://www.eclipse.org/gmf/2005/ToolDefinition">
   <nodes>
     <containmentFeature
-        href="SRM.ecore#//SRMmodel/capabilities"/>
+        href="SRM.ecore#//SRMmodel/activities"/>
     <ownedChild>
       <domainMetaElement
-          href="SRM.ecore#//Capability"/>
+          href="SRM.ecore#//Activity"/>
       <labelMappings
           xsi:type="gmfmap:FeatureLabelMapping">
         <diagramLabel
-            href="SRM.gmfgraph#CapabilityName"/>
+            href="SRM.gmfgraph#ActivityName"/>
         <features
-            href="SRM.ecore#//Capability/name"/>
+            href="SRM.ecore#//Activity/name"/>
       </labelMappings>
       <tool
           xsi:type="gmftool:CreationTool"
-          href="SRM.gmftool#//@palette/@tools.0/@tools.4"/>
+          href="SRM.gmftool#//@palette/@tools.0/@tools.2"/>
       <diagramNode
-          href="SRM.gmfgraph#Capability"/>
+          href="SRM.gmfgraph#Activity"/>
+    </ownedChild>
+  </nodes>
+  <nodes>
+    <containmentFeature
+        href="SRM.ecore#//SRMmodel/functionalities"/>
+    <ownedChild>
+      <domainMetaElement
+          href="SRM.ecore#//Functionality"/>
+      <labelMappings
+          xsi:type="gmfmap:FeatureLabelMapping">
+        <diagramLabel
+            href="SRM.gmfgraph#FunctionalityDescription"/>
+        <features
+            href="SRM.ecore#//Functionality/description"/>
+      </labelMappings>
+      <tool
+          xsi:type="gmftool:CreationTool"
+          href="SRM.gmftool#//@palette/@tools.0/@tools.5"/>
+      <diagramNode
+          href="SRM.gmfgraph#Functionality"/>
     </ownedChild>
   </nodes>
   <nodes>
@@ -31,13 +52,6 @@
     <ownedChild>
       <domainMetaElement
           href="SRM.ecore#//Role"/>
-      <labelMappings
-          xsi:type="gmfmap:FeatureLabelMapping">
-        <diagramLabel
-            href="SRM.gmfgraph#RoleLiveness"/>
-        <features
-            href="SRM.ecore#//Role/liveness"/>
-      </labelMappings>
       <labelMappings
           xsi:type="gmfmap:FeatureLabelMapping">
         <diagramLabel
@@ -54,35 +68,38 @@
   </nodes>
   <nodes>
     <containmentFeature
-        href="SRM.ecore#//SRMmodel/activities"/>
+        href="SRM.ecore#//SRMmodel/capabilities"/>
     <ownedChild>
       <domainMetaElement
-          href="SRM.ecore#//Activity"/>
+          href="SRM.ecore#//Capability"/>
       <labelMappings
           xsi:type="gmfmap:FeatureLabelMapping">
         <diagramLabel
-            href="SRM.gmfgraph#ActivityName"/>
+            href="SRM.gmfgraph#CapabilityName"/>
         <features
-            href="SRM.ecore#//Activity/name"/>
-      </labelMappings>
-      <labelMappings
-          xsi:type="gmfmap:FeatureLabelMapping">
-        <diagramLabel
-            href="SRM.gmfgraph#ActivityFunctionality"/>
-        <features
-            href="SRM.ecore#//Activity/functionality"/>
+            href="SRM.ecore#//Capability/name"/>
       </labelMappings>
       <tool
           xsi:type="gmftool:CreationTool"
           href="SRM.gmftool#//@palette/@tools.0/@tools.3"/>
       <diagramNode
-          href="SRM.gmfgraph#Activity"/>
+          href="SRM.gmfgraph#Capability"/>
     </ownedChild>
   </nodes>
   <links>
     <tool
         xsi:type="gmftool:CreationTool"
-        href="SRM.gmftool#//@palette/@tools.0/@tools.2"/>
+        href="SRM.gmftool#//@palette/@tools.0/@tools.4"/>
+    <diagramLink
+        href="SRM.gmfgraph#FunctionalityActivities"/>
+    <linkMetaFeature
+        xsi:type="ecore:EReference"
+        href="SRM.ecore#//Functionality/activities"/>
+  </links>
+  <links>
+    <tool
+        xsi:type="gmftool:CreationTool"
+        href="SRM.gmftool#//@palette/@tools.0/@tools.5"/>
     <diagramLink
         href="SRM.gmfgraph#RoleCapabilities"/>
     <linkMetaFeature
@@ -92,22 +109,12 @@
   <links>
     <tool
         xsi:type="gmftool:CreationTool"
-        href="SRM.gmftool#//@palette/@tools.0/@tools.1"/>
+        href="SRM.gmftool#//@palette/@tools.0/@tools.6"/>
     <diagramLink
-        href="SRM.gmfgraph#RoleActivities"/>
+        href="SRM.gmfgraph#CapabilityCapability_activities"/>
     <linkMetaFeature
         xsi:type="ecore:EReference"
-        href="SRM.ecore#//Role/activities"/>
-  </links>
-  <links>
-    <tool
-        xsi:type="gmftool:CreationTool"
-        href="SRM.gmftool#//@palette/@tools.0/@tools.5"/>
-    <diagramLink
-        href="SRM.gmfgraph#CapabilityActivities"/>
-    <linkMetaFeature
-        xsi:type="ecore:EReference"
-        href="SRM.ecore#//Capability/activities"/>
+        href="SRM.ecore#//Capability/capability_activities"/>
   </links>
   <diagram>
     <diagramCanvas

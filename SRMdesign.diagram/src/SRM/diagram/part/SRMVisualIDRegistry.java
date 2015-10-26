@@ -5,16 +5,17 @@ import org.eclipse.emf.ecore.EAnnotation;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.gmf.runtime.notation.Diagram;
 import org.eclipse.gmf.runtime.notation.View;
+import org.eclipse.gmf.tooling.runtime.structure.DiagramStructure;
 
 import SRM.SRMPackage;
 import SRM.SRMmodel;
 import SRM.diagram.edit.parts.ActivityEditPart;
-import SRM.diagram.edit.parts.ActivityFunctionalityEditPart;
 import SRM.diagram.edit.parts.ActivityNameEditPart;
 import SRM.diagram.edit.parts.CapabilityEditPart;
 import SRM.diagram.edit.parts.CapabilityNameEditPart;
+import SRM.diagram.edit.parts.FunctionalityDescriptionEditPart;
+import SRM.diagram.edit.parts.FunctionalityEditPart;
 import SRM.diagram.edit.parts.RoleEditPart;
-import SRM.diagram.edit.parts.RoleLivenessEditPart;
 import SRM.diagram.edit.parts.RoleNameEditPart;
 import SRM.diagram.edit.parts.SRMmodelEditPart;
 
@@ -82,7 +83,7 @@ public class SRMVisualIDRegistry {
 	 * @generated
 	 */
 	public static String getType(int visualID) {
-		return String.valueOf(visualID);
+		return Integer.toString(visualID);
 	}
 
 	/**
@@ -125,17 +126,21 @@ public class SRMVisualIDRegistry {
 		}
 		switch (containerVisualID) {
 		case SRMmodelEditPart.VISUAL_ID:
-			if (SRMPackage.eINSTANCE.getCapability().isSuperTypeOf(
+			if (SRMPackage.eINSTANCE.getActivity().isSuperTypeOf(
 					domainElement.eClass())) {
-				return CapabilityEditPart.VISUAL_ID;
+				return ActivityEditPart.VISUAL_ID;
+			}
+			if (SRMPackage.eINSTANCE.getFunctionality().isSuperTypeOf(
+					domainElement.eClass())) {
+				return FunctionalityEditPart.VISUAL_ID;
 			}
 			if (SRMPackage.eINSTANCE.getRole().isSuperTypeOf(
 					domainElement.eClass())) {
 				return RoleEditPart.VISUAL_ID;
 			}
-			if (SRMPackage.eINSTANCE.getActivity().isSuperTypeOf(
+			if (SRMPackage.eINSTANCE.getCapability().isSuperTypeOf(
 					domainElement.eClass())) {
-				return ActivityEditPart.VISUAL_ID;
+				return CapabilityEditPart.VISUAL_ID;
 			}
 			break;
 		}
@@ -163,16 +168,17 @@ public class SRMVisualIDRegistry {
 			}
 		}
 		switch (containerVisualID) {
-		case CapabilityEditPart.VISUAL_ID:
-			if (CapabilityNameEditPart.VISUAL_ID == nodeVisualID) {
+		case SRMmodelEditPart.VISUAL_ID:
+			if (ActivityEditPart.VISUAL_ID == nodeVisualID) {
 				return true;
 			}
-			break;
-		case RoleEditPart.VISUAL_ID:
-			if (RoleLivenessEditPart.VISUAL_ID == nodeVisualID) {
+			if (FunctionalityEditPart.VISUAL_ID == nodeVisualID) {
 				return true;
 			}
-			if (RoleNameEditPart.VISUAL_ID == nodeVisualID) {
+			if (RoleEditPart.VISUAL_ID == nodeVisualID) {
+				return true;
+			}
+			if (CapabilityEditPart.VISUAL_ID == nodeVisualID) {
 				return true;
 			}
 			break;
@@ -180,18 +186,19 @@ public class SRMVisualIDRegistry {
 			if (ActivityNameEditPart.VISUAL_ID == nodeVisualID) {
 				return true;
 			}
-			if (ActivityFunctionalityEditPart.VISUAL_ID == nodeVisualID) {
+			break;
+		case FunctionalityEditPart.VISUAL_ID:
+			if (FunctionalityDescriptionEditPart.VISUAL_ID == nodeVisualID) {
 				return true;
 			}
 			break;
-		case SRMmodelEditPart.VISUAL_ID:
-			if (CapabilityEditPart.VISUAL_ID == nodeVisualID) {
+		case RoleEditPart.VISUAL_ID:
+			if (RoleNameEditPart.VISUAL_ID == nodeVisualID) {
 				return true;
 			}
-			if (RoleEditPart.VISUAL_ID == nodeVisualID) {
-				return true;
-			}
-			if (ActivityEditPart.VISUAL_ID == nodeVisualID) {
+			break;
+		case CapabilityEditPart.VISUAL_ID:
+			if (CapabilityNameEditPart.VISUAL_ID == nodeVisualID) {
 				return true;
 			}
 			break;
@@ -218,5 +225,101 @@ public class SRMVisualIDRegistry {
 	private static boolean isDiagram(SRMmodel element) {
 		return true;
 	}
+
+	/**
+	 * @generated
+	 */
+	public static boolean checkNodeVisualID(View containerView,
+			EObject domainElement, int candidate) {
+		if (candidate == -1) {
+			//unrecognized id is always bad
+			return false;
+		}
+		int basic = getNodeVisualID(containerView, domainElement);
+		return basic == candidate;
+	}
+
+	/**
+	 * @generated
+	 */
+	public static boolean isCompartmentVisualID(int visualID) {
+		return false;
+	}
+
+	/**
+	 * @generated
+	 */
+	public static boolean isSemanticLeafVisualID(int visualID) {
+		switch (visualID) {
+		case SRMmodelEditPart.VISUAL_ID:
+			return false;
+		case CapabilityEditPart.VISUAL_ID:
+		case RoleEditPart.VISUAL_ID:
+		case FunctionalityEditPart.VISUAL_ID:
+		case ActivityEditPart.VISUAL_ID:
+			return true;
+		default:
+			break;
+		}
+		return false;
+	}
+
+	/**
+	 * @generated
+	 */
+	public static final DiagramStructure TYPED_INSTANCE = new DiagramStructure() {
+		/**
+		 * @generated
+		 */
+		@Override
+		public int getVisualID(View view) {
+			return SRM.diagram.part.SRMVisualIDRegistry.getVisualID(view);
+		}
+
+		/**
+		 * @generated
+		 */
+		@Override
+		public String getModelID(View view) {
+			return SRM.diagram.part.SRMVisualIDRegistry.getModelID(view);
+		}
+
+		/**
+		 * @generated
+		 */
+		@Override
+		public int getNodeVisualID(View containerView, EObject domainElement) {
+			return SRM.diagram.part.SRMVisualIDRegistry.getNodeVisualID(
+					containerView, domainElement);
+		}
+
+		/**
+		 * @generated
+		 */
+		@Override
+		public boolean checkNodeVisualID(View containerView,
+				EObject domainElement, int candidate) {
+			return SRM.diagram.part.SRMVisualIDRegistry.checkNodeVisualID(
+					containerView, domainElement, candidate);
+		}
+
+		/**
+		 * @generated
+		 */
+		@Override
+		public boolean isCompartmentVisualID(int visualID) {
+			return SRM.diagram.part.SRMVisualIDRegistry
+					.isCompartmentVisualID(visualID);
+		}
+
+		/**
+		 * @generated
+		 */
+		@Override
+		public boolean isSemanticLeafVisualID(int visualID) {
+			return SRM.diagram.part.SRMVisualIDRegistry
+					.isSemanticLeafVisualID(visualID);
+		}
+	};
 
 }

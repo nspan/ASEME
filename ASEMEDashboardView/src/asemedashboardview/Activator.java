@@ -20,7 +20,7 @@ public class Activator extends AbstractUIPlugin {
 	// The plug-in ID
 	public static final String PLUGIN_ID = "ASEMEDashboardView"; //$NON-NLS-1$
 	
-	public static final String GMF_LOGO_IMAGE = "icons\\sample.gif"; //$NON-NLS-1$
+	public static final String GMF_LOGO_IMAGE = "/icons/logo.gif"; //$NON-NLS-1$
 
 	public static final String SYNC_ICON = "icons\\sample.gif"; //$NON-NLS-1$
 
@@ -31,12 +31,16 @@ public class Activator extends AbstractUIPlugin {
 	public static final String AIP_ICON = "icons\\sample.gif"; //$NON-NLS-1$
 
 	public static final String SRM_ICON = "icons\\sample.gif"; //$NON-NLS-1$
+	
+	public static final String XPDL_ICON = "icons\\sample.gif"; //$NON-NLS-1$
 
 	public static final String EAC_ICON = "icons\\sample.gif"; //$NON-NLS-1$
 
 	public static final String IAC_ICON = "icons\\sample.gif"; //$NON-NLS-1$
 	
 	public static final String JADE_ICON = "icons\\sample.gif"; //$NON-NLS-1$
+	
+	public static final String GG_ICON = "icons\\sample.gif"; //$NON-NLS-1$
 	// The shared instance
 	private static Activator plugin;
 	private ASEMEActionRegistry daRegistry;
@@ -66,7 +70,7 @@ public class Activator extends AbstractUIPlugin {
 			daRegistry = null;
 		}
 		super.stop(context);
-		plugin = null;
+		//plugin = null;
 	}
 
 	/**
@@ -79,7 +83,7 @@ public class Activator extends AbstractUIPlugin {
 	}
 	
 	protected void initializeImageRegistry(ImageRegistry reg) {
-//		loadImage(reg, GMF_LOGO_IMAGE);
+		loadImage(reg, GMF_LOGO_IMAGE);
 //		loadImage(reg, SYNC_ICON);
 //		loadImage(reg, DGM_ICON, "org.eclipse.emf.codegen.ecore.ui"); //$NON-NLS-1$
 //		loadImage(reg, GDM_ICON, "org.eclipse.gmf.graphdef.edit"); //$NON-NLS-1$

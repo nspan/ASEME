@@ -33,8 +33,11 @@ import AIP.diagram.part.AIPCreationWizard;
 import SRM.diagram.part.SRMCreationWizard;
 import asemedashboardview.views.ASEMEActionRegistry.ASEMEActionDescriptor;
 import asemedashboardview.views.actions.TransformAIP2EACModelAction;
+import asemedashboardview.views.actions.TransformIAC2GGModelAction;
+import asemedashboardview.views.actions.TransformIAC2JADEModelAction;
 import asemedashboardview.views.actions.TransformSRM2IACModelAction;
 import asemedashboardview.views.actions.TransformSAG2SUCModelAction;
+import asemedashboardview.views.actions.TransformSRM2XPDLModelAction;
 import asemedashboardview.views.actions.TransformSUC2AIPModelAction;
 import asemedashboardview.views.actions.TransformSUC2SRMModelAction;
 
@@ -124,15 +127,20 @@ public class ASEMEMediator implements ASEMEFacade {
 		view.getSRMFigure().addAction(createLinkFigure(Messages.ASEMEMediator_Edit, new EditSRMAction()));
 		view.getSRMFigure().addAction(createLinkFigure(Messages.ASEMEMediator_Create, new CreateSRMAction()));
 		//view.getSRMFigure().addAction(createLinkFigure(Messages.ASEMEMediator_Export, new CreateSRMAction()));
+		view.getXPDLFigure().addAction(createLinkFigure(Messages.ASEMEMediator_Select, new SelectXPDLAction()));
+		view.getXPDLFigure().addAction(createLinkFigure(Messages.ASEMEMediator_Edit, new EditXPDLAction()));
 		view.getEACFigure().addAction(createLinkFigure(Messages.ASEMEMediator_Select, new SelectEACAction()));
 		view.getEACFigure().addAction(createLinkFigure(Messages.ASEMEMediator_Edit, new EditEACAction()));
 		view.getEACFigure().addAction(createLinkFigure(Messages.ASEMEMediator_Create, new CreateEACAction()));
 		view.getIACFigure().addAction(createLinkFigure(Messages.ASEMEMediator_Select, new SelectIACAction()));
 		view.getIACFigure().addAction(createLinkFigure(Messages.ASEMEMediator_Edit, new EditIACAction()));
 		view.getIACFigure().addAction(createLinkFigure(Messages.ASEMEMediator_Create, new CreateIACAction()));
-//		view.getJADEFigure().addAction(createLinkFigure(Messages.ASEMEMediator_Select, new SelectJADEAction()));
-//		view.getJADEFigure().addAction(createLinkFigure(Messages.ASEMEMediator_Edit, new EditJADEAction()));
-//		view.getJADEFigure().addAction(createLinkFigure(Messages.ASEMEMediator_Create, new CreateJADEAction()));
+		view.getJADEFigure().addAction(createLinkFigure(Messages.ASEMEMediator_Select, new SelectJADEAction()));
+		view.getJADEFigure().addAction(createLinkFigure(Messages.ASEMEMediator_Edit, new EditJADEAction()));
+		
+		view.getGGFigure().addAction(createLinkFigure(Messages.ASEMEMediator_Select, new SelectJADEAction()));
+		view.getGGFigure().addAction(createLinkFigure(Messages.ASEMEMediator_Edit, new EditJADEAction()));
+		//view.getJADEFigure().addAction(createLinkFigure(Messages.ASEMEMediator_Create, new CreateJADEAction()));
 
 		//		view.getDGMFigure().addAction(createLinkFigure(Messages.DashboardMediator_Select, new SelectDGMAction()));
 		//		view.getDGMFigure().addAction(createLinkFigure(Messages.DashboardMediator_Edit, new EditDGMAction()));
@@ -163,7 +171,9 @@ public class ASEMEMediator implements ASEMEFacade {
 		view.getSUC2SRMFigure().addAction(createLinkFigure(Messages.ASEMEMediator_Transform, new TransformSUC2SRMModelAction()));
 		view.getAIP2EACFigure().addAction(createLinkFigure(Messages.ASEMEMediator_Transform, new TransformAIP2EACModelAction()));
 		view.getSRM2IACFigure().addAction(createLinkFigure(Messages.ASEMEMediator_Transform, new TransformSRM2IACModelAction()));
-//		view.getIAC2JADEFigure().addAction(createLinkFigure(Messages.ASEMEMediator_Transform, new TransformIAC2JADEModelAction()));
+		view.getSRM2XPDLFigure().addAction(createLinkFigure(Messages.ASEMEMediator_Transform, new TransformSRM2XPDLModelAction()));
+		view.getIAC2JADEFigure().addAction(createLinkFigure(Messages.ASEMEMediator_Transform, new TransformIAC2JADEModelAction()));//TransformIAC2JADEModelAction()));
+		view.getIAC2GGFigure().addAction(createLinkFigure(Messages.ASEMEMediator_Transform, new TransformIAC2GGModelAction()));//TransformIAC2GGModelAction()));
 		ASEMEActionDescriptor[] descriptors = Activator.getDefault().getDashboardActionRegistry().getDescriptors();
 		for (ASEMEActionDescriptor descriptor : descriptors) {
 			addDashboardAction(descriptor);
@@ -457,6 +467,25 @@ public class ASEMEMediator implements ASEMEFacade {
 			return "srm"; //$NON-NLS-1$
 		}
 	}
+	
+	private class SelectXPDLAction extends SelectFileAction { ////////////////////////
+
+		protected ModelFigure getFigure() {
+			return ASEMEMediator.this.view.getXPDLFigure();
+		}
+
+		protected URI getURI() {
+			return state.getXPDL();
+		}
+
+		protected void setURI(URI uri) {
+			state.setXPDL(uri);
+		}
+
+		protected String getFileExtension() {
+			return "xpdl"; //$NON-NLS-1$
+		}
+	}
 
 	private class SelectEACAction extends SelectFileAction {
 
@@ -473,11 +502,30 @@ public class ASEMEMediator implements ASEMEFacade {
 		}
 
 		protected String getFileExtension() {
-			return "eac"; //$NON-NLS-1$
+			return "stct"; //$NON-NLS-1$
 		}
 	}
 	
 	private class SelectIACAction extends SelectFileAction {
+
+		protected ModelFigure getFigure() {
+			return ASEMEMediator.this.view.getIACFigure();
+		}
+
+		protected URI getURI() {
+			return state.getIAC();
+		}
+
+		protected void setURI(URI uri) {
+			state.setIAC(uri);
+		}
+
+		protected String getFileExtension() {
+			return "stct"; //$NON-NLS-1$
+		}
+	}
+	
+	private class SelectJADEAction extends SelectFileAction { ////////////////////////
 
 		protected ModelFigure getFigure() {
 			return ASEMEMediator.this.view.getIACFigure();
@@ -523,6 +571,13 @@ public class ASEMEMediator implements ASEMEFacade {
 			return state.getSRM();
 		}
 	}
+	
+	private class EditXPDLAction extends EditFileAction {	////////////////////
+
+		protected URI getURI() {
+			return state.getSRM();
+		}
+	}
 
 	private class EditEACAction extends EditFileAction {
 
@@ -537,12 +592,19 @@ public class ASEMEMediator implements ASEMEFacade {
 			return state.getIAC();
 		}
 	}
+	
+	private class EditJADEAction extends EditFileAction { 	/////////////////
+
+		protected URI getURI() {
+			return state.getIAC();
+		}
+	}
 
 
 	private class CreateSAGAction extends RunWizardAction {
 
 		protected IWizard createWizard() {
-			return new SAGModelWizard();
+			return new SAGCreationWizard();
 		}
 
 		protected void wizardFinished(IWizard wizard) {
@@ -575,8 +637,9 @@ public class ASEMEMediator implements ASEMEFacade {
 			//				e.printStackTrace();
 			//			}
 			//			state.setSAG(uri);
-			IFile file = ((SAGModelWizard) wizard).getModelFile();
-			state.setSAG(file);
+			//IFile file = ((SAGModelWizard) wizard).getModelFile();
+			Resource resource = ((SAGCreationWizard) wizard).getDiagram();
+			//state.setSAG(file);
 			updateStatus();
 		}
 	}
@@ -622,6 +685,10 @@ public class ASEMEMediator implements ASEMEFacade {
 	}
 
 	private class CreateEACAction extends RunWizardAction {
+		
+		public boolean isEnabled(){
+			return false;
+		}
 
 		protected IWizard createWizard() {
 			//return new EACCreationWizard();
@@ -636,6 +703,10 @@ public class ASEMEMediator implements ASEMEFacade {
 	}
 
 	private class CreateIACAction extends RunWizardAction {
+		
+		public boolean isEnabled(){
+			return false;
+		}
 
 		protected IWizard createWizard() {
 			//return new IACCreationWizard();

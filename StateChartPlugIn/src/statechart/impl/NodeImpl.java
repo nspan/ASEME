@@ -282,7 +282,7 @@ public class NodeImpl extends EObjectImpl implements Node {
 	 */
 	public Node getFather_of() {
 		if (eContainerFeatureID() != StatechartPackage.NODE__FATHER_OF) return null;
-		return (Node)eContainer();
+		return (Node)eInternalContainer();
 	}
 
 	/**

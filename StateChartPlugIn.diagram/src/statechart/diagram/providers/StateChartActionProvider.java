@@ -17,13 +17,11 @@ public class StateChartActionProvider extends AbstractProvider implements
 		// TODO Auto-generated constructor stub
 	}
 	private Hashtable handlerList = new Hashtable();
-	@Override
 	public boolean provides(IOperation operation) {
 		// TODO Auto-generated method stub
 		return false;
 	}
 
-	@Override
 	public IGlobalActionHandler getGlobalActionHandler(
 			final IGlobalActionHandlerContext context) {
 		if (!getHandlerList().containsKey(context.getActivePart())) {

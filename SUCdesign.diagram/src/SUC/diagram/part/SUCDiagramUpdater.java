@@ -50,21 +50,21 @@ public class SUCDiagramUpdater {
 		}
 		SUCmodel modelElement = (SUCmodel) view.getElement();
 		LinkedList<SUCNodeDescriptor> result = new LinkedList<SUCNodeDescriptor>();
-		for (Iterator<?> it = modelElement.getRoles().iterator(); it.hasNext();) {
-			Role childElement = (Role) it.next();
-			int visualID = SUCVisualIDRegistry.getNodeVisualID(view,
-					childElement);
-			if (visualID == RoleEditPart.VISUAL_ID) {
-				result.add(new SUCNodeDescriptor(childElement, visualID));
-				continue;
-			}
-		}
 		for (Iterator<?> it = modelElement.getUsecases().iterator(); it
 				.hasNext();) {
 			UseCase childElement = (UseCase) it.next();
 			int visualID = SUCVisualIDRegistry.getNodeVisualID(view,
 					childElement);
 			if (visualID == UseCaseEditPart.VISUAL_ID) {
+				result.add(new SUCNodeDescriptor(childElement, visualID));
+				continue;
+			}
+		}
+		for (Iterator<?> it = modelElement.getRoles().iterator(); it.hasNext();) {
+			Role childElement = (Role) it.next();
+			int visualID = SUCVisualIDRegistry.getNodeVisualID(view,
+					childElement);
+			if (visualID == RoleEditPart.VISUAL_ID) {
 				result.add(new SUCNodeDescriptor(childElement, visualID));
 				continue;
 			}
@@ -79,10 +79,10 @@ public class SUCDiagramUpdater {
 		switch (SUCVisualIDRegistry.getVisualID(view)) {
 		case SUCmodelEditPart.VISUAL_ID:
 			return getSUCmodel_1000ContainedLinks(view);
-		case RoleEditPart.VISUAL_ID:
-			return getRole_2001ContainedLinks(view);
 		case UseCaseEditPart.VISUAL_ID:
 			return getUseCase_2002ContainedLinks(view);
+		case RoleEditPart.VISUAL_ID:
+			return getRole_2001ContainedLinks(view);
 		}
 		return Collections.emptyList();
 	}
@@ -92,10 +92,10 @@ public class SUCDiagramUpdater {
 	 */
 	public static List<SUCLinkDescriptor> getIncomingLinks(View view) {
 		switch (SUCVisualIDRegistry.getVisualID(view)) {
-		case RoleEditPart.VISUAL_ID:
-			return getRole_2001IncomingLinks(view);
 		case UseCaseEditPart.VISUAL_ID:
 			return getUseCase_2002IncomingLinks(view);
+		case RoleEditPart.VISUAL_ID:
+			return getRole_2001IncomingLinks(view);
 		}
 		return Collections.emptyList();
 	}
@@ -105,10 +105,10 @@ public class SUCDiagramUpdater {
 	 */
 	public static List<SUCLinkDescriptor> getOutgoingLinks(View view) {
 		switch (SUCVisualIDRegistry.getVisualID(view)) {
-		case RoleEditPart.VISUAL_ID:
-			return getRole_2001OutgoingLinks(view);
 		case UseCaseEditPart.VISUAL_ID:
 			return getUseCase_2002OutgoingLinks(view);
+		case RoleEditPart.VISUAL_ID:
+			return getRole_2001OutgoingLinks(view);
 		}
 		return Collections.emptyList();
 	}
@@ -119,16 +119,6 @@ public class SUCDiagramUpdater {
 	public static List<SUCLinkDescriptor> getSUCmodel_1000ContainedLinks(
 			View view) {
 		return Collections.emptyList();
-	}
-
-	/**
-	 * @generated
-	 */
-	public static List<SUCLinkDescriptor> getRole_2001ContainedLinks(View view) {
-		Role modelElement = (Role) view.getElement();
-		LinkedList<SUCLinkDescriptor> result = new LinkedList<SUCLinkDescriptor>();
-		result.addAll(getOutgoingFeatureModelFacetLinks_Role_Participates_in_4001(modelElement));
-		return result;
 	}
 
 	/**
@@ -145,8 +135,11 @@ public class SUCDiagramUpdater {
 	/**
 	 * @generated
 	 */
-	public static List<SUCLinkDescriptor> getRole_2001IncomingLinks(View view) {
-		return Collections.emptyList();
+	public static List<SUCLinkDescriptor> getRole_2001ContainedLinks(View view) {
+		Role modelElement = (Role) view.getElement();
+		LinkedList<SUCLinkDescriptor> result = new LinkedList<SUCLinkDescriptor>();
+		result.addAll(getOutgoingFeatureModelFacetLinks_Role_Participates_in_4001(modelElement));
+		return result;
 	}
 
 	/**
@@ -157,9 +150,9 @@ public class SUCDiagramUpdater {
 		Map<EObject, Collection<EStructuralFeature.Setting>> crossReferences = EcoreUtil.CrossReferencer
 				.find(view.eResource().getResourceSet().getResources());
 		LinkedList<SUCLinkDescriptor> result = new LinkedList<SUCLinkDescriptor>();
-		result.addAll(getIncomingFeatureModelFacetLinks_UseCase_Include_4003(
-				modelElement, crossReferences));
 		result.addAll(getIncomingFeatureModelFacetLinks_Role_Participates_in_4001(
+				modelElement, crossReferences));
+		result.addAll(getIncomingFeatureModelFacetLinks_UseCase_Include_4003(
 				modelElement, crossReferences));
 		return result;
 	}
@@ -167,11 +160,8 @@ public class SUCDiagramUpdater {
 	/**
 	 * @generated
 	 */
-	public static List<SUCLinkDescriptor> getRole_2001OutgoingLinks(View view) {
-		Role modelElement = (Role) view.getElement();
-		LinkedList<SUCLinkDescriptor> result = new LinkedList<SUCLinkDescriptor>();
-		result.addAll(getOutgoingFeatureModelFacetLinks_Role_Participates_in_4001(modelElement));
-		return result;
+	public static List<SUCLinkDescriptor> getRole_2001IncomingLinks(View view) {
+		return Collections.emptyList();
 	}
 
 	/**
@@ -187,20 +177,10 @@ public class SUCDiagramUpdater {
 	/**
 	 * @generated
 	 */
-	private static Collection<SUCLinkDescriptor> getIncomingFeatureModelFacetLinks_UseCase_Include_4003(
-			UseCase target,
-			Map<EObject, Collection<EStructuralFeature.Setting>> crossReferences) {
+	public static List<SUCLinkDescriptor> getRole_2001OutgoingLinks(View view) {
+		Role modelElement = (Role) view.getElement();
 		LinkedList<SUCLinkDescriptor> result = new LinkedList<SUCLinkDescriptor>();
-		Collection<EStructuralFeature.Setting> settings = crossReferences
-				.get(target);
-		for (EStructuralFeature.Setting setting : settings) {
-			if (setting.getEStructuralFeature() == SUCPackage.eINSTANCE
-					.getUseCase_Include()) {
-				result.add(new SUCLinkDescriptor(setting.getEObject(), target,
-						SUCElementTypes.UseCaseInclude_4003,
-						UseCaseIncludeEditPart.VISUAL_ID));
-			}
-		}
+		result.addAll(getOutgoingFeatureModelFacetLinks_Role_Participates_in_4001(modelElement));
 		return result;
 	}
 
@@ -227,15 +207,19 @@ public class SUCDiagramUpdater {
 	/**
 	 * @generated
 	 */
-	private static Collection<SUCLinkDescriptor> getOutgoingFeatureModelFacetLinks_UseCase_Include_4003(
-			UseCase source) {
+	private static Collection<SUCLinkDescriptor> getIncomingFeatureModelFacetLinks_UseCase_Include_4003(
+			UseCase target,
+			Map<EObject, Collection<EStructuralFeature.Setting>> crossReferences) {
 		LinkedList<SUCLinkDescriptor> result = new LinkedList<SUCLinkDescriptor>();
-		for (Iterator<?> destinations = source.getInclude().iterator(); destinations
-				.hasNext();) {
-			UseCase destination = (UseCase) destinations.next();
-			result.add(new SUCLinkDescriptor(source, destination,
-					SUCElementTypes.UseCaseInclude_4003,
-					UseCaseIncludeEditPart.VISUAL_ID));
+		Collection<EStructuralFeature.Setting> settings = crossReferences
+				.get(target);
+		for (EStructuralFeature.Setting setting : settings) {
+			if (setting.getEStructuralFeature() == SUCPackage.eINSTANCE
+					.getUseCase_Include()) {
+				result.add(new SUCLinkDescriptor(setting.getEObject(), target,
+						SUCElementTypes.UseCaseInclude_4003,
+						UseCaseIncludeEditPart.VISUAL_ID));
+			}
 		}
 		return result;
 	}
@@ -259,11 +243,26 @@ public class SUCDiagramUpdater {
 	/**
 	 * @generated
 	 */
+	private static Collection<SUCLinkDescriptor> getOutgoingFeatureModelFacetLinks_UseCase_Include_4003(
+			UseCase source) {
+		LinkedList<SUCLinkDescriptor> result = new LinkedList<SUCLinkDescriptor>();
+		for (Iterator<?> destinations = source.getInclude().iterator(); destinations
+				.hasNext();) {
+			UseCase destination = (UseCase) destinations.next();
+			result.add(new SUCLinkDescriptor(source, destination,
+					SUCElementTypes.UseCaseInclude_4003,
+					UseCaseIncludeEditPart.VISUAL_ID));
+		}
+		return result;
+	}
+
+	/**
+	 * @generated
+	 */
 	public static final DiagramUpdater TYPED_INSTANCE = new DiagramUpdater() {
 		/**
 		 * @generated
 		 */
-		@Override
 		public List<SUCNodeDescriptor> getSemanticChildren(View view) {
 			return SUCDiagramUpdater.getSemanticChildren(view);
 		}
@@ -271,7 +270,6 @@ public class SUCDiagramUpdater {
 		/**
 		 * @generated
 		 */
-		@Override
 		public List<SUCLinkDescriptor> getContainedLinks(View view) {
 			return SUCDiagramUpdater.getContainedLinks(view);
 		}
@@ -279,7 +277,6 @@ public class SUCDiagramUpdater {
 		/**
 		 * @generated
 		 */
-		@Override
 		public List<SUCLinkDescriptor> getIncomingLinks(View view) {
 			return SUCDiagramUpdater.getIncomingLinks(view);
 		}
@@ -287,7 +284,6 @@ public class SUCDiagramUpdater {
 		/**
 		 * @generated
 		 */
-		@Override
 		public List<SUCLinkDescriptor> getOutgoingLinks(View view) {
 			return SUCDiagramUpdater.getOutgoingLinks(view);
 		}

@@ -19,30 +19,29 @@ import AIP.diagram.edit.policies.AIPBaseItemSemanticEditPolicy;
 public class ProtocolParticipantsReorientCommand extends EditElementCommand {
 
 	/**
-	 * @generated
-	 */
+	* @generated
+	*/
 	private final int reorientDirection;
 
 	/**
-	 * @generated
-	 */
+	* @generated
+	*/
 	private final EObject referenceOwner;
 
 	/**
-	 * @generated
-	 */
+	* @generated
+	*/
 	private final EObject oldEnd;
 
 	/**
-	 * @generated
-	 */
+	* @generated
+	*/
 	private final EObject newEnd;
 
 	/**
-	 * @generated
-	 */
-	public ProtocolParticipantsReorientCommand(
-			ReorientReferenceRelationshipRequest request) {
+	* @generated
+	*/
+	public ProtocolParticipantsReorientCommand(ReorientReferenceRelationshipRequest request) {
 		super(request.getLabel(), null, request);
 		reorientDirection = request.getDirection();
 		referenceOwner = request.getReferenceOwner();
@@ -51,8 +50,8 @@ public class ProtocolParticipantsReorientCommand extends EditElementCommand {
 	}
 
 	/**
-	 * @generated
-	 */
+	* @generated
+	*/
 	public boolean canExecute() {
 		if (false == referenceOwner instanceof Protocol) {
 			return false;
@@ -67,37 +66,33 @@ public class ProtocolParticipantsReorientCommand extends EditElementCommand {
 	}
 
 	/**
-	 * @generated
-	 */
+	* @generated
+	*/
 	protected boolean canReorientSource() {
 		if (!(oldEnd instanceof Participant && newEnd instanceof Protocol)) {
 			return false;
 		}
-		return AIPBaseItemSemanticEditPolicy.getLinkConstraints()
-				.canExistProtocolParticipants_4002(getNewSource(),
-						getOldTarget());
+		return AIPBaseItemSemanticEditPolicy.getLinkConstraints().canExistProtocolParticipants_4002(getNewSource(),
+				getOldTarget());
 	}
 
 	/**
-	 * @generated
-	 */
+	* @generated
+	*/
 	protected boolean canReorientTarget() {
 		if (!(oldEnd instanceof Participant && newEnd instanceof Participant)) {
 			return false;
 		}
-		return AIPBaseItemSemanticEditPolicy.getLinkConstraints()
-				.canExistProtocolParticipants_4002(getOldSource(),
-						getNewTarget());
+		return AIPBaseItemSemanticEditPolicy.getLinkConstraints().canExistProtocolParticipants_4002(getOldSource(),
+				getNewTarget());
 	}
 
 	/**
-	 * @generated
-	 */
-	protected CommandResult doExecuteWithResult(IProgressMonitor monitor,
-			IAdaptable info) throws ExecutionException {
+	* @generated
+	*/
+	protected CommandResult doExecuteWithResult(IProgressMonitor monitor, IAdaptable info) throws ExecutionException {
 		if (!canExecute()) {
-			throw new ExecutionException(
-					"Invalid arguments in reorient link command"); //$NON-NLS-1$
+			throw new ExecutionException("Invalid arguments in reorient link command"); //$NON-NLS-1$
 		}
 		if (reorientDirection == ReorientRelationshipRequest.REORIENT_SOURCE) {
 			return reorientSource();
@@ -109,8 +104,8 @@ public class ProtocolParticipantsReorientCommand extends EditElementCommand {
 	}
 
 	/**
-	 * @generated
-	 */
+	* @generated
+	*/
 	protected CommandResult reorientSource() throws ExecutionException {
 		getOldSource().getParticipants().remove(getOldTarget());
 		getNewSource().getParticipants().add(getOldTarget());
@@ -118,8 +113,8 @@ public class ProtocolParticipantsReorientCommand extends EditElementCommand {
 	}
 
 	/**
-	 * @generated
-	 */
+	* @generated
+	*/
 	protected CommandResult reorientTarget() throws ExecutionException {
 		getOldSource().getParticipants().remove(getOldTarget());
 		getOldSource().getParticipants().add(getNewTarget());
@@ -127,29 +122,29 @@ public class ProtocolParticipantsReorientCommand extends EditElementCommand {
 	}
 
 	/**
-	 * @generated
-	 */
+	* @generated
+	*/
 	protected Protocol getOldSource() {
 		return (Protocol) referenceOwner;
 	}
 
 	/**
-	 * @generated
-	 */
+	* @generated
+	*/
 	protected Protocol getNewSource() {
 		return (Protocol) newEnd;
 	}
 
 	/**
-	 * @generated
-	 */
+	* @generated
+	*/
 	protected Participant getOldTarget() {
 		return (Participant) oldEnd;
 	}
 
 	/**
-	 * @generated
-	 */
+	* @generated
+	*/
 	protected Participant getNewTarget() {
 		return (Participant) newEnd;
 	}

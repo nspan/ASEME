@@ -87,7 +87,7 @@ public class TransitionItemProvider
 				 getString("_UI_PropertyDescriptor_description", "_UI_Transition_TE_feature", "_UI_Transition_type"),
 				 StatechartPackage.Literals.TRANSITION__TE,
 				 true,
-				 false,
+				 true,
 				 false,
 				 ItemPropertyDescriptor.GENERIC_VALUE_IMAGE,
 				 null,

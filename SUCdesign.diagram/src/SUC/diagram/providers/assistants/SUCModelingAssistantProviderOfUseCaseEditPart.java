@@ -102,8 +102,8 @@ public class SUCModelingAssistantProviderOfUseCaseEditPart extends
 	 */
 	public List<IElementType> doGetRelTypesOnTarget(UseCaseEditPart target) {
 		List<IElementType> types = new ArrayList<IElementType>(2);
-		types.add(SUCElementTypes.UseCaseInclude_4003);
 		types.add(SUCElementTypes.RoleParticipates_in_4001);
+		types.add(SUCElementTypes.UseCaseInclude_4003);
 		return types;
 	}
 
@@ -125,10 +125,10 @@ public class SUCModelingAssistantProviderOfUseCaseEditPart extends
 	public List<IElementType> doGetTypesForSource(UseCaseEditPart target,
 			IElementType relationshipType) {
 		List<IElementType> types = new ArrayList<IElementType>();
-		if (relationshipType == SUCElementTypes.UseCaseInclude_4003) {
-			types.add(SUCElementTypes.UseCase_2002);
-		} else if (relationshipType == SUCElementTypes.RoleParticipates_in_4001) {
+		if (relationshipType == SUCElementTypes.RoleParticipates_in_4001) {
 			types.add(SUCElementTypes.Role_2001);
+		} else if (relationshipType == SUCElementTypes.UseCaseInclude_4003) {
+			types.add(SUCElementTypes.UseCase_2002);
 		}
 		return types;
 	}

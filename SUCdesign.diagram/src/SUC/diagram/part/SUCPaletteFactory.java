@@ -57,14 +57,13 @@ public class SUCPaletteFactory {
 	 * @generated
 	 */
 	private ToolEntry createRoleParticipates_in2CreationTool() {
-		DefaultLinkToolEntry entry = new DefaultLinkToolEntry(
+		DefaultNodeToolEntry entry = new DefaultNodeToolEntry(
 				Messages.RoleParticipates_in2CreationTool_title,
 				Messages.RoleParticipates_in2CreationTool_desc,
-				Collections
-						.singletonList(SUCElementTypes.RoleParticipates_in_4001));
+				Collections.singletonList(SUCElementTypes.Role_2001));
 		entry.setId("createRoleParticipates_in2CreationTool"); //$NON-NLS-1$
 		entry.setSmallIcon(SUCElementTypes
-				.getImageDescriptor(SUCElementTypes.RoleParticipates_in_4001));
+				.getImageDescriptor(SUCElementTypes.Role_2001));
 		entry.setLargeIcon(entry.getSmallIcon());
 		return entry;
 	}
@@ -73,14 +72,11 @@ public class SUCPaletteFactory {
 	 * @generated
 	 */
 	private ToolEntry createUseCaseInclude3CreationTool() {
-		DefaultLinkToolEntry entry = new DefaultLinkToolEntry(
+		ToolEntry entry = new ToolEntry(
 				Messages.UseCaseInclude3CreationTool_title,
-				Messages.UseCaseInclude3CreationTool_desc,
-				Collections.singletonList(SUCElementTypes.UseCaseInclude_4003));
+				Messages.UseCaseInclude3CreationTool_desc, null, null) {
+		};
 		entry.setId("createUseCaseInclude3CreationTool"); //$NON-NLS-1$
-		entry.setSmallIcon(SUCElementTypes
-				.getImageDescriptor(SUCElementTypes.UseCaseInclude_4003));
-		entry.setLargeIcon(entry.getSmallIcon());
 		return entry;
 	}
 
@@ -88,10 +84,11 @@ public class SUCPaletteFactory {
 	 * @generated
 	 */
 	private ToolEntry createRole4CreationTool() {
-		DefaultNodeToolEntry entry = new DefaultNodeToolEntry(
+		DefaultLinkToolEntry entry = new DefaultLinkToolEntry(
 				Messages.Role4CreationTool_title,
 				Messages.Role4CreationTool_desc,
-				Collections.singletonList(SUCElementTypes.Role_2001));
+				Collections
+						.singletonList(SUCElementTypes.RoleParticipates_in_4001));
 		entry.setId("createRole4CreationTool"); //$NON-NLS-1$
 		entry.setSmallIcon(SUCDiagramEditorPlugin
 				.findImageDescriptor("/Suc_design.edit/icons/full/obj16/Role.gif")); //$NON-NLS-1$

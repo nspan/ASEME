@@ -1,16 +1,19 @@
-import IAC;
+import statechart;
 
 String className( Node e ) :
-   JAVA aseme.m2t.IACmodel.NodeHelper.className(IAC.Node);
+   JAVA aseme.m2t.IACmodel.NodeHelper.className(statechart.Node);
 
 String classFileName( Node e ) :
-   JAVA aseme.m2t.IACmodel.NodeHelper.classFileName(IAC.Node);
+   JAVA aseme.m2t.IACmodel.NodeHelper.classFileName(statechart.Node);
 
 String variableFileName( Variable e ) :
-   JAVA aseme.m2t.IACmodel.NodeHelper.variableFileName(IAC.Variable);
+   JAVA aseme.m2t.IACmodel.NodeHelper.variableFileName(statechart.Variable);
 
 String variableHolderFileName( Variable e ) :
-   JAVA aseme.m2t.IACmodel.NodeHelper.variableHolderFileName(IAC.Variable);
+   JAVA aseme.m2t.IACmodel.NodeHelper.variableHolderFileName(statechart.Variable);
 
 String lowerCaseFirstCharacterOfVariable( Variable e ) :
-   JAVA aseme.m2t.IACmodel.NodeHelper.lowerCaseFirstCharacterOfVariable(IAC.Variable);
+   JAVA aseme.m2t.IACmodel.NodeHelper.lowerCaseFirstCharacterOfVariable(statechart.Variable);
+
+ List[statechart::Node] tree2list(Node node) :
+   JAVA aseme.m2t.IACmodel.NodeHelper.tree2list(statechart.Node);

@@ -8,6 +8,7 @@ package SRM.impl;
 
 import SRM.Activity;
 import SRM.Capability;
+import SRM.Functionality;
 import SRM.Role;
 import SRM.SRMFactory;
 import SRM.SRMPackage;
@@ -54,6 +55,13 @@ public class SRMPackageImpl extends EPackageImpl implements SRMPackage {
 	 * @generated
 	 */
 	private EClass capabilityEClass = null;
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	private EClass functionalityEClass = null;
 
 	/**
 	 * Creates an instance of the model <b>Package</b>, registered with
@@ -157,6 +165,15 @@ public class SRMPackageImpl extends EPackageImpl implements SRMPackage {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	public EReference getSRMmodel_Functionalities() {
+		return (EReference)srMmodelEClass.getEStructuralFeatures().get(3);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
 	public EClass getRole() {
 		return roleEClass;
 	}
@@ -166,7 +183,7 @@ public class SRMPackageImpl extends EPackageImpl implements SRMPackage {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EReference getRole_Activities() {
+	public EReference getRole_Role_activities() {
 		return (EReference)roleEClass.getEStructuralFeatures().get(0);
 	}
 
@@ -220,8 +237,8 @@ public class SRMPackageImpl extends EPackageImpl implements SRMPackage {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EAttribute getActivity_Functionality() {
-		return (EAttribute)activityEClass.getEStructuralFeatures().get(1);
+	public EReference getActivity_Functionality() {
+		return (EReference)activityEClass.getEStructuralFeatures().get(1);
 	}
 
 	/**
@@ -247,8 +264,80 @@ public class SRMPackageImpl extends EPackageImpl implements SRMPackage {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EReference getCapability_Activities() {
+	public EReference getCapability_Capability_activities() {
 		return (EReference)capabilityEClass.getEStructuralFeatures().get(1);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EAttribute getCapability_Description() {
+		return (EAttribute)capabilityEClass.getEStructuralFeatures().get(2);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EClass getFunctionality() {
+		return functionalityEClass;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EAttribute getFunctionality_Permissions() {
+		return (EAttribute)functionalityEClass.getEStructuralFeatures().get(0);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EAttribute getFunctionality_Technology() {
+		return (EAttribute)functionalityEClass.getEStructuralFeatures().get(1);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EAttribute getFunctionality_Environment() {
+		return (EAttribute)functionalityEClass.getEStructuralFeatures().get(2);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EAttribute getFunctionality_Description() {
+		return (EAttribute)functionalityEClass.getEStructuralFeatures().get(3);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EAttribute getFunctionality_Algorithm() {
+		return (EAttribute)functionalityEClass.getEStructuralFeatures().get(4);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EReference getFunctionality_Activities() {
+		return (EReference)functionalityEClass.getEStructuralFeatures().get(5);
 	}
 
 	/**
@@ -283,20 +372,30 @@ public class SRMPackageImpl extends EPackageImpl implements SRMPackage {
 		createEReference(srMmodelEClass, SR_MMODEL__ACTIVITIES);
 		createEReference(srMmodelEClass, SR_MMODEL__CAPABILITIES);
 		createEReference(srMmodelEClass, SR_MMODEL__ROLES);
+		createEReference(srMmodelEClass, SR_MMODEL__FUNCTIONALITIES);
 
 		roleEClass = createEClass(ROLE);
-		createEReference(roleEClass, ROLE__ACTIVITIES);
+		createEReference(roleEClass, ROLE__ROLE_ACTIVITIES);
 		createEAttribute(roleEClass, ROLE__LIVENESS);
 		createEAttribute(roleEClass, ROLE__NAME);
 		createEReference(roleEClass, ROLE__CAPABILITIES);
 
 		activityEClass = createEClass(ACTIVITY);
 		createEAttribute(activityEClass, ACTIVITY__NAME);
-		createEAttribute(activityEClass, ACTIVITY__FUNCTIONALITY);
+		createEReference(activityEClass, ACTIVITY__FUNCTIONALITY);
 
 		capabilityEClass = createEClass(CAPABILITY);
 		createEAttribute(capabilityEClass, CAPABILITY__NAME);
-		createEReference(capabilityEClass, CAPABILITY__ACTIVITIES);
+		createEReference(capabilityEClass, CAPABILITY__CAPABILITY_ACTIVITIES);
+		createEAttribute(capabilityEClass, CAPABILITY__DESCRIPTION);
+
+		functionalityEClass = createEClass(FUNCTIONALITY);
+		createEAttribute(functionalityEClass, FUNCTIONALITY__PERMISSIONS);
+		createEAttribute(functionalityEClass, FUNCTIONALITY__TECHNOLOGY);
+		createEAttribute(functionalityEClass, FUNCTIONALITY__ENVIRONMENT);
+		createEAttribute(functionalityEClass, FUNCTIONALITY__DESCRIPTION);
+		createEAttribute(functionalityEClass, FUNCTIONALITY__ALGORITHM);
+		createEReference(functionalityEClass, FUNCTIONALITY__ACTIVITIES);
 	}
 
 	/**
@@ -333,20 +432,30 @@ public class SRMPackageImpl extends EPackageImpl implements SRMPackage {
 		initEReference(getSRMmodel_Activities(), this.getActivity(), null, "activities", null, 0, -1, SRMmodel.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEReference(getSRMmodel_Capabilities(), this.getCapability(), null, "capabilities", null, 0, -1, SRMmodel.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEReference(getSRMmodel_Roles(), this.getRole(), null, "roles", null, 1, -1, SRMmodel.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEReference(getSRMmodel_Functionalities(), this.getFunctionality(), null, "functionalities", null, 1, -1, SRMmodel.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		initEClass(roleEClass, Role.class, "Role", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-		initEReference(getRole_Activities(), this.getActivity(), null, "activities", null, 1, -1, Role.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, !IS_ORDERED);
+		initEReference(getRole_Role_activities(), this.getActivity(), null, "role_activities", null, 1, -1, Role.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, !IS_ORDERED);
 		initEAttribute(getRole_Liveness(), ecorePackage.getEString(), "liveness", null, 1, 1, Role.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, !IS_ORDERED);
 		initEAttribute(getRole_Name(), ecorePackage.getEString(), "name", null, 1, 1, Role.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEReference(getRole_Capabilities(), this.getCapability(), null, "capabilities", null, 0, -1, Role.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, !IS_ORDERED);
 
 		initEClass(activityEClass, Activity.class, "Activity", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 		initEAttribute(getActivity_Name(), ecorePackage.getEString(), "name", null, 1, 1, Activity.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, !IS_UNIQUE, !IS_DERIVED, !IS_ORDERED);
-		initEAttribute(getActivity_Functionality(), ecorePackage.getEString(), "functionality", null, 0, 1, Activity.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, !IS_UNIQUE, !IS_DERIVED, !IS_ORDERED);
+		initEReference(getActivity_Functionality(), this.getFunctionality(), this.getFunctionality_Activities(), "functionality", null, 1, 1, Activity.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		initEClass(capabilityEClass, Capability.class, "Capability", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 		initEAttribute(getCapability_Name(), ecorePackage.getEString(), "name", null, 1, 1, Capability.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, !IS_UNIQUE, !IS_DERIVED, !IS_ORDERED);
-		initEReference(getCapability_Activities(), this.getActivity(), null, "activities", null, 0, -1, Capability.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEReference(getCapability_Capability_activities(), this.getActivity(), null, "capability_activities", null, 1, -1, Capability.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getCapability_Description(), ecorePackage.getEString(), "description", null, 0, 1, Capability.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+
+		initEClass(functionalityEClass, Functionality.class, "Functionality", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+		initEAttribute(getFunctionality_Permissions(), ecorePackage.getEString(), "permissions", null, 0, 1, Functionality.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getFunctionality_Technology(), ecorePackage.getEString(), "technology", null, 0, 1, Functionality.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getFunctionality_Environment(), ecorePackage.getEString(), "environment", null, 0, 1, Functionality.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getFunctionality_Description(), ecorePackage.getEString(), "description", null, 0, 1, Functionality.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getFunctionality_Algorithm(), ecorePackage.getEString(), "algorithm", null, 0, 1, Functionality.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEReference(getFunctionality_Activities(), this.getActivity(), this.getActivity_Functionality(), "activities", null, 0, -1, Functionality.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		// Create resource
 		createResource(eNS_URI);

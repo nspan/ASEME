@@ -73,8 +73,8 @@ public class RoleCapabilitiesReorientCommand extends EditElementCommand {
 		if (!(oldEnd instanceof Capability && newEnd instanceof Role)) {
 			return false;
 		}
-		return SRMBaseItemSemanticEditPolicy.LinkConstraints
-				.canExistRoleCapabilities_4004(getNewSource(), getOldTarget());
+		return SRMBaseItemSemanticEditPolicy.getLinkConstraints()
+				.canExistRoleCapabilities_4002(getNewSource(), getOldTarget());
 	}
 
 	/**
@@ -84,8 +84,8 @@ public class RoleCapabilitiesReorientCommand extends EditElementCommand {
 		if (!(oldEnd instanceof Capability && newEnd instanceof Capability)) {
 			return false;
 		}
-		return SRMBaseItemSemanticEditPolicy.LinkConstraints
-				.canExistRoleCapabilities_4004(getOldSource(), getNewTarget());
+		return SRMBaseItemSemanticEditPolicy.getLinkConstraints()
+				.canExistRoleCapabilities_4002(getOldSource(), getNewTarget());
 	}
 
 	/**

@@ -1,0 +1,7 @@
+eclipse.preferences.version=1
+gmf_dashboard/domainGenerationModel=platform\:/resource/SRMdesign/model/SRM.genmodel
+gmf_dashboard/domainModel=platform\:/resource/SRMdesign/model/SRM.ecore
+gmf_dashboard/generationModel=platform\:/resource/SRMdesign/model/SRM.gmfgen
+gmf_dashboard/graphicalDefinitionModel=platform\:/resource/SRMdesign/model/SRM.gmfgraph
+gmf_dashboard/mappingModel=platform\:/resource/SRMdesign/model/SRM.gmfmap
+gmf_dashboard/toolingDefinitionModel=platform\:/resource/SRMdesign/model/SRM.gmftool

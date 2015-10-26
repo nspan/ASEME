@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<gmftool:ToolRegistry xmi:version="2.0"
+<gmftool:ToolRegistry
+    xmi:version="2.0"
     xmlns:xmi="http://www.omg.org/XMI"
     xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
     xmlns:gmftool="http://www.eclipse.org/gmf/2005/ToolDefinition">
@@ -13,18 +14,13 @@
           title="Role"
           description="Create new Role">
         <smallIcon
-            xsi:type="gmftool:DefaultImage"/>
+            xsi:type="gmftool:BundleImage"
+            path="icons/full/obj16/Role.gif"
+            bundle="SRMdesign.edit"/>
         <largeIcon
-            xsi:type="gmftool:DefaultImage"/>
-      </tools>
-      <tools
-          xsi:type="gmftool:CreationTool"
-          title="RoleActivities"
-          description="Create new RoleActivities">
-        <smallIcon
-            xsi:type="gmftool:DefaultImage"/>
-        <largeIcon
-            xsi:type="gmftool:DefaultImage"/>
+            xsi:type="gmftool:BundleImage"
+            path="icons/full/obj32/Role.gif"
+            bundle="SRMdesign.edit"/>
       </tools>
       <tools
           xsi:type="gmftool:CreationTool"
@@ -40,14 +36,31 @@
           title="Activity"
           description="Create new Activity">
         <smallIcon
-            xsi:type="gmftool:DefaultImage"/>
+            xsi:type="gmftool:BundleImage"
+            path="icons/full/obj16/Activity.gif"
+            bundle="SRMdesign.edit"/>
         <largeIcon
-            xsi:type="gmftool:DefaultImage"/>
+            xsi:type="gmftool:BundleImage"
+            path="icons/full/obj32/Activity.gif"
+            bundle="SRMdesign.edit"/>
       </tools>
       <tools
           xsi:type="gmftool:CreationTool"
           title="Capability"
           description="Create new Capability">
+        <smallIcon
+            xsi:type="gmftool:BundleImage"
+            path="icons/full/obj16/Capability.gif"
+            bundle="SRMdesign.edit"/>
+        <largeIcon
+            xsi:type="gmftool:BundleImage"
+            path="icons/full/obj32/Capability.gif"
+            bundle="SRMdesign.edit"/>
+      </tools>
+      <tools
+          xsi:type="gmftool:CreationTool"
+          title="CapabilityCapability_activities"
+          description="Create new CapabilityCapability_activities">
         <smallIcon
             xsi:type="gmftool:DefaultImage"/>
         <largeIcon
@@ -55,8 +68,21 @@
       </tools>
       <tools
           xsi:type="gmftool:CreationTool"
-          title="CapabilityActivities"
-          description="Create new CapabilityActivities">
+          title="Functionality"
+          description="Create new Functionality">
+        <smallIcon
+            xsi:type="gmftool:BundleImage"
+            path="icons/full/obj16/Functionality.gif"
+            bundle="SRMdesign.edit"/>
+        <largeIcon
+            xsi:type="gmftool:BundleImage"
+            path="icons/full/obj32/Functionality.gif"
+            bundle="SRMdesign.edit"/>
+      </tools>
+      <tools
+          xsi:type="gmftool:CreationTool"
+          title="FunctionalityActivities"
+          description="Create new FunctionalityActivities">
         <smallIcon
             xsi:type="gmftool:DefaultImage"/>
         <largeIcon

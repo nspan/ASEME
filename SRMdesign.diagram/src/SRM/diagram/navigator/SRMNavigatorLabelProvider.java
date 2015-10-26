@@ -18,13 +18,15 @@ import org.eclipse.ui.navigator.ICommonLabelProvider;
 
 import SRM.diagram.edit.parts.ActivityEditPart;
 import SRM.diagram.edit.parts.ActivityNameEditPart;
-import SRM.diagram.edit.parts.CapabilityActivitiesEditPart;
+import SRM.diagram.edit.parts.CapabilityCapability_activitiesEditPart;
 import SRM.diagram.edit.parts.CapabilityEditPart;
 import SRM.diagram.edit.parts.CapabilityNameEditPart;
-import SRM.diagram.edit.parts.RoleActivitiesEditPart;
+import SRM.diagram.edit.parts.FunctionalityActivitiesEditPart;
+import SRM.diagram.edit.parts.FunctionalityDescriptionEditPart;
+import SRM.diagram.edit.parts.FunctionalityEditPart;
 import SRM.diagram.edit.parts.RoleCapabilitiesEditPart;
 import SRM.diagram.edit.parts.RoleEditPart;
-import SRM.diagram.edit.parts.RoleLivenessEditPart;
+import SRM.diagram.edit.parts.RoleNameEditPart;
 import SRM.diagram.edit.parts.SRMmodelEditPart;
 import SRM.diagram.part.SRMDiagramEditorPlugin;
 import SRM.diagram.part.SRMVisualIDRegistry;
@@ -44,13 +46,11 @@ public class SRMNavigatorLabelProvider extends LabelProvider implements
 		SRMDiagramEditorPlugin
 				.getInstance()
 				.getImageRegistry()
-				.put(
-						"Navigator?UnknownElement", ImageDescriptor.getMissingImageDescriptor()); //$NON-NLS-1$
+				.put("Navigator?UnknownElement", ImageDescriptor.getMissingImageDescriptor()); //$NON-NLS-1$
 		SRMDiagramEditorPlugin
 				.getInstance()
 				.getImageRegistry()
-				.put(
-						"Navigator?ImageNotFound", ImageDescriptor.getMissingImageDescriptor()); //$NON-NLS-1$
+				.put("Navigator?ImageNotFound", ImageDescriptor.getMissingImageDescriptor()); //$NON-NLS-1$
 	}
 
 	/**
@@ -97,22 +97,25 @@ public class SRMNavigatorLabelProvider extends LabelProvider implements
 					"Navigator?Diagram?http://www.amcl.tuc.gr/aseme/metamodels/SRM?SRMmodel", SRMElementTypes.SRMmodel_1000); //$NON-NLS-1$
 		case CapabilityEditPart.VISUAL_ID:
 			return getImage(
-					"Navigator?TopLevelNode?http://www.amcl.tuc.gr/aseme/metamodels/SRM?Capability", SRMElementTypes.Capability_2004); //$NON-NLS-1$
+					"Navigator?TopLevelNode?http://www.amcl.tuc.gr/aseme/metamodels/SRM?Capability", SRMElementTypes.Capability_2001); //$NON-NLS-1$
 		case RoleEditPart.VISUAL_ID:
 			return getImage(
-					"Navigator?TopLevelNode?http://www.amcl.tuc.gr/aseme/metamodels/SRM?Role", SRMElementTypes.Role_2005); //$NON-NLS-1$
+					"Navigator?TopLevelNode?http://www.amcl.tuc.gr/aseme/metamodels/SRM?Role", SRMElementTypes.Role_2002); //$NON-NLS-1$
+		case FunctionalityEditPart.VISUAL_ID:
+			return getImage(
+					"Navigator?TopLevelNode?http://www.amcl.tuc.gr/aseme/metamodels/SRM?Functionality", SRMElementTypes.Functionality_2003); //$NON-NLS-1$
 		case ActivityEditPart.VISUAL_ID:
 			return getImage(
-					"Navigator?TopLevelNode?http://www.amcl.tuc.gr/aseme/metamodels/SRM?Activity", SRMElementTypes.Activity_2006); //$NON-NLS-1$
+					"Navigator?TopLevelNode?http://www.amcl.tuc.gr/aseme/metamodels/SRM?Activity", SRMElementTypes.Activity_2004); //$NON-NLS-1$
+		case FunctionalityActivitiesEditPart.VISUAL_ID:
+			return getImage(
+					"Navigator?Link?http://www.amcl.tuc.gr/aseme/metamodels/SRM?Functionality?activities", SRMElementTypes.FunctionalityActivities_4001); //$NON-NLS-1$
 		case RoleCapabilitiesEditPart.VISUAL_ID:
 			return getImage(
-					"Navigator?Link?http://www.amcl.tuc.gr/aseme/metamodels/SRM?Role?capabilities", SRMElementTypes.RoleCapabilities_4004); //$NON-NLS-1$
-		case RoleActivitiesEditPart.VISUAL_ID:
+					"Navigator?Link?http://www.amcl.tuc.gr/aseme/metamodels/SRM?Role?capabilities", SRMElementTypes.RoleCapabilities_4002); //$NON-NLS-1$
+		case CapabilityCapability_activitiesEditPart.VISUAL_ID:
 			return getImage(
-					"Navigator?Link?http://www.amcl.tuc.gr/aseme/metamodels/SRM?Role?activities", SRMElementTypes.RoleActivities_4005); //$NON-NLS-1$
-		case CapabilityActivitiesEditPart.VISUAL_ID:
-			return getImage(
-					"Navigator?Link?http://www.amcl.tuc.gr/aseme/metamodels/SRM?Capability?activities", SRMElementTypes.CapabilityActivities_4006); //$NON-NLS-1$
+					"Navigator?Link?http://www.amcl.tuc.gr/aseme/metamodels/SRM?Capability?capability_activities", SRMElementTypes.CapabilityCapability_activities_4003); //$NON-NLS-1$
 		}
 		return getImage("Navigator?UnknownElement", null); //$NON-NLS-1$
 	}
@@ -168,17 +171,19 @@ public class SRMNavigatorLabelProvider extends LabelProvider implements
 		case SRMmodelEditPart.VISUAL_ID:
 			return getSRMmodel_1000Text(view);
 		case CapabilityEditPart.VISUAL_ID:
-			return getCapability_2004Text(view);
+			return getCapability_2001Text(view);
 		case RoleEditPart.VISUAL_ID:
-			return getRole_2005Text(view);
+			return getRole_2002Text(view);
+		case FunctionalityEditPart.VISUAL_ID:
+			return getFunctionality_2003Text(view);
 		case ActivityEditPart.VISUAL_ID:
-			return getActivity_2006Text(view);
+			return getActivity_2004Text(view);
+		case FunctionalityActivitiesEditPart.VISUAL_ID:
+			return getFunctionalityActivities_4001Text(view);
 		case RoleCapabilitiesEditPart.VISUAL_ID:
-			return getRoleCapabilities_4004Text(view);
-		case RoleActivitiesEditPart.VISUAL_ID:
-			return getRoleActivities_4005Text(view);
-		case CapabilityActivitiesEditPart.VISUAL_ID:
-			return getCapabilityActivities_4006Text(view);
+			return getRoleCapabilities_4002Text(view);
+		case CapabilityCapability_activitiesEditPart.VISUAL_ID:
+			return getCapabilityCapability_activities_4003Text(view);
 		}
 		return getUnknownElementText(view);
 	}
@@ -193,9 +198,9 @@ public class SRMNavigatorLabelProvider extends LabelProvider implements
 	/**
 	 * @generated
 	 */
-	private String getCapability_2004Text(View view) {
+	private String getCapability_2001Text(View view) {
 		IParser parser = SRMParserProvider.getParser(
-				SRMElementTypes.Capability_2004,
+				SRMElementTypes.Capability_2001,
 				view.getElement() != null ? view.getElement() : view,
 				SRMVisualIDRegistry.getType(CapabilityNameEditPart.VISUAL_ID));
 		if (parser != null) {
@@ -204,7 +209,7 @@ public class SRMNavigatorLabelProvider extends LabelProvider implements
 					ParserOptions.NONE.intValue());
 		} else {
 			SRMDiagramEditorPlugin.getInstance().logError(
-					"Parser was not found for label " + 5006); //$NON-NLS-1$
+					"Parser was not found for label " + 5001); //$NON-NLS-1$
 			return ""; //$NON-NLS-1$
 		}
 	}
@@ -212,17 +217,17 @@ public class SRMNavigatorLabelProvider extends LabelProvider implements
 	/**
 	 * @generated
 	 */
-	private String getRole_2005Text(View view) {
-		IParser parser = SRMParserProvider.getParser(SRMElementTypes.Role_2005,
+	private String getRole_2002Text(View view) {
+		IParser parser = SRMParserProvider.getParser(SRMElementTypes.Role_2002,
 				view.getElement() != null ? view.getElement() : view,
-				SRMVisualIDRegistry.getType(RoleLivenessEditPart.VISUAL_ID));
+				SRMVisualIDRegistry.getType(RoleNameEditPart.VISUAL_ID));
 		if (parser != null) {
 			return parser.getPrintString(new EObjectAdapter(
 					view.getElement() != null ? view.getElement() : view),
 					ParserOptions.NONE.intValue());
 		} else {
 			SRMDiagramEditorPlugin.getInstance().logError(
-					"Parser was not found for label " + 5007); //$NON-NLS-1$
+					"Parser was not found for label " + 5002); //$NON-NLS-1$
 			return ""; //$NON-NLS-1$
 		}
 	}
@@ -230,18 +235,19 @@ public class SRMNavigatorLabelProvider extends LabelProvider implements
 	/**
 	 * @generated
 	 */
-	private String getActivity_2006Text(View view) {
+	private String getFunctionality_2003Text(View view) {
 		IParser parser = SRMParserProvider.getParser(
-				SRMElementTypes.Activity_2006, view.getElement() != null ? view
-						.getElement() : view, SRMVisualIDRegistry
-						.getType(ActivityNameEditPart.VISUAL_ID));
+				SRMElementTypes.Functionality_2003,
+				view.getElement() != null ? view.getElement() : view,
+				SRMVisualIDRegistry
+						.getType(FunctionalityDescriptionEditPart.VISUAL_ID));
 		if (parser != null) {
 			return parser.getPrintString(new EObjectAdapter(
 					view.getElement() != null ? view.getElement() : view),
 					ParserOptions.NONE.intValue());
 		} else {
 			SRMDiagramEditorPlugin.getInstance().logError(
-					"Parser was not found for label " + 5009); //$NON-NLS-1$
+					"Parser was not found for label " + 5003); //$NON-NLS-1$
 			return ""; //$NON-NLS-1$
 		}
 	}
@@ -249,21 +255,40 @@ public class SRMNavigatorLabelProvider extends LabelProvider implements
 	/**
 	 * @generated
 	 */
-	private String getRoleCapabilities_4004Text(View view) {
+	private String getActivity_2004Text(View view) {
+		IParser parser = SRMParserProvider.getParser(
+				SRMElementTypes.Activity_2004,
+				view.getElement() != null ? view.getElement() : view,
+				SRMVisualIDRegistry.getType(ActivityNameEditPart.VISUAL_ID));
+		if (parser != null) {
+			return parser.getPrintString(new EObjectAdapter(
+					view.getElement() != null ? view.getElement() : view),
+					ParserOptions.NONE.intValue());
+		} else {
+			SRMDiagramEditorPlugin.getInstance().logError(
+					"Parser was not found for label " + 5004); //$NON-NLS-1$
+			return ""; //$NON-NLS-1$
+		}
+	}
+
+	/**
+	 * @generated
+	 */
+	private String getFunctionalityActivities_4001Text(View view) {
 		return ""; //$NON-NLS-1$
 	}
 
 	/**
 	 * @generated
 	 */
-	private String getRoleActivities_4005Text(View view) {
+	private String getRoleCapabilities_4002Text(View view) {
 		return ""; //$NON-NLS-1$
 	}
 
 	/**
 	 * @generated
 	 */
-	private String getCapabilityActivities_4006Text(View view) {
+	private String getCapabilityCapability_activities_4003Text(View view) {
 		return ""; //$NON-NLS-1$
 	}
 

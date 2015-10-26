@@ -12,7 +12,7 @@ public class SRMNavigatorSorter extends ViewerSorter {
 	/**
 	 * @generated
 	 */
-	private static final int GROUP_CATEGORY = 4008;
+	private static final int GROUP_CATEGORY = 4005;
 
 	/**
 	 * @generated

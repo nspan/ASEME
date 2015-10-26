@@ -9,6 +9,7 @@ import org.eclipse.gmf.runtime.emf.type.core.requests.DuplicateElementsRequest;
 
 import SRM.diagram.edit.commands.ActivityCreateCommand;
 import SRM.diagram.edit.commands.CapabilityCreateCommand;
+import SRM.diagram.edit.commands.FunctionalityCreateCommand;
 import SRM.diagram.edit.commands.RoleCreateCommand;
 import SRM.diagram.providers.SRMElementTypes;
 
@@ -29,14 +30,17 @@ public class SRMmodelItemSemanticEditPolicy extends
 	 * @generated
 	 */
 	protected Command getCreateCommand(CreateElementRequest req) {
-		if (SRMElementTypes.Capability_2004 == req.getElementType()) {
-			return getGEFWrapper(new CapabilityCreateCommand(req));
+		if (SRMElementTypes.Activity_2004 == req.getElementType()) {
+			return getGEFWrapper(new ActivityCreateCommand(req));
 		}
-		if (SRMElementTypes.Role_2005 == req.getElementType()) {
+		if (SRMElementTypes.Functionality_2003 == req.getElementType()) {
+			return getGEFWrapper(new FunctionalityCreateCommand(req));
+		}
+		if (SRMElementTypes.Role_2002 == req.getElementType()) {
 			return getGEFWrapper(new RoleCreateCommand(req));
 		}
-		if (SRMElementTypes.Activity_2006 == req.getElementType()) {
-			return getGEFWrapper(new ActivityCreateCommand(req));
+		if (SRMElementTypes.Capability_2001 == req.getElementType()) {
+			return getGEFWrapper(new CapabilityCreateCommand(req));
 		}
 		return super.getCreateCommand(req);
 	}

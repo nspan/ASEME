@@ -15,11 +15,11 @@ import org.eclipse.gmf.runtime.emf.type.core.requests.ReorientReferenceRelations
 import org.eclipse.gmf.runtime.notation.Edge;
 import org.eclipse.gmf.runtime.notation.View;
 
-import SRM.diagram.edit.commands.CapabilityActivitiesCreateCommand;
-import SRM.diagram.edit.commands.CapabilityActivitiesReorientCommand;
+import SRM.diagram.edit.commands.CapabilityCapability_activitiesCreateCommand;
+import SRM.diagram.edit.commands.CapabilityCapability_activitiesReorientCommand;
 import SRM.diagram.edit.commands.RoleCapabilitiesCreateCommand;
 import SRM.diagram.edit.commands.RoleCapabilitiesReorientCommand;
-import SRM.diagram.edit.parts.CapabilityActivitiesEditPart;
+import SRM.diagram.edit.parts.CapabilityCapability_activitiesEditPart;
 import SRM.diagram.edit.parts.RoleCapabilitiesEditPart;
 import SRM.diagram.part.SRMVisualIDRegistry;
 import SRM.diagram.providers.SRMElementTypes;
@@ -34,7 +34,7 @@ public class CapabilityItemSemanticEditPolicy extends
 	 * @generated
 	 */
 	public CapabilityItemSemanticEditPolicy() {
-		super(SRMElementTypes.Capability_2004);
+		super(SRMElementTypes.Capability_2001);
 	}
 
 	/**
@@ -45,7 +45,7 @@ public class CapabilityItemSemanticEditPolicy extends
 		CompositeTransactionalCommand cmd = new CompositeTransactionalCommand(
 				getEditingDomain(), null);
 		cmd.setTransactionNestingEnabled(false);
-		for (Iterator it = view.getTargetEdges().iterator(); it.hasNext();) {
+		for (Iterator<?> it = view.getTargetEdges().iterator(); it.hasNext();) {
 			Edge incomingLink = (Edge) it.next();
 			if (SRMVisualIDRegistry.getVisualID(incomingLink) == RoleCapabilitiesEditPart.VISUAL_ID) {
 				DestroyReferenceRequest r = new DestroyReferenceRequest(
@@ -56,9 +56,9 @@ public class CapabilityItemSemanticEditPolicy extends
 				continue;
 			}
 		}
-		for (Iterator it = view.getSourceEdges().iterator(); it.hasNext();) {
+		for (Iterator<?> it = view.getSourceEdges().iterator(); it.hasNext();) {
 			Edge outgoingLink = (Edge) it.next();
-			if (SRMVisualIDRegistry.getVisualID(outgoingLink) == CapabilityActivitiesEditPart.VISUAL_ID) {
+			if (SRMVisualIDRegistry.getVisualID(outgoingLink) == CapabilityCapability_activitiesEditPart.VISUAL_ID) {
 				DestroyReferenceRequest r = new DestroyReferenceRequest(
 						outgoingLink.getSource().getElement(), null,
 						outgoingLink.getTarget().getElement(), false);
@@ -94,12 +94,13 @@ public class CapabilityItemSemanticEditPolicy extends
 	 */
 	protected Command getStartCreateRelationshipCommand(
 			CreateRelationshipRequest req) {
-		if (SRMElementTypes.RoleCapabilities_4004 == req.getElementType()) {
+		if (SRMElementTypes.RoleCapabilities_4002 == req.getElementType()) {
 			return null;
 		}
-		if (SRMElementTypes.CapabilityActivities_4006 == req.getElementType()) {
-			return getGEFWrapper(new CapabilityActivitiesCreateCommand(req, req
-					.getSource(), req.getTarget()));
+		if (SRMElementTypes.CapabilityCapability_activities_4003 == req
+				.getElementType()) {
+			return getGEFWrapper(new CapabilityCapability_activitiesCreateCommand(
+					req, req.getSource(), req.getTarget()));
 		}
 		return null;
 	}
@@ -109,11 +110,12 @@ public class CapabilityItemSemanticEditPolicy extends
 	 */
 	protected Command getCompleteCreateRelationshipCommand(
 			CreateRelationshipRequest req) {
-		if (SRMElementTypes.RoleCapabilities_4004 == req.getElementType()) {
-			return getGEFWrapper(new RoleCapabilitiesCreateCommand(req, req
-					.getSource(), req.getTarget()));
+		if (SRMElementTypes.RoleCapabilities_4002 == req.getElementType()) {
+			return getGEFWrapper(new RoleCapabilitiesCreateCommand(req,
+					req.getSource(), req.getTarget()));
 		}
-		if (SRMElementTypes.CapabilityActivities_4006 == req.getElementType()) {
+		if (SRMElementTypes.CapabilityCapability_activities_4003 == req
+				.getElementType()) {
 			return null;
 		}
 		return null;
@@ -130,8 +132,9 @@ public class CapabilityItemSemanticEditPolicy extends
 		switch (getVisualID(req)) {
 		case RoleCapabilitiesEditPart.VISUAL_ID:
 			return getGEFWrapper(new RoleCapabilitiesReorientCommand(req));
-		case CapabilityActivitiesEditPart.VISUAL_ID:
-			return getGEFWrapper(new CapabilityActivitiesReorientCommand(req));
+		case CapabilityCapability_activitiesEditPart.VISUAL_ID:
+			return getGEFWrapper(new CapabilityCapability_activitiesReorientCommand(
+					req));
 		}
 		return super.getReorientReferenceRelationshipCommand(req);
 	}

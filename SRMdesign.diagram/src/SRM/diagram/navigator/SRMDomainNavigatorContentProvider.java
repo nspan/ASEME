@@ -3,7 +3,6 @@ package SRM.diagram.navigator;
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.HashMap;
-import java.util.Iterator;
 
 import org.eclipse.core.resources.IFile;
 import org.eclipse.emf.common.util.URI;
@@ -88,42 +87,21 @@ public class SRMDomainNavigatorContentProvider implements
 					}
 
 					public boolean handleResourceChanged(final Resource resource) {
-						for (Iterator it = myEditingDomain.getResourceSet()
-								.getResources().iterator(); it.hasNext();) {
-							Resource nextResource = (Resource) it.next();
-							nextResource.unload();
-						}
-						if (myViewer != null) {
-							myViewer.getControl().getDisplay().asyncExec(
-									myViewerRefreshRunnable);
-						}
+						unloadAllResources();
+						asyncRefresh();
 						return true;
 					}
 
 					public boolean handleResourceDeleted(Resource resource) {
-						for (Iterator it = myEditingDomain.getResourceSet()
-								.getResources().iterator(); it.hasNext();) {
-							Resource nextResource = (Resource) it.next();
-							nextResource.unload();
-						}
-						if (myViewer != null) {
-							myViewer.getControl().getDisplay().asyncExec(
-									myViewerRefreshRunnable);
-						}
+						unloadAllResources();
+						asyncRefresh();
 						return true;
 					}
 
 					public boolean handleResourceMoved(Resource resource,
 							final URI newURI) {
-						for (Iterator it = myEditingDomain.getResourceSet()
-								.getResources().iterator(); it.hasNext();) {
-							Resource nextResource = (Resource) it.next();
-							nextResource.unload();
-						}
-						if (myViewer != null) {
-							myViewer.getControl().getDisplay().asyncExec(
-									myViewerRefreshRunnable);
-						}
+						unloadAllResources();
+						asyncRefresh();
 						return true;
 					}
 				});
@@ -136,11 +114,8 @@ public class SRMDomainNavigatorContentProvider implements
 		myWorkspaceSynchronizer.dispose();
 		myWorkspaceSynchronizer = null;
 		myViewerRefreshRunnable = null;
-		for (Iterator it = myEditingDomain.getResourceSet().getResources()
-				.iterator(); it.hasNext();) {
-			Resource resource = (Resource) it.next();
-			resource.unload();
-		}
+		myViewer = null;
+		unloadAllResources();
 		((TransactionalEditingDomain) myEditingDomain).dispose();
 		myEditingDomain = null;
 	}
@@ -150,6 +125,26 @@ public class SRMDomainNavigatorContentProvider implements
 	 */
 	public void inputChanged(Viewer viewer, Object oldInput, Object newInput) {
 		myViewer = viewer;
+	}
+
+	/**
+	 * @generated
+	 */
+	void unloadAllResources() {
+		for (Resource nextResource : myEditingDomain.getResourceSet()
+				.getResources()) {
+			nextResource.unload();
+		}
+	}
+
+	/**
+	 * @generated
+	 */
+	void asyncRefresh() {
+		if (myViewer != null && !myViewer.getControl().isDisposed()) {
+			myViewer.getControl().getDisplay()
+					.asyncExec(myViewerRefreshRunnable);
+		}
 	}
 
 	/**
@@ -187,13 +182,14 @@ public class SRMDomainNavigatorContentProvider implements
 					.toString(), true);
 			Resource resource = myEditingDomain.getResourceSet().getResource(
 					fileURI, true);
-			return wrapEObjects(myAdapterFctoryContentProvier
-					.getChildren(resource), parentElement);
+			return wrapEObjects(
+					myAdapterFctoryContentProvier.getChildren(resource),
+					parentElement);
 		}
 
 		if (parentElement instanceof SRMDomainNavigatorItem) {
-			return wrapEObjects(myAdapterFctoryContentProvier
-					.getChildren(((SRMDomainNavigatorItem) parentElement)
+			return wrapEObjects(
+					myAdapterFctoryContentProvier.getChildren(((SRMDomainNavigatorItem) parentElement)
 							.getEObject()), parentElement);
 		}
 		return EMPTY_ARRAY;

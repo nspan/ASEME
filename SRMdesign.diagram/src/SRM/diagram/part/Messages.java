@@ -258,52 +258,62 @@ public class Messages extends NLS {
 	/**
 	 * @generated
 	 */
-	public static String RoleActivities2CreationTool_title;
+	public static String RoleCapabilities2CreationTool_title;
 
 	/**
 	 * @generated
 	 */
-	public static String RoleActivities2CreationTool_desc;
+	public static String RoleCapabilities2CreationTool_desc;
 
 	/**
 	 * @generated
 	 */
-	public static String RoleCapabilities3CreationTool_title;
+	public static String Activity3CreationTool_title;
 
 	/**
 	 * @generated
 	 */
-	public static String RoleCapabilities3CreationTool_desc;
+	public static String Activity3CreationTool_desc;
 
 	/**
 	 * @generated
 	 */
-	public static String Activity4CreationTool_title;
+	public static String Capability4CreationTool_title;
 
 	/**
 	 * @generated
 	 */
-	public static String Activity4CreationTool_desc;
+	public static String Capability4CreationTool_desc;
 
 	/**
 	 * @generated
 	 */
-	public static String Capability5CreationTool_title;
+	public static String CapabilityCapability_activities5CreationTool_title;
 
 	/**
 	 * @generated
 	 */
-	public static String Capability5CreationTool_desc;
+	public static String CapabilityCapability_activities5CreationTool_desc;
 
 	/**
 	 * @generated
 	 */
-	public static String CapabilityActivities6CreationTool_title;
+	public static String Functionality6CreationTool_title;
 
 	/**
 	 * @generated
 	 */
-	public static String CapabilityActivities6CreationTool_desc;
+	public static String Functionality6CreationTool_desc;
+
+	/**
+	 * @generated
+	 */
+	public static String FunctionalityActivities7CreationTool_title;
+
+	/**
+	 * @generated
+	 */
+	public static String FunctionalityActivities7CreationTool_desc;
 
 	/**
 	 * @generated
@@ -318,72 +328,62 @@ public class Messages extends NLS {
 	/**
 	 * @generated
 	 */
-	public static String NavigatorGroupName_Capability_2004_incominglinks;
+	public static String NavigatorGroupName_Capability_2001_incominglinks;
 
 	/**
 	 * @generated
 	 */
-	public static String NavigatorGroupName_Capability_2004_outgoinglinks;
+	public static String NavigatorGroupName_Capability_2001_outgoinglinks;
 
 	/**
 	 * @generated
 	 */
-	public static String NavigatorGroupName_Role_2005_outgoinglinks;
+	public static String NavigatorGroupName_Role_2002_outgoinglinks;
 
 	/**
 	 * @generated
 	 */
-	public static String NavigatorGroupName_Activity_2006_incominglinks;
+	public static String NavigatorGroupName_Functionality_2003_outgoinglinks;
 
 	/**
 	 * @generated
 	 */
-	public static String NavigatorGroupName_RoleCapabilities_4004_target;
+	public static String NavigatorGroupName_Activity_2004_incominglinks;
 
 	/**
 	 * @generated
 	 */
-	public static String NavigatorGroupName_RoleCapabilities_4004_source;
+	public static String NavigatorGroupName_FunctionalityActivities_4001_target;
 
 	/**
 	 * @generated
 	 */
-	public static String NavigatorGroupName_RoleActivities_4005_target;
+	public static String NavigatorGroupName_FunctionalityActivities_4001_source;
 
 	/**
 	 * @generated
 	 */
-	public static String NavigatorGroupName_RoleActivities_4005_source;
+	public static String NavigatorGroupName_RoleCapabilities_4002_target;
 
 	/**
 	 * @generated
 	 */
-	public static String NavigatorGroupName_CapabilityActivities_4006_target;
+	public static String NavigatorGroupName_RoleCapabilities_4002_source;
 
 	/**
 	 * @generated
 	 */
-	public static String NavigatorGroupName_CapabilityActivities_4006_source;
+	public static String NavigatorGroupName_CapabilityCapability_activities_4003_target;
+
+	/**
+	 * @generated
+	 */
+	public static String NavigatorGroupName_CapabilityCapability_activities_4003_source;
 
 	/**
 	 * @generated
 	 */
 	public static String NavigatorActionProvider_OpenDiagramActionName;
-
-	/**
-	 * @generated
-	 */
-	public static String AbstractParser_UnexpectedValueType;
-
-	/**
-	 * @generated
-	 */
-	public static String AbstractParser_WrongStringConversion;
-
-	/**
-	 * @generated
-	 */
-	public static String AbstractParser_UnknownLiteral;
 
 	/**
 	 * @generated

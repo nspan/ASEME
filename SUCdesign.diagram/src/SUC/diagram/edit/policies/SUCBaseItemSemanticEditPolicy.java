@@ -324,20 +324,6 @@ public class SUCBaseItemSemanticEditPolicy extends SemanticEditPolicy {
 		/**
 		 * @generated
 		 */
-		public boolean canCreateUseCaseInclude_4003(UseCase source,
-				UseCase target) {
-			if (source != null) {
-				if (source.getInclude().contains(target)) {
-					return false;
-				}
-			}
-
-			return canExistUseCaseInclude_4003(source, target);
-		}
-
-		/**
-		 * @generated
-		 */
 		public boolean canCreateRoleParticipates_in_4001(Role source,
 				UseCase target) {
 			if (source != null) {
@@ -355,7 +341,21 @@ public class SUCBaseItemSemanticEditPolicy extends SemanticEditPolicy {
 		/**
 		 * @generated
 		 */
-		public boolean canExistUseCaseInclude_4003(UseCase source,
+		public boolean canCreateUseCaseInclude_4003(UseCase source,
+				UseCase target) {
+			if (source != null) {
+				if (source.getInclude().contains(target)) {
+					return false;
+				}
+			}
+
+			return canExistUseCaseInclude_4003(source, target);
+		}
+
+		/**
+		 * @generated
+		 */
+		public boolean canExistRoleParticipates_in_4001(Role source,
 				UseCase target) {
 			return true;
 		}
@@ -363,7 +363,7 @@ public class SUCBaseItemSemanticEditPolicy extends SemanticEditPolicy {
 		/**
 		 * @generated
 		 */
-		public boolean canExistRoleParticipates_in_4001(Role source,
+		public boolean canExistUseCaseInclude_4003(UseCase source,
 				UseCase target) {
 			return true;
 		}

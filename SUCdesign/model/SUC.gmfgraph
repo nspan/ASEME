@@ -9,15 +9,18 @@
       name="Default">
     <figures
         xsi:type="gmfgraph:PolylineDecoration"
-        name="UseCaseIncludeTargetDecoration"/>
+        name="UseCaseIncludeTargetDecoration"
+        lineWidth="3"/>
     <figures
         xsi:type="gmfgraph:PolylineDecoration"
-        name="RoleParticipates_inTargetDecoration"/>
+        name="RoleParticipates_inTargetDecoration"
+        lineWidth="3"/>
     <descriptors
         name="UseCaseIncludeFigure">
       <actualFigure
           xsi:type="gmfgraph:PolylineConnection"
           name="UseCaseIncludeFigure"
+          lineWidth="3"
           targetDecoration="//@figures.0/@figures.0">
         <children
             xsi:type="gmfgraph:Label"
@@ -54,6 +57,7 @@
       <actualFigure
           xsi:type="gmfgraph:PolylineConnection"
           name="RoleParticipates_inFigure"
+          lineWidth="3"
           targetDecoration="//@figures.0/@figures.1"/>
     </descriptors>
   </figures>
@@ -63,7 +67,8 @@
         name="UseCaseFigureCustom">
       <actualFigure
           xsi:type="gmfgraph:Ellipse"
-          name="UseCaseFigureCustom">
+          name="UseCaseFigureCustom"
+          lineWidth="3">
         <foregroundColor
             xsi:type="gmfgraph:RGBColor"
             red="47"

@@ -2,7 +2,6 @@ package SRM.diagram.part;
 
 import java.io.IOException;
 import java.util.LinkedList;
-import java.util.List;
 
 import org.eclipse.core.commands.ExecutionException;
 import org.eclipse.core.commands.operations.OperationHistoryFactory;
@@ -83,7 +82,7 @@ public class SRMNewDiagramFileWizard extends Wizard {
 		}
 		myFileCreationPage.setContainerFullPath(filePath);
 		myFileCreationPage.setFileName(SRMDiagramEditorUtil.getUniqueFileName(
-				filePath, fileName, "srmd")); //$NON-NLS-1$
+				filePath, fileName, "fg")); //$NON-NLS-1$
 
 		diagramRootElementSelectionPage = new DiagramRootElementSelectionPage(
 				Messages.SRMNewDiagramFileWizard_RootSelectionPageName);
@@ -108,7 +107,7 @@ public class SRMNewDiagramFileWizard extends Wizard {
 	 * @generated
 	 */
 	public boolean performFinish() {
-		List affectedFiles = new LinkedList();
+		LinkedList<IFile> affectedFiles = new LinkedList<IFile>();
 		IFile diagramFile = myFileCreationPage.createNewFile();
 		SRMDiagramEditorUtil.setCharset(diagramFile);
 		affectedFiles.add(diagramFile);
@@ -182,13 +181,13 @@ public class SRMNewDiagramFileWizard extends Wizard {
 		 * @generated
 		 */
 		protected boolean validatePage() {
-			if (selectedModelElement == null) {
+			if (getModelElement() == null) {
 				setErrorMessage(Messages.SRMNewDiagramFileWizard_RootSelectionPageNoSelectionMessage);
 				return false;
 			}
 			boolean result = ViewService.getInstance().provides(
 					new CreateDiagramViewOperation(new EObjectAdapter(
-							selectedModelElement), SRMmodelEditPart.MODEL_ID,
+							getModelElement()), SRMmodelEditPart.MODEL_ID,
 							SRMDiagramEditorPlugin.DIAGRAM_PREFERENCES_HINT));
 			setErrorMessage(result ? null
 					: Messages.SRMNewDiagramFileWizard_RootSelectionPageInvalidSelectionMessage);

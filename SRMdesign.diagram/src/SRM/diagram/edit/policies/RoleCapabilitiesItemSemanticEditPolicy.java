@@ -16,7 +16,7 @@ public class RoleCapabilitiesItemSemanticEditPolicy extends
 	 * @generated
 	 */
 	public RoleCapabilitiesItemSemanticEditPolicy() {
-		super(SRMElementTypes.RoleCapabilities_4004);
+		super(SRMElementTypes.RoleCapabilities_4002);
 	}
 
 	/**

@@ -168,6 +168,29 @@ public class SRMItemProviderAdapterFactory extends SRMAdapterFactory implements 
 	}
 
 	/**
+	 * This keeps track of the one adapter used for all {@link SRM.Functionality} instances.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	protected FunctionalityItemProvider functionalityItemProvider;
+
+	/**
+	 * This creates an adapter for a {@link SRM.Functionality}.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public Adapter createFunctionalityAdapter() {
+		if (functionalityItemProvider == null) {
+			functionalityItemProvider = new FunctionalityItemProvider(this);
+		}
+
+		return functionalityItemProvider;
+	}
+
+	/**
 	 * This returns the root adapter factory that contains this factory.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -270,6 +293,7 @@ public class SRMItemProviderAdapterFactory extends SRMAdapterFactory implements 
 		if (roleItemProvider != null) roleItemProvider.dispose();
 		if (activityItemProvider != null) activityItemProvider.dispose();
 		if (capabilityItemProvider != null) capabilityItemProvider.dispose();
+		if (functionalityItemProvider != null) functionalityItemProvider.dispose();
 	}
 
 }
