@@ -1,0 +1,3 @@
+bool ballFound
+bool allignedToBall
+bool hasTurned

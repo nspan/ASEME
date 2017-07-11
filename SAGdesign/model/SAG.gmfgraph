@@ -1,33 +1,47 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<gmfgraph:Canvas xmi:version="2.0"
+<gmfgraph:Canvas
+    xmi:version="2.0"
     xmlns:xmi="http://www.omg.org/XMI"
     xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-    xmlns:gmfgraph="http://www.eclipse.org/gmf/2006/GraphicalDefinition" name="SAG">
+    xmlns:gmfgraph="http://www.eclipse.org/gmf/2006/GraphicalDefinition"
+    name="SAG">
   <figures
       name="Default">
     <figures
         xsi:type="gmfgraph:PolylineDecoration"
-        name="ActorMy_goalTargetDecoration"
-        lineWidth="3"/>
+        name="ActorMy_goalTargetDecoration"/>
     <figures
         xsi:type="gmfgraph:PolylineDecoration"
-        name="GoalDependeeTargetDecoration"
-        lineWidth="3"/>
+        name="GoalDependeeTargetDecoration"/>
     <descriptors
         name="ActorMy_goalFigure">
       <actualFigure
           xsi:type="gmfgraph:PolylineConnection"
           name="ActorMy_goalFigure"
-          lineWidth="3"
-          targetDecoration="//@figures.0/@figures.0"/>
+          lineWidth="2"
+          targetDecoration="//@figures.0/@figures.0">
+        <foregroundColor
+            xsi:type="gmfgraph:ConstantColor"
+            value="black"/>
+        <backgroundColor
+            xsi:type="gmfgraph:ConstantColor"
+            value="black"/>
+      </actualFigure>
     </descriptors>
     <descriptors
         name="GoalDependeeFigure">
       <actualFigure
           xsi:type="gmfgraph:PolylineConnection"
           name="GoalDependeeFigure"
-          lineWidth="3"
-          targetDecoration="//@figures.0/@figures.1"/>
+          lineWidth="2"
+          targetDecoration="//@figures.0/@figures.1">
+        <foregroundColor
+            xsi:type="gmfgraph:ConstantColor"
+            value="black"/>
+        <backgroundColor
+            xsi:type="gmfgraph:ConstantColor"
+            value="black"/>
+      </actualFigure>
     </descriptors>
   </figures>
   <figures
@@ -37,7 +51,7 @@
       <actualFigure
           xsi:type="gmfgraph:Ellipse"
           name="ActorFigureCustom"
-          lineWidth="3">
+          lineWidth="2">
         <foregroundColor
             xsi:type="gmfgraph:RGBColor"/>
         <backgroundColor
@@ -68,7 +82,7 @@
       <actualFigure
           xsi:type="gmfgraph:RoundedRectangle"
           name="GoalFigureCustom"
-          lineWidth="3"
+          lineWidth="2"
           cornerWidth="15"
           cornerHeight="15">
         <layout

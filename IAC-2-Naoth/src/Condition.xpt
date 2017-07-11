@@ -1,0 +1,31 @@
+«IMPORT statechart»
+«EXTENSION JavaHelpers::NodeHelper»
+«EXTENSION JavaHelpers::TransExpr»
+
+«DEFINE Condition(String modelname) FOR statechart::Transition»
+	«IF HasCondition(TE)-»
+		«FILE TransitionName(modelname+source.label+target.label)+".h" transitions_outlet»
+#include "../ICondition.h"
+#include "../BlackBoard.h"
+// «name»
+class «ConditionName(modelname+source.label+target.label)» : public statechart_engine::ICondition
+{	
+public:
+	void UserInit () 
+	{
+
+	}
+	bool Eval() 
+	{
+		/* «getConditionOfExpression(TE)» */
+		
+«getNaothConditionExpression(TE)»
+ 	
+	
+    }
+};
+		«ENDFILE»
+	ICondition* «ConditionNameInst(modelname+source.label+target.label)» = new «ConditionName(modelname+source.label+target.label)»;
+	_conditions.push_back( «ConditionNameInst(modelname+source.label+target.label)» );
+	«ENDIF-»
+«ENDDEFINE»

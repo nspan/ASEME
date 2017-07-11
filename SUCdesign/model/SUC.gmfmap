@@ -8,26 +8,6 @@
     xmlns:gmftool="http://www.eclipse.org/gmf/2005/ToolDefinition">
   <nodes>
     <containmentFeature
-        href="SUC.ecore#//SUCmodel/roles"/>
-    <ownedChild>
-      <domainMetaElement
-          href="SUC.ecore#//Role"/>
-      <labelMappings
-          xsi:type="gmfmap:FeatureLabelMapping">
-        <diagramLabel
-            href="SUC.gmfgraph#RoleName"/>
-        <features
-            href="SUC.ecore#//Role/name"/>
-      </labelMappings>
-      <tool
-          xsi:type="gmftool:CreationTool"
-          href="SUC.gmftool#//@palette/@tools.0/@tools.3"/>
-      <diagramNode
-          href="SUC.gmfgraph#Role"/>
-    </ownedChild>
-  </nodes>
-  <nodes>
-    <containmentFeature
         href="SUC.ecore#//SUCmodel/usecases"/>
     <ownedChild>
       <domainMetaElement
@@ -39,13 +19,6 @@
         <features
             href="SUC.ecore#//UseCase/name"/>
       </labelMappings>
-      <labelMappings
-          xsi:type="gmfmap:FeatureLabelMapping">
-        <diagramLabel
-            href="SUC.gmfgraph#UseCaseSpecified_by"/>
-        <features
-            href="SUC.ecore#//UseCase/specified_by"/>
-      </labelMappings>
       <tool
           xsi:type="gmftool:CreationTool"
           href="SUC.gmftool#//@palette/@tools.0/@tools.0"/>
@@ -53,11 +26,35 @@
           href="SUC.gmfgraph#UseCase"/>
     </ownedChild>
   </nodes>
+  <nodes>
+    <containmentFeature
+        href="SUC.ecore#//SUCmodel/roles"/>
+    <ownedChild>
+      <domainMetaElement
+          href="SUC.ecore#//Role"/>
+      <labelMappings
+          xsi:type="gmfmap:FeatureLabelMapping">
+        <diagramLabel
+            href="SUC.gmfgraph#RoleName"/>
+        <features
+            href="SUC.ecore#//Role/name"/>
+      </labelMappings>
+      <labelMappings
+          xsi:type="gmfmap:FeatureLabelMapping"
+          readOnly="true">
+        <diagramLabel
+            href="SUC.gmfgraph#RoleType"/>
+        <features
+            href="SUC.ecore#//Role/type"/>
+      </labelMappings>
+      <tool
+          xsi:type="gmftool:CreationTool"
+          href="SUC.gmftool#//@palette/@tools.0/@tools.3"/>
+      <diagramNode
+          href="SUC.gmfgraph#Role"/>
+    </ownedChild>
+  </nodes>
   <links>
-    <labelMappings>
-      <diagramLabel
-          href="SUC.gmfgraph#IncludeLabel"/>
-    </labelMappings>
     <tool
         xsi:type="gmftool:CreationTool"
         href="SUC.gmftool#//@palette/@tools.0/@tools.2"/>

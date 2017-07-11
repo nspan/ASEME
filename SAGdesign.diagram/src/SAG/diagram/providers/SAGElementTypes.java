@@ -6,14 +6,12 @@ import java.util.Map;
 import java.util.Set;
 
 import org.eclipse.core.runtime.IAdaptable;
-import org.eclipse.emf.ecore.EClass;
-import org.eclipse.emf.ecore.EClassifier;
 import org.eclipse.emf.ecore.ENamedElement;
-import org.eclipse.emf.ecore.EStructuralFeature;
 import org.eclipse.gmf.runtime.emf.type.core.ElementTypeRegistry;
 import org.eclipse.gmf.runtime.emf.type.core.IElementType;
+import org.eclipse.gmf.tooling.runtime.providers.DiagramElementTypeImages;
+import org.eclipse.gmf.tooling.runtime.providers.DiagramElementTypes;
 import org.eclipse.jface.resource.ImageDescriptor;
-import org.eclipse.jface.resource.ImageRegistry;
 import org.eclipse.swt.graphics.Image;
 
 import SAG.SAGPackage;
@@ -30,153 +28,81 @@ import SAG.diagram.part.SAGDiagramEditorPlugin;
 public class SAGElementTypes {
 
 	/**
-	 * @generated
-	 */
+	* @generated
+	*/
 	private SAGElementTypes() {
 	}
 
 	/**
-	 * @generated
-	 */
+	* @generated
+	*/
 	private static Map<IElementType, ENamedElement> elements;
 
 	/**
-	 * @generated
-	 */
-	private static ImageRegistry imageRegistry;
+	* @generated
+	*/
+	private static DiagramElementTypeImages elementTypeImages = new DiagramElementTypeImages(
+			SAGDiagramEditorPlugin.getInstance().getItemProvidersAdapterFactory());
 
 	/**
-	 * @generated
-	 */
+	* @generated
+	*/
 	private static Set<IElementType> KNOWN_ELEMENT_TYPES;
 
 	/**
-	 * @generated
-	 */
+	* @generated
+	*/
 	public static final IElementType SAGmodel_1000 = getElementType("SAGdesign.diagram.SAGmodel_1000"); //$NON-NLS-1$
 	/**
-	 * @generated
-	 */
-	public static final IElementType Actor_2007 = getElementType("SAGdesign.diagram.Actor_2007"); //$NON-NLS-1$
+	* @generated
+	*/
+	public static final IElementType Actor_2001 = getElementType("SAGdesign.diagram.Actor_2001"); //$NON-NLS-1$
 	/**
-	 * @generated
-	 */
-	public static final IElementType Goal_2008 = getElementType("SAGdesign.diagram.Goal_2008"); //$NON-NLS-1$
+	* @generated
+	*/
+	public static final IElementType Goal_2002 = getElementType("SAGdesign.diagram.Goal_2002"); //$NON-NLS-1$
 	/**
-	 * @generated
-	 */
-	public static final IElementType ActorMy_goal_4011 = getElementType("SAGdesign.diagram.ActorMy_goal_4011"); //$NON-NLS-1$
+	* @generated
+	*/
+	public static final IElementType ActorMy_goal_4001 = getElementType("SAGdesign.diagram.ActorMy_goal_4001"); //$NON-NLS-1$
 	/**
-	 * @generated
-	 */
-	public static final IElementType GoalDependee_4013 = getElementType("SAGdesign.diagram.GoalDependee_4013"); //$NON-NLS-1$
+	* @generated
+	*/
+	public static final IElementType GoalDependee_4002 = getElementType("SAGdesign.diagram.GoalDependee_4002"); //$NON-NLS-1$
 
 	/**
-	 * @generated
-	 */
-	private static ImageRegistry getImageRegistry() {
-		if (imageRegistry == null) {
-			imageRegistry = new ImageRegistry();
-		}
-		return imageRegistry;
-	}
-
-	/**
-	 * @generated
-	 */
-	private static String getImageRegistryKey(ENamedElement element) {
-		return element.getName();
-	}
-
-	/**
-	 * @generated
-	 */
-	private static ImageDescriptor getProvidedImageDescriptor(
-			ENamedElement element) {
-		if (element instanceof EStructuralFeature) {
-			EStructuralFeature feature = ((EStructuralFeature) element);
-			EClass eContainingClass = feature.getEContainingClass();
-			EClassifier eType = feature.getEType();
-			if (eContainingClass != null && !eContainingClass.isAbstract()) {
-				element = eContainingClass;
-			} else if (eType instanceof EClass
-					&& !((EClass) eType).isAbstract()) {
-				element = eType;
-			}
-		}
-		if (element instanceof EClass) {
-			EClass eClass = (EClass) element;
-			if (!eClass.isAbstract()) {
-				return SAGDiagramEditorPlugin.getInstance()
-						.getItemImageDescriptor(
-								eClass.getEPackage().getEFactoryInstance()
-										.create(eClass));
-			}
-		}
-		// TODO : support structural features
-		return null;
-	}
-
-	/**
-	 * @generated
-	 */
+	* @generated
+	*/
 	public static ImageDescriptor getImageDescriptor(ENamedElement element) {
-		String key = getImageRegistryKey(element);
-		ImageDescriptor imageDescriptor = getImageRegistry().getDescriptor(key);
-		if (imageDescriptor == null) {
-			imageDescriptor = getProvidedImageDescriptor(element);
-			if (imageDescriptor == null) {
-				imageDescriptor = ImageDescriptor.getMissingImageDescriptor();
-			}
-			getImageRegistry().put(key, imageDescriptor);
-		}
-		return imageDescriptor;
+		return elementTypeImages.getImageDescriptor(element);
 	}
 
 	/**
-	 * @generated
-	 */
+	* @generated
+	*/
 	public static Image getImage(ENamedElement element) {
-		String key = getImageRegistryKey(element);
-		Image image = getImageRegistry().get(key);
-		if (image == null) {
-			ImageDescriptor imageDescriptor = getProvidedImageDescriptor(element);
-			if (imageDescriptor == null) {
-				imageDescriptor = ImageDescriptor.getMissingImageDescriptor();
-			}
-			getImageRegistry().put(key, imageDescriptor);
-			image = getImageRegistry().get(key);
-		}
-		return image;
+		return elementTypeImages.getImage(element);
 	}
 
 	/**
-	 * @generated
-	 */
+	* @generated
+	*/
 	public static ImageDescriptor getImageDescriptor(IAdaptable hint) {
-		ENamedElement element = getElement(hint);
-		if (element == null) {
-			return null;
-		}
-		return getImageDescriptor(element);
+		return getImageDescriptor(getElement(hint));
 	}
 
 	/**
-	 * @generated
-	 */
+	* @generated
+	*/
 	public static Image getImage(IAdaptable hint) {
-		ENamedElement element = getElement(hint);
-		if (element == null) {
-			return null;
-		}
-		return getImage(element);
+		return getImage(getElement(hint));
 	}
 
 	/**
-	 * Returns 'type' of the ecore object associated with the hint.
-	 * 
-	 * @generated
-	 */
+	* Returns 'type' of the ecore object associated with the hint.
+	* 
+	* @generated
+	*/
 	public static ENamedElement getElement(IAdaptable hint) {
 		Object type = hint.getAdapter(IElementType.class);
 		if (elements == null) {
@@ -184,58 +110,89 @@ public class SAGElementTypes {
 
 			elements.put(SAGmodel_1000, SAGPackage.eINSTANCE.getSAGmodel());
 
-			elements.put(Actor_2007, SAGPackage.eINSTANCE.getActor());
+			elements.put(Actor_2001, SAGPackage.eINSTANCE.getActor());
 
-			elements.put(Goal_2008, SAGPackage.eINSTANCE.getGoal());
+			elements.put(Goal_2002, SAGPackage.eINSTANCE.getGoal());
 
-			elements.put(ActorMy_goal_4011,
-					SAGPackage.eINSTANCE.getActor_My_goal());
+			elements.put(ActorMy_goal_4001, SAGPackage.eINSTANCE.getActor_My_goal());
 
-			elements.put(GoalDependee_4013,
-					SAGPackage.eINSTANCE.getGoal_Dependee());
+			elements.put(GoalDependee_4002, SAGPackage.eINSTANCE.getGoal_Dependee());
 		}
 		return (ENamedElement) elements.get(type);
 	}
 
 	/**
-	 * @generated
-	 */
+	* @generated
+	*/
 	private static IElementType getElementType(String id) {
 		return ElementTypeRegistry.getInstance().getType(id);
 	}
 
 	/**
-	 * @generated
-	 */
+	* @generated
+	*/
 	public static boolean isKnownElementType(IElementType elementType) {
 		if (KNOWN_ELEMENT_TYPES == null) {
 			KNOWN_ELEMENT_TYPES = new HashSet<IElementType>();
 			KNOWN_ELEMENT_TYPES.add(SAGmodel_1000);
-			KNOWN_ELEMENT_TYPES.add(Actor_2007);
-			KNOWN_ELEMENT_TYPES.add(Goal_2008);
-			KNOWN_ELEMENT_TYPES.add(ActorMy_goal_4011);
-			KNOWN_ELEMENT_TYPES.add(GoalDependee_4013);
+			KNOWN_ELEMENT_TYPES.add(Actor_2001);
+			KNOWN_ELEMENT_TYPES.add(Goal_2002);
+			KNOWN_ELEMENT_TYPES.add(ActorMy_goal_4001);
+			KNOWN_ELEMENT_TYPES.add(GoalDependee_4002);
 		}
 		return KNOWN_ELEMENT_TYPES.contains(elementType);
 	}
 
 	/**
-	 * @generated
-	 */
+	* @generated
+	*/
 	public static IElementType getElementType(int visualID) {
 		switch (visualID) {
 		case SAGmodelEditPart.VISUAL_ID:
 			return SAGmodel_1000;
 		case ActorEditPart.VISUAL_ID:
-			return Actor_2007;
+			return Actor_2001;
 		case GoalEditPart.VISUAL_ID:
-			return Goal_2008;
+			return Goal_2002;
 		case ActorMy_goalEditPart.VISUAL_ID:
-			return ActorMy_goal_4011;
+			return ActorMy_goal_4001;
 		case GoalDependeeEditPart.VISUAL_ID:
-			return GoalDependee_4013;
+			return GoalDependee_4002;
 		}
 		return null;
 	}
+
+	/**
+	* @generated
+	*/
+	public static final DiagramElementTypes TYPED_INSTANCE = new DiagramElementTypes(elementTypeImages) {
+
+		/**
+		* @generated
+		*/
+		@Override
+
+		public boolean isKnownElementType(IElementType elementType) {
+			return SAG.diagram.providers.SAGElementTypes.isKnownElementType(elementType);
+		}
+
+		/**
+		* @generated
+		*/
+		@Override
+
+		public IElementType getElementTypeForVisualId(int visualID) {
+			return SAG.diagram.providers.SAGElementTypes.getElementType(visualID);
+		}
+
+		/**
+		* @generated
+		*/
+		@Override
+
+		public ENamedElement getDefiningNamedElement(IAdaptable elementTypeAdapter) {
+			return SAG.diagram.providers.SAGElementTypes.getElement(elementTypeAdapter);
+		}
+	};
 
 }

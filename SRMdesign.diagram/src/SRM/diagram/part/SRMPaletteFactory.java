@@ -1,15 +1,14 @@
+
 package SRM.diagram.part;
 
-import java.util.ArrayList;
-import java.util.List;
+import java.util.Collections;
 
-import org.eclipse.gef.Tool;
 import org.eclipse.gef.palette.PaletteContainer;
 import org.eclipse.gef.palette.PaletteGroup;
 import org.eclipse.gef.palette.PaletteRoot;
 import org.eclipse.gef.palette.ToolEntry;
-import org.eclipse.gmf.runtime.diagram.ui.tools.UnspecifiedTypeConnectionTool;
-import org.eclipse.gmf.runtime.diagram.ui.tools.UnspecifiedTypeCreationTool;
+import org.eclipse.gmf.tooling.runtime.part.DefaultLinkToolEntry;
+import org.eclipse.gmf.tooling.runtime.part.DefaultNodeToolEntry;
 
 import SRM.diagram.providers.SRMElementTypes;
 
@@ -19,180 +18,136 @@ import SRM.diagram.providers.SRMElementTypes;
 public class SRMPaletteFactory {
 
 	/**
-	 * @generated
-	 */
+	* @generated
+	*/
 	public void fillPalette(PaletteRoot paletteRoot) {
 		paletteRoot.add(createSRM1Group());
 	}
 
 	/**
-	 * Creates "SRM" palette tool group
-	 * @generated
-	 */
+	* Creates "SRM" palette tool group
+	* @generated NOT
+	*/
 	private PaletteContainer createSRM1Group() {
-		PaletteGroup paletteContainer = new PaletteGroup(
-				Messages.SRM1Group_title);
+		PaletteGroup paletteContainer = new PaletteGroup(Messages.SRM1Group_title);
 		paletteContainer.setId("createSRM1Group"); //$NON-NLS-1$
+		paletteContainer.setDescription(Messages.SRM1Group_desc);
 		paletteContainer.add(createRole1CreationTool());
-		paletteContainer.add(createRoleActivities2CreationTool());
-		paletteContainer.add(createRoleCapabilities3CreationTool());
-		paletteContainer.add(createActivity4CreationTool());
-		paletteContainer.add(createCapability5CreationTool());
-		paletteContainer.add(createCapabilityActivities6CreationTool());
+		paletteContainer.add(createCapability4CreationTool());
+		paletteContainer.add(createActivity3CreationTool());
+		paletteContainer.add(createFunctionality6CreationTool());
+		paletteContainer.add(createRoleCapabilities2CreationTool());
+		paletteContainer.add(createRoleActivities8CreationTool());
+		paletteContainer.add(createCapabilityCapability_activities5CreationTool());
+		paletteContainer.add(createFunctionalityActivities7CreationTool());
+		
 		return paletteContainer;
 	}
 
 	/**
-	 * @generated
-	 */
+	* @generated
+	*/
 	private ToolEntry createRole1CreationTool() {
-		List/*<IElementType>*/types = new ArrayList/*<IElementType>*/(1);
-		types.add(SRMElementTypes.Role_2005);
-		NodeToolEntry entry = new NodeToolEntry(
-				Messages.Role1CreationTool_title,
-				Messages.Role1CreationTool_desc, types);
+		DefaultNodeToolEntry entry = new DefaultNodeToolEntry(Messages.Role1CreationTool_title,
+				Messages.Role1CreationTool_desc, Collections.singletonList(SRMElementTypes.Role_2003));
 		entry.setId("createRole1CreationTool"); //$NON-NLS-1$
-		entry.setSmallIcon(SRMElementTypes
-				.getImageDescriptor(SRMElementTypes.Role_2005));
-		entry.setLargeIcon(entry.getSmallIcon());
+		entry.setSmallIcon(SRMDiagramEditorPlugin.findImageDescriptor("/SRMdesign.edit/icons/full/obj16/Role.gif")); //$NON-NLS-1$
+		entry.setLargeIcon(SRMDiagramEditorPlugin.findImageDescriptor("/SRMdesign.edit/icons/full/obj32/Role.gif")); //$NON-NLS-1$
 		return entry;
 	}
 
 	/**
-	 * @generated
-	 */
-	private ToolEntry createRoleActivities2CreationTool() {
-		List/*<IElementType>*/types = new ArrayList/*<IElementType>*/(1);
-		types.add(SRMElementTypes.RoleActivities_4005);
-		LinkToolEntry entry = new LinkToolEntry(
-				Messages.RoleActivities2CreationTool_title,
-				Messages.RoleActivities2CreationTool_desc, types);
-		entry.setId("createRoleActivities2CreationTool"); //$NON-NLS-1$
-		entry.setSmallIcon(SRMElementTypes
-				.getImageDescriptor(SRMElementTypes.RoleActivities_4005));
-		entry.setLargeIcon(entry.getSmallIcon());
+	* @generated
+	*/
+	private ToolEntry createRoleCapabilities2CreationTool() {
+		DefaultLinkToolEntry entry = new DefaultLinkToolEntry(Messages.RoleCapabilities2CreationTool_title,
+				Messages.RoleCapabilities2CreationTool_desc,
+				Collections.singletonList(SRMElementTypes.RoleCapabilities_4004));
+		entry.setId("createRoleCapabilities2CreationTool"); //$NON-NLS-1$
+		entry.setSmallIcon(SRMDiagramEditorPlugin.findImageDescriptor("/SRMdesign.edit/icons/full/obj16/Edge.gif")); //$NON-NLS-1$
+		entry.setLargeIcon(SRMDiagramEditorPlugin.findImageDescriptor("/SRMdesign.edit/icons/full/obj32/Edge.gif")); //$NON-NLS-1$
 		return entry;
 	}
 
 	/**
-	 * @generated
-	 */
-	private ToolEntry createRoleCapabilities3CreationTool() {
-		List/*<IElementType>*/types = new ArrayList/*<IElementType>*/(1);
-		types.add(SRMElementTypes.RoleCapabilities_4004);
-		LinkToolEntry entry = new LinkToolEntry(
-				Messages.RoleCapabilities3CreationTool_title,
-				Messages.RoleCapabilities3CreationTool_desc, types);
-		entry.setId("createRoleCapabilities3CreationTool"); //$NON-NLS-1$
-		entry.setSmallIcon(SRMElementTypes
-				.getImageDescriptor(SRMElementTypes.RoleCapabilities_4004));
-		entry.setLargeIcon(entry.getSmallIcon());
+	* @generated
+	*/
+	private ToolEntry createActivity3CreationTool() {
+		DefaultNodeToolEntry entry = new DefaultNodeToolEntry(Messages.Activity3CreationTool_title,
+				Messages.Activity3CreationTool_desc, Collections.singletonList(SRMElementTypes.Activity_2004));
+		entry.setId("createActivity3CreationTool"); //$NON-NLS-1$
+		entry.setSmallIcon(SRMDiagramEditorPlugin.findImageDescriptor("/SRMdesign.edit/icons/full/obj16/Activity.gif")); //$NON-NLS-1$
+		entry.setLargeIcon(SRMDiagramEditorPlugin.findImageDescriptor("/SRMdesign.edit/icons/full/obj32/Activity.gif")); //$NON-NLS-1$
 		return entry;
 	}
 
 	/**
-	 * @generated
-	 */
-	private ToolEntry createActivity4CreationTool() {
-		List/*<IElementType>*/types = new ArrayList/*<IElementType>*/(1);
-		types.add(SRMElementTypes.Activity_2006);
-		NodeToolEntry entry = new NodeToolEntry(
-				Messages.Activity4CreationTool_title,
-				Messages.Activity4CreationTool_desc, types);
-		entry.setId("createActivity4CreationTool"); //$NON-NLS-1$
-		entry.setSmallIcon(SRMElementTypes
-				.getImageDescriptor(SRMElementTypes.Activity_2006));
-		entry.setLargeIcon(entry.getSmallIcon());
+	* @generated
+	*/
+	private ToolEntry createCapability4CreationTool() {
+		DefaultNodeToolEntry entry = new DefaultNodeToolEntry(Messages.Capability4CreationTool_title,
+				Messages.Capability4CreationTool_desc, Collections.singletonList(SRMElementTypes.Capability_2002));
+		entry.setId("createCapability4CreationTool"); //$NON-NLS-1$
+		entry.setSmallIcon(
+				SRMDiagramEditorPlugin.findImageDescriptor("/SRMdesign.edit/icons/full/obj16/Capability.gif")); //$NON-NLS-1$
+		entry.setLargeIcon(
+				SRMDiagramEditorPlugin.findImageDescriptor("/SRMdesign.edit/icons/full/obj32/Capability.gif")); //$NON-NLS-1$
 		return entry;
 	}
 
 	/**
-	 * @generated
-	 */
-	private ToolEntry createCapability5CreationTool() {
-		List/*<IElementType>*/types = new ArrayList/*<IElementType>*/(1);
-		types.add(SRMElementTypes.Capability_2004);
-		NodeToolEntry entry = new NodeToolEntry(
-				Messages.Capability5CreationTool_title,
-				Messages.Capability5CreationTool_desc, types);
-		entry.setId("createCapability5CreationTool"); //$NON-NLS-1$
-		entry.setSmallIcon(SRMElementTypes
-				.getImageDescriptor(SRMElementTypes.Capability_2004));
-		entry.setLargeIcon(entry.getSmallIcon());
+	* @generated
+	*/
+	private ToolEntry createCapabilityCapability_activities5CreationTool() {
+		DefaultLinkToolEntry entry = new DefaultLinkToolEntry(
+				Messages.CapabilityCapability_activities5CreationTool_title,
+				Messages.CapabilityCapability_activities5CreationTool_desc,
+				Collections.singletonList(SRMElementTypes.CapabilityCapability_activities_4002));
+		entry.setId("createCapabilityCapability_activities5CreationTool"); //$NON-NLS-1$
+		entry.setSmallIcon(SRMDiagramEditorPlugin.findImageDescriptor("/SRMdesign.edit/icons/full/obj16/Edge.gif")); //$NON-NLS-1$
+		entry.setLargeIcon(SRMDiagramEditorPlugin.findImageDescriptor("/SRMdesign.edit/icons/full/obj32/Edge.gif")); //$NON-NLS-1$
 		return entry;
 	}
 
 	/**
-	 * @generated
-	 */
-	private ToolEntry createCapabilityActivities6CreationTool() {
-		List/*<IElementType>*/types = new ArrayList/*<IElementType>*/(1);
-		types.add(SRMElementTypes.CapabilityActivities_4006);
-		LinkToolEntry entry = new LinkToolEntry(
-				Messages.CapabilityActivities6CreationTool_title,
-				Messages.CapabilityActivities6CreationTool_desc, types);
-		entry.setId("createCapabilityActivities6CreationTool"); //$NON-NLS-1$
-		entry.setSmallIcon(SRMElementTypes
-				.getImageDescriptor(SRMElementTypes.CapabilityActivities_4006));
-		entry.setLargeIcon(entry.getSmallIcon());
+	* @generated
+	*/
+	private ToolEntry createFunctionality6CreationTool() {
+		DefaultNodeToolEntry entry = new DefaultNodeToolEntry(Messages.Functionality6CreationTool_title,
+				Messages.Functionality6CreationTool_desc,
+				Collections.singletonList(SRMElementTypes.Functionality_2001));
+		entry.setId("createFunctionality6CreationTool"); //$NON-NLS-1$
+		entry.setSmallIcon(
+				SRMDiagramEditorPlugin.findImageDescriptor("/SRMdesign.edit/icons/full/obj16/Functionality.gif")); //$NON-NLS-1$
+		entry.setLargeIcon(
+				SRMDiagramEditorPlugin.findImageDescriptor("/SRMdesign.edit/icons/full/obj32/Functionality.gif")); //$NON-NLS-1$
 		return entry;
 	}
 
 	/**
-	 * @generated
-	 */
-	private static class NodeToolEntry extends ToolEntry {
-
-		/**
-		 * @generated
-		 */
-		private final List elementTypes;
-
-		/**
-		 * @generated
-		 */
-		private NodeToolEntry(String title, String description,
-				List elementTypes) {
-			super(title, description, null, null);
-			this.elementTypes = elementTypes;
-		}
-
-		/**
-		 * @generated
-		 */
-		public Tool createTool() {
-			Tool tool = new UnspecifiedTypeCreationTool(elementTypes);
-			tool.setProperties(getToolProperties());
-			return tool;
-		}
+	* @generated
+	*/
+	private ToolEntry createFunctionalityActivities7CreationTool() {
+		DefaultLinkToolEntry entry = new DefaultLinkToolEntry(Messages.FunctionalityActivities7CreationTool_title,
+				Messages.FunctionalityActivities7CreationTool_desc,
+				Collections.singletonList(SRMElementTypes.FunctionalityActivities_4003));
+		entry.setId("createFunctionalityActivities7CreationTool"); //$NON-NLS-1$
+		entry.setSmallIcon(SRMDiagramEditorPlugin.findImageDescriptor("/SRMdesign.edit/icons/full/obj16/Edge.gif")); //$NON-NLS-1$
+		entry.setLargeIcon(SRMDiagramEditorPlugin.findImageDescriptor("/SRMdesign.edit/icons/full/obj32/Edge.gif")); //$NON-NLS-1$
+		return entry;
 	}
 
 	/**
-	 * @generated
-	 */
-	private static class LinkToolEntry extends ToolEntry {
-
-		/**
-		 * @generated
-		 */
-		private final List relationshipTypes;
-
-		/**
-		 * @generated
-		 */
-		private LinkToolEntry(String title, String description,
-				List relationshipTypes) {
-			super(title, description, null, null);
-			this.relationshipTypes = relationshipTypes;
-		}
-
-		/**
-		 * @generated
-		 */
-		public Tool createTool() {
-			Tool tool = new UnspecifiedTypeConnectionTool(relationshipTypes);
-			tool.setProperties(getToolProperties());
-			return tool;
-		}
+	* @generated
+	*/
+	private ToolEntry createRoleActivities8CreationTool() {
+		DefaultLinkToolEntry entry = new DefaultLinkToolEntry(Messages.RoleActivities8CreationTool_title,
+				Messages.RoleActivities8CreationTool_desc,
+				Collections.singletonList(SRMElementTypes.RoleRole_activities_4001));
+		entry.setId("createRoleActivities8CreationTool"); //$NON-NLS-1$
+		entry.setSmallIcon(SRMDiagramEditorPlugin.findImageDescriptor("/SRMdesign.edit/icons/full/obj16/Edge.gif")); //$NON-NLS-1$
+		entry.setLargeIcon(SRMDiagramEditorPlugin.findImageDescriptor("/SRMdesign.edit/icons/full/obj32/Edge.gif")); //$NON-NLS-1$
+		return entry;
 	}
+
 }

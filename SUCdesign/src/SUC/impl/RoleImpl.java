@@ -18,7 +18,7 @@ import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.InternalEObject;
 
 import org.eclipse.emf.ecore.impl.ENotificationImpl;
-import org.eclipse.emf.ecore.impl.EObjectImpl;
+import org.eclipse.emf.ecore.impl.MinimalEObjectImpl;
 
 import org.eclipse.emf.ecore.util.EObjectWithInverseResolvingEList;
 import org.eclipse.emf.ecore.util.InternalEList;
@@ -29,16 +29,16 @@ import org.eclipse.emf.ecore.util.InternalEList;
  * <!-- end-user-doc -->
  * <p>
  * The following features are implemented:
+ * </p>
  * <ul>
  *   <li>{@link SUC.impl.RoleImpl#getParticipates_in <em>Participates in</em>}</li>
  *   <li>{@link SUC.impl.RoleImpl#getName <em>Name</em>}</li>
  *   <li>{@link SUC.impl.RoleImpl#getType <em>Type</em>}</li>
  * </ul>
- * </p>
  *
  * @generated
  */
-public class RoleImpl extends EObjectImpl implements Role {
+public class RoleImpl extends MinimalEObjectImpl.Container implements Role {
 	/**
 	 * The cached value of the '{@link #getParticipates_in() <em>Participates in</em>}' reference list.
 	 * <!-- begin-user-doc -->
@@ -77,7 +77,7 @@ public class RoleImpl extends EObjectImpl implements Role {
 	 * @generated
 	 * @ordered
 	 */
-	protected static final RoleType TYPE_EDEFAULT = RoleType.SYSTEM;
+	protected static final RoleType TYPE_EDEFAULT = RoleType.ABSTRACT;
 
 	/**
 	 * The cached value of the '{@link #getType() <em>Type</em>}' attribute.

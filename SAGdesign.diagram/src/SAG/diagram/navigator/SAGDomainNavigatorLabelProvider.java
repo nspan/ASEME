@@ -15,71 +15,68 @@ import SAG.diagram.part.SAGDiagramEditorPlugin;
 public class SAGDomainNavigatorLabelProvider implements ICommonLabelProvider {
 
 	/**
-	 * @generated
-	 */
+	* @generated
+	*/
 	private AdapterFactoryLabelProvider myAdapterFactoryLabelProvider = new AdapterFactoryLabelProvider(
-			SAGDiagramEditorPlugin.getInstance()
-					.getItemProvidersAdapterFactory());
+			SAGDiagramEditorPlugin.getInstance().getItemProvidersAdapterFactory());
 
 	/**
-	 * @generated
-	 */
+	* @generated
+	*/
 	public void init(ICommonContentExtensionSite aConfig) {
 	}
 
 	/**
-	 * @generated
-	 */
+	* @generated
+	*/
 	public Image getImage(Object element) {
 		if (element instanceof SAGDomainNavigatorItem) {
-			return myAdapterFactoryLabelProvider
-					.getImage(((SAGDomainNavigatorItem) element).getEObject());
+			return myAdapterFactoryLabelProvider.getImage(((SAGDomainNavigatorItem) element).getEObject());
 		}
 		return null;
 	}
 
 	/**
-	 * @generated
-	 */
+	* @generated
+	*/
 	public String getText(Object element) {
 		if (element instanceof SAGDomainNavigatorItem) {
-			return myAdapterFactoryLabelProvider
-					.getText(((SAGDomainNavigatorItem) element).getEObject());
+			return myAdapterFactoryLabelProvider.getText(((SAGDomainNavigatorItem) element).getEObject());
 		}
 		return null;
 	}
 
 	/**
-	 * @generated
-	 */
+	* @generated
+	*/
 	public void addListener(ILabelProviderListener listener) {
 		myAdapterFactoryLabelProvider.addListener(listener);
 	}
 
 	/**
-	 * @generated
-	 */
+	* @generated
+	*/
 	public void dispose() {
 		myAdapterFactoryLabelProvider.dispose();
 	}
 
 	/**
-	 * @generated
-	 */
+	* @generated
+	*/
 	public boolean isLabelProperty(Object element, String property) {
 		return myAdapterFactoryLabelProvider.isLabelProperty(element, property);
 	}
 
 	/**
-	 * @generated
-	 */
+	* @generated
+	*/
 	public void removeListener(ILabelProviderListener listener) {
 		myAdapterFactoryLabelProvider.removeListener(listener);
 	}
 
 	/**
-	 * @generated
-	 */
+	* @generated
+	*/
 	public void restoreState(IMemento aMemento) {
 	}
 
@@ -90,8 +87,8 @@ public class SAGDomainNavigatorLabelProvider implements ICommonLabelProvider {
 	}
 
 	/**
-	 * @generated
-	 */
+	* @generated
+	*/
 	public String getDescription(Object anElement) {
 		return null;
 	}

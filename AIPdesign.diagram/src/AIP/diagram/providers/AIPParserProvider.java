@@ -25,131 +25,123 @@ import AIP.diagram.part.AIPVisualIDRegistry;
 /**
  * @generated
  */
-public class AIPParserProvider extends AbstractProvider implements
-		IParserProvider {
+public class AIPParserProvider extends AbstractProvider implements IParserProvider {
 
 	/**
-	 * @generated
-	 */
-	private IParser participantName_5006Parser;
+	* @generated
+	*/
+	private IParser protocolName_5001Parser;
 
 	/**
-	 * @generated
-	 */
-	private IParser getParticipantName_5006Parser() {
-		if (participantName_5006Parser == null) {
-			EAttribute[] features = new EAttribute[] { AIPPackage.eINSTANCE
-					.getParticipant_Name() };
+	* @generated
+	*/
+	private IParser getProtocolName_5001Parser() {
+		if (protocolName_5001Parser == null) {
+			EAttribute[] features = new EAttribute[] { AIPPackage.eINSTANCE.getProtocol_Name() };
 			MessageFormatParser parser = new MessageFormatParser(features);
-			participantName_5006Parser = parser;
+			protocolName_5001Parser = parser;
 		}
-		return participantName_5006Parser;
+		return protocolName_5001Parser;
 	}
 
 	/**
-	 * @generated
-	 */
-	private IParser participantEngaging_rules_5007Parser;
+	* @generated
+	*/
+	private IParser participantName_5002Parser;
 
 	/**
-	 * @generated
-	 */
-	private IParser getParticipantEngaging_rules_5007Parser() {
-		if (participantEngaging_rules_5007Parser == null) {
-			EAttribute[] features = new EAttribute[] { AIPPackage.eINSTANCE
-					.getParticipant_Engaging_rules() };
+	* @generated
+	*/
+	private IParser getParticipantName_5002Parser() {
+		if (participantName_5002Parser == null) {
+			EAttribute[] features = new EAttribute[] { AIPPackage.eINSTANCE.getParticipant_Name() };
 			MessageFormatParser parser = new MessageFormatParser(features);
-			participantEngaging_rules_5007Parser = parser;
+			participantName_5002Parser = parser;
 		}
-		return participantEngaging_rules_5007Parser;
+		return participantName_5002Parser;
 	}
 
 	/**
-	 * @generated
-	 */
-	private IParser participantOutcomes_5008Parser;
+	* @generated
+	*/
+	private IParser participantLiveness_5003Parser;
 
 	/**
-	 * @generated
-	 */
-	private IParser getParticipantOutcomes_5008Parser() {
-		if (participantOutcomes_5008Parser == null) {
-			EAttribute[] features = new EAttribute[] { AIPPackage.eINSTANCE
-					.getParticipant_Outcomes() };
+	* @generated
+	*/
+	private IParser getParticipantLiveness_5003Parser() {
+		if (participantLiveness_5003Parser == null) {
+			EAttribute[] features = new EAttribute[] { AIPPackage.eINSTANCE.getParticipant_Liveness() };
 			MessageFormatParser parser = new MessageFormatParser(features);
-			participantOutcomes_5008Parser = parser;
+			participantLiveness_5003Parser = parser;
 		}
-		return participantOutcomes_5008Parser;
+		return participantLiveness_5003Parser;
 	}
 
 	/**
-	 * @generated
-	 */
-	private IParser participantLiveness_5009Parser;
+	* @generated
+	*/
+	private IParser participantEngaging_rules_5004Parser;
 
 	/**
-	 * @generated
-	 */
-	private IParser getParticipantLiveness_5009Parser() {
-		if (participantLiveness_5009Parser == null) {
-			EAttribute[] features = new EAttribute[] { AIPPackage.eINSTANCE
-					.getParticipant_Liveness() };
+	* @generated
+	*/
+	private IParser getParticipantEngaging_rules_5004Parser() {
+		if (participantEngaging_rules_5004Parser == null) {
+			EAttribute[] features = new EAttribute[] { AIPPackage.eINSTANCE.getParticipant_Engaging_rules() };
 			MessageFormatParser parser = new MessageFormatParser(features);
-			participantLiveness_5009Parser = parser;
+			participantEngaging_rules_5004Parser = parser;
 		}
-		return participantLiveness_5009Parser;
+		return participantEngaging_rules_5004Parser;
 	}
 
 	/**
-	 * @generated
-	 */
-	private IParser protocolName_5010Parser;
+	* @generated
+	*/
+	private IParser participantOutcomes_5005Parser;
 
 	/**
-	 * @generated
-	 */
-	private IParser getProtocolName_5010Parser() {
-		if (protocolName_5010Parser == null) {
-			EAttribute[] features = new EAttribute[] { AIPPackage.eINSTANCE
-					.getProtocol_Name() };
+	* @generated
+	*/
+	private IParser getParticipantOutcomes_5005Parser() {
+		if (participantOutcomes_5005Parser == null) {
+			EAttribute[] features = new EAttribute[] { AIPPackage.eINSTANCE.getParticipant_Outcomes() };
 			MessageFormatParser parser = new MessageFormatParser(features);
-			protocolName_5010Parser = parser;
+			participantOutcomes_5005Parser = parser;
 		}
-		return protocolName_5010Parser;
+		return participantOutcomes_5005Parser;
 	}
 
 	/**
-	 * @generated
-	 */
+	* @generated
+	*/
 	protected IParser getParser(int visualID) {
 		switch (visualID) {
-		case ParticipantNameEditPart.VISUAL_ID:
-			return getParticipantName_5006Parser();
-		case ParticipantEngaging_rulesEditPart.VISUAL_ID:
-			return getParticipantEngaging_rules_5007Parser();
-		case ParticipantOutcomesEditPart.VISUAL_ID:
-			return getParticipantOutcomes_5008Parser();
-		case ParticipantLivenessEditPart.VISUAL_ID:
-			return getParticipantLiveness_5009Parser();
 		case ProtocolNameEditPart.VISUAL_ID:
-			return getProtocolName_5010Parser();
+			return getProtocolName_5001Parser();
+		case ParticipantNameEditPart.VISUAL_ID:
+			return getParticipantName_5002Parser();
+		case ParticipantLivenessEditPart.VISUAL_ID:
+			return getParticipantLiveness_5003Parser();
+		case ParticipantEngaging_rulesEditPart.VISUAL_ID:
+			return getParticipantEngaging_rules_5004Parser();
+		case ParticipantOutcomesEditPart.VISUAL_ID:
+			return getParticipantOutcomes_5005Parser();
 		}
 		return null;
 	}
 
 	/**
-	 * Utility method that consults ParserService
-	 * @generated
-	 */
-	public static IParser getParser(IElementType type, EObject object,
-			String parserHint) {
-		return ParserService.getInstance().getParser(
-				new HintAdapter(type, object, parserHint));
+	* Utility method that consults ParserService
+	* @generated
+	*/
+	public static IParser getParser(IElementType type, EObject object, String parserHint) {
+		return ParserService.getInstance().getParser(new HintAdapter(type, object, parserHint));
 	}
 
 	/**
-	 * @generated
-	 */
+	* @generated
+	*/
 	public IParser getParser(IAdaptable hint) {
 		String vid = (String) hint.getAdapter(String.class);
 		if (vid != null) {
@@ -163,8 +155,8 @@ public class AIPParserProvider extends AbstractProvider implements
 	}
 
 	/**
-	 * @generated
-	 */
+	* @generated
+	*/
 	public boolean provides(IOperation operation) {
 		if (operation instanceof GetParserOperation) {
 			IAdaptable hint = ((GetParserOperation) operation).getHint();
@@ -177,18 +169,18 @@ public class AIPParserProvider extends AbstractProvider implements
 	}
 
 	/**
-	 * @generated
-	 */
+	* @generated
+	*/
 	private static class HintAdapter extends ParserHintAdapter {
 
 		/**
-		 * @generated
-		 */
+		* @generated
+		*/
 		private final IElementType elementType;
 
 		/**
-		 * @generated
-		 */
+		* @generated
+		*/
 		public HintAdapter(IElementType type, EObject object, String parserHint) {
 			super(object, parserHint);
 			assert type != null;
@@ -196,8 +188,8 @@ public class AIPParserProvider extends AbstractProvider implements
 		}
 
 		/**
-		 * @generated
-		 */
+		* @generated
+		*/
 		public Object getAdapter(Class adapter) {
 			if (IElementType.class.equals(adapter)) {
 				return elementType;

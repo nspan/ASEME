@@ -10,10 +10,9 @@ import SRM.diagram.part.SRMDiagramEditorPlugin;
 public class DiagramPrintingPreferencePage extends PrintingPreferencePage {
 
 	/**
-	 * @generated
-	 */
+	* @generated
+	*/
 	public DiagramPrintingPreferencePage() {
-		setPreferenceStore(SRMDiagramEditorPlugin.getInstance()
-				.getPreferenceStore());
+		setPreferenceStore(SRMDiagramEditorPlugin.getInstance().getPreferenceStore());
 	}
 }

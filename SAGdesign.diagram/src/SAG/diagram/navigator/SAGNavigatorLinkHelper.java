@@ -30,32 +30,30 @@ import SAG.diagram.part.SAGDiagramEditorPlugin;
 public class SAGNavigatorLinkHelper implements ILinkHelper {
 
 	/**
-	 * @generated
-	 */
+	* @generated
+	*/
 	private static IEditorInput getEditorInput(Diagram diagram) {
 		Resource diagramResource = diagram.eResource();
 		for (EObject nextEObject : diagramResource.getContents()) {
 			if (nextEObject == diagram) {
-				return new FileEditorInput(
-						WorkspaceSynchronizer.getFile(diagramResource));
+				return new FileEditorInput(WorkspaceSynchronizer.getFile(diagramResource));
 			}
 			if (nextEObject instanceof Diagram) {
 				break;
 			}
 		}
 		URI uri = EcoreUtil.getURI(diagram);
-		String editorName = uri.lastSegment() + '#'
-				+ diagram.eResource().getContents().indexOf(diagram);
+		String editorName = uri.lastSegment() + '#' + diagram.eResource().getContents().indexOf(diagram);
 		IEditorInput editorInput = new URIEditorInput(uri, editorName);
 		return editorInput;
 	}
 
 	/**
-	 * @generated
-	 */
+	* @generated
+	*/
 	public IStructuredSelection findSelection(IEditorInput anInput) {
-		IDiagramDocument document = SAGDiagramEditorPlugin.getInstance()
-				.getDocumentProvider().getDiagramDocument(anInput);
+		IDiagramDocument document = SAGDiagramEditorPlugin.getInstance().getDocumentProvider()
+				.getDiagramDocument(anInput);
 		if (document == null) {
 			return StructuredSelection.EMPTY;
 		}
@@ -72,10 +70,9 @@ public class SAGNavigatorLinkHelper implements ILinkHelper {
 	}
 
 	/**
-	 * @generated
-	 */
-	public void activateEditor(IWorkbenchPage aPage,
-			IStructuredSelection aSelection) {
+	* @generated
+	*/
+	public void activateEditor(IWorkbenchPage aPage, IStructuredSelection aSelection) {
 		if (aSelection == null || aSelection.isEmpty()) {
 			return;
 		}
@@ -83,17 +80,14 @@ public class SAGNavigatorLinkHelper implements ILinkHelper {
 			return;
 		}
 
-		SAGAbstractNavigatorItem abstractNavigatorItem = (SAGAbstractNavigatorItem) aSelection
-				.getFirstElement();
+		SAGAbstractNavigatorItem abstractNavigatorItem = (SAGAbstractNavigatorItem) aSelection.getFirstElement();
 		View navigatorView = null;
 		if (abstractNavigatorItem instanceof SAGNavigatorItem) {
-			navigatorView = ((SAGNavigatorItem) abstractNavigatorItem)
-					.getView();
+			navigatorView = ((SAGNavigatorItem) abstractNavigatorItem).getView();
 		} else if (abstractNavigatorItem instanceof SAGNavigatorGroup) {
 			SAGNavigatorGroup navigatorGroup = (SAGNavigatorGroup) abstractNavigatorItem;
 			if (navigatorGroup.getParent() instanceof SAGNavigatorItem) {
-				navigatorView = ((SAGNavigatorItem) navigatorGroup.getParent())
-						.getView();
+				navigatorView = ((SAGNavigatorItem) navigatorGroup.getParent()).getView();
 			}
 		}
 		if (navigatorView == null) {
@@ -107,17 +101,13 @@ public class SAGNavigatorLinkHelper implements ILinkHelper {
 		aPage.bringToTop(editor);
 		if (editor instanceof DiagramEditor) {
 			DiagramEditor diagramEditor = (DiagramEditor) editor;
-			ResourceSet diagramEditorResourceSet = diagramEditor
-					.getEditingDomain().getResourceSet();
-			EObject selectedView = diagramEditorResourceSet.getEObject(
-					EcoreUtil.getURI(navigatorView), true);
+			ResourceSet diagramEditorResourceSet = diagramEditor.getEditingDomain().getResourceSet();
+			EObject selectedView = diagramEditorResourceSet.getEObject(EcoreUtil.getURI(navigatorView), true);
 			if (selectedView == null) {
 				return;
 			}
-			GraphicalViewer graphicalViewer = (GraphicalViewer) diagramEditor
-					.getAdapter(GraphicalViewer.class);
-			EditPart selectedEditPart = (EditPart) graphicalViewer
-					.getEditPartRegistry().get(selectedView);
+			GraphicalViewer graphicalViewer = (GraphicalViewer) diagramEditor.getAdapter(GraphicalViewer.class);
+			EditPart selectedEditPart = (EditPart) graphicalViewer.getEditPartRegistry().get(selectedView);
 			if (selectedEditPart != null) {
 				graphicalViewer.select(selectedEditPart);
 			}

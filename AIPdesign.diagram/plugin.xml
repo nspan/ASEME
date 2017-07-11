@@ -217,8 +217,8 @@
       <viewProvider class="AIP.diagram.providers.AIPViewProvider">
          <Priority name="Lowest"/>
          <context viewClass="org.eclipse.gmf.runtime.notation.Diagram" semanticHints="AIP"/>
-         <context viewClass="org.eclipse.gmf.runtime.notation.Node" semanticHints="2003,2004"/>
-         <context viewClass="org.eclipse.gmf.runtime.notation.Edge" semanticHints="4002"/>
+         <context viewClass="org.eclipse.gmf.runtime.notation.Node" semanticHints="2001,2002"/>
+         <context viewClass="org.eclipse.gmf.runtime.notation.Edge" semanticHints="4001"/>
       </viewProvider>
    </extension>
 
@@ -230,13 +230,13 @@
             <method name="getType()" value="AIP"/>
          </object>
          <object class="org.eclipse.gmf.runtime.notation.Node" id="generated-nodes">
-            <method name="getType()" value="2003,2004"/>
+            <method name="getType()" value="2001,2002"/>
          </object>
          <object class="org.eclipse.gmf.runtime.notation.Edge" id="generated-links">
-            <method name="getType()" value="4002"/>
+            <method name="getType()" value="4001"/>
          </object>
          <object class="org.eclipse.gmf.runtime.notation.Node" id="generated-labels">
-            <method name="getType()" value="5006,5007,5008,5009,5010"/>
+            <method name="getType()" value="5001,5002,5003,5004,5005"/>
          </object>
          <object class="org.eclipse.gmf.runtime.notation.Node" id="generated-compartments">
             <method name="getType()" value=""/>
@@ -245,16 +245,27 @@
       </editpartProvider>
    </extension>
 
+   
    <extension point="org.eclipse.gmf.runtime.emf.ui.modelingAssistantProviders" id="modelassist-provider">
       <?gmfgen generated="true"?>
-      <modelingAssistantProvider class="AIP.diagram.providers.AIPModelingAssistantProvider">
+      <modelingAssistantProvider class="AIP.diagram.providers.assistants.AIPModelingAssistantProviderOfAIPmodelEditPart">
          <Priority name="Lowest"/>
          <object class="AIP.diagram.edit.parts.AIPmodelEditPart" id="AIPmodel_1000"/>
-         <object class="AIP.diagram.edit.parts.ParticipantEditPart" id="Participant_2003"/>
-         <object class="AIP.diagram.edit.parts.ProtocolEditPart" id="Protocol_2004"/>
-         <context elements="AIPmodel_1000,Participant_2003,Protocol_2004"/>
+         <context elements="AIPmodel_1000"/>
       </modelingAssistantProvider>
+            <modelingAssistantProvider class="AIP.diagram.providers.assistants.AIPModelingAssistantProviderOfProtocolEditPart">
+         <Priority name="Lowest"/>
+         <object class="AIP.diagram.edit.parts.ProtocolEditPart" id="Protocol_2001"/>
+         <context elements="Protocol_2001"/>
+      </modelingAssistantProvider>
+            <modelingAssistantProvider class="AIP.diagram.providers.assistants.AIPModelingAssistantProviderOfParticipantEditPart">
+         <Priority name="Lowest"/>
+         <object class="AIP.diagram.edit.parts.ParticipantEditPart" id="Participant_2002"/>
+         <context elements="Participant_2002"/>
+      </modelingAssistantProvider>
+      
    </extension>
+
 
    <extension point="org.eclipse.gmf.runtime.common.ui.services.iconProviders" id="icon-provider">
       <?gmfgen generated="true"?>
@@ -284,31 +295,31 @@
       </metamodel>
       <metamodel nsURI="http://www.acml.tuc.gr/aseme/metamodels/AIP">
          <metamodelType
-               id="AIPdesign.diagram.Participant_2003"
-               name="%metatype.name.Participant_2003"
+               id="AIPdesign.diagram.Protocol_2001"
+               name="%metatype.name.Protocol_2001"
                kind="org.eclipse.gmf.runtime.emf.type.core.IHintedType"
-               eclass="Participant"
-               edithelper="AIP.diagram.edit.helpers.ParticipantEditHelper">
-            <param name="semanticHint" value="2003"/>
+               eclass="Protocol"
+               edithelper="AIP.diagram.edit.helpers.ProtocolEditHelper">
+            <param name="semanticHint" value="2001"/>
          </metamodelType>
       </metamodel>
       <metamodel nsURI="http://www.acml.tuc.gr/aseme/metamodels/AIP">
          <metamodelType
-               id="AIPdesign.diagram.Protocol_2004"
-               name="%metatype.name.Protocol_2004"
+               id="AIPdesign.diagram.Participant_2002"
+               name="%metatype.name.Participant_2002"
                kind="org.eclipse.gmf.runtime.emf.type.core.IHintedType"
-               eclass="Protocol"
-               edithelper="AIP.diagram.edit.helpers.ProtocolEditHelper">
-            <param name="semanticHint" value="2004"/>
+               eclass="Participant"
+               edithelper="AIP.diagram.edit.helpers.ParticipantEditHelper">
+            <param name="semanticHint" value="2002"/>
          </metamodelType>
       </metamodel>
       <metamodel nsURI="http://www.acml.tuc.gr/aseme/metamodels/AIP">
          <specializationType
-               id="AIPdesign.diagram.ProtocolParticipants_4002"
-               name="%metatype.name.ProtocolParticipants_4002"
+               id="AIPdesign.diagram.ProtocolParticipants_4001"
+               name="%metatype.name.ProtocolParticipants_4001"
                kind="org.eclipse.gmf.runtime.emf.type.core.IHintedType">
             <specializes id="org.eclipse.gmf.runtime.emf.type.core.null"/>
-            <param name="semanticHint" value="4002"/>
+            <param name="semanticHint" value="4001"/>
          </specializationType>
       </metamodel>
    </extension>
@@ -324,9 +335,9 @@
       </clientContext> 
       <binding context="AIPdesign.diagram.TypeContext">
          <elementType ref="AIPdesign.diagram.AIPmodel_1000"/>
-         <elementType ref="AIPdesign.diagram.Participant_2003"/>
-         <elementType ref="AIPdesign.diagram.Protocol_2004"/>
-         <elementType ref="AIPdesign.diagram.ProtocolParticipants_4002"/>
+         <elementType ref="AIPdesign.diagram.Protocol_2001"/>
+         <elementType ref="AIPdesign.diagram.Participant_2002"/>
+         <elementType ref="AIPdesign.diagram.ProtocolParticipants_4001"/>
          <advice ref="org.eclipse.gmf.runtime.diagram.core.advice.notationDepdendents"/>
       </binding>
    </extension>

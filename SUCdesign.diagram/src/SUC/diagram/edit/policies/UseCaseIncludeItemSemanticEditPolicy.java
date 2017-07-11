@@ -9,19 +9,18 @@ import SUC.diagram.providers.SUCElementTypes;
 /**
  * @generated
  */
-public class UseCaseIncludeItemSemanticEditPolicy extends
-		SUCBaseItemSemanticEditPolicy {
+public class UseCaseIncludeItemSemanticEditPolicy extends SUCBaseItemSemanticEditPolicy {
 
 	/**
-	 * @generated
-	 */
+	* @generated
+	*/
 	public UseCaseIncludeItemSemanticEditPolicy() {
-		super(SUCElementTypes.UseCaseInclude_4003);
+		super(SUCElementTypes.UseCaseInclude_4001);
 	}
 
 	/**
-	 * @generated
-	 */
+	* @generated
+	*/
 	protected Command getDestroyReferenceCommand(DestroyReferenceRequest req) {
 		return getGEFWrapper(new DestroyReferenceCommand(req));
 	}

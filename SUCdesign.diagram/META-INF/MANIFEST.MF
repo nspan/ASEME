@@ -2,12 +2,12 @@ Manifest-Version: 1.0
 Bundle-ManifestVersion: 2
 Bundle-Name: %pluginName
 Bundle-SymbolicName: SUCdesign.diagram; singleton:=true
-Bundle-Version: 1.0.0.qualifier
+Bundle-Version: 2.2.0
 Bundle-ClassPath: .
 Bundle-Activator: SUC.diagram.part.SUCDiagramEditorPlugin
 Bundle-Vendor: %providerName
 Bundle-Localization: plugin
-Export-Package: SUC.diagram.edit.parts, 
+Export-Package: SUC.diagram.edit.parts,
  SUC.diagram.part,
  SUC.diagram.providers
 Require-Bundle: org.eclipse.core.runtime,
@@ -38,4 +38,4 @@ Require-Bundle: org.eclipse.core.runtime,
  SUCdesign.edit;visibility:=reexport,
  org.eclipse.gef;visibility:=reexport
 Bundle-ActivationPolicy: lazy
-Bundle-RequiredExecutionEnvironment: JavaSE-1.6
+Bundle-RequiredExecutionEnvironment: JavaSE-1.8

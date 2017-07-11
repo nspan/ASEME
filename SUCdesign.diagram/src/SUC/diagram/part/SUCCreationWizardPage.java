@@ -14,15 +14,14 @@ import org.eclipse.ui.dialogs.WizardNewFileCreationPage;
 public class SUCCreationWizardPage extends WizardNewFileCreationPage {
 
 	/**
-	 * @generated
-	 */
+	* @generated
+	*/
 	private final String fileExtension;
 
 	/**
-	 * @generated
-	 */
-	public SUCCreationWizardPage(String pageName,
-			IStructuredSelection selection, String fileExtension) {
+	* @generated
+	*/
+	public SUCCreationWizardPage(String pageName, IStructuredSelection selection, String fileExtension) {
 		super(pageName, selection);
 		this.fileExtension = fileExtension;
 	}
@@ -37,15 +36,15 @@ public class SUCCreationWizardPage extends WizardNewFileCreationPage {
 	}
 
 	/**
-	 * @generated
-	 */
+	* @generated
+	*/
 	public URI getURI() {
 		return URI.createPlatformResourceURI(getFilePath().toString(), false);
 	}
 
 	/**
-	 * @generated
-	 */
+	* @generated
+	*/
 	protected IPath getFilePath() {
 		IPath path = getContainerFullPath();
 		if (path == null) {
@@ -59,27 +58,24 @@ public class SUCCreationWizardPage extends WizardNewFileCreationPage {
 	}
 
 	/**
-	 * @generated
-	 */
+	* @generated
+	*/
 	public void createControl(Composite parent) {
 		super.createControl(parent);
-		setFileName(SUCDiagramEditorUtil.getUniqueFileName(
-				getContainerFullPath(), getFileName(), getExtension()));
+		setFileName(SUCDiagramEditorUtil.getUniqueFileName(getContainerFullPath(), getFileName(), getExtension()));
 		setPageComplete(validatePage());
 	}
 
 	/**
-	 * @generated
-	 */
+	* @generated
+	*/
 	protected boolean validatePage() {
 		if (!super.validatePage()) {
 			return false;
 		}
 		String extension = getExtension();
-		if (extension != null
-				&& !getFilePath().toString().endsWith("." + extension)) {
-			setErrorMessage(NLS.bind(
-					Messages.SUCCreationWizardPageExtensionError, extension));
+		if (extension != null && !getFilePath().toString().endsWith("." + extension)) {
+			setErrorMessage(NLS.bind(Messages.SUCCreationWizardPageExtensionError, extension));
 			return false;
 		}
 		return true;

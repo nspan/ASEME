@@ -1,8 +1,4 @@
 /**
- * <copyright>
- * </copyright>
- *
- * $Id$
  */
 package SAG;
 
@@ -18,6 +14,7 @@ import org.eclipse.emf.ecore.EReference;
  * <ul>
  *   <li>each class,</li>
  *   <li>each feature of each class,</li>
+ *   <li>each operation of each class,</li>
  *   <li>each enum,</li>
  *   <li>and each data type</li>
  * </ul>
@@ -97,6 +94,15 @@ public interface SAGPackage extends EPackage {
 	int SA_GMODEL_FEATURE_COUNT = 2;
 
 	/**
+	 * The number of operations of the '<em>SA Gmodel</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int SA_GMODEL_OPERATION_COUNT = 0;
+
+	/**
 	 * The meta object id for the '{@link SAG.impl.ActorImpl <em>Actor</em>}' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -132,6 +138,15 @@ public interface SAGPackage extends EPackage {
 	 * @ordered
 	 */
 	int ACTOR_FEATURE_COUNT = 2;
+
+	/**
+	 * The number of operations of the '<em>Actor</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int ACTOR_OPERATION_COUNT = 0;
 
 	/**
 	 * The meta object id for the '{@link SAG.impl.GoalImpl <em>Goal</em>}' class.
@@ -187,6 +202,15 @@ public interface SAGPackage extends EPackage {
 	 * @ordered
 	 */
 	int GOAL_FEATURE_COUNT = 4;
+
+	/**
+	 * The number of operations of the '<em>Goal</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int GOAL_OPERATION_COUNT = 0;
 
 
 	/**
@@ -322,6 +346,7 @@ public interface SAGPackage extends EPackage {
 	 * <ul>
 	 *   <li>each class,</li>
 	 *   <li>each feature of each class,</li>
+	 *   <li>each operation of each class,</li>
 	 *   <li>each enum,</li>
 	 *   <li>and each data type</li>
 	 * </ul>

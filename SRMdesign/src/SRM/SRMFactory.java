@@ -1,8 +1,4 @@
 /**
- * <copyright>
- * </copyright>
- *
- * $Id$
  */
 package SRM;
 
@@ -60,6 +56,15 @@ public interface SRMFactory extends EFactory {
 	 * @generated
 	 */
 	Capability createCapability();
+
+	/**
+	 * Returns a new object of class '<em>Functionality</em>'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return a new object of class '<em>Functionality</em>'.
+	 * @generated
+	 */
+	Functionality createFunctionality();
 
 	/**
 	 * Returns the package supported by this factory.

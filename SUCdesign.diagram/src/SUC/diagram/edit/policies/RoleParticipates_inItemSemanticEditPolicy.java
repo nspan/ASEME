@@ -9,19 +9,18 @@ import SUC.diagram.providers.SUCElementTypes;
 /**
  * @generated
  */
-public class RoleParticipates_inItemSemanticEditPolicy extends
-		SUCBaseItemSemanticEditPolicy {
+public class RoleParticipates_inItemSemanticEditPolicy extends SUCBaseItemSemanticEditPolicy {
 
 	/**
-	 * @generated
-	 */
+	* @generated
+	*/
 	public RoleParticipates_inItemSemanticEditPolicy() {
-		super(SUCElementTypes.RoleParticipates_in_4001);
+		super(SUCElementTypes.RoleParticipates_in_4002);
 	}
 
 	/**
-	 * @generated
-	 */
+	* @generated
+	*/
 	protected Command getDestroyReferenceCommand(DestroyReferenceRequest req) {
 		return getGEFWrapper(new DestroyReferenceCommand(req));
 	}

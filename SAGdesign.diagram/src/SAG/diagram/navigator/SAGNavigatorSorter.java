@@ -10,13 +10,13 @@ import SAG.diagram.part.SAGVisualIDRegistry;
 public class SAGNavigatorSorter extends ViewerSorter {
 
 	/**
-	 * @generated
-	 */
-	private static final int GROUP_CATEGORY = 4015;
+	* @generated
+	*/
+	private static final int GROUP_CATEGORY = 4004;
 
 	/**
-	 * @generated
-	 */
+	* @generated
+	*/
 	public int category(Object element) {
 		if (element instanceof SAGNavigatorItem) {
 			SAGNavigatorItem item = (SAGNavigatorItem) element;

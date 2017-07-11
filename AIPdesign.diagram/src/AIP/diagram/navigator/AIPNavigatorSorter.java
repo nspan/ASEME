@@ -10,13 +10,13 @@ import AIP.diagram.part.AIPVisualIDRegistry;
 public class AIPNavigatorSorter extends ViewerSorter {
 
 	/**
-	 * @generated
-	 */
-	private static final int GROUP_CATEGORY = 4004;
+	* @generated
+	*/
+	private static final int GROUP_CATEGORY = 4003;
 
 	/**
-	 * @generated
-	 */
+	* @generated
+	*/
 	public int category(Object element) {
 		if (element instanceof AIPNavigatorItem) {
 			AIPNavigatorItem item = (AIPNavigatorItem) element;

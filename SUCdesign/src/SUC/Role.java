@@ -13,12 +13,12 @@ import org.eclipse.emf.ecore.EObject;
  *
  * <p>
  * The following features are supported:
+ * </p>
  * <ul>
  *   <li>{@link SUC.Role#getParticipates_in <em>Participates in</em>}</li>
  *   <li>{@link SUC.Role#getName <em>Name</em>}</li>
  *   <li>{@link SUC.Role#getType <em>Type</em>}</li>
  * </ul>
- * </p>
  *
  * @see SUC.SUCPackage#getRole()
  * @model

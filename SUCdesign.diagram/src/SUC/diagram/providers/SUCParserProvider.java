@@ -12,32 +12,48 @@ import org.eclipse.gmf.runtime.common.ui.services.parser.ParserService;
 import org.eclipse.gmf.runtime.emf.type.core.IElementType;
 import org.eclipse.gmf.runtime.emf.ui.services.parser.ParserHintAdapter;
 import org.eclipse.gmf.runtime.notation.View;
+import org.eclipse.gmf.tooling.runtime.parsers.EnumParser;
 
 import SUC.SUCPackage;
 import SUC.diagram.edit.parts.RoleNameEditPart;
+import SUC.diagram.edit.parts.RoleTypeEditPart;
 import SUC.diagram.edit.parts.UseCaseNameEditPart;
-import SUC.diagram.edit.parts.UseCaseSpecified_byEditPart;
 import SUC.diagram.parsers.MessageFormatParser;
 import SUC.diagram.part.SUCVisualIDRegistry;
 
 /**
  * @generated
  */
-public class SUCParserProvider extends AbstractProvider implements
-		IParserProvider {
+public class SUCParserProvider extends AbstractProvider implements IParserProvider {
 
 	/**
-	 * @generated
-	 */
+	* @generated
+	*/
+	private IParser useCaseName_5003Parser;
+
+	/**
+	* @generated
+	*/
+	private IParser getUseCaseName_5003Parser() {
+		if (useCaseName_5003Parser == null) {
+			EAttribute[] features = new EAttribute[] { SUCPackage.eINSTANCE.getUseCase_Name() };
+			MessageFormatParser parser = new MessageFormatParser(features);
+			useCaseName_5003Parser = parser;
+		}
+		return useCaseName_5003Parser;
+	}
+
+	/**
+	* @generated
+	*/
 	private IParser roleName_5001Parser;
 
 	/**
-	 * @generated
-	 */
+	* @generated
+	*/
 	private IParser getRoleName_5001Parser() {
 		if (roleName_5001Parser == null) {
-			EAttribute[] features = new EAttribute[] { SUCPackage.eINSTANCE
-					.getRole_Name() };
+			EAttribute[] features = new EAttribute[] { SUCPackage.eINSTANCE.getRole_Name() };
 			MessageFormatParser parser = new MessageFormatParser(features);
 			roleName_5001Parser = parser;
 		}
@@ -45,69 +61,49 @@ public class SUCParserProvider extends AbstractProvider implements
 	}
 
 	/**
-	 * @generated
-	 */
-	private IParser useCaseName_5002Parser;
+	* @generated
+	*/
+	private IParser roleType_5004Parser;
 
 	/**
-	 * @generated
-	 */
-	private IParser getUseCaseName_5002Parser() {
-		if (useCaseName_5002Parser == null) {
-			EAttribute[] features = new EAttribute[] { SUCPackage.eINSTANCE
-					.getUseCase_Name() };
-			MessageFormatParser parser = new MessageFormatParser(features);
-			useCaseName_5002Parser = parser;
+	* @generated
+	*/
+	private IParser getRoleType_5004Parser() {
+		if (roleType_5004Parser == null) {
+			EAttribute editableFeature = SUCPackage.eINSTANCE.getRole_Type();
+			EnumParser parser = new EnumParser(editableFeature);
+			roleType_5004Parser = parser;
 		}
-		return useCaseName_5002Parser;
+		return roleType_5004Parser;
 	}
 
 	/**
-	 * @generated
-	 */
-	private IParser useCaseSpecified_by_5004Parser;
-
-	/**
-	 * @generated
-	 */
-	private IParser getUseCaseSpecified_by_5004Parser() {
-		if (useCaseSpecified_by_5004Parser == null) {
-			EAttribute[] features = new EAttribute[] { SUCPackage.eINSTANCE
-					.getUseCase_Specified_by() };
-			MessageFormatParser parser = new MessageFormatParser(features);
-			useCaseSpecified_by_5004Parser = parser;
-		}
-		return useCaseSpecified_by_5004Parser;
-	}
-
-	/**
-	 * @generated
-	 */
+	* @generated
+	*/
 	protected IParser getParser(int visualID) {
 		switch (visualID) {
+		case UseCaseNameEditPart.VISUAL_ID:
+			return getUseCaseName_5003Parser();
 		case RoleNameEditPart.VISUAL_ID:
 			return getRoleName_5001Parser();
-		case UseCaseNameEditPart.VISUAL_ID:
-			return getUseCaseName_5002Parser();
-		case UseCaseSpecified_byEditPart.VISUAL_ID:
-			return getUseCaseSpecified_by_5004Parser();
+
+		case RoleTypeEditPart.VISUAL_ID:
+			return getRoleType_5004Parser();
 		}
 		return null;
 	}
 
 	/**
-	 * Utility method that consults ParserService
-	 * @generated
-	 */
-	public static IParser getParser(IElementType type, EObject object,
-			String parserHint) {
-		return ParserService.getInstance().getParser(
-				new HintAdapter(type, object, parserHint));
+	* Utility method that consults ParserService
+	* @generated
+	*/
+	public static IParser getParser(IElementType type, EObject object, String parserHint) {
+		return ParserService.getInstance().getParser(new HintAdapter(type, object, parserHint));
 	}
 
 	/**
-	 * @generated
-	 */
+	* @generated
+	*/
 	public IParser getParser(IAdaptable hint) {
 		String vid = (String) hint.getAdapter(String.class);
 		if (vid != null) {
@@ -121,8 +117,8 @@ public class SUCParserProvider extends AbstractProvider implements
 	}
 
 	/**
-	 * @generated
-	 */
+	* @generated
+	*/
 	public boolean provides(IOperation operation) {
 		if (operation instanceof GetParserOperation) {
 			IAdaptable hint = ((GetParserOperation) operation).getHint();
@@ -135,18 +131,18 @@ public class SUCParserProvider extends AbstractProvider implements
 	}
 
 	/**
-	 * @generated
-	 */
+	* @generated
+	*/
 	private static class HintAdapter extends ParserHintAdapter {
 
 		/**
-		 * @generated
-		 */
+		* @generated
+		*/
 		private final IElementType elementType;
 
 		/**
-		 * @generated
-		 */
+		* @generated
+		*/
 		public HintAdapter(IElementType type, EObject object, String parserHint) {
 			super(object, parserHint);
 			assert type != null;
@@ -154,8 +150,8 @@ public class SUCParserProvider extends AbstractProvider implements
 		}
 
 		/**
-		 * @generated
-		 */
+		* @generated
+		*/
 		public Object getAdapter(Class adapter) {
 			if (IElementType.class.equals(adapter)) {
 				return elementType;

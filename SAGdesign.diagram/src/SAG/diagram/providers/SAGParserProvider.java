@@ -22,71 +22,66 @@ import SAG.diagram.part.SAGVisualIDRegistry;
 /**
  * @generated
  */
-public class SAGParserProvider extends AbstractProvider implements
-		IParserProvider {
+public class SAGParserProvider extends AbstractProvider implements IParserProvider {
 
 	/**
-	 * @generated
-	 */
-	private IParser actorName_5010Parser;
+	* @generated
+	*/
+	private IParser actorName_5001Parser;
 
 	/**
-	 * @generated
-	 */
-	private IParser getActorName_5010Parser() {
-		if (actorName_5010Parser == null) {
-			EAttribute[] features = new EAttribute[] { SAGPackage.eINSTANCE
-					.getActor_Name() };
+	* @generated
+	*/
+	private IParser getActorName_5001Parser() {
+		if (actorName_5001Parser == null) {
+			EAttribute[] features = new EAttribute[] { SAGPackage.eINSTANCE.getActor_Name() };
 			MessageFormatParser parser = new MessageFormatParser(features);
-			actorName_5010Parser = parser;
+			actorName_5001Parser = parser;
 		}
-		return actorName_5010Parser;
+		return actorName_5001Parser;
 	}
 
 	/**
-	 * @generated
-	 */
-	private IParser goalName_5011Parser;
+	* @generated
+	*/
+	private IParser goalName_5002Parser;
 
 	/**
-	 * @generated
-	 */
-	private IParser getGoalName_5011Parser() {
-		if (goalName_5011Parser == null) {
-			EAttribute[] features = new EAttribute[] { SAGPackage.eINSTANCE
-					.getGoal_Name() };
+	* @generated
+	*/
+	private IParser getGoalName_5002Parser() {
+		if (goalName_5002Parser == null) {
+			EAttribute[] features = new EAttribute[] { SAGPackage.eINSTANCE.getGoal_Name() };
 			MessageFormatParser parser = new MessageFormatParser(features);
-			goalName_5011Parser = parser;
+			goalName_5002Parser = parser;
 		}
-		return goalName_5011Parser;
+		return goalName_5002Parser;
 	}
 
 	/**
-	 * @generated
-	 */
+	* @generated
+	*/
 	protected IParser getParser(int visualID) {
 		switch (visualID) {
 		case ActorNameEditPart.VISUAL_ID:
-			return getActorName_5010Parser();
+			return getActorName_5001Parser();
 		case GoalNameEditPart.VISUAL_ID:
-			return getGoalName_5011Parser();
+			return getGoalName_5002Parser();
 		}
 		return null;
 	}
 
 	/**
-	 * Utility method that consults ParserService
-	 * @generated
-	 */
-	public static IParser getParser(IElementType type, EObject object,
-			String parserHint) {
-		return ParserService.getInstance().getParser(
-				new HintAdapter(type, object, parserHint));
+	* Utility method that consults ParserService
+	* @generated
+	*/
+	public static IParser getParser(IElementType type, EObject object, String parserHint) {
+		return ParserService.getInstance().getParser(new HintAdapter(type, object, parserHint));
 	}
 
 	/**
-	 * @generated
-	 */
+	* @generated
+	*/
 	public IParser getParser(IAdaptable hint) {
 		String vid = (String) hint.getAdapter(String.class);
 		if (vid != null) {
@@ -100,8 +95,8 @@ public class SAGParserProvider extends AbstractProvider implements
 	}
 
 	/**
-	 * @generated
-	 */
+	* @generated
+	*/
 	public boolean provides(IOperation operation) {
 		if (operation instanceof GetParserOperation) {
 			IAdaptable hint = ((GetParserOperation) operation).getHint();
@@ -114,18 +109,18 @@ public class SAGParserProvider extends AbstractProvider implements
 	}
 
 	/**
-	 * @generated
-	 */
+	* @generated
+	*/
 	private static class HintAdapter extends ParserHintAdapter {
 
 		/**
-		 * @generated
-		 */
+		* @generated
+		*/
 		private final IElementType elementType;
 
 		/**
-		 * @generated
-		 */
+		* @generated
+		*/
 		public HintAdapter(IElementType type, EObject object, String parserHint) {
 			super(object, parserHint);
 			assert type != null;
@@ -133,8 +128,8 @@ public class SAGParserProvider extends AbstractProvider implements
 		}
 
 		/**
-		 * @generated
-		 */
+		* @generated
+		*/
 		public Object getAdapter(Class adapter) {
 			if (IElementType.class.equals(adapter)) {
 				return elementType;

@@ -10,10 +10,9 @@ import SRM.diagram.part.SRMDiagramEditorPlugin;
 public class DiagramConnectionsPreferencePage extends ConnectionsPreferencePage {
 
 	/**
-	 * @generated
-	 */
+	* @generated
+	*/
 	public DiagramConnectionsPreferencePage() {
-		setPreferenceStore(SRMDiagramEditorPlugin.getInstance()
-				.getPreferenceStore());
+		setPreferenceStore(SRMDiagramEditorPlugin.getInstance().getPreferenceStore());
 	}
 }

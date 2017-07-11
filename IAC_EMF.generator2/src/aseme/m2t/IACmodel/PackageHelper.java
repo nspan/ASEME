@@ -1,6 +1,7 @@
 package aseme.m2t.IACmodel;
 
-import IAC.Model;
+//import IAC.Model;
+import statechart.Model;
 
 public class PackageHelper {
 

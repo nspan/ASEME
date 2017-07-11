@@ -14,27 +14,39 @@
           title="UseCase"
           description="Create new UseCase">
         <smallIcon
-            xsi:type="gmftool:DefaultImage"/>
+            xsi:type="gmftool:BundleImage"
+            path="icons/full/obj16/UseCase.gif"
+            bundle="SUCdesign.edit"/>
         <largeIcon
-            xsi:type="gmftool:DefaultImage"/>
+            xsi:type="gmftool:BundleImage"
+            path="icons/full/obj32/UseCase.gif"
+            bundle="SUCdesign.edit"/>
       </tools>
       <tools
           xsi:type="gmftool:CreationTool"
           title="RoleParticipates_in"
           description="Create new RoleParticipates_in">
         <smallIcon
-            xsi:type="gmftool:DefaultImage"/>
+            xsi:type="gmftool:BundleImage"
+            path="icons/full/obj16/Edge.gif"
+            bundle="SUCdesign.edit"/>
         <largeIcon
-            xsi:type="gmftool:DefaultImage"/>
+            xsi:type="gmftool:BundleImage"
+            path="icons/full/obj32/Edge.gif"
+            bundle="SUCdesign.edit"/>
       </tools>
       <tools
           xsi:type="gmftool:CreationTool"
           title="UseCaseInclude"
           description="Create new UseCaseInclude">
         <smallIcon
-            xsi:type="gmftool:DefaultImage"/>
+            xsi:type="gmftool:BundleImage"
+            path="icons/full/obj16/Edge.gif"
+            bundle="SUCdesign.edit"/>
         <largeIcon
-            xsi:type="gmftool:DefaultImage"/>
+            xsi:type="gmftool:BundleImage"
+            path="icons/full/obj32/Edge.gif"
+            bundle="SUCdesign.edit"/>
       </tools>
       <tools
           xsi:type="gmftool:CreationTool"
@@ -43,11 +55,11 @@
         <smallIcon
             xsi:type="gmftool:BundleImage"
             path="icons/full/obj16/Role.gif"
-            bundle="Suc_design.edit"/>
+            bundle="SUCdesign.edit"/>
         <largeIcon
             xsi:type="gmftool:BundleImage"
-            path="icons/full/obj16/Role.gif"
-            bundle="Suc_design.edit"/>
+            path="icons/full/obj32/Role.gif"
+            bundle="SUCdesign.edit"/>
       </tools>
     </tools>
   </palette>

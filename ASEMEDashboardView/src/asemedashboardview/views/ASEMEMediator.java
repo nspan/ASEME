@@ -1,6 +1,5 @@
 package asemedashboardview.views;
 
-import java.text.MessageFormat;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
@@ -8,45 +7,39 @@ import java.util.Map;
 
 import org.eclipse.core.resources.IFile;
 import org.eclipse.core.resources.IProject;
-import org.eclipse.core.resources.IResource;
-import org.eclipse.core.resources.ResourcesPlugin;
-import org.eclipse.core.runtime.IPath;
 import org.eclipse.draw2d.ActionEvent;
 import org.eclipse.draw2d.ActionListener;
 import org.eclipse.draw2d.CheckBox;
 import org.eclipse.draw2d.ColorConstants;
 import org.eclipse.draw2d.IFigure;
+import org.eclipse.emf.common.ui.URIEditorInput;
 import org.eclipse.emf.common.util.URI;
-import org.eclipse.emf.ecore.EObject;
-import org.eclipse.emf.ecore.presentation.EcoreModelWizard;
 import org.eclipse.emf.ecore.resource.Resource;
-import org.eclipse.emf.importer.ui.EMFModelWizard;
-import org.eclipse.emf.importer.ui.GenModelReloadActionDelegate;
-import org.eclipse.gmf.codegen.gmfgen.presentation.GMFGenModelWizard;
 import org.eclipse.emf.workspace.util.WorkspaceSynchronizer;
 
 import SAG.diagram.part.SAGCreationWizard;
-import SAG.diagram.part.SAGNewDiagramFileWizard;
-import SAG.presentation.SAGModelWizard;
+import SAG.diagram.part.SAGDiagramEditor;
 import SUC.diagram.part.SUCCreationWizard;
+import SUC.diagram.part.SUCDiagramEditor;
 import AIP.diagram.part.AIPCreationWizard;
+import AIP.diagram.part.AIPDiagramEditor;
 import SRM.diagram.part.SRMCreationWizard;
+import SRM.diagram.part.SRMDiagramEditor;
 import asemedashboardview.views.ASEMEActionRegistry.ASEMEActionDescriptor;
 import asemedashboardview.views.actions.TransformAIP2EACModelAction;
+import asemedashboardview.views.actions.TransformIAC2GGModelAction;
+import asemedashboardview.views.actions.TransformIAC2JADEModelAction;
 import asemedashboardview.views.actions.TransformSRM2IACModelAction;
 import asemedashboardview.views.actions.TransformSAG2SUCModelAction;
+import asemedashboardview.views.actions.TransformSRM2XPDLModelAction;
 import asemedashboardview.views.actions.TransformSUC2AIPModelAction;
 import asemedashboardview.views.actions.TransformSUC2SRMModelAction;
+import statechart.diagram.part.StateChartDiagramEditor;
 
-import org.eclipse.emf.transaction.TransactionalEditingDomain;
-import org.eclipse.emf.workspace.util.WorkspaceSynchronizer;
-import org.eclipse.gmf.internal.bridge.wizards.GMFGraphSimpleModelWizard;
-import org.eclipse.gmf.internal.bridge.wizards.GMFMapGuideModelWizard;
-import org.eclipse.gmf.internal.bridge.wizards.GMFToolSimpleModelWizard;
-import org.eclipse.gmf.internal.bridge.wizards.WizardOperationMode;
 import org.eclipse.gmf.internal.common.URIUtil;
 import org.eclipse.gmf.internal.common.ui.FileSelector;
 import org.eclipse.gmf.mappings.presentation.GMFMapModelWizard;
+import org.eclipse.gmf.runtime.diagram.core.services.ViewService;
 import org.eclipse.gmf.runtime.notation.Diagram;
 import org.eclipse.gmf.tooldef.presentation.GMFToolModelWizard;
 import org.eclipse.jface.action.Action;
@@ -58,13 +51,22 @@ import org.eclipse.jface.wizard.IWizard;
 import org.eclipse.jface.wizard.IWizardPage;
 import org.eclipse.jface.wizard.WizardDialog;
 import org.eclipse.swt.widgets.Shell;
+import org.eclipse.ui.IEditorInput;
 import org.eclipse.ui.IWorkbench;
 import org.eclipse.ui.IWorkbenchPage;
 import org.eclipse.ui.IWorkbenchWindow;
 import org.eclipse.ui.IWorkbenchWizard;
 import org.eclipse.ui.PartInitException;
 import org.eclipse.ui.PlatformUI;
+import org.eclipse.ui.ide.IDE;
 import org.eclipse.ui.part.FileEditorInput;
+import org.eclipse.ui.texteditor.AbstractTextEditor;
+import org.eclipse.ui.texteditor.ITextEditor;
+//import org.eclipse.ui.editors.text.TextEditor;
+//import org.eclipse.ui.texteditor.
+
+
+
 
 import asemedashboardview.Activator;
 
@@ -109,8 +111,10 @@ public class ASEMEMediator implements ASEMEFacade {
 		locations.put(ASEMEFacade.LOCATION_AIP, view.getAIPFigure());
 		locations.put(ASEMEFacade.LOCATION_SRM, view.getSRMFigure());
 		locations.put(ASEMEFacade.LOCATION_EAC, view.getEACFigure());
+		locations.put(ASEMEFacade.LOCATION_XPDL, view.getXPDLFigure());
 		locations.put(ASEMEFacade.LOCATION_IAC, view.getIACFigure());
 		locations.put(ASEMEFacade.LOCATION_JADE, view.getJADEFigure());
+		locations.put(ASEMEFacade.LOCATION_GG, view.getGGFigure());
 		view.getSAGFigure().addAction(createLinkFigure(Messages.ASEMEMediator_Select, new SelectSAGAction()));
 		view.getSAGFigure().addAction(createLinkFigure(Messages.ASEMEMediator_Edit, new EditSAGAction()));
 		view.getSAGFigure().addAction(createLinkFigure(Messages.ASEMEMediator_Create, new CreateSAGAction()));
@@ -123,39 +127,23 @@ public class ASEMEMediator implements ASEMEFacade {
 		view.getSRMFigure().addAction(createLinkFigure(Messages.ASEMEMediator_Select, new SelectSRMAction()));
 		view.getSRMFigure().addAction(createLinkFigure(Messages.ASEMEMediator_Edit, new EditSRMAction()));
 		view.getSRMFigure().addAction(createLinkFigure(Messages.ASEMEMediator_Create, new CreateSRMAction()));
-		//view.getSRMFigure().addAction(createLinkFigure(Messages.ASEMEMediator_Export, new CreateSRMAction()));
+		
+		view.getXPDLFigure().addAction(createLinkFigure(Messages.ASEMEMediator_Select, new SelectXPDLAction()));
+		view.getXPDLFigure().addAction(createLinkFigure(Messages.ASEMEMediator_Edit, new EditXPDLAction()));
 		view.getEACFigure().addAction(createLinkFigure(Messages.ASEMEMediator_Select, new SelectEACAction()));
 		view.getEACFigure().addAction(createLinkFigure(Messages.ASEMEMediator_Edit, new EditEACAction()));
 		view.getEACFigure().addAction(createLinkFigure(Messages.ASEMEMediator_Create, new CreateEACAction()));
 		view.getIACFigure().addAction(createLinkFigure(Messages.ASEMEMediator_Select, new SelectIACAction()));
 		view.getIACFigure().addAction(createLinkFigure(Messages.ASEMEMediator_Edit, new EditIACAction()));
 		view.getIACFigure().addAction(createLinkFigure(Messages.ASEMEMediator_Create, new CreateIACAction()));
-//		view.getJADEFigure().addAction(createLinkFigure(Messages.ASEMEMediator_Select, new SelectJADEAction()));
-//		view.getJADEFigure().addAction(createLinkFigure(Messages.ASEMEMediator_Edit, new EditJADEAction()));
-//		view.getJADEFigure().addAction(createLinkFigure(Messages.ASEMEMediator_Create, new CreateJADEAction()));
+		view.getJADEFigure().addAction(createLinkFigure(Messages.ASEMEMediator_Select, new SelectJADEAction()));
+		view.getJADEFigure().addAction(createLinkFigure(Messages.ASEMEMediator_Edit, new EditJADEAction()));
+		
+		view.getGGFigure().addAction(createLinkFigure(Messages.ASEMEMediator_Select, new SelectGGAction()));
+		view.getGGFigure().addAction(createLinkFigure(Messages.ASEMEMediator_Edit, new EditGGAction()));
+		//view.getJADEFigure().addAction(createLinkFigure(Messages.ASEMEMediator_Create, new CreateJADEAction()));
 
-		//		view.getDGMFigure().addAction(createLinkFigure(Messages.DashboardMediator_Select, new SelectDGMAction()));
-		//		view.getDGMFigure().addAction(createLinkFigure(Messages.DashboardMediator_Edit, new EditDGMAction()));
-		//		view.getDGMFigure().addAction(createLinkFigure(Messages.DashboardMediator_Reload, new ReloadDGMAction()));
-		//		view.getGDMFigure().addAction(createLinkFigure(Messages.DashboardMediator_Select, new SelectGDMAction()));
-		//		view.getGDMFigure().addAction(createLinkFigure(Messages.DashboardMediator_Edit, new EditGDMAction()));
-		//		view.getGDMFigure().addAction(createLinkFigure(Messages.DashboardMediator_Create, new CreateGDMAction()));
-		//		view.getDMFigure().addAction(createLinkFigure(Messages.DashboardMediator_Select, new SelectDMAction()));
-		//		view.getDMFigure().addAction(createLinkFigure(Messages.DashboardMediator_Edit, new EditDMAction()));
-		//		view.getDMFigure().addAction(createLinkFigure(Messages.DashboardMediator_Create, new CreateDMAction()));
-		//		view.getTDMFigure().addAction(createLinkFigure(Messages.DashboardMediator_Select, new SelectTDMAction()));
-		//		view.getTDMFigure().addAction(createLinkFigure(Messages.DashboardMediator_Edit, new EditTDMAction()));
-		//		view.getTDMFigure().addAction(createLinkFigure(Messages.DashboardMediator_Create, new CreateTDMAction()));
-		//		view.getMMFigure().addAction(createLinkFigure(Messages.DashboardMediator_Select, new SelectMMAction()));
-		//		view.getMMFigure().addAction(createLinkFigure(Messages.DashboardMediator_Edit, new EditMMAction()));
-		//		view.getMMFigure().addAction(createLinkFigure(Messages.DashboardMediator_Create, new CreateMMAction()));
-		//		view.getGMFigure().addAction(createLinkFigure(Messages.DashboardMediator_Select, new SelectGMAction()));
-		//		view.getGMFigure().addAction(createLinkFigure(Messages.DashboardMediator_Edit, new EditGMAction()));
-		//		view.getGMFigure().addAction(createLinkFigure(Messages.DashboardMediator_Create, new CreateGMAction()));
-		//		view.getDM2DGMFigure().addAction(createLinkFigure(Messages.DashboardMediator_Derive, new DeriveDGMAction()));
-		//		view.getDM2GDMFigure().addAction(createLinkFigure(Messages.DashboardMediator_Derive, new DeriveGDMAction()));
-		//		view.getDM2TDMFigure().addAction(createLinkFigure(Messages.DashboardMediator_Derive, new DeriveTDMAction()));
-		//		view.getDM2MMFigure().addAction(createLinkFigure(Messages.DashboardMediator_Combine, new CombineMMAction()));
+		
 		//		view.getMM2GMFigure().addAction(createOptionFigure(Messages.DashboardMediator_RCP, ASEMEFacade.OPTION_RCP));
 		//		view.getMM2GMFigure().addAction(createLinkFigure(Messages.DashboardMediator_Transform, new TransformMap2GenModelAction()));
 		view.getSAG2SUCFigure().addAction(createLinkFigure(Messages.ASEMEMediator_Transform, new TransformSAG2SUCModelAction()));
@@ -163,7 +151,9 @@ public class ASEMEMediator implements ASEMEFacade {
 		view.getSUC2SRMFigure().addAction(createLinkFigure(Messages.ASEMEMediator_Transform, new TransformSUC2SRMModelAction()));
 		view.getAIP2EACFigure().addAction(createLinkFigure(Messages.ASEMEMediator_Transform, new TransformAIP2EACModelAction()));
 		view.getSRM2IACFigure().addAction(createLinkFigure(Messages.ASEMEMediator_Transform, new TransformSRM2IACModelAction()));
-//		view.getIAC2JADEFigure().addAction(createLinkFigure(Messages.ASEMEMediator_Transform, new TransformIAC2JADEModelAction()));
+		view.getSRM2XPDLFigure().addAction(createLinkFigure(Messages.ASEMEMediator_Transform, new TransformSRM2XPDLModelAction()));
+		view.getIAC2JADEFigure().addAction(createLinkFigure(Messages.ASEMEMediator_Transform, new TransformIAC2JADEModelAction()));//TransformIAC2JADEModelAction()));
+		view.getIAC2GGFigure().addAction(createLinkFigure(Messages.ASEMEMediator_Transform, new TransformIAC2GGModelAction()));//TransformIAC2GGModelAction()));
 		ASEMEActionDescriptor[] descriptors = Activator.getDefault().getDashboardActionRegistry().getDescriptors();
 		for (ASEMEActionDescriptor descriptor : descriptors) {
 			addDashboardAction(descriptor);
@@ -251,6 +241,9 @@ public class ASEMEMediator implements ASEMEFacade {
 			//			double done = (double) state.getSpecifiedModelsCount() / state.getModelsCount();
 //			view.getStatusLine(1).setText(MessageFormat.format(Messages.ASEMEMediator_Progress, new Object[] { new Double(done) }));
 		}
+		
+		//EDW MALLON THELW NA KALW SYNC PROJECT ME DASHBOARD
+		
 		setModelName(view.getSAGFigure(), state.getSAG());
 		setModelName(view.getSUCFigure(), state.getSUC());
 		setModelName(view.getAIPFigure(), state.getAIP());
@@ -258,6 +251,7 @@ public class ASEMEMediator implements ASEMEFacade {
 		setModelName(view.getEACFigure(), state.getEAC());
 		setModelName(view.getIACFigure(), state.getIAC());
 		setModelName(view.getJADEFigure(), state.getJADE());
+		setModelName(view.getGGFigure(), state.getGG());
 		view.repaint(); // update hyperlinks
 	}
 
@@ -278,6 +272,7 @@ public class ASEMEMediator implements ASEMEFacade {
 
 		public void run() {
 			IFile file = getURI() == null ? null : URIUtil.getFile(getURI());
+						
 			file = FileSelector.selectFile(shell, getFigure().getDescription(), null, file, getFileExtension());
 			if (file == null) {
 				return;
@@ -305,18 +300,49 @@ public class ASEMEMediator implements ASEMEFacade {
 			//return getURI()!= null;
 		}
 
+		@SuppressWarnings({ "restriction", "deprecation" })
 		public void run() {
 			IWorkbench workbench = PlatformUI.getWorkbench();
 			IWorkbenchWindow workbenchWindow = workbench.getActiveWorkbenchWindow();
 			IWorkbenchPage page = workbenchWindow.getActivePage();
+			
 			IFile modelFile = URIUtil.getFile(getURI());
+			
+			
+			
 			try {
 				String fileName = modelFile.getFullPath().toString();
+				
 				String editorId = workbench.getEditorRegistry().getDefaultEditor(fileName).getId();
+				
+				//Diagram diag = (Diagram) getURI();
+				
+				 //tmp = new AbstractTextEditor();
 				page.openEditor(new FileEditorInput(modelFile), editorId);
-			} catch (PartInitException pie) {
-				String msg = MessageFormat.format(Messages.ASEMEMediator_FailToOpen, new Object[] { getURI() });
-				MessageDialog.openError(workbenchWindow.getShell(), msg, pie.getMessage());
+			} catch (Exception pie) {
+				try {
+					//workbench.getEditorRegistry().
+					//IDE.openEditor(page, new FileEditorInput(modelFile), AbstractTextEditor.DEFAULT_EDITOR_CONTEXT_MENU_ID);
+					page.openEditor(new FileEditorInput(modelFile), workbench.getEditorRegistry().getDefaultEditor().getId());
+					//PlatformUI.getWorkbench().getActiveWorkbenchWindow().getActivePage().openEditor(new IEditorInput(modelFile), AbstractTextEditor.DEFAULT_EDITOR_CONTEXT_MENU_ID);
+				} catch (PartInitException e) {
+					// TODO Auto-generated catch block
+					//e.printStackTrace();
+					//e.getCause().toString();
+					MessageDialog.openError(shell, "Error", "Something weird happened!!" );
+				}
+				//page.openEditor(new FileEditorInput(modelFile), workbench.getEditorRegistry().getDefaultEditor("temp.txt").getId());
+//				try {"org.eclipse.ui.DefaultTextEdtior"
+//					page.openEditor(new FileEditorInput(modelFile), "org.eclipse.ui.DefaultTextEdtior");
+//				} catch (PartInitException e) {
+//					// TODO Auto-generated catch block AbstractTextEditor.DEFAULT_EDITOR_CONTEXT_MENU_ID);
+//					e.printStackTrace();
+//				}
+				//MessageDialog.openError(shell, "Error", "Well FUCK!!!" );
+				//pie.printStackTrace();
+				//String msg = MessageFormat.format(Messages.ASEMEMediator_FailToOpen, new Object[] { getURI() });
+				//MessageDialog.openError(workbenchWindow.getShell(), msg, pie.getMessage());
+				//MessageDialog.openError(shell, msg, pie.getMessage());
 				//System.err.println(modelFile.getFullPath().toString());
 			}
 		}
@@ -364,6 +390,7 @@ public class ASEMEMediator implements ASEMEFacade {
 			addFile(selection, state.getEAC());
 			addFile(selection, state.getIAC());
 			addFile(selection, state.getJADE());
+			addFile(selection, state.getGG());
 			return new StructuredSelection(selection);
 		}
 
@@ -457,6 +484,25 @@ public class ASEMEMediator implements ASEMEFacade {
 			return "srm"; //$NON-NLS-1$
 		}
 	}
+	
+	private class SelectXPDLAction extends SelectFileAction { ////////////////////////
+
+		protected ModelFigure getFigure() {
+			return ASEMEMediator.this.view.getXPDLFigure();
+		}
+
+		protected URI getURI() {
+			return state.getXPDL();
+		}
+
+		protected void setURI(URI uri) {
+			state.setXPDL(uri);
+		}
+
+		protected String getFileExtension() {
+			return "xpdl"; //$NON-NLS-1$
+		}
+	}
 
 	private class SelectEACAction extends SelectFileAction {
 
@@ -473,7 +519,7 @@ public class ASEMEMediator implements ASEMEFacade {
 		}
 
 		protected String getFileExtension() {
-			return "eac"; //$NON-NLS-1$
+			return "stct"; //$NON-NLS-1$
 		}
 	}
 	
@@ -492,11 +538,68 @@ public class ASEMEMediator implements ASEMEFacade {
 		}
 
 		protected String getFileExtension() {
-			return "iac"; //$NON-NLS-1$
+			return "stct"; //$NON-NLS-1$
+		}
+	}
+	
+	private class SelectJADEAction extends SelectFileAction { ////////////////////////
+
+		protected ModelFigure getFigure() {
+			return ASEMEMediator.this.view.getJADEFigure();
+		}
+
+		protected URI getURI() {
+			return state.getJADE();
+		}
+
+		protected void setURI(URI uri) {
+				state.setJADE(uri);
+		}
+
+		protected String getFileExtension() {
+			return "java"; //$NON-NLS-1$
+		}
+	}
+	
+	private class SelectGGAction extends SelectFileAction { ////////////////////////
+
+		protected ModelFigure getFigure() {
+			return ASEMEMediator.this.view.getGGFigure();
+		}
+
+		protected URI getURI() {
+			return state.getGG();
+		}
+
+		protected void setURI(URI uri) {
+				state.setGG(uri);
+			
+			
+		}
+
+		protected String getFileExtension() {
+			return "h"; //$NON-NLS-1$
 		}
 	}
 
 	private class EditSAGAction extends EditFileAction {
+		
+		@Override
+		public void run(){
+			
+			
+			URI diag = state.getSAG().trimFileExtension().appendFileExtension("sagd");
+			
+			try {
+				PlatformUI.getWorkbench().getActiveWorkbenchWindow()
+				.getActivePage().openEditor(new URIEditorInput(diag), SAGDiagramEditor.ID);
+			} catch (PartInitException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+				
+			}
+			
+		}
 
 		protected URI getURI() {
 			return state.getSAG();	
@@ -504,6 +607,24 @@ public class ASEMEMediator implements ASEMEFacade {
 	}
 
 	private class EditSUCAction extends EditFileAction {
+		
+		@Override
+		public void run(){
+			
+			
+			URI diag = state.getSUC().trimFileExtension().appendFileExtension("sucd");
+			
+			try {
+				PlatformUI.getWorkbench().getActiveWorkbenchWindow()
+				.getActivePage().openEditor(new URIEditorInput(diag), SUCDiagramEditor.ID);
+			} catch (PartInitException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+				
+			}
+			
+		}
+		
 
 		protected URI getURI() {
 			return state.getSUC();
@@ -511,6 +632,23 @@ public class ASEMEMediator implements ASEMEFacade {
 	}	
 
 	private class EditAIPAction extends EditFileAction {
+		
+		@Override
+		public void run(){
+			
+			
+			URI diag = state.getAIP().trimFileExtension().appendFileExtension("aipd");
+			
+			try {
+				PlatformUI.getWorkbench().getActiveWorkbenchWindow()
+				.getActivePage().openEditor(new URIEditorInput(diag), AIPDiagramEditor.ID);
+			} catch (PartInitException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+				
+			}
+			
+		}
 
 		protected URI getURI() {
 			return state.getAIP();
@@ -518,13 +656,60 @@ public class ASEMEMediator implements ASEMEFacade {
 	}	
 
 	private class EditSRMAction extends EditFileAction {
+		
+		@Override
+		public void run(){
+			
+			
+			URI diag = state.getSRM().trimFileExtension().appendFileExtension("fg");
+			
+			try {
+				PlatformUI.getWorkbench().getActiveWorkbenchWindow()
+				.getActivePage().openEditor(new URIEditorInput(diag), SRMDiagramEditor.ID);
+			} catch (PartInitException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+				
+			}
+			
+		}
 
 		protected URI getURI() {
 			return state.getSRM();
 		}
 	}
+	
+	private class EditXPDLAction extends EditFileAction {	////////////////////
+		
+		
+		@Override
+		public void run(){
+			
+		}
+
+		protected URI getURI() {
+			return state.getXPDL();
+		}
+	}
 
 	private class EditEACAction extends EditFileAction {
+		
+		@Override
+		public void run(){
+			
+			
+			URI diag = state.getEAC().trimFileExtension().appendFileExtension("kse");
+			
+			try {
+				PlatformUI.getWorkbench().getActiveWorkbenchWindow()
+				.getActivePage().openEditor(new URIEditorInput(diag), StateChartDiagramEditor.ID);
+			} catch (PartInitException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+				
+			}
+			
+		}
 
 		protected URI getURI() {
 			return state.getEAC();
@@ -532,9 +717,40 @@ public class ASEMEMediator implements ASEMEFacade {
 	}
 
 	private class EditIACAction extends EditFileAction {
+		
+		@Override
+		public void run(){
+			
+			
+			URI diag = state.getIAC().trimFileExtension().appendFileExtension("kse");
+			
+			try {
+				PlatformUI.getWorkbench().getActiveWorkbenchWindow()
+				.getActivePage().openEditor(new URIEditorInput(diag), StateChartDiagramEditor.ID);
+			} catch (PartInitException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+				
+			}
+			
+		}
 
 		protected URI getURI() {
-			return state.getIAC();
+			return state.getEAC();
+		}
+	}
+	
+	private class EditJADEAction extends EditFileAction { 	/////////////////
+
+		protected URI getURI() {
+			return state.getJADE();
+		}
+	}
+	
+	private class EditGGAction extends EditFileAction { 	/////////////////
+
+		protected URI getURI() {
+			return state.getGG();
 		}
 	}
 
@@ -542,7 +758,7 @@ public class ASEMEMediator implements ASEMEFacade {
 	private class CreateSAGAction extends RunWizardAction {
 
 		protected IWizard createWizard() {
-			return new SAGModelWizard();
+			return new SAGCreationWizard();
 		}
 
 		protected void wizardFinished(IWizard wizard) {
@@ -575,8 +791,9 @@ public class ASEMEMediator implements ASEMEFacade {
 			//				e.printStackTrace();
 			//			}
 			//			state.setSAG(uri);
-			IFile file = ((SAGModelWizard) wizard).getModelFile();
-			state.setSAG(file);
+			//IFile file = ((SAGModelWizard) wizard).getModelFile();
+			Resource resource = ((SAGCreationWizard) wizard).getDiagram();
+			//state.setSAG(file);
 			updateStatus();
 		}
 	}
@@ -622,6 +839,10 @@ public class ASEMEMediator implements ASEMEFacade {
 	}
 
 	private class CreateEACAction extends RunWizardAction {
+		
+		public boolean isEnabled(){
+			return false;
+		}
 
 		protected IWizard createWizard() {
 			//return new EACCreationWizard();
@@ -636,6 +857,10 @@ public class ASEMEMediator implements ASEMEFacade {
 	}
 
 	private class CreateIACAction extends RunWizardAction {
+		
+		public boolean isEnabled(){
+			return false;
+		}
 
 		protected IWizard createWizard() {
 			//return new IACCreationWizard();
@@ -648,193 +873,4 @@ public class ASEMEMediator implements ASEMEFacade {
 			//updateStatus();
 		}
 	}
-	
-	//	private class CreateGDMAction extends RunWizardAction {
-	//
-	//		protected IWizard createWizard() {
-	//			return new GMFGraphModelWizard();
-	//		}
-	//
-	//		protected void wizardFinished(IWizard wizard) {
-	//			IFile file = ((GMFGraphModelWizard) wizard).getModelFile();
-	//			state.setGDM(file);
-	//			updateStatus();
-	//		}
-	//	}
-	//
-	//	private class CreateDMAction extends RunWizardAction {
-	//
-	//		protected IWizard createWizard() {
-	//			return new EcoreModelWizard();
-	//		}
-	//
-	//		protected void wizardFinished(IWizard wizard) {
-	//			IFile file = ((EcoreModelWizard) wizard).getModelFile();
-	//			state.setDM(file);
-	//			updateStatus();
-	//		}
-	//	}
-	//
-	//	private class CreateTDMAction extends RunWizardAction {
-	//
-	//		protected IWizard createWizard() {
-	//			return new GMFToolModelWizard();
-	//		}
-	//
-	//		protected void wizardFinished(IWizard wizard) {
-	//			IFile file = ((GMFToolModelWizard) wizard).getModelFile();
-	//			state.setTDM(file);
-	//			updateStatus();
-	//		}
-	//	}
-	//
-	//	private class CreateMMAction extends RunWizardAction {
-	//
-	//		protected IWizard createWizard() {
-	//			return new GMFMapModelWizard();
-	//		}
-	//
-	//		protected void wizardFinished(IWizard wizard) {
-	//			IFile file = ((GMFMapModelWizard) wizard).getModelFile();
-	//			state.setMM(file);
-	//			updateStatus();
-	//		}
-	//	}
-	//
-	//	private class CreateGMAction extends RunWizardAction {
-	//
-	//		protected IWizard createWizard() {
-	//			return new GMFGenModelWizard();
-	//		}
-	//
-	//		protected void wizardFinished(IWizard wizard) {
-	//			IFile file = ((GMFGenModelWizard) wizard).getModelFile();
-	//			state.setGM(file);
-	//			updateStatus();
-	//		}
-	//	}
-	//
-	//	private class ReloadDGMAction implements ASEMEAction {
-	//
-	//		public void init(ASEMEFacade context) {
-	//		}
-	//
-	//		public boolean isEnabled() {
-	//			return state.getDGM() != null;
-	//		}
-	//
-	//		public void run() {
-	//			IFile file = URIUtil.getFile(state.getDGM());
-	//			GenModelReloadActionDelegate action = new GenModelReloadActionDelegate();
-	//			IAction uiAction = new Action() {
-	//			};
-	//			action.selectionChanged(uiAction, new StructuredSelection(file));
-	//			action.run(uiAction);
-	//			updateStatus();
-	//		}
-	//	}
-	//
-	//	private class DeriveDGMAction extends RunWizardAction {
-	//
-	//		public boolean isEnabled() {
-	//			return super.isEnabled() && state.getDM() != null;
-	//		}
-	//
-	//		protected IWizard createWizard() {
-	//			return new OpenEMFModelWizard();
-	//		}
-	//
-	//		protected void wizardFinished(IWizard wizard) {
-	//			IFile file = ((OpenEMFModelWizard) wizard).getModelFile();
-	//			state.setDGM(file);
-	//			updateStatus();
-	//		}
-	//
-	//		protected IStructuredSelection getSelection() {
-	//			return new StructuredSelection(URIUtil.getFile(state.getDM()));
-	//		}
-	//	}
-
-	//	private static class OpenEMFModelWizard extends EMFModelWizard {
-	//
-	//		public IFile getModelFile() {
-	//			IPath path = genModelContainerPath.append(genModelFileName);
-	//			return ResourcesPlugin.getWorkspace().getRoot().getFile(path);
-	//		}
-	//	}
-
-	//	private class DeriveGDMAction extends RunWizardAction {
-	//
-	//		public boolean isEnabled() {
-	//			return super.isEnabled() && state.getDM() != null;
-	//		}
-	//
-	//		protected IWizard createWizard() {
-	//			GMFGraphSimpleModelWizard wizard = new GMFGraphSimpleModelWizard();
-	//			wizard.setMode(WizardOperationMode.DETECT);
-	//			return wizard;
-	//		}
-	//
-	//		protected void wizardFinished(IWizard wizard) {
-	//			IFile file = ((GMFGraphSimpleModelWizard) wizard).getModelFile();
-	//			state.setGDM(file);
-	//			updateStatus();
-	//		}
-	//	}
-
-	//	
-	//	private class DeriveGDMAction extends RunWizardAction {
-	//
-	//		public boolean isEnabled() {
-	//			return super.isEnabled() && state.getDM() != null;
-	//		}
-	//
-	//		protected IWizard createWizard() {
-	//			GMFGraphSimpleModelWizard wizard = new GMFGraphSimpleModelWizard();
-	//			wizard.setMode(WizardOperationMode.DETECT);
-	//			return wizard;
-	//		}
-	//
-	//		protected void wizardFinished(IWizard wizard) {
-	//			IFile file = ((GMFGraphSimpleModelWizard) wizard).getModelFile();
-	//			state.setGDM(file);
-	//			updateStatus();
-	//		}
-	//	}
-	//
-	//	private class DeriveTDMAction extends RunWizardAction {
-	//
-	//		public boolean isEnabled() {
-	//			return super.isEnabled() && state.getDM() != null;
-	//		}
-	//
-	//		protected IWizard createWizard() {
-	//			GMFToolSimpleModelWizard wizard = new GMFToolSimpleModelWizard();
-	//			wizard.setMode(WizardOperationMode.DETECT);
-	//			return wizard;
-	//		}
-	//
-	//		protected void wizardFinished(IWizard wizard) {
-	//			IFile file = ((GMFToolSimpleModelWizard) wizard).getModelFile();
-	//			state.setTDM(file);
-	//			updateStatus();
-	//		}
-	//	}
-	//
-	//	private class CombineMMAction extends RunWizardAction {
-	//
-	//		public boolean isEnabled() {
-	//			return project != null && state.getGDM() != null && state.getDM() != null && state.getTDM() != null;
-	//		}
-	//
-	//		protected IWizard createWizard() {
-	//			return new GMFMapGuideModelWizard();
-	//		}
-	//
-	//		protected void wizardFinished(IWizard wizard) {
-	//			IFile file = ((GMFMapGuideModelWizard) wizard).getModelFile();
-	//			state.setMM(file);
-	//			updateStatus();
-	//		}
-	//	}
 }

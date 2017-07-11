@@ -324,6 +324,7 @@ public class SUCPackageImpl extends EPackageImpl implements SUCPackage {
 
 		// Initialize enums and add enum literals
 		initEEnum(roleTypeEEnum, RoleType.class, "RoleType");
+		addEEnumLiteral(roleTypeEEnum, RoleType.ABSTRACT);
 		addEEnumLiteral(roleTypeEEnum, RoleType.SYSTEM);
 		addEEnumLiteral(roleTypeEEnum, RoleType.LEGACY_SYSTEM);
 		addEEnumLiteral(roleTypeEEnum, RoleType.EXTERNAL_SYSTEM);

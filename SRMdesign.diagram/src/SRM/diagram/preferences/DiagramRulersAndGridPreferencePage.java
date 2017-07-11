@@ -10,10 +10,9 @@ import SRM.diagram.part.SRMDiagramEditorPlugin;
 public class DiagramRulersAndGridPreferencePage extends RulerGridPreferencePage {
 
 	/**
-	 * @generated
-	 */
+	* @generated
+	*/
 	public DiagramRulersAndGridPreferencePage() {
-		setPreferenceStore(SRMDiagramEditorPlugin.getInstance()
-				.getPreferenceStore());
+		setPreferenceStore(SRMDiagramEditorPlugin.getInstance().getPreferenceStore());
 	}
 }

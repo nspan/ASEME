@@ -20,133 +20,121 @@ import org.eclipse.ui.actions.WorkspaceModifyOperation;
 public class SAGCreationWizard extends Wizard implements INewWizard {
 
 	/**
-	 * @generated
-	 */
+	* @generated
+	*/
 	private IWorkbench workbench;
 
 	/**
-	 * @generated
-	 */
+	* @generated
+	*/
 	protected IStructuredSelection selection;
 
 	/**
-	 * @generated
-	 */
+	* @generated
+	*/
 	protected SAGCreationWizardPage diagramModelFilePage;
 
 	/**
-	 * @generated
-	 */
+	* @generated
+	*/
 	protected SAGCreationWizardPage domainModelFilePage;
 
 	/**
-	 * @generated
-	 */
+	* @generated
+	*/
 	protected Resource diagram;
 
 	/**
-	 * @generated
-	 */
+	* @generated
+	*/
 	private boolean openNewlyCreatedDiagramEditor = true;
 
 	/**
-	 * @generated
-	 */
+	* @generated
+	*/
 	public IWorkbench getWorkbench() {
 		return workbench;
 	}
 
 	/**
-	 * @generated
-	 */
+	* @generated
+	*/
 	public IStructuredSelection getSelection() {
 		return selection;
 	}
 
 	/**
-	 * @generated
-	 */
+	* @generated
+	*/
 	public final Resource getDiagram() {
 		return diagram;
 	}
 
 	/**
-	 * @generated
-	 */
+	* @generated
+	*/
 	public final boolean isOpenNewlyCreatedDiagramEditor() {
 		return openNewlyCreatedDiagramEditor;
 	}
 
 	/**
-	 * @generated
-	 */
-	public void setOpenNewlyCreatedDiagramEditor(
-			boolean openNewlyCreatedDiagramEditor) {
+	* @generated
+	*/
+	public void setOpenNewlyCreatedDiagramEditor(boolean openNewlyCreatedDiagramEditor) {
 		this.openNewlyCreatedDiagramEditor = openNewlyCreatedDiagramEditor;
 	}
 
 	/**
-	 * @generated
-	 */
+	* @generated
+	*/
 	public void init(IWorkbench workbench, IStructuredSelection selection) {
 		this.workbench = workbench;
 		this.selection = selection;
 		setWindowTitle(Messages.SAGCreationWizardTitle);
-		setDefaultPageImageDescriptor(SAGDiagramEditorPlugin
-				.getBundledImageDescriptor("icons/wizban/NewSAGWizard.gif")); //$NON-NLS-1$
+		setDefaultPageImageDescriptor(
+				SAGDiagramEditorPlugin.getBundledImageDescriptor("icons/wizban/NewSAGWizard.gif")); //$NON-NLS-1$
 		setNeedsProgressMonitor(true);
 	}
 
 	/**
-	 * @generated
-	 */
+	* @generated
+	*/
 	public void addPages() {
-		diagramModelFilePage = new SAGCreationWizardPage(
-				"DiagramModelFile", getSelection(), "sag_diagram"); //$NON-NLS-1$ //$NON-NLS-2$
-		diagramModelFilePage
-				.setTitle(Messages.SAGCreationWizard_DiagramModelFilePageTitle);
-		diagramModelFilePage
-				.setDescription(Messages.SAGCreationWizard_DiagramModelFilePageDescription);
+		diagramModelFilePage = new SAGCreationWizardPage("DiagramModelFile", getSelection(), "sagd"); //$NON-NLS-1$ //$NON-NLS-2$
+		diagramModelFilePage.setTitle(Messages.SAGCreationWizard_DiagramModelFilePageTitle);
+		diagramModelFilePage.setDescription(Messages.SAGCreationWizard_DiagramModelFilePageDescription);
 		addPage(diagramModelFilePage);
 
-		domainModelFilePage = new SAGCreationWizardPage(
-				"DomainModelFile", getSelection(), "sag") { //$NON-NLS-1$ //$NON-NLS-2$
+		domainModelFilePage = new SAGCreationWizardPage("DomainModelFile", getSelection(), "sag") { //$NON-NLS-1$ //$NON-NLS-2$
 
 			public void setVisible(boolean visible) {
 				if (visible) {
 					String fileName = diagramModelFilePage.getFileName();
-					fileName = fileName.substring(0, fileName.length()
-							- ".sag_diagram".length()); //$NON-NLS-1$
-					setFileName(SAGDiagramEditorUtil.getUniqueFileName(
-							getContainerFullPath(), fileName, "sag")); //$NON-NLS-1$
+					fileName = fileName.substring(0, fileName.length() - ".sagd".length()); //$NON-NLS-1$
+					setFileName(SAGDiagramEditorUtil.getUniqueFileName(getContainerFullPath(), fileName, "sag")); //$NON-NLS-1$
 				}
 				super.setVisible(visible);
 			}
 		};
-		domainModelFilePage
-				.setTitle(Messages.SAGCreationWizard_DomainModelFilePageTitle);
-		domainModelFilePage
-				.setDescription(Messages.SAGCreationWizard_DomainModelFilePageDescription);
+		domainModelFilePage.setTitle(Messages.SAGCreationWizard_DomainModelFilePageTitle);
+		domainModelFilePage.setDescription(Messages.SAGCreationWizard_DomainModelFilePageDescription);
 		addPage(domainModelFilePage);
 	}
 
 	/**
-	 * @generated
-	 */
+	* @generated
+	*/
 	public boolean performFinish() {
 		IRunnableWithProgress op = new WorkspaceModifyOperation(null) {
 
-			protected void execute(IProgressMonitor monitor)
-					throws CoreException, InterruptedException {
-				diagram = SAGDiagramEditorUtil.createDiagram(
-						diagramModelFilePage.getURI(),
+			protected void execute(IProgressMonitor monitor) throws CoreException, InterruptedException {
+				diagram = SAGDiagramEditorUtil.createDiagram(diagramModelFilePage.getURI(),
 						domainModelFilePage.getURI(), monitor);
 				if (isOpenNewlyCreatedDiagramEditor() && diagram != null) {
 					try {
 						SAGDiagramEditorUtil.openDiagram(diagram);
 					} catch (PartInitException e) {
-						ErrorDialog.openError(getContainer().getShell(),
-								Messages.SAGCreationWizardOpenEditorError,
+						ErrorDialog.openError(getContainer().getShell(), Messages.SAGCreationWizardOpenEditorError,
 								null, e.getStatus());
 					}
 				}
@@ -158,12 +146,10 @@ public class SAGCreationWizard extends Wizard implements INewWizard {
 			return false;
 		} catch (InvocationTargetException e) {
 			if (e.getTargetException() instanceof CoreException) {
-				ErrorDialog.openError(getContainer().getShell(),
-						Messages.SAGCreationWizardCreationError, null,
+				ErrorDialog.openError(getContainer().getShell(), Messages.SAGCreationWizardCreationError, null,
 						((CoreException) e.getTargetException()).getStatus());
 			} else {
-				SAGDiagramEditorPlugin.getInstance().logError(
-						"Error creating diagram", e.getTargetException()); //$NON-NLS-1$
+				SAGDiagramEditorPlugin.getInstance().logError("Error creating diagram", e.getTargetException()); //$NON-NLS-1$
 			}
 			return false;
 		}

@@ -1,8 +1,4 @@
 /**
- * <copyright>
- * </copyright>
- *
- * $Id$
  */
 package SAG.impl;
 
@@ -21,11 +17,9 @@ import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.InternalEObject;
 
 import org.eclipse.emf.ecore.impl.ENotificationImpl;
-import org.eclipse.emf.ecore.impl.EObjectImpl;
+import org.eclipse.emf.ecore.impl.MinimalEObjectImpl;
 
 import org.eclipse.emf.ecore.util.EObjectResolvingEList;
-import org.eclipse.emf.ecore.util.EObjectWithInverseResolvingEList;
-import org.eclipse.emf.ecore.util.InternalEList;
 
 /**
  * <!-- begin-user-doc -->
@@ -33,17 +27,17 @@ import org.eclipse.emf.ecore.util.InternalEList;
  * <!-- end-user-doc -->
  * <p>
  * The following features are implemented:
+ * </p>
  * <ul>
  *   <li>{@link SAG.impl.GoalImpl#getRequirements <em>Requirements</em>}</li>
  *   <li>{@link SAG.impl.GoalImpl#getName <em>Name</em>}</li>
  *   <li>{@link SAG.impl.GoalImpl#getDepender <em>Depender</em>}</li>
  *   <li>{@link SAG.impl.GoalImpl#getDependee <em>Dependee</em>}</li>
  * </ul>
- * </p>
  *
  * @generated
  */
-public class GoalImpl extends EObjectImpl implements Goal {
+public class GoalImpl extends MinimalEObjectImpl.Container implements Goal {
 	/**
 	 * The default value of the '{@link #getRequirements() <em>Requirements</em>}' attribute.
 	 * <!-- begin-user-doc -->
@@ -242,7 +236,6 @@ public class GoalImpl extends EObjectImpl implements Goal {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	@SuppressWarnings("unchecked")
 	@Override
 	public NotificationChain eInverseAdd(InternalEObject otherEnd, int featureID, NotificationChain msgs) {
 		switch (featureID) {

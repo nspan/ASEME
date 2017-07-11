@@ -9,18 +9,17 @@ import org.eclipse.gmf.tooling.runtime.update.UpdaterLinkDescriptor;
  */
 public class SUCLinkDescriptor extends UpdaterLinkDescriptor {
 	/**
-	 * @generated
-	 */
-	public SUCLinkDescriptor(EObject source, EObject destination,
-			IElementType elementType, int linkVID) {
+	* @generated
+	*/
+	public SUCLinkDescriptor(EObject source, EObject destination, IElementType elementType, int linkVID) {
 		super(source, destination, elementType, linkVID);
 	}
 
 	/**
-	 * @generated
-	 */
-	public SUCLinkDescriptor(EObject source, EObject destination,
-			EObject linkElement, IElementType elementType, int linkVID) {
+	* @generated
+	*/
+	public SUCLinkDescriptor(EObject source, EObject destination, EObject linkElement, IElementType elementType,
+			int linkVID) {
 		super(source, destination, linkElement, elementType, linkVID);
 	}
 

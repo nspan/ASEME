@@ -24,29 +24,26 @@ import AIP.diagram.providers.AIPElementTypes;
 /**
  * @generated
  */
-public class ParticipantItemSemanticEditPolicy extends
-		AIPBaseItemSemanticEditPolicy {
+public class ParticipantItemSemanticEditPolicy extends AIPBaseItemSemanticEditPolicy {
 
 	/**
-	 * @generated
-	 */
+	* @generated
+	*/
 	public ParticipantItemSemanticEditPolicy() {
-		super(AIPElementTypes.Participant_2003);
+		super(AIPElementTypes.Participant_2002);
 	}
 
 	/**
-	 * @generated
-	 */
+	* @generated
+	*/
 	protected Command getDestroyElementCommand(DestroyElementRequest req) {
 		View view = (View) getHost().getModel();
-		CompositeTransactionalCommand cmd = new CompositeTransactionalCommand(
-				getEditingDomain(), null);
+		CompositeTransactionalCommand cmd = new CompositeTransactionalCommand(getEditingDomain(), null);
 		cmd.setTransactionNestingEnabled(false);
 		for (Iterator<?> it = view.getTargetEdges().iterator(); it.hasNext();) {
 			Edge incomingLink = (Edge) it.next();
 			if (AIPVisualIDRegistry.getVisualID(incomingLink) == ProtocolParticipantsEditPart.VISUAL_ID) {
-				DestroyReferenceRequest r = new DestroyReferenceRequest(
-						incomingLink.getSource().getElement(), null,
+				DestroyReferenceRequest r = new DestroyReferenceRequest(incomingLink.getSource().getElement(), null,
 						incomingLink.getTarget().getElement(), false);
 				cmd.add(new DestroyReferenceCommand(r));
 				cmd.add(new DeleteCommand(getEditingDomain(), incomingLink));
@@ -71,16 +68,14 @@ public class ParticipantItemSemanticEditPolicy extends
 	protected Command getCreateRelationshipCommand(CreateRelationshipRequest req) {
 		Command command = req.getTarget() == null ? getStartCreateRelationshipCommand(req)
 				: getCompleteCreateRelationshipCommand(req);
-		return command != null ? command : super
-				.getCreateRelationshipCommand(req);
+		return command != null ? command : super.getCreateRelationshipCommand(req);
 	}
 
 	/**
 	 * @generated
 	 */
-	protected Command getStartCreateRelationshipCommand(
-			CreateRelationshipRequest req) {
-		if (AIPElementTypes.ProtocolParticipants_4002 == req.getElementType()) {
+	protected Command getStartCreateRelationshipCommand(CreateRelationshipRequest req) {
+		if (AIPElementTypes.ProtocolParticipants_4001 == req.getElementType()) {
 			return null;
 		}
 		return null;
@@ -89,11 +84,9 @@ public class ParticipantItemSemanticEditPolicy extends
 	/**
 	 * @generated
 	 */
-	protected Command getCompleteCreateRelationshipCommand(
-			CreateRelationshipRequest req) {
-		if (AIPElementTypes.ProtocolParticipants_4002 == req.getElementType()) {
-			return getGEFWrapper(new ProtocolParticipantsCreateCommand(req,
-					req.getSource(), req.getTarget()));
+	protected Command getCompleteCreateRelationshipCommand(CreateRelationshipRequest req) {
+		if (AIPElementTypes.ProtocolParticipants_4001 == req.getElementType()) {
+			return getGEFWrapper(new ProtocolParticipantsCreateCommand(req, req.getSource(), req.getTarget()));
 		}
 		return null;
 	}
@@ -104,8 +97,7 @@ public class ParticipantItemSemanticEditPolicy extends
 	 * 
 	 * @generated
 	 */
-	protected Command getReorientReferenceRelationshipCommand(
-			ReorientReferenceRelationshipRequest req) {
+	protected Command getReorientReferenceRelationshipCommand(ReorientReferenceRelationshipRequest req) {
 		switch (getVisualID(req)) {
 		case ProtocolParticipantsEditPart.VISUAL_ID:
 			return getGEFWrapper(new ProtocolParticipantsReorientCommand(req));

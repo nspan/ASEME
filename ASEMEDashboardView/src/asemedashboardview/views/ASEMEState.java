@@ -12,6 +12,7 @@ import org.eclipse.emf.common.util.URI;
 import org.osgi.service.prefs.BackingStoreException;
 import org.osgi.service.prefs.Preferences;
 
+import aseme.transformations.AsemeModelSaveHelper;
 import asemedashboardview.Activator;
 
 public final class ASEMEState {
@@ -27,12 +28,16 @@ public final class ASEMEState {
 	private static final String AIP_KEY = "aip"; //$NON-NLS-1$
 
 	private static final String SRM_KEY = "srm"; //$NON-NLS-1$
+	
+	private static final String XPDL_KEY = "xpdl"; //$NON-NLS-1$
 
 	private static final String EAC_KEY = "eac"; //$NON-NLS-1$
 
 	private static final String IAC_KEY = "iac"; //$NON-NLS-1$
 
 	private static final String JADE_KEY = "jade"; //$NON-NLS-1$
+	
+	private static final String GG_KEY = "gg"; //$NON-NLS-1$
 	
 	private URI sag;
 	
@@ -41,12 +46,16 @@ public final class ASEMEState {
 	private URI aip;
 	
 	private URI srm;
+	
+	private URI xpdl;
 
 	private URI eac;
 
 	private URI iac;
 
 	private URI jade;
+	
+	private URI gg;
 
 	private Set<String> enabledOptions;
 
@@ -73,7 +82,9 @@ public final class ASEMEState {
 			eac = read(prefs, EAC_KEY);
 			iac = read(prefs, IAC_KEY);
 			jade = read(prefs, JADE_KEY);
+			gg = read(prefs, GG_KEY);
 		}
+		AsemeModelSaveHelper.init();
 	}
 	
 	public URI getSAG() {
@@ -92,6 +103,10 @@ public final class ASEMEState {
 		return srm;
 	}
 	
+	public URI getXPDL() {
+		return xpdl;
+	}
+	
 	public URI getEAC() {
 		return eac;
 	}
@@ -102,6 +117,10 @@ public final class ASEMEState {
 
 	public URI getJADE() {
 		return jade;
+	}
+	
+	public URI getGG() {
+		return gg;
 	}
 
 	public void setSAG(URI uri) {
@@ -123,6 +142,11 @@ public final class ASEMEState {
 		srm = uri;
 		write(SRM_KEY, srm);
 	}
+	
+	public void setXPDL(URI uri) {
+		xpdl = uri;
+		write(XPDL_KEY, xpdl);
+		}
 
 	public void setEAC(URI uri) {
 		eac = uri;
@@ -137,6 +161,11 @@ public final class ASEMEState {
 	public void setJADE(URI uri) {
 		jade = uri;
 		write(JADE_KEY, jade);
+	}
+	
+	public void setGG(URI uri) {
+		gg = uri;
+		write(GG_KEY, gg);
 	}
 
 	public void setSAG(IFile file) {
@@ -173,6 +202,11 @@ public final class ASEMEState {
 		jade = getURI(file);
 		write(JADE_KEY, jade);
 	}
+	
+	public void setGG(IFile file) {
+		gg = getURI(file);
+		write(GG_KEY, gg);
+	}
 
 	private static URI getURI(IFile file) {
 		if (file == null) {
@@ -206,6 +240,9 @@ public final class ASEMEState {
 			count++;
 		}
 		if (jade != null) {
+			count++;
+		}
+		if (gg != null) {
 			count++;
 		}
 		return count;

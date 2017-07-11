@@ -1,8 +1,4 @@
 /**
- * <copyright>
- * </copyright>
- *
- * $Id$
  */
 package AIP.impl;
 
@@ -31,7 +27,7 @@ public class AIPFactoryImpl extends EFactoryImpl implements AIPFactory {
 	 */
 	public static AIPFactory init() {
 		try {
-			AIPFactory theAIPFactory = (AIPFactory)EPackage.Registry.INSTANCE.getEFactory("http://www.acml.tuc.gr/aseme/metamodels/AIP"); 
+			AIPFactory theAIPFactory = (AIPFactory)EPackage.Registry.INSTANCE.getEFactory(AIPPackage.eNS_URI);
 			if (theAIPFactory != null) {
 				return theAIPFactory;
 			}

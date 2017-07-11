@@ -9,15 +9,14 @@ import org.eclipse.emf.common.ui.URIEditorInput;
 public class SRMUriEditorInputTester extends PropertyTester {
 
 	/**
-	 * @generated
-	 */
-	public boolean test(Object receiver, String method, Object[] args,
-			Object expectedValue) {
+	* @generated
+	*/
+	public boolean test(Object receiver, String method, Object[] args, Object expectedValue) {
 		if (false == receiver instanceof URIEditorInput) {
 			return false;
 		}
 		URIEditorInput editorInput = (URIEditorInput) receiver;
-		return "srmd".equals(editorInput.getURI().fileExtension()); //$NON-NLS-1$
+		return "fg".equals(editorInput.getURI().fileExtension()); //$NON-NLS-1$
 	}
 
 }

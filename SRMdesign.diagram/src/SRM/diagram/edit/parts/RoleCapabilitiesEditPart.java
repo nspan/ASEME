@@ -1,5 +1,6 @@
 package SRM.diagram.edit.parts;
 
+import org.eclipse.draw2d.ColorConstants;
 import org.eclipse.draw2d.Connection;
 import org.eclipse.draw2d.PolylineDecoration;
 import org.eclipse.draw2d.RotatableDecoration;
@@ -14,46 +15,44 @@ import SRM.diagram.edit.policies.RoleCapabilitiesItemSemanticEditPolicy;
 /**
  * @generated
  */
-public class RoleCapabilitiesEditPart extends ConnectionNodeEditPart implements
-		ITreeBranchEditPart {
+public class RoleCapabilitiesEditPart extends ConnectionNodeEditPart implements ITreeBranchEditPart {
 
 	/**
-	 * @generated
-	 */
+	* @generated
+	*/
 	public static final int VISUAL_ID = 4004;
 
 	/**
-	 * @generated
-	 */
+	* @generated
+	*/
 	public RoleCapabilitiesEditPart(View view) {
 		super(view);
 	}
 
 	/**
-	 * @generated
-	 */
+	* @generated
+	*/
 	protected void createDefaultEditPolicies() {
 		super.createDefaultEditPolicies();
-		installEditPolicy(EditPolicyRoles.SEMANTIC_ROLE,
-				new RoleCapabilitiesItemSemanticEditPolicy());
+		installEditPolicy(EditPolicyRoles.SEMANTIC_ROLE, new RoleCapabilitiesItemSemanticEditPolicy());
 	}
 
 	/**
-	 * Creates figure for this edit part.
-	 * 
-	 * Body of this method does not depend on settings in generation model
-	 * so you may safely remove <i>generated</i> tag and modify it.
-	 * 
-	 * @generated
-	 */
+	* Creates figure for this edit part.
+	* 
+	* Body of this method does not depend on settings in generation model
+	* so you may safely remove <i>generated</i> tag and modify it.
+	* 
+	* @generated
+	*/
 
 	protected Connection createConnectionFigure() {
 		return new RoleCapabilitiesFigure();
 	}
 
 	/**
-	 * @generated
-	 */
+	* @generated
+	*/
 	public RoleCapabilitiesFigure getPrimaryShape() {
 		return (RoleCapabilitiesFigure) getFigure();
 	}
@@ -67,7 +66,9 @@ public class RoleCapabilitiesEditPart extends ConnectionNodeEditPart implements
 		 * @generated
 		 */
 		public RoleCapabilitiesFigure() {
-			this.setLineWidth(1);
+			this.setLineWidth(2);
+			this.setForegroundColor(ColorConstants.black);
+			this.setBackgroundColor(ColorConstants.black);
 
 			setTargetDecoration(createTargetDecoration());
 		}
@@ -77,7 +78,6 @@ public class RoleCapabilitiesEditPart extends ConnectionNodeEditPart implements
 		 */
 		private RotatableDecoration createTargetDecoration() {
 			PolylineDecoration df = new PolylineDecoration();
-			df.setLineWidth(1);
 			return df;
 		}
 

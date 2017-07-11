@@ -4,13 +4,13 @@
 
    <extension point="org.eclipse.team.core.fileTypes" id="repo-ftype">
       <?gmfgen generated="true"?>
-      <fileTypes type="text" extension="srmd"/>
+      <fileTypes type="text" extension="fg"/>
    </extension>
 
    <extension point="org.eclipse.emf.ecore.extension_parser" id="resource-factory">
       <?gmfgen generated="true"?>
       <parser
-         type="srmd"
+         type="fg"
          class="org.eclipse.gmf.runtime.emf.core.resources.GMFResourceFactory">
       </parser>
    </extension>
@@ -21,7 +21,7 @@
          id="SRM.diagram.part.SRMDiagramEditorID"
          name="%editorName"
          icon="icons/obj16/SRMDiagramFile.gif"
-         extensions="srmd"
+         extensions="fg"
          default="true"
          class="SRM.diagram.part.SRMDiagramEditor"
          matchingStrategy="SRM.diagram.part.SRMMatchingStrategy"
@@ -80,6 +80,10 @@
             <ElementType class="org.eclipse.gmf.runtime.diagram.ui.editparts.DiagramEditPart">
                <GlobalActionId actionId="save"/>
             </ElementType>
+            <ElementType class="org.eclipse.gmf.runtime.diagram.ui.editparts.IGraphicalEditPart">
+               <GlobalActionId actionId="save">
+               </GlobalActionId>
+            </ElementType>        
          </ViewId>
       </GlobalActionHandlerProvider>
       <GlobalActionHandlerProvider
@@ -106,6 +110,21 @@
       </GlobalActionHandlerProvider>
    </extension>
 
+
+   <extension point="org.eclipse.gmf.runtime.common.ui.services.markerNavigationProviders" id="markers-navigation">
+      <?gmfgen generated="true"?>
+      <MarkerNavigationProvider class="SRM.diagram.providers.SRMMarkerNavigationProvider">
+         <MarkerType name="SRMdesign.diagram.diagnostic"/>
+         <Priority name="Lowest"/>
+      </MarkerNavigationProvider>
+   </extension>
+
+   <extension id="diagnostic" name="SRM Plugin problems" point="org.eclipse.core.resources.markers">
+      <?gmfgen generated="true"?>
+      <super type="org.eclipse.core.resources.problemmarker"/>
+      <super type="org.eclipse.gmf.runtime.common.ui.services.marker"/>
+      <persistent value="true"/>
+   </extension>   
 
    <extension point="org.eclipse.core.runtime.preferences" id="prefs">
       <?gmfgen generated="true"?>
@@ -213,8 +232,8 @@
       <viewProvider class="SRM.diagram.providers.SRMViewProvider">
          <Priority name="Lowest"/>
          <context viewClass="org.eclipse.gmf.runtime.notation.Diagram" semanticHints="SRM"/>
-         <context viewClass="org.eclipse.gmf.runtime.notation.Node" semanticHints="2004,2005,2006"/>
-         <context viewClass="org.eclipse.gmf.runtime.notation.Edge" semanticHints="4004,4005,4006"/>
+         <context viewClass="org.eclipse.gmf.runtime.notation.Node" semanticHints="2001,2002,2003,2004"/>
+         <context viewClass="org.eclipse.gmf.runtime.notation.Edge" semanticHints="4001,4002,4003,4004"/>
       </viewProvider>
    </extension>
 
@@ -226,13 +245,13 @@
             <method name="getType()" value="SRM"/>
          </object>
          <object class="org.eclipse.gmf.runtime.notation.Node" id="generated-nodes">
-            <method name="getType()" value="2004,2005,2006"/>
+            <method name="getType()" value="2001,2002,2003,2004"/>
          </object>
          <object class="org.eclipse.gmf.runtime.notation.Edge" id="generated-links">
-            <method name="getType()" value="4004,4005,4006"/>
+            <method name="getType()" value="4001,4002,4003,4004"/>
          </object>
          <object class="org.eclipse.gmf.runtime.notation.Node" id="generated-labels">
-            <method name="getType()" value="5006,5007,5008,5009,5010"/>
+            <method name="getType()" value="5001,5002,5003,5004"/>
          </object>
          <object class="org.eclipse.gmf.runtime.notation.Node" id="generated-compartments">
             <method name="getType()" value=""/>
@@ -241,17 +260,37 @@
       </editpartProvider>
    </extension>
 
+   
    <extension point="org.eclipse.gmf.runtime.emf.ui.modelingAssistantProviders" id="modelassist-provider">
       <?gmfgen generated="true"?>
-      <modelingAssistantProvider class="SRM.diagram.providers.SRMModelingAssistantProvider">
+      <modelingAssistantProvider class="SRM.diagram.providers.assistants.SRMModelingAssistantProviderOfSRMmodelEditPart">
          <Priority name="Lowest"/>
          <object class="SRM.diagram.edit.parts.SRMmodelEditPart" id="SRMmodel_1000"/>
-         <object class="SRM.diagram.edit.parts.CapabilityEditPart" id="Capability_2004"/>
-         <object class="SRM.diagram.edit.parts.RoleEditPart" id="Role_2005"/>
-         <object class="SRM.diagram.edit.parts.ActivityEditPart" id="Activity_2006"/>
-         <context elements="SRMmodel_1000,Capability_2004,Role_2005,Activity_2006"/>
+         <context elements="SRMmodel_1000"/>
       </modelingAssistantProvider>
+            <modelingAssistantProvider class="SRM.diagram.providers.assistants.SRMModelingAssistantProviderOfFunctionalityEditPart">
+         <Priority name="Lowest"/>
+         <object class="SRM.diagram.edit.parts.FunctionalityEditPart" id="Functionality_2001"/>
+         <context elements="Functionality_2001"/>
+      </modelingAssistantProvider>
+            <modelingAssistantProvider class="SRM.diagram.providers.assistants.SRMModelingAssistantProviderOfCapabilityEditPart">
+         <Priority name="Lowest"/>
+         <object class="SRM.diagram.edit.parts.CapabilityEditPart" id="Capability_2002"/>
+         <context elements="Capability_2002"/>
+      </modelingAssistantProvider>
+            <modelingAssistantProvider class="SRM.diagram.providers.assistants.SRMModelingAssistantProviderOfRoleEditPart">
+         <Priority name="Lowest"/>
+         <object class="SRM.diagram.edit.parts.RoleEditPart" id="Role_2003"/>
+         <context elements="Role_2003"/>
+      </modelingAssistantProvider>
+            <modelingAssistantProvider class="SRM.diagram.providers.assistants.SRMModelingAssistantProviderOfActivityEditPart">
+         <Priority name="Lowest"/>
+         <object class="SRM.diagram.edit.parts.ActivityEditPart" id="Activity_2004"/>
+         <context elements="Activity_2004"/>
+      </modelingAssistantProvider>
+      
    </extension>
+
 
    <extension point="org.eclipse.gmf.runtime.common.ui.services.iconProviders" id="icon-provider">
       <?gmfgen generated="true"?>
@@ -281,33 +320,70 @@
       </metamodel>
       <metamodel nsURI="http://www.amcl.tuc.gr/aseme/metamodels/SRM">
          <metamodelType
-               id="SRMdesign.diagram.Capability_2004"
-               name="%metatype.name.Capability_2004"
+               id="SRMdesign.diagram.Functionality_2001"
+               name="%metatype.name.Functionality_2001"
+               kind="org.eclipse.gmf.runtime.emf.type.core.IHintedType"
+               eclass="Functionality"
+               edithelper="SRM.diagram.edit.helpers.FunctionalityEditHelper">
+            <param name="semanticHint" value="2001"/>
+         </metamodelType>
+      </metamodel>
+      <metamodel nsURI="http://www.amcl.tuc.gr/aseme/metamodels/SRM">
+         <metamodelType
+               id="SRMdesign.diagram.Capability_2002"
+               name="%metatype.name.Capability_2002"
                kind="org.eclipse.gmf.runtime.emf.type.core.IHintedType"
                eclass="Capability"
                edithelper="SRM.diagram.edit.helpers.CapabilityEditHelper">
+            <param name="semanticHint" value="2002"/>
+         </metamodelType>
+      </metamodel>
+      <metamodel nsURI="http://www.amcl.tuc.gr/aseme/metamodels/SRM">
+         <metamodelType
+               id="SRMdesign.diagram.Role_2003"
+               name="%metatype.name.Role_2003"
+               kind="org.eclipse.gmf.runtime.emf.type.core.IHintedType"
+               eclass="Role"
+               edithelper="SRM.diagram.edit.helpers.RoleEditHelper">
+            <param name="semanticHint" value="2003"/>
+         </metamodelType>
+      </metamodel>
+      <metamodel nsURI="http://www.amcl.tuc.gr/aseme/metamodels/SRM">
+         <metamodelType
+               id="SRMdesign.diagram.Activity_2004"
+               name="%metatype.name.Activity_2004"
+               kind="org.eclipse.gmf.runtime.emf.type.core.IHintedType"
+               eclass="Activity"
+               edithelper="SRM.diagram.edit.helpers.ActivityEditHelper">
             <param name="semanticHint" value="2004"/>
          </metamodelType>
       </metamodel>
       <metamodel nsURI="http://www.amcl.tuc.gr/aseme/metamodels/SRM">
-         <metamodelType
-               id="SRMdesign.diagram.Role_2005"
-               name="%metatype.name.Role_2005"
-               kind="org.eclipse.gmf.runtime.emf.type.core.IHintedType"
-               eclass="Role"
-               edithelper="SRM.diagram.edit.helpers.RoleEditHelper">
-            <param name="semanticHint" value="2005"/>
-         </metamodelType>
+         <specializationType
+               id="SRMdesign.diagram.RoleRole_activities_4001"
+               name="%metatype.name.RoleRole_activities_4001"
+               kind="org.eclipse.gmf.runtime.emf.type.core.IHintedType">
+            <specializes id="org.eclipse.gmf.runtime.emf.type.core.null"/>
+            <param name="semanticHint" value="4001"/>
+         </specializationType>
       </metamodel>
       <metamodel nsURI="http://www.amcl.tuc.gr/aseme/metamodels/SRM">
-         <metamodelType
-               id="SRMdesign.diagram.Activity_2006"
-               name="%metatype.name.Activity_2006"
-               kind="org.eclipse.gmf.runtime.emf.type.core.IHintedType"
-               eclass="Activity"
-               edithelper="SRM.diagram.edit.helpers.ActivityEditHelper">
-            <param name="semanticHint" value="2006"/>
-         </metamodelType>
+         <specializationType
+               id="SRMdesign.diagram.CapabilityCapability_activities_4002"
+               name="%metatype.name.CapabilityCapability_activities_4002"
+               kind="org.eclipse.gmf.runtime.emf.type.core.IHintedType">
+            <specializes id="org.eclipse.gmf.runtime.emf.type.core.null"/>
+            <param name="semanticHint" value="4002"/>
+         </specializationType>
+      </metamodel>
+      <metamodel nsURI="http://www.amcl.tuc.gr/aseme/metamodels/SRM">
+         <specializationType
+               id="SRMdesign.diagram.FunctionalityActivities_4003"
+               name="%metatype.name.FunctionalityActivities_4003"
+               kind="org.eclipse.gmf.runtime.emf.type.core.IHintedType">
+            <specializes id="org.eclipse.gmf.runtime.emf.type.core.null"/>
+            <param name="semanticHint" value="4003"/>
+         </specializationType>
       </metamodel>
       <metamodel nsURI="http://www.amcl.tuc.gr/aseme/metamodels/SRM">
          <specializationType
@@ -316,24 +392,6 @@
                kind="org.eclipse.gmf.runtime.emf.type.core.IHintedType">
             <specializes id="org.eclipse.gmf.runtime.emf.type.core.null"/>
             <param name="semanticHint" value="4004"/>
-         </specializationType>
-      </metamodel>
-      <metamodel nsURI="http://www.amcl.tuc.gr/aseme/metamodels/SRM">
-         <specializationType
-               id="SRMdesign.diagram.RoleActivities_4005"
-               name="%metatype.name.RoleActivities_4005"
-               kind="org.eclipse.gmf.runtime.emf.type.core.IHintedType">
-            <specializes id="org.eclipse.gmf.runtime.emf.type.core.null"/>
-            <param name="semanticHint" value="4005"/>
-         </specializationType>
-      </metamodel>
-      <metamodel nsURI="http://www.amcl.tuc.gr/aseme/metamodels/SRM">
-         <specializationType
-               id="SRMdesign.diagram.CapabilityActivities_4006"
-               name="%metatype.name.CapabilityActivities_4006"
-               kind="org.eclipse.gmf.runtime.emf.type.core.IHintedType">
-            <specializes id="org.eclipse.gmf.runtime.emf.type.core.null"/>
-            <param name="semanticHint" value="4006"/>
          </specializationType>
       </metamodel>
    </extension>
@@ -349,12 +407,14 @@
       </clientContext> 
       <binding context="SRMdesign.diagram.TypeContext">
          <elementType ref="SRMdesign.diagram.SRMmodel_1000"/>
-         <elementType ref="SRMdesign.diagram.Capability_2004"/>
-         <elementType ref="SRMdesign.diagram.Role_2005"/>
-         <elementType ref="SRMdesign.diagram.Activity_2006"/>
+         <elementType ref="SRMdesign.diagram.Functionality_2001"/>
+         <elementType ref="SRMdesign.diagram.Capability_2002"/>
+         <elementType ref="SRMdesign.diagram.Role_2003"/>
+         <elementType ref="SRMdesign.diagram.Activity_2004"/>
+         <elementType ref="SRMdesign.diagram.RoleRole_activities_4001"/>
+         <elementType ref="SRMdesign.diagram.CapabilityCapability_activities_4002"/>
+         <elementType ref="SRMdesign.diagram.FunctionalityActivities_4003"/>
          <elementType ref="SRMdesign.diagram.RoleCapabilities_4004"/>
-         <elementType ref="SRMdesign.diagram.RoleActivities_4005"/>
-         <elementType ref="SRMdesign.diagram.CapabilityActivities_4006"/>
          <advice ref="org.eclipse.gmf.runtime.diagram.core.advice.notationDepdendents"/>
       </binding>
    </extension>
@@ -399,7 +459,7 @@
             <or>
 	           <and>
     	          <instanceof value="org.eclipse.core.resources.IFile"/>
-        	      <test property="org.eclipse.core.resources.extension" value="srmd"/>
+        	      <test property="org.eclipse.core.resources.extension" value="fg"/>
                </and>
                <instanceof value="SRM.diagram.navigator.SRMAbstractNavigatorItem"/>
             </or>
@@ -416,7 +476,7 @@
                <or>
 	              <and>
     	             <instanceof value="org.eclipse.core.resources.IFile"/>
-        	         <test property="org.eclipse.core.resources.extension" value="srmd"/>
+        	         <test property="org.eclipse.core.resources.extension" value="fg"/>
                   </and>
                   <instanceof value="SRM.diagram.navigator.SRMAbstractNavigatorItem"/>
                </or>
@@ -471,6 +531,40 @@
          </selectionEnablement>
       </linkHelper>
    </extension>
+   <extension point="org.eclipse.emf.validation.constraintProviders">
+      <?gmfgen generated="true"?>
+            <category id="SRM.audits" mandatory="false" name="SRM.audits">
+         <![CDATA[SRM.audits]]>
+      </category>
+      <constraintProvider cache="true">
+         <package namespaceUri="http://www.amcl.tuc.gr/aseme/metamodels/SRM"/>
+               <constraints categories="SRM.audits">
+                  <constraint id="added.cap"
+            lang="Java" class="SRM.diagram.providers.SRMValidationProvider$Adapter1"
+            name="added.cap"
+            mode="Live"
+            severity="INFO" statusCode="200">
+            
+            <description><![CDATA[Added cap to liveness]]></description>
+            <message><![CDATA[Added cap to liveness]]></message>
+            <target class="SRM.Role"/>
+         </constraint>
+                  </constraints>
+      </constraintProvider>
+   </extension>
+
+   <extension point="org.eclipse.emf.validation.constraintBindings">
+      <?gmfgen generated="true"?>
+      <clientContext default="false" id="SRMdesign.diagramDefaultCtx">
+         <selector class="SRM.diagram.providers.SRMValidationProvider$DefaultCtx"/>
+      </clientContext>
+      <binding context="SRMdesign.diagramDefaultCtx">
+                  <constraint ref="SRMdesign.diagram.added.cap"/>
+               </binding>
+
+   </extension>
+
+
    <extension point="org.eclipse.ui.commands" id="update-cmd">
       <?gmfgen generated="true"?>
       <command

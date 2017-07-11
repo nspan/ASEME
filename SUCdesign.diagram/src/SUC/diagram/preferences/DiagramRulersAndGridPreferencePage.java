@@ -10,10 +10,9 @@ import SUC.diagram.part.SUCDiagramEditorPlugin;
 public class DiagramRulersAndGridPreferencePage extends RulerGridPreferencePage {
 
 	/**
-	 * @generated
-	 */
+	* @generated
+	*/
 	public DiagramRulersAndGridPreferencePage() {
-		setPreferenceStore(SUCDiagramEditorPlugin.getInstance()
-				.getPreferenceStore());
+		setPreferenceStore(SUCDiagramEditorPlugin.getInstance().getPreferenceStore());
 	}
 }

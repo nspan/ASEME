@@ -30,25 +30,23 @@ import SAG.diagram.providers.SAGElementTypes;
 public class GoalItemSemanticEditPolicy extends SAGBaseItemSemanticEditPolicy {
 
 	/**
-	 * @generated
-	 */
+	* @generated
+	*/
 	public GoalItemSemanticEditPolicy() {
-		super(SAGElementTypes.Goal_2008);
+		super(SAGElementTypes.Goal_2002);
 	}
 
 	/**
-	 * @generated
-	 */
+	* @generated
+	*/
 	protected Command getDestroyElementCommand(DestroyElementRequest req) {
 		View view = (View) getHost().getModel();
-		CompositeTransactionalCommand cmd = new CompositeTransactionalCommand(
-				getEditingDomain(), null);
+		CompositeTransactionalCommand cmd = new CompositeTransactionalCommand(getEditingDomain(), null);
 		cmd.setTransactionNestingEnabled(false);
 		for (Iterator<?> it = view.getTargetEdges().iterator(); it.hasNext();) {
 			Edge incomingLink = (Edge) it.next();
 			if (SAGVisualIDRegistry.getVisualID(incomingLink) == ActorMy_goalEditPart.VISUAL_ID) {
-				DestroyReferenceRequest r = new DestroyReferenceRequest(
-						incomingLink.getSource().getElement(), null,
+				DestroyReferenceRequest r = new DestroyReferenceRequest(incomingLink.getSource().getElement(), null,
 						incomingLink.getTarget().getElement(), false);
 				cmd.add(new DestroyReferenceCommand(r));
 				cmd.add(new DeleteCommand(getEditingDomain(), incomingLink));
@@ -58,8 +56,7 @@ public class GoalItemSemanticEditPolicy extends SAGBaseItemSemanticEditPolicy {
 		for (Iterator<?> it = view.getSourceEdges().iterator(); it.hasNext();) {
 			Edge outgoingLink = (Edge) it.next();
 			if (SAGVisualIDRegistry.getVisualID(outgoingLink) == GoalDependeeEditPart.VISUAL_ID) {
-				DestroyReferenceRequest r = new DestroyReferenceRequest(
-						outgoingLink.getSource().getElement(), null,
+				DestroyReferenceRequest r = new DestroyReferenceRequest(outgoingLink.getSource().getElement(), null,
 						outgoingLink.getTarget().getElement(), false);
 				cmd.add(new DestroyReferenceCommand(r));
 				cmd.add(new DeleteCommand(getEditingDomain(), outgoingLink));
@@ -84,21 +81,18 @@ public class GoalItemSemanticEditPolicy extends SAGBaseItemSemanticEditPolicy {
 	protected Command getCreateRelationshipCommand(CreateRelationshipRequest req) {
 		Command command = req.getTarget() == null ? getStartCreateRelationshipCommand(req)
 				: getCompleteCreateRelationshipCommand(req);
-		return command != null ? command : super
-				.getCreateRelationshipCommand(req);
+		return command != null ? command : super.getCreateRelationshipCommand(req);
 	}
 
 	/**
 	 * @generated
 	 */
-	protected Command getStartCreateRelationshipCommand(
-			CreateRelationshipRequest req) {
-		if (SAGElementTypes.ActorMy_goal_4011 == req.getElementType()) {
+	protected Command getStartCreateRelationshipCommand(CreateRelationshipRequest req) {
+		if (SAGElementTypes.ActorMy_goal_4001 == req.getElementType()) {
 			return null;
 		}
-		if (SAGElementTypes.GoalDependee_4013 == req.getElementType()) {
-			return getGEFWrapper(new GoalDependeeCreateCommand(req,
-					req.getSource(), req.getTarget()));
+		if (SAGElementTypes.GoalDependee_4002 == req.getElementType()) {
+			return getGEFWrapper(new GoalDependeeCreateCommand(req, req.getSource(), req.getTarget()));
 		}
 		return null;
 	}
@@ -106,13 +100,11 @@ public class GoalItemSemanticEditPolicy extends SAGBaseItemSemanticEditPolicy {
 	/**
 	 * @generated
 	 */
-	protected Command getCompleteCreateRelationshipCommand(
-			CreateRelationshipRequest req) {
-		if (SAGElementTypes.ActorMy_goal_4011 == req.getElementType()) {
-			return getGEFWrapper(new ActorMy_goalCreateCommand(req,
-					req.getSource(), req.getTarget()));
+	protected Command getCompleteCreateRelationshipCommand(CreateRelationshipRequest req) {
+		if (SAGElementTypes.ActorMy_goal_4001 == req.getElementType()) {
+			return getGEFWrapper(new ActorMy_goalCreateCommand(req, req.getSource(), req.getTarget()));
 		}
-		if (SAGElementTypes.GoalDependee_4013 == req.getElementType()) {
+		if (SAGElementTypes.GoalDependee_4002 == req.getElementType()) {
 			return null;
 		}
 		return null;
@@ -124,8 +116,7 @@ public class GoalItemSemanticEditPolicy extends SAGBaseItemSemanticEditPolicy {
 	 * 
 	 * @generated
 	 */
-	protected Command getReorientReferenceRelationshipCommand(
-			ReorientReferenceRelationshipRequest req) {
+	protected Command getReorientReferenceRelationshipCommand(ReorientReferenceRelationshipRequest req) {
 		switch (getVisualID(req)) {
 		case ActorMy_goalEditPart.VISUAL_ID:
 			return getGEFWrapper(new ActorMy_goalReorientCommand(req));

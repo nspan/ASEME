@@ -9,19 +9,18 @@ import SAG.diagram.providers.SAGElementTypes;
 /**
  * @generated
  */
-public class GoalDependeeItemSemanticEditPolicy extends
-		SAGBaseItemSemanticEditPolicy {
+public class GoalDependeeItemSemanticEditPolicy extends SAGBaseItemSemanticEditPolicy {
 
 	/**
-	 * @generated
-	 */
+	* @generated
+	*/
 	public GoalDependeeItemSemanticEditPolicy() {
-		super(SAGElementTypes.GoalDependee_4013);
+		super(SAGElementTypes.GoalDependee_4002);
 	}
 
 	/**
-	 * @generated
-	 */
+	* @generated
+	*/
 	protected Command getDestroyReferenceCommand(DestroyReferenceRequest req) {
 		return getGEFWrapper(new DestroyReferenceCommand(req));
 	}

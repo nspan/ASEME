@@ -10,10 +10,9 @@ import SAG.diagram.part.SAGDiagramEditorPlugin;
 public class DiagramConnectionsPreferencePage extends ConnectionsPreferencePage {
 
 	/**
-	 * @generated
-	 */
+	* @generated
+	*/
 	public DiagramConnectionsPreferencePage() {
-		setPreferenceStore(SAGDiagramEditorPlugin.getInstance()
-				.getPreferenceStore());
+		setPreferenceStore(SAGDiagramEditorPlugin.getInstance().getPreferenceStore());
 	}
 }

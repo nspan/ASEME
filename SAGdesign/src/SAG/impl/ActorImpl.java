@@ -1,8 +1,4 @@
 /**
- * <copyright>
- * </copyright>
- *
- * $Id$
  */
 package SAG.impl;
 
@@ -21,7 +17,7 @@ import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.InternalEObject;
 
 import org.eclipse.emf.ecore.impl.ENotificationImpl;
-import org.eclipse.emf.ecore.impl.EObjectImpl;
+import org.eclipse.emf.ecore.impl.MinimalEObjectImpl;
 
 import org.eclipse.emf.ecore.util.EObjectWithInverseResolvingEList;
 import org.eclipse.emf.ecore.util.InternalEList;
@@ -32,15 +28,15 @@ import org.eclipse.emf.ecore.util.InternalEList;
  * <!-- end-user-doc -->
  * <p>
  * The following features are implemented:
+ * </p>
  * <ul>
  *   <li>{@link SAG.impl.ActorImpl#getMy_goal <em>My goal</em>}</li>
  *   <li>{@link SAG.impl.ActorImpl#getName <em>Name</em>}</li>
  * </ul>
- * </p>
  *
  * @generated
  */
-public class ActorImpl extends EObjectImpl implements Actor {
+public class ActorImpl extends MinimalEObjectImpl.Container implements Actor {
 	/**
 	 * The cached value of the '{@link #getMy_goal() <em>My goal</em>}' reference list.
 	 * <!-- begin-user-doc -->

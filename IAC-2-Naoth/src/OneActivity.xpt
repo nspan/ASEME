@@ -1,0 +1,16 @@
+«IMPORT statechart»
+«EXTENSION JavaHelpers::NodeHelper»
+
+«DEFINE model FOR List»
+	«EXPAND model FOR ((List)this.last())»					
+«ENDDEFINE»
+
+«DEFINE model FOR statechart::Model»
+	«EXPAND OneNode FOREACH SortNodes(nodes)»		
+«ENDDEFINE»
+
+«DEFINE OneNode FOR statechart::Node»
+			«IF type.compareTo("BASIC")==0 && activity.compareTo("GENERATE")==0 -»
+				«EXPAND Activity::Activity»				  
+			«ENDIF-»
+«ENDDEFINE»

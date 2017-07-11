@@ -1,6 +1,7 @@
-#Sun Aug 22 15:18:31 EEST 2010
 eclipse.preferences.version=1
+gmf_dashboard/domainGenerationModel=platform\:/resource/SAGdesign/model/SAG.genmodel
 gmf_dashboard/domainModel=platform\:/resource/SAGdesign/model/SAG.ecore
+gmf_dashboard/generationModel=platform\:/resource/SAGdesign/model/SAG.gmfgen
 gmf_dashboard/graphicalDefinitionModel=platform\:/resource/SAGdesign/model/SAG.gmfgraph
 gmf_dashboard/mappingModel=platform\:/resource/SAGdesign/model/SAG.gmfmap
 gmf_dashboard/toolingDefinitionModel=platform\:/resource/SAGdesign/model/SAG.gmftool

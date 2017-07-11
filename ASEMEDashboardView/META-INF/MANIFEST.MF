@@ -2,33 +2,35 @@ Manifest-Version: 1.0
 Bundle-ManifestVersion: 2
 Bundle-Name: ASEMEDashboardView
 Bundle-SymbolicName: ASEMEDashboardView; singleton:=true
-Bundle-Version: 1.0.0.qualifier
+Bundle-Version: 2.2.1
 Bundle-Activator: asemedashboardview.Activator
-Require-Bundle: org.eclipse.ui,
- org.eclipse.core.runtime,
- org.eclipse.draw2d,
- org.eclipse.gmf.bridge.ui,
- org.eclipse.emf.ecore.xmi,
- org.eclipse.equinox.registry
+Require-Bundle: org.eclipse.gmf.bridge.ui,
+ IAC_EMF.generator2,
+ IAC-2-Naoth,
+ org.eclipse.gmf.runtime.diagram.core,
+ SUCdesign.diagram,
+ AIPdesign.diagram,
+ org.eclipse.ui.workbench.texteditor,
+ SRMdesign.diagram,
+ StateChartDesign.diagram,
+ SAGdesign.diagram,
+ SAGdesign.editor,
+ ASEME_Transformations,
+ system.bundle,
+ SRM2Xpdl,
+ org.eclipse.equinox.registry,
+ org.eclipse.emf.common.ui
 Bundle-ActivationPolicy: lazy
-Bundle-RequiredExecutionEnvironment: JavaSE-1.6
-Import-Package: AIP,
- AIP.diagram.part,
- IAC,
- SAG,
- SAG.diagram.part,
- SAG.presentation,
- SRM,
+Bundle-RequiredExecutionEnvironment: JavaSE-1.8
+Import-Package: SRM,
  SRM.diagram.part,
  SUC,
  SUC.diagram.part,
- SUC.presentation,
+ SUC.diagram.providers,
  org.eclipse.core.resources,
- org.eclipse.draw2d,
  org.eclipse.emf.common.util,
  org.eclipse.emf.ecore.presentation,
  org.eclipse.emf.ecore.resource,
- org.eclipse.emf.ecore.xmi.impl,
  org.eclipse.emf.importer.ui,
  org.eclipse.emf.transaction,
  org.eclipse.emf.workspace.util,
@@ -39,7 +41,7 @@ Import-Package: AIP,
  org.eclipse.gmf.mappings.presentation,
  org.eclipse.gmf.runtime.notation,
  org.eclipse.gmf.tooldef.presentation,
- org.eclipse.ui.part,
- statechart,
- statechart.diagram.part,
- statechart.presentation
+ org.eclipse.ui.part
+Export-Package: asemedashboardview,
+ asemedashboardview.views,
+ asemedashboardview.views.actions

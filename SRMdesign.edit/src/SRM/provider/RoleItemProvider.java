@@ -1,8 +1,4 @@
 /**
- * <copyright>
- * </copyright>
- *
- * $Id$
  */
 package SRM.provider;
 
@@ -35,7 +31,7 @@ import org.eclipse.emf.edit.provider.ViewerNotification;
  * <!-- end-user-doc -->
  * @generated
  */
-public class RoleItemProvider
+public class RoleItemProvider 
 	extends ItemProviderAdapter
 	implements
 		IEditingDomainItemProvider,
@@ -64,7 +60,7 @@ public class RoleItemProvider
 		if (itemPropertyDescriptors == null) {
 			super.getPropertyDescriptors(object);
 
-			addActivitiesPropertyDescriptor(object);
+			addRole_activitiesPropertyDescriptor(object);
 			addLivenessPropertyDescriptor(object);
 			addNamePropertyDescriptor(object);
 			addCapabilitiesPropertyDescriptor(object);
@@ -73,19 +69,19 @@ public class RoleItemProvider
 	}
 
 	/**
-	 * This adds a property descriptor for the Activities feature.
+	 * This adds a property descriptor for the Role activities feature.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	protected void addActivitiesPropertyDescriptor(Object object) {
+	protected void addRole_activitiesPropertyDescriptor(Object object) {
 		itemPropertyDescriptors.add
 			(createItemPropertyDescriptor
 				(((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
 				 getResourceLocator(),
-				 getString("_UI_Role_activities_feature"),
-				 getString("_UI_PropertyDescriptor_description", "_UI_Role_activities_feature", "_UI_Role_type"),
-				 SRMPackage.Literals.ROLE__ACTIVITIES,
+				 getString("_UI_Role_role_activities_feature"),
+				 getString("_UI_PropertyDescriptor_description", "_UI_Role_role_activities_feature", "_UI_Role_type"),
+				 SRMPackage.Literals.ROLE__ROLE_ACTIVITIES,
 				 true,
 				 false,
 				 true,
@@ -109,7 +105,7 @@ public class RoleItemProvider
 				 getString("_UI_PropertyDescriptor_description", "_UI_Role_liveness_feature", "_UI_Role_type"),
 				 SRMPackage.Literals.ROLE__LIVENESS,
 				 true,
-				 false,
+				 true,
 				 false,
 				 ItemPropertyDescriptor.GENERIC_VALUE_IMAGE,
 				 null,
@@ -184,6 +180,7 @@ public class RoleItemProvider
 			getString("_UI_Role_type") :
 			getString("_UI_Role_type") + " " + label;
 	}
+	
 
 	/**
 	 * This handles model notifications by calling {@link #updateChildren} to update any cached

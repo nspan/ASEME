@@ -11,8 +11,8 @@ import SRM.diagram.part.SRMDiagramEditorPlugin;
 public class DiagramPreferenceInitializer extends AbstractPreferenceInitializer {
 
 	/**
-	 * @generated
-	 */
+	* @generated
+	*/
 	public void initializeDefaultPreferences() {
 		IPreferenceStore store = getPreferenceStore();
 		DiagramGeneralPreferencePage.initDefaults(store);
@@ -24,8 +24,8 @@ public class DiagramPreferenceInitializer extends AbstractPreferenceInitializer 
 	}
 
 	/**
-	 * @generated
-	 */
+	* @generated
+	*/
 	protected IPreferenceStore getPreferenceStore() {
 		return SRMDiagramEditorPlugin.getInstance().getPreferenceStore();
 	}

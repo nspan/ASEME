@@ -1,26 +1,22 @@
 package SRM.diagram.edit.parts;
 
-import java.util.ArrayList;
-import java.util.List;
-
+import org.eclipse.draw2d.ColorConstants;
 import org.eclipse.draw2d.FlowLayout;
 import org.eclipse.draw2d.IFigure;
-import org.eclipse.draw2d.RoundedRectangle;
+import org.eclipse.draw2d.RectangleFigure;
 import org.eclipse.draw2d.Shape;
 import org.eclipse.draw2d.StackLayout;
-import org.eclipse.draw2d.geometry.Dimension;
 import org.eclipse.gef.EditPart;
 import org.eclipse.gef.EditPolicy;
 import org.eclipse.gef.commands.Command;
-import org.eclipse.gef.editpolicies.FlowLayoutEditPolicy;
 import org.eclipse.gef.editpolicies.LayoutEditPolicy;
 import org.eclipse.gef.requests.CreateRequest;
 import org.eclipse.gmf.runtime.diagram.ui.editparts.IGraphicalEditPart;
 import org.eclipse.gmf.runtime.diagram.ui.editparts.ShapeNodeEditPart;
 import org.eclipse.gmf.runtime.diagram.ui.editpolicies.EditPolicyRoles;
+import org.eclipse.gmf.runtime.diagram.ui.editpolicies.FlowLayoutEditPolicy;
 import org.eclipse.gmf.runtime.draw2d.ui.figures.ConstrainedToolbarLayout;
 import org.eclipse.gmf.runtime.draw2d.ui.figures.WrappingLabel;
-import org.eclipse.gmf.runtime.emf.type.core.IElementType;
 import org.eclipse.gmf.runtime.gef.ui.figures.DefaultSizeNodeFigure;
 import org.eclipse.gmf.runtime.gef.ui.figures.NodeFigure;
 import org.eclipse.gmf.runtime.notation.View;
@@ -28,7 +24,6 @@ import org.eclipse.swt.graphics.Color;
 
 import SRM.diagram.edit.policies.ActivityItemSemanticEditPolicy;
 import SRM.diagram.part.SRMVisualIDRegistry;
-import SRM.diagram.providers.SRMElementTypes;
 
 /**
  * @generated
@@ -36,42 +31,41 @@ import SRM.diagram.providers.SRMElementTypes;
 public class ActivityEditPart extends ShapeNodeEditPart {
 
 	/**
-	 * @generated
-	 */
-	public static final int VISUAL_ID = 2006;
+	* @generated
+	*/
+	public static final int VISUAL_ID = 2004;
 
 	/**
-	 * @generated
-	 */
+	* @generated
+	*/
 	protected IFigure contentPane;
 
 	/**
-	 * @generated
-	 */
+	* @generated
+	*/
 	protected IFigure primaryShape;
 
 	/**
-	 * @generated
-	 */
+	* @generated
+	*/
 	public ActivityEditPart(View view) {
 		super(view);
 	}
 
 	/**
-	 * @generated
-	 */
+	* @generated
+	*/
 	protected void createDefaultEditPolicies() {
 		super.createDefaultEditPolicies();
-		installEditPolicy(EditPolicyRoles.SEMANTIC_ROLE,
-				new ActivityItemSemanticEditPolicy());
+		installEditPolicy(EditPolicyRoles.SEMANTIC_ROLE, new ActivityItemSemanticEditPolicy());
 		installEditPolicy(EditPolicy.LAYOUT_ROLE, createLayoutEditPolicy());
 		// XXX need an SCR to runtime to have another abstract superclass that would let children add reasonable editpolicies
 		// removeEditPolicy(org.eclipse.gmf.runtime.diagram.ui.editpolicies.EditPolicyRoles.CONNECTION_HANDLES_ROLE);
 	}
 
 	/**
-	 * @generated
-	 */
+	* @generated
+	*/
 	protected LayoutEditPolicy createLayoutEditPolicy() {
 
 		FlowLayoutEditPolicy lep = new FlowLayoutEditPolicy() {
@@ -80,8 +74,7 @@ public class ActivityEditPart extends ShapeNodeEditPart {
 				return null;
 			}
 
-			protected Command createMoveChildCommand(EditPart child,
-					EditPart after) {
+			protected Command createMoveChildCommand(EditPart child, EditPart after) {
 				return null;
 			}
 
@@ -93,54 +86,43 @@ public class ActivityEditPart extends ShapeNodeEditPart {
 	}
 
 	/**
-	 * @generated
-	 */
+	* @generated
+	*/
 	protected IFigure createNodeShape() {
-		ActivityFigureCustom figure = new ActivityFigureCustom();
-		return primaryShape = figure;
+		return primaryShape = new ActivityFigure();
 	}
 
 	/**
-	 * @generated
-	 */
-	public ActivityFigureCustom getPrimaryShape() {
-		return (ActivityFigureCustom) primaryShape;
+	* @generated
+	*/
+	public ActivityFigure getPrimaryShape() {
+		return (ActivityFigure) primaryShape;
 	}
 
 	/**
-	 * @generated
-	 */
+	* @generated
+	*/
 	protected boolean addFixedChild(EditPart childEditPart) {
 		if (childEditPart instanceof ActivityNameEditPart) {
-			((ActivityNameEditPart) childEditPart).setLabel(getPrimaryShape()
-					.getFigureActivityNameFigureCustom());
-			return true;
-		}
-		if (childEditPart instanceof ActivityFunctionalityEditPart) {
-			((ActivityFunctionalityEditPart) childEditPart)
-					.setLabel(getPrimaryShape()
-							.getFigureActivityFunctionalityFigureCustom());
+			((ActivityNameEditPart) childEditPart).setLabel(getPrimaryShape().getFigureActivityNameFigure());
 			return true;
 		}
 		return false;
 	}
 
 	/**
-	 * @generated
-	 */
+	* @generated
+	*/
 	protected boolean removeFixedChild(EditPart childEditPart) {
 		if (childEditPart instanceof ActivityNameEditPart) {
 			return true;
 		}
-		if (childEditPart instanceof ActivityFunctionalityEditPart) {
-			return true;
-		}
 		return false;
 	}
 
 	/**
-	 * @generated
-	 */
+	* @generated
+	*/
 	protected void addChildVisual(EditPart childEditPart, int index) {
 		if (addFixedChild(childEditPart)) {
 			return;
@@ -149,8 +131,8 @@ public class ActivityEditPart extends ShapeNodeEditPart {
 	}
 
 	/**
-	 * @generated
-	 */
+	* @generated
+	*/
 	protected void removeChildVisual(EditPart childEditPart) {
 		if (removeFixedChild(childEditPart)) {
 			return;
@@ -159,28 +141,28 @@ public class ActivityEditPart extends ShapeNodeEditPart {
 	}
 
 	/**
-	 * @generated
-	 */
+	* @generated
+	*/
 	protected IFigure getContentPaneFor(IGraphicalEditPart editPart) {
 		return getContentPane();
 	}
 
 	/**
-	 * @generated
-	 */
+	* @generated
+	*/
 	protected NodeFigure createNodePlate() {
 		DefaultSizeNodeFigure result = new DefaultSizeNodeFigure(40, 40);
 		return result;
 	}
 
 	/**
-	 * Creates figure for this edit part.
-	 * 
-	 * Body of this method does not depend on settings in generation model
-	 * so you may safely remove <i>generated</i> tag and modify it.
-	 * 
-	 * @generated
-	 */
+	* Creates figure for this edit part.
+	* 
+	* Body of this method does not depend on settings in generation model
+	* so you may safely remove <i>generated</i> tag and modify it.
+	* 
+	* @generated
+	*/
 	protected NodeFigure createNodeFigure() {
 		NodeFigure figure = createNodePlate();
 		figure.setLayoutManager(new StackLayout());
@@ -191,11 +173,11 @@ public class ActivityEditPart extends ShapeNodeEditPart {
 	}
 
 	/**
-	 * Default implementation treats passed figure as content pane.
-	 * Respects layout one may have set for generated figure.
-	 * @param nodeShape instance of generated figure class
-	 * @generated
-	 */
+	* Default implementation treats passed figure as content pane.
+	* Respects layout one may have set for generated figure.
+	* @param nodeShape instance of generated figure class
+	* @generated
+	*/
 	protected IFigure setupContentPane(IFigure nodeShape) {
 		if (nodeShape.getLayoutManager() == null) {
 			ConstrainedToolbarLayout layout = new ConstrainedToolbarLayout();
@@ -206,8 +188,8 @@ public class ActivityEditPart extends ShapeNodeEditPart {
 	}
 
 	/**
-	 * @generated
-	 */
+	* @generated
+	*/
 	public IFigure getContentPane() {
 		if (contentPane != null) {
 			return contentPane;
@@ -216,8 +198,8 @@ public class ActivityEditPart extends ShapeNodeEditPart {
 	}
 
 	/**
-	 * @generated
-	 */
+	* @generated
+	*/
 	protected void setForegroundColor(Color color) {
 		if (primaryShape != null) {
 			primaryShape.setForegroundColor(color);
@@ -225,8 +207,8 @@ public class ActivityEditPart extends ShapeNodeEditPart {
 	}
 
 	/**
-	 * @generated
-	 */
+	* @generated
+	*/
 	protected void setBackgroundColor(Color color) {
 		if (primaryShape != null) {
 			primaryShape.setBackgroundColor(color);
@@ -234,8 +216,8 @@ public class ActivityEditPart extends ShapeNodeEditPart {
 	}
 
 	/**
-	 * @generated
-	 */
+	* @generated
+	*/
 	protected void setLineWidth(int width) {
 		if (primaryShape instanceof Shape) {
 			((Shape) primaryShape).setLineWidth(width);
@@ -243,8 +225,8 @@ public class ActivityEditPart extends ShapeNodeEditPart {
 	}
 
 	/**
-	 * @generated
-	 */
+	* @generated
+	*/
 	protected void setLineType(int style) {
 		if (primaryShape instanceof Shape) {
 			((Shape) primaryShape).setLineStyle(style);
@@ -252,56 +234,26 @@ public class ActivityEditPart extends ShapeNodeEditPart {
 	}
 
 	/**
-	 * @generated
-	 */
+	* @generated
+	*/
 	public EditPart getPrimaryChildEditPart() {
-		return getChildBySemanticHint(SRMVisualIDRegistry
-				.getType(ActivityNameEditPart.VISUAL_ID));
+		return getChildBySemanticHint(SRMVisualIDRegistry.getType(ActivityNameEditPart.VISUAL_ID));
 	}
 
 	/**
 	 * @generated
 	 */
-	public List/*<org.eclipse.gmf.runtime.emf.type.core.IElementType>*/getMARelTypesOnTarget() {
-		List/*<org.eclipse.gmf.runtime.emf.type.core.IElementType>*/types = new ArrayList/*<org.eclipse.gmf.runtime.emf.type.core.IElementType>*/();
-		types.add(SRMElementTypes.RoleActivities_4005);
-		types.add(SRMElementTypes.CapabilityActivities_4006);
-		return types;
-	}
-
-	/**
-	 * @generated
-	 */
-	public List/*<org.eclipse.gmf.runtime.emf.type.core.IElementType>*/getMATypesForSource(
-			IElementType relationshipType) {
-		List/*<org.eclipse.gmf.runtime.emf.type.core.IElementType>*/types = new ArrayList/*<org.eclipse.gmf.runtime.emf.type.core.IElementType>*/();
-		if (relationshipType == SRMElementTypes.RoleActivities_4005) {
-			types.add(SRMElementTypes.Role_2005);
-		}
-		if (relationshipType == SRMElementTypes.CapabilityActivities_4006) {
-			types.add(SRMElementTypes.Capability_2004);
-		}
-		return types;
-	}
-
-	/**
-	 * @generated
-	 */
-	public class ActivityFigureCustom extends RoundedRectangle {
+	public class ActivityFigure extends RectangleFigure {
 
 		/**
 		 * @generated
 		 */
-		private WrappingLabel fFigureActivityNameFigureCustom;
-		/**
-		 * @generated
-		 */
-		private WrappingLabel fFigureActivityFunctionalityFigureCustom;
+		private WrappingLabel fFigureActivityNameFigure;
 
 		/**
 		 * @generated
 		 */
-		public ActivityFigureCustom() {
+		public ActivityFigure() {
 
 			FlowLayout layoutThis = new FlowLayout();
 			layoutThis.setStretchMinorAxis(false);
@@ -314,11 +266,8 @@ public class ActivityEditPart extends ShapeNodeEditPart {
 
 			this.setLayoutManager(layoutThis);
 
-			this.setCornerDimensions(new Dimension(getMapMode().DPtoLP(15),
-					getMapMode().DPtoLP(15)));
-			this.setLineWidth(3);
-			this.setForegroundColor(THIS_FORE);
-			this.setBackgroundColor(THIS_BACK);
+			this.setLineWidth(2);
+			this.setForegroundColor(ColorConstants.black);
 			createContents();
 		}
 
@@ -327,61 +276,21 @@ public class ActivityEditPart extends ShapeNodeEditPart {
 		 */
 		private void createContents() {
 
-			fFigureActivityNameFigureCustom = new WrappingLabel();
-			fFigureActivityNameFigureCustom.setText("");
+			fFigureActivityNameFigure = new WrappingLabel();
 
-			this.add(fFigureActivityNameFigureCustom);
+			fFigureActivityNameFigure.setText("<...>");
 
-			fFigureActivityFunctionalityFigureCustom = new WrappingLabel();
-			fFigureActivityFunctionalityFigureCustom.setText("");
-
-			this.add(fFigureActivityFunctionalityFigureCustom);
+			this.add(fFigureActivityNameFigure);
 
 		}
 
 		/**
 		 * @generated
 		 */
-		private boolean myUseLocalCoordinates = false;
-
-		/**
-		 * @generated
-		 */
-		protected boolean useLocalCoordinates() {
-			return myUseLocalCoordinates;
-		}
-
-		/**
-		 * @generated
-		 */
-		protected void setUseLocalCoordinates(boolean useLocalCoordinates) {
-			myUseLocalCoordinates = useLocalCoordinates;
-		}
-
-		/**
-		 * @generated
-		 */
-		public WrappingLabel getFigureActivityNameFigureCustom() {
-			return fFigureActivityNameFigureCustom;
-		}
-
-		/**
-		 * @generated
-		 */
-		public WrappingLabel getFigureActivityFunctionalityFigureCustom() {
-			return fFigureActivityFunctionalityFigureCustom;
+		public WrappingLabel getFigureActivityNameFigure() {
+			return fFigureActivityNameFigure;
 		}
 
 	}
-
-	/**
-	 * @generated
-	 */
-	static final Color THIS_FORE = new Color(null, 0, 0, 0);
-
-	/**
-	 * @generated
-	 */
-	static final Color THIS_BACK = new Color(null, 255, 130, 203);
 
 }

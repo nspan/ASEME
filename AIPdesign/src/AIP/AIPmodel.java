@@ -1,8 +1,4 @@
 /**
- * <copyright>
- * </copyright>
- *
- * $Id$
  */
 package AIP;
 
@@ -17,11 +13,11 @@ import org.eclipse.emf.ecore.EObject;
  *
  * <p>
  * The following features are supported:
+ * </p>
  * <ul>
  *   <li>{@link AIP.AIPmodel#getParticipants <em>Participants</em>}</li>
  *   <li>{@link AIP.AIPmodel#getProtocols <em>Protocols</em>}</li>
  * </ul>
- * </p>
  *
  * @see AIP.AIPPackage#getAIPmodel()
  * @model

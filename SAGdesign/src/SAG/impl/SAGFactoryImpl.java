@@ -1,8 +1,4 @@
 /**
- * <copyright>
- * </copyright>
- *
- * $Id$
  */
 package SAG.impl;
 
@@ -31,7 +27,7 @@ public class SAGFactoryImpl extends EFactoryImpl implements SAGFactory {
 	 */
 	public static SAGFactory init() {
 		try {
-			SAGFactory theSAGFactory = (SAGFactory)EPackage.Registry.INSTANCE.getEFactory("http://www.amcl.tuc.gr/aseme/metamodels/SAG"); 
+			SAGFactory theSAGFactory = (SAGFactory)EPackage.Registry.INSTANCE.getEFactory(SAGPackage.eNS_URI);
 			if (theSAGFactory != null) {
 				return theSAGFactory;
 			}

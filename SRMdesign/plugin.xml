@@ -2,15 +2,12 @@
 <?eclipse version="3.0"?>
 
 <!--
- <copyright>
- </copyright>
-
- $Id$
 -->
 
 <plugin>
 
    <extension point="org.eclipse.emf.ecore.generated_package">
+      <!-- @generated SRM -->
       <package
             uri="http://www.amcl.tuc.gr/aseme/metamodels/SRM"
             class="SRM.SRMPackage"

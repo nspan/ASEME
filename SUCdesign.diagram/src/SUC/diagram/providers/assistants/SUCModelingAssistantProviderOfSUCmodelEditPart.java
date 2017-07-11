@@ -12,17 +12,17 @@ import SUC.diagram.providers.SUCModelingAssistantProvider;
 /**
  * @generated
  */
-public class SUCModelingAssistantProviderOfSUCmodelEditPart extends
-		SUCModelingAssistantProvider {
+public class SUCModelingAssistantProviderOfSUCmodelEditPart extends SUCModelingAssistantProvider {
 
 	/**
-	 * @generated
-	 */
+	* @generated
+	*/
 	@Override
+
 	public List<IElementType> getTypesForPopupBar(IAdaptable host) {
 		List<IElementType> types = new ArrayList<IElementType>(2);
-		types.add(SUCElementTypes.Role_2001);
 		types.add(SUCElementTypes.UseCase_2002);
+		types.add(SUCElementTypes.Role_2001);
 		return types;
 	}
 

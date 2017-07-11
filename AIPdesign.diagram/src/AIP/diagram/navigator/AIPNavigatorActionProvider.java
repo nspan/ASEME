@@ -34,18 +34,18 @@ import AIP.diagram.part.Messages;
 public class AIPNavigatorActionProvider extends CommonActionProvider {
 
 	/**
-	 * @generated
-	 */
+	* @generated
+	*/
 	private boolean myContribute;
 
 	/**
-	 * @generated
-	 */
+	* @generated
+	*/
 	private OpenDiagramAction myOpenDiagramAction;
 
 	/**
-	 * @generated
-	 */
+	* @generated
+	*/
 	public void init(ICommonActionExtensionSite aSite) {
 		super.init(aSite);
 		if (aSite.getViewSite() instanceof ICommonViewerWorkbenchSite) {
@@ -57,75 +57,70 @@ public class AIPNavigatorActionProvider extends CommonActionProvider {
 	}
 
 	/**
-	 * @generated
-	 */
+	* @generated
+	*/
 	private void makeActions(ICommonViewerWorkbenchSite viewerSite) {
 		myOpenDiagramAction = new OpenDiagramAction(viewerSite);
 	}
 
 	/**
-	 * @generated
-	 */
+	* @generated
+	*/
 	public void fillActionBars(IActionBars actionBars) {
 		if (!myContribute) {
 			return;
 		}
-		IStructuredSelection selection = (IStructuredSelection) getContext()
-				.getSelection();
+		IStructuredSelection selection = (IStructuredSelection) getContext().getSelection();
 		myOpenDiagramAction.selectionChanged(selection);
 		if (myOpenDiagramAction.isEnabled()) {
-			actionBars.setGlobalActionHandler(ICommonActionConstants.OPEN,
-					myOpenDiagramAction);
+			actionBars.setGlobalActionHandler(ICommonActionConstants.OPEN, myOpenDiagramAction);
 		}
 	}
 
 	/**
-	 * @generated
-	 */
+	* @generated
+	*/
 	public void fillContextMenu(IMenuManager menu) {
 	}
 
 	/**
-	 * @generated
-	 */
+	* @generated
+	*/
 	private static class OpenDiagramAction extends Action {
 
 		/**
-		 * @generated
-		 */
+		* @generated
+		*/
 		private Diagram myDiagram;
 
 		/**
-		 * @generated
-		 */
+		* @generated
+		*/
 		private ICommonViewerWorkbenchSite myViewerSite;
 
 		/**
-		 * @generated
-		 */
+		* @generated
+		*/
 		public OpenDiagramAction(ICommonViewerWorkbenchSite viewerSite) {
 			super(Messages.NavigatorActionProvider_OpenDiagramActionName);
 			myViewerSite = viewerSite;
 		}
 
 		/**
-		 * @generated
-		 */
+		* @generated
+		*/
 		public final void selectionChanged(IStructuredSelection selection) {
 			myDiagram = null;
 			if (selection.size() == 1) {
 				Object selectedElement = selection.getFirstElement();
 				if (selectedElement instanceof AIPNavigatorItem) {
-					selectedElement = ((AIPNavigatorItem) selectedElement)
-							.getView();
+					selectedElement = ((AIPNavigatorItem) selectedElement).getView();
 				} else if (selectedElement instanceof IAdaptable) {
-					selectedElement = ((IAdaptable) selectedElement)
-							.getAdapter(View.class);
+					selectedElement = ((IAdaptable) selectedElement).getAdapter(View.class);
 				}
 				if (selectedElement instanceof Diagram) {
 					Diagram diagram = (Diagram) selectedElement;
-					if (AIPmodelEditPart.MODEL_ID.equals(AIPVisualIDRegistry
-							.getModelID(diagram))) {
+					if (AIPmodelEditPart.MODEL_ID.equals(AIPVisualIDRegistry.getModelID(diagram))) {
 						myDiagram = diagram;
 					}
 				}
@@ -134,8 +129,8 @@ public class AIPNavigatorActionProvider extends CommonActionProvider {
 		}
 
 		/**
-		 * @generated
-		 */
+		* @generated
+		*/
 		public void run() {
 			if (myDiagram == null || myDiagram.eResource() == null) {
 				return;
@@ -146,28 +141,25 @@ public class AIPNavigatorActionProvider extends CommonActionProvider {
 			try {
 				page.openEditor(editorInput, AIPDiagramEditor.ID);
 			} catch (PartInitException e) {
-				AIPDiagramEditorPlugin.getInstance().logError(
-						"Exception while openning diagram", e); //$NON-NLS-1$
+				AIPDiagramEditorPlugin.getInstance().logError("Exception while openning diagram", e); //$NON-NLS-1$
 			}
 		}
 
 		/**
-		 * @generated
-		 */
+		* @generated
+		*/
 		private static IEditorInput getEditorInput(Diagram diagram) {
 			Resource diagramResource = diagram.eResource();
 			for (EObject nextEObject : diagramResource.getContents()) {
 				if (nextEObject == diagram) {
-					return new FileEditorInput(
-							WorkspaceSynchronizer.getFile(diagramResource));
+					return new FileEditorInput(WorkspaceSynchronizer.getFile(diagramResource));
 				}
 				if (nextEObject instanceof Diagram) {
 					break;
 				}
 			}
 			URI uri = EcoreUtil.getURI(diagram);
-			String editorName = uri.lastSegment() + '#'
-					+ diagram.eResource().getContents().indexOf(diagram);
+			String editorName = uri.lastSegment() + '#' + diagram.eResource().getContents().indexOf(diagram);
 			IEditorInput editorInput = new URIEditorInput(uri, editorName);
 			return editorInput;
 		}

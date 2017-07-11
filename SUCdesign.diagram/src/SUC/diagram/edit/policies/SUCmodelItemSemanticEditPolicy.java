@@ -14,53 +14,46 @@ import SUC.diagram.providers.SUCElementTypes;
 /**
  * @generated
  */
-public class SUCmodelItemSemanticEditPolicy extends
-		SUCBaseItemSemanticEditPolicy {
+public class SUCmodelItemSemanticEditPolicy extends SUCBaseItemSemanticEditPolicy {
 
 	/**
-	 * @generated
-	 */
+	* @generated
+	*/
 	public SUCmodelItemSemanticEditPolicy() {
 		super(SUCElementTypes.SUCmodel_1000);
 	}
 
 	/**
-	 * @generated
-	 */
+	* @generated
+	*/
 	protected Command getCreateCommand(CreateElementRequest req) {
-		if (SUCElementTypes.Role_2001 == req.getElementType()) {
-			return getGEFWrapper(new RoleCreateCommand(req));
-		}
 		if (SUCElementTypes.UseCase_2002 == req.getElementType()) {
 			return getGEFWrapper(new UseCaseCreateCommand(req));
+		}
+		if (SUCElementTypes.Role_2001 == req.getElementType()) {
+			return getGEFWrapper(new RoleCreateCommand(req));
 		}
 		return super.getCreateCommand(req);
 	}
 
 	/**
-	 * @generated
-	 */
+	* @generated
+	*/
 	protected Command getDuplicateCommand(DuplicateElementsRequest req) {
-		TransactionalEditingDomain editingDomain = ((IGraphicalEditPart) getHost())
-				.getEditingDomain();
+		TransactionalEditingDomain editingDomain = ((IGraphicalEditPart) getHost()).getEditingDomain();
 		return getGEFWrapper(new DuplicateAnythingCommand(editingDomain, req));
 	}
 
 	/**
-	 * @generated
-	 */
-	private static class DuplicateAnythingCommand extends
-			DuplicateEObjectsCommand {
+	* @generated
+	*/
+	private static class DuplicateAnythingCommand extends DuplicateEObjectsCommand {
 
 		/**
-		 * @generated
-		 */
-		public DuplicateAnythingCommand(
-				TransactionalEditingDomain editingDomain,
-				DuplicateElementsRequest req) {
-			super(editingDomain, req.getLabel(), req
-					.getElementsToBeDuplicated(), req
-					.getAllDuplicatedElementsMap());
+		* @generated
+		*/
+		public DuplicateAnythingCommand(TransactionalEditingDomain editingDomain, DuplicateElementsRequest req) {
+			super(editingDomain, req.getLabel(), req.getElementsToBeDuplicated(), req.getAllDuplicatedElementsMap());
 		}
 
 	}

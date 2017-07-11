@@ -10,10 +10,9 @@ import SAG.diagram.part.SAGDiagramEditorPlugin;
 public class DiagramAppearancePreferencePage extends AppearancePreferencePage {
 
 	/**
-	 * @generated
-	 */
+	* @generated
+	*/
 	public DiagramAppearancePreferencePage() {
-		setPreferenceStore(SAGDiagramEditorPlugin.getInstance()
-				.getPreferenceStore());
+		setPreferenceStore(SAGDiagramEditorPlugin.getInstance().getPreferenceStore());
 	}
 }

@@ -15,11 +15,11 @@ import org.eclipse.gmf.runtime.emf.type.core.requests.ReorientReferenceRelations
 import org.eclipse.gmf.runtime.notation.Edge;
 import org.eclipse.gmf.runtime.notation.View;
 
-import SRM.diagram.edit.commands.CapabilityActivitiesCreateCommand;
-import SRM.diagram.edit.commands.CapabilityActivitiesReorientCommand;
+import SRM.diagram.edit.commands.CapabilityCapability_activitiesCreateCommand;
+import SRM.diagram.edit.commands.CapabilityCapability_activitiesReorientCommand;
 import SRM.diagram.edit.commands.RoleCapabilitiesCreateCommand;
 import SRM.diagram.edit.commands.RoleCapabilitiesReorientCommand;
-import SRM.diagram.edit.parts.CapabilityActivitiesEditPart;
+import SRM.diagram.edit.parts.CapabilityCapability_activitiesEditPart;
 import SRM.diagram.edit.parts.RoleCapabilitiesEditPart;
 import SRM.diagram.part.SRMVisualIDRegistry;
 import SRM.diagram.providers.SRMElementTypes;
@@ -27,40 +27,36 @@ import SRM.diagram.providers.SRMElementTypes;
 /**
  * @generated
  */
-public class CapabilityItemSemanticEditPolicy extends
-		SRMBaseItemSemanticEditPolicy {
+public class CapabilityItemSemanticEditPolicy extends SRMBaseItemSemanticEditPolicy {
 
 	/**
-	 * @generated
-	 */
+	* @generated
+	*/
 	public CapabilityItemSemanticEditPolicy() {
-		super(SRMElementTypes.Capability_2004);
+		super(SRMElementTypes.Capability_2002);
 	}
 
 	/**
-	 * @generated
-	 */
+	* @generated
+	*/
 	protected Command getDestroyElementCommand(DestroyElementRequest req) {
 		View view = (View) getHost().getModel();
-		CompositeTransactionalCommand cmd = new CompositeTransactionalCommand(
-				getEditingDomain(), null);
+		CompositeTransactionalCommand cmd = new CompositeTransactionalCommand(getEditingDomain(), null);
 		cmd.setTransactionNestingEnabled(false);
-		for (Iterator it = view.getTargetEdges().iterator(); it.hasNext();) {
+		for (Iterator<?> it = view.getTargetEdges().iterator(); it.hasNext();) {
 			Edge incomingLink = (Edge) it.next();
 			if (SRMVisualIDRegistry.getVisualID(incomingLink) == RoleCapabilitiesEditPart.VISUAL_ID) {
-				DestroyReferenceRequest r = new DestroyReferenceRequest(
-						incomingLink.getSource().getElement(), null,
+				DestroyReferenceRequest r = new DestroyReferenceRequest(incomingLink.getSource().getElement(), null,
 						incomingLink.getTarget().getElement(), false);
 				cmd.add(new DestroyReferenceCommand(r));
 				cmd.add(new DeleteCommand(getEditingDomain(), incomingLink));
 				continue;
 			}
 		}
-		for (Iterator it = view.getSourceEdges().iterator(); it.hasNext();) {
+		for (Iterator<?> it = view.getSourceEdges().iterator(); it.hasNext();) {
 			Edge outgoingLink = (Edge) it.next();
-			if (SRMVisualIDRegistry.getVisualID(outgoingLink) == CapabilityActivitiesEditPart.VISUAL_ID) {
-				DestroyReferenceRequest r = new DestroyReferenceRequest(
-						outgoingLink.getSource().getElement(), null,
+			if (SRMVisualIDRegistry.getVisualID(outgoingLink) == CapabilityCapability_activitiesEditPart.VISUAL_ID) {
+				DestroyReferenceRequest r = new DestroyReferenceRequest(outgoingLink.getSource().getElement(), null,
 						outgoingLink.getTarget().getElement(), false);
 				cmd.add(new DestroyReferenceCommand(r));
 				cmd.add(new DeleteCommand(getEditingDomain(), outgoingLink));
@@ -85,21 +81,19 @@ public class CapabilityItemSemanticEditPolicy extends
 	protected Command getCreateRelationshipCommand(CreateRelationshipRequest req) {
 		Command command = req.getTarget() == null ? getStartCreateRelationshipCommand(req)
 				: getCompleteCreateRelationshipCommand(req);
-		return command != null ? command : super
-				.getCreateRelationshipCommand(req);
+		return command != null ? command : super.getCreateRelationshipCommand(req);
 	}
 
 	/**
 	 * @generated
 	 */
-	protected Command getStartCreateRelationshipCommand(
-			CreateRelationshipRequest req) {
+	protected Command getStartCreateRelationshipCommand(CreateRelationshipRequest req) {
+		if (SRMElementTypes.CapabilityCapability_activities_4002 == req.getElementType()) {
+			return getGEFWrapper(
+					new CapabilityCapability_activitiesCreateCommand(req, req.getSource(), req.getTarget()));
+		}
 		if (SRMElementTypes.RoleCapabilities_4004 == req.getElementType()) {
 			return null;
-		}
-		if (SRMElementTypes.CapabilityActivities_4006 == req.getElementType()) {
-			return getGEFWrapper(new CapabilityActivitiesCreateCommand(req, req
-					.getSource(), req.getTarget()));
 		}
 		return null;
 	}
@@ -107,14 +101,12 @@ public class CapabilityItemSemanticEditPolicy extends
 	/**
 	 * @generated
 	 */
-	protected Command getCompleteCreateRelationshipCommand(
-			CreateRelationshipRequest req) {
-		if (SRMElementTypes.RoleCapabilities_4004 == req.getElementType()) {
-			return getGEFWrapper(new RoleCapabilitiesCreateCommand(req, req
-					.getSource(), req.getTarget()));
-		}
-		if (SRMElementTypes.CapabilityActivities_4006 == req.getElementType()) {
+	protected Command getCompleteCreateRelationshipCommand(CreateRelationshipRequest req) {
+		if (SRMElementTypes.CapabilityCapability_activities_4002 == req.getElementType()) {
 			return null;
+		}
+		if (SRMElementTypes.RoleCapabilities_4004 == req.getElementType()) {
+			return getGEFWrapper(new RoleCapabilitiesCreateCommand(req, req.getSource(), req.getTarget()));
 		}
 		return null;
 	}
@@ -125,13 +117,12 @@ public class CapabilityItemSemanticEditPolicy extends
 	 * 
 	 * @generated
 	 */
-	protected Command getReorientReferenceRelationshipCommand(
-			ReorientReferenceRelationshipRequest req) {
+	protected Command getReorientReferenceRelationshipCommand(ReorientReferenceRelationshipRequest req) {
 		switch (getVisualID(req)) {
+		case CapabilityCapability_activitiesEditPart.VISUAL_ID:
+			return getGEFWrapper(new CapabilityCapability_activitiesReorientCommand(req));
 		case RoleCapabilitiesEditPart.VISUAL_ID:
 			return getGEFWrapper(new RoleCapabilitiesReorientCommand(req));
-		case CapabilityActivitiesEditPart.VISUAL_ID:
-			return getGEFWrapper(new CapabilityActivitiesReorientCommand(req));
 		}
 		return super.getReorientReferenceRelationshipCommand(req);
 	}

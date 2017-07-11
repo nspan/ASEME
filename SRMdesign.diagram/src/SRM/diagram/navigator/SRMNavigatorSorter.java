@@ -10,13 +10,13 @@ import SRM.diagram.part.SRMVisualIDRegistry;
 public class SRMNavigatorSorter extends ViewerSorter {
 
 	/**
-	 * @generated
-	 */
-	private static final int GROUP_CATEGORY = 4008;
+	* @generated
+	*/
+	private static final int GROUP_CATEGORY = 4006;
 
 	/**
-	 * @generated
-	 */
+	* @generated
+	*/
 	public int category(Object element) {
 		if (element instanceof SRMNavigatorItem) {
 			SRMNavigatorItem item = (SRMNavigatorItem) element;

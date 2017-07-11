@@ -1,8 +1,4 @@
 /**
- * <copyright>
- * </copyright>
- *
- * $Id$
  */
 package SRM;
 
@@ -17,12 +13,13 @@ import org.eclipse.emf.ecore.EObject;
  *
  * <p>
  * The following features are supported:
+ * </p>
  * <ul>
  *   <li>{@link SRM.SRMmodel#getActivities <em>Activities</em>}</li>
  *   <li>{@link SRM.SRMmodel#getCapabilities <em>Capabilities</em>}</li>
  *   <li>{@link SRM.SRMmodel#getRoles <em>Roles</em>}</li>
+ *   <li>{@link SRM.SRMmodel#getFunctionalities <em>Functionalities</em>}</li>
  * </ul>
- * </p>
  *
  * @see SRM.SRMPackage#getSRMmodel()
  * @model
@@ -76,5 +73,21 @@ public interface SRMmodel extends EObject {
 	 * @generated
 	 */
 	EList<Role> getRoles();
+
+	/**
+	 * Returns the value of the '<em><b>Functionalities</b></em>' containment reference list.
+	 * The list contents are of type {@link SRM.Functionality}.
+	 * <!-- begin-user-doc -->
+	 * <p>
+	 * If the meaning of the '<em>Functionalities</em>' containment reference list isn't clear,
+	 * there really should be more of a description here...
+	 * </p>
+	 * <!-- end-user-doc -->
+	 * @return the value of the '<em>Functionalities</em>' containment reference list.
+	 * @see SRM.SRMPackage#getSRMmodel_Functionalities()
+	 * @model containment="true" required="true"
+	 * @generated
+	 */
+	EList<Functionality> getFunctionalities();
 
 } // SRMmodel

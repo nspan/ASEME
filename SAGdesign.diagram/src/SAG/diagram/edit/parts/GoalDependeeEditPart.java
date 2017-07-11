@@ -1,5 +1,6 @@
 package SAG.diagram.edit.parts;
 
+import org.eclipse.draw2d.ColorConstants;
 import org.eclipse.draw2d.Connection;
 import org.eclipse.draw2d.PolylineDecoration;
 import org.eclipse.draw2d.RotatableDecoration;
@@ -14,46 +15,44 @@ import SAG.diagram.edit.policies.GoalDependeeItemSemanticEditPolicy;
 /**
  * @generated
  */
-public class GoalDependeeEditPart extends ConnectionNodeEditPart implements
-		ITreeBranchEditPart {
+public class GoalDependeeEditPart extends ConnectionNodeEditPart implements ITreeBranchEditPart {
 
 	/**
-	 * @generated
-	 */
-	public static final int VISUAL_ID = 4013;
+	* @generated
+	*/
+	public static final int VISUAL_ID = 4002;
 
 	/**
-	 * @generated
-	 */
+	* @generated
+	*/
 	public GoalDependeeEditPart(View view) {
 		super(view);
 	}
 
 	/**
-	 * @generated
-	 */
+	* @generated
+	*/
 	protected void createDefaultEditPolicies() {
 		super.createDefaultEditPolicies();
-		installEditPolicy(EditPolicyRoles.SEMANTIC_ROLE,
-				new GoalDependeeItemSemanticEditPolicy());
+		installEditPolicy(EditPolicyRoles.SEMANTIC_ROLE, new GoalDependeeItemSemanticEditPolicy());
 	}
 
 	/**
-	 * Creates figure for this edit part.
-	 * 
-	 * Body of this method does not depend on settings in generation model
-	 * so you may safely remove <i>generated</i> tag and modify it.
-	 * 
-	 * @generated
-	 */
+	* Creates figure for this edit part.
+	* 
+	* Body of this method does not depend on settings in generation model
+	* so you may safely remove <i>generated</i> tag and modify it.
+	* 
+	* @generated
+	*/
 
 	protected Connection createConnectionFigure() {
 		return new GoalDependeeFigure();
 	}
 
 	/**
-	 * @generated
-	 */
+	* @generated
+	*/
 	public GoalDependeeFigure getPrimaryShape() {
 		return (GoalDependeeFigure) getFigure();
 	}
@@ -67,7 +66,9 @@ public class GoalDependeeEditPart extends ConnectionNodeEditPart implements
 		 * @generated
 		 */
 		public GoalDependeeFigure() {
-			this.setLineWidth(3);
+			this.setLineWidth(2);
+			this.setForegroundColor(ColorConstants.black);
+			this.setBackgroundColor(ColorConstants.black);
 
 			setTargetDecoration(createTargetDecoration());
 		}

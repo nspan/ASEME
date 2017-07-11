@@ -20,133 +20,121 @@ import org.eclipse.ui.actions.WorkspaceModifyOperation;
 public class SRMCreationWizard extends Wizard implements INewWizard {
 
 	/**
-	 * @generated
-	 */
+	* @generated
+	*/
 	private IWorkbench workbench;
 
 	/**
-	 * @generated
-	 */
+	* @generated
+	*/
 	protected IStructuredSelection selection;
 
 	/**
-	 * @generated
-	 */
+	* @generated
+	*/
 	protected SRMCreationWizardPage diagramModelFilePage;
 
 	/**
-	 * @generated
-	 */
+	* @generated
+	*/
 	protected SRMCreationWizardPage domainModelFilePage;
 
 	/**
-	 * @generated
-	 */
+	* @generated
+	*/
 	protected Resource diagram;
 
 	/**
-	 * @generated
-	 */
+	* @generated
+	*/
 	private boolean openNewlyCreatedDiagramEditor = true;
 
 	/**
-	 * @generated
-	 */
+	* @generated
+	*/
 	public IWorkbench getWorkbench() {
 		return workbench;
 	}
 
 	/**
-	 * @generated
-	 */
+	* @generated
+	*/
 	public IStructuredSelection getSelection() {
 		return selection;
 	}
 
 	/**
-	 * @generated
-	 */
+	* @generated
+	*/
 	public final Resource getDiagram() {
 		return diagram;
 	}
 
 	/**
-	 * @generated
-	 */
+	* @generated
+	*/
 	public final boolean isOpenNewlyCreatedDiagramEditor() {
 		return openNewlyCreatedDiagramEditor;
 	}
 
 	/**
-	 * @generated
-	 */
-	public void setOpenNewlyCreatedDiagramEditor(
-			boolean openNewlyCreatedDiagramEditor) {
+	* @generated
+	*/
+	public void setOpenNewlyCreatedDiagramEditor(boolean openNewlyCreatedDiagramEditor) {
 		this.openNewlyCreatedDiagramEditor = openNewlyCreatedDiagramEditor;
 	}
 
 	/**
-	 * @generated
-	 */
+	* @generated
+	*/
 	public void init(IWorkbench workbench, IStructuredSelection selection) {
 		this.workbench = workbench;
 		this.selection = selection;
 		setWindowTitle(Messages.SRMCreationWizardTitle);
-		setDefaultPageImageDescriptor(SRMDiagramEditorPlugin
-				.getBundledImageDescriptor("icons/wizban/NewSRMWizard.gif")); //$NON-NLS-1$
+		setDefaultPageImageDescriptor(
+				SRMDiagramEditorPlugin.getBundledImageDescriptor("icons/wizban/NewSRMWizard.gif")); //$NON-NLS-1$
 		setNeedsProgressMonitor(true);
 	}
 
 	/**
-	 * @generated
-	 */
+	* @generated
+	*/
 	public void addPages() {
-		diagramModelFilePage = new SRMCreationWizardPage(
-				"DiagramModelFile", getSelection(), "srmd"); //$NON-NLS-1$ //$NON-NLS-2$
-		diagramModelFilePage
-				.setTitle(Messages.SRMCreationWizard_DiagramModelFilePageTitle);
-		diagramModelFilePage
-				.setDescription(Messages.SRMCreationWizard_DiagramModelFilePageDescription);
+		diagramModelFilePage = new SRMCreationWizardPage("DiagramModelFile", getSelection(), "fg"); //$NON-NLS-1$ //$NON-NLS-2$
+		diagramModelFilePage.setTitle(Messages.SRMCreationWizard_DiagramModelFilePageTitle);
+		diagramModelFilePage.setDescription(Messages.SRMCreationWizard_DiagramModelFilePageDescription);
 		addPage(diagramModelFilePage);
 
-		domainModelFilePage = new SRMCreationWizardPage(
-				"DomainModelFile", getSelection(), "srm") { //$NON-NLS-1$ //$NON-NLS-2$
+		domainModelFilePage = new SRMCreationWizardPage("DomainModelFile", getSelection(), "srm") { //$NON-NLS-1$ //$NON-NLS-2$
 
 			public void setVisible(boolean visible) {
 				if (visible) {
 					String fileName = diagramModelFilePage.getFileName();
-					fileName = fileName.substring(0, fileName.length()
-							- ".srmd".length()); //$NON-NLS-1$
-					setFileName(SRMDiagramEditorUtil.getUniqueFileName(
-							getContainerFullPath(), fileName, "srm")); //$NON-NLS-1$
+					fileName = fileName.substring(0, fileName.length() - ".fg".length()); //$NON-NLS-1$
+					setFileName(SRMDiagramEditorUtil.getUniqueFileName(getContainerFullPath(), fileName, "srm")); //$NON-NLS-1$
 				}
 				super.setVisible(visible);
 			}
 		};
-		domainModelFilePage
-				.setTitle(Messages.SRMCreationWizard_DomainModelFilePageTitle);
-		domainModelFilePage
-				.setDescription(Messages.SRMCreationWizard_DomainModelFilePageDescription);
+		domainModelFilePage.setTitle(Messages.SRMCreationWizard_DomainModelFilePageTitle);
+		domainModelFilePage.setDescription(Messages.SRMCreationWizard_DomainModelFilePageDescription);
 		addPage(domainModelFilePage);
 	}
 
 	/**
-	 * @generated
-	 */
+	* @generated
+	*/
 	public boolean performFinish() {
 		IRunnableWithProgress op = new WorkspaceModifyOperation(null) {
 
-			protected void execute(IProgressMonitor monitor)
-					throws CoreException, InterruptedException {
-				diagram = SRMDiagramEditorUtil.createDiagram(
-						diagramModelFilePage.getURI(), domainModelFilePage
-								.getURI(), monitor);
+			protected void execute(IProgressMonitor monitor) throws CoreException, InterruptedException {
+				diagram = SRMDiagramEditorUtil.createDiagram(diagramModelFilePage.getURI(),
+						domainModelFilePage.getURI(), monitor);
 				if (isOpenNewlyCreatedDiagramEditor() && diagram != null) {
 					try {
 						SRMDiagramEditorUtil.openDiagram(diagram);
 					} catch (PartInitException e) {
-						ErrorDialog.openError(getContainer().getShell(),
-								Messages.SRMCreationWizardOpenEditorError,
+						ErrorDialog.openError(getContainer().getShell(), Messages.SRMCreationWizardOpenEditorError,
 								null, e.getStatus());
 					}
 				}
@@ -158,12 +146,10 @@ public class SRMCreationWizard extends Wizard implements INewWizard {
 			return false;
 		} catch (InvocationTargetException e) {
 			if (e.getTargetException() instanceof CoreException) {
-				ErrorDialog.openError(getContainer().getShell(),
-						Messages.SRMCreationWizardCreationError, null,
+				ErrorDialog.openError(getContainer().getShell(), Messages.SRMCreationWizardCreationError, null,
 						((CoreException) e.getTargetException()).getStatus());
 			} else {
-				SRMDiagramEditorPlugin.getInstance().logError(
-						"Error creating diagram", e.getTargetException()); //$NON-NLS-1$
+				SRMDiagramEditorPlugin.getInstance().logError("Error creating diagram", e.getTargetException()); //$NON-NLS-1$
 			}
 			return false;
 		}

@@ -12,14 +12,12 @@ public class ElementInitializers {
 	}
 
 	/**
-	 * @generated
-	 */
+	* @generated
+	*/
 	public static ElementInitializers getInstance() {
-		ElementInitializers cached = SUCDiagramEditorPlugin.getInstance()
-				.getElementInitializers();
+		ElementInitializers cached = SUCDiagramEditorPlugin.getInstance().getElementInitializers();
 		if (cached == null) {
-			SUCDiagramEditorPlugin.getInstance().setElementInitializers(
-					cached = new ElementInitializers());
+			SUCDiagramEditorPlugin.getInstance().setElementInitializers(cached = new ElementInitializers());
 		}
 		return cached;
 	}

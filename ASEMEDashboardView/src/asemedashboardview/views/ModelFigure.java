@@ -7,6 +7,7 @@ import org.eclipse.draw2d.Figure;
 import org.eclipse.draw2d.IFigure;
 import org.eclipse.draw2d.Label;
 import org.eclipse.draw2d.MarginBorder;
+import org.eclipse.draw2d.OrderedLayout;
 import org.eclipse.draw2d.RectangleFigure;
 import org.eclipse.draw2d.ToolbarLayout;
 import org.eclipse.draw2d.geometry.Dimension;
@@ -54,8 +55,16 @@ public class ModelFigure extends RectangleFigure implements ActionContainer {
 		descriptionFigure.setFont(JFaceResources.getBannerFont());
 		addLabel(descriptionFigure);
 		Label nameFigure = new Label();
+		
+		ToolbarLayout nameLayout = new ToolbarLayout();
+		nameLayout.setStretchMinorAxis(false);
+		nameFigure.setLayoutManager(nameLayout);
+		
 		addLabel(nameFigure);
 		setName(null); // init
+		
+		
+		
 	}
 
 	public void setSpacing(int spacing) {
@@ -130,7 +139,7 @@ public class ModelFigure extends RectangleFigure implements ActionContainer {
 		if (name == null || name.trim().length() == 0) {
 			name = Messages.ModelFigure_NoName;
 		}
-		getLabel(1).setText(name);
+			getLabel(1).setText(name);
 	}
 
 	public void setFullName(String name) {

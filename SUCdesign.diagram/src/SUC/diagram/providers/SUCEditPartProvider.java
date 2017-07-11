@@ -12,11 +12,10 @@ import SUC.diagram.part.SUCVisualIDRegistry;
 public class SUCEditPartProvider extends DefaultEditPartProvider {
 
 	/**
-	 * @generated
-	 */
+	* @generated
+	*/
 	public SUCEditPartProvider() {
-		super(new SUCEditPartFactory(), SUCVisualIDRegistry.TYPED_INSTANCE,
-				SUCmodelEditPart.MODEL_ID);
+		super(new SUCEditPartFactory(), SUCVisualIDRegistry.TYPED_INSTANCE, SUCmodelEditPart.MODEL_ID);
 	}
 
 }

@@ -1,11 +1,8 @@
 package AIP.diagram.edit.parts;
 
-import java.util.ArrayList;
-import java.util.LinkedList;
-import java.util.List;
-
 import org.eclipse.draw2d.FlowLayout;
 import org.eclipse.draw2d.IFigure;
+import org.eclipse.draw2d.Label;
 import org.eclipse.draw2d.RectangleFigure;
 import org.eclipse.draw2d.Shape;
 import org.eclipse.draw2d.StackLayout;
@@ -20,7 +17,6 @@ import org.eclipse.gmf.runtime.diagram.ui.editpolicies.EditPolicyRoles;
 import org.eclipse.gmf.runtime.diagram.ui.editpolicies.FlowLayoutEditPolicy;
 import org.eclipse.gmf.runtime.draw2d.ui.figures.ConstrainedToolbarLayout;
 import org.eclipse.gmf.runtime.draw2d.ui.figures.WrappingLabel;
-import org.eclipse.gmf.runtime.emf.type.core.IElementType;
 import org.eclipse.gmf.runtime.gef.ui.figures.DefaultSizeNodeFigure;
 import org.eclipse.gmf.runtime.gef.ui.figures.NodeFigure;
 import org.eclipse.gmf.runtime.notation.View;
@@ -28,7 +24,6 @@ import org.eclipse.swt.graphics.Color;
 
 import AIP.diagram.edit.policies.ParticipantItemSemanticEditPolicy;
 import AIP.diagram.part.AIPVisualIDRegistry;
-import AIP.diagram.providers.AIPElementTypes;
 
 /**
  * @generated
@@ -36,42 +31,41 @@ import AIP.diagram.providers.AIPElementTypes;
 public class ParticipantEditPart extends ShapeNodeEditPart {
 
 	/**
-	 * @generated
-	 */
-	public static final int VISUAL_ID = 2003;
+	* @generated
+	*/
+	public static final int VISUAL_ID = 2002;
 
 	/**
-	 * @generated
-	 */
+	* @generated
+	*/
 	protected IFigure contentPane;
 
 	/**
-	 * @generated
-	 */
+	* @generated
+	*/
 	protected IFigure primaryShape;
 
 	/**
-	 * @generated
-	 */
+	* @generated
+	*/
 	public ParticipantEditPart(View view) {
 		super(view);
 	}
 
 	/**
-	 * @generated
-	 */
+	* @generated
+	*/
 	protected void createDefaultEditPolicies() {
 		super.createDefaultEditPolicies();
-		installEditPolicy(EditPolicyRoles.SEMANTIC_ROLE,
-				new ParticipantItemSemanticEditPolicy());
+		installEditPolicy(EditPolicyRoles.SEMANTIC_ROLE, new ParticipantItemSemanticEditPolicy());
 		installEditPolicy(EditPolicy.LAYOUT_ROLE, createLayoutEditPolicy());
 		// XXX need an SCR to runtime to have another abstract superclass that would let children add reasonable editpolicies
 		// removeEditPolicy(org.eclipse.gmf.runtime.diagram.ui.editpolicies.EditPolicyRoles.CONNECTION_HANDLES_ROLE);
 	}
 
 	/**
-	 * @generated
-	 */
+	* @generated
+	*/
 	protected LayoutEditPolicy createLayoutEditPolicy() {
 
 		FlowLayoutEditPolicy lep = new FlowLayoutEditPolicy() {
@@ -80,8 +74,7 @@ public class ParticipantEditPart extends ShapeNodeEditPart {
 				return null;
 			}
 
-			protected Command createMoveChildCommand(EditPart child,
-					EditPart after) {
+			protected Command createMoveChildCommand(EditPart child, EditPart after) {
 				return null;
 			}
 
@@ -93,55 +86,53 @@ public class ParticipantEditPart extends ShapeNodeEditPart {
 	}
 
 	/**
-	 * @generated
-	 */
+	* @generated
+	*/
 	protected IFigure createNodeShape() {
 		return primaryShape = new ParticipantFigure();
 	}
 
 	/**
-	 * @generated
-	 */
+	* @generated
+	*/
 	public ParticipantFigure getPrimaryShape() {
 		return (ParticipantFigure) primaryShape;
 	}
 
 	/**
-	 * @generated
-	 */
+	* @generated
+	*/
 	protected boolean addFixedChild(EditPart childEditPart) {
 		if (childEditPart instanceof ParticipantNameEditPart) {
-			((ParticipantNameEditPart) childEditPart)
-					.setLabel(getPrimaryShape()
-							.getFigureParticipantNameFigure());
-			return true;
-		}
-		if (childEditPart instanceof ParticipantEngaging_rulesEditPart) {
-			((ParticipantEngaging_rulesEditPart) childEditPart)
-					.setLabel(getPrimaryShape()
-							.getFigureParticipantEngaging_rulesFigure());
-			return true;
-		}
-		if (childEditPart instanceof ParticipantOutcomesEditPart) {
-			((ParticipantOutcomesEditPart) childEditPart)
-					.setLabel(getPrimaryShape()
-							.getFigureParticipantOutcomesFigure());
+			((ParticipantNameEditPart) childEditPart).setLabel(getPrimaryShape().getFigureParticipantNameFigure());
 			return true;
 		}
 		if (childEditPart instanceof ParticipantLivenessEditPart) {
 			((ParticipantLivenessEditPart) childEditPart)
-					.setLabel(getPrimaryShape()
-							.getFigureParticipantLivenessFigure());
+					.setLabel(getPrimaryShape().getFigureParticipantLivenessFigure());
+			return true;
+		}
+		if (childEditPart instanceof ParticipantEngaging_rulesEditPart) {
+			((ParticipantEngaging_rulesEditPart) childEditPart)
+					.setLabel(getPrimaryShape().getFigureParticipantEngaging_rulesFigure());
+			return true;
+		}
+		if (childEditPart instanceof ParticipantOutcomesEditPart) {
+			((ParticipantOutcomesEditPart) childEditPart)
+					.setLabel(getPrimaryShape().getFigureParticipantOutcomesFigure());
 			return true;
 		}
 		return false;
 	}
 
 	/**
-	 * @generated
-	 */
+	* @generated
+	*/
 	protected boolean removeFixedChild(EditPart childEditPart) {
 		if (childEditPart instanceof ParticipantNameEditPart) {
+			return true;
+		}
+		if (childEditPart instanceof ParticipantLivenessEditPart) {
 			return true;
 		}
 		if (childEditPart instanceof ParticipantEngaging_rulesEditPart) {
@@ -150,15 +141,12 @@ public class ParticipantEditPart extends ShapeNodeEditPart {
 		if (childEditPart instanceof ParticipantOutcomesEditPart) {
 			return true;
 		}
-		if (childEditPart instanceof ParticipantLivenessEditPart) {
-			return true;
-		}
 		return false;
 	}
 
 	/**
-	 * @generated
-	 */
+	* @generated
+	*/
 	protected void addChildVisual(EditPart childEditPart, int index) {
 		if (addFixedChild(childEditPart)) {
 			return;
@@ -167,8 +155,8 @@ public class ParticipantEditPart extends ShapeNodeEditPart {
 	}
 
 	/**
-	 * @generated
-	 */
+	* @generated
+	*/
 	protected void removeChildVisual(EditPart childEditPart) {
 		if (removeFixedChild(childEditPart)) {
 			return;
@@ -177,30 +165,34 @@ public class ParticipantEditPart extends ShapeNodeEditPart {
 	}
 
 	/**
-	 * @generated
-	 */
+	* @generated
+	*/
 	protected IFigure getContentPaneFor(IGraphicalEditPart editPart) {
 		return getContentPane();
 	}
 
 	/**
-	 * @generated
-	 */
+	* @generated
+	*/
 	protected NodeFigure createNodePlate() {
 		DefaultSizeNodeFigure result = new DefaultSizeNodeFigure(40, 40);
 		return result;
 	}
 
 	/**
-	 * Creates figure for this edit part.
-	 * 
-	 * Body of this method does not depend on settings in generation model
-	 * so you may safely remove <i>generated</i> tag and modify it.
-	 * 
-	 * @generated
-	 */
+	* Creates figure for this edit part.
+	* 
+	* Body of this method does not depend on settings in generation model
+	* so you may safely remove <i>generated</i> tag and modify it.
+	* 
+	* @generated NOT
+	*/
 	protected NodeFigure createNodeFigure() {
 		NodeFigure figure = createNodePlate();
+		
+		Label tooltip = new Label("You can edit multiline attributes from the properties view ");
+		figure.setToolTip(tooltip);
+		
 		figure.setLayoutManager(new StackLayout());
 		IFigure shape = createNodeShape();
 		figure.add(shape);
@@ -209,11 +201,11 @@ public class ParticipantEditPart extends ShapeNodeEditPart {
 	}
 
 	/**
-	 * Default implementation treats passed figure as content pane.
-	 * Respects layout one may have set for generated figure.
-	 * @param nodeShape instance of generated figure class
-	 * @generated
-	 */
+	* Default implementation treats passed figure as content pane.
+	* Respects layout one may have set for generated figure.
+	* @param nodeShape instance of generated figure class
+	* @generated
+	*/
 	protected IFigure setupContentPane(IFigure nodeShape) {
 		if (nodeShape.getLayoutManager() == null) {
 			ConstrainedToolbarLayout layout = new ConstrainedToolbarLayout();
@@ -224,8 +216,8 @@ public class ParticipantEditPart extends ShapeNodeEditPart {
 	}
 
 	/**
-	 * @generated
-	 */
+	* @generated
+	*/
 	public IFigure getContentPane() {
 		if (contentPane != null) {
 			return contentPane;
@@ -234,8 +226,8 @@ public class ParticipantEditPart extends ShapeNodeEditPart {
 	}
 
 	/**
-	 * @generated
-	 */
+	* @generated
+	*/
 	protected void setForegroundColor(Color color) {
 		if (primaryShape != null) {
 			primaryShape.setForegroundColor(color);
@@ -243,8 +235,8 @@ public class ParticipantEditPart extends ShapeNodeEditPart {
 	}
 
 	/**
-	 * @generated
-	 */
+	* @generated
+	*/
 	protected void setBackgroundColor(Color color) {
 		if (primaryShape != null) {
 			primaryShape.setBackgroundColor(color);
@@ -252,8 +244,8 @@ public class ParticipantEditPart extends ShapeNodeEditPart {
 	}
 
 	/**
-	 * @generated
-	 */
+	* @generated
+	*/
 	protected void setLineWidth(int width) {
 		if (primaryShape instanceof Shape) {
 			((Shape) primaryShape).setLineWidth(width);
@@ -261,8 +253,8 @@ public class ParticipantEditPart extends ShapeNodeEditPart {
 	}
 
 	/**
-	 * @generated
-	 */
+	* @generated
+	*/
 	protected void setLineType(int style) {
 		if (primaryShape instanceof Shape) {
 			((Shape) primaryShape).setLineStyle(style);
@@ -270,31 +262,10 @@ public class ParticipantEditPart extends ShapeNodeEditPart {
 	}
 
 	/**
-	 * @generated
-	 */
+	* @generated
+	*/
 	public EditPart getPrimaryChildEditPart() {
-		return getChildBySemanticHint(AIPVisualIDRegistry
-				.getType(ParticipantNameEditPart.VISUAL_ID));
-	}
-
-	/**
-	 * @generated
-	 */
-	public List<IElementType> getMARelTypesOnTarget() {
-		ArrayList<IElementType> types = new ArrayList<IElementType>(1);
-		types.add(AIPElementTypes.ProtocolParticipants_4002);
-		return types;
-	}
-
-	/**
-	 * @generated
-	 */
-	public List<IElementType> getMATypesForSource(IElementType relationshipType) {
-		LinkedList<IElementType> types = new LinkedList<IElementType>();
-		if (relationshipType == AIPElementTypes.ProtocolParticipants_4002) {
-			types.add(AIPElementTypes.Protocol_2004);
-		}
-		return types;
+		return getChildBySemanticHint(AIPVisualIDRegistry.getType(ParticipantNameEditPart.VISUAL_ID));
 	}
 
 	/**
@@ -331,10 +302,11 @@ public class ParticipantEditPart extends ShapeNodeEditPart {
 			layoutThis.setMajorAlignment(FlowLayout.ALIGN_LEFTTOP);
 			layoutThis.setMajorSpacing(5);
 			layoutThis.setMinorSpacing(5);
-			layoutThis.setHorizontal(true);
+			layoutThis.setHorizontal(false);
 
 			this.setLayoutManager(layoutThis);
 
+			this.setLineWidth(2);
 			this.setForegroundColor(THIS_FORE);
 			this.setBackgroundColor(THIS_BACK);
 			createContents();
@@ -346,24 +318,26 @@ public class ParticipantEditPart extends ShapeNodeEditPart {
 		private void createContents() {
 
 			fFigureParticipantNameFigure = new WrappingLabel();
+
 			fFigureParticipantNameFigure.setText("<Insert Name>");
 
 			this.add(fFigureParticipantNameFigure);
 
 			fFigureParticipantEngaging_rulesFigure = new WrappingLabel();
-			fFigureParticipantEngaging_rulesFigure
-					.setText("<Insert Engaging rules>");
+
+			fFigureParticipantEngaging_rulesFigure.setText("<Insert Engaging rules>");
 
 			this.add(fFigureParticipantEngaging_rulesFigure);
 
 			fFigureParticipantOutcomesFigure = new WrappingLabel();
+
 			fFigureParticipantOutcomesFigure.setText("<Insert Outcomes>");
 
 			this.add(fFigureParticipantOutcomesFigure);
 
 			fFigureParticipantLivenessFigure = new WrappingLabel();
-			fFigureParticipantLivenessFigure
-					.setText("<Insert Liveness property>");
+
+			fFigureParticipantLivenessFigure.setText("<Insert Liveness property>");
 
 			this.add(fFigureParticipantLivenessFigure);
 
@@ -407,6 +381,6 @@ public class ParticipantEditPart extends ShapeNodeEditPart {
 	/**
 	 * @generated
 	 */
-	static final Color THIS_BACK = new Color(null, 255, 130, 192);
+	static final Color THIS_BACK = new Color(null, 214, 249, 248);
 
 }

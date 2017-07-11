@@ -10,10 +10,9 @@ import SAG.diagram.part.SAGDiagramEditorPlugin;
 public class DiagramPrintingPreferencePage extends PrintingPreferencePage {
 
 	/**
-	 * @generated
-	 */
+	* @generated
+	*/
 	public DiagramPrintingPreferencePage() {
-		setPreferenceStore(SAGDiagramEditorPlugin.getInstance()
-				.getPreferenceStore());
+		setPreferenceStore(SAGDiagramEditorPlugin.getInstance().getPreferenceStore());
 	}
 }

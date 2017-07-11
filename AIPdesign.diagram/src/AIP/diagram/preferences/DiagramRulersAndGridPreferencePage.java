@@ -10,10 +10,9 @@ import AIP.diagram.part.AIPDiagramEditorPlugin;
 public class DiagramRulersAndGridPreferencePage extends RulerGridPreferencePage {
 
 	/**
-	 * @generated
-	 */
+	* @generated
+	*/
 	public DiagramRulersAndGridPreferencePage() {
-		setPreferenceStore(AIPDiagramEditorPlugin.getInstance()
-				.getPreferenceStore());
+		setPreferenceStore(AIPDiagramEditorPlugin.getInstance().getPreferenceStore());
 	}
 }

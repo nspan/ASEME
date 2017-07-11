@@ -1,16 +1,13 @@
+
 package AIP.diagram.part;
 
 import java.util.Collections;
-import java.util.List;
 
-import org.eclipse.gef.Tool;
 import org.eclipse.gef.palette.PaletteContainer;
 import org.eclipse.gef.palette.PaletteGroup;
 import org.eclipse.gef.palette.PaletteRoot;
 import org.eclipse.gef.palette.ToolEntry;
-import org.eclipse.gmf.runtime.diagram.ui.tools.UnspecifiedTypeConnectionTool;
-import org.eclipse.gmf.runtime.diagram.ui.tools.UnspecifiedTypeCreationTool;
-import org.eclipse.gmf.runtime.emf.type.core.IElementType;
+import org.eclipse.gmf.tooling.runtime.part.DefaultNodeToolEntry;
 
 import AIP.diagram.providers.AIPElementTypes;
 
@@ -20,19 +17,18 @@ import AIP.diagram.providers.AIPElementTypes;
 public class AIPPaletteFactory {
 
 	/**
-	 * @generated
-	 */
+	* @generated
+	*/
 	public void fillPalette(PaletteRoot paletteRoot) {
 		paletteRoot.add(createAIP1Group());
 	}
 
 	/**
-	 * Creates "AIP" palette tool group
-	 * @generated
-	 */
+	* Creates "AIP" palette tool group
+	* @generated
+	*/
 	private PaletteContainer createAIP1Group() {
-		PaletteGroup paletteContainer = new PaletteGroup(
-				Messages.AIP1Group_title);
+		PaletteGroup paletteContainer = new PaletteGroup(Messages.AIP1Group_title);
 		paletteContainer.setId("createAIP1Group"); //$NON-NLS-1$
 		paletteContainer.add(createProtocol1CreationTool());
 		paletteContainer.add(createProtocolParticipants2CreationTool());
@@ -41,106 +37,38 @@ public class AIPPaletteFactory {
 	}
 
 	/**
-	 * @generated
-	 */
+	* @generated
+	*/
 	private ToolEntry createProtocol1CreationTool() {
-		NodeToolEntry entry = new NodeToolEntry(
-				Messages.Protocol1CreationTool_title,
-				Messages.Protocol1CreationTool_desc,
-				Collections.singletonList(AIPElementTypes.Protocol_2004));
+		DefaultNodeToolEntry entry = new DefaultNodeToolEntry(Messages.Protocol1CreationTool_title,
+				Messages.Protocol1CreationTool_desc, Collections.singletonList(AIPElementTypes.Protocol_2001));
 		entry.setId("createProtocol1CreationTool"); //$NON-NLS-1$
-		entry.setSmallIcon(AIPElementTypes
-				.getImageDescriptor(AIPElementTypes.Protocol_2004));
+		entry.setSmallIcon(AIPElementTypes.getImageDescriptor(AIPElementTypes.Protocol_2001));
 		entry.setLargeIcon(entry.getSmallIcon());
 		return entry;
 	}
 
 	/**
-	 * @generated
-	 */
+	* @generated
+	*/
 	private ToolEntry createProtocolParticipants2CreationTool() {
-		LinkToolEntry entry = new LinkToolEntry(
-				Messages.ProtocolParticipants2CreationTool_title,
-				Messages.ProtocolParticipants2CreationTool_desc,
-				Collections
-						.singletonList(AIPElementTypes.ProtocolParticipants_4002));
+		ToolEntry entry = new ToolEntry(Messages.ProtocolParticipants2CreationTool_title,
+				Messages.ProtocolParticipants2CreationTool_desc, null, null) {
+		};
 		entry.setId("createProtocolParticipants2CreationTool"); //$NON-NLS-1$
-		entry.setSmallIcon(AIPElementTypes
-				.getImageDescriptor(AIPElementTypes.ProtocolParticipants_4002));
-		entry.setLargeIcon(entry.getSmallIcon());
 		return entry;
 	}
 
 	/**
-	 * @generated
-	 */
+	* @generated
+	*/
 	private ToolEntry createParticipant3CreationTool() {
-		NodeToolEntry entry = new NodeToolEntry(
-				Messages.Participant3CreationTool_title,
-				Messages.Participant3CreationTool_desc,
-				Collections.singletonList(AIPElementTypes.Participant_2003));
+		DefaultNodeToolEntry entry = new DefaultNodeToolEntry(Messages.Participant3CreationTool_title,
+				Messages.Participant3CreationTool_desc, Collections.singletonList(AIPElementTypes.Participant_2002));
 		entry.setId("createParticipant3CreationTool"); //$NON-NLS-1$
-		entry.setSmallIcon(AIPElementTypes
-				.getImageDescriptor(AIPElementTypes.Participant_2003));
+		entry.setSmallIcon(AIPElementTypes.getImageDescriptor(AIPElementTypes.Participant_2002));
 		entry.setLargeIcon(entry.getSmallIcon());
 		return entry;
 	}
 
-	/**
-	 * @generated
-	 */
-	private static class NodeToolEntry extends ToolEntry {
-
-		/**
-		 * @generated
-		 */
-		private final List<IElementType> elementTypes;
-
-		/**
-		 * @generated
-		 */
-		private NodeToolEntry(String title, String description,
-				List<IElementType> elementTypes) {
-			super(title, description, null, null);
-			this.elementTypes = elementTypes;
-		}
-
-		/**
-		 * @generated
-		 */
-		public Tool createTool() {
-			Tool tool = new UnspecifiedTypeCreationTool(elementTypes);
-			tool.setProperties(getToolProperties());
-			return tool;
-		}
-	}
-
-	/**
-	 * @generated
-	 */
-	private static class LinkToolEntry extends ToolEntry {
-
-		/**
-		 * @generated
-		 */
-		private final List<IElementType> relationshipTypes;
-
-		/**
-		 * @generated
-		 */
-		private LinkToolEntry(String title, String description,
-				List<IElementType> relationshipTypes) {
-			super(title, description, null, null);
-			this.relationshipTypes = relationshipTypes;
-		}
-
-		/**
-		 * @generated
-		 */
-		public Tool createTool() {
-			Tool tool = new UnspecifiedTypeConnectionTool(relationshipTypes);
-			tool.setProperties(getToolProperties());
-			return tool;
-		}
-	}
 }
