@@ -10,10 +10,9 @@ import SUC.diagram.part.SUCDiagramEditorPlugin;
 public class DiagramAppearancePreferencePage extends AppearancePreferencePage {
 
 	/**
-	 * @generated
-	 */
+	* @generated
+	*/
 	public DiagramAppearancePreferencePage() {
-		setPreferenceStore(SUCDiagramEditorPlugin.getInstance()
-				.getPreferenceStore());
+		setPreferenceStore(SUCDiagramEditorPlugin.getInstance().getPreferenceStore());
 	}
 }

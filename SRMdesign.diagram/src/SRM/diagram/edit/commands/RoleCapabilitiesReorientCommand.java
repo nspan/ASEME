@@ -19,30 +19,29 @@ import SRM.diagram.edit.policies.SRMBaseItemSemanticEditPolicy;
 public class RoleCapabilitiesReorientCommand extends EditElementCommand {
 
 	/**
-	 * @generated
-	 */
+	* @generated
+	*/
 	private final int reorientDirection;
 
 	/**
-	 * @generated
-	 */
+	* @generated
+	*/
 	private final EObject referenceOwner;
 
 	/**
-	 * @generated
-	 */
+	* @generated
+	*/
 	private final EObject oldEnd;
 
 	/**
-	 * @generated
-	 */
+	* @generated
+	*/
 	private final EObject newEnd;
 
 	/**
-	 * @generated
-	 */
-	public RoleCapabilitiesReorientCommand(
-			ReorientReferenceRelationshipRequest request) {
+	* @generated
+	*/
+	public RoleCapabilitiesReorientCommand(ReorientReferenceRelationshipRequest request) {
 		super(request.getLabel(), null, request);
 		reorientDirection = request.getDirection();
 		referenceOwner = request.getReferenceOwner();
@@ -51,8 +50,8 @@ public class RoleCapabilitiesReorientCommand extends EditElementCommand {
 	}
 
 	/**
-	 * @generated
-	 */
+	* @generated
+	*/
 	public boolean canExecute() {
 		if (false == referenceOwner instanceof Role) {
 			return false;
@@ -67,35 +66,33 @@ public class RoleCapabilitiesReorientCommand extends EditElementCommand {
 	}
 
 	/**
-	 * @generated
-	 */
+	* @generated
+	*/
 	protected boolean canReorientSource() {
 		if (!(oldEnd instanceof Capability && newEnd instanceof Role)) {
 			return false;
 		}
-		return SRMBaseItemSemanticEditPolicy.LinkConstraints
-				.canExistRoleCapabilities_4004(getNewSource(), getOldTarget());
+		return SRMBaseItemSemanticEditPolicy.getLinkConstraints().canExistRoleCapabilities_4004(getNewSource(),
+				getOldTarget());
 	}
 
 	/**
-	 * @generated
-	 */
+	* @generated
+	*/
 	protected boolean canReorientTarget() {
 		if (!(oldEnd instanceof Capability && newEnd instanceof Capability)) {
 			return false;
 		}
-		return SRMBaseItemSemanticEditPolicy.LinkConstraints
-				.canExistRoleCapabilities_4004(getOldSource(), getNewTarget());
+		return SRMBaseItemSemanticEditPolicy.getLinkConstraints().canExistRoleCapabilities_4004(getOldSource(),
+				getNewTarget());
 	}
 
 	/**
-	 * @generated
-	 */
-	protected CommandResult doExecuteWithResult(IProgressMonitor monitor,
-			IAdaptable info) throws ExecutionException {
+	* @generated
+	*/
+	protected CommandResult doExecuteWithResult(IProgressMonitor monitor, IAdaptable info) throws ExecutionException {
 		if (!canExecute()) {
-			throw new ExecutionException(
-					"Invalid arguments in reorient link command"); //$NON-NLS-1$
+			throw new ExecutionException("Invalid arguments in reorient link command"); //$NON-NLS-1$
 		}
 		if (reorientDirection == ReorientRelationshipRequest.REORIENT_SOURCE) {
 			return reorientSource();
@@ -107,8 +104,8 @@ public class RoleCapabilitiesReorientCommand extends EditElementCommand {
 	}
 
 	/**
-	 * @generated
-	 */
+	* @generated
+	*/
 	protected CommandResult reorientSource() throws ExecutionException {
 		getOldSource().getCapabilities().remove(getOldTarget());
 		getNewSource().getCapabilities().add(getOldTarget());
@@ -116,8 +113,8 @@ public class RoleCapabilitiesReorientCommand extends EditElementCommand {
 	}
 
 	/**
-	 * @generated
-	 */
+	* @generated
+	*/
 	protected CommandResult reorientTarget() throws ExecutionException {
 		getOldSource().getCapabilities().remove(getOldTarget());
 		getOldSource().getCapabilities().add(getNewTarget());
@@ -125,29 +122,29 @@ public class RoleCapabilitiesReorientCommand extends EditElementCommand {
 	}
 
 	/**
-	 * @generated
-	 */
+	* @generated
+	*/
 	protected Role getOldSource() {
 		return (Role) referenceOwner;
 	}
 
 	/**
-	 * @generated
-	 */
+	* @generated
+	*/
 	protected Role getNewSource() {
 		return (Role) newEnd;
 	}
 
 	/**
-	 * @generated
-	 */
+	* @generated
+	*/
 	protected Capability getOldTarget() {
 		return (Capability) oldEnd;
 	}
 
 	/**
-	 * @generated
-	 */
+	* @generated
+	*/
 	protected Capability getNewTarget() {
 		return (Capability) newEnd;
 	}

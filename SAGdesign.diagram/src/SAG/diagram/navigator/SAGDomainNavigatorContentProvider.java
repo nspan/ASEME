@@ -23,48 +23,45 @@ import SAG.diagram.part.SAGDiagramEditorPlugin;
 /**
  * @generated
  */
-public class SAGDomainNavigatorContentProvider implements
-		ICommonContentProvider {
+public class SAGDomainNavigatorContentProvider implements ICommonContentProvider {
 
 	/**
-	 * @generated
-	 */
+	* @generated
+	*/
 	private AdapterFactoryContentProvider myAdapterFctoryContentProvier;
 
 	/**
-	 * @generated
-	 */
+	* @generated
+	*/
 	private static final Object[] EMPTY_ARRAY = new Object[0];
 
 	/**
-	 * @generated
-	 */
+	* @generated
+	*/
 	private Viewer myViewer;
 
 	/**
-	 * @generated
-	 */
+	* @generated
+	*/
 	private AdapterFactoryEditingDomain myEditingDomain;
 
 	/**
-	 * @generated
-	 */
+	* @generated
+	*/
 	private WorkspaceSynchronizer myWorkspaceSynchronizer;
 
 	/**
-	 * @generated
-	 */
+	* @generated
+	*/
 	private Runnable myViewerRefreshRunnable;
 
 	/**
-	 * @generated
-	 */
+	* @generated
+	*/
 	public SAGDomainNavigatorContentProvider() {
 		myAdapterFctoryContentProvier = new AdapterFactoryContentProvider(
-				SAGDiagramEditorPlugin.getInstance()
-						.getItemProvidersAdapterFactory());
-		TransactionalEditingDomain editingDomain = GMFEditingDomainFactory.INSTANCE
-				.createEditingDomain();
+				SAGDiagramEditorPlugin.getInstance().getItemProvidersAdapterFactory());
+		TransactionalEditingDomain editingDomain = GMFEditingDomainFactory.INSTANCE.createEditingDomain();
 		myEditingDomain = (AdapterFactoryEditingDomain) editingDomain;
 		myEditingDomain.setResourceToReadOnlyMap(new HashMap() {
 			public Object get(Object key) {
@@ -81,35 +78,33 @@ public class SAGDomainNavigatorContentProvider implements
 				}
 			}
 		};
-		myWorkspaceSynchronizer = new WorkspaceSynchronizer(editingDomain,
-				new WorkspaceSynchronizer.Delegate() {
-					public void dispose() {
-					}
+		myWorkspaceSynchronizer = new WorkspaceSynchronizer(editingDomain, new WorkspaceSynchronizer.Delegate() {
+			public void dispose() {
+			}
 
-					public boolean handleResourceChanged(final Resource resource) {
-						unloadAllResources();
-						asyncRefresh();
-						return true;
-					}
+			public boolean handleResourceChanged(final Resource resource) {
+				unloadAllResources();
+				asyncRefresh();
+				return true;
+			}
 
-					public boolean handleResourceDeleted(Resource resource) {
-						unloadAllResources();
-						asyncRefresh();
-						return true;
-					}
+			public boolean handleResourceDeleted(Resource resource) {
+				unloadAllResources();
+				asyncRefresh();
+				return true;
+			}
 
-					public boolean handleResourceMoved(Resource resource,
-							final URI newURI) {
-						unloadAllResources();
-						asyncRefresh();
-						return true;
-					}
-				});
+			public boolean handleResourceMoved(Resource resource, final URI newURI) {
+				unloadAllResources();
+				asyncRefresh();
+				return true;
+			}
+		});
 	}
 
 	/**
-	 * @generated
-	 */
+	* @generated
+	*/
 	public void dispose() {
 		myWorkspaceSynchronizer.dispose();
 		myWorkspaceSynchronizer = null;
@@ -121,42 +116,40 @@ public class SAGDomainNavigatorContentProvider implements
 	}
 
 	/**
-	 * @generated
-	 */
+	* @generated
+	*/
 	public void inputChanged(Viewer viewer, Object oldInput, Object newInput) {
 		myViewer = viewer;
 	}
 
 	/**
-	 * @generated
-	 */
+	* @generated
+	*/
 	void unloadAllResources() {
-		for (Resource nextResource : myEditingDomain.getResourceSet()
-				.getResources()) {
+		for (Resource nextResource : myEditingDomain.getResourceSet().getResources()) {
 			nextResource.unload();
 		}
 	}
 
 	/**
-	 * @generated
-	 */
+	* @generated
+	*/
 	void asyncRefresh() {
 		if (myViewer != null && !myViewer.getControl().isDisposed()) {
-			myViewer.getControl().getDisplay()
-					.asyncExec(myViewerRefreshRunnable);
+			myViewer.getControl().getDisplay().asyncExec(myViewerRefreshRunnable);
 		}
 	}
 
 	/**
-	 * @generated
-	 */
+	* @generated
+	*/
 	public Object[] getElements(Object inputElement) {
 		return getChildren(inputElement);
 	}
 
 	/**
-	 * @generated
-	 */
+	* @generated
+	*/
 	public void restoreState(IMemento aMemento) {
 	}
 
@@ -167,51 +160,47 @@ public class SAGDomainNavigatorContentProvider implements
 	}
 
 	/**
-	 * @generated
-	 */
+	* @generated
+	*/
 	public void init(ICommonContentExtensionSite aConfig) {
 	}
 
 	/**
-	 * @generated
-	 */
+	* @generated
+	*/
 	public Object[] getChildren(Object parentElement) {
 		if (parentElement instanceof IFile) {
 			IFile file = (IFile) parentElement;
-			URI fileURI = URI.createPlatformResourceURI(file.getFullPath()
-					.toString(), true);
-			Resource resource = myEditingDomain.getResourceSet().getResource(
-					fileURI, true);
-			return wrapEObjects(
-					myAdapterFctoryContentProvier.getChildren(resource),
-					parentElement);
+			URI fileURI = URI.createPlatformResourceURI(file.getFullPath().toString(), true);
+			Resource resource = myEditingDomain.getResourceSet().getResource(fileURI, true);
+			return wrapEObjects(myAdapterFctoryContentProvier.getChildren(resource), parentElement);
 		}
 
 		if (parentElement instanceof SAGDomainNavigatorItem) {
 			return wrapEObjects(
-					myAdapterFctoryContentProvier.getChildren(((SAGDomainNavigatorItem) parentElement)
-							.getEObject()), parentElement);
+					myAdapterFctoryContentProvier.getChildren(((SAGDomainNavigatorItem) parentElement).getEObject()),
+					parentElement);
 		}
 		return EMPTY_ARRAY;
 	}
 
 	/**
-	 * @generated
-	 */
+	* @generated
+	*/
 	public Object[] wrapEObjects(Object[] objects, Object parentElement) {
 		Collection result = new ArrayList();
 		for (int i = 0; i < objects.length; i++) {
 			if (objects[i] instanceof EObject) {
-				result.add(new SAGDomainNavigatorItem((EObject) objects[i],
-						parentElement, myAdapterFctoryContentProvier));
+				result.add(
+						new SAGDomainNavigatorItem((EObject) objects[i], parentElement, myAdapterFctoryContentProvier));
 			}
 		}
 		return result.toArray();
 	}
 
 	/**
-	 * @generated
-	 */
+	* @generated
+	*/
 	public Object getParent(Object element) {
 		if (element instanceof SAGAbstractNavigatorItem) {
 			SAGAbstractNavigatorItem abstractNavigatorItem = (SAGAbstractNavigatorItem) element;
@@ -221,8 +210,8 @@ public class SAGDomainNavigatorContentProvider implements
 	}
 
 	/**
-	 * @generated
-	 */
+	* @generated
+	*/
 	public boolean hasChildren(Object element) {
 		return element instanceof IFile || getChildren(element).length > 0;
 	}

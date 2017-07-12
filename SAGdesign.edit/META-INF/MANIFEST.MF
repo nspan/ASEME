@@ -2,12 +2,12 @@ Manifest-Version: 1.0
 Bundle-ManifestVersion: 2
 Bundle-Name: %pluginName
 Bundle-SymbolicName: SAGdesign.edit;singleton:=true
-Bundle-Version: 1.0.0
+Bundle-Version: 2.2.0
 Bundle-ClassPath: .
 Bundle-Activator: SAG.provider.SAGEditPlugin$Implementation
 Bundle-Vendor: %providerName
 Bundle-Localization: plugin
-Bundle-RequiredExecutionEnvironment: JavaSE-1.6
+Bundle-RequiredExecutionEnvironment: JavaSE-1.8
 Export-Package: SAG.provider
 Require-Bundle: org.eclipse.core.runtime,
  SAGdesign;visibility:=reexport,

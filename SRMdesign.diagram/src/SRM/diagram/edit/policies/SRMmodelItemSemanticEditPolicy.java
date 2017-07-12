@@ -9,62 +9,59 @@ import org.eclipse.gmf.runtime.emf.type.core.requests.DuplicateElementsRequest;
 
 import SRM.diagram.edit.commands.ActivityCreateCommand;
 import SRM.diagram.edit.commands.CapabilityCreateCommand;
+import SRM.diagram.edit.commands.FunctionalityCreateCommand;
 import SRM.diagram.edit.commands.RoleCreateCommand;
 import SRM.diagram.providers.SRMElementTypes;
 
 /**
  * @generated
  */
-public class SRMmodelItemSemanticEditPolicy extends
-		SRMBaseItemSemanticEditPolicy {
+public class SRMmodelItemSemanticEditPolicy extends SRMBaseItemSemanticEditPolicy {
 
 	/**
-	 * @generated
-	 */
+	* @generated
+	*/
 	public SRMmodelItemSemanticEditPolicy() {
 		super(SRMElementTypes.SRMmodel_1000);
 	}
 
 	/**
-	 * @generated
-	 */
+	* @generated
+	*/
 	protected Command getCreateCommand(CreateElementRequest req) {
-		if (SRMElementTypes.Capability_2004 == req.getElementType()) {
+		if (SRMElementTypes.Functionality_2001 == req.getElementType()) {
+			return getGEFWrapper(new FunctionalityCreateCommand(req));
+		}
+		if (SRMElementTypes.Capability_2002 == req.getElementType()) {
 			return getGEFWrapper(new CapabilityCreateCommand(req));
 		}
-		if (SRMElementTypes.Role_2005 == req.getElementType()) {
+		if (SRMElementTypes.Role_2003 == req.getElementType()) {
 			return getGEFWrapper(new RoleCreateCommand(req));
 		}
-		if (SRMElementTypes.Activity_2006 == req.getElementType()) {
+		if (SRMElementTypes.Activity_2004 == req.getElementType()) {
 			return getGEFWrapper(new ActivityCreateCommand(req));
 		}
 		return super.getCreateCommand(req);
 	}
 
 	/**
-	 * @generated
-	 */
+	* @generated
+	*/
 	protected Command getDuplicateCommand(DuplicateElementsRequest req) {
-		TransactionalEditingDomain editingDomain = ((IGraphicalEditPart) getHost())
-				.getEditingDomain();
+		TransactionalEditingDomain editingDomain = ((IGraphicalEditPart) getHost()).getEditingDomain();
 		return getGEFWrapper(new DuplicateAnythingCommand(editingDomain, req));
 	}
 
 	/**
-	 * @generated
-	 */
-	private static class DuplicateAnythingCommand extends
-			DuplicateEObjectsCommand {
+	* @generated
+	*/
+	private static class DuplicateAnythingCommand extends DuplicateEObjectsCommand {
 
 		/**
-		 * @generated
-		 */
-		public DuplicateAnythingCommand(
-				TransactionalEditingDomain editingDomain,
-				DuplicateElementsRequest req) {
-			super(editingDomain, req.getLabel(), req
-					.getElementsToBeDuplicated(), req
-					.getAllDuplicatedElementsMap());
+		* @generated
+		*/
+		public DuplicateAnythingCommand(TransactionalEditingDomain editingDomain, DuplicateElementsRequest req) {
+			super(editingDomain, req.getLabel(), req.getElementsToBeDuplicated(), req.getAllDuplicatedElementsMap());
 		}
 
 	}

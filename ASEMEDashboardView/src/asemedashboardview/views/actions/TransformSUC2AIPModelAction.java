@@ -1,5 +1,6 @@
 package asemedashboardview.views.actions;
 
+import java.io.IOException;
 import java.util.HashMap;
 import java.util.Iterator;
 import java.util.LinkedList;
@@ -11,6 +12,9 @@ import AIP.AIPPackage;
 import AIP.AIPmodel;
 import AIP.Participant;
 import AIP.Protocol;
+import AIP.diagram.edit.parts.AIPmodelEditPart;
+import AIP.diagram.part.AIPDiagramEditor;
+import AIP.diagram.part.AIPDiagramEditorPlugin;
 import SAG.Actor;
 import SAG.Goal;
 import SAG.SAGPackage;
@@ -20,15 +24,30 @@ import SUC.SUCFactory;
 import SUC.SUCPackage;
 import SUC.SUCmodel;
 import SUC.UseCase;
+import SUC.diagram.edit.parts.SUCmodelEditPart;
+import SUC.diagram.part.SUCDiagramEditor;
+import SUC.diagram.part.SUCDiagramEditorPlugin;
+import SUC.diagram.part.SUCDiagramEditorUtil;
+import aseme.transformations.AsemeModelSaveHelper;
+import aseme.transformations.SUC2AIP;
 import asemedashboardview.views.ASEMEAction;
 import asemedashboardview.views.ASEMEFacade;
 import asemedashboardview.views.ASEMEState;
+
+import org.eclipse.emf.common.ui.URIEditorInput;
+import org.eclipse.emf.common.util.Diagnostic;
 import org.eclipse.emf.common.util.URI;
 import org.eclipse.emf.ecore.resource.Resource;
 import org.eclipse.emf.ecore.resource.ResourceSet;
 import org.eclipse.emf.ecore.resource.impl.ResourceSetImpl;
+import org.eclipse.emf.ecore.util.Diagnostician;
 import org.eclipse.emf.ecore.xmi.XMLResource;
 import org.eclipse.emf.ecore.xmi.impl.XMIResourceFactoryImpl;
+import org.eclipse.gmf.runtime.diagram.core.services.ViewService;
+import org.eclipse.gmf.runtime.notation.Diagram;
+import org.eclipse.jface.dialogs.MessageDialog;
+import org.eclipse.ui.PartInitException;
+import org.eclipse.ui.PlatformUI;
 
 public class TransformSUC2AIPModelAction implements ASEMEAction {
 
@@ -57,7 +76,7 @@ public class TransformSUC2AIPModelAction implements ASEMEAction {
 			aip = suc.trimFileExtension().appendFileExtension("aip"); //$NON-NLS-1$
 			state.setAIP(aip);
 		}
-		aip = state.getAIP();
+		//aip = state.getAIP();
 		ResourceSet resourceSet = new ResourceSetImpl();
 
 		resourceSet
@@ -75,70 +94,48 @@ public class TransformSUC2AIPModelAction implements ASEMEAction {
 
 		Resource resource = resourceSet.getResource(state.getSUC(), true);	
 		SUCmodel sucModel = (SUCmodel) resource.getContents().get(0);
-
-		// Create a new AIP model instance
-		Resource newResource = resourceSet.createResource(state.getAIP());
-		AIPmodel aipModel = AIPFactory.eINSTANCE.createAIPmodel();
-		newResource.getContents().add(aipModel);
-		// transformation code:
-		for (Iterator<UseCase> iterator = sucModel.getUsecases().iterator(); iterator.hasNext();) {
-			UseCase usecase = iterator.next();
-			List<Role> systemRoleUseCaseParticipants = new LinkedList<Role>();
-			for (Iterator<Role> iterator2 = usecase.getParticipant().iterator(); iterator2.hasNext();) {
-				Role role =  iterator2.next();
-				if (role.getType().getLiteral() == "System")
-					systemRoleUseCaseParticipants.add(((Role) role));
+		
+		try{
+			
+			AIPmodel aipm = SUC2AIP.transformSuc2Aip(sucModel);
+			AsemeModelSaveHelper.saveURI(aipm, aip);
+			
+			URI diag = aip.trimFileExtension().appendFileExtension("aipd");
+			this.createDiagram(aipm, diag);
 			}
-			if (systemRoleUseCaseParticipants.size() > 1) {
-				Protocol tmpProtocol = AIPFactory.eINSTANCE.createProtocol();
-				tmpProtocol.setName(usecase.getName());
-				HashMap<String, Participant> participants = new HashMap<String, Participant>();
-				for (Iterator<Role> iterator2 = systemRoleUseCaseParticipants
-						.iterator(); iterator2.hasNext();) {
-					Role systemRole =  iterator2.next();
-					Participant tmpParticipant = AIPFactory.eINSTANCE.createParticipant();
-					tmpParticipant.setName(new String(tmpProtocol.getName()
-							+ "_" + systemRole.getName()));
-					tmpProtocol.getParticipants().add(tmpParticipant);
-					aipModel.getParticipants().add(tmpParticipant);
-					participants.put(tmpParticipant.getName(), tmpParticipant);
-					tmpParticipant.setLiveness(new String(tmpParticipant
-							.getName() + "="));
-				}
-				for (Iterator<UseCase> iterator2 = usecase.getInclude()
-						.iterator(); iterator2.hasNext();) {
-					UseCase tmpUsecase = (UseCase) iterator2.next();
-					if (participants.get(tmpProtocol.getName() + "_"
-							+ tmpUsecase.getParticipant().get(0).getName()) != null) {
-						participants.get(
-								tmpProtocol.getName()
-								+ "_"
-								+ tmpUsecase.getParticipant().get(0)
-								.getName()).setLiveness(
-										participants.get(
-												tmpProtocol.getName()
-												+ "_"
-												+ tmpUsecase.getParticipant()
-												.get(0).getName())
-												.getLiveness()
-												+ tmpUsecase.getName() + "?");
-					}
-				}
-				aipModel.getProtocols().add(tmpProtocol);
-				// add the activities!!!
+		catch( Exception e){
+			Diagnostic diagn = Diagnostician.INSTANCE.validate(sucModel);
+			if (diagn.getCode() == 0){
+				MessageDialog.openError(context.getShell(), "Error", "Error in validating SUC model" );
+			}
+			else{
+				MessageDialog.openError(context.getShell(), "Error", "Error in SUC2AIP transformation" );
 			}
 		}
-		// save the AIP model
-		newResource.getContents().add(aipModel);
+		
+
+		
+	}
+	
+	private void createDiagram(AIPmodel aipm, URI diag){
+		Diagram diagram = ViewService.createDiagram(aipm,
+				AIPmodelEditPart.MODEL_ID,
+				AIPDiagramEditorPlugin.DIAGRAM_PREFERENCES_HINT);
+		
+		aipm.eResource().getContents().add(diagram);
+		
+		
+		AsemeModelSaveHelper.saveURI(aipm.eResource().getContents().get(1), diag);
+		
 		try {
-			Map<String, Object> options = new HashMap<String, Object>();
-			options.put( XMLResource.OPTION_ENCODING, "UTF8" );
-	        options.put( XMLResource.OPTION_SCHEMA_LOCATION, Boolean.TRUE);
-	        options.put( XMLResource.OPTION_SCHEMA_LOCATION_IMPLEMENTATION , Boolean.TRUE);
-			newResource.save(options);
-		} catch (Exception e) {
+			PlatformUI.getWorkbench().getActiveWorkbenchWindow()
+				.getActivePage().openEditor(new URIEditorInput(diag), AIPDiagramEditor.ID);
+		} catch (PartInitException e) {
+			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 	}
+	
+	
 
 }

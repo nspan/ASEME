@@ -14,11 +14,10 @@ import org.eclipse.ui.views.properties.IPropertySourceProvider;
 public class SRMDomainNavigatorItem extends PlatformObject {
 
 	/**
-	 * @generated
-	 */
+	* @generated
+	*/
 	static {
-		final Class[] supportedTypes = new Class[] { EObject.class,
-				IPropertySource.class };
+		final Class[] supportedTypes = new Class[] { EObject.class, IPropertySource.class };
 		Platform.getAdapterManager().registerAdapters(new IAdapterFactory() {
 
 			public Object getAdapter(Object adaptableObject, Class adapterType) {
@@ -29,8 +28,7 @@ public class SRMDomainNavigatorItem extends PlatformObject {
 						return eObject;
 					}
 					if (adapterType == IPropertySource.class) {
-						return domainNavigatorItem.getPropertySourceProvider()
-								.getPropertySource(eObject);
+						return domainNavigatorItem.getPropertySourceProvider().getPropertySource(eObject);
 					}
 				}
 
@@ -44,69 +42,64 @@ public class SRMDomainNavigatorItem extends PlatformObject {
 	}
 
 	/**
-	 * @generated
-	 */
+	* @generated
+	*/
 	private Object myParent;
 
 	/**
-	 * @generated
-	 */
+	* @generated
+	*/
 	private EObject myEObject;
 
 	/**
-	 * @generated
-	 */
+	* @generated
+	*/
 	private IPropertySourceProvider myPropertySourceProvider;
 
 	/**
-	 * @generated
-	 */
-	public SRMDomainNavigatorItem(EObject eObject, Object parent,
-			IPropertySourceProvider propertySourceProvider) {
+	* @generated
+	*/
+	public SRMDomainNavigatorItem(EObject eObject, Object parent, IPropertySourceProvider propertySourceProvider) {
 		myParent = parent;
 		myEObject = eObject;
 		myPropertySourceProvider = propertySourceProvider;
 	}
 
 	/**
-	 * @generated
-	 */
+	* @generated
+	*/
 	public Object getParent() {
 		return myParent;
 	}
 
 	/**
-	 * @generated
-	 */
+	* @generated
+	*/
 	public EObject getEObject() {
 		return myEObject;
 	}
 
 	/**
-	 * @generated
-	 */
+	* @generated
+	*/
 	public IPropertySourceProvider getPropertySourceProvider() {
 		return myPropertySourceProvider;
 	}
 
 	/**
-	 * @generated
-	 */
+	* @generated
+	*/
 	public boolean equals(Object obj) {
 		if (obj instanceof SRM.diagram.navigator.SRMDomainNavigatorItem) {
-			return EcoreUtil
-					.getURI(getEObject())
-					.equals(
-							EcoreUtil
-									.getURI(((SRM.diagram.navigator.SRMDomainNavigatorItem) obj)
-											.getEObject()));
+			return EcoreUtil.getURI(getEObject())
+					.equals(EcoreUtil.getURI(((SRM.diagram.navigator.SRMDomainNavigatorItem) obj).getEObject()));
 		}
 		return super.equals(obj);
 	}
 
 	/**
-	 * @generated
-	 */
+	* @generated
+	*/
 	public int hashCode() {
 		return EcoreUtil.getURI(getEObject()).hashCode();
 	}

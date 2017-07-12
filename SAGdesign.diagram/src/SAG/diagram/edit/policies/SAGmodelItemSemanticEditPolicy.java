@@ -14,53 +14,46 @@ import SAG.diagram.providers.SAGElementTypes;
 /**
  * @generated
  */
-public class SAGmodelItemSemanticEditPolicy extends
-		SAGBaseItemSemanticEditPolicy {
+public class SAGmodelItemSemanticEditPolicy extends SAGBaseItemSemanticEditPolicy {
 
 	/**
-	 * @generated
-	 */
+	* @generated
+	*/
 	public SAGmodelItemSemanticEditPolicy() {
 		super(SAGElementTypes.SAGmodel_1000);
 	}
 
 	/**
-	 * @generated
-	 */
+	* @generated
+	*/
 	protected Command getCreateCommand(CreateElementRequest req) {
-		if (SAGElementTypes.Actor_2007 == req.getElementType()) {
+		if (SAGElementTypes.Actor_2001 == req.getElementType()) {
 			return getGEFWrapper(new ActorCreateCommand(req));
 		}
-		if (SAGElementTypes.Goal_2008 == req.getElementType()) {
+		if (SAGElementTypes.Goal_2002 == req.getElementType()) {
 			return getGEFWrapper(new GoalCreateCommand(req));
 		}
 		return super.getCreateCommand(req);
 	}
 
 	/**
-	 * @generated
-	 */
+	* @generated
+	*/
 	protected Command getDuplicateCommand(DuplicateElementsRequest req) {
-		TransactionalEditingDomain editingDomain = ((IGraphicalEditPart) getHost())
-				.getEditingDomain();
+		TransactionalEditingDomain editingDomain = ((IGraphicalEditPart) getHost()).getEditingDomain();
 		return getGEFWrapper(new DuplicateAnythingCommand(editingDomain, req));
 	}
 
 	/**
-	 * @generated
-	 */
-	private static class DuplicateAnythingCommand extends
-			DuplicateEObjectsCommand {
+	* @generated
+	*/
+	private static class DuplicateAnythingCommand extends DuplicateEObjectsCommand {
 
 		/**
-		 * @generated
-		 */
-		public DuplicateAnythingCommand(
-				TransactionalEditingDomain editingDomain,
-				DuplicateElementsRequest req) {
-			super(editingDomain, req.getLabel(), req
-					.getElementsToBeDuplicated(), req
-					.getAllDuplicatedElementsMap());
+		* @generated
+		*/
+		public DuplicateAnythingCommand(TransactionalEditingDomain editingDomain, DuplicateElementsRequest req) {
+			super(editingDomain, req.getLabel(), req.getElementsToBeDuplicated(), req.getAllDuplicatedElementsMap());
 		}
 
 	}

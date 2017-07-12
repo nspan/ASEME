@@ -1,167 +1,199 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<gmfgraph:Canvas xmi:version="2.0"
+<gmfgraph:Canvas
+    xmi:version="2.0"
     xmlns:xmi="http://www.omg.org/XMI"
     xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-    xmlns:gmfgraph="http://www.eclipse.org/gmf/2006/GraphicalDefinition" name="SRM">
+    xmlns:gmfgraph="http://www.eclipse.org/gmf/2006/GraphicalDefinition"
+    name="SRM">
   <figures
       name="Default">
     <figures
         xsi:type="gmfgraph:PolylineDecoration"
-        name="RoleActivitiesTargetDecoration"/>
+        name="RoleRole_activitiesTargetDecoration"/>
     <figures
         xsi:type="gmfgraph:PolylineDecoration"
         name="RoleCapabilitiesTargetDecoration"/>
     <figures
         xsi:type="gmfgraph:PolylineDecoration"
-        name="CapabilityActivitiesTargetDecoration"/>
+        name="CapabilityCapability_activitiesTargetDecoration"/>
+    <figures
+        xsi:type="gmfgraph:PolylineDecoration"
+        name="FunctionalityActivitiesTargetDecoration"/>
     <descriptors
-        name="RoleActivitiesFigure">
+        name="RoleFigure">
+      <actualFigure
+          xsi:type="gmfgraph:Rectangle"
+          name="RoleFigure"
+          lineWidth="2">
+        <layout
+            xsi:type="gmfgraph:FlowLayout"/>
+        <foregroundColor
+            xsi:type="gmfgraph:ConstantColor"
+            value="black"/>
+        <children
+            xsi:type="gmfgraph:Label"
+            name="RoleNameFigure"
+            text="&lt;...>"/>
+      </actualFigure>
+      <accessors
+          figure="//@figures.0/@descriptors.0/@actualFigure/@children.0"/>
+    </descriptors>
+    <descriptors
+        name="RoleRole_activitiesFigure">
       <actualFigure
           xsi:type="gmfgraph:PolylineConnection"
-          name="RoleActivitiesFigure"
-          targetDecoration="//@figures.0/@figures.0"/>
+          name="RoleRole_activitiesFigure"
+          lineWidth="2"
+          targetDecoration="//@figures.0/@figures.0">
+        <foregroundColor
+            xsi:type="gmfgraph:ConstantColor"
+            value="black"/>
+        <backgroundColor
+            xsi:type="gmfgraph:ConstantColor"
+            value="black"/>
+      </actualFigure>
     </descriptors>
     <descriptors
         name="RoleCapabilitiesFigure">
       <actualFigure
           xsi:type="gmfgraph:PolylineConnection"
           name="RoleCapabilitiesFigure"
-          targetDecoration="//@figures.0/@figures.1"/>
-    </descriptors>
-    <descriptors
-        name="CapabilityActivitiesFigure">
-      <actualFigure
-          xsi:type="gmfgraph:PolylineConnection"
-          name="CapabilityActivitiesFigure"
-          targetDecoration="//@figures.0/@figures.2"/>
-    </descriptors>
-  </figures>
-  <figures
-      name="Custom">
-    <descriptors
-        name="RoleFigureCustom">
-      <actualFigure
-          xsi:type="gmfgraph:Ellipse"
-          name="RoleFigureCustom"
-          lineWidth="3">
-        <layout
-            xsi:type="gmfgraph:FlowLayout"/>
+          lineWidth="2"
+          targetDecoration="//@figures.0/@figures.1">
         <foregroundColor
-            xsi:type="gmfgraph:RGBColor"/>
+            xsi:type="gmfgraph:ConstantColor"
+            value="black"/>
         <backgroundColor
-            xsi:type="gmfgraph:RGBColor"
-            red="214"
-            green="249"
-            blue="248"/>
-        <size
-            x="15"
-            y="15"/>
-        <children
-            xsi:type="gmfgraph:Label"
-            name="RoleLivenessFigureCustom"/>
-        <children
-            xsi:type="gmfgraph:Label"
-            name="RoleNameFigureCustom"/>
+            xsi:type="gmfgraph:ConstantColor"
+            value="black"/>
       </actualFigure>
-      <accessors
-          accessor="getFigureRoleLivenessFigureCustom"
-          figure="//@figures.1/@descriptors.0/@actualFigure/@children.0"/>
-      <accessors
-          accessor="getFigureRoleNameFigureCustom"
-          figure="//@figures.1/@descriptors.0/@actualFigure/@children.1"/>
     </descriptors>
     <descriptors
-        name="CapabilityFigureCustom">
+        name="ActivityFigure">
       <actualFigure
           xsi:type="gmfgraph:Rectangle"
-          name="CapabilityFigureCustom"
-          lineWidth="3">
+          name="ActivityFigure"
+          lineWidth="2">
         <layout
             xsi:type="gmfgraph:FlowLayout"/>
         <foregroundColor
-            xsi:type="gmfgraph:RGBColor"/>
-        <backgroundColor
-            xsi:type="gmfgraph:RGBColor"
-            red="255"
-            green="255"
-            blue="32"/>
+            xsi:type="gmfgraph:ConstantColor"
+            value="black"/>
         <children
             xsi:type="gmfgraph:Label"
-            name="CapabilityNameFigureCustom"
-            text=""/>
+            name="ActivityNameFigure"
+            text="&lt;...>"/>
       </actualFigure>
       <accessors
-          accessor="getFigureCapabilityNameFigureCustom"
-          figure="//@figures.1/@descriptors.1/@actualFigure/@children.0"/>
+          figure="//@figures.0/@descriptors.3/@actualFigure/@children.0"/>
     </descriptors>
     <descriptors
-        name="ActivityFigureCustom">
+        name="CapabilityFigure">
       <actualFigure
-          xsi:type="gmfgraph:RoundedRectangle"
-          name="ActivityFigureCustom"
-          lineWidth="3"
-          cornerWidth="15"
-          cornerHeight="15">
+          xsi:type="gmfgraph:Rectangle"
+          name="CapabilityFigure"
+          lineWidth="2">
         <layout
             xsi:type="gmfgraph:FlowLayout"/>
         <foregroundColor
-            xsi:type="gmfgraph:RGBColor"/>
-        <backgroundColor
-            xsi:type="gmfgraph:RGBColor"
-            red="255"
-            green="130"
-            blue="203"/>
+            xsi:type="gmfgraph:ConstantColor"
+            value="black"/>
         <children
             xsi:type="gmfgraph:Label"
-            name="ActivityNameFigureCustom"/>
-        <children
-            xsi:type="gmfgraph:Label"
-            name="ActivityFunctionalityFigureCustom"/>
+            name="CapabilityNameFigure"
+            text="&lt;...>"/>
       </actualFigure>
       <accessors
-          accessor="getFigureActivityNameFigureCustom"
-          figure="//@figures.1/@descriptors.2/@actualFigure/@children.0"/>
+          figure="//@figures.0/@descriptors.4/@actualFigure/@children.0"/>
+    </descriptors>
+    <descriptors
+        name="CapabilityCapability_activitiesFigure">
+      <actualFigure
+          xsi:type="gmfgraph:PolylineConnection"
+          name="CapabilityCapability_activitiesFigure"
+          lineWidth="2"
+          targetDecoration="//@figures.0/@figures.2">
+        <foregroundColor
+            xsi:type="gmfgraph:ConstantColor"
+            value="black"/>
+        <backgroundColor
+            xsi:type="gmfgraph:ConstantColor"
+            value="black"/>
+      </actualFigure>
+    </descriptors>
+    <descriptors
+        name="FunctionalityFigure">
+      <actualFigure
+          xsi:type="gmfgraph:Rectangle"
+          name="FunctionalityFigure"
+          lineWidth="2">
+        <layout
+            xsi:type="gmfgraph:FlowLayout"/>
+        <foregroundColor
+            xsi:type="gmfgraph:ConstantColor"
+            value="black"/>
+        <children
+            xsi:type="gmfgraph:Label"
+            name="FunctionalityDescriptionFigure"
+            text="&lt;...>"/>
+      </actualFigure>
       <accessors
-          accessor="getFigureActivityFunctionalityFigureCustom"
-          figure="//@figures.1/@descriptors.2/@actualFigure/@children.1"/>
+          figure="//@figures.0/@descriptors.6/@actualFigure/@children.0"/>
+    </descriptors>
+    <descriptors
+        name="FunctionalityActivitiesFigure">
+      <actualFigure
+          xsi:type="gmfgraph:PolylineConnection"
+          name="FunctionalityActivitiesFigure"
+          lineWidth="2"
+          targetDecoration="//@figures.0/@figures.3">
+        <foregroundColor
+            xsi:type="gmfgraph:ConstantColor"
+            value="black"/>
+        <backgroundColor
+            xsi:type="gmfgraph:ConstantColor"
+            value="black"/>
+      </actualFigure>
     </descriptors>
   </figures>
   <nodes
       name="Role"
-      figure="RoleFigureCustom"/>
+      figure="RoleFigure"/>
   <nodes
       name="Activity"
-      figure="ActivityFigureCustom"/>
+      figure="ActivityFigure"/>
   <nodes
       name="Capability"
-      figure="CapabilityFigureCustom"/>
+      figure="CapabilityFigure"/>
+  <nodes
+      name="Functionality"
+      figure="FunctionalityFigure"/>
   <connections
-      name="RoleActivities"
-      figure="RoleActivitiesFigure"/>
+      name="RoleRole_activities"
+      figure="RoleRole_activitiesFigure"/>
   <connections
       name="RoleCapabilities"
       figure="RoleCapabilitiesFigure"/>
   <connections
-      name="CapabilityActivities"
-      figure="CapabilityActivitiesFigure"/>
+      name="CapabilityCapability_activities"
+      figure="CapabilityCapability_activitiesFigure"/>
+  <connections
+      name="FunctionalityActivities"
+      figure="FunctionalityActivitiesFigure"/>
   <labels
       name="RoleName"
-      figure="RoleFigureCustom"
-      accessor="//@figures.1/@descriptors.0/@accessors.1"/>
-  <labels
-      name="RoleLiveness"
-      figure="RoleFigureCustom"
-      accessor="//@figures.1/@descriptors.0/@accessors.0"/>
-  <labels
-      name="CapabilityName"
-      figure="CapabilityFigureCustom"
-      accessor="//@figures.1/@descriptors.1/@accessors.0"/>
+      figure="RoleFigure"
+      accessor="//@figures.0/@descriptors.0/@accessors.0"/>
   <labels
       name="ActivityName"
-      figure="ActivityFigureCustom"
-      accessor="//@figures.1/@descriptors.2/@accessors.0"/>
+      figure="ActivityFigure"
+      accessor="//@figures.0/@descriptors.3/@accessors.0"/>
   <labels
-      name="ActivityFunctionality"
-      figure="ActivityFigureCustom"
-      accessor="//@figures.1/@descriptors.2/@accessors.1"/>
+      name="CapabilityName"
+      figure="CapabilityFigure"
+      accessor="//@figures.0/@descriptors.4/@accessors.0"/>
+  <labels
+      name="FunctionalityDescription"
+      figure="FunctionalityFigure"
+      accessor="//@figures.0/@descriptors.6/@accessors.0"/>
 </gmfgraph:Canvas>

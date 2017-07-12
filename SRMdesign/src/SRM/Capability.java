@@ -1,8 +1,4 @@
 /**
- * <copyright>
- * </copyright>
- *
- * $Id$
  */
 package SRM;
 
@@ -17,11 +13,12 @@ import org.eclipse.emf.ecore.EObject;
  *
  * <p>
  * The following features are supported:
+ * </p>
  * <ul>
  *   <li>{@link SRM.Capability#getName <em>Name</em>}</li>
- *   <li>{@link SRM.Capability#getActivities <em>Activities</em>}</li>
+ *   <li>{@link SRM.Capability#getCapability_activities <em>Capability activities</em>}</li>
+ *   <li>{@link SRM.Capability#getDescription <em>Description</em>}</li>
  * </ul>
- * </p>
  *
  * @see SRM.SRMPackage#getCapability()
  * @model
@@ -39,7 +36,7 @@ public interface Capability extends EObject {
 	 * @return the value of the '<em>Name</em>' attribute.
 	 * @see #setName(String)
 	 * @see SRM.SRMPackage#getCapability_Name()
-	 * @model unique="false" required="true" ordered="false"
+	 * @model required="true" ordered="false"
 	 * @generated
 	 */
 	String getName();
@@ -55,19 +52,45 @@ public interface Capability extends EObject {
 	void setName(String value);
 
 	/**
-	 * Returns the value of the '<em><b>Activities</b></em>' reference list.
+	 * Returns the value of the '<em><b>Capability activities</b></em>' reference list.
 	 * The list contents are of type {@link SRM.Activity}.
 	 * <!-- begin-user-doc -->
 	 * <p>
-	 * If the meaning of the '<em>Activities</em>' reference list isn't clear,
+	 * If the meaning of the '<em>Capability activities</em>' reference list isn't clear,
 	 * there really should be more of a description here...
 	 * </p>
 	 * <!-- end-user-doc -->
-	 * @return the value of the '<em>Activities</em>' reference list.
-	 * @see SRM.SRMPackage#getCapability_Activities()
+	 * @return the value of the '<em>Capability activities</em>' reference list.
+	 * @see SRM.SRMPackage#getCapability_Capability_activities()
+	 * @model required="true"
+	 * @generated
+	 */
+	EList<Activity> getCapability_activities();
+
+	/**
+	 * Returns the value of the '<em><b>Description</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <p>
+	 * If the meaning of the '<em>Description</em>' attribute isn't clear,
+	 * there really should be more of a description here...
+	 * </p>
+	 * <!-- end-user-doc -->
+	 * @return the value of the '<em>Description</em>' attribute.
+	 * @see #setDescription(String)
+	 * @see SRM.SRMPackage#getCapability_Description()
 	 * @model
 	 * @generated
 	 */
-	EList<Activity> getActivities();
+	String getDescription();
+
+	/**
+	 * Sets the value of the '{@link SRM.Capability#getDescription <em>Description</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @param value the new value of the '<em>Description</em>' attribute.
+	 * @see #getDescription()
+	 * @generated
+	 */
+	void setDescription(String value);
 
 } // Capability

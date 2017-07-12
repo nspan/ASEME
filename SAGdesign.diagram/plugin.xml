@@ -4,13 +4,13 @@
 
    <extension point="org.eclipse.team.core.fileTypes" id="repo-ftype">
       <?gmfgen generated="true"?>
-      <fileTypes type="text" extension="sag_diagram"/>
+      <fileTypes type="text" extension="sagd"/>
    </extension>
 
    <extension point="org.eclipse.emf.ecore.extension_parser" id="resource-factory">
       <?gmfgen generated="true"?>
       <parser
-         type="sag_diagram"
+         type="sagd"
          class="org.eclipse.gmf.runtime.emf.core.resources.GMFResourceFactory">
       </parser>
    </extension>
@@ -21,7 +21,7 @@
          id="SAG.diagram.part.SAGDiagramEditorID"
          name="%editorName"
          icon="icons/obj16/SAGDiagramFile.gif"
-         extensions="sag_diagram"
+         extensions="sagd"
          default="true"
          class="SAG.diagram.part.SAGDiagramEditor"
          matchingStrategy="SAG.diagram.part.SAGMatchingStrategy"
@@ -217,8 +217,8 @@
       <viewProvider class="SAG.diagram.providers.SAGViewProvider">
          <Priority name="Lowest"/>
          <context viewClass="org.eclipse.gmf.runtime.notation.Diagram" semanticHints="SAG"/>
-         <context viewClass="org.eclipse.gmf.runtime.notation.Node" semanticHints="2007,2008"/>
-         <context viewClass="org.eclipse.gmf.runtime.notation.Edge" semanticHints="4011,4013"/>
+         <context viewClass="org.eclipse.gmf.runtime.notation.Node" semanticHints="2001,2002"/>
+         <context viewClass="org.eclipse.gmf.runtime.notation.Edge" semanticHints="4001,4002"/>
       </viewProvider>
    </extension>
 
@@ -230,13 +230,13 @@
             <method name="getType()" value="SAG"/>
          </object>
          <object class="org.eclipse.gmf.runtime.notation.Node" id="generated-nodes">
-            <method name="getType()" value="2007,2008"/>
+            <method name="getType()" value="2001,2002"/>
          </object>
          <object class="org.eclipse.gmf.runtime.notation.Edge" id="generated-links">
-            <method name="getType()" value="4011,4013"/>
+            <method name="getType()" value="4001,4002"/>
          </object>
          <object class="org.eclipse.gmf.runtime.notation.Node" id="generated-labels">
-            <method name="getType()" value="5010,5011"/>
+            <method name="getType()" value="5001,5002"/>
          </object>
          <object class="org.eclipse.gmf.runtime.notation.Node" id="generated-compartments">
             <method name="getType()" value=""/>
@@ -245,16 +245,27 @@
       </editpartProvider>
    </extension>
 
+   
    <extension point="org.eclipse.gmf.runtime.emf.ui.modelingAssistantProviders" id="modelassist-provider">
       <?gmfgen generated="true"?>
-      <modelingAssistantProvider class="SAG.diagram.providers.SAGModelingAssistantProvider">
+      <modelingAssistantProvider class="SAG.diagram.providers.assistants.SAGModelingAssistantProviderOfSAGmodelEditPart">
          <Priority name="Lowest"/>
          <object class="SAG.diagram.edit.parts.SAGmodelEditPart" id="SAGmodel_1000"/>
-         <object class="SAG.diagram.edit.parts.ActorEditPart" id="Actor_2007"/>
-         <object class="SAG.diagram.edit.parts.GoalEditPart" id="Goal_2008"/>
-         <context elements="SAGmodel_1000,Actor_2007,Goal_2008"/>
+         <context elements="SAGmodel_1000"/>
       </modelingAssistantProvider>
+            <modelingAssistantProvider class="SAG.diagram.providers.assistants.SAGModelingAssistantProviderOfActorEditPart">
+         <Priority name="Lowest"/>
+         <object class="SAG.diagram.edit.parts.ActorEditPart" id="Actor_2001"/>
+         <context elements="Actor_2001"/>
+      </modelingAssistantProvider>
+            <modelingAssistantProvider class="SAG.diagram.providers.assistants.SAGModelingAssistantProviderOfGoalEditPart">
+         <Priority name="Lowest"/>
+         <object class="SAG.diagram.edit.parts.GoalEditPart" id="Goal_2002"/>
+         <context elements="Goal_2002"/>
+      </modelingAssistantProvider>
+      
    </extension>
+
 
    <extension point="org.eclipse.gmf.runtime.common.ui.services.iconProviders" id="icon-provider">
       <?gmfgen generated="true"?>
@@ -284,40 +295,40 @@
       </metamodel>
       <metamodel nsURI="http://www.amcl.tuc.gr/aseme/metamodels/SAG">
          <metamodelType
-               id="SAGdesign.diagram.Actor_2007"
-               name="%metatype.name.Actor_2007"
+               id="SAGdesign.diagram.Actor_2001"
+               name="%metatype.name.Actor_2001"
                kind="org.eclipse.gmf.runtime.emf.type.core.IHintedType"
                eclass="Actor"
                edithelper="SAG.diagram.edit.helpers.ActorEditHelper">
-            <param name="semanticHint" value="2007"/>
+            <param name="semanticHint" value="2001"/>
          </metamodelType>
       </metamodel>
       <metamodel nsURI="http://www.amcl.tuc.gr/aseme/metamodels/SAG">
          <metamodelType
-               id="SAGdesign.diagram.Goal_2008"
-               name="%metatype.name.Goal_2008"
+               id="SAGdesign.diagram.Goal_2002"
+               name="%metatype.name.Goal_2002"
                kind="org.eclipse.gmf.runtime.emf.type.core.IHintedType"
                eclass="Goal"
                edithelper="SAG.diagram.edit.helpers.GoalEditHelper">
-            <param name="semanticHint" value="2008"/>
+            <param name="semanticHint" value="2002"/>
          </metamodelType>
       </metamodel>
       <metamodel nsURI="http://www.amcl.tuc.gr/aseme/metamodels/SAG">
          <specializationType
-               id="SAGdesign.diagram.ActorMy_goal_4011"
-               name="%metatype.name.ActorMy_goal_4011"
+               id="SAGdesign.diagram.ActorMy_goal_4001"
+               name="%metatype.name.ActorMy_goal_4001"
                kind="org.eclipse.gmf.runtime.emf.type.core.IHintedType">
             <specializes id="org.eclipse.gmf.runtime.emf.type.core.null"/>
-            <param name="semanticHint" value="4011"/>
+            <param name="semanticHint" value="4001"/>
          </specializationType>
       </metamodel>
       <metamodel nsURI="http://www.amcl.tuc.gr/aseme/metamodels/SAG">
          <specializationType
-               id="SAGdesign.diagram.GoalDependee_4013"
-               name="%metatype.name.GoalDependee_4013"
+               id="SAGdesign.diagram.GoalDependee_4002"
+               name="%metatype.name.GoalDependee_4002"
                kind="org.eclipse.gmf.runtime.emf.type.core.IHintedType">
             <specializes id="org.eclipse.gmf.runtime.emf.type.core.null"/>
-            <param name="semanticHint" value="4013"/>
+            <param name="semanticHint" value="4002"/>
          </specializationType>
       </metamodel>
    </extension>
@@ -333,10 +344,10 @@
       </clientContext> 
       <binding context="SAGdesign.diagram.TypeContext">
          <elementType ref="SAGdesign.diagram.SAGmodel_1000"/>
-         <elementType ref="SAGdesign.diagram.Actor_2007"/>
-         <elementType ref="SAGdesign.diagram.Goal_2008"/>
-         <elementType ref="SAGdesign.diagram.ActorMy_goal_4011"/>
-         <elementType ref="SAGdesign.diagram.GoalDependee_4013"/>
+         <elementType ref="SAGdesign.diagram.Actor_2001"/>
+         <elementType ref="SAGdesign.diagram.Goal_2002"/>
+         <elementType ref="SAGdesign.diagram.ActorMy_goal_4001"/>
+         <elementType ref="SAGdesign.diagram.GoalDependee_4002"/>
          <advice ref="org.eclipse.gmf.runtime.diagram.core.advice.notationDepdendents"/>
       </binding>
    </extension>
@@ -381,7 +392,7 @@
             <or>
 	           <and>
     	          <instanceof value="org.eclipse.core.resources.IFile"/>
-        	      <test property="org.eclipse.core.resources.extension" value="sag_diagram"/>
+        	      <test property="org.eclipse.core.resources.extension" value="sagd"/>
                </and>
                <instanceof value="SAG.diagram.navigator.SAGAbstractNavigatorItem"/>
             </or>
@@ -398,7 +409,7 @@
                <or>
 	              <and>
     	             <instanceof value="org.eclipse.core.resources.IFile"/>
-        	         <test property="org.eclipse.core.resources.extension" value="sag_diagram"/>
+        	         <test property="org.eclipse.core.resources.extension" value="sagd"/>
                   </and>
                   <instanceof value="SAG.diagram.navigator.SAGAbstractNavigatorItem"/>
                </or>

@@ -17,7 +17,7 @@ import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.InternalEObject;
 
 import org.eclipse.emf.ecore.impl.ENotificationImpl;
-import org.eclipse.emf.ecore.impl.EObjectImpl;
+import org.eclipse.emf.ecore.impl.MinimalEObjectImpl;
 
 import org.eclipse.emf.ecore.util.EObjectResolvingEList;
 import org.eclipse.emf.ecore.util.EObjectWithInverseResolvingEList;
@@ -29,17 +29,17 @@ import org.eclipse.emf.ecore.util.InternalEList;
  * <!-- end-user-doc -->
  * <p>
  * The following features are implemented:
+ * </p>
  * <ul>
  *   <li>{@link SUC.impl.UseCaseImpl#getParticipant <em>Participant</em>}</li>
  *   <li>{@link SUC.impl.UseCaseImpl#getInclude <em>Include</em>}</li>
  *   <li>{@link SUC.impl.UseCaseImpl#getName <em>Name</em>}</li>
  *   <li>{@link SUC.impl.UseCaseImpl#getSpecified_by <em>Specified by</em>}</li>
  * </ul>
- * </p>
  *
  * @generated
  */
-public class UseCaseImpl extends EObjectImpl implements UseCase {
+public class UseCaseImpl extends MinimalEObjectImpl.Container implements UseCase {
 	/**
 	 * The cached value of the '{@link #getParticipant() <em>Participant</em>}' reference list.
 	 * <!-- begin-user-doc -->

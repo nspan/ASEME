@@ -9,20 +9,34 @@
       name="Default">
     <figures
         xsi:type="gmfgraph:PolylineDecoration"
-        name="UseCaseIncludeTargetDecoration"/>
+        name="UseCaseIncludeTargetDecoration"
+        lineWidth="2"/>
     <figures
         xsi:type="gmfgraph:PolylineDecoration"
-        name="RoleParticipates_inTargetDecoration"/>
+        name="RoleParticipates_inTargetDecoration"
+        lineWidth="2"/>
     <descriptors
         name="UseCaseIncludeFigure">
       <actualFigure
           xsi:type="gmfgraph:PolylineConnection"
           name="UseCaseIncludeFigure"
+          lineWidth="2"
           targetDecoration="//@figures.0/@figures.0">
+        <foregroundColor
+            xsi:type="gmfgraph:ConstantColor"
+            value="black"/>
+        <backgroundColor
+            xsi:type="gmfgraph:ConstantColor"
+            value="black"/>
         <children
             xsi:type="gmfgraph:Label"
             name="IncludeLabel"
-            text="&lt;&lt;includes>>"/>
+            text="&lt;&lt;includes>>">
+          <font
+              xsi:type="gmfgraph:BasicFont"
+              faceName=""
+              style="ITALIC"/>
+        </children>
       </actualFigure>
       <accessors
           accessor="getFigureIncludeLabel"
@@ -32,9 +46,13 @@
         name="RoleFigure">
       <actualFigure
           xsi:type="gmfgraph:Rectangle"
-          name="RoleFigure">
+          name="RoleFigure"
+          lineWidth="2">
         <layout
             xsi:type="gmfgraph:FlowLayout"/>
+        <foregroundColor
+            xsi:type="gmfgraph:ConstantColor"
+            value="black"/>
         <children
             xsi:type="gmfgraph:Label"
             name="RoleNameFigure"
@@ -54,7 +72,12 @@
       <actualFigure
           xsi:type="gmfgraph:PolylineConnection"
           name="RoleParticipates_inFigure"
-          targetDecoration="//@figures.0/@figures.1"/>
+          lineWidth="2"
+          targetDecoration="//@figures.0/@figures.1">
+        <foregroundColor
+            xsi:type="gmfgraph:ConstantColor"
+            value="black"/>
+      </actualFigure>
     </descriptors>
   </figures>
   <figures
@@ -63,12 +86,12 @@
         name="UseCaseFigureCustom">
       <actualFigure
           xsi:type="gmfgraph:Ellipse"
-          name="UseCaseFigureCustom">
+          name="UseCaseFigureCustom"
+          lineWidth="2">
+        <layout
+            xsi:type="gmfgraph:CenterLayout"/>
         <foregroundColor
-            xsi:type="gmfgraph:RGBColor"
-            red="47"
-            green="124"
-            blue="157"/>
+            xsi:type="gmfgraph:RGBColor"/>
         <backgroundColor
             xsi:type="gmfgraph:RGBColor"
             red="180"
@@ -80,12 +103,7 @@
         <children
             xsi:type="gmfgraph:Label"
             name="UseCaseNameFigureCustom"/>
-        <children
-            xsi:type="gmfgraph:Label"
-            name="UseCaseSpecified_byFigureCustom"/>
       </actualFigure>
-      <accessors
-          figure="//@figures.1/@descriptors.0/@actualFigure/@children.1"/>
       <accessors
           figure="//@figures.1/@descriptors.0/@actualFigure/@children.0"/>
     </descriptors>
@@ -105,10 +123,7 @@
   <labels
       name="UseCaseName"
       figure="UseCaseFigureCustom"
-      accessor="//@figures.1/@descriptors.0/@accessors.1"/>
-  <labels
-      name="UseCaseSpecified_by"
-      figure="UseCaseFigureCustom"
+      elementIcon="false"
       accessor="//@figures.1/@descriptors.0/@accessors.0"/>
   <labels
       name="RoleName"
@@ -117,6 +132,7 @@
   <labels
       name="RoleType"
       figure="RoleFigure"
+      elementIcon="false"
       accessor="//@figures.0/@descriptors.1/@accessors.1"/>
   <labels
       name="IncludeLabel"/>

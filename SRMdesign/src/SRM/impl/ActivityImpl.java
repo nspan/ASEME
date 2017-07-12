@@ -1,20 +1,19 @@
 /**
- * <copyright>
- * </copyright>
- *
- * $Id$
  */
 package SRM.impl;
 
 import SRM.Activity;
+import SRM.Functionality;
 import SRM.SRMPackage;
 
 import org.eclipse.emf.common.notify.Notification;
+import org.eclipse.emf.common.notify.NotificationChain;
 
 import org.eclipse.emf.ecore.EClass;
+import org.eclipse.emf.ecore.InternalEObject;
 
 import org.eclipse.emf.ecore.impl.ENotificationImpl;
-import org.eclipse.emf.ecore.impl.EObjectImpl;
+import org.eclipse.emf.ecore.impl.MinimalEObjectImpl;
 
 /**
  * <!-- begin-user-doc -->
@@ -22,15 +21,15 @@ import org.eclipse.emf.ecore.impl.EObjectImpl;
  * <!-- end-user-doc -->
  * <p>
  * The following features are implemented:
+ * </p>
  * <ul>
  *   <li>{@link SRM.impl.ActivityImpl#getName <em>Name</em>}</li>
  *   <li>{@link SRM.impl.ActivityImpl#getFunctionality <em>Functionality</em>}</li>
  * </ul>
- * </p>
  *
  * @generated
  */
-public class ActivityImpl extends EObjectImpl implements Activity {
+public class ActivityImpl extends MinimalEObjectImpl.Container implements Activity {
 	/**
 	 * The default value of the '{@link #getName() <em>Name</em>}' attribute.
 	 * <!-- begin-user-doc -->
@@ -52,24 +51,14 @@ public class ActivityImpl extends EObjectImpl implements Activity {
 	protected String name = NAME_EDEFAULT;
 
 	/**
-	 * The default value of the '{@link #getFunctionality() <em>Functionality</em>}' attribute.
+	 * The cached value of the '{@link #getFunctionality() <em>Functionality</em>}' reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @see #getFunctionality()
 	 * @generated
 	 * @ordered
 	 */
-	protected static final String FUNCTIONALITY_EDEFAULT = null;
-
-	/**
-	 * The cached value of the '{@link #getFunctionality() <em>Functionality</em>}' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see #getFunctionality()
-	 * @generated
-	 * @ordered
-	 */
-	protected String functionality = FUNCTIONALITY_EDEFAULT;
+	protected Functionality functionality;
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -116,7 +105,15 @@ public class ActivityImpl extends EObjectImpl implements Activity {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public String getFunctionality() {
+	public Functionality getFunctionality() {
+		if (functionality != null && functionality.eIsProxy()) {
+			InternalEObject oldFunctionality = (InternalEObject)functionality;
+			functionality = (Functionality)eResolveProxy(oldFunctionality);
+			if (functionality != oldFunctionality) {
+				if (eNotificationRequired())
+					eNotify(new ENotificationImpl(this, Notification.RESOLVE, SRMPackage.ACTIVITY__FUNCTIONALITY, oldFunctionality, functionality));
+			}
+		}
 		return functionality;
 	}
 
@@ -125,11 +122,72 @@ public class ActivityImpl extends EObjectImpl implements Activity {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public void setFunctionality(String newFunctionality) {
-		String oldFunctionality = functionality;
+	public Functionality basicGetFunctionality() {
+		return functionality;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public NotificationChain basicSetFunctionality(Functionality newFunctionality, NotificationChain msgs) {
+		Functionality oldFunctionality = functionality;
 		functionality = newFunctionality;
-		if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET, SRMPackage.ACTIVITY__FUNCTIONALITY, oldFunctionality, functionality));
+		if (eNotificationRequired()) {
+			ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, SRMPackage.ACTIVITY__FUNCTIONALITY, oldFunctionality, newFunctionality);
+			if (msgs == null) msgs = notification; else msgs.add(notification);
+		}
+		return msgs;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public void setFunctionality(Functionality newFunctionality) {
+		if (newFunctionality != functionality) {
+			NotificationChain msgs = null;
+			if (functionality != null)
+				msgs = ((InternalEObject)functionality).eInverseRemove(this, SRMPackage.FUNCTIONALITY__ACTIVITIES, Functionality.class, msgs);
+			if (newFunctionality != null)
+				msgs = ((InternalEObject)newFunctionality).eInverseAdd(this, SRMPackage.FUNCTIONALITY__ACTIVITIES, Functionality.class, msgs);
+			msgs = basicSetFunctionality(newFunctionality, msgs);
+			if (msgs != null) msgs.dispatch();
+		}
+		else if (eNotificationRequired())
+			eNotify(new ENotificationImpl(this, Notification.SET, SRMPackage.ACTIVITY__FUNCTIONALITY, newFunctionality, newFunctionality));
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public NotificationChain eInverseAdd(InternalEObject otherEnd, int featureID, NotificationChain msgs) {
+		switch (featureID) {
+			case SRMPackage.ACTIVITY__FUNCTIONALITY:
+				if (functionality != null)
+					msgs = ((InternalEObject)functionality).eInverseRemove(this, SRMPackage.FUNCTIONALITY__ACTIVITIES, Functionality.class, msgs);
+				return basicSetFunctionality((Functionality)otherEnd, msgs);
+		}
+		return super.eInverseAdd(otherEnd, featureID, msgs);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public NotificationChain eInverseRemove(InternalEObject otherEnd, int featureID, NotificationChain msgs) {
+		switch (featureID) {
+			case SRMPackage.ACTIVITY__FUNCTIONALITY:
+				return basicSetFunctionality(null, msgs);
+		}
+		return super.eInverseRemove(otherEnd, featureID, msgs);
 	}
 
 	/**
@@ -143,7 +201,8 @@ public class ActivityImpl extends EObjectImpl implements Activity {
 			case SRMPackage.ACTIVITY__NAME:
 				return getName();
 			case SRMPackage.ACTIVITY__FUNCTIONALITY:
-				return getFunctionality();
+				if (resolve) return getFunctionality();
+				return basicGetFunctionality();
 		}
 		return super.eGet(featureID, resolve, coreType);
 	}
@@ -160,7 +219,7 @@ public class ActivityImpl extends EObjectImpl implements Activity {
 				setName((String)newValue);
 				return;
 			case SRMPackage.ACTIVITY__FUNCTIONALITY:
-				setFunctionality((String)newValue);
+				setFunctionality((Functionality)newValue);
 				return;
 		}
 		super.eSet(featureID, newValue);
@@ -178,7 +237,7 @@ public class ActivityImpl extends EObjectImpl implements Activity {
 				setName(NAME_EDEFAULT);
 				return;
 			case SRMPackage.ACTIVITY__FUNCTIONALITY:
-				setFunctionality(FUNCTIONALITY_EDEFAULT);
+				setFunctionality((Functionality)null);
 				return;
 		}
 		super.eUnset(featureID);
@@ -195,7 +254,7 @@ public class ActivityImpl extends EObjectImpl implements Activity {
 			case SRMPackage.ACTIVITY__NAME:
 				return NAME_EDEFAULT == null ? name != null : !NAME_EDEFAULT.equals(name);
 			case SRMPackage.ACTIVITY__FUNCTIONALITY:
-				return FUNCTIONALITY_EDEFAULT == null ? functionality != null : !FUNCTIONALITY_EDEFAULT.equals(functionality);
+				return functionality != null;
 		}
 		return super.eIsSet(featureID);
 	}
@@ -212,8 +271,6 @@ public class ActivityImpl extends EObjectImpl implements Activity {
 		StringBuffer result = new StringBuffer(super.toString());
 		result.append(" (name: ");
 		result.append(name);
-		result.append(", functionality: ");
-		result.append(functionality);
 		result.append(')');
 		return result.toString();
 	}

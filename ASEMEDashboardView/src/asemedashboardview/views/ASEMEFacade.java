@@ -11,12 +11,16 @@ public interface ASEMEFacade {
 	public static final String LOCATION_AIP = "AIP"; //$NON-NLS-1$
 	
 	public static final String LOCATION_SRM = "SRM"; //$NON-NLS-1$
+	
+	public static final String LOCATION_XPDL = "XPDL"; //$NON-NLS-1$
 
 	public static final String LOCATION_EAC = "EAC"; //$NON-NLS-1$
 
 	public static final String LOCATION_IAC = "IAC"; //$NON-NLS-1$
 
 	public static final String LOCATION_JADE = "JADE"; //$NON-NLS-1$
+	
+	public static final String LOCATION_GG = "GG"; //$NON-NLS-1$
 
 //	public static final String LOCATION_MM = "map_model"; //$NON-NLS-1$
 //

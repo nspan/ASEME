@@ -20,133 +20,121 @@ import org.eclipse.ui.actions.WorkspaceModifyOperation;
 public class AIPCreationWizard extends Wizard implements INewWizard {
 
 	/**
-	 * @generated
-	 */
+	* @generated
+	*/
 	private IWorkbench workbench;
 
 	/**
-	 * @generated
-	 */
+	* @generated
+	*/
 	protected IStructuredSelection selection;
 
 	/**
-	 * @generated
-	 */
+	* @generated
+	*/
 	protected AIPCreationWizardPage diagramModelFilePage;
 
 	/**
-	 * @generated
-	 */
+	* @generated
+	*/
 	protected AIPCreationWizardPage domainModelFilePage;
 
 	/**
-	 * @generated
-	 */
+	* @generated
+	*/
 	protected Resource diagram;
 
 	/**
-	 * @generated
-	 */
+	* @generated
+	*/
 	private boolean openNewlyCreatedDiagramEditor = true;
 
 	/**
-	 * @generated
-	 */
+	* @generated
+	*/
 	public IWorkbench getWorkbench() {
 		return workbench;
 	}
 
 	/**
-	 * @generated
-	 */
+	* @generated
+	*/
 	public IStructuredSelection getSelection() {
 		return selection;
 	}
 
 	/**
-	 * @generated
-	 */
+	* @generated
+	*/
 	public final Resource getDiagram() {
 		return diagram;
 	}
 
 	/**
-	 * @generated
-	 */
+	* @generated
+	*/
 	public final boolean isOpenNewlyCreatedDiagramEditor() {
 		return openNewlyCreatedDiagramEditor;
 	}
 
 	/**
-	 * @generated
-	 */
-	public void setOpenNewlyCreatedDiagramEditor(
-			boolean openNewlyCreatedDiagramEditor) {
+	* @generated
+	*/
+	public void setOpenNewlyCreatedDiagramEditor(boolean openNewlyCreatedDiagramEditor) {
 		this.openNewlyCreatedDiagramEditor = openNewlyCreatedDiagramEditor;
 	}
 
 	/**
-	 * @generated
-	 */
+	* @generated
+	*/
 	public void init(IWorkbench workbench, IStructuredSelection selection) {
 		this.workbench = workbench;
 		this.selection = selection;
 		setWindowTitle(Messages.AIPCreationWizardTitle);
-		setDefaultPageImageDescriptor(AIPDiagramEditorPlugin
-				.getBundledImageDescriptor("icons/wizban/NewAIPWizard.gif")); //$NON-NLS-1$
+		setDefaultPageImageDescriptor(
+				AIPDiagramEditorPlugin.getBundledImageDescriptor("icons/wizban/NewAIPWizard.gif")); //$NON-NLS-1$
 		setNeedsProgressMonitor(true);
 	}
 
 	/**
-	 * @generated
-	 */
+	* @generated
+	*/
 	public void addPages() {
-		diagramModelFilePage = new AIPCreationWizardPage(
-				"DiagramModelFile", getSelection(), "aipd"); //$NON-NLS-1$ //$NON-NLS-2$
-		diagramModelFilePage
-				.setTitle(Messages.AIPCreationWizard_DiagramModelFilePageTitle);
-		diagramModelFilePage
-				.setDescription(Messages.AIPCreationWizard_DiagramModelFilePageDescription);
+		diagramModelFilePage = new AIPCreationWizardPage("DiagramModelFile", getSelection(), "aipd"); //$NON-NLS-1$ //$NON-NLS-2$
+		diagramModelFilePage.setTitle(Messages.AIPCreationWizard_DiagramModelFilePageTitle);
+		diagramModelFilePage.setDescription(Messages.AIPCreationWizard_DiagramModelFilePageDescription);
 		addPage(diagramModelFilePage);
 
-		domainModelFilePage = new AIPCreationWizardPage(
-				"DomainModelFile", getSelection(), "aip") { //$NON-NLS-1$ //$NON-NLS-2$
+		domainModelFilePage = new AIPCreationWizardPage("DomainModelFile", getSelection(), "aip") { //$NON-NLS-1$ //$NON-NLS-2$
 
 			public void setVisible(boolean visible) {
 				if (visible) {
 					String fileName = diagramModelFilePage.getFileName();
-					fileName = fileName.substring(0, fileName.length()
-							- ".aipd".length()); //$NON-NLS-1$
-					setFileName(AIPDiagramEditorUtil.getUniqueFileName(
-							getContainerFullPath(), fileName, "aip")); //$NON-NLS-1$
+					fileName = fileName.substring(0, fileName.length() - ".aipd".length()); //$NON-NLS-1$
+					setFileName(AIPDiagramEditorUtil.getUniqueFileName(getContainerFullPath(), fileName, "aip")); //$NON-NLS-1$
 				}
 				super.setVisible(visible);
 			}
 		};
-		domainModelFilePage
-				.setTitle(Messages.AIPCreationWizard_DomainModelFilePageTitle);
-		domainModelFilePage
-				.setDescription(Messages.AIPCreationWizard_DomainModelFilePageDescription);
+		domainModelFilePage.setTitle(Messages.AIPCreationWizard_DomainModelFilePageTitle);
+		domainModelFilePage.setDescription(Messages.AIPCreationWizard_DomainModelFilePageDescription);
 		addPage(domainModelFilePage);
 	}
 
 	/**
-	 * @generated
-	 */
+	* @generated
+	*/
 	public boolean performFinish() {
 		IRunnableWithProgress op = new WorkspaceModifyOperation(null) {
 
-			protected void execute(IProgressMonitor monitor)
-					throws CoreException, InterruptedException {
-				diagram = AIPDiagramEditorUtil.createDiagram(
-						diagramModelFilePage.getURI(),
+			protected void execute(IProgressMonitor monitor) throws CoreException, InterruptedException {
+				diagram = AIPDiagramEditorUtil.createDiagram(diagramModelFilePage.getURI(),
 						domainModelFilePage.getURI(), monitor);
 				if (isOpenNewlyCreatedDiagramEditor() && diagram != null) {
 					try {
 						AIPDiagramEditorUtil.openDiagram(diagram);
 					} catch (PartInitException e) {
-						ErrorDialog.openError(getContainer().getShell(),
-								Messages.AIPCreationWizardOpenEditorError,
+						ErrorDialog.openError(getContainer().getShell(), Messages.AIPCreationWizardOpenEditorError,
 								null, e.getStatus());
 					}
 				}
@@ -158,12 +146,10 @@ public class AIPCreationWizard extends Wizard implements INewWizard {
 			return false;
 		} catch (InvocationTargetException e) {
 			if (e.getTargetException() instanceof CoreException) {
-				ErrorDialog.openError(getContainer().getShell(),
-						Messages.AIPCreationWizardCreationError, null,
+				ErrorDialog.openError(getContainer().getShell(), Messages.AIPCreationWizardCreationError, null,
 						((CoreException) e.getTargetException()).getStatus());
 			} else {
-				AIPDiagramEditorPlugin.getInstance().logError(
-						"Error creating diagram", e.getTargetException()); //$NON-NLS-1$
+				AIPDiagramEditorPlugin.getInstance().logError("Error creating diagram", e.getTargetException()); //$NON-NLS-1$
 			}
 			return false;
 		}

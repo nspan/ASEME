@@ -8,396 +8,421 @@ import org.eclipse.osgi.util.NLS;
 public class Messages extends NLS {
 
 	/**
-	 * @generated
-	 */
+	* @generated
+	*/
 	static {
 		NLS.initializeMessages("messages", Messages.class); //$NON-NLS-1$
 	}
 
 	/**
-	 * @generated
-	 */
+	* @generated
+	*/
 	private Messages() {
 	}
 
 	/**
-	 * @generated
-	 */
+	* @generated
+	*/
 	public static String SRMCreationWizardTitle;
 
 	/**
-	 * @generated
-	 */
+	* @generated
+	*/
 	public static String SRMCreationWizard_DiagramModelFilePageTitle;
 
 	/**
-	 * @generated
-	 */
+	* @generated
+	*/
 	public static String SRMCreationWizard_DiagramModelFilePageDescription;
 
 	/**
-	 * @generated
-	 */
+	* @generated
+	*/
 	public static String SRMCreationWizard_DomainModelFilePageTitle;
 
 	/**
-	 * @generated
-	 */
+	* @generated
+	*/
 	public static String SRMCreationWizard_DomainModelFilePageDescription;
 
 	/**
-	 * @generated
-	 */
+	* @generated
+	*/
 	public static String SRMCreationWizardOpenEditorError;
 
 	/**
-	 * @generated
-	 */
+	* @generated
+	*/
 	public static String SRMCreationWizardCreationError;
 
 	/**
-	 * @generated
-	 */
+	* @generated
+	*/
 	public static String SRMCreationWizardPageExtensionError;
 
 	/**
-	 * @generated
-	 */
+	* @generated
+	*/
 	public static String SRMDiagramEditorUtil_OpenModelResourceErrorDialogTitle;
 
 	/**
-	 * @generated
-	 */
+	* @generated
+	*/
 	public static String SRMDiagramEditorUtil_OpenModelResourceErrorDialogMessage;
 
 	/**
-	 * @generated
-	 */
+	* @generated
+	*/
 	public static String SRMDiagramEditorUtil_CreateDiagramProgressTask;
 
 	/**
-	 * @generated
-	 */
+	* @generated
+	*/
 	public static String SRMDiagramEditorUtil_CreateDiagramCommandLabel;
 
 	/**
-	 * @generated
-	 */
+	* @generated
+	*/
 	public static String SRMDocumentProvider_isModifiable;
 
 	/**
-	 * @generated
-	 */
+	* @generated
+	*/
 	public static String SRMDocumentProvider_handleElementContentChanged;
 
 	/**
-	 * @generated
-	 */
+	* @generated
+	*/
 	public static String SRMDocumentProvider_IncorrectInputError;
 
 	/**
-	 * @generated
-	 */
+	* @generated
+	*/
 	public static String SRMDocumentProvider_NoDiagramInResourceError;
 
 	/**
-	 * @generated
-	 */
+	* @generated
+	*/
 	public static String SRMDocumentProvider_DiagramLoadingError;
 
 	/**
-	 * @generated
-	 */
+	* @generated
+	*/
 	public static String SRMDocumentProvider_UnsynchronizedFileSaveError;
 
 	/**
-	 * @generated
-	 */
+	* @generated
+	*/
 	public static String SRMDocumentProvider_SaveDiagramTask;
 
 	/**
-	 * @generated
-	 */
+	* @generated
+	*/
 	public static String SRMDocumentProvider_SaveNextResourceTask;
 
 	/**
-	 * @generated
-	 */
+	* @generated
+	*/
 	public static String SRMDocumentProvider_SaveAsOperation;
 
 	/**
-	 * @generated
-	 */
+	* @generated
+	*/
 	public static String InitDiagramFile_ResourceErrorDialogTitle;
 
 	/**
-	 * @generated
-	 */
+	* @generated
+	*/
 	public static String InitDiagramFile_ResourceErrorDialogMessage;
 
 	/**
-	 * @generated
-	 */
+	* @generated
+	*/
 	public static String InitDiagramFile_WizardTitle;
 
 	/**
-	 * @generated
-	 */
+	* @generated
+	*/
 	public static String InitDiagramFile_OpenModelFileDialogTitle;
 
 	/**
-	 * @generated
-	 */
+	* @generated
+	*/
 	public static String SRMNewDiagramFileWizard_CreationPageName;
 
 	/**
-	 * @generated
-	 */
+	* @generated
+	*/
 	public static String SRMNewDiagramFileWizard_CreationPageTitle;
 
 	/**
-	 * @generated
-	 */
+	* @generated
+	*/
 	public static String SRMNewDiagramFileWizard_CreationPageDescription;
 
 	/**
-	 * @generated
-	 */
+	* @generated
+	*/
 	public static String SRMNewDiagramFileWizard_RootSelectionPageName;
 
 	/**
-	 * @generated
-	 */
+	* @generated
+	*/
 	public static String SRMNewDiagramFileWizard_RootSelectionPageTitle;
 
 	/**
-	 * @generated
-	 */
+	* @generated
+	*/
 	public static String SRMNewDiagramFileWizard_RootSelectionPageDescription;
 
 	/**
-	 * @generated
-	 */
+	* @generated
+	*/
 	public static String SRMNewDiagramFileWizard_RootSelectionPageSelectionTitle;
 
 	/**
-	 * @generated
-	 */
+	* @generated
+	*/
 	public static String SRMNewDiagramFileWizard_RootSelectionPageNoSelectionMessage;
 
 	/**
-	 * @generated
-	 */
+	* @generated
+	*/
 	public static String SRMNewDiagramFileWizard_RootSelectionPageInvalidSelectionMessage;
 
 	/**
-	 * @generated
-	 */
+	* @generated
+	*/
 	public static String SRMNewDiagramFileWizard_InitDiagramCommand;
 
 	/**
-	 * @generated
-	 */
+	* @generated
+	*/
 	public static String SRMNewDiagramFileWizard_IncorrectRootError;
 
 	/**
-	 * @generated
-	 */
+	* @generated
+	*/
 	public static String SRMDiagramEditor_SavingDeletedFile;
 
 	/**
-	 * @generated
-	 */
+	* @generated
+	*/
 	public static String SRMDiagramEditor_SaveAsErrorTitle;
 
 	/**
-	 * @generated
-	 */
+	* @generated
+	*/
 	public static String SRMDiagramEditor_SaveAsErrorMessage;
 
 	/**
-	 * @generated
-	 */
+	* @generated
+	*/
 	public static String SRMDiagramEditor_SaveErrorTitle;
 
 	/**
-	 * @generated
-	 */
+	* @generated
+	*/
 	public static String SRMDiagramEditor_SaveErrorMessage;
 
 	/**
-	 * @generated
-	 */
+	* @generated
+	*/
 	public static String SRMElementChooserDialog_SelectModelElementTitle;
 
 	/**
-	 * @generated
-	 */
+	* @generated
+	*/
 	public static String ModelElementSelectionPageMessage;
 
 	/**
-	 * @generated
-	 */
+	* @generated
+	*/
 	public static String ValidateActionMessage;
 
 	/**
-	 * @generated
-	 */
+	* @generated
+	*/
 	public static String SRM1Group_title;
 
 	/**
-	 * @generated
-	 */
+	* @generated
+	*/
+	public static String SRM1Group_desc;
+
+	/**
+	* @generated
+	*/
 	public static String Role1CreationTool_title;
 
 	/**
-	 * @generated
-	 */
+	* @generated
+	*/
 	public static String Role1CreationTool_desc;
 
 	/**
-	 * @generated
-	 */
-	public static String RoleActivities2CreationTool_title;
+	* @generated
+	*/
+	public static String RoleCapabilities2CreationTool_title;
 
 	/**
-	 * @generated
-	 */
-	public static String RoleActivities2CreationTool_desc;
+	* @generated
+	*/
+	public static String RoleCapabilities2CreationTool_desc;
 
 	/**
-	 * @generated
-	 */
-	public static String RoleCapabilities3CreationTool_title;
+	* @generated
+	*/
+	public static String Activity3CreationTool_title;
 
 	/**
-	 * @generated
-	 */
-	public static String RoleCapabilities3CreationTool_desc;
+	* @generated
+	*/
+	public static String Activity3CreationTool_desc;
 
 	/**
-	 * @generated
-	 */
-	public static String Activity4CreationTool_title;
+	* @generated
+	*/
+	public static String Capability4CreationTool_title;
 
 	/**
-	 * @generated
-	 */
-	public static String Activity4CreationTool_desc;
+	* @generated
+	*/
+	public static String Capability4CreationTool_desc;
 
 	/**
-	 * @generated
-	 */
-	public static String Capability5CreationTool_title;
+	* @generated
+	*/
+	public static String CapabilityCapability_activities5CreationTool_title;
 
 	/**
-	 * @generated
-	 */
-	public static String Capability5CreationTool_desc;
+	* @generated
+	*/
+	public static String CapabilityCapability_activities5CreationTool_desc;
 
 	/**
-	 * @generated
-	 */
-	public static String CapabilityActivities6CreationTool_title;
+	* @generated
+	*/
+	public static String Functionality6CreationTool_title;
 
 	/**
-	 * @generated
-	 */
-	public static String CapabilityActivities6CreationTool_desc;
+	* @generated
+	*/
+	public static String Functionality6CreationTool_desc;
 
 	/**
-	 * @generated
-	 */
+	* @generated
+	*/
+	public static String FunctionalityActivities7CreationTool_title;
+
+	/**
+	* @generated
+	*/
+	public static String FunctionalityActivities7CreationTool_desc;
+
+	/**
+	* @generated
+	*/
+	public static String RoleActivities8CreationTool_title;
+
+	/**
+	* @generated
+	*/
+	public static String RoleActivities8CreationTool_desc;
+
+	/**
+	* @generated
+	*/
 	public static String CommandName_OpenDiagram;
 
 	/**
-	 * @generated
-	 */
+	* @generated
+	*/
 	public static String NavigatorGroupName_SRMmodel_1000_links;
 
 	/**
-	 * @generated
-	 */
-	public static String NavigatorGroupName_Capability_2004_incominglinks;
+	* @generated
+	*/
+	public static String NavigatorGroupName_Functionality_2001_outgoinglinks;
 
 	/**
-	 * @generated
-	 */
-	public static String NavigatorGroupName_Capability_2004_outgoinglinks;
+	* @generated
+	*/
+	public static String NavigatorGroupName_Capability_2002_outgoinglinks;
 
 	/**
-	 * @generated
-	 */
-	public static String NavigatorGroupName_Role_2005_outgoinglinks;
+	* @generated
+	*/
+	public static String NavigatorGroupName_Capability_2002_incominglinks;
 
 	/**
-	 * @generated
-	 */
-	public static String NavigatorGroupName_Activity_2006_incominglinks;
+	* @generated
+	*/
+	public static String NavigatorGroupName_Role_2003_outgoinglinks;
 
 	/**
-	 * @generated
-	 */
+	* @generated
+	*/
+	public static String NavigatorGroupName_Activity_2004_incominglinks;
+
+	/**
+	* @generated
+	*/
+	public static String NavigatorGroupName_RoleRole_activities_4001_target;
+
+	/**
+	* @generated
+	*/
+	public static String NavigatorGroupName_RoleRole_activities_4001_source;
+
+	/**
+	* @generated
+	*/
+	public static String NavigatorGroupName_CapabilityCapability_activities_4002_target;
+
+	/**
+	* @generated
+	*/
+	public static String NavigatorGroupName_CapabilityCapability_activities_4002_source;
+
+	/**
+	* @generated
+	*/
+	public static String NavigatorGroupName_FunctionalityActivities_4003_target;
+
+	/**
+	* @generated
+	*/
+	public static String NavigatorGroupName_FunctionalityActivities_4003_source;
+
+	/**
+	* @generated
+	*/
 	public static String NavigatorGroupName_RoleCapabilities_4004_target;
 
 	/**
-	 * @generated
-	 */
+	* @generated
+	*/
 	public static String NavigatorGroupName_RoleCapabilities_4004_source;
 
 	/**
-	 * @generated
-	 */
-	public static String NavigatorGroupName_RoleActivities_4005_target;
-
-	/**
-	 * @generated
-	 */
-	public static String NavigatorGroupName_RoleActivities_4005_source;
-
-	/**
-	 * @generated
-	 */
-	public static String NavigatorGroupName_CapabilityActivities_4006_target;
-
-	/**
-	 * @generated
-	 */
-	public static String NavigatorGroupName_CapabilityActivities_4006_source;
-
-	/**
-	 * @generated
-	 */
+	* @generated
+	*/
 	public static String NavigatorActionProvider_OpenDiagramActionName;
 
 	/**
-	 * @generated
-	 */
-	public static String AbstractParser_UnexpectedValueType;
-
-	/**
-	 * @generated
-	 */
-	public static String AbstractParser_WrongStringConversion;
-
-	/**
-	 * @generated
-	 */
-	public static String AbstractParser_UnknownLiteral;
-
-	/**
-	 * @generated
-	 */
+	* @generated
+	*/
 	public static String MessageFormatParser_InvalidInputError;
 
 	/**
-	 * @generated
-	 */
+	* @generated
+	*/
 	public static String SRMModelingAssistantProviderTitle;
 
 	/**
-	 * @generated
-	 */
+	* @generated
+	*/
 	public static String SRMModelingAssistantProviderMessage;
 
 	//TODO: put accessor fields manually	

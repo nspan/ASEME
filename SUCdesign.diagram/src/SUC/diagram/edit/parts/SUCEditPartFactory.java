@@ -15,8 +15,8 @@ import SUC.diagram.part.SUCVisualIDRegistry;
 public class SUCEditPartFactory implements EditPartFactory {
 
 	/**
-	 * @generated
-	 */
+	* @generated
+	*/
 	public EditPart createEditPart(EditPart context, Object model) {
 		if (model instanceof View) {
 			View view = (View) model;
@@ -25,26 +25,23 @@ public class SUCEditPartFactory implements EditPartFactory {
 			case SUCmodelEditPart.VISUAL_ID:
 				return new SUCmodelEditPart(view);
 
-			case RoleEditPart.VISUAL_ID:
-				return new RoleEditPart(view);
-
-			case RoleNameEditPart.VISUAL_ID:
-				return new RoleNameEditPart(view);
-
 			case UseCaseEditPart.VISUAL_ID:
 				return new UseCaseEditPart(view);
 
 			case UseCaseNameEditPart.VISUAL_ID:
 				return new UseCaseNameEditPart(view);
 
-			case UseCaseSpecified_byEditPart.VISUAL_ID:
-				return new UseCaseSpecified_byEditPart(view);
+			case RoleEditPart.VISUAL_ID:
+				return new RoleEditPart(view);
+
+			case RoleNameEditPart.VISUAL_ID:
+				return new RoleNameEditPart(view);
+
+			case RoleTypeEditPart.VISUAL_ID:
+				return new RoleTypeEditPart(view);
 
 			case UseCaseIncludeEditPart.VISUAL_ID:
 				return new UseCaseIncludeEditPart(view);
-
-			case LabelEditPart.VISUAL_ID:
-				return new LabelEditPart(view);
 
 			case RoleParticipates_inEditPart.VISUAL_ID:
 				return new RoleParticipates_inEditPart(view);
@@ -55,20 +52,18 @@ public class SUCEditPartFactory implements EditPartFactory {
 	}
 
 	/**
-	 * @generated
-	 */
+	* @generated
+	*/
 	private EditPart createUnrecognizedEditPart(EditPart context, Object model) {
 		// Handle creation of unrecognized child node EditParts here
 		return null;
 	}
 
 	/**
-	 * @generated
-	 */
-	public static CellEditorLocator getTextCellEditorLocator(
-			ITextAwareEditPart source) {
-		return CellEditorLocatorAccess.INSTANCE
-				.getTextCellEditorLocator(source);
+	* @generated
+	*/
+	public static CellEditorLocator getTextCellEditorLocator(ITextAwareEditPart source) {
+		return CellEditorLocatorAccess.INSTANCE.getTextCellEditorLocator(source);
 	}
 
 }

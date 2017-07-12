@@ -1,8 +1,4 @@
 /**
- * <copyright>
- * </copyright>
- *
- * $Id$
  */
 package AIP.impl;
 
@@ -15,6 +11,7 @@ import org.eclipse.emf.ecore.EClass;
 
 import org.eclipse.emf.ecore.impl.ENotificationImpl;
 import org.eclipse.emf.ecore.impl.EObjectImpl;
+import org.eclipse.emf.ecore.impl.MinimalEObjectImpl;
 
 /**
  * <!-- begin-user-doc -->
@@ -22,13 +19,13 @@ import org.eclipse.emf.ecore.impl.EObjectImpl;
  * <!-- end-user-doc -->
  * <p>
  * The following features are implemented:
+ * </p>
  * <ul>
  *   <li>{@link AIP.impl.ParticipantImpl#getName <em>Name</em>}</li>
  *   <li>{@link AIP.impl.ParticipantImpl#getEngaging_rules <em>Engaging rules</em>}</li>
  *   <li>{@link AIP.impl.ParticipantImpl#getOutcomes <em>Outcomes</em>}</li>
  *   <li>{@link AIP.impl.ParticipantImpl#getLiveness <em>Liveness</em>}</li>
  * </ul>
- * </p>
  *
  * @generated
  */

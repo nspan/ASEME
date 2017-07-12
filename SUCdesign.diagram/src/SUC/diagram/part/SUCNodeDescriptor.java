@@ -8,8 +8,8 @@ import org.eclipse.gmf.tooling.runtime.update.UpdaterNodeDescriptor;
  */
 public class SUCNodeDescriptor extends UpdaterNodeDescriptor {
 	/**
-	 * @generated
-	 */
+	* @generated
+	*/
 	public SUCNodeDescriptor(EObject modelElement, int visualID) {
 		super(modelElement, visualID);
 	}

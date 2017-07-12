@@ -40,7 +40,7 @@ public class ASEMEActionRegistry implements IExtensionChangeHandler {
 			}
 		}
 	}
-
+	
 	public void dispose() {
 		PlatformUI.getWorkbench().getExtensionTracker().unregisterHandler(this);
 	}

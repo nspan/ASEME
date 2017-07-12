@@ -18,30 +18,29 @@ import SUC.diagram.edit.policies.SUCBaseItemSemanticEditPolicy;
 public class UseCaseIncludeReorientCommand extends EditElementCommand {
 
 	/**
-	 * @generated
-	 */
+	* @generated
+	*/
 	private final int reorientDirection;
 
 	/**
-	 * @generated
-	 */
+	* @generated
+	*/
 	private final EObject referenceOwner;
 
 	/**
-	 * @generated
-	 */
+	* @generated
+	*/
 	private final EObject oldEnd;
 
 	/**
-	 * @generated
-	 */
+	* @generated
+	*/
 	private final EObject newEnd;
 
 	/**
-	 * @generated
-	 */
-	public UseCaseIncludeReorientCommand(
-			ReorientReferenceRelationshipRequest request) {
+	* @generated
+	*/
+	public UseCaseIncludeReorientCommand(ReorientReferenceRelationshipRequest request) {
 		super(request.getLabel(), null, request);
 		reorientDirection = request.getDirection();
 		referenceOwner = request.getReferenceOwner();
@@ -50,8 +49,8 @@ public class UseCaseIncludeReorientCommand extends EditElementCommand {
 	}
 
 	/**
-	 * @generated
-	 */
+	* @generated
+	*/
 	public boolean canExecute() {
 		if (false == referenceOwner instanceof UseCase) {
 			return false;
@@ -66,35 +65,33 @@ public class UseCaseIncludeReorientCommand extends EditElementCommand {
 	}
 
 	/**
-	 * @generated
-	 */
+	* @generated
+	*/
 	protected boolean canReorientSource() {
 		if (!(oldEnd instanceof UseCase && newEnd instanceof UseCase)) {
 			return false;
 		}
-		return SUCBaseItemSemanticEditPolicy.getLinkConstraints()
-				.canExistUseCaseInclude_4003(getNewSource(), getOldTarget());
+		return SUCBaseItemSemanticEditPolicy.getLinkConstraints().canExistUseCaseInclude_4001(getNewSource(),
+				getOldTarget());
 	}
 
 	/**
-	 * @generated
-	 */
+	* @generated
+	*/
 	protected boolean canReorientTarget() {
 		if (!(oldEnd instanceof UseCase && newEnd instanceof UseCase)) {
 			return false;
 		}
-		return SUCBaseItemSemanticEditPolicy.getLinkConstraints()
-				.canExistUseCaseInclude_4003(getOldSource(), getNewTarget());
+		return SUCBaseItemSemanticEditPolicy.getLinkConstraints().canExistUseCaseInclude_4001(getOldSource(),
+				getNewTarget());
 	}
 
 	/**
-	 * @generated
-	 */
-	protected CommandResult doExecuteWithResult(IProgressMonitor monitor,
-			IAdaptable info) throws ExecutionException {
+	* @generated
+	*/
+	protected CommandResult doExecuteWithResult(IProgressMonitor monitor, IAdaptable info) throws ExecutionException {
 		if (!canExecute()) {
-			throw new ExecutionException(
-					"Invalid arguments in reorient link command"); //$NON-NLS-1$
+			throw new ExecutionException("Invalid arguments in reorient link command"); //$NON-NLS-1$
 		}
 		if (reorientDirection == ReorientRelationshipRequest.REORIENT_SOURCE) {
 			return reorientSource();
@@ -106,8 +103,8 @@ public class UseCaseIncludeReorientCommand extends EditElementCommand {
 	}
 
 	/**
-	 * @generated
-	 */
+	* @generated
+	*/
 	protected CommandResult reorientSource() throws ExecutionException {
 		getOldSource().getInclude().remove(getOldTarget());
 		getNewSource().getInclude().add(getOldTarget());
@@ -115,8 +112,8 @@ public class UseCaseIncludeReorientCommand extends EditElementCommand {
 	}
 
 	/**
-	 * @generated
-	 */
+	* @generated
+	*/
 	protected CommandResult reorientTarget() throws ExecutionException {
 		getOldSource().getInclude().remove(getOldTarget());
 		getOldSource().getInclude().add(getNewTarget());
@@ -124,29 +121,29 @@ public class UseCaseIncludeReorientCommand extends EditElementCommand {
 	}
 
 	/**
-	 * @generated
-	 */
+	* @generated
+	*/
 	protected UseCase getOldSource() {
 		return (UseCase) referenceOwner;
 	}
 
 	/**
-	 * @generated
-	 */
+	* @generated
+	*/
 	protected UseCase getNewSource() {
 		return (UseCase) newEnd;
 	}
 
 	/**
-	 * @generated
-	 */
+	* @generated
+	*/
 	protected UseCase getOldTarget() {
 		return (UseCase) oldEnd;
 	}
 
 	/**
-	 * @generated
-	 */
+	* @generated
+	*/
 	protected UseCase getNewTarget() {
 		return (UseCase) newEnd;
 	}

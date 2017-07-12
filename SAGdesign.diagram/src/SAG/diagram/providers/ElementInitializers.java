@@ -12,14 +12,12 @@ public class ElementInitializers {
 	}
 
 	/**
-	 * @generated
-	 */
+	* @generated
+	*/
 	public static ElementInitializers getInstance() {
-		ElementInitializers cached = SAGDiagramEditorPlugin.getInstance()
-				.getElementInitializers();
+		ElementInitializers cached = SAGDiagramEditorPlugin.getInstance().getElementInitializers();
 		if (cached == null) {
-			SAGDiagramEditorPlugin.getInstance().setElementInitializers(
-					cached = new ElementInitializers());
+			SAGDiagramEditorPlugin.getInstance().setElementInitializers(cached = new ElementInitializers());
 		}
 		return cached;
 	}

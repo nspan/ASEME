@@ -14,11 +14,15 @@ public class Messages extends NLS {
 	
 	public static String ASEMEFigure_SRM;
 	
+	public static String ASEMEFigure_XPDL;
+	
 	public static String ASEMEFigure_EAC;
 	
 	public static String ASEMEFigure_IAC;
 	
 	public static String ASEMEFigure_JADE;
+	
+	public static String ASEMEFigure_GG;
 	
 	public static String ASEMEMediator_Select;
 
@@ -41,6 +45,10 @@ public class Messages extends NLS {
 	public static String ASEMEMediator_SelectProject;
 
 	public static String ASEMEMediator_Transform;
+	
+	public static String ASEMEMediator_XPDLexport;
+	
+	public static String ASEMEMediator_Export;
 
 	public static String ASEMEMediator_RCP;
 

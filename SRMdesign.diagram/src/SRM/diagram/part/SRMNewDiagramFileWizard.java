@@ -2,7 +2,6 @@ package SRM.diagram.part;
 
 import java.io.IOException;
 import java.util.LinkedList;
-import java.util.List;
 
 import org.eclipse.core.commands.ExecutionException;
 import org.eclipse.core.commands.operations.OperationHistoryFactory;
@@ -37,161 +36,135 @@ import SRM.diagram.edit.parts.SRMmodelEditPart;
 public class SRMNewDiagramFileWizard extends Wizard {
 
 	/**
-	 * @generated
-	 */
+	* @generated
+	*/
 	private WizardNewFileCreationPage myFileCreationPage;
 
 	/**
-	 * @generated
-	 */
+	* @generated
+	*/
 	private ModelElementSelectionPage diagramRootElementSelectionPage;
 
 	/**
-	 * @generated
-	 */
+	* @generated
+	*/
 	private TransactionalEditingDomain myEditingDomain;
 
 	/**
-	 * @generated
-	 */
-	public SRMNewDiagramFileWizard(URI domainModelURI, EObject diagramRoot,
-			TransactionalEditingDomain editingDomain) {
+	* @generated
+	*/
+	public SRMNewDiagramFileWizard(URI domainModelURI, EObject diagramRoot, TransactionalEditingDomain editingDomain) {
 		assert domainModelURI != null : "Domain model uri must be specified"; //$NON-NLS-1$
 		assert diagramRoot != null : "Doagram root element must be specified"; //$NON-NLS-1$
 		assert editingDomain != null : "Editing domain must be specified"; //$NON-NLS-1$
 
-		myFileCreationPage = new WizardNewFileCreationPage(
-				Messages.SRMNewDiagramFileWizard_CreationPageName,
+		myFileCreationPage = new WizardNewFileCreationPage(Messages.SRMNewDiagramFileWizard_CreationPageName,
 				StructuredSelection.EMPTY);
-		myFileCreationPage
-				.setTitle(Messages.SRMNewDiagramFileWizard_CreationPageTitle);
-		myFileCreationPage.setDescription(NLS.bind(
-				Messages.SRMNewDiagramFileWizard_CreationPageDescription,
-				SRMmodelEditPart.MODEL_ID));
+		myFileCreationPage.setTitle(Messages.SRMNewDiagramFileWizard_CreationPageTitle);
+		myFileCreationPage.setDescription(
+				NLS.bind(Messages.SRMNewDiagramFileWizard_CreationPageDescription, SRMmodelEditPart.MODEL_ID));
 		IPath filePath;
-		String fileName = URI.decode(domainModelURI.trimFileExtension()
-				.lastSegment());
+		String fileName = URI.decode(domainModelURI.trimFileExtension().lastSegment());
 		if (domainModelURI.isPlatformResource()) {
-			filePath = new Path(domainModelURI.trimSegments(1)
-					.toPlatformString(true));
+			filePath = new Path(domainModelURI.trimSegments(1).toPlatformString(true));
 		} else if (domainModelURI.isFile()) {
 			filePath = new Path(domainModelURI.trimSegments(1).toFileString());
 		} else {
 			// TODO : use some default path
-			throw new IllegalArgumentException(
-					"Unsupported URI: " + domainModelURI); //$NON-NLS-1$
+			throw new IllegalArgumentException("Unsupported URI: " + domainModelURI); //$NON-NLS-1$
 		}
 		myFileCreationPage.setContainerFullPath(filePath);
-		myFileCreationPage.setFileName(SRMDiagramEditorUtil.getUniqueFileName(
-				filePath, fileName, "srmd")); //$NON-NLS-1$
+		myFileCreationPage.setFileName(SRMDiagramEditorUtil.getUniqueFileName(filePath, fileName, "fg")); //$NON-NLS-1$
 
 		diagramRootElementSelectionPage = new DiagramRootElementSelectionPage(
 				Messages.SRMNewDiagramFileWizard_RootSelectionPageName);
-		diagramRootElementSelectionPage
-				.setTitle(Messages.SRMNewDiagramFileWizard_RootSelectionPageTitle);
-		diagramRootElementSelectionPage
-				.setDescription(Messages.SRMNewDiagramFileWizard_RootSelectionPageDescription);
+		diagramRootElementSelectionPage.setTitle(Messages.SRMNewDiagramFileWizard_RootSelectionPageTitle);
+		diagramRootElementSelectionPage.setDescription(Messages.SRMNewDiagramFileWizard_RootSelectionPageDescription);
 		diagramRootElementSelectionPage.setModelElement(diagramRoot);
 
 		myEditingDomain = editingDomain;
 	}
 
 	/**
-	 * @generated
-	 */
+	* @generated
+	*/
 	public void addPages() {
 		addPage(myFileCreationPage);
 		addPage(diagramRootElementSelectionPage);
 	}
 
 	/**
-	 * @generated
-	 */
+	* @generated
+	*/
 	public boolean performFinish() {
-		List affectedFiles = new LinkedList();
+		LinkedList<IFile> affectedFiles = new LinkedList<IFile>();
 		IFile diagramFile = myFileCreationPage.createNewFile();
 		SRMDiagramEditorUtil.setCharset(diagramFile);
 		affectedFiles.add(diagramFile);
-		URI diagramModelURI = URI.createPlatformResourceURI(diagramFile
-				.getFullPath().toString(), true);
+		URI diagramModelURI = URI.createPlatformResourceURI(diagramFile.getFullPath().toString(), true);
 		ResourceSet resourceSet = myEditingDomain.getResourceSet();
-		final Resource diagramResource = resourceSet
-				.createResource(diagramModelURI);
-		AbstractTransactionalCommand command = new AbstractTransactionalCommand(
-				myEditingDomain,
-				Messages.SRMNewDiagramFileWizard_InitDiagramCommand,
-				affectedFiles) {
+		final Resource diagramResource = resourceSet.createResource(diagramModelURI);
+		AbstractTransactionalCommand command = new AbstractTransactionalCommand(myEditingDomain,
+				Messages.SRMNewDiagramFileWizard_InitDiagramCommand, affectedFiles) {
 
-			protected CommandResult doExecuteWithResult(
-					IProgressMonitor monitor, IAdaptable info)
+			protected CommandResult doExecuteWithResult(IProgressMonitor monitor, IAdaptable info)
 					throws ExecutionException {
 				int diagramVID = SRMVisualIDRegistry
-						.getDiagramVisualID(diagramRootElementSelectionPage
-								.getModelElement());
+						.getDiagramVisualID(diagramRootElementSelectionPage.getModelElement());
 				if (diagramVID != SRMmodelEditPart.VISUAL_ID) {
-					return CommandResult
-							.newErrorCommandResult(Messages.SRMNewDiagramFileWizard_IncorrectRootError);
+					return CommandResult.newErrorCommandResult(Messages.SRMNewDiagramFileWizard_IncorrectRootError);
 				}
-				Diagram diagram = ViewService.createDiagram(
-						diagramRootElementSelectionPage.getModelElement(),
-						SRMmodelEditPart.MODEL_ID,
-						SRMDiagramEditorPlugin.DIAGRAM_PREFERENCES_HINT);
+				Diagram diagram = ViewService.createDiagram(diagramRootElementSelectionPage.getModelElement(),
+						SRMmodelEditPart.MODEL_ID, SRMDiagramEditorPlugin.DIAGRAM_PREFERENCES_HINT);
 				diagramResource.getContents().add(diagram);
 				return CommandResult.newOKCommandResult();
 			}
 		};
 		try {
-			OperationHistoryFactory.getOperationHistory().execute(command,
-					new NullProgressMonitor(), null);
+			OperationHistoryFactory.getOperationHistory().execute(command, new NullProgressMonitor(), null);
 			diagramResource.save(SRMDiagramEditorUtil.getSaveOptions());
 			SRMDiagramEditorUtil.openDiagram(diagramResource);
 		} catch (ExecutionException e) {
-			SRMDiagramEditorPlugin.getInstance().logError(
-					"Unable to create model and diagram", e); //$NON-NLS-1$
+			SRMDiagramEditorPlugin.getInstance().logError("Unable to create model and diagram", e); //$NON-NLS-1$
 		} catch (IOException ex) {
-			SRMDiagramEditorPlugin.getInstance().logError(
-					"Save operation failed for: " + diagramModelURI, ex); //$NON-NLS-1$
+			SRMDiagramEditorPlugin.getInstance().logError("Save operation failed for: " + diagramModelURI, ex); //$NON-NLS-1$
 		} catch (PartInitException ex) {
-			SRMDiagramEditorPlugin.getInstance().logError(
-					"Unable to open editor", ex); //$NON-NLS-1$
+			SRMDiagramEditorPlugin.getInstance().logError("Unable to open editor", ex); //$NON-NLS-1$
 		}
 		return true;
 	}
 
 	/**
-	 * @generated
-	 */
-	private static class DiagramRootElementSelectionPage extends
-			ModelElementSelectionPage {
+	* @generated
+	*/
+	private static class DiagramRootElementSelectionPage extends ModelElementSelectionPage {
 
 		/**
-		 * @generated
-		 */
+		* @generated
+		*/
 		protected DiagramRootElementSelectionPage(String pageName) {
 			super(pageName);
 		}
 
 		/**
-		 * @generated
-		 */
+		* @generated
+		*/
 		protected String getSelectionTitle() {
 			return Messages.SRMNewDiagramFileWizard_RootSelectionPageSelectionTitle;
 		}
 
 		/**
-		 * @generated
-		 */
+		* @generated
+		*/
 		protected boolean validatePage() {
-			if (selectedModelElement == null) {
+			if (getModelElement() == null) {
 				setErrorMessage(Messages.SRMNewDiagramFileWizard_RootSelectionPageNoSelectionMessage);
 				return false;
 			}
-			boolean result = ViewService.getInstance().provides(
-					new CreateDiagramViewOperation(new EObjectAdapter(
-							selectedModelElement), SRMmodelEditPart.MODEL_ID,
-							SRMDiagramEditorPlugin.DIAGRAM_PREFERENCES_HINT));
-			setErrorMessage(result ? null
-					: Messages.SRMNewDiagramFileWizard_RootSelectionPageInvalidSelectionMessage);
+			boolean result = ViewService.getInstance()
+					.provides(new CreateDiagramViewOperation(new EObjectAdapter(getModelElement()),
+							SRMmodelEditPart.MODEL_ID, SRMDiagramEditorPlugin.DIAGRAM_PREFERENCES_HINT));
+			setErrorMessage(result ? null : Messages.SRMNewDiagramFileWizard_RootSelectionPageInvalidSelectionMessage);
 			return result;
 		}
 	}

@@ -13,11 +13,11 @@ import org.eclipse.emf.ecore.EObject;
  *
  * <p>
  * The following features are supported:
+ * </p>
  * <ul>
  *   <li>{@link SUC.SUCmodel#getRoles <em>Roles</em>}</li>
  *   <li>{@link SUC.SUCmodel#getUsecases <em>Usecases</em>}</li>
  * </ul>
- * </p>
  *
  * @see SUC.SUCPackage#getSUCmodel()
  * @model

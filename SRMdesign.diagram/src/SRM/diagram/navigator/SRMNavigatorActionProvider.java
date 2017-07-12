@@ -1,11 +1,10 @@
 package SRM.diagram.navigator;
 
-import java.util.Iterator;
-
 import org.eclipse.core.runtime.IAdaptable;
 import org.eclipse.emf.common.ui.URIEditorInput;
 import org.eclipse.emf.common.util.URI;
 import org.eclipse.emf.ecore.EObject;
+import org.eclipse.emf.ecore.resource.Resource;
 import org.eclipse.emf.ecore.util.EcoreUtil;
 import org.eclipse.emf.workspace.util.WorkspaceSynchronizer;
 import org.eclipse.gmf.runtime.notation.Diagram;
@@ -35,18 +34,18 @@ import SRM.diagram.part.SRMVisualIDRegistry;
 public class SRMNavigatorActionProvider extends CommonActionProvider {
 
 	/**
-	 * @generated
-	 */
+	* @generated
+	*/
 	private boolean myContribute;
 
 	/**
-	 * @generated
-	 */
+	* @generated
+	*/
 	private OpenDiagramAction myOpenDiagramAction;
 
 	/**
-	 * @generated
-	 */
+	* @generated
+	*/
 	public void init(ICommonActionExtensionSite aSite) {
 		super.init(aSite);
 		if (aSite.getViewSite() instanceof ICommonViewerWorkbenchSite) {
@@ -58,75 +57,70 @@ public class SRMNavigatorActionProvider extends CommonActionProvider {
 	}
 
 	/**
-	 * @generated
-	 */
+	* @generated
+	*/
 	private void makeActions(ICommonViewerWorkbenchSite viewerSite) {
 		myOpenDiagramAction = new OpenDiagramAction(viewerSite);
 	}
 
 	/**
-	 * @generated
-	 */
+	* @generated
+	*/
 	public void fillActionBars(IActionBars actionBars) {
 		if (!myContribute) {
 			return;
 		}
-		IStructuredSelection selection = (IStructuredSelection) getContext()
-				.getSelection();
+		IStructuredSelection selection = (IStructuredSelection) getContext().getSelection();
 		myOpenDiagramAction.selectionChanged(selection);
 		if (myOpenDiagramAction.isEnabled()) {
-			actionBars.setGlobalActionHandler(ICommonActionConstants.OPEN,
-					myOpenDiagramAction);
+			actionBars.setGlobalActionHandler(ICommonActionConstants.OPEN, myOpenDiagramAction);
 		}
 	}
 
 	/**
-	 * @generated
-	 */
+	* @generated
+	*/
 	public void fillContextMenu(IMenuManager menu) {
 	}
 
 	/**
-	 * @generated
-	 */
-	private class OpenDiagramAction extends Action {
+	* @generated
+	*/
+	private static class OpenDiagramAction extends Action {
 
 		/**
-		 * @generated
-		 */
+		* @generated
+		*/
 		private Diagram myDiagram;
 
 		/**
-		 * @generated
-		 */
+		* @generated
+		*/
 		private ICommonViewerWorkbenchSite myViewerSite;
 
 		/**
-		 * @generated
-		 */
+		* @generated
+		*/
 		public OpenDiagramAction(ICommonViewerWorkbenchSite viewerSite) {
 			super(Messages.NavigatorActionProvider_OpenDiagramActionName);
 			myViewerSite = viewerSite;
 		}
 
 		/**
-		 * @generated
-		 */
+		* @generated
+		*/
 		public final void selectionChanged(IStructuredSelection selection) {
 			myDiagram = null;
 			if (selection.size() == 1) {
 				Object selectedElement = selection.getFirstElement();
 				if (selectedElement instanceof SRMNavigatorItem) {
-					selectedElement = ((SRMNavigatorItem) selectedElement)
-							.getView();
+					selectedElement = ((SRMNavigatorItem) selectedElement).getView();
 				} else if (selectedElement instanceof IAdaptable) {
-					selectedElement = ((IAdaptable) selectedElement)
-							.getAdapter(View.class);
+					selectedElement = ((IAdaptable) selectedElement).getAdapter(View.class);
 				}
 				if (selectedElement instanceof Diagram) {
 					Diagram diagram = (Diagram) selectedElement;
-					if (SRMmodelEditPart.MODEL_ID.equals(SRMVisualIDRegistry
-							.getModelID(diagram))) {
+					if (SRMmodelEditPart.MODEL_ID.equals(SRMVisualIDRegistry.getModelID(diagram))) {
 						myDiagram = diagram;
 					}
 				}
@@ -135,41 +129,37 @@ public class SRMNavigatorActionProvider extends CommonActionProvider {
 		}
 
 		/**
-		 * @generated
-		 */
+		* @generated
+		*/
 		public void run() {
 			if (myDiagram == null || myDiagram.eResource() == null) {
 				return;
 			}
 
-			IEditorInput editorInput = getEditorInput();
+			IEditorInput editorInput = getEditorInput(myDiagram);
 			IWorkbenchPage page = myViewerSite.getPage();
 			try {
 				page.openEditor(editorInput, SRMDiagramEditor.ID);
 			} catch (PartInitException e) {
-				SRMDiagramEditorPlugin.getInstance().logError(
-						"Exception while openning diagram", e); //$NON-NLS-1$
+				SRMDiagramEditorPlugin.getInstance().logError("Exception while openning diagram", e); //$NON-NLS-1$
 			}
 		}
 
 		/**
-		 * @generated
-		 */
-		private IEditorInput getEditorInput() {
-			for (Iterator it = myDiagram.eResource().getContents().iterator(); it
-					.hasNext();) {
-				EObject nextEObject = (EObject) it.next();
-				if (nextEObject == myDiagram) {
-					return new FileEditorInput(WorkspaceSynchronizer
-							.getFile(myDiagram.eResource()));
+		* @generated
+		*/
+		private static IEditorInput getEditorInput(Diagram diagram) {
+			Resource diagramResource = diagram.eResource();
+			for (EObject nextEObject : diagramResource.getContents()) {
+				if (nextEObject == diagram) {
+					return new FileEditorInput(WorkspaceSynchronizer.getFile(diagramResource));
 				}
 				if (nextEObject instanceof Diagram) {
 					break;
 				}
 			}
-			URI uri = EcoreUtil.getURI(myDiagram);
-			String editorName = uri.lastSegment()
-					+ "#" + myDiagram.eResource().getContents().indexOf(myDiagram); //$NON-NLS-1$
+			URI uri = EcoreUtil.getURI(diagram);
+			String editorName = uri.lastSegment() + '#' + diagram.eResource().getContents().indexOf(diagram);
 			IEditorInput editorInput = new URIEditorInput(uri, editorName);
 			return editorInput;
 		}

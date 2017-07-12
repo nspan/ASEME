@@ -2,15 +2,12 @@
 <?eclipse version="3.0"?>
 
 <!--
- <copyright>
- </copyright>
-
- $Id$
 -->
 
 <plugin>
 
    <extension point="org.eclipse.emf.edit.itemProviderAdapterFactories">
+      <!-- @generated AIP -->
       <factory
             uri="http://www.acml.tuc.gr/aseme/metamodels/AIP"
             class="AIP.provider.AIPItemProviderAdapterFactory"

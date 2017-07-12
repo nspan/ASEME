@@ -17,28 +17,27 @@ import SUC.diagram.edit.policies.SUCBaseItemSemanticEditPolicy;
 public class UseCaseIncludeCreateCommand extends EditElementCommand {
 
 	/**
-	 * @generated
-	 */
+	* @generated
+	*/
 	private final EObject source;
 
 	/**
-	 * @generated
-	 */
+	* @generated
+	*/
 	private final EObject target;
 
 	/**
-	 * @generated
-	 */
-	public UseCaseIncludeCreateCommand(CreateRelationshipRequest request,
-			EObject source, EObject target) {
+	* @generated
+	*/
+	public UseCaseIncludeCreateCommand(CreateRelationshipRequest request, EObject source, EObject target) {
 		super(request.getLabel(), null, request);
 		this.source = source;
 		this.target = target;
 	}
 
 	/**
-	 * @generated
-	 */
+	* @generated
+	*/
 	public boolean canExecute() {
 		if (source == null && target == null) {
 			return false;
@@ -53,18 +52,16 @@ public class UseCaseIncludeCreateCommand extends EditElementCommand {
 			return true; // link creation is in progress; source is not defined yet
 		}
 		// target may be null here but it's possible to check constraint
-		return SUCBaseItemSemanticEditPolicy.getLinkConstraints()
-				.canCreateUseCaseInclude_4003(getSource(), getTarget());
+		return SUCBaseItemSemanticEditPolicy.getLinkConstraints().canCreateUseCaseInclude_4001(getSource(),
+				getTarget());
 	}
 
 	/**
-	 * @generated
-	 */
-	protected CommandResult doExecuteWithResult(IProgressMonitor monitor,
-			IAdaptable info) throws ExecutionException {
+	* @generated
+	*/
+	protected CommandResult doExecuteWithResult(IProgressMonitor monitor, IAdaptable info) throws ExecutionException {
 		if (!canExecute()) {
-			throw new ExecutionException(
-					"Invalid arguments in create link command"); //$NON-NLS-1$
+			throw new ExecutionException("Invalid arguments in create link command"); //$NON-NLS-1$
 		}
 
 		if (getSource() != null && getTarget() != null) {
@@ -75,22 +72,22 @@ public class UseCaseIncludeCreateCommand extends EditElementCommand {
 	}
 
 	/**
-	 * @generated
-	 */
+	* @generated
+	*/
 	protected void setElementToEdit(EObject element) {
 		throw new UnsupportedOperationException();
 	}
 
 	/**
-	 * @generated
-	 */
+	* @generated
+	*/
 	protected UseCase getSource() {
 		return (UseCase) source;
 	}
 
 	/**
-	 * @generated
-	 */
+	* @generated
+	*/
 	protected UseCase getTarget() {
 		return (UseCase) target;
 	}

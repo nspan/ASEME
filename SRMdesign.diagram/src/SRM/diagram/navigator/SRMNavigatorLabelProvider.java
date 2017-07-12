@@ -18,13 +18,16 @@ import org.eclipse.ui.navigator.ICommonLabelProvider;
 
 import SRM.diagram.edit.parts.ActivityEditPart;
 import SRM.diagram.edit.parts.ActivityNameEditPart;
-import SRM.diagram.edit.parts.CapabilityActivitiesEditPart;
+import SRM.diagram.edit.parts.CapabilityCapability_activitiesEditPart;
 import SRM.diagram.edit.parts.CapabilityEditPart;
 import SRM.diagram.edit.parts.CapabilityNameEditPart;
-import SRM.diagram.edit.parts.RoleActivitiesEditPart;
+import SRM.diagram.edit.parts.FunctionalityActivitiesEditPart;
+import SRM.diagram.edit.parts.FunctionalityDescriptionEditPart;
+import SRM.diagram.edit.parts.FunctionalityEditPart;
 import SRM.diagram.edit.parts.RoleCapabilitiesEditPart;
 import SRM.diagram.edit.parts.RoleEditPart;
-import SRM.diagram.edit.parts.RoleLivenessEditPart;
+import SRM.diagram.edit.parts.RoleNameEditPart;
+import SRM.diagram.edit.parts.RoleRole_activitiesEditPart;
 import SRM.diagram.edit.parts.SRMmodelEditPart;
 import SRM.diagram.part.SRMDiagramEditorPlugin;
 import SRM.diagram.part.SRMVisualIDRegistry;
@@ -34,32 +37,24 @@ import SRM.diagram.providers.SRMParserProvider;
 /**
  * @generated
  */
-public class SRMNavigatorLabelProvider extends LabelProvider implements
-		ICommonLabelProvider, ITreePathLabelProvider {
+public class SRMNavigatorLabelProvider extends LabelProvider implements ICommonLabelProvider, ITreePathLabelProvider {
 
 	/**
-	 * @generated
-	 */
+	* @generated
+	*/
 	static {
-		SRMDiagramEditorPlugin
-				.getInstance()
-				.getImageRegistry()
-				.put(
-						"Navigator?UnknownElement", ImageDescriptor.getMissingImageDescriptor()); //$NON-NLS-1$
-		SRMDiagramEditorPlugin
-				.getInstance()
-				.getImageRegistry()
-				.put(
-						"Navigator?ImageNotFound", ImageDescriptor.getMissingImageDescriptor()); //$NON-NLS-1$
+		SRMDiagramEditorPlugin.getInstance().getImageRegistry().put("Navigator?UnknownElement", //$NON-NLS-1$
+				ImageDescriptor.getMissingImageDescriptor());
+		SRMDiagramEditorPlugin.getInstance().getImageRegistry().put("Navigator?ImageNotFound", //$NON-NLS-1$
+				ImageDescriptor.getMissingImageDescriptor());
 	}
 
 	/**
-	 * @generated
-	 */
+	* @generated
+	*/
 	public void updateLabel(ViewerLabel label, TreePath elementPath) {
 		Object element = elementPath.getLastSegment();
-		if (element instanceof SRMNavigatorItem
-				&& !isOwnView(((SRMNavigatorItem) element).getView())) {
+		if (element instanceof SRMNavigatorItem && !isOwnView(((SRMNavigatorItem) element).getView())) {
 			return;
 		}
 		label.setText(getText(element));
@@ -67,13 +62,12 @@ public class SRMNavigatorLabelProvider extends LabelProvider implements
 	}
 
 	/**
-	 * @generated
-	 */
+	* @generated
+	*/
 	public Image getImage(Object element) {
 		if (element instanceof SRMNavigatorGroup) {
 			SRMNavigatorGroup group = (SRMNavigatorGroup) element;
-			return SRMDiagramEditorPlugin.getInstance().getBundledImage(
-					group.getIcon());
+			return SRMDiagramEditorPlugin.getInstance().getBundledImage(group.getIcon());
 		}
 
 		if (element instanceof SRMNavigatorItem) {
@@ -88,44 +82,49 @@ public class SRMNavigatorLabelProvider extends LabelProvider implements
 	}
 
 	/**
-	 * @generated
-	 */
+	* @generated
+	*/
 	public Image getImage(View view) {
 		switch (SRMVisualIDRegistry.getVisualID(view)) {
 		case SRMmodelEditPart.VISUAL_ID:
-			return getImage(
-					"Navigator?Diagram?http://www.amcl.tuc.gr/aseme/metamodels/SRM?SRMmodel", SRMElementTypes.SRMmodel_1000); //$NON-NLS-1$
+			return getImage("Navigator?Diagram?http://www.amcl.tuc.gr/aseme/metamodels/SRM?SRMmodel", //$NON-NLS-1$
+					SRMElementTypes.SRMmodel_1000);
+		case FunctionalityEditPart.VISUAL_ID:
+			return getImage("Navigator?TopLevelNode?http://www.amcl.tuc.gr/aseme/metamodels/SRM?Functionality", //$NON-NLS-1$
+					SRMElementTypes.Functionality_2001);
 		case CapabilityEditPart.VISUAL_ID:
-			return getImage(
-					"Navigator?TopLevelNode?http://www.amcl.tuc.gr/aseme/metamodels/SRM?Capability", SRMElementTypes.Capability_2004); //$NON-NLS-1$
+			return getImage("Navigator?TopLevelNode?http://www.amcl.tuc.gr/aseme/metamodels/SRM?Capability", //$NON-NLS-1$
+					SRMElementTypes.Capability_2002);
 		case RoleEditPart.VISUAL_ID:
-			return getImage(
-					"Navigator?TopLevelNode?http://www.amcl.tuc.gr/aseme/metamodels/SRM?Role", SRMElementTypes.Role_2005); //$NON-NLS-1$
+			return getImage("Navigator?TopLevelNode?http://www.amcl.tuc.gr/aseme/metamodels/SRM?Role", //$NON-NLS-1$
+					SRMElementTypes.Role_2003);
 		case ActivityEditPart.VISUAL_ID:
+			return getImage("Navigator?TopLevelNode?http://www.amcl.tuc.gr/aseme/metamodels/SRM?Activity", //$NON-NLS-1$
+					SRMElementTypes.Activity_2004);
+		case RoleRole_activitiesEditPart.VISUAL_ID:
+			return getImage("Navigator?Link?http://www.amcl.tuc.gr/aseme/metamodels/SRM?Role?role_activities", //$NON-NLS-1$
+					SRMElementTypes.RoleRole_activities_4001);
+		case CapabilityCapability_activitiesEditPart.VISUAL_ID:
 			return getImage(
-					"Navigator?TopLevelNode?http://www.amcl.tuc.gr/aseme/metamodels/SRM?Activity", SRMElementTypes.Activity_2006); //$NON-NLS-1$
+					"Navigator?Link?http://www.amcl.tuc.gr/aseme/metamodels/SRM?Capability?capability_activities", //$NON-NLS-1$
+					SRMElementTypes.CapabilityCapability_activities_4002);
+		case FunctionalityActivitiesEditPart.VISUAL_ID:
+			return getImage("Navigator?Link?http://www.amcl.tuc.gr/aseme/metamodels/SRM?Functionality?activities", //$NON-NLS-1$
+					SRMElementTypes.FunctionalityActivities_4003);
 		case RoleCapabilitiesEditPart.VISUAL_ID:
-			return getImage(
-					"Navigator?Link?http://www.amcl.tuc.gr/aseme/metamodels/SRM?Role?capabilities", SRMElementTypes.RoleCapabilities_4004); //$NON-NLS-1$
-		case RoleActivitiesEditPart.VISUAL_ID:
-			return getImage(
-					"Navigator?Link?http://www.amcl.tuc.gr/aseme/metamodels/SRM?Role?activities", SRMElementTypes.RoleActivities_4005); //$NON-NLS-1$
-		case CapabilityActivitiesEditPart.VISUAL_ID:
-			return getImage(
-					"Navigator?Link?http://www.amcl.tuc.gr/aseme/metamodels/SRM?Capability?activities", SRMElementTypes.CapabilityActivities_4006); //$NON-NLS-1$
+			return getImage("Navigator?Link?http://www.amcl.tuc.gr/aseme/metamodels/SRM?Role?capabilities", //$NON-NLS-1$
+					SRMElementTypes.RoleCapabilities_4004);
 		}
 		return getImage("Navigator?UnknownElement", null); //$NON-NLS-1$
 	}
 
 	/**
-	 * @generated
-	 */
+	* @generated
+	*/
 	private Image getImage(String key, IElementType elementType) {
-		ImageRegistry imageRegistry = SRMDiagramEditorPlugin.getInstance()
-				.getImageRegistry();
+		ImageRegistry imageRegistry = SRMDiagramEditorPlugin.getInstance().getImageRegistry();
 		Image image = imageRegistry.get(key);
-		if (image == null && elementType != null
-				&& SRMElementTypes.isKnownElementType(elementType)) {
+		if (image == null && elementType != null && SRMElementTypes.isKnownElementType(elementType)) {
 			image = SRMElementTypes.getImage(elementType);
 			imageRegistry.put(key, image);
 		}
@@ -138,8 +137,8 @@ public class SRMNavigatorLabelProvider extends LabelProvider implements
 	}
 
 	/**
-	 * @generated
-	 */
+	* @generated
+	*/
 	public String getText(Object element) {
 		if (element instanceof SRMNavigatorGroup) {
 			SRMNavigatorGroup group = (SRMNavigatorGroup) element;
@@ -158,8 +157,8 @@ public class SRMNavigatorLabelProvider extends LabelProvider implements
 	}
 
 	/**
-	 * @generated
-	 */
+	* @generated
+	*/
 	public String getText(View view) {
 		if (view.getElement() != null && view.getElement().eIsProxy()) {
 			return getUnresolvedDomainElementProxyText(view);
@@ -167,151 +166,169 @@ public class SRMNavigatorLabelProvider extends LabelProvider implements
 		switch (SRMVisualIDRegistry.getVisualID(view)) {
 		case SRMmodelEditPart.VISUAL_ID:
 			return getSRMmodel_1000Text(view);
+		case FunctionalityEditPart.VISUAL_ID:
+			return getFunctionality_2001Text(view);
 		case CapabilityEditPart.VISUAL_ID:
-			return getCapability_2004Text(view);
+			return getCapability_2002Text(view);
 		case RoleEditPart.VISUAL_ID:
-			return getRole_2005Text(view);
+			return getRole_2003Text(view);
 		case ActivityEditPart.VISUAL_ID:
-			return getActivity_2006Text(view);
+			return getActivity_2004Text(view);
+		case RoleRole_activitiesEditPart.VISUAL_ID:
+			return getRoleRole_activities_4001Text(view);
+		case CapabilityCapability_activitiesEditPart.VISUAL_ID:
+			return getCapabilityCapability_activities_4002Text(view);
+		case FunctionalityActivitiesEditPart.VISUAL_ID:
+			return getFunctionalityActivities_4003Text(view);
 		case RoleCapabilitiesEditPart.VISUAL_ID:
 			return getRoleCapabilities_4004Text(view);
-		case RoleActivitiesEditPart.VISUAL_ID:
-			return getRoleActivities_4005Text(view);
-		case CapabilityActivitiesEditPart.VISUAL_ID:
-			return getCapabilityActivities_4006Text(view);
 		}
 		return getUnknownElementText(view);
 	}
 
 	/**
-	 * @generated
-	 */
+	* @generated
+	*/
 	private String getSRMmodel_1000Text(View view) {
 		return ""; //$NON-NLS-1$
 	}
 
 	/**
-	 * @generated
-	 */
-	private String getCapability_2004Text(View view) {
-		IParser parser = SRMParserProvider.getParser(
-				SRMElementTypes.Capability_2004,
+	* @generated
+	*/
+	private String getFunctionality_2001Text(View view) {
+		IParser parser = SRMParserProvider.getParser(SRMElementTypes.Functionality_2001,
+				view.getElement() != null ? view.getElement() : view,
+				SRMVisualIDRegistry.getType(FunctionalityDescriptionEditPart.VISUAL_ID));
+		if (parser != null) {
+			return parser.getPrintString(new EObjectAdapter(view.getElement() != null ? view.getElement() : view),
+					ParserOptions.NONE.intValue());
+		} else {
+			SRMDiagramEditorPlugin.getInstance().logError("Parser was not found for label " + 5001); //$NON-NLS-1$
+			return ""; //$NON-NLS-1$
+		}
+	}
+
+	/**
+	* @generated
+	*/
+	private String getCapability_2002Text(View view) {
+		IParser parser = SRMParserProvider.getParser(SRMElementTypes.Capability_2002,
 				view.getElement() != null ? view.getElement() : view,
 				SRMVisualIDRegistry.getType(CapabilityNameEditPart.VISUAL_ID));
 		if (parser != null) {
-			return parser.getPrintString(new EObjectAdapter(
-					view.getElement() != null ? view.getElement() : view),
+			return parser.getPrintString(new EObjectAdapter(view.getElement() != null ? view.getElement() : view),
 					ParserOptions.NONE.intValue());
 		} else {
-			SRMDiagramEditorPlugin.getInstance().logError(
-					"Parser was not found for label " + 5006); //$NON-NLS-1$
+			SRMDiagramEditorPlugin.getInstance().logError("Parser was not found for label " + 5002); //$NON-NLS-1$
 			return ""; //$NON-NLS-1$
 		}
 	}
 
 	/**
-	 * @generated
-	 */
-	private String getRole_2005Text(View view) {
-		IParser parser = SRMParserProvider.getParser(SRMElementTypes.Role_2005,
+	* @generated
+	*/
+	private String getRole_2003Text(View view) {
+		IParser parser = SRMParserProvider.getParser(SRMElementTypes.Role_2003,
 				view.getElement() != null ? view.getElement() : view,
-				SRMVisualIDRegistry.getType(RoleLivenessEditPart.VISUAL_ID));
+				SRMVisualIDRegistry.getType(RoleNameEditPart.VISUAL_ID));
 		if (parser != null) {
-			return parser.getPrintString(new EObjectAdapter(
-					view.getElement() != null ? view.getElement() : view),
+			return parser.getPrintString(new EObjectAdapter(view.getElement() != null ? view.getElement() : view),
 					ParserOptions.NONE.intValue());
 		} else {
-			SRMDiagramEditorPlugin.getInstance().logError(
-					"Parser was not found for label " + 5007); //$NON-NLS-1$
+			SRMDiagramEditorPlugin.getInstance().logError("Parser was not found for label " + 5003); //$NON-NLS-1$
 			return ""; //$NON-NLS-1$
 		}
 	}
 
 	/**
-	 * @generated
-	 */
-	private String getActivity_2006Text(View view) {
-		IParser parser = SRMParserProvider.getParser(
-				SRMElementTypes.Activity_2006, view.getElement() != null ? view
-						.getElement() : view, SRMVisualIDRegistry
-						.getType(ActivityNameEditPart.VISUAL_ID));
+	* @generated
+	*/
+	private String getActivity_2004Text(View view) {
+		IParser parser = SRMParserProvider.getParser(SRMElementTypes.Activity_2004,
+				view.getElement() != null ? view.getElement() : view,
+				SRMVisualIDRegistry.getType(ActivityNameEditPart.VISUAL_ID));
 		if (parser != null) {
-			return parser.getPrintString(new EObjectAdapter(
-					view.getElement() != null ? view.getElement() : view),
+			return parser.getPrintString(new EObjectAdapter(view.getElement() != null ? view.getElement() : view),
 					ParserOptions.NONE.intValue());
 		} else {
-			SRMDiagramEditorPlugin.getInstance().logError(
-					"Parser was not found for label " + 5009); //$NON-NLS-1$
+			SRMDiagramEditorPlugin.getInstance().logError("Parser was not found for label " + 5004); //$NON-NLS-1$
 			return ""; //$NON-NLS-1$
 		}
 	}
 
 	/**
-	 * @generated
-	 */
+	* @generated
+	*/
+	private String getRoleRole_activities_4001Text(View view) {
+		return ""; //$NON-NLS-1$
+	}
+
+	/**
+	* @generated
+	*/
+	private String getCapabilityCapability_activities_4002Text(View view) {
+		return ""; //$NON-NLS-1$
+	}
+
+	/**
+	* @generated
+	*/
+	private String getFunctionalityActivities_4003Text(View view) {
+		return ""; //$NON-NLS-1$
+	}
+
+	/**
+	* @generated
+	*/
 	private String getRoleCapabilities_4004Text(View view) {
 		return ""; //$NON-NLS-1$
 	}
 
 	/**
-	 * @generated
-	 */
-	private String getRoleActivities_4005Text(View view) {
-		return ""; //$NON-NLS-1$
-	}
-
-	/**
-	 * @generated
-	 */
-	private String getCapabilityActivities_4006Text(View view) {
-		return ""; //$NON-NLS-1$
-	}
-
-	/**
-	 * @generated
-	 */
+	* @generated
+	*/
 	private String getUnknownElementText(View view) {
 		return "<UnknownElement Visual_ID = " + view.getType() + ">"; //$NON-NLS-1$  //$NON-NLS-2$
 	}
 
 	/**
-	 * @generated
-	 */
+	* @generated
+	*/
 	private String getUnresolvedDomainElementProxyText(View view) {
 		return "<Unresolved domain element Visual_ID = " + view.getType() + ">"; //$NON-NLS-1$  //$NON-NLS-2$
 	}
 
 	/**
-	 * @generated
-	 */
+	* @generated
+	*/
 	public void init(ICommonContentExtensionSite aConfig) {
 	}
 
 	/**
-	 * @generated
-	 */
+	* @generated
+	*/
 	public void restoreState(IMemento aMemento) {
 	}
 
 	/**
-	 * @generated
-	 */
+	* @generated
+	*/
 	public void saveState(IMemento aMemento) {
 	}
 
 	/**
-	 * @generated
-	 */
+	* @generated
+	*/
 	public String getDescription(Object anElement) {
 		return null;
 	}
 
 	/**
-	 * @generated
-	 */
+	* @generated
+	*/
 	private boolean isOwnView(View view) {
-		return SRMmodelEditPart.MODEL_ID.equals(SRMVisualIDRegistry
-				.getModelID(view));
+		return SRMmodelEditPart.MODEL_ID.equals(SRMVisualIDRegistry.getModelID(view));
 	}
 
 }

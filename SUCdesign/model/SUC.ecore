@@ -22,9 +22,10 @@
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="type" eType="#//RoleType"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EEnum" name="RoleType">
-    <eLiterals name="System"/>
-    <eLiterals name="Legacy_System" value="1"/>
-    <eLiterals name="External_System" value="2"/>
-    <eLiterals name="Human" value="3"/>
+    <eLiterals name="Abstract" literal="Abstract"/>
+    <eLiterals name="System" value="1" literal="System"/>
+    <eLiterals name="Legacy_System" value="2" literal="Legacy_System"/>
+    <eLiterals name="External_System" value="3" literal="External_System"/>
+    <eLiterals name="Human" value="4" literal="Human"/>
   </eClassifiers>
 </ecore:EPackage>

@@ -18,28 +18,27 @@ import SRM.diagram.edit.policies.SRMBaseItemSemanticEditPolicy;
 public class RoleCapabilitiesCreateCommand extends EditElementCommand {
 
 	/**
-	 * @generated
-	 */
+	* @generated
+	*/
 	private final EObject source;
 
 	/**
-	 * @generated
-	 */
+	* @generated
+	*/
 	private final EObject target;
 
 	/**
-	 * @generated
-	 */
-	public RoleCapabilitiesCreateCommand(CreateRelationshipRequest request,
-			EObject source, EObject target) {
+	* @generated
+	*/
+	public RoleCapabilitiesCreateCommand(CreateRelationshipRequest request, EObject source, EObject target) {
 		super(request.getLabel(), null, request);
 		this.source = source;
 		this.target = target;
 	}
 
 	/**
-	 * @generated
-	 */
+	* @generated
+	*/
 	public boolean canExecute() {
 		if (source == null && target == null) {
 			return false;
@@ -54,18 +53,16 @@ public class RoleCapabilitiesCreateCommand extends EditElementCommand {
 			return true; // link creation is in progress; source is not defined yet
 		}
 		// target may be null here but it's possible to check constraint
-		return SRMBaseItemSemanticEditPolicy.LinkConstraints
-				.canCreateRoleCapabilities_4004(getSource(), getTarget());
+		return SRMBaseItemSemanticEditPolicy.getLinkConstraints().canCreateRoleCapabilities_4004(getSource(),
+				getTarget());
 	}
 
 	/**
-	 * @generated
-	 */
-	protected CommandResult doExecuteWithResult(IProgressMonitor monitor,
-			IAdaptable info) throws ExecutionException {
+	* @generated
+	*/
+	protected CommandResult doExecuteWithResult(IProgressMonitor monitor, IAdaptable info) throws ExecutionException {
 		if (!canExecute()) {
-			throw new ExecutionException(
-					"Invalid arguments in create link command"); //$NON-NLS-1$
+			throw new ExecutionException("Invalid arguments in create link command"); //$NON-NLS-1$
 		}
 
 		if (getSource() != null && getTarget() != null) {
@@ -76,22 +73,22 @@ public class RoleCapabilitiesCreateCommand extends EditElementCommand {
 	}
 
 	/**
-	 * @generated
-	 */
+	* @generated
+	*/
 	protected void setElementToEdit(EObject element) {
 		throw new UnsupportedOperationException();
 	}
 
 	/**
-	 * @generated
-	 */
+	* @generated
+	*/
 	protected Role getSource() {
 		return (Role) source;
 	}
 
 	/**
-	 * @generated
-	 */
+	* @generated
+	*/
 	protected Capability getTarget() {
 		return (Capability) target;
 	}

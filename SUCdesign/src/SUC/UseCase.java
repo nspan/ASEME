@@ -13,13 +13,13 @@ import org.eclipse.emf.ecore.EObject;
  *
  * <p>
  * The following features are supported:
+ * </p>
  * <ul>
  *   <li>{@link SUC.UseCase#getParticipant <em>Participant</em>}</li>
  *   <li>{@link SUC.UseCase#getInclude <em>Include</em>}</li>
  *   <li>{@link SUC.UseCase#getName <em>Name</em>}</li>
  *   <li>{@link SUC.UseCase#getSpecified_by <em>Specified by</em>}</li>
  * </ul>
- * </p>
  *
  * @see SUC.SUCPackage#getUseCase()
  * @model

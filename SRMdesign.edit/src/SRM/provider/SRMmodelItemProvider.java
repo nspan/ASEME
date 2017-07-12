@@ -1,8 +1,4 @@
 /**
- * <copyright>
- * </copyright>
- *
- * $Id$
  */
 package SRM.provider;
 
@@ -36,7 +32,7 @@ import org.eclipse.emf.edit.provider.ViewerNotification;
  * <!-- end-user-doc -->
  * @generated
  */
-public class SRMmodelItemProvider
+public class SRMmodelItemProvider 
 	extends ItemProviderAdapter
 	implements
 		IEditingDomainItemProvider,
@@ -84,6 +80,7 @@ public class SRMmodelItemProvider
 			childrenFeatures.add(SRMPackage.Literals.SR_MMODEL__ACTIVITIES);
 			childrenFeatures.add(SRMPackage.Literals.SR_MMODEL__CAPABILITIES);
 			childrenFeatures.add(SRMPackage.Literals.SR_MMODEL__ROLES);
+			childrenFeatures.add(SRMPackage.Literals.SR_MMODEL__FUNCTIONALITIES);
 		}
 		return childrenFeatures;
 	}
@@ -122,6 +119,7 @@ public class SRMmodelItemProvider
 	public String getText(Object object) {
 		return getString("_UI_SRMmodel_type");
 	}
+	
 
 	/**
 	 * This handles model notifications by calling {@link #updateChildren} to update any cached
@@ -138,6 +136,7 @@ public class SRMmodelItemProvider
 			case SRMPackage.SR_MMODEL__ACTIVITIES:
 			case SRMPackage.SR_MMODEL__CAPABILITIES:
 			case SRMPackage.SR_MMODEL__ROLES:
+			case SRMPackage.SR_MMODEL__FUNCTIONALITIES:
 				fireNotifyChanged(new ViewerNotification(notification, notification.getNotifier(), true, false));
 				return;
 		}
@@ -169,6 +168,11 @@ public class SRMmodelItemProvider
 			(createChildParameter
 				(SRMPackage.Literals.SR_MMODEL__ROLES,
 				 SRMFactory.eINSTANCE.createRole()));
+
+		newChildDescriptors.add
+			(createChildParameter
+				(SRMPackage.Literals.SR_MMODEL__FUNCTIONALITIES,
+				 SRMFactory.eINSTANCE.createFunctionality()));
 	}
 
 	/**

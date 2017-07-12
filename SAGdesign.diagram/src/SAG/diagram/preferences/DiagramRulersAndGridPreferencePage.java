@@ -10,10 +10,9 @@ import SAG.diagram.part.SAGDiagramEditorPlugin;
 public class DiagramRulersAndGridPreferencePage extends RulerGridPreferencePage {
 
 	/**
-	 * @generated
-	 */
+	* @generated
+	*/
 	public DiagramRulersAndGridPreferencePage() {
-		setPreferenceStore(SAGDiagramEditorPlugin.getInstance()
-				.getPreferenceStore());
+		setPreferenceStore(SAGDiagramEditorPlugin.getInstance().getPreferenceStore());
 	}
 }

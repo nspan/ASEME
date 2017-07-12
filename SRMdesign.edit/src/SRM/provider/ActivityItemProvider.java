@@ -1,8 +1,4 @@
 /**
- * <copyright>
- * </copyright>
- *
- * $Id$
  */
 package SRM.provider;
 
@@ -35,7 +31,7 @@ import org.eclipse.emf.edit.provider.ViewerNotification;
  * <!-- end-user-doc -->
  * @generated
  */
-public class ActivityItemProvider
+public class ActivityItemProvider 
 	extends ItemProviderAdapter
 	implements
 		IEditingDomainItemProvider,
@@ -108,8 +104,8 @@ public class ActivityItemProvider
 				 SRMPackage.Literals.ACTIVITY__FUNCTIONALITY,
 				 true,
 				 false,
-				 false,
-				 ItemPropertyDescriptor.GENERIC_VALUE_IMAGE,
+				 true,
+				 null,
 				 null,
 				 null));
 	}
@@ -138,6 +134,7 @@ public class ActivityItemProvider
 			getString("_UI_Activity_type") :
 			getString("_UI_Activity_type") + " " + label;
 	}
+	
 
 	/**
 	 * This handles model notifications by calling {@link #updateChildren} to update any cached
@@ -152,7 +149,6 @@ public class ActivityItemProvider
 
 		switch (notification.getFeatureID(Activity.class)) {
 			case SRMPackage.ACTIVITY__NAME:
-			case SRMPackage.ACTIVITY__FUNCTIONALITY:
 				fireNotifyChanged(new ViewerNotification(notification, notification.getNotifier(), false, true));
 				return;
 		}

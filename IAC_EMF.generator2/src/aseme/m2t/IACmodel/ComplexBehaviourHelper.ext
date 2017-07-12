@@ -1,48 +1,48 @@
-import IAC;
+import statechart;
 
    
 String addVariables( Node e , Model m) :
-   JAVA aseme.m2t.IACmodel.ComplexBehaviourHelper.addVariables(IAC.Node, IAC.Model);
+   JAVA aseme.m2t.IACmodel.ComplexBehaviourHelper.addVariables(statechart.Node, statechart.Model);
 
 String getParams( Node e , Model m) :
-   JAVA aseme.m2t.IACmodel.ComplexBehaviourHelper.getParams(IAC.Node, IAC.Model);
+   JAVA aseme.m2t.IACmodel.ComplexBehaviourHelper.getParams(statechart.Node, statechart.Model);
 
 String getCyclicBehaviour( Node e , Model m) :
-   JAVA aseme.m2t.IACmodel.ComplexBehaviourHelper.getCyclicBehaviour(IAC.Node, IAC.Model);
+   JAVA aseme.m2t.IACmodel.ComplexBehaviourHelper.getCyclicBehaviour(statechart.Node, statechart.Model);
 
 String getAgentBehaviour( Node e , Model m) :
-   JAVA aseme.m2t.IACmodel.ComplexBehaviourHelper.getAgentBehaviour(IAC.Node, IAC.Model);
+   JAVA aseme.m2t.IACmodel.ComplexBehaviourHelper.getAgentBehaviour(statechart.Node, statechart.Model);
 
 String getTransitionToSelfConditionOfChild( Node e , Model m) :
-   JAVA aseme.m2t.IACmodel.ComplexBehaviourHelper.getTransitionToSelfConditionOfChild(IAC.Node, IAC.Model);
+   JAVA aseme.m2t.IACmodel.ComplexBehaviourHelper.getTransitionToSelfConditionOfChild(statechart.Node, statechart.Model);
 
 String addAction( Node e , Model m) :
-   JAVA aseme.m2t.IACmodel.ComplexBehaviourHelper.addAction(IAC.Node, IAC.Model);
+   JAVA aseme.m2t.IACmodel.ComplexBehaviourHelper.addAction(statechart.Node, statechart.Model);
 
 String addMessageTemplateVariable( Node e ) :
-   JAVA aseme.m2t.IACmodel.ComplexBehaviourHelper.addMessageTemplateVariable(IAC.Node);
+   JAVA aseme.m2t.IACmodel.ComplexBehaviourHelper.addMessageTemplateVariable(statechart.Node);
 
 String importMessageClasses( Node e ) :
-   JAVA aseme.m2t.IACmodel.ComplexBehaviourHelper.importMessageClasses(IAC.Node);
+   JAVA aseme.m2t.IACmodel.ComplexBehaviourHelper.importMessageClasses(statechart.Node);
 
 String getTransitionToChildOf( Node e , Model m) :
-   JAVA aseme.m2t.IACmodel.ComplexBehaviourHelper.getTransitionToChildOf(IAC.Node, IAC.Model);
+   JAVA aseme.m2t.IACmodel.ComplexBehaviourHelper.getTransitionToChildOf(statechart.Node, statechart.Model);
 
 String instantiateParams( Node e , Model m) :
-   JAVA aseme.m2t.IACmodel.ComplexBehaviourHelper.instantiateParams(IAC.Node, IAC.Model);
+   JAVA aseme.m2t.IACmodel.ComplexBehaviourHelper.instantiateParams(statechart.Node, statechart.Model);
 
 String addParallelBehaviours( Node e , Model m) :
-   JAVA aseme.m2t.IACmodel.ComplexBehaviourHelper.addParallelBehaviours(IAC.Node, IAC.Model);
+   JAVA aseme.m2t.IACmodel.ComplexBehaviourHelper.addParallelBehaviours(statechart.Node, statechart.Model);
    
 String addSubBehaviours( Node e , Model m) :
-   JAVA aseme.m2t.IACmodel.ComplexBehaviourHelper.addSubBehaviours(IAC.Node, IAC.Model);
+   JAVA aseme.m2t.IACmodel.ComplexBehaviourHelper.addSubBehaviours(statechart.Node, statechart.Model);
    
 String addConditionalSubBehaviour( Node e , Model m) :
-   JAVA aseme.m2t.IACmodel.ComplexBehaviourHelper.addConditionalSubBehaviour(IAC.Node, IAC.Model);
+   JAVA aseme.m2t.IACmodel.ComplexBehaviourHelper.addConditionalSubBehaviour(statechart.Node, statechart.Model);
    
-List subBehavioursOf( Node e , Model m) :
-   JAVA aseme.m2t.IACmodel.ComplexBehaviourHelper.subBehavioursOf(IAC.Node, IAC.Model);
+List[statechart::Node] subBehavioursOf( Node e , Model m) :
+   JAVA aseme.m2t.IACmodel.ComplexBehaviourHelper.subBehavioursOf(statechart.Node, statechart.Model);
 
 String determineBehaviourType( Node e , Model m) :
-   JAVA aseme.m2t.IACmodel.ComplexBehaviourHelper.determineBehaviourType(IAC.Node, IAC.Model);
+   JAVA aseme.m2t.IACmodel.ComplexBehaviourHelper.determineBehaviourType(statechart.Node, statechart.Model);
    

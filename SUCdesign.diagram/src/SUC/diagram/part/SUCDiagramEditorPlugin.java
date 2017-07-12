@@ -29,67 +29,65 @@ import SUC.provider.SUCItemProviderAdapterFactory;
 public class SUCDiagramEditorPlugin extends AbstractUIPlugin {
 
 	/**
-	 * @generated
-	 */
+	* @generated
+	*/
 	public static final String ID = "SUCdesign.diagram"; //$NON-NLS-1$
 
 	/**
-	 * @generated
-	 */
+	* @generated
+	*/
 	private LogHelper myLogHelper;
 
 	/**
-	 * @generated
-	 */
-	public static final PreferencesHint DIAGRAM_PREFERENCES_HINT = new PreferencesHint(
-			ID);
+	* @generated
+	*/
+	public static final PreferencesHint DIAGRAM_PREFERENCES_HINT = new PreferencesHint(ID);
 
 	/**
-	 * @generated
-	 */
+	* @generated
+	*/
 	private static SUCDiagramEditorPlugin instance;
 
 	/**
-	 * @generated
-	 */
+	* @generated
+	*/
 	private ComposedAdapterFactory adapterFactory;
 
 	/**
-	 * @generated
-	 */
+	* @generated
+	*/
 	private SUCDocumentProvider documentProvider;
 
 	/**
-	 * @generated
-	 */
+	* @generated
+	*/
 	private SUCBaseItemSemanticEditPolicy.LinkConstraints linkConstraints;
 
 	/**
-	 * @generated
-	 */
+	* @generated
+	*/
 	private ElementInitializers initializers;
 
 	/**
-	 * @generated
-	 */
+	* @generated
+	*/
 	public SUCDiagramEditorPlugin() {
 	}
 
 	/**
-	 * @generated
-	 */
+	* @generated
+	*/
 	public void start(BundleContext context) throws Exception {
 		super.start(context);
 		instance = this;
 		myLogHelper = new LogHelper(this);
-		PreferencesHint.registerPreferenceStore(DIAGRAM_PREFERENCES_HINT,
-				getPreferenceStore());
+		PreferencesHint.registerPreferenceStore(DIAGRAM_PREFERENCES_HINT, getPreferenceStore());
 		adapterFactory = createAdapterFactory();
 	}
 
 	/**
-	 * @generated
-	 */
+	* @generated
+	*/
 	public void stop(BundleContext context) throws Exception {
 		adapterFactory.dispose();
 		adapterFactory = null;
@@ -100,15 +98,15 @@ public class SUCDiagramEditorPlugin extends AbstractUIPlugin {
 	}
 
 	/**
-	 * @generated
-	 */
+	* @generated
+	*/
 	public static SUCDiagramEditorPlugin getInstance() {
 		return instance;
 	}
 
 	/**
-	 * @generated
-	 */
+	* @generated
+	*/
 	protected ComposedAdapterFactory createAdapterFactory() {
 		ArrayList<AdapterFactory> factories = new ArrayList<AdapterFactory>();
 		fillItemProviderFactories(factories);
@@ -116,8 +114,8 @@ public class SUCDiagramEditorPlugin extends AbstractUIPlugin {
 	}
 
 	/**
-	 * @generated
-	 */
+	* @generated
+	*/
 	protected void fillItemProviderFactories(List<AdapterFactory> factories) {
 		factories.add(new SUCItemProviderAdapterFactory());
 		factories.add(new ResourceItemProviderAdapterFactory());
@@ -125,21 +123,19 @@ public class SUCDiagramEditorPlugin extends AbstractUIPlugin {
 	}
 
 	/**
-	 * @generated
-	 */
+	* @generated
+	*/
 	public AdapterFactory getItemProvidersAdapterFactory() {
 		return adapterFactory;
 	}
 
 	/**
-	 * @generated
-	 */
+	* @generated
+	*/
 	public ImageDescriptor getItemImageDescriptor(Object item) {
-		IItemLabelProvider labelProvider = (IItemLabelProvider) adapterFactory
-				.adapt(item, IItemLabelProvider.class);
+		IItemLabelProvider labelProvider = (IItemLabelProvider) adapterFactory.adapt(item, IItemLabelProvider.class);
 		if (labelProvider != null) {
-			return ExtendedImageRegistry.getInstance().getImageDescriptor(
-					labelProvider.getImage(item));
+			return ExtendedImageRegistry.getInstance().getImageDescriptor(labelProvider.getImage(item));
 		}
 		return null;
 	}
@@ -168,8 +164,8 @@ public class SUCDiagramEditorPlugin extends AbstractUIPlugin {
 	public static ImageDescriptor findImageDescriptor(String path) {
 		final IPath p = new Path(path);
 		if (p.isAbsolute() && p.segmentCount() > 1) {
-			return AbstractUIPlugin.imageDescriptorFromPlugin(p.segment(0), p
-					.removeFirstSegments(1).makeAbsolute().toString());
+			return AbstractUIPlugin.imageDescriptorFromPlugin(p.segment(0),
+					p.removeFirstSegments(1).makeAbsolute().toString());
 		} else {
 			return getBundledImageDescriptor(p.makeAbsolute().toString());
 		}
@@ -202,8 +198,8 @@ public class SUCDiagramEditorPlugin extends AbstractUIPlugin {
 	}
 
 	/**
-	 * @generated
-	 */
+	* @generated
+	*/
 	public SUCDocumentProvider getDocumentProvider() {
 		if (documentProvider == null) {
 			documentProvider = new SUCDocumentProvider();
@@ -212,65 +208,64 @@ public class SUCDiagramEditorPlugin extends AbstractUIPlugin {
 	}
 
 	/**
-	 * @generated
-	 */
+	* @generated
+	*/
 	public SUCBaseItemSemanticEditPolicy.LinkConstraints getLinkConstraints() {
 		return linkConstraints;
 	}
 
 	/**
-	 * @generated
-	 */
-	public void setLinkConstraints(
-			SUCBaseItemSemanticEditPolicy.LinkConstraints lc) {
+	* @generated
+	*/
+	public void setLinkConstraints(SUCBaseItemSemanticEditPolicy.LinkConstraints lc) {
 		this.linkConstraints = lc;
 	}
 
 	/**
-	 * @generated
-	 */
+	* @generated
+	*/
 	public ElementInitializers getElementInitializers() {
 		return initializers;
 	}
 
 	/**
-	 * @generated
-	 */
+	* @generated
+	*/
 	public void setElementInitializers(ElementInitializers i) {
 		this.initializers = i;
 	}
 
 	/**
-	 * @generated
-	 */
+	* @generated
+	*/
 	public void logError(String error) {
 		getLogHelper().logError(error, null);
 	}
 
 	/**
-	 * @generated
-	 */
+	* @generated
+	*/
 	public void logError(String error, Throwable throwable) {
 		getLogHelper().logError(error, throwable);
 	}
 
 	/**
-	 * @generated
-	 */
+	* @generated
+	*/
 	public void logInfo(String message) {
 		getLogHelper().logInfo(message, null);
 	}
 
 	/**
-	 * @generated
-	 */
+	* @generated
+	*/
 	public void logInfo(String message, Throwable throwable) {
 		getLogHelper().logInfo(message, throwable);
 	}
 
 	/**
-	 * @generated
-	 */
+	* @generated
+	*/
 	public LogHelper getLogHelper() {
 		return myLogHelper;
 	}

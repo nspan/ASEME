@@ -2,15 +2,12 @@
 <?eclipse version="3.0"?>
 
 <!--
- <copyright>
- </copyright>
-
- $Id$
 -->
 
 <plugin>
 
    <extension point="org.eclipse.emf.edit.itemProviderAdapterFactories">
+      <!-- @generated SRM -->
       <factory
             uri="http://www.amcl.tuc.gr/aseme/metamodels/SRM"
             class="SRM.provider.SRMItemProviderAdapterFactory"

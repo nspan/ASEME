@@ -1,8 +1,4 @@
 /**
- * <copyright>
- * </copyright>
- *
- * $Id$
  */
 package SRM.impl;
 
@@ -31,7 +27,7 @@ public class SRMFactoryImpl extends EFactoryImpl implements SRMFactory {
 	 */
 	public static SRMFactory init() {
 		try {
-			SRMFactory theSRMFactory = (SRMFactory)EPackage.Registry.INSTANCE.getEFactory("http://www.amcl.tuc.gr/aseme/metamodels/SRM"); 
+			SRMFactory theSRMFactory = (SRMFactory)EPackage.Registry.INSTANCE.getEFactory(SRMPackage.eNS_URI);
 			if (theSRMFactory != null) {
 				return theSRMFactory;
 			}
@@ -64,6 +60,7 @@ public class SRMFactoryImpl extends EFactoryImpl implements SRMFactory {
 			case SRMPackage.ROLE: return createRole();
 			case SRMPackage.ACTIVITY: return createActivity();
 			case SRMPackage.CAPABILITY: return createCapability();
+			case SRMPackage.FUNCTIONALITY: return createFunctionality();
 			default:
 				throw new IllegalArgumentException("The class '" + eClass.getName() + "' is not a valid classifier");
 		}
@@ -107,6 +104,16 @@ public class SRMFactoryImpl extends EFactoryImpl implements SRMFactory {
 	public Capability createCapability() {
 		CapabilityImpl capability = new CapabilityImpl();
 		return capability;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public Functionality createFunctionality() {
+		FunctionalityImpl functionality = new FunctionalityImpl();
+		return functionality;
 	}
 
 	/**

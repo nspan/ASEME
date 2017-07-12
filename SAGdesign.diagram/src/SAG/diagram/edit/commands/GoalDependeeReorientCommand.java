@@ -19,30 +19,29 @@ import SAG.diagram.edit.policies.SAGBaseItemSemanticEditPolicy;
 public class GoalDependeeReorientCommand extends EditElementCommand {
 
 	/**
-	 * @generated
-	 */
+	* @generated
+	*/
 	private final int reorientDirection;
 
 	/**
-	 * @generated
-	 */
+	* @generated
+	*/
 	private final EObject referenceOwner;
 
 	/**
-	 * @generated
-	 */
+	* @generated
+	*/
 	private final EObject oldEnd;
 
 	/**
-	 * @generated
-	 */
+	* @generated
+	*/
 	private final EObject newEnd;
 
 	/**
-	 * @generated
-	 */
-	public GoalDependeeReorientCommand(
-			ReorientReferenceRelationshipRequest request) {
+	* @generated
+	*/
+	public GoalDependeeReorientCommand(ReorientReferenceRelationshipRequest request) {
 		super(request.getLabel(), null, request);
 		reorientDirection = request.getDirection();
 		referenceOwner = request.getReferenceOwner();
@@ -51,8 +50,8 @@ public class GoalDependeeReorientCommand extends EditElementCommand {
 	}
 
 	/**
-	 * @generated
-	 */
+	* @generated
+	*/
 	public boolean canExecute() {
 		if (false == referenceOwner instanceof Goal) {
 			return false;
@@ -67,35 +66,33 @@ public class GoalDependeeReorientCommand extends EditElementCommand {
 	}
 
 	/**
-	 * @generated
-	 */
+	* @generated
+	*/
 	protected boolean canReorientSource() {
 		if (!(oldEnd instanceof Actor && newEnd instanceof Goal)) {
 			return false;
 		}
-		return SAGBaseItemSemanticEditPolicy.getLinkConstraints()
-				.canExistGoalDependee_4013(getNewSource(), getOldTarget());
+		return SAGBaseItemSemanticEditPolicy.getLinkConstraints().canExistGoalDependee_4002(getNewSource(),
+				getOldTarget());
 	}
 
 	/**
-	 * @generated
-	 */
+	* @generated
+	*/
 	protected boolean canReorientTarget() {
 		if (!(oldEnd instanceof Actor && newEnd instanceof Actor)) {
 			return false;
 		}
-		return SAGBaseItemSemanticEditPolicy.getLinkConstraints()
-				.canExistGoalDependee_4013(getOldSource(), getNewTarget());
+		return SAGBaseItemSemanticEditPolicy.getLinkConstraints().canExistGoalDependee_4002(getOldSource(),
+				getNewTarget());
 	}
 
 	/**
-	 * @generated
-	 */
-	protected CommandResult doExecuteWithResult(IProgressMonitor monitor,
-			IAdaptable info) throws ExecutionException {
+	* @generated
+	*/
+	protected CommandResult doExecuteWithResult(IProgressMonitor monitor, IAdaptable info) throws ExecutionException {
 		if (!canExecute()) {
-			throw new ExecutionException(
-					"Invalid arguments in reorient link command"); //$NON-NLS-1$
+			throw new ExecutionException("Invalid arguments in reorient link command"); //$NON-NLS-1$
 		}
 		if (reorientDirection == ReorientRelationshipRequest.REORIENT_SOURCE) {
 			return reorientSource();
@@ -107,8 +104,8 @@ public class GoalDependeeReorientCommand extends EditElementCommand {
 	}
 
 	/**
-	 * @generated
-	 */
+	* @generated
+	*/
 	protected CommandResult reorientSource() throws ExecutionException {
 		getOldSource().getDependee().remove(getOldTarget());
 		getNewSource().getDependee().add(getOldTarget());
@@ -116,8 +113,8 @@ public class GoalDependeeReorientCommand extends EditElementCommand {
 	}
 
 	/**
-	 * @generated
-	 */
+	* @generated
+	*/
 	protected CommandResult reorientTarget() throws ExecutionException {
 		getOldSource().getDependee().remove(getOldTarget());
 		getOldSource().getDependee().add(getNewTarget());
@@ -125,29 +122,29 @@ public class GoalDependeeReorientCommand extends EditElementCommand {
 	}
 
 	/**
-	 * @generated
-	 */
+	* @generated
+	*/
 	protected Goal getOldSource() {
 		return (Goal) referenceOwner;
 	}
 
 	/**
-	 * @generated
-	 */
+	* @generated
+	*/
 	protected Goal getNewSource() {
 		return (Goal) newEnd;
 	}
 
 	/**
-	 * @generated
-	 */
+	* @generated
+	*/
 	protected Actor getOldTarget() {
 		return (Actor) oldEnd;
 	}
 
 	/**
-	 * @generated
-	 */
+	* @generated
+	*/
 	protected Actor getNewTarget() {
 		return (Actor) newEnd;
 	}

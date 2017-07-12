@@ -1,8 +1,4 @@
 /**
- * <copyright>
- * </copyright>
- *
- * $Id$
  */
 package SRM.provider;
 
@@ -35,7 +31,7 @@ import org.eclipse.emf.edit.provider.ViewerNotification;
  * <!-- end-user-doc -->
  * @generated
  */
-public class CapabilityItemProvider
+public class CapabilityItemProvider 
 	extends ItemProviderAdapter
 	implements
 		IEditingDomainItemProvider,
@@ -65,7 +61,8 @@ public class CapabilityItemProvider
 			super.getPropertyDescriptors(object);
 
 			addNamePropertyDescriptor(object);
-			addActivitiesPropertyDescriptor(object);
+			addCapability_activitiesPropertyDescriptor(object);
+			addDescriptionPropertyDescriptor(object);
 		}
 		return itemPropertyDescriptors;
 	}
@@ -93,23 +90,45 @@ public class CapabilityItemProvider
 	}
 
 	/**
-	 * This adds a property descriptor for the Activities feature.
+	 * This adds a property descriptor for the Capability activities feature.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	protected void addActivitiesPropertyDescriptor(Object object) {
+	protected void addCapability_activitiesPropertyDescriptor(Object object) {
 		itemPropertyDescriptors.add
 			(createItemPropertyDescriptor
 				(((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
 				 getResourceLocator(),
-				 getString("_UI_Capability_activities_feature"),
-				 getString("_UI_PropertyDescriptor_description", "_UI_Capability_activities_feature", "_UI_Capability_type"),
-				 SRMPackage.Literals.CAPABILITY__ACTIVITIES,
+				 getString("_UI_Capability_capability_activities_feature"),
+				 getString("_UI_PropertyDescriptor_description", "_UI_Capability_capability_activities_feature", "_UI_Capability_type"),
+				 SRMPackage.Literals.CAPABILITY__CAPABILITY_ACTIVITIES,
 				 true,
 				 false,
 				 true,
 				 null,
+				 null,
+				 null));
+	}
+
+	/**
+	 * This adds a property descriptor for the Description feature.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	protected void addDescriptionPropertyDescriptor(Object object) {
+		itemPropertyDescriptors.add
+			(createItemPropertyDescriptor
+				(((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
+				 getResourceLocator(),
+				 getString("_UI_Capability_description_feature"),
+				 getString("_UI_PropertyDescriptor_description", "_UI_Capability_description_feature", "_UI_Capability_type"),
+				 SRMPackage.Literals.CAPABILITY__DESCRIPTION,
+				 true,
+				 false,
+				 false,
+				 ItemPropertyDescriptor.GENERIC_VALUE_IMAGE,
 				 null,
 				 null));
 	}
@@ -138,6 +157,7 @@ public class CapabilityItemProvider
 			getString("_UI_Capability_type") :
 			getString("_UI_Capability_type") + " " + label;
 	}
+	
 
 	/**
 	 * This handles model notifications by calling {@link #updateChildren} to update any cached
@@ -152,6 +172,7 @@ public class CapabilityItemProvider
 
 		switch (notification.getFeatureID(Capability.class)) {
 			case SRMPackage.CAPABILITY__NAME:
+			case SRMPackage.CAPABILITY__DESCRIPTION:
 				fireNotifyChanged(new ViewerNotification(notification, notification.getNotifier(), false, true));
 				return;
 		}

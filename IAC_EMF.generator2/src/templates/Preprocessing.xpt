@@ -1,8 +1,8 @@
-«IMPORT IAC»
+«IMPORT statechart»
 «EXTENSION aseme::m2t::IACmodel::packageHelper»
 
-«DEFINE pathProperty FOR IAC::Model»
-   «FILE "src/path.properties"»
+«DEFINE pathProperty FOR statechart::Model»
+   «FILE "src/"»
 path=«packagePath()»
    «ENDFILE»
 «ENDDEFINE»

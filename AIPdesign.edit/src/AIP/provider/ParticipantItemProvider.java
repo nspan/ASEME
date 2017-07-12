@@ -1,8 +1,4 @@
 /**
- * <copyright>
- * </copyright>
- *
- * $Id$
  */
 package AIP.provider;
 
@@ -35,7 +31,7 @@ import org.eclipse.emf.edit.provider.ViewerNotification;
  * <!-- end-user-doc -->
  * @generated
  */
-public class ParticipantItemProvider
+public class ParticipantItemProvider 
 	extends ItemProviderAdapter
 	implements
 		IEditingDomainItemProvider,
@@ -109,7 +105,7 @@ public class ParticipantItemProvider
 				 getString("_UI_PropertyDescriptor_description", "_UI_Participant_engaging_rules_feature", "_UI_Participant_type"),
 				 AIPPackage.Literals.PARTICIPANT__ENGAGING_RULES,
 				 true,
-				 false,
+				 true,
 				 false,
 				 ItemPropertyDescriptor.GENERIC_VALUE_IMAGE,
 				 null,
@@ -131,7 +127,7 @@ public class ParticipantItemProvider
 				 getString("_UI_PropertyDescriptor_description", "_UI_Participant_outcomes_feature", "_UI_Participant_type"),
 				 AIPPackage.Literals.PARTICIPANT__OUTCOMES,
 				 true,
-				 false,
+				 true,
 				 false,
 				 ItemPropertyDescriptor.GENERIC_VALUE_IMAGE,
 				 null,
@@ -184,6 +180,7 @@ public class ParticipantItemProvider
 			getString("_UI_Participant_type") :
 			getString("_UI_Participant_type") + " " + label;
 	}
+	
 
 	/**
 	 * This handles model notifications by calling {@link #updateChildren} to update any cached

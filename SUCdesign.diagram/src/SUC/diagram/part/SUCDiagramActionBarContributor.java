@@ -12,27 +12,26 @@ import org.eclipse.ui.IWorkbenchPage;
 public class SUCDiagramActionBarContributor extends DiagramActionBarContributor {
 
 	/**
-	 * @generated
-	 */
+	* @generated
+	*/
 	protected Class getEditorClass() {
 		return SUCDiagramEditor.class;
 	}
 
 	/**
-	 * @generated
-	 */
+	* @generated
+	*/
 	protected String getEditorId() {
 		return SUCDiagramEditor.ID;
 	}
 
 	/**
-	 * @generated
-	 */
+	* @generated
+	*/
 	public void init(IActionBars bars, IWorkbenchPage page) {
 		super.init(bars, page);
 		// print preview
-		IMenuManager fileMenu = bars.getMenuManager().findMenuUsingPath(
-				IWorkbenchActionConstants.M_FILE);
+		IMenuManager fileMenu = bars.getMenuManager().findMenuUsingPath(IWorkbenchActionConstants.M_FILE);
 		assert fileMenu != null;
 		fileMenu.remove("pageSetupAction"); //$NON-NLS-1$
 	}

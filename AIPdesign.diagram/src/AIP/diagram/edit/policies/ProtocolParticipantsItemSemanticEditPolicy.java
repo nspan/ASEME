@@ -9,19 +9,18 @@ import AIP.diagram.providers.AIPElementTypes;
 /**
  * @generated
  */
-public class ProtocolParticipantsItemSemanticEditPolicy extends
-		AIPBaseItemSemanticEditPolicy {
+public class ProtocolParticipantsItemSemanticEditPolicy extends AIPBaseItemSemanticEditPolicy {
 
 	/**
-	 * @generated
-	 */
+	* @generated
+	*/
 	public ProtocolParticipantsItemSemanticEditPolicy() {
-		super(AIPElementTypes.ProtocolParticipants_4002);
+		super(AIPElementTypes.ProtocolParticipants_4001);
 	}
 
 	/**
-	 * @generated
-	 */
+	* @generated
+	*/
 	protected Command getDestroyReferenceCommand(DestroyReferenceRequest req) {
 		return getGEFWrapper(new DestroyReferenceCommand(req));
 	}

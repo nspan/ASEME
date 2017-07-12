@@ -10,10 +10,9 @@ import AIP.diagram.part.AIPDiagramEditorPlugin;
 public class DiagramAppearancePreferencePage extends AppearancePreferencePage {
 
 	/**
-	 * @generated
-	 */
+	* @generated
+	*/
 	public DiagramAppearancePreferencePage() {
-		setPreferenceStore(AIPDiagramEditorPlugin.getInstance()
-				.getPreferenceStore());
+		setPreferenceStore(AIPDiagramEditorPlugin.getInstance().getPreferenceStore());
 	}
 }

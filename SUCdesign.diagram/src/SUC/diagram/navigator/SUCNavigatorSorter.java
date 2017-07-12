@@ -10,13 +10,13 @@ import SUC.diagram.part.SUCVisualIDRegistry;
 public class SUCNavigatorSorter extends ViewerSorter {
 
 	/**
-	 * @generated
-	 */
-	private static final int GROUP_CATEGORY = 4005;
+	* @generated
+	*/
+	private static final int GROUP_CATEGORY = 4004;
 
 	/**
-	 * @generated
-	 */
+	* @generated
+	*/
 	public int category(Object element) {
 		if (element instanceof SUCNavigatorItem) {
 			SUCNavigatorItem item = (SUCNavigatorItem) element;

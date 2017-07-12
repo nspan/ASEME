@@ -6,12 +6,11 @@ import org.eclipse.gmf.tooling.runtime.providers.DefaultElementTypeIconProvider;
 /**
  * @generated
  */
-public class SUCIconProvider extends DefaultElementTypeIconProvider implements
-		IIconProvider {
+public class SUCIconProvider extends DefaultElementTypeIconProvider implements IIconProvider {
 
 	/**
-	 * @generated
-	 */
+	* @generated
+	*/
 	public SUCIconProvider() {
 		super(SUCElementTypes.TYPED_INSTANCE);
 	}

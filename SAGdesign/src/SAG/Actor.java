@@ -1,8 +1,4 @@
 /**
- * <copyright>
- * </copyright>
- *
- * $Id$
  */
 package SAG;
 
@@ -17,11 +13,11 @@ import org.eclipse.emf.ecore.EObject;
  *
  * <p>
  * The following features are supported:
+ * </p>
  * <ul>
  *   <li>{@link SAG.Actor#getMy_goal <em>My goal</em>}</li>
  *   <li>{@link SAG.Actor#getName <em>Name</em>}</li>
  * </ul>
- * </p>
  *
  * @see SAG.SAGPackage#getActor()
  * @model

@@ -9,19 +9,18 @@ import SRM.diagram.providers.SRMElementTypes;
 /**
  * @generated
  */
-public class RoleCapabilitiesItemSemanticEditPolicy extends
-		SRMBaseItemSemanticEditPolicy {
+public class RoleCapabilitiesItemSemanticEditPolicy extends SRMBaseItemSemanticEditPolicy {
 
 	/**
-	 * @generated
-	 */
+	* @generated
+	*/
 	public RoleCapabilitiesItemSemanticEditPolicy() {
 		super(SRMElementTypes.RoleCapabilities_4004);
 	}
 
 	/**
-	 * @generated
-	 */
+	* @generated
+	*/
 	protected Command getDestroyReferenceCommand(DestroyReferenceRequest req) {
 		return getGEFWrapper(new DestroyReferenceCommand(req));
 	}
