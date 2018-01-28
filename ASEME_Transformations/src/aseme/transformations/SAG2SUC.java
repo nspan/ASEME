@@ -21,30 +21,31 @@ public class SAG2SUC {
 		HashMap<String, Role> roles = new HashMap<String, Role>();
 		
 		for (Iterator<Actor> iterator = sagModel.getActors().iterator(); iterator.hasNext();) {
+			
 			Actor tmpActor = iterator.next();
+			
 			Role tmpRole = SUCFactory.eINSTANCE.createRole();
+			
 			tmpRole.setName(tmpActor.getName());
-			//newResource.getContents().add(tmpRole);
-			//ASEMEXmlHelper.setXmlId(tmpRole, new String("role"+xmiID));
-			//xmiID++;
 			sucModel.getRoles().add(tmpRole);
 			roles.put(tmpRole.getName(), tmpRole);
-			//newResource.getContents().add(tmpRole);
 		}
-		//xmiID=1;
+		
 		for (Iterator<Goal> iterator = sagModel.getGoals().iterator(); iterator.hasNext();) {
+			
 			Goal tmpGoal = iterator.next();
+			
 			UseCase tmpUsecase = SUCFactory.eINSTANCE.createUseCase();
+			
 			tmpUsecase.setName(tmpGoal.getName());
-			//newResource.getContents().add(tmpUsecase);
-			//ASEMEXmlHelper.setXmlId(tmpUsecase, new String("usecase"+xmiID));
-			//xmiID++;
 			sucModel.getUsecases().add(tmpUsecase);
 			tmpUsecase.getParticipant().add(roles.get(tmpGoal.getDepender().getName()));
+			
 			for (Iterator<Actor> iterator2 = tmpGoal.getDependee().iterator(); iterator2
 					.hasNext();) {
 				tmpUsecase.getParticipant().add(roles.get(iterator2.next().getName()));
 			}
+			
 			tmpUsecase.setSpecified_by(tmpGoal.getRequirements());
 		}
 		

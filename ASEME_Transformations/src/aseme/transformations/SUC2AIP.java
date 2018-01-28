@@ -20,21 +20,29 @@ public class SUC2AIP {
 		AIPmodel aipModel = AIPFactory.eINSTANCE.createAIPmodel();
 		
 		for (Iterator<UseCase> iterator = sucModel.getUsecases().iterator(); iterator.hasNext();) {
+			
 			UseCase usecase = iterator.next();
 			List<Role> systemRoleUseCaseParticipants = new LinkedList<Role>();
+			
 			for (Iterator<Role> iterator2 = usecase.getParticipant().iterator(); iterator2.hasNext();) {
 				Role role =  iterator2.next();
 				if (role.getType().getLiteral() == "System"|| role.getType().getLiteral() == "Abstract")
 					systemRoleUseCaseParticipants.add(((Role) role));
 			}
+			
 			if (systemRoleUseCaseParticipants.size() > 1) {
+				
 				Protocol tmpProtocol = AIPFactory.eINSTANCE.createProtocol();
 				tmpProtocol.setName(usecase.getName());
+				
 				HashMap<String, Participant> participants = new HashMap<String, Participant>();
+			
 				for (Iterator<Role> iterator2 = systemRoleUseCaseParticipants
 						.iterator(); iterator2.hasNext();) {
+					
 					Role systemRole =  iterator2.next();
 					Participant tmpParticipant = AIPFactory.eINSTANCE.createParticipant();
+					
 					tmpParticipant.setName(new String(tmpProtocol.getName()
 							+ "_" + systemRole.getName()));
 					tmpProtocol.getParticipants().add(tmpParticipant);
@@ -43,6 +51,7 @@ public class SUC2AIP {
 					tmpParticipant.setLiveness(new String(""));//tmpParticipant
 						//	.getName() + "="));
 				}
+				
 				for (Iterator<UseCase> iterator2 = usecase.getInclude()
 						.iterator(); iterator2.hasNext();) {
 					UseCase tmpUsecase = (UseCase) iterator2.next();
