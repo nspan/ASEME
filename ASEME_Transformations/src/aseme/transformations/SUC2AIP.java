@@ -15,9 +15,83 @@ import AIP.Protocol;
 
 public class SUC2AIP {
 	
+	private static int checkRole(Role role){
+		
+		for (int i = 0; i < role.getParticipates_in().size(); i++) {
+			
+			UseCase usecase = role.getParticipates_in().get(i);
+			
+			if ( usecase.getInclude().size() == role.getParticipates_in().size() -1){
+				return i;
+			}
+			
+		}
+		
+		return -1;
+		
+	}
+	
 	public static AIPmodel transformSuc2Aip(SUCmodel sucModel){
 		
 		AIPmodel aipModel = AIPFactory.eINSTANCE.createAIPmodel();
+		
+		List<Role> multiRolesParticipants = new LinkedList<Role>();
+		Integer[] positions = new Integer[sucModel.getRoles().size()];
+
+		
+		for (Iterator<Role> roleIterator = sucModel.getRoles().iterator(); roleIterator.hasNext();) {
+			Role role =  roleIterator.next();
+			
+			int useCasePosition = checkRole(role);
+			
+			if ( (useCasePosition != -1) && (role.getType().getLiteral() == "System"|| role.getType().getLiteral() == "Abstract") ){
+				multiRolesParticipants.add(role);
+				positions[multiRolesParticipants.size()-1] = useCasePosition;
+			}
+			
+		}
+		
+		if( multiRolesParticipants.size() > 0 ){
+			
+			for (int i = 0; i < multiRolesParticipants.size(); i++) {
+				
+				
+				Role multiRole =  multiRolesParticipants.get(i);
+				UseCase protocolUseCase = multiRole.getParticipates_in().get(positions[i]);
+				
+				Protocol protocol = AIPFactory.eINSTANCE.createProtocol();
+				protocol.setName(protocolUseCase.getName());
+				
+				// erwthsh an einai global initiator kai responder
+				Participant participant0 = AIPFactory.eINSTANCE.createParticipant();
+				Participant participant1 = AIPFactory.eINSTANCE.createParticipant();
+				
+				participant0.setName(multiRole.getName() + "0");
+				participant1.setName(multiRole.getName() + "1");
+				
+				String liveness = "";
+				
+				for (Iterator<UseCase> iterator = protocolUseCase.getInclude().iterator(); iterator.hasNext();) {
+					UseCase useCase = iterator.next();
+					
+					liveness += " " + useCase.getName() + " ?OP?"; 
+					
+				}
+				
+				participant0.setLiveness(liveness);
+				participant1.setLiveness(liveness);
+				
+				protocol.getParticipants().add(participant0);
+				protocol.getParticipants().add(participant1);
+				
+				aipModel.getParticipants().add(participant0);
+				aipModel.getParticipants().add(participant1);
+				aipModel.getProtocols().add(protocol);	
+			
+			}
+		}
+		
+		
 		
 		for (Iterator<UseCase> iterator = sucModel.getUsecases().iterator(); iterator.hasNext();) {
 			
@@ -26,8 +100,11 @@ public class SUC2AIP {
 			
 			for (Iterator<Role> iterator2 = usecase.getParticipant().iterator(); iterator2.hasNext();) {
 				Role role =  iterator2.next();
+				
 				if (role.getType().getLiteral() == "System"|| role.getType().getLiteral() == "Abstract")
 					systemRoleUseCaseParticipants.add(((Role) role));
+				
+				
 			}
 			
 			if (systemRoleUseCaseParticipants.size() > 1) {
@@ -74,6 +151,7 @@ public class SUC2AIP {
 				aipModel.getProtocols().add(tmpProtocol);
 				// add the activities!!!
 			}
+			
 		}
 		
 		
@@ -91,3 +169,4 @@ public class SUC2AIP {
 	}
 
 }
+
