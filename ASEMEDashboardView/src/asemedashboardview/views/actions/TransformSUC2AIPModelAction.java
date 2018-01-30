@@ -52,6 +52,7 @@ import org.eclipse.ui.PlatformUI;
 public class TransformSUC2AIPModelAction implements ASEMEAction {
 
 	private ASEMEFacade context;
+	private static int count = 0;
 
 	@Override
 	public void init(ASEMEFacade context) {
@@ -75,6 +76,16 @@ public class TransformSUC2AIPModelAction implements ASEMEAction {
 		if (aip == null) {
 			aip = suc.trimFileExtension().appendFileExtension("aip"); //$NON-NLS-1$
 			state.setAIP(aip);
+		}
+		else{
+			
+			boolean quest = MessageDialog.openQuestion(context.getShell(), "AIP model exists!" , aip.toString() + " already exists. Do you want to overwrite?");
+			
+			if (!quest){
+				String aipName = suc.trimFileExtension().toString() + "_" + count ;
+				count++;
+				aip = URI.createURI(aipName).appendFileExtension("aip");
+			}
 		}
 		//aip = state.getAIP();
 		ResourceSet resourceSet = new ResourceSetImpl();
