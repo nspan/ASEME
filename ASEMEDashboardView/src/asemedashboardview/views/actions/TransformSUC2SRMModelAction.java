@@ -5,6 +5,8 @@ import java.util.HashMap;
 import java.util.Iterator;
 import java.util.Map;
 
+import javax.swing.JOptionPane;
+
 import org.eclipse.core.resources.IFile;
 import org.eclipse.emf.common.ui.URIEditorInput;
 import org.eclipse.emf.common.util.Diagnostic;
@@ -51,6 +53,7 @@ import asemedashboardview.views.ASEMEState;
 public class TransformSUC2SRMModelAction implements ASEMEAction {
 
 	private ASEMEFacade context;
+	private static int count = 0;
 
 	@Override
 	public void init(ASEMEFacade context) {
@@ -82,12 +85,33 @@ public class TransformSUC2SRMModelAction implements ASEMEAction {
 			state.setSRM(srm);
 		//	nosrm = true;
 		}
+		else{
+			
+			boolean quest = MessageDialog.openQuestion(context.getShell(), "SRM model exists!" , srm  + " already exists. Do you want to overwrite?");
+			
+			if (!quest){
+				String srmName = suc.trimFileExtension().toString() + "_0";
+				
+				
+				String[] srmPathParts = srmName.split("/") ;
+				
+				String newName = JOptionPane.showInputDialog("Give name", srmPathParts[srmPathParts.length-1]);
+
+				srmPathParts[srmPathParts.length-1] = newName;
+				
+				String reconstructedPath = "";
+				
+				for (int i = 0; i < srmPathParts.length; i++) {
+					
+					reconstructedPath += srmPathParts[i] + "/";
+				}
+				
+				reconstructedPath = reconstructedPath.substring(0,reconstructedPath.length()-1);
+				
+				srm = URI.createURI(reconstructedPath).appendFileExtension("srm");
+			}
+		}
 		
-		
-		
-		//if(aip!=null) {
-		//importaip = true;
-		//}
 		
 		ResourceSet resourceSet = new ResourceSetImpl();
 		resourceSet

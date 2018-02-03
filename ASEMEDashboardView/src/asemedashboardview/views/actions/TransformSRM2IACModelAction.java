@@ -83,8 +83,7 @@ public class TransformSRM2IACModelAction implements ASEMEAction {
 		// Register the appropriate resource factory to handle all file
 		// extensions.
 		//
-		
-		
+				
 		resourceSet
 				.getResourceFactoryRegistry()
 				.getExtensionToFactoryMap()

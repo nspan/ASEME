@@ -1,11 +1,8 @@
 package asemedashboardview.views.actions;
 
-import java.io.IOException;
-import java.util.HashMap;
-import java.util.Iterator;
-import java.util.LinkedList;
-import java.util.List;
-import java.util.Map;
+
+
+import javax.swing.JOptionPane;
 
 import AIP.AIPFactory;
 import AIP.AIPPackage;
@@ -34,6 +31,8 @@ import asemedashboardview.views.ASEMEAction;
 import asemedashboardview.views.ASEMEFacade;
 import asemedashboardview.views.ASEMEState;
 
+import org.eclipse.core.resources.IFile;
+import org.eclipse.core.resources.IResource;
 import org.eclipse.emf.common.ui.URIEditorInput;
 import org.eclipse.emf.common.util.Diagnostic;
 import org.eclipse.emf.common.util.URI;
@@ -52,7 +51,7 @@ import org.eclipse.ui.PlatformUI;
 public class TransformSUC2AIPModelAction implements ASEMEAction {
 
 	private ASEMEFacade context;
-	private static int count = 0;
+//	private static int count = 0;
 
 	@Override
 	public void init(ASEMEFacade context) {
@@ -70,7 +69,7 @@ public class TransformSUC2AIPModelAction implements ASEMEAction {
 
 	@Override
 	public void run() {
-		ASEMEState state = context.getState(); 
+		ASEMEState state = context.getState();
 		URI suc = state.getSUC();
 		URI aip = state.getAIP();
 		if (aip == null) {
@@ -82,12 +81,27 @@ public class TransformSUC2AIPModelAction implements ASEMEAction {
 			boolean quest = MessageDialog.openQuestion(context.getShell(), "AIP model exists!" , aip.toString() + " already exists. Do you want to overwrite?");
 			
 			if (!quest){
-				String aipName = suc.trimFileExtension().toString() + "_" + count ;
-				count++;
-				aip = URI.createURI(aipName).appendFileExtension("aip");
+				String aipName = suc.trimFileExtension().toString() + "_0";
+				
+				String[] aipPathParts = aipName.split("/") ;
+				
+				String newName = JOptionPane.showInputDialog("Give name", aipPathParts[aipPathParts.length-1]);
+
+				aipPathParts[aipPathParts.length-1] = newName;
+				
+				String reconstructedPath = "";
+				
+				for (int i = 0; i < aipPathParts.length; i++) {
+					
+					reconstructedPath += aipPathParts[i] + "/";
+				}
+				
+				reconstructedPath = reconstructedPath.substring(0,reconstructedPath.length()-1);
+				
+				aip = URI.createURI(reconstructedPath).appendFileExtension("aip");
 			}
 		}
-		//aip = state.getAIP();
+
 		ResourceSet resourceSet = new ResourceSetImpl();
 
 		resourceSet
@@ -113,6 +127,7 @@ public class TransformSUC2AIPModelAction implements ASEMEAction {
 			
 			URI diag = aip.trimFileExtension().appendFileExtension("aipd");
 			this.createDiagram(aipm, diag);
+			MessageDialog.openConfirm(context.getShell(), "SUC2AIP transformation" , "Output : " + aip.toPlatformString(isEnabled()));
 			}
 		catch( Exception e){
 			Diagnostic diagn = Diagnostician.INSTANCE.validate(sucModel);
