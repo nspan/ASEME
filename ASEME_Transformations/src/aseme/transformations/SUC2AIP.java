@@ -66,8 +66,8 @@ public class SUC2AIP {
 				Participant participant0 = AIPFactory.eINSTANCE.createParticipant();
 				Participant participant1 = AIPFactory.eINSTANCE.createParticipant();
 				
-				participant0.setName(multiRole.getName() + "0");
-				participant1.setName(multiRole.getName() + "1");
+				participant0.setName(multiRole.getName());
+				participant1.setName(multiRole.getName() + "0");
 				
 				String liveness = "";
 				
@@ -102,7 +102,7 @@ public class SUC2AIP {
 				Role role =  iterator2.next();
 				
 				if (role.getType().getLiteral() == "System"|| role.getType().getLiteral() == "Abstract")
-					systemRoleUseCaseParticipants.add(((Role) role));
+					systemRoleUseCaseParticipants.add(role);
 				
 				
 			}

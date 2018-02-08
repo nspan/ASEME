@@ -53,7 +53,6 @@ import asemedashboardview.views.ASEMEState;
 public class TransformSUC2SRMModelAction implements ASEMEAction {
 
 	private ASEMEFacade context;
-	private static int count = 0;
 
 	@Override
 	public void init(ASEMEFacade context) {
@@ -77,13 +76,10 @@ public class TransformSUC2SRMModelAction implements ASEMEAction {
 		URI srm = state.getSRM();
 		URI aip = state.getAIP();
 		
-		//boolean nosrm = false, importaip = false ;
-		
 		
 		if (srm == null) {
 			srm = suc.trimFileExtension().appendFileExtension("srm"); //$NON-NLS-1$
 			state.setSRM(srm);
-		//	nosrm = true;
 		}
 		else{
 			

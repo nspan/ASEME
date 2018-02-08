@@ -320,9 +320,11 @@ public static SRMmodel srmImportAip(SRMmodel srmModel, AIPmodel aipModel){
 		
 		
 		
-			if(aipParticipant.getName().contains("_" + srmRole.getName()) == true) {
+			if( ( aipParticipant.getName().contains("_" + srmRole.getName()) ) || ( aipParticipant.getName().equals(srmRole.getName()) ) ) {
 				
 				abstr = false;
+				
+				System.out.println(aipParticipant.getName());
 				
 				//srmRole.setLiveness( new String(srmRole.getLiveness() + "\n"+ aipParticipant.getLiveness()));
 				
@@ -334,13 +336,13 @@ public static SRMmodel srmImportAip(SRMmodel srmModel, AIPmodel aipModel){
 				
 				for (int i=0; i<lines.length; i++){
 					
-					System.out.println("mesa sto lines loop");
+//					System.out.println("mesa sto lines loop");
 					
 					String[] temp = lines[i].split("=");
 					
 					if (temp[0].equalsIgnoreCase(aipParticipant.getName())){
 						//lines[i] = aipParticipant.getLiveness();
-						System.out.println("mesa sto equals if");
+//						System.out.println("mesa sto equals if");
 						String[] left = lines[i].split("=");
 						lines[i] = left[0] + "=" + aipParticipant.getLiveness();
 						break;

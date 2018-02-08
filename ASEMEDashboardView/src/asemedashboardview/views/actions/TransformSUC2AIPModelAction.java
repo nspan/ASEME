@@ -51,7 +51,6 @@ import org.eclipse.ui.PlatformUI;
 public class TransformSUC2AIPModelAction implements ASEMEAction {
 
 	private ASEMEFacade context;
-//	private static int count = 0;
 
 	@Override
 	public void init(ASEMEFacade context) {
