@@ -57,7 +57,7 @@ public class Node11CreateCommand extends EditElementCommand {
 		Node owner = (Node) getElementToEdit();
 		owner.getChildren().add(newElement);
 
-		ElementInitializers.getInstance().init_Node_3005(newElement);
+		ElementInitializers.getInstance().init_Node_3003(newElement);
 
 		doConfigure(newElement, monitor, info);
 

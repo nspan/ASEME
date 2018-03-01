@@ -45,6 +45,8 @@ import statechart.diagram.edit.parts.ModelEditPart;
 import statechart.diagram.edit.parts.Node10EditPart;
 import statechart.diagram.edit.parts.Node11EditPart;
 import statechart.diagram.edit.parts.Node12EditPart;
+import statechart.diagram.edit.parts.Node13EditPart;
+import statechart.diagram.edit.parts.Node14EditPart;
 import statechart.diagram.edit.parts.Node2EditPart;
 import statechart.diagram.edit.parts.Node3EditPart;
 import statechart.diagram.edit.parts.Node4EditPart;
@@ -70,6 +72,8 @@ import statechart.diagram.edit.parts.VariableEditPart;
 import statechart.diagram.edit.parts.VariableNameEditPart;
 import statechart.diagram.edit.parts.VariableTypeEditPart;
 import statechart.diagram.edit.parts.WrappingLabel2EditPart;
+import statechart.diagram.edit.parts.WrappingLabel3EditPart;
+import statechart.diagram.edit.parts.WrappingLabel4EditPart;
 import statechart.diagram.edit.parts.WrappingLabelEditPart;
 import statechart.diagram.part.StateChartVisualIDRegistry;
 
@@ -168,6 +172,8 @@ public class StateChartViewProvider extends AbstractProvider implements IViewPro
 				case Node10EditPart.VISUAL_ID:
 				case Node11EditPart.VISUAL_ID:
 				case Node12EditPart.VISUAL_ID:
+				case Node13EditPart.VISUAL_ID:
+				case Node14EditPart.VISUAL_ID:
 					if (domainElement == null || visualID != StateChartVisualIDRegistry
 							.getNodeVisualID(op.getContainerView(), domainElement)) {
 						return false; // visual id in semantic hint should match visual id for domain element
@@ -184,7 +190,8 @@ public class StateChartViewProvider extends AbstractProvider implements IViewPro
 				|| Node6EditPart.VISUAL_ID == visualID || Node7EditPart.VISUAL_ID == visualID
 				|| Node8EditPart.VISUAL_ID == visualID || Node9EditPart.VISUAL_ID == visualID
 				|| Node10EditPart.VISUAL_ID == visualID || Node11EditPart.VISUAL_ID == visualID
-				|| Node12EditPart.VISUAL_ID == visualID;
+				|| Node12EditPart.VISUAL_ID == visualID || Node13EditPart.VISUAL_ID == visualID
+				|| Node14EditPart.VISUAL_ID == visualID;
 	}
 
 	/**
@@ -248,16 +255,20 @@ public class StateChartViewProvider extends AbstractProvider implements IViewPro
 		case Node6EditPart.VISUAL_ID:
 			return createNode_2007(domainElement, containerView, index, persisted, preferencesHint);
 		case Node7EditPart.VISUAL_ID:
-			return createNode_3001(domainElement, containerView, index, persisted, preferencesHint);
+			return createNode_2008(domainElement, containerView, index, persisted, preferencesHint);
 		case Node8EditPart.VISUAL_ID:
-			return createNode_3002(domainElement, containerView, index, persisted, preferencesHint);
+			return createNode_2009(domainElement, containerView, index, persisted, preferencesHint);
 		case Node9EditPart.VISUAL_ID:
-			return createNode_3003(domainElement, containerView, index, persisted, preferencesHint);
+			return createNode_3001(domainElement, containerView, index, persisted, preferencesHint);
 		case Node10EditPart.VISUAL_ID:
-			return createNode_3004(domainElement, containerView, index, persisted, preferencesHint);
+			return createNode_3002(domainElement, containerView, index, persisted, preferencesHint);
 		case Node11EditPart.VISUAL_ID:
-			return createNode_3005(domainElement, containerView, index, persisted, preferencesHint);
+			return createNode_3003(domainElement, containerView, index, persisted, preferencesHint);
 		case Node12EditPart.VISUAL_ID:
+			return createNode_3004(domainElement, containerView, index, persisted, preferencesHint);
+		case Node13EditPart.VISUAL_ID:
+			return createNode_3005(domainElement, containerView, index, persisted, preferencesHint);
+		case Node14EditPart.VISUAL_ID:
 			return createNode_3006(domainElement, containerView, index, persisted, preferencesHint);
 		}
 		// can't happen, provided #provides(CreateNodeViewOperation) is correct
@@ -508,13 +519,73 @@ public class StateChartViewProvider extends AbstractProvider implements IViewPro
 	/**
 	* @generated
 	*/
-	public Node createNode_3001(EObject domainElement, View containerView, int index, boolean persisted,
+	public Node createNode_2008(EObject domainElement, View containerView, int index, boolean persisted,
 			PreferencesHint preferencesHint) {
 		Node node = NotationFactory.eINSTANCE.createNode();
 		node.getStyles().add(NotationFactory.eINSTANCE.createDescriptionStyle());
 		node.getStyles().add(NotationFactory.eINSTANCE.createFontStyle());
 		node.setLayoutConstraint(NotationFactory.eINSTANCE.createBounds());
 		node.setType(StateChartVisualIDRegistry.getType(Node7EditPart.VISUAL_ID));
+		ViewUtil.insertChildView(containerView, node, index, persisted);
+		node.setElement(domainElement);
+		stampShortcut(containerView, node);
+		// initializeFromPreferences 
+		final IPreferenceStore prefStore = (IPreferenceStore) preferencesHint.getPreferenceStore();
+		FontStyle nodeFontStyle = (FontStyle) node.getStyle(NotationPackage.Literals.FONT_STYLE);
+		if (nodeFontStyle != null) {
+			FontData fontData = PreferenceConverter.getFontData(prefStore, IPreferenceConstants.PREF_DEFAULT_FONT);
+			nodeFontStyle.setFontName(fontData.getName());
+			nodeFontStyle.setFontHeight(fontData.getHeight());
+			nodeFontStyle.setBold((fontData.getStyle() & SWT.BOLD) != 0);
+			nodeFontStyle.setItalic((fontData.getStyle() & SWT.ITALIC) != 0);
+			org.eclipse.swt.graphics.RGB fontRGB = PreferenceConverter.getColor(prefStore,
+					IPreferenceConstants.PREF_FONT_COLOR);
+			nodeFontStyle.setFontColor(FigureUtilities.RGBToInteger(fontRGB).intValue());
+		}
+		Node label5011 = createLabel(node, StateChartVisualIDRegistry.getType(WrappingLabel2EditPart.VISUAL_ID));
+		return node;
+	}
+
+	/**
+	* @generated
+	*/
+	public Node createNode_2009(EObject domainElement, View containerView, int index, boolean persisted,
+			PreferencesHint preferencesHint) {
+		Node node = NotationFactory.eINSTANCE.createNode();
+		node.getStyles().add(NotationFactory.eINSTANCE.createDescriptionStyle());
+		node.getStyles().add(NotationFactory.eINSTANCE.createFontStyle());
+		node.setLayoutConstraint(NotationFactory.eINSTANCE.createBounds());
+		node.setType(StateChartVisualIDRegistry.getType(Node8EditPart.VISUAL_ID));
+		ViewUtil.insertChildView(containerView, node, index, persisted);
+		node.setElement(domainElement);
+		stampShortcut(containerView, node);
+		// initializeFromPreferences 
+		final IPreferenceStore prefStore = (IPreferenceStore) preferencesHint.getPreferenceStore();
+		FontStyle nodeFontStyle = (FontStyle) node.getStyle(NotationPackage.Literals.FONT_STYLE);
+		if (nodeFontStyle != null) {
+			FontData fontData = PreferenceConverter.getFontData(prefStore, IPreferenceConstants.PREF_DEFAULT_FONT);
+			nodeFontStyle.setFontName(fontData.getName());
+			nodeFontStyle.setFontHeight(fontData.getHeight());
+			nodeFontStyle.setBold((fontData.getStyle() & SWT.BOLD) != 0);
+			nodeFontStyle.setItalic((fontData.getStyle() & SWT.ITALIC) != 0);
+			org.eclipse.swt.graphics.RGB fontRGB = PreferenceConverter.getColor(prefStore,
+					IPreferenceConstants.PREF_FONT_COLOR);
+			nodeFontStyle.setFontColor(FigureUtilities.RGBToInteger(fontRGB).intValue());
+		}
+		Node label5012 = createLabel(node, StateChartVisualIDRegistry.getType(WrappingLabel3EditPart.VISUAL_ID));
+		return node;
+	}
+
+	/**
+	* @generated
+	*/
+	public Node createNode_3001(EObject domainElement, View containerView, int index, boolean persisted,
+			PreferencesHint preferencesHint) {
+		Node node = NotationFactory.eINSTANCE.createNode();
+		node.getStyles().add(NotationFactory.eINSTANCE.createDescriptionStyle());
+		node.getStyles().add(NotationFactory.eINSTANCE.createFontStyle());
+		node.setLayoutConstraint(NotationFactory.eINSTANCE.createBounds());
+		node.setType(StateChartVisualIDRegistry.getType(Node9EditPart.VISUAL_ID));
 		ViewUtil.insertChildView(containerView, node, index, persisted);
 		node.setElement(domainElement);
 		// initializeFromPreferences 
@@ -530,7 +601,7 @@ public class StateChartViewProvider extends AbstractProvider implements IViewPro
 					IPreferenceConstants.PREF_FONT_COLOR);
 			nodeFontStyle.setFontColor(FigureUtilities.RGBToInteger(fontRGB).intValue());
 		}
-		Node label5001 = createLabel(node, StateChartVisualIDRegistry.getType(WrappingLabel2EditPart.VISUAL_ID));
+		Node label5001 = createLabel(node, StateChartVisualIDRegistry.getType(WrappingLabel4EditPart.VISUAL_ID));
 		return node;
 	}
 
@@ -543,7 +614,7 @@ public class StateChartViewProvider extends AbstractProvider implements IViewPro
 		node.getStyles().add(NotationFactory.eINSTANCE.createDescriptionStyle());
 		node.getStyles().add(NotationFactory.eINSTANCE.createFontStyle());
 		node.setLayoutConstraint(NotationFactory.eINSTANCE.createBounds());
-		node.setType(StateChartVisualIDRegistry.getType(Node8EditPart.VISUAL_ID));
+		node.setType(StateChartVisualIDRegistry.getType(Node10EditPart.VISUAL_ID));
 		ViewUtil.insertChildView(containerView, node, index, persisted);
 		node.setElement(domainElement);
 		// initializeFromPreferences 
@@ -572,7 +643,7 @@ public class StateChartViewProvider extends AbstractProvider implements IViewPro
 		node.getStyles().add(NotationFactory.eINSTANCE.createDescriptionStyle());
 		node.getStyles().add(NotationFactory.eINSTANCE.createFontStyle());
 		node.setLayoutConstraint(NotationFactory.eINSTANCE.createBounds());
-		node.setType(StateChartVisualIDRegistry.getType(Node9EditPart.VISUAL_ID));
+		node.setType(StateChartVisualIDRegistry.getType(Node11EditPart.VISUAL_ID));
 		ViewUtil.insertChildView(containerView, node, index, persisted);
 		node.setElement(domainElement);
 		// initializeFromPreferences 
@@ -604,7 +675,7 @@ public class StateChartViewProvider extends AbstractProvider implements IViewPro
 		node.getStyles().add(NotationFactory.eINSTANCE.createFontStyle());
 		node.getStyles().add(NotationFactory.eINSTANCE.createLineStyle());
 		node.setLayoutConstraint(NotationFactory.eINSTANCE.createBounds());
-		node.setType(StateChartVisualIDRegistry.getType(Node10EditPart.VISUAL_ID));
+		node.setType(StateChartVisualIDRegistry.getType(Node12EditPart.VISUAL_ID));
 		ViewUtil.insertChildView(containerView, node, index, persisted);
 		node.setElement(domainElement);
 		// initializeFromPreferences 
@@ -637,7 +708,7 @@ public class StateChartViewProvider extends AbstractProvider implements IViewPro
 		node.getStyles().add(NotationFactory.eINSTANCE.createDescriptionStyle());
 		node.getStyles().add(NotationFactory.eINSTANCE.createFontStyle());
 		node.setLayoutConstraint(NotationFactory.eINSTANCE.createBounds());
-		node.setType(StateChartVisualIDRegistry.getType(Node11EditPart.VISUAL_ID));
+		node.setType(StateChartVisualIDRegistry.getType(Node13EditPart.VISUAL_ID));
 		ViewUtil.insertChildView(containerView, node, index, persisted);
 		node.setElement(domainElement);
 		// initializeFromPreferences 
@@ -668,7 +739,7 @@ public class StateChartViewProvider extends AbstractProvider implements IViewPro
 		node.getStyles().add(NotationFactory.eINSTANCE.createDescriptionStyle());
 		node.getStyles().add(NotationFactory.eINSTANCE.createFontStyle());
 		node.setLayoutConstraint(NotationFactory.eINSTANCE.createBounds());
-		node.setType(StateChartVisualIDRegistry.getType(Node12EditPart.VISUAL_ID));
+		node.setType(StateChartVisualIDRegistry.getType(Node14EditPart.VISUAL_ID));
 		ViewUtil.insertChildView(containerView, node, index, persisted);
 		node.setElement(domainElement);
 		// initializeFromPreferences 

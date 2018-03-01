@@ -39,7 +39,7 @@ public class Node11EditPart extends ShapeNodeEditPart {
 	/**
 	* @generated
 	*/
-	public static final int VISUAL_ID = 3005;
+	public static final int VISUAL_ID = 3003;
 
 	/**
 	* @generated
@@ -98,28 +98,28 @@ public class Node11EditPart extends ShapeNodeEditPart {
 	* @generated
 	*/
 	protected IFigure createNodeShape() {
-		return primaryShape = new NodeANDFigure();
+		return primaryShape = new NodeORFigure();
 	}
 
 	/**
 	* @generated
 	*/
-	public NodeANDFigure getPrimaryShape() {
-		return (NodeANDFigure) primaryShape;
+	public NodeORFigure getPrimaryShape() {
+		return (NodeORFigure) primaryShape;
 	}
 
 	/**
 	* @generated
 	*/
 	protected boolean addFixedChild(EditPart childEditPart) {
-		if (childEditPart instanceof NodeName6EditPart) {
-			((NodeName6EditPart) childEditPart).setLabel(getPrimaryShape().getFigureNodeAndName());
+		if (childEditPart instanceof NodeName5EditPart) {
+			((NodeName5EditPart) childEditPart).setLabel(getPrimaryShape().getFigureNodeOrName());
 			return true;
 		}
-		if (childEditPart instanceof NodeNodeAndCompEditPart) {
-			IFigure pane = getPrimaryShape().getFigureNodeAndCompartment();
+		if (childEditPart instanceof NodeNodeOrComp2EditPart) {
+			IFigure pane = getPrimaryShape().getFigureNodeOrCompartment();
 			setupContentPane(pane); // FIXME each comparment should handle his content pane in his own way 
-			pane.add(((NodeNodeAndCompEditPart) childEditPart).getFigure());
+			pane.add(((NodeNodeOrComp2EditPart) childEditPart).getFigure());
 			return true;
 		}
 		return false;
@@ -129,12 +129,12 @@ public class Node11EditPart extends ShapeNodeEditPart {
 	* @generated
 	*/
 	protected boolean removeFixedChild(EditPart childEditPart) {
-		if (childEditPart instanceof NodeName6EditPart) {
+		if (childEditPart instanceof NodeName5EditPart) {
 			return true;
 		}
-		if (childEditPart instanceof NodeNodeAndCompEditPart) {
-			IFigure pane = getPrimaryShape().getFigureNodeAndCompartment();
-			pane.remove(((NodeNodeAndCompEditPart) childEditPart).getFigure());
+		if (childEditPart instanceof NodeNodeOrComp2EditPart) {
+			IFigure pane = getPrimaryShape().getFigureNodeOrCompartment();
+			pane.remove(((NodeNodeOrComp2EditPart) childEditPart).getFigure());
 			return true;
 		}
 		return false;
@@ -164,8 +164,8 @@ public class Node11EditPart extends ShapeNodeEditPart {
 	* @generated
 	*/
 	protected IFigure getContentPaneFor(IGraphicalEditPart editPart) {
-		if (editPart instanceof NodeNodeAndCompEditPart) {
-			return getPrimaryShape().getFigureNodeAndCompartment();
+		if (editPart instanceof NodeNodeOrComp2EditPart) {
+			return getPrimaryShape().getFigureNodeOrCompartment();
 		}
 		return getContentPane();
 	}
@@ -260,27 +260,27 @@ public class Node11EditPart extends ShapeNodeEditPart {
 	* @generated
 	*/
 	public EditPart getPrimaryChildEditPart() {
-		return getChildBySemanticHint(StateChartVisualIDRegistry.getType(NodeName6EditPart.VISUAL_ID));
+		return getChildBySemanticHint(StateChartVisualIDRegistry.getType(NodeName5EditPart.VISUAL_ID));
 	}
 
 	/**
-	 * @generated
-	 */
-	public class NodeANDFigure extends RoundedRectangle {
+	* @generated
+	*/
+	public class NodeORFigure extends RoundedRectangle {
 
 		/**
 		 * @generated
 		 */
-		private WrappingLabel fFigureNodeAndName;
+		private WrappingLabel fFigureNodeOrName;
 		/**
 		 * @generated
 		 */
-		private RoundedRectangle fFigureNodeAndCompartment;
+		private RoundedRectangle fFigureNodeOrCompartment;
 
 		/**
 		 * @generated
 		 */
-		public NodeANDFigure() {
+		public NodeORFigure() {
 
 			BorderLayout layoutThis = new BorderLayout();
 			this.setLayoutManager(layoutThis);
@@ -297,43 +297,43 @@ public class Node11EditPart extends ShapeNodeEditPart {
 		 */
 		private void createContents() {
 
-			fFigureNodeAndName = new WrappingLabel();
+			fFigureNodeOrName = new WrappingLabel();
 
-			fFigureNodeAndName.setText("name");
+			fFigureNodeOrName.setText("name");
 
-			fFigureNodeAndName.setFont(FFIGURENODEANDNAME_FONT);
+			fFigureNodeOrName.setFont(FFIGURENODEORNAME_FONT);
 
-			fFigureNodeAndName.setBorder(new MarginBorder(getMapMode().DPtoLP(5), getMapMode().DPtoLP(10),
+			fFigureNodeOrName.setBorder(new MarginBorder(getMapMode().DPtoLP(5), getMapMode().DPtoLP(10),
 					getMapMode().DPtoLP(5), getMapMode().DPtoLP(10)));
 
-			this.add(fFigureNodeAndName, BorderLayout.TOP);
+			this.add(fFigureNodeOrName, BorderLayout.TOP);
 
-			fFigureNodeAndCompartment = new RoundedRectangle();
+			fFigureNodeOrCompartment = new RoundedRectangle();
 
-			fFigureNodeAndCompartment
+			fFigureNodeOrCompartment
 					.setCornerDimensions(new Dimension(getMapMode().DPtoLP(18), getMapMode().DPtoLP(18)));
-			fFigureNodeAndCompartment.setForegroundColor(ColorConstants.black);
-			fFigureNodeAndCompartment.setBackgroundColor(FFIGURENODEANDCOMPARTMENT_BACK);
+			fFigureNodeOrCompartment.setForegroundColor(ColorConstants.black);
+			fFigureNodeOrCompartment.setBackgroundColor(FFIGURENODEORCOMPARTMENT_BACK);
 
-			fFigureNodeAndCompartment.setBorder(new MarginBorder(getMapMode().DPtoLP(0), getMapMode().DPtoLP(20),
+			fFigureNodeOrCompartment.setBorder(new MarginBorder(getMapMode().DPtoLP(0), getMapMode().DPtoLP(20),
 					getMapMode().DPtoLP(20), getMapMode().DPtoLP(20)));
 
-			this.add(fFigureNodeAndCompartment, BorderLayout.CENTER);
+			this.add(fFigureNodeOrCompartment, BorderLayout.CENTER);
 
 		}
 
 		/**
 		 * @generated
 		 */
-		public WrappingLabel getFigureNodeAndName() {
-			return fFigureNodeAndName;
+		public WrappingLabel getFigureNodeOrName() {
+			return fFigureNodeOrName;
 		}
 
 		/**
 		 * @generated
 		 */
-		public RoundedRectangle getFigureNodeAndCompartment() {
-			return fFigureNodeAndCompartment;
+		public RoundedRectangle getFigureNodeOrCompartment() {
+			return fFigureNodeOrCompartment;
 		}
 
 	}
@@ -341,16 +341,16 @@ public class Node11EditPart extends ShapeNodeEditPart {
 	/**
 	 * @generated
 	 */
-	static final Color THIS_BACK = new Color(null, 177, 244, 240);
+	static final Color THIS_BACK = new Color(null, 253, 255, 182);
 
 	/**
-	 * @generated
-	 */
-	static final Font FFIGURENODEANDNAME_FONT = new Font(Display.getCurrent(), "TitleFont", 14, SWT.BOLD);
+	* @generated
+	*/
+	static final Font FFIGURENODEORNAME_FONT = new Font(Display.getCurrent(), "TitleFont", 14, SWT.BOLD);
 
 	/**
-	 * @generated
-	 */
-	static final Color FFIGURENODEANDCOMPARTMENT_BACK = new Color(null, 222, 253, 253);
+	* @generated
+	*/
+	static final Color FFIGURENODEORCOMPARTMENT_BACK = new Color(null, 255, 255, 255);
 
 }

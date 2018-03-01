@@ -27,6 +27,7 @@ import statechart.Transition;
  *   <li>{@link statechart.impl.TransitionImpl#getName <em>Name</em>}</li>
  *   <li>{@link statechart.impl.TransitionImpl#getSource <em>Source</em>}</li>
  *   <li>{@link statechart.impl.TransitionImpl#getTarget <em>Target</em>}</li>
+ *   <li>{@link statechart.impl.TransitionImpl#getMetadata <em>Metadata</em>}</li>
  * </ul>
  *
  * @generated
@@ -91,6 +92,26 @@ public class TransitionImpl extends EObjectImpl implements Transition {
 	 * @ordered
 	 */
 	protected Node target;
+
+	/**
+	 * The default value of the '{@link #getMetadata() <em>Metadata</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getMetadata()
+	 * @generated
+	 * @ordered
+	 */
+	protected static final String METADATA_EDEFAULT = null;
+
+	/**
+	 * The cached value of the '{@link #getMetadata() <em>Metadata</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getMetadata()
+	 * @generated
+	 * @ordered
+	 */
+	protected String metadata = METADATA_EDEFAULT;
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -234,6 +255,27 @@ public class TransitionImpl extends EObjectImpl implements Transition {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	public String getMetadata() {
+		return metadata;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public void setMetadata(String newMetadata) {
+		String oldMetadata = metadata;
+		metadata = newMetadata;
+		if (eNotificationRequired())
+			eNotify(new ENotificationImpl(this, Notification.SET, StatechartPackage.TRANSITION__METADATA, oldMetadata, metadata));
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
 	@Override
 	public Object eGet(int featureID, boolean resolve, boolean coreType) {
 		switch (featureID) {
@@ -247,6 +289,8 @@ public class TransitionImpl extends EObjectImpl implements Transition {
 			case StatechartPackage.TRANSITION__TARGET:
 				if (resolve) return getTarget();
 				return basicGetTarget();
+			case StatechartPackage.TRANSITION__METADATA:
+				return getMetadata();
 		}
 		return super.eGet(featureID, resolve, coreType);
 	}
@@ -270,6 +314,9 @@ public class TransitionImpl extends EObjectImpl implements Transition {
 				return;
 			case StatechartPackage.TRANSITION__TARGET:
 				setTarget((Node)newValue);
+				return;
+			case StatechartPackage.TRANSITION__METADATA:
+				setMetadata((String)newValue);
 				return;
 		}
 		super.eSet(featureID, newValue);
@@ -295,6 +342,9 @@ public class TransitionImpl extends EObjectImpl implements Transition {
 			case StatechartPackage.TRANSITION__TARGET:
 				setTarget((Node)null);
 				return;
+			case StatechartPackage.TRANSITION__METADATA:
+				setMetadata(METADATA_EDEFAULT);
+				return;
 		}
 		super.eUnset(featureID);
 	}
@@ -315,6 +365,8 @@ public class TransitionImpl extends EObjectImpl implements Transition {
 				return source != null;
 			case StatechartPackage.TRANSITION__TARGET:
 				return target != null;
+			case StatechartPackage.TRANSITION__METADATA:
+				return METADATA_EDEFAULT == null ? metadata != null : !METADATA_EDEFAULT.equals(metadata);
 		}
 		return super.eIsSet(featureID);
 	}
@@ -333,6 +385,8 @@ public class TransitionImpl extends EObjectImpl implements Transition {
 		result.append(te);
 		result.append(", name: ");
 		result.append(name);
+		result.append(", metadata: ");
+		result.append(metadata);
 		result.append(')');
 		return result.toString();
 	}

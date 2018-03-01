@@ -20,7 +20,7 @@ public class StateChartModelingAssistantProviderOfModelEditPart extends StateCha
 	@Override
 
 	public List<IElementType> getTypesForPopupBar(IAdaptable host) {
-		List<IElementType> types = new ArrayList<IElementType>(7);
+		List<IElementType> types = new ArrayList<IElementType>(9);
 		types.add(StateChartElementTypes.Node_2001);
 		types.add(StateChartElementTypes.Node_2002);
 		types.add(StateChartElementTypes.Variable_2003);
@@ -28,6 +28,8 @@ public class StateChartModelingAssistantProviderOfModelEditPart extends StateCha
 		types.add(StateChartElementTypes.Node_2005);
 		types.add(StateChartElementTypes.Node_2006);
 		types.add(StateChartElementTypes.Node_2007);
+		types.add(StateChartElementTypes.Node_2008);
+		types.add(StateChartElementTypes.Node_2009);
 		return types;
 	}
 

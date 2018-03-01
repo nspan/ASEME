@@ -105,14 +105,14 @@ public class StateChartCreationWizard extends Wizard implements INewWizard {
 		diagramModelFilePage.setDescription(Messages.StateChartCreationWizard_DiagramModelFilePageDescription);
 		addPage(diagramModelFilePage);
 
-		domainModelFilePage = new StateChartCreationWizardPage("DomainModelFile", getSelection(), "stct") { //$NON-NLS-1$ //$NON-NLS-2$
+		domainModelFilePage = new StateChartCreationWizardPage("DomainModelFile", getSelection(), "statechart") { //$NON-NLS-1$ //$NON-NLS-2$
 
 			public void setVisible(boolean visible) {
 				if (visible) {
 					String fileName = diagramModelFilePage.getFileName();
 					fileName = fileName.substring(0, fileName.length() - ".kse".length()); //$NON-NLS-1$
-					setFileName(
-							StateChartDiagramEditorUtil.getUniqueFileName(getContainerFullPath(), fileName, "stct")); //$NON-NLS-1$
+					setFileName(StateChartDiagramEditorUtil.getUniqueFileName(getContainerFullPath(), fileName,
+							"statechart")); //$NON-NLS-1$
 				}
 				super.setVisible(visible);
 			}

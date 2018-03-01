@@ -28,7 +28,7 @@ import statechart.diagram.providers.StateChartModelingAssistantProvider;
 /**
  * @generated
  */
-public class StateChartModelingAssistantProviderOfNode7EditPart extends StateChartModelingAssistantProvider {
+public class StateChartModelingAssistantProviderOfNode14EditPart extends StateChartModelingAssistantProvider {
 
 	/**
 	* @generated
@@ -37,13 +37,13 @@ public class StateChartModelingAssistantProviderOfNode7EditPart extends StateCha
 
 	public List<IElementType> getRelTypesOnSource(IAdaptable source) {
 		IGraphicalEditPart sourceEditPart = (IGraphicalEditPart) source.getAdapter(IGraphicalEditPart.class);
-		return doGetRelTypesOnSource((Node7EditPart) sourceEditPart);
+		return doGetRelTypesOnSource((Node14EditPart) sourceEditPart);
 	}
 
 	/**
 	* @generated
 	*/
-	public List<IElementType> doGetRelTypesOnSource(Node7EditPart source) {
+	public List<IElementType> doGetRelTypesOnSource(Node14EditPart source) {
 		List<IElementType> types = new ArrayList<IElementType>(1);
 		types.add(StateChartElementTypes.Transition_4001);
 		return types;
@@ -57,13 +57,13 @@ public class StateChartModelingAssistantProviderOfNode7EditPart extends StateCha
 	public List<IElementType> getRelTypesOnSourceAndTarget(IAdaptable source, IAdaptable target) {
 		IGraphicalEditPart sourceEditPart = (IGraphicalEditPart) source.getAdapter(IGraphicalEditPart.class);
 		IGraphicalEditPart targetEditPart = (IGraphicalEditPart) target.getAdapter(IGraphicalEditPart.class);
-		return doGetRelTypesOnSourceAndTarget((Node7EditPart) sourceEditPart, targetEditPart);
+		return doGetRelTypesOnSourceAndTarget((Node14EditPart) sourceEditPart, targetEditPart);
 	}
 
 	/**
 	* @generated
 	*/
-	public List<IElementType> doGetRelTypesOnSourceAndTarget(Node7EditPart source, IGraphicalEditPart targetEditPart) {
+	public List<IElementType> doGetRelTypesOnSourceAndTarget(Node14EditPart source, IGraphicalEditPart targetEditPart) {
 		List<IElementType> types = new LinkedList<IElementType>();
 		if (targetEditPart instanceof NodeEditPart) {
 			types.add(StateChartElementTypes.Transition_4001);
@@ -117,13 +117,13 @@ public class StateChartModelingAssistantProviderOfNode7EditPart extends StateCha
 
 	public List<IElementType> getTypesForTarget(IAdaptable source, IElementType relationshipType) {
 		IGraphicalEditPart sourceEditPart = (IGraphicalEditPart) source.getAdapter(IGraphicalEditPart.class);
-		return doGetTypesForTarget((Node7EditPart) sourceEditPart, relationshipType);
+		return doGetTypesForTarget((Node14EditPart) sourceEditPart, relationshipType);
 	}
 
 	/**
 	* @generated
 	*/
-	public List<IElementType> doGetTypesForTarget(Node7EditPart source, IElementType relationshipType) {
+	public List<IElementType> doGetTypesForTarget(Node14EditPart source, IElementType relationshipType) {
 		List<IElementType> types = new ArrayList<IElementType>();
 		if (relationshipType == StateChartElementTypes.Transition_4001) {
 			types.add(StateChartElementTypes.Node_2001);
@@ -151,13 +151,13 @@ public class StateChartModelingAssistantProviderOfNode7EditPart extends StateCha
 
 	public List<IElementType> getRelTypesOnTarget(IAdaptable target) {
 		IGraphicalEditPart targetEditPart = (IGraphicalEditPart) target.getAdapter(IGraphicalEditPart.class);
-		return doGetRelTypesOnTarget((Node7EditPart) targetEditPart);
+		return doGetRelTypesOnTarget((Node14EditPart) targetEditPart);
 	}
 
 	/**
 	* @generated
 	*/
-	public List<IElementType> doGetRelTypesOnTarget(Node7EditPart target) {
+	public List<IElementType> doGetRelTypesOnTarget(Node14EditPart target) {
 		List<IElementType> types = new ArrayList<IElementType>(1);
 		types.add(StateChartElementTypes.Transition_4001);
 		return types;
@@ -170,13 +170,13 @@ public class StateChartModelingAssistantProviderOfNode7EditPart extends StateCha
 
 	public List<IElementType> getTypesForSource(IAdaptable target, IElementType relationshipType) {
 		IGraphicalEditPart targetEditPart = (IGraphicalEditPart) target.getAdapter(IGraphicalEditPart.class);
-		return doGetTypesForSource((Node7EditPart) targetEditPart, relationshipType);
+		return doGetTypesForSource((Node14EditPart) targetEditPart, relationshipType);
 	}
 
 	/**
 	* @generated
 	*/
-	public List<IElementType> doGetTypesForSource(Node7EditPart target, IElementType relationshipType) {
+	public List<IElementType> doGetTypesForSource(Node14EditPart target, IElementType relationshipType) {
 		List<IElementType> types = new ArrayList<IElementType>();
 		if (relationshipType == StateChartElementTypes.Transition_4001) {
 			types.add(StateChartElementTypes.Node_2001);

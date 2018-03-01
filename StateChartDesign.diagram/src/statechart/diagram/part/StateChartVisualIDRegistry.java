@@ -14,6 +14,8 @@ import statechart.diagram.edit.parts.ModelEditPart;
 import statechart.diagram.edit.parts.Node10EditPart;
 import statechart.diagram.edit.parts.Node11EditPart;
 import statechart.diagram.edit.parts.Node12EditPart;
+import statechart.diagram.edit.parts.Node13EditPart;
+import statechart.diagram.edit.parts.Node14EditPart;
 import statechart.diagram.edit.parts.Node2EditPart;
 import statechart.diagram.edit.parts.Node3EditPart;
 import statechart.diagram.edit.parts.Node4EditPart;
@@ -39,6 +41,8 @@ import statechart.diagram.edit.parts.VariableEditPart;
 import statechart.diagram.edit.parts.VariableNameEditPart;
 import statechart.diagram.edit.parts.VariableTypeEditPart;
 import statechart.diagram.edit.parts.WrappingLabel2EditPart;
+import statechart.diagram.edit.parts.WrappingLabel3EditPart;
+import statechart.diagram.edit.parts.WrappingLabel4EditPart;
 import statechart.diagram.edit.parts.WrappingLabelEditPart;
 import statechart.diagram.expressions.StateChartOCLFactory;
 
@@ -171,69 +175,77 @@ public class StateChartVisualIDRegistry {
 					&& isNode_2007((Node) domainElement)) {
 				return Node6EditPart.VISUAL_ID;
 			}
+			if (StatechartPackage.eINSTANCE.getNode().isSuperTypeOf(domainElement.eClass())
+					&& isNode_2008((Node) domainElement)) {
+				return Node7EditPart.VISUAL_ID;
+			}
+			if (StatechartPackage.eINSTANCE.getNode().isSuperTypeOf(domainElement.eClass())
+					&& isNode_2009((Node) domainElement)) {
+				return Node8EditPart.VISUAL_ID;
+			}
 			break;
 		case NodeNodeOrCompEditPart.VISUAL_ID:
 			if (StatechartPackage.eINSTANCE.getNode().isSuperTypeOf(domainElement.eClass())
 					&& isNode_3001((Node) domainElement)) {
-				return Node7EditPart.VISUAL_ID;
-			}
-			if (StatechartPackage.eINSTANCE.getNode().isSuperTypeOf(domainElement.eClass())
-					&& isNode_3002((Node) domainElement)) {
-				return Node8EditPart.VISUAL_ID;
-			}
-			if (StatechartPackage.eINSTANCE.getNode().isSuperTypeOf(domainElement.eClass())
-					&& isNode_3003((Node) domainElement)) {
 				return Node9EditPart.VISUAL_ID;
 			}
 			if (StatechartPackage.eINSTANCE.getNode().isSuperTypeOf(domainElement.eClass())
-					&& isNode_3004((Node) domainElement)) {
+					&& isNode_3002((Node) domainElement)) {
 				return Node10EditPart.VISUAL_ID;
 			}
 			if (StatechartPackage.eINSTANCE.getNode().isSuperTypeOf(domainElement.eClass())
-					&& isNode_3005((Node) domainElement)) {
+					&& isNode_3003((Node) domainElement)) {
 				return Node11EditPart.VISUAL_ID;
 			}
 			if (StatechartPackage.eINSTANCE.getNode().isSuperTypeOf(domainElement.eClass())
-					&& isNode_3006((Node) domainElement)) {
+					&& isNode_3004((Node) domainElement)) {
 				return Node12EditPart.VISUAL_ID;
+			}
+			if (StatechartPackage.eINSTANCE.getNode().isSuperTypeOf(domainElement.eClass())
+					&& isNode_3005((Node) domainElement)) {
+				return Node13EditPart.VISUAL_ID;
+			}
+			if (StatechartPackage.eINSTANCE.getNode().isSuperTypeOf(domainElement.eClass())
+					&& isNode_3006((Node) domainElement)) {
+				return Node14EditPart.VISUAL_ID;
 			}
 			break;
 		case NodeNodeOrComp2EditPart.VISUAL_ID:
 			if (StatechartPackage.eINSTANCE.getNode().isSuperTypeOf(domainElement.eClass())
 					&& isNode_3001((Node) domainElement)) {
-				return Node7EditPart.VISUAL_ID;
-			}
-			if (StatechartPackage.eINSTANCE.getNode().isSuperTypeOf(domainElement.eClass())
-					&& isNode_3002((Node) domainElement)) {
-				return Node8EditPart.VISUAL_ID;
-			}
-			if (StatechartPackage.eINSTANCE.getNode().isSuperTypeOf(domainElement.eClass())
-					&& isNode_3003((Node) domainElement)) {
 				return Node9EditPart.VISUAL_ID;
 			}
 			if (StatechartPackage.eINSTANCE.getNode().isSuperTypeOf(domainElement.eClass())
-					&& isNode_3004((Node) domainElement)) {
+					&& isNode_3002((Node) domainElement)) {
 				return Node10EditPart.VISUAL_ID;
 			}
 			if (StatechartPackage.eINSTANCE.getNode().isSuperTypeOf(domainElement.eClass())
-					&& isNode_3005((Node) domainElement)) {
+					&& isNode_3003((Node) domainElement)) {
 				return Node11EditPart.VISUAL_ID;
 			}
 			if (StatechartPackage.eINSTANCE.getNode().isSuperTypeOf(domainElement.eClass())
-					&& isNode_3006((Node) domainElement)) {
+					&& isNode_3004((Node) domainElement)) {
 				return Node12EditPart.VISUAL_ID;
+			}
+			if (StatechartPackage.eINSTANCE.getNode().isSuperTypeOf(domainElement.eClass())
+					&& isNode_3005((Node) domainElement)) {
+				return Node13EditPart.VISUAL_ID;
+			}
+			if (StatechartPackage.eINSTANCE.getNode().isSuperTypeOf(domainElement.eClass())
+					&& isNode_3006((Node) domainElement)) {
+				return Node14EditPart.VISUAL_ID;
 			}
 			break;
 		case NodeNodeAndCompEditPart.VISUAL_ID:
 			if (StatechartPackage.eINSTANCE.getNode().isSuperTypeOf(domainElement.eClass())
 					&& isNode_3003((Node) domainElement)) {
-				return Node9EditPart.VISUAL_ID;
+				return Node11EditPart.VISUAL_ID;
 			}
 			break;
 		case NodeNodeAndComp2EditPart.VISUAL_ID:
 			if (StatechartPackage.eINSTANCE.getNode().isSuperTypeOf(domainElement.eClass())
 					&& isNode_3003((Node) domainElement)) {
-				return Node9EditPart.VISUAL_ID;
+				return Node11EditPart.VISUAL_ID;
 			}
 			break;
 		}
@@ -281,6 +293,12 @@ public class StateChartVisualIDRegistry {
 			if (Node6EditPart.VISUAL_ID == nodeVisualID) {
 				return true;
 			}
+			if (Node7EditPart.VISUAL_ID == nodeVisualID) {
+				return true;
+			}
+			if (Node8EditPart.VISUAL_ID == nodeVisualID) {
+				return true;
+			}
 			break;
 		case NodeEditPart.VISUAL_ID:
 			if (NodeNameEditPart.VISUAL_ID == nodeVisualID) {
@@ -322,11 +340,21 @@ public class StateChartVisualIDRegistry {
 			}
 			break;
 		case Node8EditPart.VISUAL_ID:
-			if (NodeName4EditPart.VISUAL_ID == nodeVisualID) {
+			if (WrappingLabel3EditPart.VISUAL_ID == nodeVisualID) {
 				return true;
 			}
 			break;
 		case Node9EditPart.VISUAL_ID:
+			if (WrappingLabel4EditPart.VISUAL_ID == nodeVisualID) {
+				return true;
+			}
+			break;
+		case Node10EditPart.VISUAL_ID:
+			if (NodeName4EditPart.VISUAL_ID == nodeVisualID) {
+				return true;
+			}
+			break;
+		case Node11EditPart.VISUAL_ID:
 			if (NodeName5EditPart.VISUAL_ID == nodeVisualID) {
 				return true;
 			}
@@ -334,7 +362,7 @@ public class StateChartVisualIDRegistry {
 				return true;
 			}
 			break;
-		case Node11EditPart.VISUAL_ID:
+		case Node13EditPart.VISUAL_ID:
 			if (NodeName6EditPart.VISUAL_ID == nodeVisualID) {
 				return true;
 			}
@@ -343,12 +371,6 @@ public class StateChartVisualIDRegistry {
 			}
 			break;
 		case NodeNodeOrCompEditPart.VISUAL_ID:
-			if (Node7EditPart.VISUAL_ID == nodeVisualID) {
-				return true;
-			}
-			if (Node8EditPart.VISUAL_ID == nodeVisualID) {
-				return true;
-			}
 			if (Node9EditPart.VISUAL_ID == nodeVisualID) {
 				return true;
 			}
@@ -359,16 +381,16 @@ public class StateChartVisualIDRegistry {
 				return true;
 			}
 			if (Node12EditPart.VISUAL_ID == nodeVisualID) {
+				return true;
+			}
+			if (Node13EditPart.VISUAL_ID == nodeVisualID) {
+				return true;
+			}
+			if (Node14EditPart.VISUAL_ID == nodeVisualID) {
 				return true;
 			}
 			break;
 		case NodeNodeOrComp2EditPart.VISUAL_ID:
-			if (Node7EditPart.VISUAL_ID == nodeVisualID) {
-				return true;
-			}
-			if (Node8EditPart.VISUAL_ID == nodeVisualID) {
-				return true;
-			}
 			if (Node9EditPart.VISUAL_ID == nodeVisualID) {
 				return true;
 			}
@@ -381,14 +403,20 @@ public class StateChartVisualIDRegistry {
 			if (Node12EditPart.VISUAL_ID == nodeVisualID) {
 				return true;
 			}
+			if (Node13EditPart.VISUAL_ID == nodeVisualID) {
+				return true;
+			}
+			if (Node14EditPart.VISUAL_ID == nodeVisualID) {
+				return true;
+			}
 			break;
 		case NodeNodeAndCompEditPart.VISUAL_ID:
-			if (Node9EditPart.VISUAL_ID == nodeVisualID) {
+			if (Node11EditPart.VISUAL_ID == nodeVisualID) {
 				return true;
 			}
 			break;
 		case NodeNodeAndComp2EditPart.VISUAL_ID:
-			if (Node9EditPart.VISUAL_ID == nodeVisualID) {
+			if (Node11EditPart.VISUAL_ID == nodeVisualID) {
 				return true;
 			}
 			break;
@@ -474,6 +502,24 @@ public class StateChartVisualIDRegistry {
 	*/
 	private static boolean isNode_2007(Node domainElement) {
 		Object result = StateChartOCLFactory.getExpression(2, StatechartPackage.eINSTANCE.getNode(), null)
+				.evaluate(domainElement);
+		return result instanceof Boolean && ((Boolean) result).booleanValue();
+	}
+
+	/**
+	* @generated
+	*/
+	private static boolean isNode_2008(Node domainElement) {
+		Object result = StateChartOCLFactory.getExpression(12, StatechartPackage.eINSTANCE.getNode(), null)
+				.evaluate(domainElement);
+		return result instanceof Boolean && ((Boolean) result).booleanValue();
+	}
+
+	/**
+	* @generated
+	*/
+	private static boolean isNode_2009(Node domainElement) {
+		Object result = StateChartOCLFactory.getExpression(14, StatechartPackage.eINSTANCE.getNode(), null)
 				.evaluate(domainElement);
 		return result instanceof Boolean && ((Boolean) result).booleanValue();
 	}
@@ -574,8 +620,10 @@ public class StateChartVisualIDRegistry {
 		case Node6EditPart.VISUAL_ID:
 		case Node7EditPart.VISUAL_ID:
 		case Node8EditPart.VISUAL_ID:
+		case Node9EditPart.VISUAL_ID:
 		case Node10EditPart.VISUAL_ID:
 		case Node12EditPart.VISUAL_ID:
+		case Node14EditPart.VISUAL_ID:
 			return true;
 		default:
 			break;

@@ -12,6 +12,8 @@ import statechart.diagram.edit.commands.Node3CreateCommand;
 import statechart.diagram.edit.commands.Node4CreateCommand;
 import statechart.diagram.edit.commands.Node5CreateCommand;
 import statechart.diagram.edit.commands.Node6CreateCommand;
+import statechart.diagram.edit.commands.Node7CreateCommand;
+import statechart.diagram.edit.commands.Node8CreateCommand;
 import statechart.diagram.edit.commands.NodeCreateCommand;
 import statechart.diagram.edit.commands.VariableCreateCommand;
 import statechart.diagram.providers.StateChartElementTypes;
@@ -52,6 +54,12 @@ public class ModelItemSemanticEditPolicy extends StateChartBaseItemSemanticEditP
 		}
 		if (StateChartElementTypes.Node_2007 == req.getElementType()) {
 			return getGEFWrapper(new Node6CreateCommand(req));
+		}
+		if (StateChartElementTypes.Node_2008 == req.getElementType()) {
+			return getGEFWrapper(new Node7CreateCommand(req));
+		}
+		if (StateChartElementTypes.Node_2009 == req.getElementType()) {
+			return getGEFWrapper(new Node8CreateCommand(req));
 		}
 		return super.getCreateCommand(req);
 	}

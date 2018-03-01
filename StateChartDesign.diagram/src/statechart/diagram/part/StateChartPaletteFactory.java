@@ -41,6 +41,8 @@ public class StateChartPaletteFactory {
 		paletteContainer.add(createNodeEND6CreationTool());
 		paletteContainer.add(createTransition7CreationTool());
 		paletteContainer.add(createVariable8CreationTool());
+		paletteContainer.add(createNodeHISTORY9CreationTool());
+		paletteContainer.add(createNodeSHALLOWHISTORY10CreationTool());
 		return paletteContainer;
 	}
 
@@ -155,6 +157,31 @@ public class StateChartPaletteFactory {
 				Messages.Variable8CreationTool_desc, Collections.singletonList(StateChartElementTypes.Variable_2003));
 		entry.setId("createVariable8CreationTool"); //$NON-NLS-1$
 		entry.setSmallIcon(StateChartElementTypes.getImageDescriptor(StateChartElementTypes.Variable_2003));
+		entry.setLargeIcon(entry.getSmallIcon());
+		return entry;
+	}
+
+	/**
+	* @generated
+	*/
+	private ToolEntry createNodeHISTORY9CreationTool() {
+		DefaultNodeToolEntry entry = new DefaultNodeToolEntry(Messages.NodeHISTORY9CreationTool_title,
+				Messages.NodeHISTORY9CreationTool_desc, Collections.singletonList(StateChartElementTypes.Node_2008));
+		entry.setId("createNodeHISTORY9CreationTool"); //$NON-NLS-1$
+		entry.setSmallIcon(StateChartElementTypes.getImageDescriptor(StateChartElementTypes.Node_2008));
+		entry.setLargeIcon(entry.getSmallIcon());
+		return entry;
+	}
+
+	/**
+	* @generated
+	*/
+	private ToolEntry createNodeSHALLOWHISTORY10CreationTool() {
+		DefaultNodeToolEntry entry = new DefaultNodeToolEntry(Messages.NodeSHALLOWHISTORY10CreationTool_title,
+				Messages.NodeSHALLOWHISTORY10CreationTool_desc,
+				Collections.singletonList(StateChartElementTypes.Node_2009));
+		entry.setId("createNodeSHALLOWHISTORY10CreationTool"); //$NON-NLS-1$
+		entry.setSmallIcon(StateChartElementTypes.getImageDescriptor(StateChartElementTypes.Node_2009));
 		entry.setLargeIcon(entry.getSmallIcon());
 		return entry;
 	}

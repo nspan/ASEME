@@ -22,6 +22,8 @@ import statechart.diagram.edit.parts.ModelEditPart;
 import statechart.diagram.edit.parts.Node10EditPart;
 import statechart.diagram.edit.parts.Node11EditPart;
 import statechart.diagram.edit.parts.Node12EditPart;
+import statechart.diagram.edit.parts.Node13EditPart;
+import statechart.diagram.edit.parts.Node14EditPart;
 import statechart.diagram.edit.parts.Node2EditPart;
 import statechart.diagram.edit.parts.Node3EditPart;
 import statechart.diagram.edit.parts.Node4EditPart;
@@ -42,6 +44,8 @@ import statechart.diagram.edit.parts.TransitionTEEditPart;
 import statechart.diagram.edit.parts.VariableEditPart;
 import statechart.diagram.edit.parts.VariableNameEditPart;
 import statechart.diagram.edit.parts.WrappingLabel2EditPart;
+import statechart.diagram.edit.parts.WrappingLabel3EditPart;
+import statechart.diagram.edit.parts.WrappingLabel4EditPart;
 import statechart.diagram.edit.parts.WrappingLabelEditPart;
 import statechart.diagram.part.StateChartDiagramEditorPlugin;
 import statechart.diagram.part.StateChartVisualIDRegistry;
@@ -119,16 +123,20 @@ public class StateChartNavigatorLabelProvider extends LabelProvider
 		case Node6EditPart.VISUAL_ID:
 			return getImage("Navigator?TopLevelNode?http://statechart/1.0?Node", StateChartElementTypes.Node_2007); //$NON-NLS-1$
 		case Node7EditPart.VISUAL_ID:
-			return getImage("Navigator?Node?http://statechart/1.0?Node", StateChartElementTypes.Node_3001); //$NON-NLS-1$
+			return getImage("Navigator?TopLevelNode?http://statechart/1.0?Node", StateChartElementTypes.Node_2008); //$NON-NLS-1$
 		case Node8EditPart.VISUAL_ID:
-			return getImage("Navigator?Node?http://statechart/1.0?Node", StateChartElementTypes.Node_3002); //$NON-NLS-1$
+			return getImage("Navigator?TopLevelNode?http://statechart/1.0?Node", StateChartElementTypes.Node_2009); //$NON-NLS-1$
 		case Node9EditPart.VISUAL_ID:
-			return getImage("Navigator?Node?http://statechart/1.0?Node", StateChartElementTypes.Node_3003); //$NON-NLS-1$
+			return getImage("Navigator?Node?http://statechart/1.0?Node", StateChartElementTypes.Node_3001); //$NON-NLS-1$
 		case Node10EditPart.VISUAL_ID:
-			return getImage("Navigator?Node?http://statechart/1.0?Node", StateChartElementTypes.Node_3004); //$NON-NLS-1$
+			return getImage("Navigator?Node?http://statechart/1.0?Node", StateChartElementTypes.Node_3002); //$NON-NLS-1$
 		case Node11EditPart.VISUAL_ID:
-			return getImage("Navigator?Node?http://statechart/1.0?Node", StateChartElementTypes.Node_3005); //$NON-NLS-1$
+			return getImage("Navigator?Node?http://statechart/1.0?Node", StateChartElementTypes.Node_3003); //$NON-NLS-1$
 		case Node12EditPart.VISUAL_ID:
+			return getImage("Navigator?Node?http://statechart/1.0?Node", StateChartElementTypes.Node_3004); //$NON-NLS-1$
+		case Node13EditPart.VISUAL_ID:
+			return getImage("Navigator?Node?http://statechart/1.0?Node", StateChartElementTypes.Node_3005); //$NON-NLS-1$
+		case Node14EditPart.VISUAL_ID:
 			return getImage("Navigator?Node?http://statechart/1.0?Node", StateChartElementTypes.Node_3006); //$NON-NLS-1$
 		case TransitionEditPart.VISUAL_ID:
 			return getImage("Navigator?Link?http://statechart/1.0?Transition", StateChartElementTypes.Transition_4001); //$NON-NLS-1$
@@ -199,16 +207,20 @@ public class StateChartNavigatorLabelProvider extends LabelProvider
 		case Node6EditPart.VISUAL_ID:
 			return getNode_2007Text(view);
 		case Node7EditPart.VISUAL_ID:
-			return getNode_3001Text(view);
+			return getNode_2008Text(view);
 		case Node8EditPart.VISUAL_ID:
-			return getNode_3002Text(view);
+			return getNode_2009Text(view);
 		case Node9EditPart.VISUAL_ID:
-			return getNode_3003Text(view);
+			return getNode_3001Text(view);
 		case Node10EditPart.VISUAL_ID:
-			return getNode_3004Text(view);
+			return getNode_3002Text(view);
 		case Node11EditPart.VISUAL_ID:
-			return getNode_3005Text(view);
+			return getNode_3003Text(view);
 		case Node12EditPart.VISUAL_ID:
+			return getNode_3004Text(view);
+		case Node13EditPart.VISUAL_ID:
+			return getNode_3005Text(view);
+		case Node14EditPart.VISUAL_ID:
 			return getNode_3006Text(view);
 		case TransitionEditPart.VISUAL_ID:
 			return getTransition_4001Text(view);
@@ -338,10 +350,42 @@ public class StateChartNavigatorLabelProvider extends LabelProvider
 	/**
 	* @generated
 	*/
+	private String getNode_2008Text(View view) {
+		IParser parser = StateChartParserProvider.getParser(StateChartElementTypes.Node_2008,
+				view.getElement() != null ? view.getElement() : view,
+				StateChartVisualIDRegistry.getType(WrappingLabel2EditPart.VISUAL_ID));
+		if (parser != null) {
+			return parser.getPrintString(new EObjectAdapter(view.getElement() != null ? view.getElement() : view),
+					ParserOptions.NONE.intValue());
+		} else {
+			StateChartDiagramEditorPlugin.getInstance().logError("Parser was not found for label " + 5011); //$NON-NLS-1$
+			return ""; //$NON-NLS-1$
+		}
+	}
+
+	/**
+	* @generated
+	*/
+	private String getNode_2009Text(View view) {
+		IParser parser = StateChartParserProvider.getParser(StateChartElementTypes.Node_2009,
+				view.getElement() != null ? view.getElement() : view,
+				StateChartVisualIDRegistry.getType(WrappingLabel3EditPart.VISUAL_ID));
+		if (parser != null) {
+			return parser.getPrintString(new EObjectAdapter(view.getElement() != null ? view.getElement() : view),
+					ParserOptions.NONE.intValue());
+		} else {
+			StateChartDiagramEditorPlugin.getInstance().logError("Parser was not found for label " + 5012); //$NON-NLS-1$
+			return ""; //$NON-NLS-1$
+		}
+	}
+
+	/**
+	* @generated
+	*/
 	private String getNode_3001Text(View view) {
 		IParser parser = StateChartParserProvider.getParser(StateChartElementTypes.Node_3001,
 				view.getElement() != null ? view.getElement() : view,
-				StateChartVisualIDRegistry.getType(WrappingLabel2EditPart.VISUAL_ID));
+				StateChartVisualIDRegistry.getType(WrappingLabel4EditPart.VISUAL_ID));
 		if (parser != null) {
 			return parser.getPrintString(new EObjectAdapter(view.getElement() != null ? view.getElement() : view),
 					ParserOptions.NONE.intValue());

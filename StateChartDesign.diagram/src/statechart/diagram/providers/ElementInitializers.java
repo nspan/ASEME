@@ -95,6 +95,32 @@ public class ElementInitializers {
 	/**
 	* @generated
 	*/
+	public void init_Node_2008(Node instance) {
+		try {
+			Object value_0 = StateChartOCLFactory.getExpression(13, StatechartPackage.eINSTANCE.getNode(), null)
+					.evaluate(instance);
+			instance.setType((String) value_0);
+		} catch (RuntimeException e) {
+			StateChartDiagramEditorPlugin.getInstance().logError("Element initialization failed", e); //$NON-NLS-1$						
+		}
+	}
+
+	/**
+	* @generated
+	*/
+	public void init_Node_2009(Node instance) {
+		try {
+			Object value_0 = StateChartOCLFactory.getExpression(15, StatechartPackage.eINSTANCE.getNode(), null)
+					.evaluate(instance);
+			instance.setType((String) value_0);
+		} catch (RuntimeException e) {
+			StateChartDiagramEditorPlugin.getInstance().logError("Element initialization failed", e); //$NON-NLS-1$						
+		}
+	}
+
+	/**
+	* @generated
+	*/
 	public void init_Node_3001(Node instance) {
 		try {
 			Object value_0 = StateChartOCLFactory.getExpression(3, StatechartPackage.eINSTANCE.getNode(), null)

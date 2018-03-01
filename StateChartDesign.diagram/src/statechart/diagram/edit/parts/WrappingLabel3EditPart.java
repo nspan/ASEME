@@ -52,12 +52,12 @@ import statechart.diagram.providers.StateChartParserProvider;
 /**
  * @generated
  */
-public class WrappingLabel2EditPart extends CompartmentEditPart implements ITextAwareEditPart {
+public class WrappingLabel3EditPart extends CompartmentEditPart implements ITextAwareEditPart {
 
 	/**
 	* @generated
 	*/
-	public static final int VISUAL_ID = 5011;
+	public static final int VISUAL_ID = 5012;
 
 	/**
 	* @generated
@@ -87,7 +87,7 @@ public class WrappingLabel2EditPart extends CompartmentEditPart implements IText
 	/**
 	* @generated
 	*/
-	public WrappingLabel2EditPart(View view) {
+	public WrappingLabel3EditPart(View view) {
 		super(view);
 	}
 
@@ -288,8 +288,8 @@ public class WrappingLabel2EditPart extends CompartmentEditPart implements IText
 	*/
 	public IParser getParser() {
 		if (parser == null) {
-			parser = StateChartParserProvider.getParser(StateChartElementTypes.Node_2008, getParserElement(),
-					StateChartVisualIDRegistry.getType(statechart.diagram.edit.parts.WrappingLabel2EditPart.VISUAL_ID));
+			parser = StateChartParserProvider.getParser(StateChartElementTypes.Node_2009, getParserElement(),
+					StateChartVisualIDRegistry.getType(statechart.diagram.edit.parts.WrappingLabel3EditPart.VISUAL_ID));
 		}
 		return parser;
 	}

@@ -35,6 +35,8 @@ import statechart.StatechartPackage;
 import statechart.diagram.edit.parts.Node10EditPart;
 import statechart.diagram.edit.parts.Node11EditPart;
 import statechart.diagram.edit.parts.Node12EditPart;
+import statechart.diagram.edit.parts.Node13EditPart;
+import statechart.diagram.edit.parts.Node14EditPart;
 import statechart.diagram.edit.parts.Node7EditPart;
 import statechart.diagram.edit.parts.Node8EditPart;
 import statechart.diagram.edit.parts.Node9EditPart;
@@ -95,12 +97,12 @@ public class NodeNodeOrComp2CanonicalEditPolicy extends CanonicalEditPolicy {
 	private boolean isMyDiagramElement(View view) {
 		int visualID = StateChartVisualIDRegistry.getVisualID(view);
 		switch (visualID) {
-		case Node7EditPart.VISUAL_ID:
-		case Node8EditPart.VISUAL_ID:
 		case Node9EditPart.VISUAL_ID:
 		case Node10EditPart.VISUAL_ID:
 		case Node11EditPart.VISUAL_ID:
 		case Node12EditPart.VISUAL_ID:
+		case Node13EditPart.VISUAL_ID:
+		case Node14EditPart.VISUAL_ID:
 			return true;
 		}
 		return false;

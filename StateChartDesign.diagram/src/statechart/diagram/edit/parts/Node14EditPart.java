@@ -22,17 +22,17 @@ import org.eclipse.gmf.runtime.gef.ui.figures.NodeFigure;
 import org.eclipse.gmf.runtime.notation.View;
 import org.eclipse.swt.graphics.Color;
 
-import statechart.diagram.edit.policies.Node12ItemSemanticEditPolicy;
+import statechart.diagram.edit.policies.Node14ItemSemanticEditPolicy;
 
 /**
  * @generated
  */
-public class Node12EditPart extends ShapeNodeEditPart {
+public class Node14EditPart extends ShapeNodeEditPart {
 
 	/**
 	* @generated
 	*/
-	public static final int VISUAL_ID = 3004;
+	public static final int VISUAL_ID = 3006;
 
 	/**
 	* @generated
@@ -47,7 +47,7 @@ public class Node12EditPart extends ShapeNodeEditPart {
 	/**
 	* @generated
 	*/
-	public Node12EditPart(View view) {
+	public Node14EditPart(View view) {
 		super(view);
 	}
 
@@ -56,7 +56,7 @@ public class Node12EditPart extends ShapeNodeEditPart {
 	*/
 	protected void createDefaultEditPolicies() {
 		super.createDefaultEditPolicies();
-		installEditPolicy(EditPolicyRoles.SEMANTIC_ROLE, new Node12ItemSemanticEditPolicy());
+		installEditPolicy(EditPolicyRoles.SEMANTIC_ROLE, new Node14ItemSemanticEditPolicy());
 		installEditPolicy(EditPolicy.LAYOUT_ROLE, createLayoutEditPolicy());
 		// XXX need an SCR to runtime to have another abstract superclass that would let children add reasonable editpolicies
 		// removeEditPolicy(org.eclipse.gmf.runtime.diagram.ui.editpolicies.EditPolicyRoles.CONNECTION_HANDLES_ROLE);
@@ -91,21 +91,21 @@ public class Node12EditPart extends ShapeNodeEditPart {
 	* @generated
 	*/
 	protected IFigure createNodeShape() {
-		return primaryShape = new NodeStartFigure();
+		return primaryShape = new NodeEndFigure();
 	}
 
 	/**
 	* @generated
 	*/
-	public NodeStartFigure getPrimaryShape() {
-		return (NodeStartFigure) primaryShape;
+	public NodeEndFigure getPrimaryShape() {
+		return (NodeEndFigure) primaryShape;
 	}
 
 	/**
 	* @generated
 	*/
 	protected NodeFigure createNodePlate() {
-		DefaultSizeNodeFigure result = new DefaultSizeNodeFigure(16, 16);
+		DefaultSizeNodeFigure result = new DefaultSizeNodeFigure(35, 35);
 		return result;
 	}
 
@@ -183,16 +183,53 @@ public class Node12EditPart extends ShapeNodeEditPart {
 	}
 
 	/**
-	* @generated
-	*/
-	public class NodeStartFigure extends Ellipse {
+	 * @generated
+	 */
+	public class NodeEndFigure extends Ellipse {
 
 		/**
 		 * @generated
 		 */
-		public NodeStartFigure() {
-			this.setBackgroundColor(ColorConstants.black);
-			this.setPreferredSize(new Dimension(getMapMode().DPtoLP(16), getMapMode().DPtoLP(16)));
+		private Ellipse fFigureBlack;
+
+		/**
+		 * @generated
+		 */
+		public NodeEndFigure() {
+
+			BorderLayout layoutThis = new BorderLayout();
+			this.setLayoutManager(layoutThis);
+
+			this.setLineWidth(4);
+			this.setForegroundColor(ColorConstants.black);
+			this.setBackgroundColor(ColorConstants.white);
+			this.setPreferredSize(new Dimension(getMapMode().DPtoLP(35), getMapMode().DPtoLP(35)));
+			this.setMaximumSize(new Dimension(getMapMode().DPtoLP(35), getMapMode().DPtoLP(35)));
+			this.setMinimumSize(new Dimension(getMapMode().DPtoLP(30), getMapMode().DPtoLP(30)));
+
+			this.setBorder(new MarginBorder(getMapMode().DPtoLP(10), getMapMode().DPtoLP(10), getMapMode().DPtoLP(10),
+					getMapMode().DPtoLP(10)));
+			createContents();
+		}
+
+		/**
+		 * @generated
+		 */
+		private void createContents() {
+
+			fFigureBlack = new Ellipse();
+
+			fFigureBlack.setBackgroundColor(ColorConstants.black);
+
+			this.add(fFigureBlack, BorderLayout.CENTER);
+
+		}
+
+		/**
+		 * @generated
+		 */
+		public Ellipse getFigureBlack() {
+			return fFigureBlack;
 		}
 
 	}

@@ -68,6 +68,8 @@ public class NodeItemProvider
 			addTypePropertyDescriptor(object);
 			addActivityPropertyDescriptor(object);
 			addVariablesPropertyDescriptor(object);
+			addActionsPropertyDescriptor(object);
+			addMetadataPropertyDescriptor(object);
 		}
 		return itemPropertyDescriptors;
 	}
@@ -183,6 +185,50 @@ public class NodeItemProvider
 	}
 
 	/**
+	 * This adds a property descriptor for the Actions feature.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	protected void addActionsPropertyDescriptor(Object object) {
+		itemPropertyDescriptors.add
+			(createItemPropertyDescriptor
+				(((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
+				 getResourceLocator(),
+				 getString("_UI_Node_actions_feature"),
+				 getString("_UI_PropertyDescriptor_description", "_UI_Node_actions_feature", "_UI_Node_type"),
+				 StatechartPackage.Literals.NODE__ACTIONS,
+				 true,
+				 false,
+				 false,
+				 ItemPropertyDescriptor.GENERIC_VALUE_IMAGE,
+				 null,
+				 null));
+	}
+
+	/**
+	 * This adds a property descriptor for the Metadata feature.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	protected void addMetadataPropertyDescriptor(Object object) {
+		itemPropertyDescriptors.add
+			(createItemPropertyDescriptor
+				(((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
+				 getResourceLocator(),
+				 getString("_UI_Node_metadata_feature"),
+				 getString("_UI_PropertyDescriptor_description", "_UI_Node_metadata_feature", "_UI_Node_type"),
+				 StatechartPackage.Literals.NODE__METADATA,
+				 true,
+				 false,
+				 false,
+				 ItemPropertyDescriptor.GENERIC_VALUE_IMAGE,
+				 null,
+				 null));
+	}
+
+	/**
 	 * This specifies how to implement {@link #getChildren} and is used to deduce an appropriate feature for an
 	 * {@link org.eclipse.emf.edit.command.AddCommand}, {@link org.eclipse.emf.edit.command.RemoveCommand} or
 	 * {@link org.eclipse.emf.edit.command.MoveCommand} in {@link #createCommand}.
@@ -254,6 +300,8 @@ public class NodeItemProvider
 			case StatechartPackage.NODE__LABEL:
 			case StatechartPackage.NODE__TYPE:
 			case StatechartPackage.NODE__ACTIVITY:
+			case StatechartPackage.NODE__ACTIONS:
+			case StatechartPackage.NODE__METADATA:
 				fireNotifyChanged(new ViewerNotification(notification, notification.getNotifier(), false, true));
 				return;
 			case StatechartPackage.NODE__CHILDREN:

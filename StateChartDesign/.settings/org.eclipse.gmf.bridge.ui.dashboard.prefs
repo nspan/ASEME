@@ -1,6 +1,6 @@
 eclipse.preferences.version=1
 gmf_dashboard/domainGenerationModel=platform\:/resource/StateChartDesign/model/StateChart.genmodel
-gmf_dashboard/domainModel=platform\:/resource/StateChartDesign/model/StateChart.ecore
+gmf_dashboard/domainModel=platform\:/resource/IAC_EMF.generator2/src/StateChart.ecore
 gmf_dashboard/generationModel=platform\:/resource/StateChartDesign/model/StateChart.gmfgen
 gmf_dashboard/graphicalDefinitionModel=platform\:/resource/StateChartDesign/model/StateChart.gmfgraph
 gmf_dashboard/mappingModel=platform\:/resource/StateChartDesign/model/StateChart.gmfmap

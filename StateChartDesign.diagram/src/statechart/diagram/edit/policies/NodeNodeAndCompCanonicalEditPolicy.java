@@ -22,6 +22,7 @@ import org.eclipse.gmf.runtime.notation.Node;
 import org.eclipse.gmf.runtime.notation.View;
 
 import statechart.StatechartPackage;
+import statechart.diagram.edit.parts.Node11EditPart;
 import statechart.diagram.edit.parts.Node9EditPart;
 import statechart.diagram.part.StateChartDiagramUpdater;
 import statechart.diagram.part.StateChartNodeDescriptor;
@@ -78,7 +79,7 @@ public class NodeNodeAndCompCanonicalEditPolicy extends CanonicalEditPolicy {
 	* @generated
 	*/
 	private boolean isMyDiagramElement(View view) {
-		return Node9EditPart.VISUAL_ID == StateChartVisualIDRegistry.getVisualID(view);
+		return Node11EditPart.VISUAL_ID == StateChartVisualIDRegistry.getVisualID(view);
 	}
 
 	/**

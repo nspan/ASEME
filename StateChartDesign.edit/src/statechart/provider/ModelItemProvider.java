@@ -64,6 +64,8 @@ public class ModelItemProvider
 			super.getPropertyDescriptors(object);
 
 			addNamePropertyDescriptor(object);
+			addDescriptionPropertyDescriptor(object);
+			addMetadataPropertyDescriptor(object);
 		}
 		return itemPropertyDescriptors;
 	}
@@ -82,6 +84,50 @@ public class ModelItemProvider
 				 getString("_UI_Model_name_feature"),
 				 getString("_UI_PropertyDescriptor_description", "_UI_Model_name_feature", "_UI_Model_type"),
 				 StatechartPackage.Literals.MODEL__NAME,
+				 true,
+				 false,
+				 false,
+				 ItemPropertyDescriptor.GENERIC_VALUE_IMAGE,
+				 null,
+				 null));
+	}
+
+	/**
+	 * This adds a property descriptor for the Description feature.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	protected void addDescriptionPropertyDescriptor(Object object) {
+		itemPropertyDescriptors.add
+			(createItemPropertyDescriptor
+				(((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
+				 getResourceLocator(),
+				 getString("_UI_Model_description_feature"),
+				 getString("_UI_PropertyDescriptor_description", "_UI_Model_description_feature", "_UI_Model_type"),
+				 StatechartPackage.Literals.MODEL__DESCRIPTION,
+				 true,
+				 false,
+				 false,
+				 ItemPropertyDescriptor.GENERIC_VALUE_IMAGE,
+				 null,
+				 null));
+	}
+
+	/**
+	 * This adds a property descriptor for the Metadata feature.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	protected void addMetadataPropertyDescriptor(Object object) {
+		itemPropertyDescriptors.add
+			(createItemPropertyDescriptor
+				(((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
+				 getResourceLocator(),
+				 getString("_UI_Model_metadata_feature"),
+				 getString("_UI_PropertyDescriptor_description", "_UI_Model_metadata_feature", "_UI_Model_type"),
+				 StatechartPackage.Literals.MODEL__METADATA,
 				 true,
 				 false,
 				 false,
@@ -161,6 +207,8 @@ public class ModelItemProvider
 
 		switch (notification.getFeatureID(Model.class)) {
 			case StatechartPackage.MODEL__NAME:
+			case StatechartPackage.MODEL__DESCRIPTION:
+			case StatechartPackage.MODEL__METADATA:
 				fireNotifyChanged(new ViewerNotification(notification, notification.getNotifier(), false, true));
 				return;
 			case StatechartPackage.MODEL__NODES:

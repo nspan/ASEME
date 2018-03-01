@@ -21,7 +21,9 @@ import org.eclipse.emf.ecore.EObject;
  *   <li>{@link statechart.Node#getActivity <em>Activity</em>}</li>
  *   <li>{@link statechart.Node#getVariables <em>Variables</em>}</li>
  *   <li>{@link statechart.Node#getChildren <em>Children</em>}</li>
- *   <li>{@link statechart.Node#getFather_of <em>Father of</em>}</li>
+ *   <li>{@link statechart.Node#getFather <em>Father</em>}</li>
+ *   <li>{@link statechart.Node#getActions <em>Actions</em>}</li>
+ *   <li>{@link statechart.Node#getMetadata <em>Metadata</em>}</li>
  * </ul>
  *
  * @see statechart.StatechartPackage#getNode()
@@ -152,7 +154,7 @@ public interface Node extends EObject {
 	/**
 	 * Returns the value of the '<em><b>Children</b></em>' containment reference list.
 	 * The list contents are of type {@link statechart.Node}.
-	 * It is bidirectional and its opposite is '{@link statechart.Node#getFather_of <em>Father of</em>}'.
+	 * It is bidirectional and its opposite is '{@link statechart.Node#getFather <em>Father</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <p>
 	 * If the meaning of the '<em>Children</em>' containment reference list isn't clear,
@@ -161,38 +163,90 @@ public interface Node extends EObject {
 	 * <!-- end-user-doc -->
 	 * @return the value of the '<em>Children</em>' containment reference list.
 	 * @see statechart.StatechartPackage#getNode_Children()
-	 * @see statechart.Node#getFather_of
-	 * @model opposite="Father_of" containment="true"
+	 * @see statechart.Node#getFather
+	 * @model opposite="Father" containment="true"
 	 * @generated
 	 */
 	EList<Node> getChildren();
 
 	/**
-	 * Returns the value of the '<em><b>Father of</b></em>' container reference.
+	 * Returns the value of the '<em><b>Father</b></em>' container reference.
 	 * It is bidirectional and its opposite is '{@link statechart.Node#getChildren <em>Children</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <p>
-	 * If the meaning of the '<em>Father of</em>' container reference isn't clear,
+	 * If the meaning of the '<em>Father</em>' container reference isn't clear,
 	 * there really should be more of a description here...
 	 * </p>
 	 * <!-- end-user-doc -->
-	 * @return the value of the '<em>Father of</em>' container reference.
-	 * @see #setFather_of(Node)
-	 * @see statechart.StatechartPackage#getNode_Father_of()
+	 * @return the value of the '<em>Father</em>' container reference.
+	 * @see #setFather(Node)
+	 * @see statechart.StatechartPackage#getNode_Father()
 	 * @see statechart.Node#getChildren
 	 * @model opposite="Children" transient="false"
 	 * @generated
 	 */
-	Node getFather_of();
+	Node getFather();
 
 	/**
-	 * Sets the value of the '{@link statechart.Node#getFather_of <em>Father of</em>}' container reference.
+	 * Sets the value of the '{@link statechart.Node#getFather <em>Father</em>}' container reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @param value the new value of the '<em>Father of</em>' container reference.
-	 * @see #getFather_of()
+	 * @param value the new value of the '<em>Father</em>' container reference.
+	 * @see #getFather()
 	 * @generated
 	 */
-	void setFather_of(Node value);
+	void setFather(Node value);
+
+	/**
+	 * Returns the value of the '<em><b>Actions</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <p>
+	 * If the meaning of the '<em>Actions</em>' attribute isn't clear,
+	 * there really should be more of a description here...
+	 * </p>
+	 * <!-- end-user-doc -->
+	 * @return the value of the '<em>Actions</em>' attribute.
+	 * @see #setActions(String)
+	 * @see statechart.StatechartPackage#getNode_Actions()
+	 * @model
+	 * @generated
+	 */
+	String getActions();
+
+	/**
+	 * Sets the value of the '{@link statechart.Node#getActions <em>Actions</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @param value the new value of the '<em>Actions</em>' attribute.
+	 * @see #getActions()
+	 * @generated
+	 */
+	void setActions(String value);
+
+	/**
+	 * Returns the value of the '<em><b>Metadata</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <p>
+	 * If the meaning of the '<em>Metadata</em>' attribute isn't clear,
+	 * there really should be more of a description here...
+	 * </p>
+	 * <!-- end-user-doc -->
+	 * @return the value of the '<em>Metadata</em>' attribute.
+	 * @see #setMetadata(String)
+	 * @see statechart.StatechartPackage#getNode_Metadata()
+	 * @model
+	 * @generated
+	 */
+	String getMetadata();
+
+	/**
+	 * Sets the value of the '{@link statechart.Node#getMetadata <em>Metadata</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @param value the new value of the '<em>Metadata</em>' attribute.
+	 * @see #getMetadata()
+	 * @generated
+	 */
+	void setMetadata(String value);
 
 } // Node

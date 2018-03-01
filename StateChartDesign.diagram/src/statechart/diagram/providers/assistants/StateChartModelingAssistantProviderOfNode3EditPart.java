@@ -11,6 +11,8 @@ import org.eclipse.gmf.runtime.emf.type.core.IElementType;
 import statechart.diagram.edit.parts.Node10EditPart;
 import statechart.diagram.edit.parts.Node11EditPart;
 import statechart.diagram.edit.parts.Node12EditPart;
+import statechart.diagram.edit.parts.Node13EditPart;
+import statechart.diagram.edit.parts.Node14EditPart;
 import statechart.diagram.edit.parts.Node2EditPart;
 import statechart.diagram.edit.parts.Node3EditPart;
 import statechart.diagram.edit.parts.Node4EditPart;
@@ -99,6 +101,12 @@ public class StateChartModelingAssistantProviderOfNode3EditPart extends StateCha
 		if (targetEditPart instanceof Node12EditPart) {
 			types.add(StateChartElementTypes.Transition_4001);
 		}
+		if (targetEditPart instanceof Node13EditPart) {
+			types.add(StateChartElementTypes.Transition_4001);
+		}
+		if (targetEditPart instanceof Node14EditPart) {
+			types.add(StateChartElementTypes.Transition_4001);
+		}
 		return types;
 	}
 
@@ -124,6 +132,8 @@ public class StateChartModelingAssistantProviderOfNode3EditPart extends StateCha
 			types.add(StateChartElementTypes.Node_2005);
 			types.add(StateChartElementTypes.Node_2006);
 			types.add(StateChartElementTypes.Node_2007);
+			types.add(StateChartElementTypes.Node_2008);
+			types.add(StateChartElementTypes.Node_2009);
 			types.add(StateChartElementTypes.Node_3001);
 			types.add(StateChartElementTypes.Node_3002);
 			types.add(StateChartElementTypes.Node_3003);
@@ -175,6 +185,8 @@ public class StateChartModelingAssistantProviderOfNode3EditPart extends StateCha
 			types.add(StateChartElementTypes.Node_2005);
 			types.add(StateChartElementTypes.Node_2006);
 			types.add(StateChartElementTypes.Node_2007);
+			types.add(StateChartElementTypes.Node_2008);
+			types.add(StateChartElementTypes.Node_2009);
 			types.add(StateChartElementTypes.Node_3001);
 			types.add(StateChartElementTypes.Node_3002);
 			types.add(StateChartElementTypes.Node_3003);

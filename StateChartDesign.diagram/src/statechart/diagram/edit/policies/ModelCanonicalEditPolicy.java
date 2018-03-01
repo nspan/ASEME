@@ -45,6 +45,8 @@ import statechart.diagram.edit.parts.ModelEditPart;
 import statechart.diagram.edit.parts.Node10EditPart;
 import statechart.diagram.edit.parts.Node11EditPart;
 import statechart.diagram.edit.parts.Node12EditPart;
+import statechart.diagram.edit.parts.Node13EditPart;
+import statechart.diagram.edit.parts.Node14EditPart;
 import statechart.diagram.edit.parts.Node2EditPart;
 import statechart.diagram.edit.parts.Node3EditPart;
 import statechart.diagram.edit.parts.Node4EditPart;
@@ -131,6 +133,8 @@ public class ModelCanonicalEditPolicy extends CanonicalEditPolicy {
 		case Node4EditPart.VISUAL_ID:
 		case Node5EditPart.VISUAL_ID:
 		case Node6EditPart.VISUAL_ID:
+		case Node7EditPart.VISUAL_ID:
+		case Node8EditPart.VISUAL_ID:
 			return true;
 		}
 		return false;
@@ -366,40 +370,54 @@ public class ModelCanonicalEditPolicy extends CanonicalEditPolicy {
 		}
 		case Node7EditPart.VISUAL_ID: {
 			if (!domain2NotationMap.containsKey(view.getElement())) {
-				result.addAll(StateChartDiagramUpdater.getNode_3001ContainedLinks(view));
+				result.addAll(StateChartDiagramUpdater.getNode_2008ContainedLinks(view));
 			}
 			domain2NotationMap.putView(view.getElement(), view);
 			break;
 		}
 		case Node8EditPart.VISUAL_ID: {
 			if (!domain2NotationMap.containsKey(view.getElement())) {
-				result.addAll(StateChartDiagramUpdater.getNode_3002ContainedLinks(view));
+				result.addAll(StateChartDiagramUpdater.getNode_2009ContainedLinks(view));
 			}
 			domain2NotationMap.putView(view.getElement(), view);
 			break;
 		}
 		case Node9EditPart.VISUAL_ID: {
 			if (!domain2NotationMap.containsKey(view.getElement())) {
-				result.addAll(StateChartDiagramUpdater.getNode_3003ContainedLinks(view));
+				result.addAll(StateChartDiagramUpdater.getNode_3001ContainedLinks(view));
 			}
 			domain2NotationMap.putView(view.getElement(), view);
 			break;
 		}
 		case Node10EditPart.VISUAL_ID: {
 			if (!domain2NotationMap.containsKey(view.getElement())) {
-				result.addAll(StateChartDiagramUpdater.getNode_3004ContainedLinks(view));
+				result.addAll(StateChartDiagramUpdater.getNode_3002ContainedLinks(view));
 			}
 			domain2NotationMap.putView(view.getElement(), view);
 			break;
 		}
 		case Node11EditPart.VISUAL_ID: {
 			if (!domain2NotationMap.containsKey(view.getElement())) {
-				result.addAll(StateChartDiagramUpdater.getNode_3005ContainedLinks(view));
+				result.addAll(StateChartDiagramUpdater.getNode_3003ContainedLinks(view));
 			}
 			domain2NotationMap.putView(view.getElement(), view);
 			break;
 		}
 		case Node12EditPart.VISUAL_ID: {
+			if (!domain2NotationMap.containsKey(view.getElement())) {
+				result.addAll(StateChartDiagramUpdater.getNode_3004ContainedLinks(view));
+			}
+			domain2NotationMap.putView(view.getElement(), view);
+			break;
+		}
+		case Node13EditPart.VISUAL_ID: {
+			if (!domain2NotationMap.containsKey(view.getElement())) {
+				result.addAll(StateChartDiagramUpdater.getNode_3005ContainedLinks(view));
+			}
+			domain2NotationMap.putView(view.getElement(), view);
+			break;
+		}
+		case Node14EditPart.VISUAL_ID: {
 			if (!domain2NotationMap.containsKey(view.getElement())) {
 				result.addAll(StateChartDiagramUpdater.getNode_3006ContainedLinks(view));
 			}

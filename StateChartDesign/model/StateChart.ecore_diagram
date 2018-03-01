@@ -3,6 +3,18 @@
   <children xmi:type="notation:Shape" xmi:id="_U2p1sABIEeapzd6YqQXKWg" type="2001" fontName=".SF NS Text">
     <children xmi:type="notation:DecorationNode" xmi:id="_U2qcwABIEeapzd6YqQXKWg" type="5001"/>
     <children xmi:type="notation:BasicCompartment" xmi:id="_U2qcwQBIEeapzd6YqQXKWg" type="7001">
+      <children xmi:type="notation:Node" xmi:id="_q0EQYBkxEeieNq_ieoxg-w" type="3001">
+        <element xmi:type="ecore:EAttribute" href="StateChart.ecore#//Model/name"/>
+        <layoutConstraint xmi:type="notation:Location" xmi:id="_q0EQYRkxEeieNq_ieoxg-w"/>
+      </children>
+      <children xmi:type="notation:Node" xmi:id="_zB2UsBkyEeieNq_ieoxg-w" type="3001">
+        <element xmi:type="ecore:EAttribute" href="StateChart.ecore#//Model/description"/>
+        <layoutConstraint xmi:type="notation:Location" xmi:id="_zB2UsRkyEeieNq_ieoxg-w"/>
+      </children>
+      <children xmi:type="notation:Node" xmi:id="_-xsnABkyEeieNq_ieoxg-w" type="3001">
+        <element xmi:type="ecore:EAttribute" href="StateChart.ecore#//Model/metadata"/>
+        <layoutConstraint xmi:type="notation:Location" xmi:id="_-xsnARkyEeieNq_ieoxg-w"/>
+      </children>
       <styles xmi:type="notation:SortingStyle" xmi:id="_U2qcwgBIEeapzd6YqQXKWg"/>
       <styles xmi:type="notation:FilteringStyle" xmi:id="_U2qcwwBIEeapzd6YqQXKWg"/>
     </children>
@@ -20,6 +32,30 @@
   <children xmi:type="notation:Shape" xmi:id="_U2rD0wBIEeapzd6YqQXKWg" type="2001" fontName=".SF NS Text">
     <children xmi:type="notation:DecorationNode" xmi:id="_U2rD1QBIEeapzd6YqQXKWg" type="5001"/>
     <children xmi:type="notation:BasicCompartment" xmi:id="_U2rD1gBIEeapzd6YqQXKWg" type="7001">
+      <children xmi:type="notation:Node" xmi:id="_q3ohwBkxEeieNq_ieoxg-w" type="3001">
+        <element xmi:type="ecore:EAttribute" href="StateChart.ecore#//Node/name"/>
+        <layoutConstraint xmi:type="notation:Location" xmi:id="_q3ohwRkxEeieNq_ieoxg-w"/>
+      </children>
+      <children xmi:type="notation:Node" xmi:id="_q3pI0BkxEeieNq_ieoxg-w" type="3001">
+        <element xmi:type="ecore:EAttribute" href="StateChart.ecore#//Node/label"/>
+        <layoutConstraint xmi:type="notation:Location" xmi:id="_q3pI0RkxEeieNq_ieoxg-w"/>
+      </children>
+      <children xmi:type="notation:Node" xmi:id="_q3pI0hkxEeieNq_ieoxg-w" type="3001">
+        <element xmi:type="ecore:EAttribute" href="StateChart.ecore#//Node/type"/>
+        <layoutConstraint xmi:type="notation:Location" xmi:id="_q3pI0xkxEeieNq_ieoxg-w"/>
+      </children>
+      <children xmi:type="notation:Node" xmi:id="_q3pv4BkxEeieNq_ieoxg-w" type="3001">
+        <element xmi:type="ecore:EAttribute" href="StateChart.ecore#//Node/activity"/>
+        <layoutConstraint xmi:type="notation:Location" xmi:id="_q3pv4RkxEeieNq_ieoxg-w"/>
+      </children>
+      <children xmi:type="notation:Node" xmi:id="_fFJ8wBkyEeieNq_ieoxg-w" type="3001">
+        <element xmi:type="ecore:EAttribute" href="StateChart.ecore#//Node/actions"/>
+        <layoutConstraint xmi:type="notation:Location" xmi:id="_fFJ8wRkyEeieNq_ieoxg-w"/>
+      </children>
+      <children xmi:type="notation:Node" xmi:id="_LwZSEBkzEeieNq_ieoxg-w" type="3001">
+        <element xmi:type="ecore:EAttribute" href="StateChart.ecore#//Node/metadata"/>
+        <layoutConstraint xmi:type="notation:Location" xmi:id="_LwZSERkzEeieNq_ieoxg-w"/>
+      </children>
       <styles xmi:type="notation:SortingStyle" xmi:id="_U2rD1wBIEeapzd6YqQXKWg"/>
       <styles xmi:type="notation:FilteringStyle" xmi:id="_U2rD2ABIEeapzd6YqQXKWg"/>
     </children>
@@ -37,6 +73,18 @@
   <children xmi:type="notation:Shape" xmi:id="_U2rq4wBIEeapzd6YqQXKWg" type="2001" fontName=".SF NS Text">
     <children xmi:type="notation:DecorationNode" xmi:id="_U2rq5QBIEeapzd6YqQXKWg" type="5001"/>
     <children xmi:type="notation:BasicCompartment" xmi:id="_U2rq5gBIEeapzd6YqQXKWg" type="7001">
+      <children xmi:type="notation:Node" xmi:id="_q4WTcBkxEeieNq_ieoxg-w" type="3001">
+        <element xmi:type="ecore:EAttribute" href="StateChart.ecore#//Transition/TE"/>
+        <layoutConstraint xmi:type="notation:Location" xmi:id="_q4WTcRkxEeieNq_ieoxg-w"/>
+      </children>
+      <children xmi:type="notation:Node" xmi:id="_q4W6gBkxEeieNq_ieoxg-w" type="3001">
+        <element xmi:type="ecore:EAttribute" href="StateChart.ecore#//Transition/name"/>
+        <layoutConstraint xmi:type="notation:Location" xmi:id="_q4W6gRkxEeieNq_ieoxg-w"/>
+      </children>
+      <children xmi:type="notation:Node" xmi:id="_IACl4BkzEeieNq_ieoxg-w" type="3001">
+        <element xmi:type="ecore:EAttribute" href="StateChart.ecore#//Transition/metadata"/>
+        <layoutConstraint xmi:type="notation:Location" xmi:id="_IACl4RkzEeieNq_ieoxg-w"/>
+      </children>
       <styles xmi:type="notation:SortingStyle" xmi:id="_U2rq5wBIEeapzd6YqQXKWg"/>
       <styles xmi:type="notation:FilteringStyle" xmi:id="_U2rq6ABIEeapzd6YqQXKWg"/>
     </children>
@@ -72,7 +120,7 @@
   <element xmi:type="ecore:EPackage" href="StateChart.ecore#/"/>
   <edges xmi:type="notation:Connector" xmi:id="_U3b40ABIEeapzd6YqQXKWg" type="4003" source="_U2p1sABIEeapzd6YqQXKWg" target="_U2rD0wBIEeapzd6YqQXKWg">
     <children xmi:type="notation:DecorationNode" xmi:id="_U3b40wBIEeapzd6YqQXKWg" type="6002">
-      <layoutConstraint xmi:type="notation:Location" xmi:id="_U3b41ABIEeapzd6YqQXKWg" y="40"/>
+      <layoutConstraint xmi:type="notation:Location" xmi:id="_U3b41ABIEeapzd6YqQXKWg" x="-32" y="-5"/>
     </children>
     <children xmi:type="notation:DecorationNode" xmi:id="_U3b41QBIEeapzd6YqQXKWg" type="6004">
       <layoutConstraint xmi:type="notation:Location" xmi:id="_U3cf4ABIEeapzd6YqQXKWg" y="60"/>

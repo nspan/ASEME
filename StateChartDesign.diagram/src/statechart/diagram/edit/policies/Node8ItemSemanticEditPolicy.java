@@ -28,7 +28,7 @@ public class Node8ItemSemanticEditPolicy extends StateChartBaseItemSemanticEditP
 	* @generated
 	*/
 	public Node8ItemSemanticEditPolicy() {
-		super(StateChartElementTypes.Node_3002);
+		super(StateChartElementTypes.Node_2009);
 	}
 
 	/**

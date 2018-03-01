@@ -2,7 +2,7 @@ Manifest-Version: 1.0
 Bundle-ManifestVersion: 2
 Bundle-Name: %pluginName
 Bundle-SymbolicName: StateChartDesign.diagram; singleton:=true
-Bundle-Version: 2.2.0
+Bundle-Version: 1.0.0.qualifier
 Bundle-ClassPath: .
 Bundle-Activator: statechart.diagram.part.StateChartDiagramEditorPlugin
 Bundle-Vendor: %providerName
@@ -40,4 +40,4 @@ Require-Bundle: org.eclipse.core.runtime,
  org.eclipse.emf.validation;visibility:=reexport,
  org.eclipse.gef;visibility:=reexport
 Bundle-ActivationPolicy: lazy
-Bundle-RequiredExecutionEnvironment: JavaSE-1.8
+Bundle-RequiredExecutionEnvironment: JavaSE-1.6

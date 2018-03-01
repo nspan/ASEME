@@ -288,6 +288,70 @@
           href="StateChart.gmfgraph#NodeCondition"/>
     </ownedChild>
   </nodes>
+  <nodes>
+    <containmentFeature
+        href="StateChart.ecore#//Model/nodes"/>
+    <childrenFeature
+        href="StateChart.ecore#//Model/nodes"/>
+    <ownedChild>
+      <domainMetaElement
+          href="StateChart.ecore#//Node"/>
+      <domainSpecialization
+          body="type='HISTORY'"/>
+      <domainInitializer
+          xsi:type="gmfmap:FeatureSeqInitializer">
+        <initializers
+            xsi:type="gmfmap:FeatureValueSpec">
+          <feature
+              xsi:type="ecore:EAttribute"
+              href="StateChart.ecore#//Node/type"/>
+          <value
+              body="'HISTORY'"/>
+        </initializers>
+      </domainInitializer>
+      <labelMappings>
+        <diagramLabel
+            href="StateChart.gmfgraph#HistorySymbol"/>
+      </labelMappings>
+      <tool
+          xsi:type="gmftool:CreationTool"
+          href="StateChart.gmftool#//@palette/@tools.0/@tools.8"/>
+      <diagramNode
+          href="StateChart.gmfgraph#NodeHistory"/>
+    </ownedChild>
+  </nodes>
+  <nodes>
+    <containmentFeature
+        href="StateChart.ecore#//Model/nodes"/>
+    <childrenFeature
+        href="StateChart.ecore#//Model/nodes"/>
+    <ownedChild>
+      <domainMetaElement
+          href="StateChart.ecore#//Node"/>
+      <domainSpecialization
+          body="type='SHALLOW_HISTORY'"/>
+      <domainInitializer
+          xsi:type="gmfmap:FeatureSeqInitializer">
+        <initializers
+            xsi:type="gmfmap:FeatureValueSpec">
+          <feature
+              xsi:type="ecore:EAttribute"
+              href="StateChart.ecore#//Node/type"/>
+          <value
+              body="'SHALLOW_HISTORY'"/>
+        </initializers>
+      </domainInitializer>
+      <labelMappings>
+        <diagramLabel
+            href="StateChart.gmfgraph#ShallowHistorySymbol"/>
+      </labelMappings>
+      <tool
+          xsi:type="gmftool:CreationTool"
+          href="StateChart.gmftool#//@palette/@tools.0/@tools.9"/>
+      <diagramNode
+          href="StateChart.gmfgraph#NodeShallowHistory"/>
+    </ownedChild>
+  </nodes>
   <links>
     <domainMetaElement
         href="StateChart.ecore#//Transition"/>

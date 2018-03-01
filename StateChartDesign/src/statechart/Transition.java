@@ -17,6 +17,7 @@ import org.eclipse.emf.ecore.EObject;
  *   <li>{@link statechart.Transition#getName <em>Name</em>}</li>
  *   <li>{@link statechart.Transition#getSource <em>Source</em>}</li>
  *   <li>{@link statechart.Transition#getTarget <em>Target</em>}</li>
+ *   <li>{@link statechart.Transition#getMetadata <em>Metadata</em>}</li>
  * </ul>
  *
  * @see statechart.StatechartPackage#getTransition()
@@ -127,5 +128,31 @@ public interface Transition extends EObject {
 	 * @generated
 	 */
 	void setTarget(Node value);
+
+	/**
+	 * Returns the value of the '<em><b>Metadata</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <p>
+	 * If the meaning of the '<em>Metadata</em>' attribute isn't clear,
+	 * there really should be more of a description here...
+	 * </p>
+	 * <!-- end-user-doc -->
+	 * @return the value of the '<em>Metadata</em>' attribute.
+	 * @see #setMetadata(String)
+	 * @see statechart.StatechartPackage#getTransition_Metadata()
+	 * @model
+	 * @generated
+	 */
+	String getMetadata();
+
+	/**
+	 * Sets the value of the '{@link statechart.Transition#getMetadata <em>Metadata</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @param value the new value of the '<em>Metadata</em>' attribute.
+	 * @see #getMetadata()
+	 * @generated
+	 */
+	void setMetadata(String value);
 
 } // Transition

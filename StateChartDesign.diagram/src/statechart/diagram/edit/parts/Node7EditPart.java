@@ -38,7 +38,7 @@ public class Node7EditPart extends ShapeNodeEditPart {
 	/**
 	* @generated
 	*/
-	public static final int VISUAL_ID = 3001;
+	public static final int VISUAL_ID = 2008;
 
 	/**
 	* @generated
@@ -97,14 +97,14 @@ public class Node7EditPart extends ShapeNodeEditPart {
 	* @generated
 	*/
 	protected IFigure createNodeShape() {
-		return primaryShape = new NodeConditionFigure();
+		return primaryShape = new NodeHistoryFigure();
 	}
 
 	/**
 	* @generated
 	*/
-	public NodeConditionFigure getPrimaryShape() {
-		return (NodeConditionFigure) primaryShape;
+	public NodeHistoryFigure getPrimaryShape() {
+		return (NodeHistoryFigure) primaryShape;
 	}
 
 	/**
@@ -112,7 +112,7 @@ public class Node7EditPart extends ShapeNodeEditPart {
 	*/
 	protected boolean addFixedChild(EditPart childEditPart) {
 		if (childEditPart instanceof WrappingLabel2EditPart) {
-			((WrappingLabel2EditPart) childEditPart).setLabel(getPrimaryShape().getFigureCondSymbol());
+			((WrappingLabel2EditPart) childEditPart).setLabel(getPrimaryShape().getFigureHistorySymbol());
 			return true;
 		}
 		return false;
@@ -249,19 +249,19 @@ public class Node7EditPart extends ShapeNodeEditPart {
 	}
 
 	/**
-	 * @generated
-	 */
-	public class NodeConditionFigure extends Ellipse {
+	* @generated
+	*/
+	public class NodeHistoryFigure extends Ellipse {
 
 		/**
 		 * @generated
 		 */
-		private WrappingLabel fFigureCondSymbol;
+		private WrappingLabel fFigureHistorySymbol;
 
 		/**
 		 * @generated
 		 */
-		public NodeConditionFigure() {
+		public NodeHistoryFigure() {
 			this.setForegroundColor(ColorConstants.black);
 			this.setBackgroundColor(ColorConstants.white);
 			this.setPreferredSize(new Dimension(getMapMode().DPtoLP(25), getMapMode().DPtoLP(25)));
@@ -275,31 +275,31 @@ public class Node7EditPart extends ShapeNodeEditPart {
 		 */
 		private void createContents() {
 
-			fFigureCondSymbol = new WrappingLabel();
+			fFigureHistorySymbol = new WrappingLabel();
 
-			fFigureCondSymbol.setText("C");
+			fFigureHistorySymbol.setText("H*");
 
-			fFigureCondSymbol.setFont(FFIGURECONDSYMBOL_FONT);
+			fFigureHistorySymbol.setFont(FFIGUREHISTORYSYMBOL_FONT);
 
-			fFigureCondSymbol.setBorder(new MarginBorder(getMapMode().DPtoLP(5), getMapMode().DPtoLP(5),
+			fFigureHistorySymbol.setBorder(new MarginBorder(getMapMode().DPtoLP(5), getMapMode().DPtoLP(5),
 					getMapMode().DPtoLP(5), getMapMode().DPtoLP(5)));
 
-			this.add(fFigureCondSymbol);
+			this.add(fFigureHistorySymbol);
 
 		}
 
 		/**
 		 * @generated
 		 */
-		public WrappingLabel getFigureCondSymbol() {
-			return fFigureCondSymbol;
+		public WrappingLabel getFigureHistorySymbol() {
+			return fFigureHistorySymbol;
 		}
 
 	}
 
 	/**
-	 * @generated
-	 */
-	static final Font FFIGURECONDSYMBOL_FONT = new Font(Display.getCurrent(), "CondFont", 10, SWT.BOLD);
+	* @generated
+	*/
+	static final Font FFIGUREHISTORYSYMBOL_FONT = new Font(Display.getCurrent(), "HistoryFont", 10, SWT.BOLD);
 
 }

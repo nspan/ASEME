@@ -217,7 +217,7 @@
       <viewProvider class="statechart.diagram.providers.StateChartViewProvider">
          <Priority name="Lowest"/>
          <context viewClass="org.eclipse.gmf.runtime.notation.Diagram" semanticHints="StateChart"/>
-         <context viewClass="org.eclipse.gmf.runtime.notation.Node" semanticHints="2001,2002,2003,2004,2005,2006,2007,3001,3002,3003,3004,3005,3006"/>
+         <context viewClass="org.eclipse.gmf.runtime.notation.Node" semanticHints="2001,2002,2003,2004,2005,2006,2007,2008,2009,3001,3002,3003,3004,3005,3006"/>
          <context viewClass="org.eclipse.gmf.runtime.notation.Edge" semanticHints="4001"/>
       </viewProvider>
    </extension>
@@ -230,13 +230,13 @@
             <method name="getType()" value="StateChart"/>
          </object>
          <object class="org.eclipse.gmf.runtime.notation.Node" id="generated-nodes">
-            <method name="getType()" value="2001,2002,2003,2004,2005,2006,2007,3001,3002,3003,3004,3005,3006"/>
+            <method name="getType()" value="2001,2002,2003,2004,2005,2006,2007,2008,2009,3001,3002,3003,3004,3005,3006"/>
          </object>
          <object class="org.eclipse.gmf.runtime.notation.Edge" id="generated-links">
             <method name="getType()" value="4001"/>
          </object>
          <object class="org.eclipse.gmf.runtime.notation.Node" id="generated-labels">
-            <method name="getType()" value="5005,5006,5007,5008,5009,5010,5001,5002,5004,5003"/>
+            <method name="getType()" value="5005,5006,5007,5008,5009,5010,5011,5012,5001,5002,5004,5003"/>
          </object>
          <object class="org.eclipse.gmf.runtime.notation.Node" id="generated-compartments">
             <method name="getType()" value="7001,7002,7003,7004"/>
@@ -290,32 +290,42 @@
       </modelingAssistantProvider>
             <modelingAssistantProvider class="statechart.diagram.providers.assistants.StateChartModelingAssistantProviderOfNode7EditPart">
          <Priority name="Lowest"/>
-         <object class="statechart.diagram.edit.parts.Node7EditPart" id="Node_3001"/>
-         <context elements="Node_3001"/>
+         <object class="statechart.diagram.edit.parts.Node7EditPart" id="Node_2008"/>
+         <context elements="Node_2008"/>
       </modelingAssistantProvider>
             <modelingAssistantProvider class="statechart.diagram.providers.assistants.StateChartModelingAssistantProviderOfNode8EditPart">
          <Priority name="Lowest"/>
-         <object class="statechart.diagram.edit.parts.Node8EditPart" id="Node_3002"/>
-         <context elements="Node_3002"/>
+         <object class="statechart.diagram.edit.parts.Node8EditPart" id="Node_2009"/>
+         <context elements="Node_2009"/>
       </modelingAssistantProvider>
             <modelingAssistantProvider class="statechart.diagram.providers.assistants.StateChartModelingAssistantProviderOfNode9EditPart">
          <Priority name="Lowest"/>
-         <object class="statechart.diagram.edit.parts.Node9EditPart" id="Node_3003"/>
-         <context elements="Node_3003"/>
+         <object class="statechart.diagram.edit.parts.Node9EditPart" id="Node_3001"/>
+         <context elements="Node_3001"/>
       </modelingAssistantProvider>
             <modelingAssistantProvider class="statechart.diagram.providers.assistants.StateChartModelingAssistantProviderOfNode10EditPart">
          <Priority name="Lowest"/>
-         <object class="statechart.diagram.edit.parts.Node10EditPart" id="Node_3004"/>
-         <context elements="Node_3004"/>
+         <object class="statechart.diagram.edit.parts.Node10EditPart" id="Node_3002"/>
+         <context elements="Node_3002"/>
       </modelingAssistantProvider>
             <modelingAssistantProvider class="statechart.diagram.providers.assistants.StateChartModelingAssistantProviderOfNode11EditPart">
          <Priority name="Lowest"/>
-         <object class="statechart.diagram.edit.parts.Node11EditPart" id="Node_3005"/>
-         <context elements="Node_3005"/>
+         <object class="statechart.diagram.edit.parts.Node11EditPart" id="Node_3003"/>
+         <context elements="Node_3003"/>
       </modelingAssistantProvider>
             <modelingAssistantProvider class="statechart.diagram.providers.assistants.StateChartModelingAssistantProviderOfNode12EditPart">
          <Priority name="Lowest"/>
-         <object class="statechart.diagram.edit.parts.Node12EditPart" id="Node_3006"/>
+         <object class="statechart.diagram.edit.parts.Node12EditPart" id="Node_3004"/>
+         <context elements="Node_3004"/>
+      </modelingAssistantProvider>
+            <modelingAssistantProvider class="statechart.diagram.providers.assistants.StateChartModelingAssistantProviderOfNode13EditPart">
+         <Priority name="Lowest"/>
+         <object class="statechart.diagram.edit.parts.Node13EditPart" id="Node_3005"/>
+         <context elements="Node_3005"/>
+      </modelingAssistantProvider>
+            <modelingAssistantProvider class="statechart.diagram.providers.assistants.StateChartModelingAssistantProviderOfNode14EditPart">
+         <Priority name="Lowest"/>
+         <object class="statechart.diagram.edit.parts.Node14EditPart" id="Node_3006"/>
          <context elements="Node_3006"/>
       </modelingAssistantProvider>
       
@@ -415,6 +425,24 @@
       </metamodel>
       <metamodel nsURI="http://statechart/1.0">
          <specializationType
+               id="StateChartDesign.diagram.Node_2008"
+               name="%metatype.name.Node_2008"
+               kind="org.eclipse.gmf.runtime.emf.type.core.IHintedType">
+            <specializes id="StateChartDesign.diagram.Node_2001"/>
+            <param name="semanticHint" value="2008"/>
+         </specializationType>
+      </metamodel>
+      <metamodel nsURI="http://statechart/1.0">
+         <specializationType
+               id="StateChartDesign.diagram.Node_2009"
+               name="%metatype.name.Node_2009"
+               kind="org.eclipse.gmf.runtime.emf.type.core.IHintedType">
+            <specializes id="StateChartDesign.diagram.Node_2001"/>
+            <param name="semanticHint" value="2009"/>
+         </specializationType>
+      </metamodel>
+      <metamodel nsURI="http://statechart/1.0">
+         <specializationType
                id="StateChartDesign.diagram.Node_3001"
                name="%metatype.name.Node_3001"
                kind="org.eclipse.gmf.runtime.emf.type.core.IHintedType">
@@ -497,6 +525,8 @@
          <elementType ref="StateChartDesign.diagram.Node_2005"/>
          <elementType ref="StateChartDesign.diagram.Node_2006"/>
          <elementType ref="StateChartDesign.diagram.Node_2007"/>
+         <elementType ref="StateChartDesign.diagram.Node_2008"/>
+         <elementType ref="StateChartDesign.diagram.Node_2009"/>
          <elementType ref="StateChartDesign.diagram.Node_3001"/>
          <elementType ref="StateChartDesign.diagram.Node_3002"/>
          <elementType ref="StateChartDesign.diagram.Node_3003"/>
@@ -584,7 +614,7 @@
             <or>
 	           <and>
     	          <instanceof value="org.eclipse.core.resources.IFile"/>
-        	      <test property="org.eclipse.core.resources.extension" value="stct"/>
+        	      <test property="org.eclipse.core.resources.extension" value="statechart"/>
                </and>
                <instanceof value="statechart.diagram.navigator.StateChartDomainNavigatorItem"/>
             </or>
@@ -775,7 +805,7 @@
       <?gmfgen generated="true"?>
       <objectContribution
             id="StateChartDesign.diagram.InitDiagram"
-            nameFilter="*.stct"
+            nameFilter="*.statechart"
             objectClass="org.eclipse.core.resources.IFile">
          <action
                label="%initDiagramActionLabel"

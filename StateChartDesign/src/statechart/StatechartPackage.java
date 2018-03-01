@@ -103,13 +103,31 @@ public interface StatechartPackage extends EPackage {
 	int MODEL__VARIABLES = 3;
 
 	/**
+	 * The feature id for the '<em><b>Description</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int MODEL__DESCRIPTION = 4;
+
+	/**
+	 * The feature id for the '<em><b>Metadata</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int MODEL__METADATA = 5;
+
+	/**
 	 * The number of structural features of the '<em>Model</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int MODEL_FEATURE_COUNT = 4;
+	int MODEL_FEATURE_COUNT = 6;
 
 	/**
 	 * The meta object id for the '{@link statechart.impl.NodeImpl <em>Node</em>}' class.
@@ -176,13 +194,31 @@ public interface StatechartPackage extends EPackage {
 	int NODE__CHILDREN = 5;
 
 	/**
-	 * The feature id for the '<em><b>Father of</b></em>' container reference.
+	 * The feature id for the '<em><b>Father</b></em>' container reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int NODE__FATHER_OF = 6;
+	int NODE__FATHER = 6;
+
+	/**
+	 * The feature id for the '<em><b>Actions</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int NODE__ACTIONS = 7;
+
+	/**
+	 * The feature id for the '<em><b>Metadata</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int NODE__METADATA = 8;
 
 	/**
 	 * The number of structural features of the '<em>Node</em>' class.
@@ -191,7 +227,7 @@ public interface StatechartPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int NODE_FEATURE_COUNT = 7;
+	int NODE_FEATURE_COUNT = 9;
 
 	/**
 	 * The meta object id for the '{@link statechart.impl.TransitionImpl <em>Transition</em>}' class.
@@ -240,13 +276,22 @@ public interface StatechartPackage extends EPackage {
 	int TRANSITION__TARGET = 3;
 
 	/**
+	 * The feature id for the '<em><b>Metadata</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int TRANSITION__METADATA = 4;
+
+	/**
 	 * The number of structural features of the '<em>Transition</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int TRANSITION_FEATURE_COUNT = 4;
+	int TRANSITION_FEATURE_COUNT = 5;
 
 	/**
 	 * The meta object id for the '{@link statechart.impl.VariableImpl <em>Variable</em>}' class.
@@ -340,6 +385,28 @@ public interface StatechartPackage extends EPackage {
 	EReference getModel_Variables();
 
 	/**
+	 * Returns the meta object for the attribute '{@link statechart.Model#getDescription <em>Description</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the attribute '<em>Description</em>'.
+	 * @see statechart.Model#getDescription()
+	 * @see #getModel()
+	 * @generated
+	 */
+	EAttribute getModel_Description();
+
+	/**
+	 * Returns the meta object for the attribute '{@link statechart.Model#getMetadata <em>Metadata</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the attribute '<em>Metadata</em>'.
+	 * @see statechart.Model#getMetadata()
+	 * @see #getModel()
+	 * @generated
+	 */
+	EAttribute getModel_Metadata();
+
+	/**
 	 * Returns the meta object for class '{@link statechart.Node <em>Node</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -416,15 +483,37 @@ public interface StatechartPackage extends EPackage {
 	EReference getNode_Children();
 
 	/**
-	 * Returns the meta object for the container reference '{@link statechart.Node#getFather_of <em>Father of</em>}'.
+	 * Returns the meta object for the container reference '{@link statechart.Node#getFather <em>Father</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @return the meta object for the container reference '<em>Father of</em>'.
-	 * @see statechart.Node#getFather_of()
+	 * @return the meta object for the container reference '<em>Father</em>'.
+	 * @see statechart.Node#getFather()
 	 * @see #getNode()
 	 * @generated
 	 */
-	EReference getNode_Father_of();
+	EReference getNode_Father();
+
+	/**
+	 * Returns the meta object for the attribute '{@link statechart.Node#getActions <em>Actions</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the attribute '<em>Actions</em>'.
+	 * @see statechart.Node#getActions()
+	 * @see #getNode()
+	 * @generated
+	 */
+	EAttribute getNode_Actions();
+
+	/**
+	 * Returns the meta object for the attribute '{@link statechart.Node#getMetadata <em>Metadata</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the attribute '<em>Metadata</em>'.
+	 * @see statechart.Node#getMetadata()
+	 * @see #getNode()
+	 * @generated
+	 */
+	EAttribute getNode_Metadata();
 
 	/**
 	 * Returns the meta object for class '{@link statechart.Transition <em>Transition</em>}'.
@@ -479,6 +568,17 @@ public interface StatechartPackage extends EPackage {
 	 * @generated
 	 */
 	EReference getTransition_Target();
+
+	/**
+	 * Returns the meta object for the attribute '{@link statechart.Transition#getMetadata <em>Metadata</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the attribute '<em>Metadata</em>'.
+	 * @see statechart.Transition#getMetadata()
+	 * @see #getTransition()
+	 * @generated
+	 */
+	EAttribute getTransition_Metadata();
 
 	/**
 	 * Returns the meta object for class '{@link statechart.Variable <em>Variable</em>}'.
@@ -578,6 +678,22 @@ public interface StatechartPackage extends EPackage {
 		EReference MODEL__VARIABLES = eINSTANCE.getModel_Variables();
 
 		/**
+		 * The meta object literal for the '<em><b>Description</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute MODEL__DESCRIPTION = eINSTANCE.getModel_Description();
+
+		/**
+		 * The meta object literal for the '<em><b>Metadata</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute MODEL__METADATA = eINSTANCE.getModel_Metadata();
+
+		/**
 		 * The meta object literal for the '{@link statechart.impl.NodeImpl <em>Node</em>}' class.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
@@ -636,12 +752,28 @@ public interface StatechartPackage extends EPackage {
 		EReference NODE__CHILDREN = eINSTANCE.getNode_Children();
 
 		/**
-		 * The meta object literal for the '<em><b>Father of</b></em>' container reference feature.
+		 * The meta object literal for the '<em><b>Father</b></em>' container reference feature.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
 		 * @generated
 		 */
-		EReference NODE__FATHER_OF = eINSTANCE.getNode_Father_of();
+		EReference NODE__FATHER = eINSTANCE.getNode_Father();
+
+		/**
+		 * The meta object literal for the '<em><b>Actions</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute NODE__ACTIONS = eINSTANCE.getNode_Actions();
+
+		/**
+		 * The meta object literal for the '<em><b>Metadata</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute NODE__METADATA = eINSTANCE.getNode_Metadata();
 
 		/**
 		 * The meta object literal for the '{@link statechart.impl.TransitionImpl <em>Transition</em>}' class.
@@ -684,6 +816,14 @@ public interface StatechartPackage extends EPackage {
 		 * @generated
 		 */
 		EReference TRANSITION__TARGET = eINSTANCE.getTransition_Target();
+
+		/**
+		 * The meta object literal for the '<em><b>Metadata</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute TRANSITION__METADATA = eINSTANCE.getTransition_Metadata();
 
 		/**
 		 * The meta object literal for the '{@link statechart.impl.VariableImpl <em>Variable</em>}' class.

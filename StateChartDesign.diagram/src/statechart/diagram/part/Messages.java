@@ -328,6 +328,26 @@ public class Messages extends NLS {
 	/**
 	* @generated
 	*/
+	public static String NodeHISTORY9CreationTool_title;
+
+	/**
+	* @generated
+	*/
+	public static String NodeHISTORY9CreationTool_desc;
+
+	/**
+	* @generated
+	*/
+	public static String NodeSHALLOWHISTORY10CreationTool_title;
+
+	/**
+	* @generated
+	*/
+	public static String NodeSHALLOWHISTORY10CreationTool_desc;
+
+	/**
+	* @generated
+	*/
 	public static String NodeNodeOrCompEditPart_title;
 
 	/**
@@ -414,6 +434,26 @@ public class Messages extends NLS {
 	* @generated
 	*/
 	public static String NavigatorGroupName_Node_2007_outgoinglinks;
+
+	/**
+	* @generated
+	*/
+	public static String NavigatorGroupName_Node_2008_incominglinks;
+
+	/**
+	* @generated
+	*/
+	public static String NavigatorGroupName_Node_2008_outgoinglinks;
+
+	/**
+	* @generated
+	*/
+	public static String NavigatorGroupName_Node_2009_incominglinks;
+
+	/**
+	* @generated
+	*/
+	public static String NavigatorGroupName_Node_2009_outgoinglinks;
 
 	/**
 	* @generated

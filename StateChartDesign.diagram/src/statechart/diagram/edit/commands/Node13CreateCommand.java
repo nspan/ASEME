@@ -19,12 +19,12 @@ import statechart.diagram.providers.ElementInitializers;
 /**
  * @generated
  */
-public class Node9CreateCommand extends EditElementCommand {
+public class Node13CreateCommand extends EditElementCommand {
 
 	/**
 	* @generated
 	*/
-	public Node9CreateCommand(CreateElementRequest req) {
+	public Node13CreateCommand(CreateElementRequest req) {
 		super(req.getLabel(), null, req);
 	}
 
@@ -57,7 +57,7 @@ public class Node9CreateCommand extends EditElementCommand {
 		Node owner = (Node) getElementToEdit();
 		owner.getChildren().add(newElement);
 
-		ElementInitializers.getInstance().init_Node_3001(newElement);
+		ElementInitializers.getInstance().init_Node_3005(newElement);
 
 		doConfigure(newElement, monitor, info);
 

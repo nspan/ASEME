@@ -196,8 +196,8 @@ public class Liveness2Stct {
 			tmpNode.setLabel(father.getLabel() + ".1");
 			tmpNode.setName(tmpNode.getLabel());
 			tmpNode.setType(TYPE_START);
-//			tmpNode.setFather_of(StatechartFactory.eINSTANCE.createNode());
-			tmpNode.setFather_of(father);
+//			tmpNode.setFather(StatechartFactory.eINSTANCE.createNode());
+			tmpNode.setFather(father);
 //		
 //			model.getChildren().add(tmpNode);
 			father.getChildren().add(tmpNode);
@@ -208,7 +208,7 @@ public class Liveness2Stct {
 				tmpNode = StatechartFactory.eINSTANCE.createNode();
 				tmpNode.setLabel(father.getLabel() + "." + k);
 				tmpNode.setName(this.computeNodeName(term));
-				tmpNode.setFather_of(father);
+				tmpNode.setFather(father);
 //				
 //				model.getChildren().add(tmpNode);
 				father.getChildren().add(tmpNode);
@@ -228,8 +228,8 @@ public class Liveness2Stct {
 			tmpNode.setLabel(father.getLabel() + "." + k);
 			tmpNode.setName(tmpNode.getLabel());
 			tmpNode.setType(TYPE_END);
-//			tmpNode.setFather_of(StatechartFactory.eINSTANCE.createNode());
-			tmpNode.setFather_of(father);
+//			tmpNode.setFather(StatechartFactory.eINSTANCE.createNode());
+			tmpNode.setFather(father);
 //			
 //			model.getChildren().add(tmpNode);
 			father.getChildren().add(tmpNode);
@@ -250,16 +250,16 @@ public class Liveness2Stct {
 			tmpNode.setLabel(father.getLabel() + ".1");
 			tmpNode.setName(tmpNode.getLabel());
 			tmpNode.setType(TYPE_START);
-//			tmpNode.setFather_of(StatechartFactory.eINSTANCE.createNode());
-			tmpNode.setFather_of(father);
+//			tmpNode.setFather(StatechartFactory.eINSTANCE.createNode());
+			tmpNode.setFather(father);
 //			model.getChildren().add(tmpNode);
 			father.getChildren().add(tmpNode);
 			tmpNode = StatechartFactory.eINSTANCE.createNode();
 			tmpNode.setLabel(father.getLabel() + ".2");
 			tmpNode.setName(tmpNode.getLabel());
 			tmpNode.setType(TYPE_CONDITION);
-//			tmpNode.setFather_of(StatechartFactory.eINSTANCE.createNode());
-			tmpNode.setFather_of(father);
+//			tmpNode.setFather(StatechartFactory.eINSTANCE.createNode());
+			tmpNode.setFather(father);
 //			
 //			model.getChildren().add(tmpNode);
 			father.getChildren().add(tmpNode);
@@ -280,8 +280,8 @@ public class Liveness2Stct {
 				tmpNode = StatechartFactory.eINSTANCE.createNode();
 				tmpNode.setLabel(father.getLabel() + "." + k);
 				tmpNode.setName(this.computeNodeName(term));
-//				tmpNode.setFather_of(StatechartFactory.eINSTANCE.createNode());
-				tmpNode.setFather_of(father);
+//				tmpNode.setFather(StatechartFactory.eINSTANCE.createNode());
+				tmpNode.setFather(father);
 //				
 //				model.getChildren().add(tmpNode);
 				father.getChildren().add(tmpNode);
@@ -301,8 +301,8 @@ public class Liveness2Stct {
 			tmpNode.setLabel(father.getLabel() + "." + k);
 			tmpNode.setName(tmpNode.getLabel());
 			tmpNode.setType(TYPE_END);
-//			tmpNode.setFather_of(StatechartFactory.eINSTANCE.createNode());
-			tmpNode.setFather_of(father);
+//			tmpNode.setFather(StatechartFactory.eINSTANCE.createNode());
+			tmpNode.setFather(father);
 //		
 //			model.getChildren().add(tmpNode);
 			father.getChildren().add(tmpNode);
@@ -328,8 +328,8 @@ public class Liveness2Stct {
 			tmpNode.setLabel(father.getLabel() + ".1");
 			tmpNode.setName(tmpNode.getLabel());
 			tmpNode.setType(TYPE_START);
-//			tmpNode.setFather_of(StatechartFactory.eINSTANCE.createNode());
-			tmpNode.setFather_of(father);
+//			tmpNode.setFather(StatechartFactory.eINSTANCE.createNode());
+			tmpNode.setFather(father);
 //			
 //			model.getChildren().add(tmpNode);
 			father.getChildren().add(tmpNode);
@@ -339,8 +339,8 @@ public class Liveness2Stct {
 			// to JADE behaviours
 			tmpNode.setName(this.computeNodeName(expression));
 			tmpNode.setType(TYPE_AND);
-//			tmpNode.setFather_of(StatechartFactory.eINSTANCE.createNode());
-			tmpNode.setFather_of(father);
+//			tmpNode.setFather(StatechartFactory.eINSTANCE.createNode());
+			tmpNode.setFather(father);
 //			
 //			model.getChildren().add(tmpNode);
 			father.getChildren().add(tmpNode);
@@ -357,8 +357,8 @@ public class Liveness2Stct {
 			tmpNode.setLabel(father.getLabel() + ".3");
 			tmpNode.setName(tmpNode.getLabel());
 			tmpNode.setType(TYPE_END);
-//			tmpNode.setFather_of(StatechartFactory.eINSTANCE.createNode());
-			tmpNode.setFather_of(father);
+//			tmpNode.setFather(StatechartFactory.eINSTANCE.createNode());
+			tmpNode.setFather(father);
 //			
 //			model.getChildren().add(tmpNode);
 			father.getChildren().add(tmpNode);
@@ -379,8 +379,8 @@ public class Liveness2Stct {
 				tmpNode.setName(tmpNode.getLabel());
 				tmpNode.setType(TYPE_OR);
 				Node tmp2node = getNodeByLabel(new String(father.getLabel() + ".2"));
-//				tmpNode.setFather_of(StatechartFactory.eINSTANCE.createNode());
-				tmpNode.setFather_of(tmp2node	);
+//				tmpNode.setFather(StatechartFactory.eINSTANCE.createNode());
+				tmpNode.setFather(tmp2node	);
 //				
 //				model.getChildren().add(tmpNode);
 				tmp2node.getChildren().add(tmpNode);
@@ -389,8 +389,8 @@ public class Liveness2Stct {
 				tmpNode.setName(tmpNode.getLabel());
 				tmpNode.setType(TYPE_START);
 				tmp2node = getNodeByLabel(new String(father.getLabel()	+ ".2." + k));
-//				tmpNode.setFather_of(StatechartFactory.eINSTANCE.createNode());
-				tmpNode.setFather_of(tmp2node);
+//				tmpNode.setFather(StatechartFactory.eINSTANCE.createNode());
+				tmpNode.setFather(tmp2node);
 //				
 //				model.getChildren().add(tmpNode);
 				tmp2node.getChildren().add(tmpNode);
@@ -398,8 +398,8 @@ public class Liveness2Stct {
 				tmpNode.setLabel(father.getLabel() + ".2." + k + ".2");
 				tmpNode.setName(this.computeNodeName(term));
 				tmp2node = getNodeByLabel(new String(father.getLabel()+ ".2." + k));
-//				tmpNode.setFather_of(StatechartFactory.eINSTANCE.createNode());
-				tmpNode.setFather_of(tmp2node	);
+//				tmpNode.setFather(StatechartFactory.eINSTANCE.createNode());
+				tmpNode.setFather(tmp2node	);
 //				
 //				model.getChildren().add(tmpNode);
 				tmp2node.getChildren().add(tmpNode);
@@ -408,8 +408,8 @@ public class Liveness2Stct {
 				tmpNode.setName(tmpNode.getLabel());
 				tmpNode.setType(TYPE_END);
 				tmp2node = getNodeByLabel(new String(father.getLabel()	+ ".2." + k));
-//				tmpNode.setFather_of(StatechartFactory.eINSTANCE.createNode());
-				tmpNode.setFather_of(tmp2node);
+//				tmpNode.setFather(StatechartFactory.eINSTANCE.createNode());
+				tmpNode.setFather(tmp2node);
 //				
 //				model.getChildren().add(tmpNode);
 				tmp2node.getChildren().add(tmpNode);
@@ -498,8 +498,8 @@ public class Liveness2Stct {
 				tmpNode.setLabel(tmpFather.getLabel() + ".1");
 				tmpNode.setName(tmpNode.getLabel());
 				tmpNode.setType(TYPE_START);
-//				tmpNode.setFather_of(StatechartFactory.eINSTANCE.createNode());
-				tmpNode.setFather_of(tmpFather);
+//				tmpNode.setFather(StatechartFactory.eINSTANCE.createNode());
+				tmpNode.setFather(tmpFather);
 //				
 //				model.getChildren().add(tmpNode);
 				tmpFather.getChildren().add(tmpNode);
@@ -508,14 +508,14 @@ public class Liveness2Stct {
 				tmpNode.setName(tmpNode.getLabel());
 				tmpNode.setType(TYPE_CONDITION);
 
-				tmpNode.setFather_of(tmpFather);
+				tmpNode.setFather(tmpFather);
 
 				tmpFather.getChildren().add(tmpNode);
 				tmpNode = StatechartFactory.eINSTANCE.createNode();
 				tmpNode.setLabel(tmpFather.getLabel() + ".3");
 				String insideTerm = term.substring(1, term.length() - 1);
 				tmpNode.setName(this.computeNodeName(insideTerm));
-				tmpNode.setFather_of(tmpFather);
+				tmpNode.setFather(tmpFather);
 
 				tmpFather.getChildren().add(tmpNode);
 				basicTermMatcher = patternBasicTerm.matcher(insideTerm);
@@ -531,7 +531,7 @@ public class Liveness2Stct {
 				tmpNode.setName(tmpNode.getLabel());
 				tmpNode.setType(TYPE_END);
 
-				tmpNode.setFather_of(tmpFather);
+				tmpNode.setFather(tmpFather);
 
 				tmpFather.getChildren().add(tmpNode);
 				tmpTransition = StatechartFactory.eINSTANCE.createTransition();
@@ -584,7 +584,7 @@ public class Liveness2Stct {
 				tmpNode.setLabel(tmpFather.getLabel() + ".1");
 				tmpNode.setName(tmpNode.getLabel());
 				tmpNode.setType(TYPE_START);
-				tmpNode.setFather_of(tmpFather);
+				tmpNode.setFather(tmpFather);
 
 				tmpFather.getChildren().add(tmpNode);
 				tmpNode = StatechartFactory.eINSTANCE.createNode();
@@ -592,7 +592,7 @@ public class Liveness2Stct {
 				tmpNode.setName(tmpNode.getLabel());
 				tmpNode.setType(TYPE_CONDITION);
 
-				tmpNode.setFather_of(tmpFather);
+				tmpNode.setFather(tmpFather);
 
 				tmpFather.getChildren().add(tmpNode);
 				tmpNode = StatechartFactory.eINSTANCE.createNode();
@@ -600,7 +600,7 @@ public class Liveness2Stct {
 				String insideTerm = term.substring(0, term.length() - 1);
 				tmpNode.setName(this.computeNodeName(insideTerm));
 
-				tmpNode.setFather_of(tmpFather);
+				tmpNode.setFather(tmpFather);
 
 				tmpFather.getChildren().add(tmpNode);
 				basicTermMatcher = patternBasicTerm.matcher(insideTerm);
@@ -616,7 +616,7 @@ public class Liveness2Stct {
 				tmpNode.setName(tmpNode.getLabel());
 				tmpNode.setType(TYPE_END);
 
-				tmpNode.setFather_of(tmpFather);
+				tmpNode.setFather(tmpFather);
 
 				tmpFather.getChildren().add(tmpNode);
 				tmpTransition = StatechartFactory.eINSTANCE.createTransition();
@@ -679,7 +679,7 @@ public class Liveness2Stct {
 				tmpNode.setName(tmpNode.getLabel());
 				tmpNode.setType(TYPE_START);
 
-				tmpNode.setFather_of(tmpFather);
+				tmpNode.setFather(tmpFather);
 
 				tmpFather.getChildren().add(tmpNode);
 				tmpNode = StatechartFactory.eINSTANCE.createNode();
@@ -687,7 +687,7 @@ public class Liveness2Stct {
 				String insideTerm = term.substring(0, term.length() - 1);
 				tmpNode.setName(this.computeNodeName(insideTerm));
 
-				tmpNode.setFather_of(tmpFather);
+				tmpNode.setFather(tmpFather);
 
 				tmpFather.getChildren().add(tmpNode);
 				basicTermMatcher = patternBasicTerm.matcher(insideTerm);
@@ -729,7 +729,7 @@ public class Liveness2Stct {
 				tmpNode.setName(tmpNode.getLabel());
 				tmpNode.setType(TYPE_START);
 
-				tmpNode.setFather_of(tmpFather);
+				tmpNode.setFather(tmpFather);
 
 				tmpFather.getChildren().add(tmpNode);
 				tmpNode = StatechartFactory.eINSTANCE.createNode();
@@ -737,7 +737,7 @@ public class Liveness2Stct {
 				String insideTerm = term.substring(0, term.length() - 1);
 				tmpNode.setName(this.computeNodeName(insideTerm));
 
-				tmpNode.setFather_of(tmpFather);
+				tmpNode.setFather(tmpFather);
 
 				tmpFather.getChildren().add(tmpNode);
 				basicTermMatcher = patternBasicTerm.matcher(insideTerm);
@@ -753,7 +753,7 @@ public class Liveness2Stct {
 				tmpNode.setName(tmpNode.getLabel());
 				tmpNode.setType(TYPE_END);
 
-				tmpNode.setFather_of(tmpFather);
+				tmpNode.setFather(tmpFather);
 
 				tmpFather.getChildren().add(tmpNode);
 				tmpTransition = StatechartFactory.eINSTANCE.createTransition();
@@ -800,7 +800,7 @@ public class Liveness2Stct {
 					tmpNode.setName(tmpNode.getLabel());
 					tmpNode.setType(TYPE_OR);
 
-					tmpNode.setFather_of(tmpFather);
+					tmpNode.setFather(tmpFather);
 
 					tmpFather.getChildren().add(tmpNode);
 					tmpNode = StatechartFactory.eINSTANCE.createNode();
@@ -809,7 +809,7 @@ public class Liveness2Stct {
 					tmpNode.setType(TYPE_START);
 					Node tmp2node = getNodeByLabel(tmpFather.getLabel() + "." + k);
 
-					tmpNode.setFather_of(tmp2node);
+					tmpNode.setFather(tmp2node);
 
 					tmp2node.getChildren().add(tmpNode);
 					tmpNode = StatechartFactory.eINSTANCE.createNode();
@@ -819,7 +819,7 @@ public class Liveness2Stct {
 					tmpNode.setName(this.computeNodeName(insideTerm));
 					tmp2node = getNodeByLabel(tmpFather.getLabel() + "." + k);
 
-					tmpNode.setFather_of(tmp2node);
+					tmpNode.setFather(tmp2node);
 ;
 					tmp2node.getChildren().add(tmpNode);
 					basicTermMatcher = patternBasicTerm.matcher(insideTerm);
@@ -841,7 +841,7 @@ public class Liveness2Stct {
 					tmpNode.setType(TYPE_END);
 					tmp2node = getNodeByLabel(tmpFather.getLabel() + "." + k);
 
-					tmpNode.setFather_of(tmp2node);
+					tmpNode.setFather(tmp2node);
 
 					tmp2node.getChildren().add(tmpNode);
 					tmpTransition = StatechartFactory.eINSTANCE.createTransition();

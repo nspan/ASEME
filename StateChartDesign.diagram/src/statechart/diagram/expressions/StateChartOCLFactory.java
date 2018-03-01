@@ -37,7 +37,7 @@ public class StateChartOCLFactory {
 	* @generated
 	*/
 	protected StateChartOCLFactory() {
-		this.expressions = new StateChartAbstractExpression[12];
+		this.expressions = new StateChartAbstractExpression[16];
 		this.expressionBodies = new String[] { "type = \'OR\'", //$NON-NLS-1$
 				"\'OR\'\n", //$NON-NLS-1$
 				"type=\'CONDITION\'", //$NON-NLS-1$
@@ -50,6 +50,10 @@ public class StateChartOCLFactory {
 				"\'AND\'", //$NON-NLS-1$
 				"type=\'END\'", //$NON-NLS-1$
 				"\'END\'", //$NON-NLS-1$
+				"type=\'HISTORY\'", //$NON-NLS-1$
+				"\'HISTORY\'", //$NON-NLS-1$
+				"type=\'SHALLOW_HISTORY\'", //$NON-NLS-1$
+				"\'SHALLOW_HISTORY\'", //$NON-NLS-1$
 		};
 	}
 

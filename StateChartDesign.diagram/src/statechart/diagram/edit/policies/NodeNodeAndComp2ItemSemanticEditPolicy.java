@@ -3,6 +3,7 @@ package statechart.diagram.edit.policies;
 import org.eclipse.gef.commands.Command;
 import org.eclipse.gmf.runtime.emf.type.core.requests.CreateElementRequest;
 
+import statechart.diagram.edit.commands.Node11CreateCommand;
 import statechart.diagram.edit.commands.Node9CreateCommand;
 import statechart.diagram.providers.StateChartElementTypes;
 
@@ -23,7 +24,7 @@ public class NodeNodeAndComp2ItemSemanticEditPolicy extends StateChartBaseItemSe
 	*/
 	protected Command getCreateCommand(CreateElementRequest req) {
 		if (StateChartElementTypes.Node_3003 == req.getElementType()) {
-			return getGEFWrapper(new Node9CreateCommand(req));
+			return getGEFWrapper(new Node11CreateCommand(req));
 		}
 		return super.getCreateCommand(req);
 	}

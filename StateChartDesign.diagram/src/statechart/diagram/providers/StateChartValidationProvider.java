@@ -202,21 +202,21 @@ public class StateChartValidationProvider {
 		public IStatus validate(IValidationContext ctx) {
 			Transition context = (Transition) ctx.getTarget();
 			if (context.getSource() != null && context.getTarget() != null) {
-				if ((context.getSource().getFather_of() != null && context.getTarget().getFather_of() != null
-						&& !context.getSource().getFather_of().equals(context.getTarget().getFather_of()))) {
+				if ((context.getSource().getFather() != null && context.getTarget().getFather() != null
+						&& !context.getSource().getFather().equals(context.getTarget().getFather()))) {
 
 					System.out.println("Failure Different Father");
 					System.out.println("Target: " + context.getTarget().getName() + " Father_of: "
-							+ context.getTarget().getFather_of().getName());
+							+ context.getTarget().getFather().getName());
 					System.out.println("Source: " + context.getSource().getName() + " Father_of: "
-							+ context.getSource().getFather_of().getName());
+							+ context.getSource().getFather().getName());
 					//	JOptionPane
 					//		.showMessageDialog(
 					//			null,
 					//		context.getName()
 					//			+ " is a transition between two nodes of a different parent.\nIt is recommended the source and target node of a transition to have the same parent node.");
 					return ctx.createFailureStatus(0);
-				} else if (context.getSource().getFather_of() == null || context.getTarget().getFather_of() == null) {
+				} else if (context.getSource().getFather() == null || context.getTarget().getFather() == null) {
 					System.out.println("Failure No Transition Father");
 					//	JOptionPane
 					//		.showMessageDialog(

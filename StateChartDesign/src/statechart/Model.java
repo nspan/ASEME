@@ -19,6 +19,8 @@ import org.eclipse.emf.ecore.EObject;
  *   <li>{@link statechart.Model#getNodes <em>Nodes</em>}</li>
  *   <li>{@link statechart.Model#getTransitions <em>Transitions</em>}</li>
  *   <li>{@link statechart.Model#getVariables <em>Variables</em>}</li>
+ *   <li>{@link statechart.Model#getDescription <em>Description</em>}</li>
+ *   <li>{@link statechart.Model#getMetadata <em>Metadata</em>}</li>
  * </ul>
  *
  * @see statechart.StatechartPackage#getModel()
@@ -99,5 +101,57 @@ public interface Model extends EObject {
 	 * @generated
 	 */
 	EList<Variable> getVariables();
+
+	/**
+	 * Returns the value of the '<em><b>Description</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <p>
+	 * If the meaning of the '<em>Description</em>' attribute isn't clear,
+	 * there really should be more of a description here...
+	 * </p>
+	 * <!-- end-user-doc -->
+	 * @return the value of the '<em>Description</em>' attribute.
+	 * @see #setDescription(String)
+	 * @see statechart.StatechartPackage#getModel_Description()
+	 * @model
+	 * @generated
+	 */
+	String getDescription();
+
+	/**
+	 * Sets the value of the '{@link statechart.Model#getDescription <em>Description</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @param value the new value of the '<em>Description</em>' attribute.
+	 * @see #getDescription()
+	 * @generated
+	 */
+	void setDescription(String value);
+
+	/**
+	 * Returns the value of the '<em><b>Metadata</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <p>
+	 * If the meaning of the '<em>Metadata</em>' attribute isn't clear,
+	 * there really should be more of a description here...
+	 * </p>
+	 * <!-- end-user-doc -->
+	 * @return the value of the '<em>Metadata</em>' attribute.
+	 * @see #setMetadata(String)
+	 * @see statechart.StatechartPackage#getModel_Metadata()
+	 * @model
+	 * @generated
+	 */
+	String getMetadata();
+
+	/**
+	 * Sets the value of the '{@link statechart.Model#getMetadata <em>Metadata</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @param value the new value of the '<em>Metadata</em>' attribute.
+	 * @see #getMetadata()
+	 * @generated
+	 */
+	void setMetadata(String value);
 
 } // Model

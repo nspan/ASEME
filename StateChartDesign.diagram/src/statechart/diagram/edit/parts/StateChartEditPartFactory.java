@@ -73,26 +73,38 @@ public class StateChartEditPartFactory implements EditPartFactory {
 			case Node8EditPart.VISUAL_ID:
 				return new Node8EditPart(view);
 
-			case NodeName4EditPart.VISUAL_ID:
-				return new NodeName4EditPart(view);
+			case WrappingLabel3EditPart.VISUAL_ID:
+				return new WrappingLabel3EditPart(view);
 
 			case Node9EditPart.VISUAL_ID:
 				return new Node9EditPart(view);
 
-			case NodeName5EditPart.VISUAL_ID:
-				return new NodeName5EditPart(view);
+			case WrappingLabel4EditPart.VISUAL_ID:
+				return new WrappingLabel4EditPart(view);
 
 			case Node10EditPart.VISUAL_ID:
 				return new Node10EditPart(view);
 
+			case NodeName4EditPart.VISUAL_ID:
+				return new NodeName4EditPart(view);
+
 			case Node11EditPart.VISUAL_ID:
 				return new Node11EditPart(view);
+
+			case NodeName5EditPart.VISUAL_ID:
+				return new NodeName5EditPart(view);
+
+			case Node12EditPart.VISUAL_ID:
+				return new Node12EditPart(view);
+
+			case Node13EditPart.VISUAL_ID:
+				return new Node13EditPart(view);
 
 			case NodeName6EditPart.VISUAL_ID:
 				return new NodeName6EditPart(view);
 
-			case Node12EditPart.VISUAL_ID:
-				return new Node12EditPart(view);
+			case Node14EditPart.VISUAL_ID:
+				return new Node14EditPart(view);
 
 			case NodeNodeOrCompEditPart.VISUAL_ID:
 				return new NodeNodeOrCompEditPart(view);

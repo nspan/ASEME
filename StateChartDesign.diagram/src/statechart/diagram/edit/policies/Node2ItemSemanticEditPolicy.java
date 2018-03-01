@@ -17,6 +17,7 @@ import org.eclipse.gmf.runtime.notation.View;
 
 import statechart.diagram.edit.commands.TransitionCreateCommand;
 import statechart.diagram.edit.commands.TransitionReorientCommand;
+import statechart.diagram.edit.parts.Node11EditPart;
 import statechart.diagram.edit.parts.Node9EditPart;
 import statechart.diagram.edit.parts.NodeNodeAndComp2EditPart;
 import statechart.diagram.edit.parts.TransitionEditPart;
@@ -85,7 +86,7 @@ public class Node2ItemSemanticEditPolicy extends StateChartBaseItemSemanticEditP
 				for (Iterator<?> cit = node.getChildren().iterator(); cit.hasNext();) {
 					Node cnode = (Node) cit.next();
 					switch (StateChartVisualIDRegistry.getVisualID(cnode)) {
-					case Node9EditPart.VISUAL_ID:
+					case Node11EditPart.VISUAL_ID:
 						for (Iterator<?> it = cnode.getTargetEdges().iterator(); it.hasNext();) {
 							Edge incomingLink = (Edge) it.next();
 							if (StateChartVisualIDRegistry.getVisualID(incomingLink) == TransitionEditPart.VISUAL_ID) {

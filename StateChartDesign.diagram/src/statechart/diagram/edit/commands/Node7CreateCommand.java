@@ -12,6 +12,7 @@ import org.eclipse.gmf.runtime.emf.type.core.requests.ConfigureRequest;
 import org.eclipse.gmf.runtime.emf.type.core.requests.CreateElementRequest;
 import org.eclipse.gmf.runtime.notation.View;
 
+import statechart.Model;
 import statechart.Node;
 import statechart.StatechartFactory;
 import statechart.diagram.providers.ElementInitializers;
@@ -54,10 +55,10 @@ public class Node7CreateCommand extends EditElementCommand {
 	protected CommandResult doExecuteWithResult(IProgressMonitor monitor, IAdaptable info) throws ExecutionException {
 		Node newElement = StatechartFactory.eINSTANCE.createNode();
 
-		Node owner = (Node) getElementToEdit();
-		owner.getChildren().add(newElement);
+		Model owner = (Model) getElementToEdit();
+		owner.getNodes().add(newElement);
 
-		ElementInitializers.getInstance().init_Node_3001(newElement);
+		ElementInitializers.getInstance().init_Node_2008(newElement);
 
 		doConfigure(newElement, monitor, info);
 

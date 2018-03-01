@@ -39,7 +39,9 @@ import statechart.Variable;
  *   <li>{@link statechart.impl.NodeImpl#getActivity <em>Activity</em>}</li>
  *   <li>{@link statechart.impl.NodeImpl#getVariables <em>Variables</em>}</li>
  *   <li>{@link statechart.impl.NodeImpl#getChildren <em>Children</em>}</li>
- *   <li>{@link statechart.impl.NodeImpl#getFather_of <em>Father of</em>}</li>
+ *   <li>{@link statechart.impl.NodeImpl#getFather <em>Father</em>}</li>
+ *   <li>{@link statechart.impl.NodeImpl#getActions <em>Actions</em>}</li>
+ *   <li>{@link statechart.impl.NodeImpl#getMetadata <em>Metadata</em>}</li>
  * </ul>
  *
  * @generated
@@ -144,6 +146,46 @@ public class NodeImpl extends EObjectImpl implements Node {
 	 * @ordered
 	 */
 	protected EList<Node> children;
+
+	/**
+	 * The default value of the '{@link #getActions() <em>Actions</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getActions()
+	 * @generated
+	 * @ordered
+	 */
+	protected static final String ACTIONS_EDEFAULT = null;
+
+	/**
+	 * The cached value of the '{@link #getActions() <em>Actions</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getActions()
+	 * @generated
+	 * @ordered
+	 */
+	protected String actions = ACTIONS_EDEFAULT;
+
+	/**
+	 * The default value of the '{@link #getMetadata() <em>Metadata</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getMetadata()
+	 * @generated
+	 * @ordered
+	 */
+	protected static final String METADATA_EDEFAULT = null;
+
+	/**
+	 * The cached value of the '{@link #getMetadata() <em>Metadata</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getMetadata()
+	 * @generated
+	 * @ordered
+	 */
+	protected String metadata = METADATA_EDEFAULT;
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -267,7 +309,7 @@ public class NodeImpl extends EObjectImpl implements Node {
 	 */
 	public EList<Node> getChildren() {
 		if (children == null) {
-			children = new EObjectContainmentWithInverseEList<Node>(Node.class, this, StatechartPackage.NODE__CHILDREN, StatechartPackage.NODE__FATHER_OF);
+			children = new EObjectContainmentWithInverseEList<Node>(Node.class, this, StatechartPackage.NODE__CHILDREN, StatechartPackage.NODE__FATHER);
 		}
 		return children;
 	}
@@ -277,8 +319,8 @@ public class NodeImpl extends EObjectImpl implements Node {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public Node getFather_of() {
-		if (eContainerFeatureID() != StatechartPackage.NODE__FATHER_OF) return null;
+	public Node getFather() {
+		if (eContainerFeatureID() != StatechartPackage.NODE__FATHER) return null;
 		return (Node)eInternalContainer();
 	}
 
@@ -287,8 +329,8 @@ public class NodeImpl extends EObjectImpl implements Node {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public NotificationChain basicSetFather_of(Node newFather_of, NotificationChain msgs) {
-		msgs = eBasicSetContainer((InternalEObject)newFather_of, StatechartPackage.NODE__FATHER_OF, msgs);
+	public NotificationChain basicSetFather(Node newFather, NotificationChain msgs) {
+		msgs = eBasicSetContainer((InternalEObject)newFather, StatechartPackage.NODE__FATHER, msgs);
 		return msgs;
 	}
 
@@ -297,20 +339,62 @@ public class NodeImpl extends EObjectImpl implements Node {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public void setFather_of(Node newFather_of) {
-		if (newFather_of != eInternalContainer() || (eContainerFeatureID() != StatechartPackage.NODE__FATHER_OF && newFather_of != null)) {
-			if (EcoreUtil.isAncestor(this, newFather_of))
+	public void setFather(Node newFather) {
+		if (newFather != eInternalContainer() || (eContainerFeatureID() != StatechartPackage.NODE__FATHER && newFather != null)) {
+			if (EcoreUtil.isAncestor(this, newFather))
 				throw new IllegalArgumentException("Recursive containment not allowed for " + toString());
 			NotificationChain msgs = null;
 			if (eInternalContainer() != null)
 				msgs = eBasicRemoveFromContainer(msgs);
-			if (newFather_of != null)
-				msgs = ((InternalEObject)newFather_of).eInverseAdd(this, StatechartPackage.NODE__CHILDREN, Node.class, msgs);
-			msgs = basicSetFather_of(newFather_of, msgs);
+			if (newFather != null)
+				msgs = ((InternalEObject)newFather).eInverseAdd(this, StatechartPackage.NODE__CHILDREN, Node.class, msgs);
+			msgs = basicSetFather(newFather, msgs);
 			if (msgs != null) msgs.dispatch();
 		}
 		else if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET, StatechartPackage.NODE__FATHER_OF, newFather_of, newFather_of));
+			eNotify(new ENotificationImpl(this, Notification.SET, StatechartPackage.NODE__FATHER, newFather, newFather));
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public String getActions() {
+		return actions;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public void setActions(String newActions) {
+		String oldActions = actions;
+		actions = newActions;
+		if (eNotificationRequired())
+			eNotify(new ENotificationImpl(this, Notification.SET, StatechartPackage.NODE__ACTIONS, oldActions, actions));
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public String getMetadata() {
+		return metadata;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public void setMetadata(String newMetadata) {
+		String oldMetadata = metadata;
+		metadata = newMetadata;
+		if (eNotificationRequired())
+			eNotify(new ENotificationImpl(this, Notification.SET, StatechartPackage.NODE__METADATA, oldMetadata, metadata));
 	}
 
 	/**
@@ -324,10 +408,10 @@ public class NodeImpl extends EObjectImpl implements Node {
 		switch (featureID) {
 			case StatechartPackage.NODE__CHILDREN:
 				return ((InternalEList<InternalEObject>)(InternalEList<?>)getChildren()).basicAdd(otherEnd, msgs);
-			case StatechartPackage.NODE__FATHER_OF:
+			case StatechartPackage.NODE__FATHER:
 				if (eInternalContainer() != null)
 					msgs = eBasicRemoveFromContainer(msgs);
-				return basicSetFather_of((Node)otherEnd, msgs);
+				return basicSetFather((Node)otherEnd, msgs);
 		}
 		return super.eInverseAdd(otherEnd, featureID, msgs);
 	}
@@ -342,8 +426,8 @@ public class NodeImpl extends EObjectImpl implements Node {
 		switch (featureID) {
 			case StatechartPackage.NODE__CHILDREN:
 				return ((InternalEList<?>)getChildren()).basicRemove(otherEnd, msgs);
-			case StatechartPackage.NODE__FATHER_OF:
-				return basicSetFather_of(null, msgs);
+			case StatechartPackage.NODE__FATHER:
+				return basicSetFather(null, msgs);
 		}
 		return super.eInverseRemove(otherEnd, featureID, msgs);
 	}
@@ -356,7 +440,7 @@ public class NodeImpl extends EObjectImpl implements Node {
 	@Override
 	public NotificationChain eBasicRemoveFromContainerFeature(NotificationChain msgs) {
 		switch (eContainerFeatureID()) {
-			case StatechartPackage.NODE__FATHER_OF:
+			case StatechartPackage.NODE__FATHER:
 				return eInternalContainer().eInverseRemove(this, StatechartPackage.NODE__CHILDREN, Node.class, msgs);
 		}
 		return super.eBasicRemoveFromContainerFeature(msgs);
@@ -382,8 +466,12 @@ public class NodeImpl extends EObjectImpl implements Node {
 				return getVariables();
 			case StatechartPackage.NODE__CHILDREN:
 				return getChildren();
-			case StatechartPackage.NODE__FATHER_OF:
-				return getFather_of();
+			case StatechartPackage.NODE__FATHER:
+				return getFather();
+			case StatechartPackage.NODE__ACTIONS:
+				return getActions();
+			case StatechartPackage.NODE__METADATA:
+				return getMetadata();
 		}
 		return super.eGet(featureID, resolve, coreType);
 	}
@@ -417,8 +505,14 @@ public class NodeImpl extends EObjectImpl implements Node {
 				getChildren().clear();
 				getChildren().addAll((Collection<? extends Node>)newValue);
 				return;
-			case StatechartPackage.NODE__FATHER_OF:
-				setFather_of((Node)newValue);
+			case StatechartPackage.NODE__FATHER:
+				setFather((Node)newValue);
+				return;
+			case StatechartPackage.NODE__ACTIONS:
+				setActions((String)newValue);
+				return;
+			case StatechartPackage.NODE__METADATA:
+				setMetadata((String)newValue);
 				return;
 		}
 		super.eSet(featureID, newValue);
@@ -450,8 +544,14 @@ public class NodeImpl extends EObjectImpl implements Node {
 			case StatechartPackage.NODE__CHILDREN:
 				getChildren().clear();
 				return;
-			case StatechartPackage.NODE__FATHER_OF:
-				setFather_of((Node)null);
+			case StatechartPackage.NODE__FATHER:
+				setFather((Node)null);
+				return;
+			case StatechartPackage.NODE__ACTIONS:
+				setActions(ACTIONS_EDEFAULT);
+				return;
+			case StatechartPackage.NODE__METADATA:
+				setMetadata(METADATA_EDEFAULT);
 				return;
 		}
 		super.eUnset(featureID);
@@ -477,8 +577,12 @@ public class NodeImpl extends EObjectImpl implements Node {
 				return variables != null && !variables.isEmpty();
 			case StatechartPackage.NODE__CHILDREN:
 				return children != null && !children.isEmpty();
-			case StatechartPackage.NODE__FATHER_OF:
-				return getFather_of() != null;
+			case StatechartPackage.NODE__FATHER:
+				return getFather() != null;
+			case StatechartPackage.NODE__ACTIONS:
+				return ACTIONS_EDEFAULT == null ? actions != null : !ACTIONS_EDEFAULT.equals(actions);
+			case StatechartPackage.NODE__METADATA:
+				return METADATA_EDEFAULT == null ? metadata != null : !METADATA_EDEFAULT.equals(metadata);
 		}
 		return super.eIsSet(featureID);
 	}
@@ -501,6 +605,10 @@ public class NodeImpl extends EObjectImpl implements Node {
 		result.append(type);
 		result.append(", activity: ");
 		result.append(activity);
+		result.append(", actions: ");
+		result.append(actions);
+		result.append(", metadata: ");
+		result.append(metadata);
 		result.append(')');
 		return result.toString();
 	}

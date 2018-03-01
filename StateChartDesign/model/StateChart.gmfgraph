@@ -410,7 +410,101 @@
       <accessors
           figure="//@figures.0/@descriptors.7/@actualFigure/@children.1/@children.0"/>
     </descriptors>
+    <descriptors
+        name="NodeHistoryFigure">
+      <actualFigure
+          xsi:type="gmfgraph:Ellipse"
+          name="NodeHistory">
+        <layoutData
+            xsi:type="gmfgraph:BorderLayoutData"
+            vertical="true"/>
+        <foregroundColor
+            xsi:type="gmfgraph:ConstantColor"
+            value="black"/>
+        <backgroundColor
+            xsi:type="gmfgraph:ConstantColor"/>
+        <preferredSize
+            dx="25"
+            dy="25"/>
+        <border
+            xsi:type="gmfgraph:MarginBorder">
+          <insets
+              top="1"
+              left="1"
+              bottom="1"
+              right="1"/>
+        </border>
+        <children
+            xsi:type="gmfgraph:Label"
+            name="HistorySymbol"
+            text="H*">
+          <font
+              xsi:type="gmfgraph:BasicFont"
+              faceName="HistoryFont"
+              height="10"
+              style="BOLD"/>
+          <insets
+              top="5"
+              left="5"
+              bottom="5"
+              right="5"/>
+        </children>
+      </actualFigure>
+      <accessors
+          accessor="getFigureHistorySymbol"
+          figure="//@figures.0/@descriptors.8/@actualFigure/@children.0"/>
+    </descriptors>
+    <descriptors
+        name="NodeShallowHistoryFigure">
+      <actualFigure
+          xsi:type="gmfgraph:Ellipse"
+          name="NodeShallowHistory">
+        <layoutData
+            xsi:type="gmfgraph:BorderLayoutData"
+            vertical="true"/>
+        <foregroundColor
+            xsi:type="gmfgraph:ConstantColor"
+            value="black"/>
+        <backgroundColor
+            xsi:type="gmfgraph:ConstantColor"/>
+        <preferredSize
+            dx="25"
+            dy="25"/>
+        <border
+            xsi:type="gmfgraph:MarginBorder">
+          <insets
+              top="1"
+              left="1"
+              bottom="1"
+              right="1"/>
+        </border>
+        <children
+            xsi:type="gmfgraph:Label"
+            name="ShallowHistorySymbol"
+            text="H">
+          <font
+              xsi:type="gmfgraph:BasicFont"
+              faceName="ShallowHistoryFont"
+              height="10"
+              style="BOLD"/>
+          <insets
+              top="5"
+              left="5"
+              bottom="5"
+              right="5"/>
+        </children>
+      </actualFigure>
+      <accessors
+          accessor="getFigureShallowHistorySymbol"
+          figure="//@figures.0/@descriptors.9/@actualFigure/@children.0"/>
+    </descriptors>
   </figures>
+  <nodes
+      name="NodeShallowHistory"
+      figure="NodeShallowHistoryFigure"/>
+  <nodes
+      name="NodeHistory"
+      figure="NodeHistoryFigure"/>
   <nodes
       name="NodeOr"
       figure="NodeORFigure"/>
@@ -449,6 +543,16 @@
       name="NodeAndComp"
       figure="NodeANDFigure"
       accessor="//@figures.0/@descriptors.1/@accessors.1"/>
+  <labels
+      name="ShallowHistorySymbol"
+      figure="NodeShallowHistoryFigure"
+      elementIcon="false"
+      accessor="//@figures.0/@descriptors.9/@accessors.0"/>
+  <labels
+      name="HistorySymbol"
+      figure="NodeHistoryFigure"
+      elementIcon="false"
+      accessor="//@figures.0/@descriptors.8/@accessors.0"/>
   <labels
       name="NodeNameOr"
       figure="NodeORFigure"

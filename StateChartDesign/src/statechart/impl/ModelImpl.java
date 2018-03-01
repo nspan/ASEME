@@ -37,6 +37,8 @@ import statechart.Variable;
  *   <li>{@link statechart.impl.ModelImpl#getNodes <em>Nodes</em>}</li>
  *   <li>{@link statechart.impl.ModelImpl#getTransitions <em>Transitions</em>}</li>
  *   <li>{@link statechart.impl.ModelImpl#getVariables <em>Variables</em>}</li>
+ *   <li>{@link statechart.impl.ModelImpl#getDescription <em>Description</em>}</li>
+ *   <li>{@link statechart.impl.ModelImpl#getMetadata <em>Metadata</em>}</li>
  * </ul>
  *
  * @generated
@@ -91,6 +93,46 @@ public class ModelImpl extends EObjectImpl implements Model {
 	 * @ordered
 	 */
 	protected EList<Variable> variables;
+
+	/**
+	 * The default value of the '{@link #getDescription() <em>Description</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getDescription()
+	 * @generated
+	 * @ordered
+	 */
+	protected static final String DESCRIPTION_EDEFAULT = null;
+
+	/**
+	 * The cached value of the '{@link #getDescription() <em>Description</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getDescription()
+	 * @generated
+	 * @ordered
+	 */
+	protected String description = DESCRIPTION_EDEFAULT;
+
+	/**
+	 * The default value of the '{@link #getMetadata() <em>Metadata</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getMetadata()
+	 * @generated
+	 * @ordered
+	 */
+	protected static final String METADATA_EDEFAULT = null;
+
+	/**
+	 * The cached value of the '{@link #getMetadata() <em>Metadata</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getMetadata()
+	 * @generated
+	 * @ordered
+	 */
+	protected String metadata = METADATA_EDEFAULT;
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -173,6 +215,48 @@ public class ModelImpl extends EObjectImpl implements Model {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	public String getDescription() {
+		return description;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public void setDescription(String newDescription) {
+		String oldDescription = description;
+		description = newDescription;
+		if (eNotificationRequired())
+			eNotify(new ENotificationImpl(this, Notification.SET, StatechartPackage.MODEL__DESCRIPTION, oldDescription, description));
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public String getMetadata() {
+		return metadata;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public void setMetadata(String newMetadata) {
+		String oldMetadata = metadata;
+		metadata = newMetadata;
+		if (eNotificationRequired())
+			eNotify(new ENotificationImpl(this, Notification.SET, StatechartPackage.MODEL__METADATA, oldMetadata, metadata));
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
 	@Override
 	public NotificationChain eInverseRemove(InternalEObject otherEnd, int featureID, NotificationChain msgs) {
 		switch (featureID) {
@@ -202,6 +286,10 @@ public class ModelImpl extends EObjectImpl implements Model {
 				return getTransitions();
 			case StatechartPackage.MODEL__VARIABLES:
 				return getVariables();
+			case StatechartPackage.MODEL__DESCRIPTION:
+				return getDescription();
+			case StatechartPackage.MODEL__METADATA:
+				return getMetadata();
 		}
 		return super.eGet(featureID, resolve, coreType);
 	}
@@ -230,6 +318,12 @@ public class ModelImpl extends EObjectImpl implements Model {
 				getVariables().clear();
 				getVariables().addAll((Collection<? extends Variable>)newValue);
 				return;
+			case StatechartPackage.MODEL__DESCRIPTION:
+				setDescription((String)newValue);
+				return;
+			case StatechartPackage.MODEL__METADATA:
+				setMetadata((String)newValue);
+				return;
 		}
 		super.eSet(featureID, newValue);
 	}
@@ -254,6 +348,12 @@ public class ModelImpl extends EObjectImpl implements Model {
 			case StatechartPackage.MODEL__VARIABLES:
 				getVariables().clear();
 				return;
+			case StatechartPackage.MODEL__DESCRIPTION:
+				setDescription(DESCRIPTION_EDEFAULT);
+				return;
+			case StatechartPackage.MODEL__METADATA:
+				setMetadata(METADATA_EDEFAULT);
+				return;
 		}
 		super.eUnset(featureID);
 	}
@@ -274,6 +374,10 @@ public class ModelImpl extends EObjectImpl implements Model {
 				return transitions != null && !transitions.isEmpty();
 			case StatechartPackage.MODEL__VARIABLES:
 				return variables != null && !variables.isEmpty();
+			case StatechartPackage.MODEL__DESCRIPTION:
+				return DESCRIPTION_EDEFAULT == null ? description != null : !DESCRIPTION_EDEFAULT.equals(description);
+			case StatechartPackage.MODEL__METADATA:
+				return METADATA_EDEFAULT == null ? metadata != null : !METADATA_EDEFAULT.equals(metadata);
 		}
 		return super.eIsSet(featureID);
 	}
@@ -290,6 +394,10 @@ public class ModelImpl extends EObjectImpl implements Model {
 		StringBuffer result = new StringBuffer(super.toString());
 		result.append(" (name: ");
 		result.append(name);
+		result.append(", description: ");
+		result.append(description);
+		result.append(", metadata: ");
+		result.append(metadata);
 		result.append(')');
 		return result.toString();
 	}

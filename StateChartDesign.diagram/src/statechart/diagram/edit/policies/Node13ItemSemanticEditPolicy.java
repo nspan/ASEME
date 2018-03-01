@@ -4,6 +4,7 @@ import java.util.Iterator;
 
 import org.eclipse.emf.ecore.EAnnotation;
 import org.eclipse.gef.commands.Command;
+import org.eclipse.gmf.runtime.common.core.command.ICompositeCommand;
 import org.eclipse.gmf.runtime.diagram.core.commands.DeleteCommand;
 import org.eclipse.gmf.runtime.emf.commands.core.command.CompositeTransactionalCommand;
 import org.eclipse.gmf.runtime.emf.type.core.commands.DestroyElementCommand;
@@ -11,10 +12,13 @@ import org.eclipse.gmf.runtime.emf.type.core.requests.CreateRelationshipRequest;
 import org.eclipse.gmf.runtime.emf.type.core.requests.DestroyElementRequest;
 import org.eclipse.gmf.runtime.emf.type.core.requests.ReorientRelationshipRequest;
 import org.eclipse.gmf.runtime.notation.Edge;
+import org.eclipse.gmf.runtime.notation.Node;
 import org.eclipse.gmf.runtime.notation.View;
 
 import statechart.diagram.edit.commands.TransitionCreateCommand;
 import statechart.diagram.edit.commands.TransitionReorientCommand;
+import statechart.diagram.edit.parts.Node11EditPart;
+import statechart.diagram.edit.parts.NodeNodeAndCompEditPart;
 import statechart.diagram.edit.parts.TransitionEditPart;
 import statechart.diagram.part.StateChartVisualIDRegistry;
 import statechart.diagram.providers.StateChartElementTypes;
@@ -22,13 +26,13 @@ import statechart.diagram.providers.StateChartElementTypes;
 /**
  * @generated
  */
-public class Node7ItemSemanticEditPolicy extends StateChartBaseItemSemanticEditPolicy {
+public class Node13ItemSemanticEditPolicy extends StateChartBaseItemSemanticEditPolicy {
 
 	/**
 	* @generated
 	*/
-	public Node7ItemSemanticEditPolicy() {
-		super(StateChartElementTypes.Node_2008);
+	public Node13ItemSemanticEditPolicy() {
+		super(StateChartElementTypes.Node_3005);
 	}
 
 	/**
@@ -59,6 +63,7 @@ public class Node7ItemSemanticEditPolicy extends StateChartBaseItemSemanticEditP
 		EAnnotation annotation = view.getEAnnotation("Shortcut"); //$NON-NLS-1$
 		if (annotation == null) {
 			// there are indirectly referenced children, need extra commands: false
+			addDestroyChildNodesCommand(cmd);
 			addDestroyShortcutsCommand(cmd, view);
 			// delete host element
 			cmd.add(new DestroyElementCommand(req));
@@ -66,6 +71,49 @@ public class Node7ItemSemanticEditPolicy extends StateChartBaseItemSemanticEditP
 			cmd.add(new DeleteCommand(getEditingDomain(), view));
 		}
 		return getGEFWrapper(cmd.reduce());
+	}
+
+	/**
+	* @generated
+	*/
+	private void addDestroyChildNodesCommand(ICompositeCommand cmd) {
+		View view = (View) getHost().getModel();
+		for (Iterator<?> nit = view.getChildren().iterator(); nit.hasNext();) {
+			Node node = (Node) nit.next();
+			switch (StateChartVisualIDRegistry.getVisualID(node)) {
+			case NodeNodeAndCompEditPart.VISUAL_ID:
+				for (Iterator<?> cit = node.getChildren().iterator(); cit.hasNext();) {
+					Node cnode = (Node) cit.next();
+					switch (StateChartVisualIDRegistry.getVisualID(cnode)) {
+					case Node11EditPart.VISUAL_ID:
+						for (Iterator<?> it = cnode.getTargetEdges().iterator(); it.hasNext();) {
+							Edge incomingLink = (Edge) it.next();
+							if (StateChartVisualIDRegistry.getVisualID(incomingLink) == TransitionEditPart.VISUAL_ID) {
+								DestroyElementRequest r = new DestroyElementRequest(incomingLink.getElement(), false);
+								cmd.add(new DestroyElementCommand(r));
+								cmd.add(new DeleteCommand(getEditingDomain(), incomingLink));
+								continue;
+							}
+						}
+						for (Iterator<?> it = cnode.getSourceEdges().iterator(); it.hasNext();) {
+							Edge outgoingLink = (Edge) it.next();
+							if (StateChartVisualIDRegistry.getVisualID(outgoingLink) == TransitionEditPart.VISUAL_ID) {
+								DestroyElementRequest r = new DestroyElementRequest(outgoingLink.getElement(), false);
+								cmd.add(new DestroyElementCommand(r));
+								cmd.add(new DeleteCommand(getEditingDomain(), outgoingLink));
+								continue;
+							}
+						}
+						cmd.add(new DestroyElementCommand(
+								new DestroyElementRequest(getEditingDomain(), cnode.getElement(), false))); // directlyOwned: true
+						// don't need explicit deletion of cnode as parent's view deletion would clean child views as well 
+						// cmd.add(new org.eclipse.gmf.runtime.diagram.core.commands.DeleteCommand(getEditingDomain(), cnode));
+						break;
+					}
+				}
+				break;
+			}
+		}
 	}
 
 	/**

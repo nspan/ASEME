@@ -3,6 +3,8 @@ package statechart.diagram.edit.parts;
 import org.eclipse.draw2d.ColorConstants;
 import org.eclipse.draw2d.Ellipse;
 import org.eclipse.draw2d.IFigure;
+import org.eclipse.draw2d.MarginBorder;
+import org.eclipse.draw2d.RoundedRectangle;
 import org.eclipse.draw2d.Shape;
 import org.eclipse.draw2d.StackLayout;
 import org.eclipse.draw2d.geometry.Dimension;
@@ -13,14 +15,21 @@ import org.eclipse.gef.commands.Command;
 import org.eclipse.gef.editpolicies.LayoutEditPolicy;
 import org.eclipse.gef.editpolicies.NonResizableEditPolicy;
 import org.eclipse.gef.requests.CreateRequest;
+import org.eclipse.gmf.runtime.diagram.ui.editparts.IGraphicalEditPart;
 import org.eclipse.gmf.runtime.diagram.ui.editparts.ShapeNodeEditPart;
 import org.eclipse.gmf.runtime.diagram.ui.editpolicies.EditPolicyRoles;
+import org.eclipse.gmf.runtime.draw2d.ui.figures.ConstrainedToolbarLayout;
+import org.eclipse.gmf.runtime.draw2d.ui.figures.WrappingLabel;
 import org.eclipse.gmf.runtime.gef.ui.figures.DefaultSizeNodeFigure;
 import org.eclipse.gmf.runtime.gef.ui.figures.NodeFigure;
 import org.eclipse.gmf.runtime.notation.View;
+import org.eclipse.swt.SWT;
 import org.eclipse.swt.graphics.Color;
 
+import org.eclipse.swt.graphics.Font;
+import org.eclipse.swt.widgets.Display;
 import statechart.diagram.edit.policies.Node10ItemSemanticEditPolicy;
+import statechart.diagram.part.StateChartVisualIDRegistry;
 
 /**
  * @generated
@@ -30,7 +39,7 @@ public class Node10EditPart extends ShapeNodeEditPart {
 	/**
 	* @generated
 	*/
-	public static final int VISUAL_ID = 3004;
+	public static final int VISUAL_ID = 3002;
 
 	/**
 	* @generated
@@ -89,21 +98,69 @@ public class Node10EditPart extends ShapeNodeEditPart {
 	* @generated
 	*/
 	protected IFigure createNodeShape() {
-		return primaryShape = new NodeStartFigure();
+		return primaryShape = new NodeBasicFigure();
 	}
 
 	/**
 	* @generated
 	*/
-	public NodeStartFigure getPrimaryShape() {
-		return (NodeStartFigure) primaryShape;
+	public NodeBasicFigure getPrimaryShape() {
+		return (NodeBasicFigure) primaryShape;
+	}
+
+	/**
+	* @generated
+	*/
+	protected boolean addFixedChild(EditPart childEditPart) {
+		if (childEditPart instanceof NodeName4EditPart) {
+			((NodeName4EditPart) childEditPart).setLabel(getPrimaryShape().getFigureNodeBasicName());
+			return true;
+		}
+		return false;
+	}
+
+	/**
+	* @generated
+	*/
+	protected boolean removeFixedChild(EditPart childEditPart) {
+		if (childEditPart instanceof NodeName4EditPart) {
+			return true;
+		}
+		return false;
+	}
+
+	/**
+	* @generated
+	*/
+	protected void addChildVisual(EditPart childEditPart, int index) {
+		if (addFixedChild(childEditPart)) {
+			return;
+		}
+		super.addChildVisual(childEditPart, -1);
+	}
+
+	/**
+	* @generated
+	*/
+	protected void removeChildVisual(EditPart childEditPart) {
+		if (removeFixedChild(childEditPart)) {
+			return;
+		}
+		super.removeChildVisual(childEditPart);
+	}
+
+	/**
+	* @generated
+	*/
+	protected IFigure getContentPaneFor(IGraphicalEditPart editPart) {
+		return getContentPane();
 	}
 
 	/**
 	* @generated
 	*/
 	protected NodeFigure createNodePlate() {
-		DefaultSizeNodeFigure result = new DefaultSizeNodeFigure(16, 16);
+		DefaultSizeNodeFigure result = new DefaultSizeNodeFigure(40, 40);
 		return result;
 	}
 
@@ -131,6 +188,11 @@ public class Node10EditPart extends ShapeNodeEditPart {
 	* @generated
 	*/
 	protected IFigure setupContentPane(IFigure nodeShape) {
+		if (nodeShape.getLayoutManager() == null) {
+			ConstrainedToolbarLayout layout = new ConstrainedToolbarLayout();
+			layout.setSpacing(5);
+			nodeShape.setLayoutManager(layout);
+		}
 		return nodeShape; // use nodeShape itself as contentPane
 	}
 
@@ -181,18 +243,68 @@ public class Node10EditPart extends ShapeNodeEditPart {
 	}
 
 	/**
-	 * @generated
-	 */
-	public class NodeStartFigure extends Ellipse {
+	* @generated
+	*/
+	public EditPart getPrimaryChildEditPart() {
+		return getChildBySemanticHint(StateChartVisualIDRegistry.getType(NodeName4EditPart.VISUAL_ID));
+	}
+
+	/**
+	* @generated
+	*/
+	public class NodeBasicFigure extends RoundedRectangle {
 
 		/**
 		 * @generated
 		 */
-		public NodeStartFigure() {
-			this.setBackgroundColor(ColorConstants.black);
-			this.setPreferredSize(new Dimension(getMapMode().DPtoLP(16), getMapMode().DPtoLP(16)));
+		private WrappingLabel fFigureNodeBasicName;
+
+		/**
+		 * @generated
+		 */
+		public NodeBasicFigure() {
+			this.setCornerDimensions(new Dimension(getMapMode().DPtoLP(18), getMapMode().DPtoLP(18)));
+			this.setLineWidth(2);
+			this.setForegroundColor(ColorConstants.black);
+			this.setBackgroundColor(THIS_BACK);
+			createContents();
+		}
+
+		/**
+		 * @generated
+		 */
+		private void createContents() {
+
+			fFigureNodeBasicName = new WrappingLabel();
+
+			fFigureNodeBasicName.setText("name");
+
+			fFigureNodeBasicName.setFont(FFIGURENODEBASICNAME_FONT);
+
+			fFigureNodeBasicName.setBorder(new MarginBorder(getMapMode().DPtoLP(10), getMapMode().DPtoLP(10),
+					getMapMode().DPtoLP(10), getMapMode().DPtoLP(10)));
+
+			this.add(fFigureNodeBasicName);
+
+		}
+
+		/**
+		 * @generated
+		 */
+		public WrappingLabel getFigureNodeBasicName() {
+			return fFigureNodeBasicName;
 		}
 
 	}
+
+	/**
+	* @generated
+	*/
+	static final Color THIS_BACK = new Color(null, 161, 255, 70);
+
+	/**
+	* @generated
+	*/
+	static final Font FFIGURENODEBASICNAME_FONT = new Font(Display.getCurrent(), "TitleFont", 14, SWT.BOLD);
 
 }

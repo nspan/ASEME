@@ -19,6 +19,8 @@ import statechart.diagram.edit.parts.ModelEditPart;
 import statechart.diagram.edit.parts.Node10EditPart;
 import statechart.diagram.edit.parts.Node11EditPart;
 import statechart.diagram.edit.parts.Node12EditPart;
+import statechart.diagram.edit.parts.Node13EditPart;
+import statechart.diagram.edit.parts.Node14EditPart;
 import statechart.diagram.edit.parts.Node2EditPart;
 import statechart.diagram.edit.parts.Node3EditPart;
 import statechart.diagram.edit.parts.Node4EditPart;
@@ -91,6 +93,16 @@ public class StateChartElementTypes {
 	* @generated
 	*/
 	public static final IElementType Node_2007 = getElementType("StateChartDesign.diagram.Node_2007"); //$NON-NLS-1$
+	/**
+	* @generated
+	*/
+	public static final IElementType Node_2008 = getElementType("StateChartDesign.diagram.Node_2008"); //$NON-NLS-1$
+
+	/**
+	* @generated
+	*/
+	public static final IElementType Node_2009 = getElementType("StateChartDesign.diagram.Node_2009"); //$NON-NLS-1$
+
 	/**
 	* @generated
 	*/
@@ -174,6 +186,10 @@ public class StateChartElementTypes {
 
 			elements.put(Node_2007, StatechartPackage.eINSTANCE.getNode());
 
+			elements.put(Node_2008, StatechartPackage.eINSTANCE.getNode());
+
+			elements.put(Node_2009, StatechartPackage.eINSTANCE.getNode());
+
 			elements.put(Node_3001, StatechartPackage.eINSTANCE.getNode());
 
 			elements.put(Node_3002, StatechartPackage.eINSTANCE.getNode());
@@ -212,6 +228,8 @@ public class StateChartElementTypes {
 			KNOWN_ELEMENT_TYPES.add(Node_2005);
 			KNOWN_ELEMENT_TYPES.add(Node_2006);
 			KNOWN_ELEMENT_TYPES.add(Node_2007);
+			KNOWN_ELEMENT_TYPES.add(Node_2008);
+			KNOWN_ELEMENT_TYPES.add(Node_2009);
 			KNOWN_ELEMENT_TYPES.add(Node_3001);
 			KNOWN_ELEMENT_TYPES.add(Node_3002);
 			KNOWN_ELEMENT_TYPES.add(Node_3003);
@@ -245,16 +263,20 @@ public class StateChartElementTypes {
 		case Node6EditPart.VISUAL_ID:
 			return Node_2007;
 		case Node7EditPart.VISUAL_ID:
-			return Node_3001;
+			return Node_2008;
 		case Node8EditPart.VISUAL_ID:
-			return Node_3002;
+			return Node_2009;
 		case Node9EditPart.VISUAL_ID:
-			return Node_3003;
+			return Node_3001;
 		case Node10EditPart.VISUAL_ID:
-			return Node_3004;
+			return Node_3002;
 		case Node11EditPart.VISUAL_ID:
-			return Node_3005;
+			return Node_3003;
 		case Node12EditPart.VISUAL_ID:
+			return Node_3004;
+		case Node13EditPart.VISUAL_ID:
+			return Node_3005;
+		case Node14EditPart.VISUAL_ID:
 			return Node_3006;
 		case TransitionEditPart.VISUAL_ID:
 			return Transition_4001;

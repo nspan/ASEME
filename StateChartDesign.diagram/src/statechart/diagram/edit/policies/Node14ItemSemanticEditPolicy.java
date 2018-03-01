@@ -22,13 +22,13 @@ import statechart.diagram.providers.StateChartElementTypes;
 /**
  * @generated
  */
-public class Node7ItemSemanticEditPolicy extends StateChartBaseItemSemanticEditPolicy {
+public class Node14ItemSemanticEditPolicy extends StateChartBaseItemSemanticEditPolicy {
 
 	/**
 	* @generated
 	*/
-	public Node7ItemSemanticEditPolicy() {
-		super(StateChartElementTypes.Node_2008);
+	public Node14ItemSemanticEditPolicy() {
+		super(StateChartElementTypes.Node_3006);
 	}
 
 	/**
