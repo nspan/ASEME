@@ -13,6 +13,8 @@ import statechart.diagram.edit.parts.Node11EditPart;
 import statechart.diagram.edit.parts.Node12EditPart;
 import statechart.diagram.edit.parts.Node13EditPart;
 import statechart.diagram.edit.parts.Node14EditPart;
+import statechart.diagram.edit.parts.Node15EditPart;
+import statechart.diagram.edit.parts.Node16EditPart;
 import statechart.diagram.edit.parts.Node2EditPart;
 import statechart.diagram.edit.parts.Node3EditPart;
 import statechart.diagram.edit.parts.Node4EditPart;
@@ -107,6 +109,12 @@ public class StateChartModelingAssistantProviderOfNode9EditPart extends StateCha
 		if (targetEditPart instanceof Node14EditPart) {
 			types.add(StateChartElementTypes.Transition_4001);
 		}
+		if (targetEditPart instanceof Node15EditPart) {
+			types.add(StateChartElementTypes.Transition_4001);
+		}
+		if (targetEditPart instanceof Node16EditPart) {
+			types.add(StateChartElementTypes.Transition_4001);
+		}
 		return types;
 	}
 
@@ -140,6 +148,8 @@ public class StateChartModelingAssistantProviderOfNode9EditPart extends StateCha
 			types.add(StateChartElementTypes.Node_3004);
 			types.add(StateChartElementTypes.Node_3005);
 			types.add(StateChartElementTypes.Node_3006);
+			types.add(StateChartElementTypes.Node_3007);
+			types.add(StateChartElementTypes.Node_3008);
 		}
 		return types;
 	}
@@ -193,6 +203,8 @@ public class StateChartModelingAssistantProviderOfNode9EditPart extends StateCha
 			types.add(StateChartElementTypes.Node_3004);
 			types.add(StateChartElementTypes.Node_3005);
 			types.add(StateChartElementTypes.Node_3006);
+			types.add(StateChartElementTypes.Node_3007);
+			types.add(StateChartElementTypes.Node_3008);
 		}
 		return types;
 	}

@@ -14,6 +14,8 @@ import org.eclipse.gmf.runtime.emf.ui.services.parser.ParserHintAdapter;
 import org.eclipse.gmf.runtime.notation.View;
 
 import statechart.StatechartPackage;
+import statechart.diagram.edit.parts.NodeActions2EditPart;
+import statechart.diagram.edit.parts.NodeActionsEditPart;
 import statechart.diagram.edit.parts.NodeName2EditPart;
 import statechart.diagram.edit.parts.NodeName3EditPart;
 import statechart.diagram.edit.parts.NodeName4EditPart;
@@ -47,6 +49,24 @@ public class StateChartParserProvider extends AbstractProvider implements IParse
 			nodeName_5005Parser = parser;
 		}
 		return nodeName_5005Parser;
+	}
+
+	/**
+	* @generated
+	*/
+	private IParser nodeActions_5016Parser;
+
+	/**
+	* @generated
+	*/
+	private IParser getNodeActions_5016Parser() {
+		if (nodeActions_5016Parser == null) {
+			EAttribute[] features = new EAttribute[] { StatechartPackage.eINSTANCE.getNode_Actions() };
+			EAttribute[] editableFeatures = new EAttribute[] { StatechartPackage.eINSTANCE.getNode_Actions() };
+			MessageFormatParser parser = new MessageFormatParser(features, editableFeatures);
+			nodeActions_5016Parser = parser;
+		}
+		return nodeActions_5016Parser;
 	}
 
 	/**
@@ -160,6 +180,24 @@ public class StateChartParserProvider extends AbstractProvider implements IParse
 	/**
 	* @generated
 	*/
+	private IParser nodeActions_5015Parser;
+
+	/**
+	* @generated
+	*/
+	private IParser getNodeActions_5015Parser() {
+		if (nodeActions_5015Parser == null) {
+			EAttribute[] features = new EAttribute[] { StatechartPackage.eINSTANCE.getNode_Actions() };
+			EAttribute[] editableFeatures = new EAttribute[] { StatechartPackage.eINSTANCE.getNode_Actions() };
+			MessageFormatParser parser = new MessageFormatParser(features, editableFeatures);
+			nodeActions_5015Parser = parser;
+		}
+		return nodeActions_5015Parser;
+	}
+
+	/**
+	* @generated
+	*/
 	private IParser nodeName_5003Parser;
 
 	/**
@@ -200,6 +238,8 @@ public class StateChartParserProvider extends AbstractProvider implements IParse
 		switch (visualID) {
 		case NodeNameEditPart.VISUAL_ID:
 			return getNodeName_5005Parser();
+		case NodeActionsEditPart.VISUAL_ID:
+			return getNodeActions_5016Parser();
 		case NodeName2EditPart.VISUAL_ID:
 			return getNodeName_5006Parser();
 		case VariableNameEditPart.VISUAL_ID:
@@ -212,6 +252,8 @@ public class StateChartParserProvider extends AbstractProvider implements IParse
 			return getNodeName_5002Parser();
 		case NodeName5EditPart.VISUAL_ID:
 			return getNodeName_5004Parser();
+		case NodeActions2EditPart.VISUAL_ID:
+			return getNodeActions_5015Parser();
 		case NodeName6EditPart.VISUAL_ID:
 			return getNodeName_5003Parser();
 		case TransitionTEEditPart.VISUAL_ID:

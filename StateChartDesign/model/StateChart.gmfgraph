@@ -93,12 +93,32 @@
               left="20"
               bottom="20"
               right="20"/>
+          <children
+              xsi:type="gmfgraph:Label"
+              name="NodeOrActions"
+              text="&lt;Actions>">
+            <layoutData
+                xsi:type="gmfgraph:BorderLayoutData"
+                alignment="BEGINNING"/>
+            <font
+                xsi:type="gmfgraph:BasicFont"
+                faceName="ActionsFont"
+                height="12"/>
+            <insets
+                top="5"
+                left="10"
+                bottom="5"
+                right="10"/>
+          </children>
         </children>
       </actualFigure>
       <accessors
           figure="//@figures.0/@descriptors.0/@actualFigure/@children.0"/>
       <accessors
           figure="//@figures.0/@descriptors.0/@actualFigure/@children.1"/>
+      <accessors
+          accessor="getFigureNodeOrActions"
+          figure="//@figures.0/@descriptors.0/@actualFigure/@children.1/@children.0"/>
     </descriptors>
     <descriptors
         name="NodeANDFigure">
@@ -445,9 +465,9 @@
               style="BOLD"/>
           <insets
               top="5"
-              left="5"
+              left="1"
               bottom="5"
-              right="5"/>
+              right="1"/>
         </children>
       </actualFigure>
       <accessors
@@ -543,6 +563,11 @@
       name="NodeAndComp"
       figure="NodeANDFigure"
       accessor="//@figures.0/@descriptors.1/@accessors.1"/>
+  <labels
+      name="NodeActionsOr"
+      figure="NodeORFigure"
+      elementIcon="false"
+      accessor="//@figures.0/@descriptors.0/@accessors.2"/>
   <labels
       name="ShallowHistorySymbol"
       figure="NodeShallowHistoryFigure"

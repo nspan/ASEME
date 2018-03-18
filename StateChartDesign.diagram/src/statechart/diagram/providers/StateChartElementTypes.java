@@ -21,6 +21,8 @@ import statechart.diagram.edit.parts.Node11EditPart;
 import statechart.diagram.edit.parts.Node12EditPart;
 import statechart.diagram.edit.parts.Node13EditPart;
 import statechart.diagram.edit.parts.Node14EditPart;
+import statechart.diagram.edit.parts.Node15EditPart;
+import statechart.diagram.edit.parts.Node16EditPart;
 import statechart.diagram.edit.parts.Node2EditPart;
 import statechart.diagram.edit.parts.Node3EditPart;
 import statechart.diagram.edit.parts.Node4EditPart;
@@ -130,6 +132,16 @@ public class StateChartElementTypes {
 	/**
 	* @generated
 	*/
+	public static final IElementType Node_3007 = getElementType("StateChartDesign.diagram.Node_3007"); //$NON-NLS-1$
+
+	/**
+	* @generated
+	*/
+	public static final IElementType Node_3008 = getElementType("StateChartDesign.diagram.Node_3008"); //$NON-NLS-1$
+
+	/**
+	* @generated
+	*/
 	public static final IElementType Transition_4001 = getElementType("StateChartDesign.diagram.Transition_4001"); //$NON-NLS-1$
 
 	/**
@@ -202,6 +214,10 @@ public class StateChartElementTypes {
 
 			elements.put(Node_3006, StatechartPackage.eINSTANCE.getNode());
 
+			elements.put(Node_3007, StatechartPackage.eINSTANCE.getNode());
+
+			elements.put(Node_3008, StatechartPackage.eINSTANCE.getNode());
+
 			elements.put(Transition_4001, StatechartPackage.eINSTANCE.getTransition());
 		}
 		return (ENamedElement) elements.get(type);
@@ -236,6 +252,8 @@ public class StateChartElementTypes {
 			KNOWN_ELEMENT_TYPES.add(Node_3004);
 			KNOWN_ELEMENT_TYPES.add(Node_3005);
 			KNOWN_ELEMENT_TYPES.add(Node_3006);
+			KNOWN_ELEMENT_TYPES.add(Node_3007);
+			KNOWN_ELEMENT_TYPES.add(Node_3008);
 			KNOWN_ELEMENT_TYPES.add(Transition_4001);
 		}
 		return KNOWN_ELEMENT_TYPES.contains(elementType);
@@ -278,6 +296,10 @@ public class StateChartElementTypes {
 			return Node_3005;
 		case Node14EditPart.VISUAL_ID:
 			return Node_3006;
+		case Node15EditPart.VISUAL_ID:
+			return Node_3007;
+		case Node16EditPart.VISUAL_ID:
+			return Node_3008;
 		case TransitionEditPart.VISUAL_ID:
 			return Transition_4001;
 		}

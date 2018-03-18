@@ -37,6 +37,8 @@ import statechart.diagram.edit.parts.Node11EditPart;
 import statechart.diagram.edit.parts.Node12EditPart;
 import statechart.diagram.edit.parts.Node13EditPart;
 import statechart.diagram.edit.parts.Node14EditPart;
+import statechart.diagram.edit.parts.Node15EditPart;
+import statechart.diagram.edit.parts.Node16EditPart;
 import statechart.diagram.edit.parts.Node7EditPart;
 import statechart.diagram.edit.parts.Node8EditPart;
 import statechart.diagram.edit.parts.Node9EditPart;
@@ -103,6 +105,8 @@ public class NodeNodeOrComp2CanonicalEditPolicy extends CanonicalEditPolicy {
 		case Node12EditPart.VISUAL_ID:
 		case Node13EditPart.VISUAL_ID:
 		case Node14EditPart.VISUAL_ID:
+		case Node15EditPart.VISUAL_ID:
+		case Node16EditPart.VISUAL_ID:
 			return true;
 		}
 		return false;

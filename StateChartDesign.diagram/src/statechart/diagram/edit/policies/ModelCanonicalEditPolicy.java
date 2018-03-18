@@ -47,6 +47,8 @@ import statechart.diagram.edit.parts.Node11EditPart;
 import statechart.diagram.edit.parts.Node12EditPart;
 import statechart.diagram.edit.parts.Node13EditPart;
 import statechart.diagram.edit.parts.Node14EditPart;
+import statechart.diagram.edit.parts.Node15EditPart;
+import statechart.diagram.edit.parts.Node16EditPart;
 import statechart.diagram.edit.parts.Node2EditPart;
 import statechart.diagram.edit.parts.Node3EditPart;
 import statechart.diagram.edit.parts.Node4EditPart;
@@ -420,6 +422,20 @@ public class ModelCanonicalEditPolicy extends CanonicalEditPolicy {
 		case Node14EditPart.VISUAL_ID: {
 			if (!domain2NotationMap.containsKey(view.getElement())) {
 				result.addAll(StateChartDiagramUpdater.getNode_3006ContainedLinks(view));
+			}
+			domain2NotationMap.putView(view.getElement(), view);
+			break;
+		}
+		case Node15EditPart.VISUAL_ID: {
+			if (!domain2NotationMap.containsKey(view.getElement())) {
+				result.addAll(StateChartDiagramUpdater.getNode_3007ContainedLinks(view));
+			}
+			domain2NotationMap.putView(view.getElement(), view);
+			break;
+		}
+		case Node16EditPart.VISUAL_ID: {
+			if (!domain2NotationMap.containsKey(view.getElement())) {
+				result.addAll(StateChartDiagramUpdater.getNode_3008ContainedLinks(view));
 			}
 			domain2NotationMap.putView(view.getElement(), view);
 			break;

@@ -24,6 +24,8 @@ import statechart.diagram.edit.parts.Node11EditPart;
 import statechart.diagram.edit.parts.Node12EditPart;
 import statechart.diagram.edit.parts.Node13EditPart;
 import statechart.diagram.edit.parts.Node14EditPart;
+import statechart.diagram.edit.parts.Node15EditPart;
+import statechart.diagram.edit.parts.Node16EditPart;
 import statechart.diagram.edit.parts.Node2EditPart;
 import statechart.diagram.edit.parts.Node3EditPart;
 import statechart.diagram.edit.parts.Node4EditPart;
@@ -161,6 +163,14 @@ public class StateChartDiagramUpdater {
 				result.add(new StateChartNodeDescriptor(childElement, visualID));
 				continue;
 			}
+			if (visualID == Node15EditPart.VISUAL_ID) {
+				result.add(new StateChartNodeDescriptor(childElement, visualID));
+				continue;
+			}
+			if (visualID == Node16EditPart.VISUAL_ID) {
+				result.add(new StateChartNodeDescriptor(childElement, visualID));
+				continue;
+			}
 		}
 		return result;
 	}
@@ -202,6 +212,14 @@ public class StateChartDiagramUpdater {
 				continue;
 			}
 			if (visualID == Node14EditPart.VISUAL_ID) {
+				result.add(new StateChartNodeDescriptor(childElement, visualID));
+				continue;
+			}
+			if (visualID == Node15EditPart.VISUAL_ID) {
+				result.add(new StateChartNodeDescriptor(childElement, visualID));
+				continue;
+			}
+			if (visualID == Node16EditPart.VISUAL_ID) {
 				result.add(new StateChartNodeDescriptor(childElement, visualID));
 				continue;
 			}
@@ -294,6 +312,10 @@ public class StateChartDiagramUpdater {
 			return getNode_3005ContainedLinks(view);
 		case Node14EditPart.VISUAL_ID:
 			return getNode_3006ContainedLinks(view);
+		case Node15EditPart.VISUAL_ID:
+			return getNode_3007ContainedLinks(view);
+		case Node16EditPart.VISUAL_ID:
+			return getNode_3008ContainedLinks(view);
 		case TransitionEditPart.VISUAL_ID:
 			return getTransition_4001ContainedLinks(view);
 		}
@@ -335,6 +357,10 @@ public class StateChartDiagramUpdater {
 			return getNode_3005IncomingLinks(view);
 		case Node14EditPart.VISUAL_ID:
 			return getNode_3006IncomingLinks(view);
+		case Node15EditPart.VISUAL_ID:
+			return getNode_3007IncomingLinks(view);
+		case Node16EditPart.VISUAL_ID:
+			return getNode_3008IncomingLinks(view);
 		case TransitionEditPart.VISUAL_ID:
 			return getTransition_4001IncomingLinks(view);
 		}
@@ -376,6 +402,10 @@ public class StateChartDiagramUpdater {
 			return getNode_3005OutgoingLinks(view);
 		case Node14EditPart.VISUAL_ID:
 			return getNode_3006OutgoingLinks(view);
+		case Node15EditPart.VISUAL_ID:
+			return getNode_3007OutgoingLinks(view);
+		case Node16EditPart.VISUAL_ID:
+			return getNode_3008OutgoingLinks(view);
 		case TransitionEditPart.VISUAL_ID:
 			return getTransition_4001OutgoingLinks(view);
 		}
@@ -494,6 +524,20 @@ public class StateChartDiagramUpdater {
 	 * @generated
 	 */
 	public static List<StateChartLinkDescriptor> getNode_3006ContainedLinks(View view) {
+		return Collections.emptyList();
+	}
+
+	/**
+	* @generated
+	*/
+	public static List<StateChartLinkDescriptor> getNode_3007ContainedLinks(View view) {
+		return Collections.emptyList();
+	}
+
+	/**
+	* @generated
+	*/
+	public static List<StateChartLinkDescriptor> getNode_3008ContainedLinks(View view) {
 		return Collections.emptyList();
 	}
 
@@ -680,6 +724,30 @@ public class StateChartDiagramUpdater {
 	}
 
 	/**
+	* @generated
+	*/
+	public static List<StateChartLinkDescriptor> getNode_3007IncomingLinks(View view) {
+		Node modelElement = (Node) view.getElement();
+		Map<EObject, Collection<EStructuralFeature.Setting>> crossReferences = EcoreUtil.CrossReferencer
+				.find(view.eResource().getResourceSet().getResources());
+		LinkedList<StateChartLinkDescriptor> result = new LinkedList<StateChartLinkDescriptor>();
+		result.addAll(getIncomingTypeModelFacetLinks_Transition_4001(modelElement, crossReferences));
+		return result;
+	}
+
+	/**
+	* @generated
+	*/
+	public static List<StateChartLinkDescriptor> getNode_3008IncomingLinks(View view) {
+		Node modelElement = (Node) view.getElement();
+		Map<EObject, Collection<EStructuralFeature.Setting>> crossReferences = EcoreUtil.CrossReferencer
+				.find(view.eResource().getResourceSet().getResources());
+		LinkedList<StateChartLinkDescriptor> result = new LinkedList<StateChartLinkDescriptor>();
+		result.addAll(getIncomingTypeModelFacetLinks_Transition_4001(modelElement, crossReferences));
+		return result;
+	}
+
+	/**
 	 * @generated
 	 */
 	public static List<StateChartLinkDescriptor> getTransition_4001IncomingLinks(View view) {
@@ -827,6 +895,26 @@ public class StateChartDiagramUpdater {
 	 * @generated
 	 */
 	public static List<StateChartLinkDescriptor> getNode_3006OutgoingLinks(View view) {
+		Node modelElement = (Node) view.getElement();
+		LinkedList<StateChartLinkDescriptor> result = new LinkedList<StateChartLinkDescriptor>();
+		result.addAll(getOutgoingTypeModelFacetLinks_Transition_4001(modelElement));
+		return result;
+	}
+
+	/**
+	* @generated
+	*/
+	public static List<StateChartLinkDescriptor> getNode_3007OutgoingLinks(View view) {
+		Node modelElement = (Node) view.getElement();
+		LinkedList<StateChartLinkDescriptor> result = new LinkedList<StateChartLinkDescriptor>();
+		result.addAll(getOutgoingTypeModelFacetLinks_Transition_4001(modelElement));
+		return result;
+	}
+
+	/**
+	* @generated
+	*/
+	public static List<StateChartLinkDescriptor> getNode_3008OutgoingLinks(View view) {
 		Node modelElement = (Node) view.getElement();
 		LinkedList<StateChartLinkDescriptor> result = new LinkedList<StateChartLinkDescriptor>();
 		result.addAll(getOutgoingTypeModelFacetLinks_Transition_4001(modelElement));

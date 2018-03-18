@@ -217,7 +217,7 @@
       <viewProvider class="statechart.diagram.providers.StateChartViewProvider">
          <Priority name="Lowest"/>
          <context viewClass="org.eclipse.gmf.runtime.notation.Diagram" semanticHints="StateChart"/>
-         <context viewClass="org.eclipse.gmf.runtime.notation.Node" semanticHints="2001,2002,2003,2004,2005,2006,2007,2008,2009,3001,3002,3003,3004,3005,3006"/>
+         <context viewClass="org.eclipse.gmf.runtime.notation.Node" semanticHints="2001,2002,2003,2004,2005,2006,2007,2008,2009,3001,3002,3003,3004,3005,3006,3007,3008"/>
          <context viewClass="org.eclipse.gmf.runtime.notation.Edge" semanticHints="4001"/>
       </viewProvider>
    </extension>
@@ -230,13 +230,13 @@
             <method name="getType()" value="StateChart"/>
          </object>
          <object class="org.eclipse.gmf.runtime.notation.Node" id="generated-nodes">
-            <method name="getType()" value="2001,2002,2003,2004,2005,2006,2007,2008,2009,3001,3002,3003,3004,3005,3006"/>
+            <method name="getType()" value="2001,2002,2003,2004,2005,2006,2007,2008,2009,3001,3002,3003,3004,3005,3006,3007,3008"/>
          </object>
          <object class="org.eclipse.gmf.runtime.notation.Edge" id="generated-links">
             <method name="getType()" value="4001"/>
          </object>
          <object class="org.eclipse.gmf.runtime.notation.Node" id="generated-labels">
-            <method name="getType()" value="5005,5006,5007,5008,5009,5010,5011,5012,5001,5002,5004,5003"/>
+            <method name="getType()" value="5005,5016,5006,5007,5008,5009,5010,5011,5012,5001,5002,5004,5015,5003,5013,5014"/>
          </object>
          <object class="org.eclipse.gmf.runtime.notation.Node" id="generated-compartments">
             <method name="getType()" value="7001,7002,7003,7004"/>
@@ -327,6 +327,16 @@
          <Priority name="Lowest"/>
          <object class="statechart.diagram.edit.parts.Node14EditPart" id="Node_3006"/>
          <context elements="Node_3006"/>
+      </modelingAssistantProvider>
+            <modelingAssistantProvider class="statechart.diagram.providers.assistants.StateChartModelingAssistantProviderOfNode15EditPart">
+         <Priority name="Lowest"/>
+         <object class="statechart.diagram.edit.parts.Node15EditPart" id="Node_3007"/>
+         <context elements="Node_3007"/>
+      </modelingAssistantProvider>
+            <modelingAssistantProvider class="statechart.diagram.providers.assistants.StateChartModelingAssistantProviderOfNode16EditPart">
+         <Priority name="Lowest"/>
+         <object class="statechart.diagram.edit.parts.Node16EditPart" id="Node_3008"/>
+         <context elements="Node_3008"/>
       </modelingAssistantProvider>
       
    </extension>
@@ -496,6 +506,24 @@
          </specializationType>
       </metamodel>
       <metamodel nsURI="http://statechart/1.0">
+         <specializationType
+               id="StateChartDesign.diagram.Node_3007"
+               name="%metatype.name.Node_3007"
+               kind="org.eclipse.gmf.runtime.emf.type.core.IHintedType">
+            <specializes id="StateChartDesign.diagram.Node_2001"/>
+            <param name="semanticHint" value="3007"/>
+         </specializationType>
+      </metamodel>
+      <metamodel nsURI="http://statechart/1.0">
+         <specializationType
+               id="StateChartDesign.diagram.Node_3008"
+               name="%metatype.name.Node_3008"
+               kind="org.eclipse.gmf.runtime.emf.type.core.IHintedType">
+            <specializes id="StateChartDesign.diagram.Node_2001"/>
+            <param name="semanticHint" value="3008"/>
+         </specializationType>
+      </metamodel>
+      <metamodel nsURI="http://statechart/1.0">
          <metamodelType
                id="StateChartDesign.diagram.Transition_4001"
                name="%metatype.name.Transition_4001"
@@ -533,6 +561,8 @@
          <elementType ref="StateChartDesign.diagram.Node_3004"/>
          <elementType ref="StateChartDesign.diagram.Node_3005"/>
          <elementType ref="StateChartDesign.diagram.Node_3006"/>
+         <elementType ref="StateChartDesign.diagram.Node_3007"/>
+         <elementType ref="StateChartDesign.diagram.Node_3008"/>
          <elementType ref="StateChartDesign.diagram.Transition_4001"/>
          <advice ref="org.eclipse.gmf.runtime.diagram.core.advice.notationDepdendents"/>
       </binding>

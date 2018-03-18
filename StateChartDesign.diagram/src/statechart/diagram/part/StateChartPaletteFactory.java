@@ -165,10 +165,13 @@ public class StateChartPaletteFactory {
 	* @generated
 	*/
 	private ToolEntry createNodeHISTORY9CreationTool() {
+		ArrayList<IElementType> types = new ArrayList<IElementType>(2);
+		types.add(StateChartElementTypes.Node_3007);
+		types.add(StateChartElementTypes.Node_2008);
 		DefaultNodeToolEntry entry = new DefaultNodeToolEntry(Messages.NodeHISTORY9CreationTool_title,
-				Messages.NodeHISTORY9CreationTool_desc, Collections.singletonList(StateChartElementTypes.Node_2008));
+				Messages.NodeHISTORY9CreationTool_desc, types);
 		entry.setId("createNodeHISTORY9CreationTool"); //$NON-NLS-1$
-		entry.setSmallIcon(StateChartElementTypes.getImageDescriptor(StateChartElementTypes.Node_2008));
+		entry.setSmallIcon(StateChartElementTypes.getImageDescriptor(StateChartElementTypes.Node_3007));
 		entry.setLargeIcon(entry.getSmallIcon());
 		return entry;
 	}
@@ -177,11 +180,13 @@ public class StateChartPaletteFactory {
 	* @generated
 	*/
 	private ToolEntry createNodeSHALLOWHISTORY10CreationTool() {
+		ArrayList<IElementType> types = new ArrayList<IElementType>(2);
+		types.add(StateChartElementTypes.Node_3008);
+		types.add(StateChartElementTypes.Node_2009);
 		DefaultNodeToolEntry entry = new DefaultNodeToolEntry(Messages.NodeSHALLOWHISTORY10CreationTool_title,
-				Messages.NodeSHALLOWHISTORY10CreationTool_desc,
-				Collections.singletonList(StateChartElementTypes.Node_2009));
+				Messages.NodeSHALLOWHISTORY10CreationTool_desc, types);
 		entry.setId("createNodeSHALLOWHISTORY10CreationTool"); //$NON-NLS-1$
-		entry.setSmallIcon(StateChartElementTypes.getImageDescriptor(StateChartElementTypes.Node_2009));
+		entry.setSmallIcon(StateChartElementTypes.getImageDescriptor(StateChartElementTypes.Node_3008));
 		entry.setLargeIcon(entry.getSmallIcon());
 		return entry;
 	}

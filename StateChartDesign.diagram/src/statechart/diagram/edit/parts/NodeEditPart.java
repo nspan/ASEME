@@ -116,6 +116,10 @@ public class NodeEditPart extends ShapeNodeEditPart {
 			((NodeNameEditPart) childEditPart).setLabel(getPrimaryShape().getFigureNodeOrName());
 			return true;
 		}
+		if (childEditPart instanceof NodeActionsEditPart) {
+			((NodeActionsEditPart) childEditPart).setLabel(getPrimaryShape().getFigureNodeOrActions());
+			return true;
+		}
 		if (childEditPart instanceof NodeNodeOrCompEditPart) {
 			IFigure pane = getPrimaryShape().getFigureNodeOrCompartment();
 			setupContentPane(pane); // FIXME each comparment should handle his content pane in his own way 
@@ -130,6 +134,9 @@ public class NodeEditPart extends ShapeNodeEditPart {
 	*/
 	protected boolean removeFixedChild(EditPart childEditPart) {
 		if (childEditPart instanceof NodeNameEditPart) {
+			return true;
+		}
+		if (childEditPart instanceof NodeActionsEditPart) {
 			return true;
 		}
 		if (childEditPart instanceof NodeNodeOrCompEditPart) {
@@ -278,8 +285,13 @@ public class NodeEditPart extends ShapeNodeEditPart {
 		private RoundedRectangle fFigureNodeOrCompartment;
 
 		/**
-		 * @generated
-		 */
+		* @generated
+		*/
+		private WrappingLabel fFigureNodeOrActions;
+
+		/**
+			 * @generated
+			 */
 		public NodeORFigure() {
 
 			BorderLayout layoutThis = new BorderLayout();
@@ -320,6 +332,17 @@ public class NodeEditPart extends ShapeNodeEditPart {
 
 			this.add(fFigureNodeOrCompartment, BorderLayout.CENTER);
 
+			fFigureNodeOrActions = new WrappingLabel();
+
+			fFigureNodeOrActions.setText("<Actions>");
+
+			fFigureNodeOrActions.setFont(FFIGURENODEORACTIONS_FONT);
+
+			fFigureNodeOrActions.setBorder(new MarginBorder(getMapMode().DPtoLP(5), getMapMode().DPtoLP(10),
+					getMapMode().DPtoLP(5), getMapMode().DPtoLP(10)));
+
+			fFigureNodeOrCompartment.add(fFigureNodeOrActions);
+
 		}
 
 		/**
@@ -334,6 +357,13 @@ public class NodeEditPart extends ShapeNodeEditPart {
 		 */
 		public RoundedRectangle getFigureNodeOrCompartment() {
 			return fFigureNodeOrCompartment;
+		}
+
+		/**
+		* @generated
+		*/
+		public WrappingLabel getFigureNodeOrActions() {
+			return fFigureNodeOrActions;
 		}
 
 	}
@@ -352,5 +382,10 @@ public class NodeEditPart extends ShapeNodeEditPart {
 	 * @generated
 	 */
 	static final Color FFIGURENODEORCOMPARTMENT_BACK = new Color(null, 255, 255, 255);
+
+	/**
+	* @generated
+	*/
+	static final Font FFIGURENODEORACTIONS_FONT = new Font(Display.getCurrent(), "ActionsFont", 12, SWT.NORMAL);
 
 }

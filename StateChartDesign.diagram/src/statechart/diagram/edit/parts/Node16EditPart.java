@@ -1,10 +1,9 @@
 package statechart.diagram.edit.parts;
 
-import org.eclipse.draw2d.BorderLayout;
 import org.eclipse.draw2d.ColorConstants;
+import org.eclipse.draw2d.Ellipse;
 import org.eclipse.draw2d.IFigure;
 import org.eclipse.draw2d.MarginBorder;
-import org.eclipse.draw2d.RoundedRectangle;
 import org.eclipse.draw2d.Shape;
 import org.eclipse.draw2d.StackLayout;
 import org.eclipse.draw2d.geometry.Dimension;
@@ -28,18 +27,18 @@ import org.eclipse.swt.graphics.Color;
 import org.eclipse.swt.graphics.Font;
 import org.eclipse.swt.widgets.Display;
 
-import statechart.diagram.edit.policies.Node11ItemSemanticEditPolicy;
+import statechart.diagram.edit.policies.Node16ItemSemanticEditPolicy;
 import statechart.diagram.part.StateChartVisualIDRegistry;
 
 /**
  * @generated
  */
-public class Node11EditPart extends ShapeNodeEditPart {
+public class Node16EditPart extends ShapeNodeEditPart {
 
 	/**
 	* @generated
 	*/
-	public static final int VISUAL_ID = 3003;
+	public static final int VISUAL_ID = 3008;
 
 	/**
 	* @generated
@@ -54,7 +53,7 @@ public class Node11EditPart extends ShapeNodeEditPart {
 	/**
 	* @generated
 	*/
-	public Node11EditPart(View view) {
+	public Node16EditPart(View view) {
 		super(view);
 	}
 
@@ -63,7 +62,7 @@ public class Node11EditPart extends ShapeNodeEditPart {
 	*/
 	protected void createDefaultEditPolicies() {
 		super.createDefaultEditPolicies();
-		installEditPolicy(EditPolicyRoles.SEMANTIC_ROLE, new Node11ItemSemanticEditPolicy());
+		installEditPolicy(EditPolicyRoles.SEMANTIC_ROLE, new Node16ItemSemanticEditPolicy());
 		installEditPolicy(EditPolicy.LAYOUT_ROLE, createLayoutEditPolicy());
 		// XXX need an SCR to runtime to have another abstract superclass that would let children add reasonable editpolicies
 		// removeEditPolicy(org.eclipse.gmf.runtime.diagram.ui.editpolicies.EditPolicyRoles.CONNECTION_HANDLES_ROLE);
@@ -98,32 +97,22 @@ public class Node11EditPart extends ShapeNodeEditPart {
 	* @generated
 	*/
 	protected IFigure createNodeShape() {
-		return primaryShape = new NodeORFigure();
+		return primaryShape = new NodeShallowHistoryFigure();
 	}
 
 	/**
 	* @generated
 	*/
-	public NodeORFigure getPrimaryShape() {
-		return (NodeORFigure) primaryShape;
+	public NodeShallowHistoryFigure getPrimaryShape() {
+		return (NodeShallowHistoryFigure) primaryShape;
 	}
 
 	/**
 	* @generated
 	*/
 	protected boolean addFixedChild(EditPart childEditPart) {
-		if (childEditPart instanceof NodeName5EditPart) {
-			((NodeName5EditPart) childEditPart).setLabel(getPrimaryShape().getFigureNodeOrName());
-			return true;
-		}
-		if (childEditPart instanceof NodeActions2EditPart) {
-			((NodeActions2EditPart) childEditPart).setLabel(getPrimaryShape().getFigureNodeOrActions());
-			return true;
-		}
-		if (childEditPart instanceof NodeNodeOrComp2EditPart) {
-			IFigure pane = getPrimaryShape().getFigureNodeOrCompartment();
-			setupContentPane(pane); // FIXME each comparment should handle his content pane in his own way 
-			pane.add(((NodeNodeOrComp2EditPart) childEditPart).getFigure());
+		if (childEditPart instanceof WrappingLabel6EditPart) {
+			((WrappingLabel6EditPart) childEditPart).setLabel(getPrimaryShape().getFigureShallowHistorySymbol());
 			return true;
 		}
 		return false;
@@ -133,15 +122,7 @@ public class Node11EditPart extends ShapeNodeEditPart {
 	* @generated
 	*/
 	protected boolean removeFixedChild(EditPart childEditPart) {
-		if (childEditPart instanceof NodeName5EditPart) {
-			return true;
-		}
-		if (childEditPart instanceof NodeActions2EditPart) {
-			return true;
-		}
-		if (childEditPart instanceof NodeNodeOrComp2EditPart) {
-			IFigure pane = getPrimaryShape().getFigureNodeOrCompartment();
-			pane.remove(((NodeNodeOrComp2EditPart) childEditPart).getFigure());
+		if (childEditPart instanceof WrappingLabel6EditPart) {
 			return true;
 		}
 		return false;
@@ -171,9 +152,6 @@ public class Node11EditPart extends ShapeNodeEditPart {
 	* @generated
 	*/
 	protected IFigure getContentPaneFor(IGraphicalEditPart editPart) {
-		if (editPart instanceof NodeNodeOrComp2EditPart) {
-			return getPrimaryShape().getFigureNodeOrCompartment();
-		}
 		return getContentPane();
 	}
 
@@ -181,7 +159,7 @@ public class Node11EditPart extends ShapeNodeEditPart {
 	* @generated
 	*/
 	protected NodeFigure createNodePlate() {
-		DefaultSizeNodeFigure result = new DefaultSizeNodeFigure(40, 40);
+		DefaultSizeNodeFigure result = new DefaultSizeNodeFigure(25, 25);
 		return result;
 	}
 
@@ -267,40 +245,28 @@ public class Node11EditPart extends ShapeNodeEditPart {
 	* @generated
 	*/
 	public EditPart getPrimaryChildEditPart() {
-		return getChildBySemanticHint(StateChartVisualIDRegistry.getType(NodeName5EditPart.VISUAL_ID));
+		return getChildBySemanticHint(StateChartVisualIDRegistry.getType(WrappingLabel6EditPart.VISUAL_ID));
 	}
 
 	/**
-	* @generated
-	*/
-	public class NodeORFigure extends RoundedRectangle {
+	 * @generated
+	 */
+	public class NodeShallowHistoryFigure extends Ellipse {
 
 		/**
 		 * @generated
 		 */
-		private WrappingLabel fFigureNodeOrName;
+		private WrappingLabel fFigureShallowHistorySymbol;
+
 		/**
 		 * @generated
 		 */
-		private RoundedRectangle fFigureNodeOrCompartment;
-
-		/**
-		* @generated
-		*/
-		private WrappingLabel fFigureNodeOrActions;
-
-		/**
-			 * @generated
-			 */
-		public NodeORFigure() {
-
-			BorderLayout layoutThis = new BorderLayout();
-			this.setLayoutManager(layoutThis);
-
-			this.setCornerDimensions(new Dimension(getMapMode().DPtoLP(18), getMapMode().DPtoLP(18)));
-			this.setLineWidth(2);
+		public NodeShallowHistoryFigure() {
 			this.setForegroundColor(ColorConstants.black);
-			this.setBackgroundColor(THIS_BACK);
+			this.setBackgroundColor(ColorConstants.white);
+			this.setPreferredSize(new Dimension(getMapMode().DPtoLP(25), getMapMode().DPtoLP(25)));
+			this.setBorder(new MarginBorder(getMapMode().DPtoLP(1), getMapMode().DPtoLP(1), getMapMode().DPtoLP(1),
+					getMapMode().DPtoLP(1)));
 			createContents();
 		}
 
@@ -309,61 +275,24 @@ public class Node11EditPart extends ShapeNodeEditPart {
 		 */
 		private void createContents() {
 
-			fFigureNodeOrName = new WrappingLabel();
+			fFigureShallowHistorySymbol = new WrappingLabel();
 
-			fFigureNodeOrName.setText("name");
+			fFigureShallowHistorySymbol.setText("H");
 
-			fFigureNodeOrName.setFont(FFIGURENODEORNAME_FONT);
+			fFigureShallowHistorySymbol.setFont(FFIGURESHALLOWHISTORYSYMBOL_FONT);
 
-			fFigureNodeOrName.setBorder(new MarginBorder(getMapMode().DPtoLP(5), getMapMode().DPtoLP(10),
-					getMapMode().DPtoLP(5), getMapMode().DPtoLP(10)));
+			fFigureShallowHistorySymbol.setBorder(new MarginBorder(getMapMode().DPtoLP(5), getMapMode().DPtoLP(5),
+					getMapMode().DPtoLP(5), getMapMode().DPtoLP(5)));
 
-			this.add(fFigureNodeOrName, BorderLayout.TOP);
-
-			fFigureNodeOrCompartment = new RoundedRectangle();
-
-			fFigureNodeOrCompartment
-					.setCornerDimensions(new Dimension(getMapMode().DPtoLP(18), getMapMode().DPtoLP(18)));
-			fFigureNodeOrCompartment.setForegroundColor(ColorConstants.black);
-			fFigureNodeOrCompartment.setBackgroundColor(FFIGURENODEORCOMPARTMENT_BACK);
-
-			fFigureNodeOrCompartment.setBorder(new MarginBorder(getMapMode().DPtoLP(0), getMapMode().DPtoLP(20),
-					getMapMode().DPtoLP(20), getMapMode().DPtoLP(20)));
-
-			this.add(fFigureNodeOrCompartment, BorderLayout.CENTER);
-
-			fFigureNodeOrActions = new WrappingLabel();
-
-			fFigureNodeOrActions.setText("<Actions>");
-
-			fFigureNodeOrActions.setFont(FFIGURENODEORACTIONS_FONT);
-
-			fFigureNodeOrActions.setBorder(new MarginBorder(getMapMode().DPtoLP(5), getMapMode().DPtoLP(10),
-					getMapMode().DPtoLP(5), getMapMode().DPtoLP(10)));
-
-			fFigureNodeOrCompartment.add(fFigureNodeOrActions);
+			this.add(fFigureShallowHistorySymbol);
 
 		}
 
 		/**
 		 * @generated
 		 */
-		public WrappingLabel getFigureNodeOrName() {
-			return fFigureNodeOrName;
-		}
-
-		/**
-		 * @generated
-		 */
-		public RoundedRectangle getFigureNodeOrCompartment() {
-			return fFigureNodeOrCompartment;
-		}
-
-		/**
-		* @generated
-		*/
-		public WrappingLabel getFigureNodeOrActions() {
-			return fFigureNodeOrActions;
+		public WrappingLabel getFigureShallowHistorySymbol() {
+			return fFigureShallowHistorySymbol;
 		}
 
 	}
@@ -371,21 +300,7 @@ public class Node11EditPart extends ShapeNodeEditPart {
 	/**
 	 * @generated
 	 */
-	static final Color THIS_BACK = new Color(null, 253, 255, 182);
-
-	/**
-	* @generated
-	*/
-	static final Font FFIGURENODEORNAME_FONT = new Font(Display.getCurrent(), "TitleFont", 14, SWT.BOLD);
-
-	/**
-	* @generated
-	*/
-	static final Color FFIGURENODEORCOMPARTMENT_BACK = new Color(null, 255, 255, 255);
-
-	/**
-	* @generated
-	*/
-	static final Font FFIGURENODEORACTIONS_FONT = new Font(Display.getCurrent(), "ActionsFont", 12, SWT.NORMAL);
+	static final Font FFIGURESHALLOWHISTORYSYMBOL_FONT = new Font(Display.getCurrent(), "ShallowHistoryFont", 10,
+			SWT.BOLD);
 
 }

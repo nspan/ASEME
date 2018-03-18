@@ -36,6 +36,16 @@
         <editableFeatures
             href="StateChart.ecore#//Node/name"/>
       </labelMappings>
+      <labelMappings
+          xsi:type="gmfmap:FeatureLabelMapping"
+          readOnly="true">
+        <diagramLabel
+            href="StateChart.gmfgraph#NodeActionsOr"/>
+        <features
+            href="StateChart.ecore#//Node/actions"/>
+        <editableFeatures
+            href="StateChart.ecore#//Node/actions"/>
+      </labelMappings>
       <tool
           xsi:type="gmftool:CreationTool"
           href="StateChart.gmftool#//@palette/@tools.0/@tools.0"/>
@@ -77,8 +87,20 @@
         <containmentFeature
             href="StateChart.ecore#//Node/Children"/>
       </children>
+      <children
+          compartment="//@nodes.0/@ownedChild/@compartments.0"
+          referencedChild="//@nodes.7/@ownedChild">
+        <containmentFeature
+            href="StateChart.ecore#//Node/Children"/>
+      </children>
+      <children
+          compartment="//@nodes.0/@ownedChild/@compartments.0"
+          referencedChild="//@nodes.8/@ownedChild">
+        <containmentFeature
+            href="StateChart.ecore#//Node/Children"/>
+      </children>
       <compartments
-          children="//@nodes.0/@ownedChild/@children.2 //@nodes.0/@ownedChild/@children.4 //@nodes.0/@ownedChild/@children.3 //@nodes.0/@ownedChild/@children.5 //@nodes.0/@ownedChild/@children.0 //@nodes.0/@ownedChild/@children.1">
+          children="//@nodes.0/@ownedChild/@children.2 //@nodes.0/@ownedChild/@children.4 //@nodes.0/@ownedChild/@children.3 //@nodes.0/@ownedChild/@children.5 //@nodes.0/@ownedChild/@children.0 //@nodes.0/@ownedChild/@children.1 //@nodes.0/@ownedChild/@children.6 //@nodes.0/@ownedChild/@children.7">
         <compartment
             href="StateChart.gmfgraph#NodeOrComp"/>
       </compartments>

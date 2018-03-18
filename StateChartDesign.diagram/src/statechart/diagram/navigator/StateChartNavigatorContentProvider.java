@@ -29,6 +29,8 @@ import statechart.diagram.edit.parts.Node11EditPart;
 import statechart.diagram.edit.parts.Node12EditPart;
 import statechart.diagram.edit.parts.Node13EditPart;
 import statechart.diagram.edit.parts.Node14EditPart;
+import statechart.diagram.edit.parts.Node15EditPart;
+import statechart.diagram.edit.parts.Node16EditPart;
 import statechart.diagram.edit.parts.Node2EditPart;
 import statechart.diagram.edit.parts.Node3EditPart;
 import statechart.diagram.edit.parts.Node4EditPart;
@@ -308,6 +310,16 @@ public class StateChartNavigatorContentProvider implements ICommonContentProvide
 					StateChartVisualIDRegistry.getType(NodeNodeOrCompEditPart.VISUAL_ID));
 			connectedViews = getChildrenByType(connectedViews,
 					StateChartVisualIDRegistry.getType(Node14EditPart.VISUAL_ID));
+			result.addAll(createNavigatorItems(connectedViews, parentElement, false));
+			connectedViews = getChildrenByType(Collections.singleton(sv),
+					StateChartVisualIDRegistry.getType(NodeNodeOrCompEditPart.VISUAL_ID));
+			connectedViews = getChildrenByType(connectedViews,
+					StateChartVisualIDRegistry.getType(Node15EditPart.VISUAL_ID));
+			result.addAll(createNavigatorItems(connectedViews, parentElement, false));
+			connectedViews = getChildrenByType(Collections.singleton(sv),
+					StateChartVisualIDRegistry.getType(NodeNodeOrCompEditPart.VISUAL_ID));
+			connectedViews = getChildrenByType(connectedViews,
+					StateChartVisualIDRegistry.getType(Node16EditPart.VISUAL_ID));
 			result.addAll(createNavigatorItems(connectedViews, parentElement, false));
 			connectedViews = getIncomingLinksByType(Collections.singleton(sv),
 					StateChartVisualIDRegistry.getType(TransitionEditPart.VISUAL_ID));
@@ -594,6 +606,16 @@ public class StateChartNavigatorContentProvider implements ICommonContentProvide
 			connectedViews = getChildrenByType(connectedViews,
 					StateChartVisualIDRegistry.getType(Node14EditPart.VISUAL_ID));
 			result.addAll(createNavigatorItems(connectedViews, parentElement, false));
+			connectedViews = getChildrenByType(Collections.singleton(sv),
+					StateChartVisualIDRegistry.getType(NodeNodeOrComp2EditPart.VISUAL_ID));
+			connectedViews = getChildrenByType(connectedViews,
+					StateChartVisualIDRegistry.getType(Node15EditPart.VISUAL_ID));
+			result.addAll(createNavigatorItems(connectedViews, parentElement, false));
+			connectedViews = getChildrenByType(Collections.singleton(sv),
+					StateChartVisualIDRegistry.getType(NodeNodeOrComp2EditPart.VISUAL_ID));
+			connectedViews = getChildrenByType(connectedViews,
+					StateChartVisualIDRegistry.getType(Node16EditPart.VISUAL_ID));
+			result.addAll(createNavigatorItems(connectedViews, parentElement, false));
 			connectedViews = getIncomingLinksByType(Collections.singleton(sv),
 					StateChartVisualIDRegistry.getType(TransitionEditPart.VISUAL_ID));
 			incominglinks.addChildren(createNavigatorItems(connectedViews, incominglinks, true));
@@ -689,6 +711,56 @@ public class StateChartNavigatorContentProvider implements ICommonContentProvide
 			return result.toArray();
 		}
 
+		case Node15EditPart.VISUAL_ID: {
+			LinkedList<StateChartAbstractNavigatorItem> result = new LinkedList<StateChartAbstractNavigatorItem>();
+			Node sv = (Node) view;
+			StateChartNavigatorGroup incominglinks = new StateChartNavigatorGroup(
+					Messages.NavigatorGroupName_Node_3007_incominglinks, "icons/incomingLinksNavigatorGroup.gif", //$NON-NLS-1$
+					parentElement);
+			StateChartNavigatorGroup outgoinglinks = new StateChartNavigatorGroup(
+					Messages.NavigatorGroupName_Node_3007_outgoinglinks, "icons/outgoingLinksNavigatorGroup.gif", //$NON-NLS-1$
+					parentElement);
+			Collection<View> connectedViews;
+			connectedViews = getIncomingLinksByType(Collections.singleton(sv),
+					StateChartVisualIDRegistry.getType(TransitionEditPart.VISUAL_ID));
+			incominglinks.addChildren(createNavigatorItems(connectedViews, incominglinks, true));
+			connectedViews = getOutgoingLinksByType(Collections.singleton(sv),
+					StateChartVisualIDRegistry.getType(TransitionEditPart.VISUAL_ID));
+			outgoinglinks.addChildren(createNavigatorItems(connectedViews, outgoinglinks, true));
+			if (!incominglinks.isEmpty()) {
+				result.add(incominglinks);
+			}
+			if (!outgoinglinks.isEmpty()) {
+				result.add(outgoinglinks);
+			}
+			return result.toArray();
+		}
+
+		case Node16EditPart.VISUAL_ID: {
+			LinkedList<StateChartAbstractNavigatorItem> result = new LinkedList<StateChartAbstractNavigatorItem>();
+			Node sv = (Node) view;
+			StateChartNavigatorGroup incominglinks = new StateChartNavigatorGroup(
+					Messages.NavigatorGroupName_Node_3008_incominglinks, "icons/incomingLinksNavigatorGroup.gif", //$NON-NLS-1$
+					parentElement);
+			StateChartNavigatorGroup outgoinglinks = new StateChartNavigatorGroup(
+					Messages.NavigatorGroupName_Node_3008_outgoinglinks, "icons/outgoingLinksNavigatorGroup.gif", //$NON-NLS-1$
+					parentElement);
+			Collection<View> connectedViews;
+			connectedViews = getIncomingLinksByType(Collections.singleton(sv),
+					StateChartVisualIDRegistry.getType(TransitionEditPart.VISUAL_ID));
+			incominglinks.addChildren(createNavigatorItems(connectedViews, incominglinks, true));
+			connectedViews = getOutgoingLinksByType(Collections.singleton(sv),
+					StateChartVisualIDRegistry.getType(TransitionEditPart.VISUAL_ID));
+			outgoinglinks.addChildren(createNavigatorItems(connectedViews, outgoinglinks, true));
+			if (!incominglinks.isEmpty()) {
+				result.add(incominglinks);
+			}
+			if (!outgoinglinks.isEmpty()) {
+				result.add(outgoinglinks);
+			}
+			return result.toArray();
+		}
+
 		case TransitionEditPart.VISUAL_ID: {
 			LinkedList<StateChartAbstractNavigatorItem> result = new LinkedList<StateChartAbstractNavigatorItem>();
 			Edge sv = (Edge) view;
@@ -741,6 +813,12 @@ public class StateChartNavigatorContentProvider implements ICommonContentProvide
 			connectedViews = getLinksTargetByType(Collections.singleton(sv),
 					StateChartVisualIDRegistry.getType(Node14EditPart.VISUAL_ID));
 			target.addChildren(createNavigatorItems(connectedViews, target, true));
+			connectedViews = getLinksTargetByType(Collections.singleton(sv),
+					StateChartVisualIDRegistry.getType(Node15EditPart.VISUAL_ID));
+			target.addChildren(createNavigatorItems(connectedViews, target, true));
+			connectedViews = getLinksTargetByType(Collections.singleton(sv),
+					StateChartVisualIDRegistry.getType(Node16EditPart.VISUAL_ID));
+			target.addChildren(createNavigatorItems(connectedViews, target, true));
 			connectedViews = getLinksSourceByType(Collections.singleton(sv),
 					StateChartVisualIDRegistry.getType(NodeEditPart.VISUAL_ID));
 			source.addChildren(createNavigatorItems(connectedViews, source, true));
@@ -782,6 +860,12 @@ public class StateChartNavigatorContentProvider implements ICommonContentProvide
 			source.addChildren(createNavigatorItems(connectedViews, source, true));
 			connectedViews = getLinksSourceByType(Collections.singleton(sv),
 					StateChartVisualIDRegistry.getType(Node14EditPart.VISUAL_ID));
+			source.addChildren(createNavigatorItems(connectedViews, source, true));
+			connectedViews = getLinksSourceByType(Collections.singleton(sv),
+					StateChartVisualIDRegistry.getType(Node15EditPart.VISUAL_ID));
+			source.addChildren(createNavigatorItems(connectedViews, source, true));
+			connectedViews = getLinksSourceByType(Collections.singleton(sv),
+					StateChartVisualIDRegistry.getType(Node16EditPart.VISUAL_ID));
 			source.addChildren(createNavigatorItems(connectedViews, source, true));
 			if (!target.isEmpty()) {
 				result.add(target);

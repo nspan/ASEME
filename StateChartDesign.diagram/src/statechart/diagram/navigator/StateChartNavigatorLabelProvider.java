@@ -24,6 +24,8 @@ import statechart.diagram.edit.parts.Node11EditPart;
 import statechart.diagram.edit.parts.Node12EditPart;
 import statechart.diagram.edit.parts.Node13EditPart;
 import statechart.diagram.edit.parts.Node14EditPart;
+import statechart.diagram.edit.parts.Node15EditPart;
+import statechart.diagram.edit.parts.Node16EditPart;
 import statechart.diagram.edit.parts.Node2EditPart;
 import statechart.diagram.edit.parts.Node3EditPart;
 import statechart.diagram.edit.parts.Node4EditPart;
@@ -46,6 +48,8 @@ import statechart.diagram.edit.parts.VariableNameEditPart;
 import statechart.diagram.edit.parts.WrappingLabel2EditPart;
 import statechart.diagram.edit.parts.WrappingLabel3EditPart;
 import statechart.diagram.edit.parts.WrappingLabel4EditPart;
+import statechart.diagram.edit.parts.WrappingLabel5EditPart;
+import statechart.diagram.edit.parts.WrappingLabel6EditPart;
 import statechart.diagram.edit.parts.WrappingLabelEditPart;
 import statechart.diagram.part.StateChartDiagramEditorPlugin;
 import statechart.diagram.part.StateChartVisualIDRegistry;
@@ -138,6 +142,10 @@ public class StateChartNavigatorLabelProvider extends LabelProvider
 			return getImage("Navigator?Node?http://statechart/1.0?Node", StateChartElementTypes.Node_3005); //$NON-NLS-1$
 		case Node14EditPart.VISUAL_ID:
 			return getImage("Navigator?Node?http://statechart/1.0?Node", StateChartElementTypes.Node_3006); //$NON-NLS-1$
+		case Node15EditPart.VISUAL_ID:
+			return getImage("Navigator?Node?http://statechart/1.0?Node", StateChartElementTypes.Node_3007); //$NON-NLS-1$
+		case Node16EditPart.VISUAL_ID:
+			return getImage("Navigator?Node?http://statechart/1.0?Node", StateChartElementTypes.Node_3008); //$NON-NLS-1$
 		case TransitionEditPart.VISUAL_ID:
 			return getImage("Navigator?Link?http://statechart/1.0?Transition", StateChartElementTypes.Transition_4001); //$NON-NLS-1$
 		}
@@ -222,6 +230,10 @@ public class StateChartNavigatorLabelProvider extends LabelProvider
 			return getNode_3005Text(view);
 		case Node14EditPart.VISUAL_ID:
 			return getNode_3006Text(view);
+		case Node15EditPart.VISUAL_ID:
+			return getNode_3007Text(view);
+		case Node16EditPart.VISUAL_ID:
+			return getNode_3008Text(view);
 		case TransitionEditPart.VISUAL_ID:
 			return getTransition_4001Text(view);
 		}
@@ -465,6 +477,38 @@ public class StateChartNavigatorLabelProvider extends LabelProvider
 			return domainModelElement.getName();
 		} else {
 			StateChartDiagramEditorPlugin.getInstance().logError("No domain element for view with visualID = " + 3006); //$NON-NLS-1$
+			return ""; //$NON-NLS-1$
+		}
+	}
+
+	/**
+	* @generated
+	*/
+	private String getNode_3007Text(View view) {
+		IParser parser = StateChartParserProvider.getParser(StateChartElementTypes.Node_3007,
+				view.getElement() != null ? view.getElement() : view,
+				StateChartVisualIDRegistry.getType(WrappingLabel5EditPart.VISUAL_ID));
+		if (parser != null) {
+			return parser.getPrintString(new EObjectAdapter(view.getElement() != null ? view.getElement() : view),
+					ParserOptions.NONE.intValue());
+		} else {
+			StateChartDiagramEditorPlugin.getInstance().logError("Parser was not found for label " + 5013); //$NON-NLS-1$
+			return ""; //$NON-NLS-1$
+		}
+	}
+
+	/**
+	* @generated
+	*/
+	private String getNode_3008Text(View view) {
+		IParser parser = StateChartParserProvider.getParser(StateChartElementTypes.Node_3008,
+				view.getElement() != null ? view.getElement() : view,
+				StateChartVisualIDRegistry.getType(WrappingLabel6EditPart.VISUAL_ID));
+		if (parser != null) {
+			return parser.getPrintString(new EObjectAdapter(view.getElement() != null ? view.getElement() : view),
+					ParserOptions.NONE.intValue());
+		} else {
+			StateChartDiagramEditorPlugin.getInstance().logError("Parser was not found for label " + 5014); //$NON-NLS-1$
 			return ""; //$NON-NLS-1$
 		}
 	}

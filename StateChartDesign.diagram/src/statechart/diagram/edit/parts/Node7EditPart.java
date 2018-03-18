@@ -281,8 +281,8 @@ public class Node7EditPart extends ShapeNodeEditPart {
 
 			fFigureHistorySymbol.setFont(FFIGUREHISTORYSYMBOL_FONT);
 
-			fFigureHistorySymbol.setBorder(new MarginBorder(getMapMode().DPtoLP(5), getMapMode().DPtoLP(5),
-					getMapMode().DPtoLP(5), getMapMode().DPtoLP(5)));
+			fFigureHistorySymbol.setBorder(new MarginBorder(getMapMode().DPtoLP(5), getMapMode().DPtoLP(1),
+					getMapMode().DPtoLP(5), getMapMode().DPtoLP(1)));
 
 			this.add(fFigureHistorySymbol);
 

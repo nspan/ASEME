@@ -8,6 +8,8 @@ import statechart.diagram.edit.commands.Node11CreateCommand;
 import statechart.diagram.edit.commands.Node12CreateCommand;
 import statechart.diagram.edit.commands.Node13CreateCommand;
 import statechart.diagram.edit.commands.Node14CreateCommand;
+import statechart.diagram.edit.commands.Node15CreateCommand;
+import statechart.diagram.edit.commands.Node16CreateCommand;
 import statechart.diagram.edit.commands.Node7CreateCommand;
 import statechart.diagram.edit.commands.Node8CreateCommand;
 import statechart.diagram.edit.commands.Node9CreateCommand;
@@ -46,6 +48,12 @@ public class NodeNodeOrCompItemSemanticEditPolicy extends StateChartBaseItemSema
 		}
 		if (StateChartElementTypes.Node_3006 == req.getElementType()) {
 			return getGEFWrapper(new Node14CreateCommand(req));
+		}
+		if (StateChartElementTypes.Node_3007 == req.getElementType()) {
+			return getGEFWrapper(new Node15CreateCommand(req));
+		}
+		if (StateChartElementTypes.Node_3008 == req.getElementType()) {
+			return getGEFWrapper(new Node16CreateCommand(req));
 		}
 		return super.getCreateCommand(req);
 	}

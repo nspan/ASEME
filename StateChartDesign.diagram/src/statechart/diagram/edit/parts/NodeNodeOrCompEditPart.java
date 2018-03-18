@@ -102,6 +102,12 @@ public class NodeNodeOrCompEditPart extends ShapeCompartmentEditPart {
 			if (type == StateChartElementTypes.Node_3006) {
 				return this;
 			}
+			if (type == StateChartElementTypes.Node_3007) {
+				return this;
+			}
+			if (type == StateChartElementTypes.Node_3008) {
+				return this;
+			}
 			return getParent().getTargetEditPart(request);
 		}
 		if (request instanceof CreateUnspecifiedTypeConnectionRequest) {
