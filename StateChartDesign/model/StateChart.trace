@@ -48,6 +48,9 @@
     <nodeLabelTraces
         visualID="5009"
         queryText="true"/>
+    <nodeLabelTraces
+        visualID="5018"
+        queryText="true"/>
   </nodeTraces>
   <nodeTraces
       visualID="2007"
@@ -82,6 +85,9 @@
       queryText="(let _eClass_:ecore::EClass = modelFacet.metaClass.ecoreClass in _eClass_.ePackage.nsURI = 'http://statechart/1.0' and _eClass_.name = 'Node') and (let _containmentMF_:ecore::EStructuralFeature = modelFacet.containmentMetaFeature.ecoreFeature in (let _eClass_:ecore::EClass = _containmentMF_.eContainingClass in _eClass_.ePackage.nsURI = 'http://statechart/1.0' and _eClass_.name = 'Node') and _containmentMF_.name = 'Children')">
     <nodeLabelTraces
         visualID="5002"
+        queryText="true"/>
+    <nodeLabelTraces
+        visualID="5017"
         queryText="true"/>
   </childNodeTraces>
   <childNodeTraces

@@ -109,6 +109,23 @@
                 left="10"
                 bottom="5"
                 right="10"/>
+            <children
+                xsi:type="gmfgraph:Label"
+                name="NodeOrActions"
+                text="&lt;Actions>">
+              <layoutData
+                  xsi:type="gmfgraph:BorderLayoutData"
+                  alignment="BEGINNING"/>
+              <font
+                  xsi:type="gmfgraph:BasicFont"
+                  faceName="ActionsFont"
+                  height="12"/>
+              <insets
+                  top="5"
+                  left="10"
+                  bottom="5"
+                  right="10"/>
+            </children>
           </children>
         </children>
       </actualFigure>
@@ -216,9 +233,9 @@
             value="black"/>
         <backgroundColor
             xsi:type="gmfgraph:RGBColor"
-            red="161"
+            red="192"
             green="255"
-            blue="70"/>
+            blue="124"/>
         <children
             xsi:type="gmfgraph:Label"
             name="NodeBasicName"
@@ -237,9 +254,28 @@
               bottom="10"
               right="10"/>
         </children>
+        <children
+            xsi:type="gmfgraph:Label"
+            name="NodeBasicActions"
+            text="">
+          <layoutData
+              xsi:type="gmfgraph:BorderLayoutData"/>
+          <font
+              xsi:type="gmfgraph:BasicFont"
+              faceName="TextFont"
+              height="12"/>
+          <insets
+              top="10"
+              left="10"
+              bottom="10"
+              right="10"/>
+        </children>
       </actualFigure>
       <accessors
           figure="//@figures.0/@descriptors.3/@actualFigure/@children.0"/>
+      <accessors
+          accessor="getFigureNodeBasicActions"
+          figure="//@figures.0/@descriptors.3/@actualFigure/@children.1"/>
     </descriptors>
     <descriptors
         name="NodeEndFigure">
@@ -566,8 +602,14 @@
   <labels
       name="NodeActionsOr"
       figure="NodeORFigure"
+      resizeConstraint="NONE"
       elementIcon="false"
       accessor="//@figures.0/@descriptors.0/@accessors.2"/>
+  <labels
+      name="NodeActionsBasic"
+      figure="NodeBasicFigure"
+      elementIcon="false"
+      accessor="//@figures.0/@descriptors.3/@accessors.1"/>
   <labels
       name="ShallowHistorySymbol"
       figure="NodeShallowHistoryFigure"

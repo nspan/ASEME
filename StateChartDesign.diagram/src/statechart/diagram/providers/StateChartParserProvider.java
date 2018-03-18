@@ -15,6 +15,8 @@ import org.eclipse.gmf.runtime.notation.View;
 
 import statechart.StatechartPackage;
 import statechart.diagram.edit.parts.NodeActions2EditPart;
+import statechart.diagram.edit.parts.NodeActions3EditPart;
+import statechart.diagram.edit.parts.NodeActions4EditPart;
 import statechart.diagram.edit.parts.NodeActionsEditPart;
 import statechart.diagram.edit.parts.NodeName2EditPart;
 import statechart.diagram.edit.parts.NodeName3EditPart;
@@ -26,6 +28,8 @@ import statechart.diagram.edit.parts.TransitionTEEditPart;
 import statechart.diagram.edit.parts.VariableNameEditPart;
 import statechart.diagram.edit.parts.VariableTypeEditPart;
 import statechart.diagram.parsers.MessageFormatParser;
+import statechart.diagram.parsers.NativeParser;
+import statechart.diagram.parsers.PrintfParser;
 import statechart.diagram.part.StateChartVisualIDRegistry;
 
 /**
@@ -63,7 +67,7 @@ public class StateChartParserProvider extends AbstractProvider implements IParse
 		if (nodeActions_5016Parser == null) {
 			EAttribute[] features = new EAttribute[] { StatechartPackage.eINSTANCE.getNode_Actions() };
 			EAttribute[] editableFeatures = new EAttribute[] { StatechartPackage.eINSTANCE.getNode_Actions() };
-			MessageFormatParser parser = new MessageFormatParser(features, editableFeatures);
+			NativeParser parser = new NativeParser(features, editableFeatures);
 			nodeActions_5016Parser = parser;
 		}
 		return nodeActions_5016Parser;
@@ -144,6 +148,24 @@ public class StateChartParserProvider extends AbstractProvider implements IParse
 	/**
 	* @generated
 	*/
+	private IParser nodeActions_5018Parser;
+
+	/**
+	* @generated
+	*/
+	private IParser getNodeActions_5018Parser() {
+		if (nodeActions_5018Parser == null) {
+			EAttribute[] features = new EAttribute[] { StatechartPackage.eINSTANCE.getNode_Actions() };
+			EAttribute[] editableFeatures = new EAttribute[] { StatechartPackage.eINSTANCE.getNode_Actions() };
+			MessageFormatParser parser = new MessageFormatParser(features, editableFeatures);
+			nodeActions_5018Parser = parser;
+		}
+		return nodeActions_5018Parser;
+	}
+
+	/**
+	* @generated
+	*/
 	private IParser nodeName_5002Parser;
 
 	/**
@@ -157,6 +179,24 @@ public class StateChartParserProvider extends AbstractProvider implements IParse
 			nodeName_5002Parser = parser;
 		}
 		return nodeName_5002Parser;
+	}
+
+	/**
+	* @generated
+	*/
+	private IParser nodeActions_5017Parser;
+
+	/**
+	* @generated
+	*/
+	private IParser getNodeActions_5017Parser() {
+		if (nodeActions_5017Parser == null) {
+			EAttribute[] features = new EAttribute[] { StatechartPackage.eINSTANCE.getNode_Actions() };
+			EAttribute[] editableFeatures = new EAttribute[] { StatechartPackage.eINSTANCE.getNode_Actions() };
+			MessageFormatParser parser = new MessageFormatParser(features, editableFeatures);
+			nodeActions_5017Parser = parser;
+		}
+		return nodeActions_5017Parser;
 	}
 
 	/**
@@ -189,7 +229,7 @@ public class StateChartParserProvider extends AbstractProvider implements IParse
 		if (nodeActions_5015Parser == null) {
 			EAttribute[] features = new EAttribute[] { StatechartPackage.eINSTANCE.getNode_Actions() };
 			EAttribute[] editableFeatures = new EAttribute[] { StatechartPackage.eINSTANCE.getNode_Actions() };
-			MessageFormatParser parser = new MessageFormatParser(features, editableFeatures);
+			NativeParser parser = new NativeParser(features, editableFeatures);
 			nodeActions_5015Parser = parser;
 		}
 		return nodeActions_5015Parser;
@@ -248,11 +288,15 @@ public class StateChartParserProvider extends AbstractProvider implements IParse
 			return getVariableType_5008Parser();
 		case NodeName3EditPart.VISUAL_ID:
 			return getNodeName_5009Parser();
+		case NodeActions2EditPart.VISUAL_ID:
+			return getNodeActions_5018Parser();
 		case NodeName4EditPart.VISUAL_ID:
 			return getNodeName_5002Parser();
+		case NodeActions3EditPart.VISUAL_ID:
+			return getNodeActions_5017Parser();
 		case NodeName5EditPart.VISUAL_ID:
 			return getNodeName_5004Parser();
-		case NodeActions2EditPart.VISUAL_ID:
+		case NodeActions4EditPart.VISUAL_ID:
 			return getNodeActions_5015Parser();
 		case NodeName6EditPart.VISUAL_ID:
 			return getNodeName_5003Parser();

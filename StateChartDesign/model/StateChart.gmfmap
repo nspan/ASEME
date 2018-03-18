@@ -38,7 +38,10 @@
       </labelMappings>
       <labelMappings
           xsi:type="gmfmap:FeatureLabelMapping"
-          readOnly="true">
+          editorPattern=""
+          editPattern=""
+          viewMethod="NATIVE"
+          editMethod="NATIVE">
         <diagramLabel
             href="StateChart.gmfgraph#NodeActionsOr"/>
         <features
@@ -270,6 +273,15 @@
             href="StateChart.ecore#//Node/name"/>
         <editableFeatures
             href="StateChart.ecore#//Node/name"/>
+      </labelMappings>
+      <labelMappings
+          xsi:type="gmfmap:FeatureLabelMapping">
+        <diagramLabel
+            href="StateChart.gmfgraph#NodeActionsBasic"/>
+        <features
+            href="StateChart.ecore#//Node/actions"/>
+        <editableFeatures
+            href="StateChart.ecore#//Node/actions"/>
       </labelMappings>
       <tool
           xsi:type="gmftool:CreationTool"

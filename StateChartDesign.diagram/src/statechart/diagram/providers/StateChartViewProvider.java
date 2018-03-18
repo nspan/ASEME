@@ -58,6 +58,8 @@ import statechart.diagram.edit.parts.Node7EditPart;
 import statechart.diagram.edit.parts.Node8EditPart;
 import statechart.diagram.edit.parts.Node9EditPart;
 import statechart.diagram.edit.parts.NodeActions2EditPart;
+import statechart.diagram.edit.parts.NodeActions3EditPart;
+import statechart.diagram.edit.parts.NodeActions4EditPart;
 import statechart.diagram.edit.parts.NodeActionsEditPart;
 import statechart.diagram.edit.parts.NodeEditPart;
 import statechart.diagram.edit.parts.NodeName2EditPart;
@@ -497,6 +499,7 @@ public class StateChartViewProvider extends AbstractProvider implements IViewPro
 			nodeFontStyle.setFontColor(FigureUtilities.RGBToInteger(fontRGB).intValue());
 		}
 		Node label5009 = createLabel(node, StateChartVisualIDRegistry.getType(NodeName3EditPart.VISUAL_ID));
+		Node label5018 = createLabel(node, StateChartVisualIDRegistry.getType(NodeActions2EditPart.VISUAL_ID));
 		return node;
 	}
 
@@ -645,6 +648,7 @@ public class StateChartViewProvider extends AbstractProvider implements IViewPro
 			nodeFontStyle.setFontColor(FigureUtilities.RGBToInteger(fontRGB).intValue());
 		}
 		Node label5002 = createLabel(node, StateChartVisualIDRegistry.getType(NodeName4EditPart.VISUAL_ID));
+		Node label5017 = createLabel(node, StateChartVisualIDRegistry.getType(NodeActions3EditPart.VISUAL_ID));
 		return node;
 	}
 
@@ -674,7 +678,7 @@ public class StateChartViewProvider extends AbstractProvider implements IViewPro
 			nodeFontStyle.setFontColor(FigureUtilities.RGBToInteger(fontRGB).intValue());
 		}
 		Node label5004 = createLabel(node, StateChartVisualIDRegistry.getType(NodeName5EditPart.VISUAL_ID));
-		Node label5015 = createLabel(node, StateChartVisualIDRegistry.getType(NodeActions2EditPart.VISUAL_ID));
+		Node label5015 = createLabel(node, StateChartVisualIDRegistry.getType(NodeActions4EditPart.VISUAL_ID));
 		createCompartment(node, StateChartVisualIDRegistry.getType(NodeNodeOrComp2EditPart.VISUAL_ID), false, false,
 				false, false);
 		return node;

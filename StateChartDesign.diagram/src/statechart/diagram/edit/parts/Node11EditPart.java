@@ -116,8 +116,8 @@ public class Node11EditPart extends ShapeNodeEditPart {
 			((NodeName5EditPart) childEditPart).setLabel(getPrimaryShape().getFigureNodeOrName());
 			return true;
 		}
-		if (childEditPart instanceof NodeActions2EditPart) {
-			((NodeActions2EditPart) childEditPart).setLabel(getPrimaryShape().getFigureNodeOrActions());
+		if (childEditPart instanceof NodeActions4EditPart) {
+			((NodeActions4EditPart) childEditPart).setLabel(getPrimaryShape().getFigureNodeOrActions());
 			return true;
 		}
 		if (childEditPart instanceof NodeNodeOrComp2EditPart) {
@@ -136,7 +136,7 @@ public class Node11EditPart extends ShapeNodeEditPart {
 		if (childEditPart instanceof NodeName5EditPart) {
 			return true;
 		}
-		if (childEditPart instanceof NodeActions2EditPart) {
+		if (childEditPart instanceof NodeActions4EditPart) {
 			return true;
 		}
 		if (childEditPart instanceof NodeNodeOrComp2EditPart) {
@@ -343,6 +343,17 @@ public class Node11EditPart extends ShapeNodeEditPart {
 
 			fFigureNodeOrCompartment.add(fFigureNodeOrActions);
 
+			WrappingLabel nodeOrActions2 = new WrappingLabel();
+
+			nodeOrActions2.setText("<Actions>");
+
+			nodeOrActions2.setFont(NODEORACTIONS2_FONT);
+
+			nodeOrActions2.setBorder(new MarginBorder(getMapMode().DPtoLP(5), getMapMode().DPtoLP(10),
+					getMapMode().DPtoLP(5), getMapMode().DPtoLP(10)));
+
+			fFigureNodeOrActions.add(nodeOrActions2);
+
 		}
 
 		/**
@@ -387,5 +398,10 @@ public class Node11EditPart extends ShapeNodeEditPart {
 	* @generated
 	*/
 	static final Font FFIGURENODEORACTIONS_FONT = new Font(Display.getCurrent(), "ActionsFont", 12, SWT.NORMAL);
+
+	/**
+	* @generated
+	*/
+	static final Font NODEORACTIONS2_FONT = new Font(Display.getCurrent(), "ActionsFont", 12, SWT.NORMAL);
 
 }

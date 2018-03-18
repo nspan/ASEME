@@ -5,7 +5,6 @@ import java.util.List;
 
 import org.eclipse.draw2d.IFigure;
 import org.eclipse.draw2d.Label;
-import org.eclipse.draw2d.RoundedRectangle;
 import org.eclipse.draw2d.geometry.Point;
 import org.eclipse.emf.common.notify.Notification;
 import org.eclipse.emf.ecore.EObject;
@@ -53,12 +52,12 @@ import statechart.diagram.providers.StateChartParserProvider;
 /**
  * @generated
  */
-public class NodeActionsEditPart extends CompartmentEditPart implements ITextAwareEditPart {
+public class NodeActions3EditPart extends CompartmentEditPart implements ITextAwareEditPart {
 
 	/**
 	* @generated
 	*/
-	public static final int VISUAL_ID = 5016;
+	public static final int VISUAL_ID = 5017;
 
 	/**
 	* @generated
@@ -88,7 +87,7 @@ public class NodeActionsEditPart extends CompartmentEditPart implements ITextAwa
 	/**
 	* @generated
 	*/
-	public NodeActionsEditPart(View view) {
+	public NodeActions3EditPart(View view) {
 		super(view);
 	}
 
@@ -289,8 +288,8 @@ public class NodeActionsEditPart extends CompartmentEditPart implements ITextAwa
 	*/
 	public IParser getParser() {
 		if (parser == null) {
-			parser = StateChartParserProvider.getParser(StateChartElementTypes.Node_2001, getParserElement(),
-					StateChartVisualIDRegistry.getType(statechart.diagram.edit.parts.NodeActionsEditPart.VISUAL_ID));
+			parser = StateChartParserProvider.getParser(StateChartElementTypes.Node_3002, getParserElement(),
+					StateChartVisualIDRegistry.getType(statechart.diagram.edit.parts.NodeActions3EditPart.VISUAL_ID));
 		}
 		return parser;
 	}

@@ -58,7 +58,7 @@ public class NodeActions2EditPart extends CompartmentEditPart implements ITextAw
 	/**
 	* @generated
 	*/
-	public static final int VISUAL_ID = 5015;
+	public static final int VISUAL_ID = 5018;
 
 	/**
 	* @generated
@@ -233,7 +233,7 @@ public class NodeActions2EditPart extends CompartmentEditPart implements ITextAw
 	* @generated
 	*/
 	protected boolean isEditable() {
-		return false;
+		return getParser() != null;
 	}
 
 	/**
@@ -289,7 +289,7 @@ public class NodeActions2EditPart extends CompartmentEditPart implements ITextAw
 	*/
 	public IParser getParser() {
 		if (parser == null) {
-			parser = StateChartParserProvider.getParser(StateChartElementTypes.Node_3003, getParserElement(),
+			parser = StateChartParserProvider.getParser(StateChartElementTypes.Node_2006, getParserElement(),
 					StateChartVisualIDRegistry.getType(statechart.diagram.edit.parts.NodeActions2EditPart.VISUAL_ID));
 		}
 		return parser;

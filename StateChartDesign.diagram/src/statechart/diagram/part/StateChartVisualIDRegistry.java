@@ -27,6 +27,8 @@ import statechart.diagram.edit.parts.Node7EditPart;
 import statechart.diagram.edit.parts.Node8EditPart;
 import statechart.diagram.edit.parts.Node9EditPart;
 import statechart.diagram.edit.parts.NodeActions2EditPart;
+import statechart.diagram.edit.parts.NodeActions3EditPart;
+import statechart.diagram.edit.parts.NodeActions4EditPart;
 import statechart.diagram.edit.parts.NodeActionsEditPart;
 import statechart.diagram.edit.parts.NodeEditPart;
 import statechart.diagram.edit.parts.NodeName2EditPart;
@@ -353,6 +355,9 @@ public class StateChartVisualIDRegistry {
 			if (NodeName3EditPart.VISUAL_ID == nodeVisualID) {
 				return true;
 			}
+			if (NodeActions2EditPart.VISUAL_ID == nodeVisualID) {
+				return true;
+			}
 			break;
 		case Node6EditPart.VISUAL_ID:
 			if (WrappingLabelEditPart.VISUAL_ID == nodeVisualID) {
@@ -378,12 +383,15 @@ public class StateChartVisualIDRegistry {
 			if (NodeName4EditPart.VISUAL_ID == nodeVisualID) {
 				return true;
 			}
+			if (NodeActions3EditPart.VISUAL_ID == nodeVisualID) {
+				return true;
+			}
 			break;
 		case Node11EditPart.VISUAL_ID:
 			if (NodeName5EditPart.VISUAL_ID == nodeVisualID) {
 				return true;
 			}
-			if (NodeActions2EditPart.VISUAL_ID == nodeVisualID) {
+			if (NodeActions4EditPart.VISUAL_ID == nodeVisualID) {
 				return true;
 			}
 			if (NodeNodeOrComp2EditPart.VISUAL_ID == nodeVisualID) {

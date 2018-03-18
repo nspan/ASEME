@@ -116,6 +116,10 @@ public class Node10EditPart extends ShapeNodeEditPart {
 			((NodeName4EditPart) childEditPart).setLabel(getPrimaryShape().getFigureNodeBasicName());
 			return true;
 		}
+		if (childEditPart instanceof NodeActions3EditPart) {
+			((NodeActions3EditPart) childEditPart).setLabel(getPrimaryShape().getFigureNodeBasicActions());
+			return true;
+		}
 		return false;
 	}
 
@@ -124,6 +128,9 @@ public class Node10EditPart extends ShapeNodeEditPart {
 	*/
 	protected boolean removeFixedChild(EditPart childEditPart) {
 		if (childEditPart instanceof NodeName4EditPart) {
+			return true;
+		}
+		if (childEditPart instanceof NodeActions3EditPart) {
 			return true;
 		}
 		return false;
@@ -260,8 +267,13 @@ public class Node10EditPart extends ShapeNodeEditPart {
 		private WrappingLabel fFigureNodeBasicName;
 
 		/**
-		 * @generated
-		 */
+		* @generated
+		*/
+		private WrappingLabel fFigureNodeBasicActions;
+
+		/**
+			 * @generated
+			 */
 		public NodeBasicFigure() {
 			this.setCornerDimensions(new Dimension(getMapMode().DPtoLP(18), getMapMode().DPtoLP(18)));
 			this.setLineWidth(2);
@@ -286,6 +298,17 @@ public class Node10EditPart extends ShapeNodeEditPart {
 
 			this.add(fFigureNodeBasicName);
 
+			fFigureNodeBasicActions = new WrappingLabel();
+
+			fFigureNodeBasicActions.setText("");
+
+			fFigureNodeBasicActions.setFont(FFIGURENODEBASICACTIONS_FONT);
+
+			fFigureNodeBasicActions.setBorder(new MarginBorder(getMapMode().DPtoLP(10), getMapMode().DPtoLP(10),
+					getMapMode().DPtoLP(10), getMapMode().DPtoLP(10)));
+
+			this.add(fFigureNodeBasicActions);
+
 		}
 
 		/**
@@ -295,16 +318,28 @@ public class Node10EditPart extends ShapeNodeEditPart {
 			return fFigureNodeBasicName;
 		}
 
+		/**
+		* @generated
+		*/
+		public WrappingLabel getFigureNodeBasicActions() {
+			return fFigureNodeBasicActions;
+		}
+
 	}
 
 	/**
 	* @generated
 	*/
-	static final Color THIS_BACK = new Color(null, 161, 255, 70);
+	static final Color THIS_BACK = new Color(null, 192, 255, 124);
 
 	/**
 	* @generated
 	*/
 	static final Font FFIGURENODEBASICNAME_FONT = new Font(Display.getCurrent(), "TitleFont", 14, SWT.BOLD);
+
+	/**
+	* @generated
+	*/
+	static final Font FFIGURENODEBASICACTIONS_FONT = new Font(Display.getCurrent(), "TextFont", 12, SWT.NORMAL);
 
 }

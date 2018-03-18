@@ -343,6 +343,17 @@ public class NodeEditPart extends ShapeNodeEditPart {
 
 			fFigureNodeOrCompartment.add(fFigureNodeOrActions);
 
+			WrappingLabel nodeOrActions2 = new WrappingLabel();
+
+			nodeOrActions2.setText("<Actions>");
+
+			nodeOrActions2.setFont(NODEORACTIONS2_FONT);
+
+			nodeOrActions2.setBorder(new MarginBorder(getMapMode().DPtoLP(5), getMapMode().DPtoLP(10),
+					getMapMode().DPtoLP(5), getMapMode().DPtoLP(10)));
+
+			fFigureNodeOrActions.add(nodeOrActions2);
+
 		}
 
 		/**
@@ -387,5 +398,10 @@ public class NodeEditPart extends ShapeNodeEditPart {
 	* @generated
 	*/
 	static final Font FFIGURENODEORACTIONS_FONT = new Font(Display.getCurrent(), "ActionsFont", 12, SWT.NORMAL);
+
+	/**
+	* @generated
+	*/
+	static final Font NODEORACTIONS2_FONT = new Font(Display.getCurrent(), "ActionsFont", 12, SWT.NORMAL);
 
 }
