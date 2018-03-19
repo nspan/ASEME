@@ -4,7 +4,8 @@
     xmlns:xmi="http://www.omg.org/XMI"
     xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
     xmlns:gmfgen="http://www.eclipse.org/gmf/2009/GenModel"
-    diagramFileExtension="kse">
+    diagramFileExtension="kse"
+    domainFileExtension="stct">
   <audits>
     <categories
         id="statechart.audits"

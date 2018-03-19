@@ -172,7 +172,7 @@ public class TransitionItemProvider
 				 getString("_UI_PropertyDescriptor_description", "_UI_Transition_metadata_feature", "_UI_Transition_type"),
 				 StatechartPackage.Literals.TRANSITION__METADATA,
 				 true,
-				 false,
+				 true,
 				 false,
 				 ItemPropertyDescriptor.GENERIC_VALUE_IMAGE,
 				 null,

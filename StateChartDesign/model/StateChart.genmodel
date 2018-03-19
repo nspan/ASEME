@@ -12,7 +12,7 @@
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference StateChart.ecore#//Model/transitions"/>
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference StateChart.ecore#//Model/variables"/>
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute StateChart.ecore#//Model/description"/>
-      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute StateChart.ecore#//Model/metadata"/>
+      <genFeatures createChild="false" propertyMultiLine="true" ecoreFeature="ecore:EAttribute StateChart.ecore#//Model/metadata"/>
     </genClasses>
     <genClasses ecoreClass="StateChart.ecore#//Node">
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute StateChart.ecore#//Node/name"/>
@@ -23,14 +23,14 @@
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference StateChart.ecore#//Node/Children"/>
       <genFeatures property="None" notify="false" createChild="false" ecoreFeature="ecore:EReference StateChart.ecore#//Node/Father"/>
       <genFeatures createChild="false" propertyMultiLine="true" ecoreFeature="ecore:EAttribute StateChart.ecore#//Node/actions"/>
-      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute StateChart.ecore#//Node/metadata"/>
+      <genFeatures createChild="false" propertyMultiLine="true" ecoreFeature="ecore:EAttribute StateChart.ecore#//Node/metadata"/>
     </genClasses>
     <genClasses ecoreClass="StateChart.ecore#//Transition">
       <genFeatures createChild="false" propertyMultiLine="true" ecoreFeature="ecore:EAttribute StateChart.ecore#//Transition/TE"/>
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute StateChart.ecore#//Transition/name"/>
       <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference StateChart.ecore#//Transition/source"/>
       <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference StateChart.ecore#//Transition/target"/>
-      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute StateChart.ecore#//Transition/metadata"/>
+      <genFeatures createChild="false" propertyMultiLine="true" ecoreFeature="ecore:EAttribute StateChart.ecore#//Transition/metadata"/>
     </genClasses>
     <genClasses ecoreClass="StateChart.ecore#//Variable">
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute StateChart.ecore#//Variable/name"/>

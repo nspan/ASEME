@@ -644,7 +644,7 @@
             <or>
 	           <and>
     	          <instanceof value="org.eclipse.core.resources.IFile"/>
-        	      <test property="org.eclipse.core.resources.extension" value="statechart"/>
+        	      <test property="org.eclipse.core.resources.extension" value="stct"/>
                </and>
                <instanceof value="statechart.diagram.navigator.StateChartDomainNavigatorItem"/>
             </or>
@@ -835,7 +835,7 @@
       <?gmfgen generated="true"?>
       <objectContribution
             id="StateChartDesign.diagram.InitDiagram"
-            nameFilter="*.statechart"
+            nameFilter="*.stct"
             objectClass="org.eclipse.core.resources.IFile">
          <action
                label="%initDiagramActionLabel"

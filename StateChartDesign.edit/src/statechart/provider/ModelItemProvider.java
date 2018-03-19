@@ -129,7 +129,7 @@ public class ModelItemProvider
 				 getString("_UI_PropertyDescriptor_description", "_UI_Model_metadata_feature", "_UI_Model_type"),
 				 StatechartPackage.Literals.MODEL__METADATA,
 				 true,
-				 false,
+				 true,
 				 false,
 				 ItemPropertyDescriptor.GENERIC_VALUE_IMAGE,
 				 null,

@@ -221,7 +221,7 @@ public class NodeItemProvider
 				 getString("_UI_PropertyDescriptor_description", "_UI_Node_metadata_feature", "_UI_Node_type"),
 				 StatechartPackage.Literals.NODE__METADATA,
 				 true,
-				 false,
+				 true,
 				 false,
 				 ItemPropertyDescriptor.GENERIC_VALUE_IMAGE,
 				 null,
