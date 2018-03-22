@@ -127,13 +127,16 @@ public class TransitionEditPart extends ConnectionNodeEditPart implements ITreeB
 		}
 
 		/**
-		 * @generated
+		 * @generated NOT
 		 */
 		private void createContents() {
 
 			fFigureTransitionTEFigure = new WrappingLabel();
 
-			fFigureTransitionTEFigure.setText("<..>");
+			fFigureTransitionTEFigure.setText("");
+			
+			//added following line for showing more than one lines
+			fFigureTransitionTEFigure.setTextWrap(true);
 
 			fFigureTransitionTEFigure.setFont(FFIGURETRANSITIONTEFIGURE_FONT);
 

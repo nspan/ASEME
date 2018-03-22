@@ -305,7 +305,7 @@ public class Node11EditPart extends ShapeNodeEditPart {
 		}
 
 		/**
-		 * @generated
+		 * @generated NOT
 		 */
 		private void createContents() {
 
@@ -334,7 +334,9 @@ public class Node11EditPart extends ShapeNodeEditPart {
 
 			fFigureNodeOrActions = new WrappingLabel();
 
-			fFigureNodeOrActions.setText("<Actions>");
+			fFigureNodeOrActions.setText("");
+			//added following line for showing more than one lines
+			fFigureNodeOrActions.setTextWrap(true);
 
 			fFigureNodeOrActions.setFont(FFIGURENODEORACTIONS_FONT);
 
@@ -345,7 +347,10 @@ public class Node11EditPart extends ShapeNodeEditPart {
 
 			WrappingLabel nodeOrActions2 = new WrappingLabel();
 
-			nodeOrActions2.setText("<Actions>");
+			nodeOrActions2.setText("");
+			//added following line for showing more than one lines
+			nodeOrActions2.setTextWrap(true);
+			
 
 			nodeOrActions2.setFont(NODEORACTIONS2_FONT);
 

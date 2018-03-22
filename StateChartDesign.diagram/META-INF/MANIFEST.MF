@@ -2,7 +2,7 @@ Manifest-Version: 1.0
 Bundle-ManifestVersion: 2
 Bundle-Name: %pluginName
 Bundle-SymbolicName: StateChartDesign.diagram; singleton:=true
-Bundle-Version: 2.2.4
+Bundle-Version: 2.2.6
 Bundle-ClassPath: .
 Bundle-Activator: statechart.diagram.part.StateChartDiagramEditorPlugin
 Bundle-Vendor: %providerName
@@ -38,6 +38,9 @@ Require-Bundle: org.eclipse.core.runtime,
  StateChartDesign.edit;visibility:=reexport,
  org.eclipse.ocl.ecore;visibility:=reexport,
  org.eclipse.emf.validation;visibility:=reexport,
- org.eclipse.gef;visibility:=reexport
+ org.eclipse.gef;visibility:=reexport,
+ org.eclipse.gmf.runtime.diagram.ui.printing,
+ org.eclipse.gmf.runtime.diagram.ui.printing.render,
+ org.eclipse.gmf.runtime.gef.ui
 Bundle-ActivationPolicy: lazy
 Bundle-RequiredExecutionEnvironment: JavaSE-1.6

@@ -283,7 +283,7 @@ public class Node10EditPart extends ShapeNodeEditPart {
 		}
 
 		/**
-		 * @generated
+		 * @generated NOT
 		 */
 		private void createContents() {
 
@@ -301,6 +301,8 @@ public class Node10EditPart extends ShapeNodeEditPart {
 			fFigureNodeBasicActions = new WrappingLabel();
 
 			fFigureNodeBasicActions.setText("");
+			//added following line for showing more than one lines
+			fFigureNodeBasicActions.setTextWrap(true);
 
 			fFigureNodeBasicActions.setFont(FFIGURENODEBASICACTIONS_FONT);
 

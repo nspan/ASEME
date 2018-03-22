@@ -34,6 +34,7 @@ import org.eclipse.gmf.runtime.emf.ui.services.parser.ISemanticParser;
 import org.eclipse.gmf.runtime.notation.FontStyle;
 import org.eclipse.gmf.runtime.notation.NotationPackage;
 import org.eclipse.gmf.runtime.notation.View;
+import org.eclipse.gmf.tooling.runtime.directedit.WrapTextCellEditor;
 import org.eclipse.gmf.tooling.runtime.draw2d.labels.SimpleLabelDelegate;
 import org.eclipse.gmf.tooling.runtime.edit.policies.DefaultNodeLabelDragPolicy;
 import org.eclipse.gmf.tooling.runtime.edit.policies.labels.IRefreshableFeedbackEditPolicy;
@@ -300,7 +301,9 @@ public class NodeActionsEditPart extends CompartmentEditPart implements ITextAwa
 	*/
 	protected DirectEditManager getManager() {
 		if (manager == null) {
-			setManager(new TextDirectEditManager(this, null, StateChartEditPartFactory.getTextCellEditorLocator(this)));
+			// changed the following line to allow for multi-line showing in the figure
+//			setManager(new TextDirectEditManager(this, null, StateChartEditPartFactory.getTextCellEditorLocator(this)));
+			setManager(new TextDirectEditManager(this, WrapTextCellEditor.class, StateChartEditPartFactory.getTextCellEditorLocator(this)));
 		}
 		return manager;
 	}
