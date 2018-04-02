@@ -43,7 +43,11 @@ public class SAG2SUC {
 			
 			for (Iterator<Actor> iterator2 = tmpGoal.getDependee().iterator(); iterator2
 					.hasNext();) {
-				tmpUsecase.getParticipant().add(roles.get(iterator2.next().getName()));
+				Actor tmpDependee = iterator2.next();
+				//add a new participant only if it is not the same with the depender
+				if (!tmpGoal.getDepender().getName().equalsIgnoreCase(tmpDependee.getName()))
+					//add the participant
+					tmpUsecase.getParticipant().add(roles.get(iterator2.next().getName()));
 			}
 			
 			tmpUsecase.setSpecified_by(tmpGoal.getRequirements());

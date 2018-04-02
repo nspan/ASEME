@@ -109,7 +109,7 @@ public class TransformSAG2SUCModelAction implements ASEMEAction {
 				MessageDialog.openError(context.getShell(), "Error", "Error in validating SAG model" );
 			}
 			else{
-				MessageDialog.openError(context.getShell(), "Error", "Eimai sto else" );
+				//MessageDialog.openError(context.getShell(), "Error", "Eimai sto else" );
 			}
 		}
 				

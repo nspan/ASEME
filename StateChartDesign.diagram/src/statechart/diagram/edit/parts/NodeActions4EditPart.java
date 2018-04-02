@@ -296,7 +296,7 @@ public class NodeActions4EditPart extends CompartmentEditPart implements ITextAw
 	}
 
 	/**
-	* @generated
+	* @generated NOT
 	*/
 	protected DirectEditManager getManager() {
 		if (manager == null) {
