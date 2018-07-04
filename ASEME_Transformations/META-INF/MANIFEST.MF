@@ -2,7 +2,7 @@ Manifest-Version: 1.0
 Bundle-ManifestVersion: 2
 Bundle-Name: ASEME_Transformations
 Bundle-SymbolicName: ASEME_Transformations
-Bundle-Version: 2.2.3
+Bundle-Version: 2.2.7
 Bundle-RequiredExecutionEnvironment: JavaSE-1.8
 Require-Bundle: AIPdesign,
  SRMdesign,

@@ -2,7 +2,7 @@ Manifest-Version: 1.0
 Bundle-ManifestVersion: 2
 Bundle-Name: %pluginName
 Bundle-SymbolicName: AIPdesign.diagram; singleton:=true
-Bundle-Version: 1.0.0.qualifier
+Bundle-Version: 2.2.7
 Bundle-ClassPath: .
 Bundle-Activator: AIP.diagram.part.AIPDiagramEditorPlugin
 Bundle-Vendor: %providerName
