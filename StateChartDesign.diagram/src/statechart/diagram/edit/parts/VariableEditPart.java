@@ -282,7 +282,6 @@ public class VariableEditPart extends ShapeNodeEditPart {
 			this.setLayoutManager(layoutThis);
 
 			this.setCornerDimensions(new Dimension(getMapMode().DPtoLP(15), getMapMode().DPtoLP(15)));
-			this.setLineWidth(2);
 			this.setBackgroundColor(THIS_BACK);
 			this.setMinimumSize(new Dimension(getMapMode().DPtoLP(80), getMapMode().DPtoLP(60)));
 			createContents();

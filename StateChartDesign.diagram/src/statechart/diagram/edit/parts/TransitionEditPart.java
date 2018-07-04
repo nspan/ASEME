@@ -118,7 +118,6 @@ public class TransitionEditPart extends ConnectionNodeEditPart implements ITreeB
 		 * @generated
 		 */
 		public TransitionFigure() {
-			this.setLineWidth(2);
 			this.setForegroundColor(ColorConstants.black);
 			this.setBackgroundColor(ColorConstants.black);
 
@@ -134,7 +133,7 @@ public class TransitionEditPart extends ConnectionNodeEditPart implements ITreeB
 			fFigureTransitionTEFigure = new WrappingLabel();
 
 			fFigureTransitionTEFigure.setText("");
-			
+
 			//added following line for showing more than one lines
 			fFigureTransitionTEFigure.setTextWrap(true);
 
@@ -149,7 +148,6 @@ public class TransitionEditPart extends ConnectionNodeEditPart implements ITreeB
 		 */
 		private RotatableDecoration createTargetDecoration() {
 			PolylineDecoration df = new PolylineDecoration();
-			df.setLineWidth(2);
 			df.setForegroundColor(ColorConstants.black);
 			df.setBackgroundColor(ColorConstants.black);
 			PointList pl = new PointList();

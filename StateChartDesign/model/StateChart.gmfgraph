@@ -20,8 +20,7 @@
     </figures>
     <figures
         xsi:type="gmfgraph:PolylineDecoration"
-        name="NodeTransitionsTargetDecoration"
-        lineWidth="2">
+        name="NodeTransitionsTargetDecoration">
       <foregroundColor
           xsi:type="gmfgraph:ConstantColor"
           value="black"/>
@@ -41,7 +40,6 @@
       <actualFigure
           xsi:type="gmfgraph:RoundedRectangle"
           name="NodeOr"
-          lineWidth="2"
           cornerWidth="18"
           cornerHeight="18">
         <layout
@@ -142,7 +140,6 @@
       <actualFigure
           xsi:type="gmfgraph:RoundedRectangle"
           name="NodeAnd"
-          lineWidth="2"
           cornerWidth="18"
           cornerHeight="18">
         <layout
@@ -222,7 +219,6 @@
       <actualFigure
           xsi:type="gmfgraph:RoundedRectangle"
           name="NodeBasic"
-          lineWidth="2"
           cornerWidth="18"
           cornerHeight="18">
         <layoutData
@@ -368,7 +364,6 @@
       <actualFigure
           xsi:type="gmfgraph:PolylineConnection"
           name="TransitionFigure"
-          lineWidth="2"
           targetDecoration="//@figures.0/@figures.1">
         <foregroundColor
             xsi:type="gmfgraph:ConstantColor"
@@ -394,7 +389,6 @@
       <actualFigure
           xsi:type="gmfgraph:RoundedRectangle"
           name="Variables"
-          lineWidth="2"
           cornerWidth="15"
           cornerHeight="15">
         <layout

@@ -317,9 +317,10 @@ public class TransitionTEEditPart extends LabelEditPart implements ITextAwareEdi
 	*/
 	protected DirectEditManager getManager() {
 		if (manager == null) {
-// changed the following line to allow for multi-line showing in the figure
-//			setManager(new TextDirectEditManager(this, null, StateChartEditPartFactory.getTextCellEditorLocator(this)));
-			setManager(new TextDirectEditManager(this, WrapTextCellEditor.class, StateChartEditPartFactory.getTextCellEditorLocator(this)));
+			// changed the following line to allow for multi-line showing in the figure
+			//			setManager(new TextDirectEditManager(this, null, StateChartEditPartFactory.getTextCellEditorLocator(this)));
+			setManager(new TextDirectEditManager(this, WrapTextCellEditor.class,
+					StateChartEditPartFactory.getTextCellEditorLocator(this)));
 		}
 		return manager;
 	}
