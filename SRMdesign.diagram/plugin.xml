@@ -87,6 +87,16 @@
          </ViewId>
       </GlobalActionHandlerProvider>
       <GlobalActionHandlerProvider
+         class="org.eclipse.gmf.runtime.diagram.ui.printing.render.providers.DiagramWithPrintGlobalActionHandlerProvider"
+         id="SRMPresentationPrint">
+         <Priority name="Lowest"/>
+         <ViewId id="SRM.diagram.part.SRMDiagramEditorID">
+            <ElementType class="org.eclipse.gmf.runtime.diagram.ui.editparts.IGraphicalEditPart">
+               <GlobalActionId actionId="print"/>
+            </ElementType>
+         </ViewId>
+      </GlobalActionHandlerProvider>
+      <GlobalActionHandlerProvider
          class="org.eclipse.gmf.runtime.diagram.ui.providers.ide.providers.DiagramIDEGlobalActionHandlerProvider"
          id="SRMPresentationIDE">
          <Priority name="Lowest"/>

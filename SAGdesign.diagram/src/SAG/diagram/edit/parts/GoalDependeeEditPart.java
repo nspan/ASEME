@@ -66,7 +66,6 @@ public class GoalDependeeEditPart extends ConnectionNodeEditPart implements ITre
 		 * @generated
 		 */
 		public GoalDependeeFigure() {
-			this.setLineWidth(2);
 			this.setForegroundColor(ColorConstants.black);
 			this.setBackgroundColor(ColorConstants.black);
 

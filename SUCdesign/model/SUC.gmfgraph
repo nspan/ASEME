@@ -9,18 +9,15 @@
       name="Default">
     <figures
         xsi:type="gmfgraph:PolylineDecoration"
-        name="UseCaseIncludeTargetDecoration"
-        lineWidth="2"/>
+        name="UseCaseIncludeTargetDecoration"/>
     <figures
         xsi:type="gmfgraph:PolylineDecoration"
-        name="RoleParticipates_inTargetDecoration"
-        lineWidth="2"/>
+        name="RoleParticipates_inTargetDecoration"/>
     <descriptors
         name="UseCaseIncludeFigure">
       <actualFigure
           xsi:type="gmfgraph:PolylineConnection"
           name="UseCaseIncludeFigure"
-          lineWidth="2"
           targetDecoration="//@figures.0/@figures.0">
         <foregroundColor
             xsi:type="gmfgraph:ConstantColor"
@@ -46,8 +43,7 @@
         name="RoleFigure">
       <actualFigure
           xsi:type="gmfgraph:Rectangle"
-          name="RoleFigure"
-          lineWidth="2">
+          name="RoleFigure">
         <layout
             xsi:type="gmfgraph:FlowLayout"/>
         <foregroundColor
@@ -72,7 +68,6 @@
       <actualFigure
           xsi:type="gmfgraph:PolylineConnection"
           name="RoleParticipates_inFigure"
-          lineWidth="2"
           targetDecoration="//@figures.0/@figures.1">
         <foregroundColor
             xsi:type="gmfgraph:ConstantColor"
@@ -86,8 +81,7 @@
         name="UseCaseFigureCustom">
       <actualFigure
           xsi:type="gmfgraph:Ellipse"
-          name="UseCaseFigureCustom"
-          lineWidth="2">
+          name="UseCaseFigureCustom">
         <layout
             xsi:type="gmfgraph:CenterLayout"/>
         <foregroundColor

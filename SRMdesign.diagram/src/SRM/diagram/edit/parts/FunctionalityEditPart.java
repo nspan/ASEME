@@ -267,7 +267,6 @@ public class FunctionalityEditPart extends ShapeNodeEditPart {
 
 			this.setLayoutManager(layoutThis);
 
-			this.setLineWidth(2);
 			this.setForegroundColor(ColorConstants.black);
 			createContents();
 		}

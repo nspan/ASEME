@@ -258,7 +258,6 @@ public class ActorEditPart extends ShapeNodeEditPart {
 		 * @generated
 		 */
 		public ActorFigureCustom() {
-			this.setLineWidth(2);
 			this.setForegroundColor(THIS_FORE);
 			this.setBackgroundColor(THIS_BACK);
 			this.setPreferredSize(new Dimension(getMapMode().DPtoLP(100), getMapMode().DPtoLP(100)));

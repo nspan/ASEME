@@ -258,7 +258,6 @@ public class UseCaseEditPart extends ShapeNodeEditPart {
 		 */
 		public UseCaseFigureCustom() {
 			this.setLayoutManager(new CenterLayout());
-			this.setLineWidth(2);
 			this.setForegroundColor(THIS_FORE);
 			this.setBackgroundColor(THIS_BACK);
 			this.setSize(getMapMode().DPtoLP(10), getMapMode().DPtoLP(10));

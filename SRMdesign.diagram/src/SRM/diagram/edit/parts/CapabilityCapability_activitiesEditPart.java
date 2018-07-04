@@ -66,7 +66,6 @@ public class CapabilityCapability_activitiesEditPart extends ConnectionNodeEditP
 		 * @generated
 		 */
 		public CapabilityCapability_activitiesFigure() {
-			this.setLineWidth(2);
 			this.setForegroundColor(ColorConstants.black);
 			this.setBackgroundColor(ColorConstants.black);
 

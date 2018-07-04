@@ -101,17 +101,15 @@ public class SRMValidationProvider {
 		*/
 		public IStatus validate(IValidationContext ctx) {
 			Role context = (Role) ctx.getTarget();
-			
+
 			String formula = context.getLiveness().replaceAll(" ", "");
 
 			ArrayList<String> left = new ArrayList<String>();
 			ArrayList<String> right = new ArrayList<String>();
 
-
 			Pattern testPattern = Pattern.compile("\\w+_*w*");
 
 			Matcher testMatcher = testPattern.matcher(formula);
-
 
 			StringTokenizer line = new StringTokenizer(formula, "\n");
 
@@ -122,53 +120,51 @@ public class SRMValidationProvider {
 				left.add(formulaElements.nextToken());
 				right.add(formulaElements.nextToken());
 			}
-			
+
 			boolean added = false;
-			
-			for( Iterator<Capability> capIter = context.getCapabilities().iterator(); capIter.hasNext();){
-				
+
+			for (Iterator<Capability> capIter = context.getCapabilities().iterator(); capIter.hasNext();) {
+
 				Capability tmpCap = capIter.next();
-				
+
 				boolean found = false;
-				
-				for (int i=1; i<left.size(); i++){
-					
-					if (tmpCap.getName().equals(left.get(i))){
-						
+
+				for (int i = 1; i < left.size(); i++) {
+
+					if (tmpCap.getName().equals(left.get(i))) {
+
 						found = true;
 						break;
 					}
-					
+
 				}
-				
-				if (!found){
-					
+
+				if (!found) {
+
 					String capForm = new String();
-					
-					if (tmpCap.getDescription()!=null){
+
+					if (tmpCap.getDescription() != null) {
 						capForm = tmpCap.getName() + "=" + tmpCap.getDescription();
 					}
-						
-					else{
+
+					else {
 						capForm = tmpCap.getName();
 					}
-					
-					if (context.getLiveness().endsWith("\n")){
-						context.setLiveness( context.getLiveness() + capForm+ "\n" );
+
+					if (context.getLiveness().endsWith("\n")) {
+						context.setLiveness(context.getLiveness() + capForm + "\n");
+					} else {
+						context.setLiveness(context.getLiveness() + "\n" + capForm + "\n");
 					}
-					else{
-						context.setLiveness( context.getLiveness() +"\n"+ capForm+ "\n" );
-					}
-					
+
 					added = true;
-					
+
 				}
-			
+
 			}
-			
-			
+
 			return ctx.createSuccessStatus();
-			
+
 		}
 	}
 

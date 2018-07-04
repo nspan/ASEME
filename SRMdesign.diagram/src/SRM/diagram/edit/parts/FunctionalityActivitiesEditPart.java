@@ -66,7 +66,6 @@ public class FunctionalityActivitiesEditPart extends ConnectionNodeEditPart impl
 		 * @generated
 		 */
 		public FunctionalityActivitiesFigure() {
-			this.setLineWidth(2);
 			this.setForegroundColor(ColorConstants.black);
 			this.setBackgroundColor(ColorConstants.black);
 

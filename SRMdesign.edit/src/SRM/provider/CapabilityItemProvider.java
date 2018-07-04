@@ -126,7 +126,7 @@ public class CapabilityItemProvider
 				 getString("_UI_PropertyDescriptor_description", "_UI_Capability_description_feature", "_UI_Capability_type"),
 				 SRMPackage.Literals.CAPABILITY__DESCRIPTION,
 				 true,
-				 false,
+				 true,
 				 false,
 				 ItemPropertyDescriptor.GENERIC_VALUE_IMAGE,
 				 null,

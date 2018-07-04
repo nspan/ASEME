@@ -14,8 +14,7 @@
         name="ProtocolFigure">
       <actualFigure
           xsi:type="gmfgraph:Rectangle"
-          name="ProtocolFigure"
-          lineWidth="2">
+          name="ProtocolFigure">
         <layout
             xsi:type="gmfgraph:FlowLayout"/>
         <foregroundColor
@@ -38,7 +37,6 @@
       <actualFigure
           xsi:type="gmfgraph:PolylineConnection"
           name="ProtocolParticipantsFigure"
-          lineWidth="2"
           targetDecoration="//@figures.0/@figures.0">
         <foregroundColor
             xsi:type="gmfgraph:ConstantColor"
@@ -52,8 +50,7 @@
         name="ParticipantFigure">
       <actualFigure
           xsi:type="gmfgraph:Rectangle"
-          name="ParticipantFigure"
-          lineWidth="2">
+          name="ParticipantFigure">
         <layout
             xsi:type="gmfgraph:FlowLayout"
             vertical="true"/>

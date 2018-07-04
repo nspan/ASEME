@@ -85,7 +85,7 @@ public class FunctionalityItemProvider
 				 getString("_UI_PropertyDescriptor_description", "_UI_Functionality_permissions_feature", "_UI_Functionality_type"),
 				 SRMPackage.Literals.FUNCTIONALITY__PERMISSIONS,
 				 true,
-				 false,
+				 true,
 				 false,
 				 ItemPropertyDescriptor.GENERIC_VALUE_IMAGE,
 				 null,
@@ -107,7 +107,7 @@ public class FunctionalityItemProvider
 				 getString("_UI_PropertyDescriptor_description", "_UI_Functionality_technology_feature", "_UI_Functionality_type"),
 				 SRMPackage.Literals.FUNCTIONALITY__TECHNOLOGY,
 				 true,
-				 false,
+				 true,
 				 false,
 				 ItemPropertyDescriptor.GENERIC_VALUE_IMAGE,
 				 null,
@@ -129,7 +129,7 @@ public class FunctionalityItemProvider
 				 getString("_UI_PropertyDescriptor_description", "_UI_Functionality_environment_feature", "_UI_Functionality_type"),
 				 SRMPackage.Literals.FUNCTIONALITY__ENVIRONMENT,
 				 true,
-				 false,
+				 true,
 				 false,
 				 ItemPropertyDescriptor.GENERIC_VALUE_IMAGE,
 				 null,
@@ -151,7 +151,7 @@ public class FunctionalityItemProvider
 				 getString("_UI_PropertyDescriptor_description", "_UI_Functionality_description_feature", "_UI_Functionality_type"),
 				 SRMPackage.Literals.FUNCTIONALITY__DESCRIPTION,
 				 true,
-				 false,
+				 true,
 				 false,
 				 ItemPropertyDescriptor.GENERIC_VALUE_IMAGE,
 				 null,
@@ -173,7 +173,7 @@ public class FunctionalityItemProvider
 				 getString("_UI_PropertyDescriptor_description", "_UI_Functionality_algorithm_feature", "_UI_Functionality_type"),
 				 SRMPackage.Literals.FUNCTIONALITY__ALGORITHM,
 				 true,
-				 false,
+				 true,
 				 false,
 				 ItemPropertyDescriptor.GENERIC_VALUE_IMAGE,
 				 null,
@@ -221,7 +221,7 @@ public class FunctionalityItemProvider
 	 */
 	@Override
 	public String getText(Object object) {
-		String label = ((Functionality)object).getPermissions();
+		String label = crop(((Functionality)object).getPermissions());
 		return label == null || label.length() == 0 ?
 			getString("_UI_Functionality_type") :
 			getString("_UI_Functionality_type") + " " + label;

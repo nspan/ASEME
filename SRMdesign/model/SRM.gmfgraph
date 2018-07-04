@@ -23,8 +23,7 @@
         name="RoleFigure">
       <actualFigure
           xsi:type="gmfgraph:Rectangle"
-          name="RoleFigure"
-          lineWidth="2">
+          name="RoleFigure">
         <layout
             xsi:type="gmfgraph:FlowLayout"/>
         <foregroundColor
@@ -43,7 +42,6 @@
       <actualFigure
           xsi:type="gmfgraph:PolylineConnection"
           name="RoleRole_activitiesFigure"
-          lineWidth="2"
           targetDecoration="//@figures.0/@figures.0">
         <foregroundColor
             xsi:type="gmfgraph:ConstantColor"
@@ -58,7 +56,6 @@
       <actualFigure
           xsi:type="gmfgraph:PolylineConnection"
           name="RoleCapabilitiesFigure"
-          lineWidth="2"
           targetDecoration="//@figures.0/@figures.1">
         <foregroundColor
             xsi:type="gmfgraph:ConstantColor"
@@ -72,8 +69,7 @@
         name="ActivityFigure">
       <actualFigure
           xsi:type="gmfgraph:Rectangle"
-          name="ActivityFigure"
-          lineWidth="2">
+          name="ActivityFigure">
         <layout
             xsi:type="gmfgraph:FlowLayout"/>
         <foregroundColor
@@ -91,8 +87,7 @@
         name="CapabilityFigure">
       <actualFigure
           xsi:type="gmfgraph:Rectangle"
-          name="CapabilityFigure"
-          lineWidth="2">
+          name="CapabilityFigure">
         <layout
             xsi:type="gmfgraph:FlowLayout"/>
         <foregroundColor
@@ -111,7 +106,6 @@
       <actualFigure
           xsi:type="gmfgraph:PolylineConnection"
           name="CapabilityCapability_activitiesFigure"
-          lineWidth="2"
           targetDecoration="//@figures.0/@figures.2">
         <foregroundColor
             xsi:type="gmfgraph:ConstantColor"
@@ -125,8 +119,7 @@
         name="FunctionalityFigure">
       <actualFigure
           xsi:type="gmfgraph:Rectangle"
-          name="FunctionalityFigure"
-          lineWidth="2">
+          name="FunctionalityFigure">
         <layout
             xsi:type="gmfgraph:FlowLayout"/>
         <foregroundColor
@@ -145,7 +138,6 @@
       <actualFigure
           xsi:type="gmfgraph:PolylineConnection"
           name="FunctionalityActivitiesFigure"
-          lineWidth="2"
           targetDecoration="//@figures.0/@figures.3">
         <foregroundColor
             xsi:type="gmfgraph:ConstantColor"

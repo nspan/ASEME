@@ -82,10 +82,10 @@ public class SRMViewProvider extends AbstractProvider implements IViewProvider {
 	*/
 	protected boolean provides(CreateViewForKindOperation op) {
 		/*
-				if (op.getViewKind() == Node.class)
-					return getNodeViewClass(op.getSemanticAdapter(), op.getContainerView(), op.getSemanticHint()) != null;
-				if (op.getViewKind() == Edge.class)
-					return getEdgeViewClass(op.getSemanticAdapter(), op.getContainerView(), op.getSemanticHint()) != null;
+		    if (op.getViewKind() == Node.class)
+		      return getNodeViewClass(op.getSemanticAdapter(), op.getContainerView(), op.getSemanticHint()) != null;
+		    if (op.getViewKind() == Edge.class)
+		      return getEdgeViewClass(op.getSemanticAdapter(), op.getContainerView(), op.getSemanticHint()) != null;
 		*/
 		return true;
 	}

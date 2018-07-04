@@ -40,7 +40,7 @@ public class SRMPaletteFactory {
 		paletteContainer.add(createRoleActivities8CreationTool());
 		paletteContainer.add(createCapabilityCapability_activities5CreationTool());
 		paletteContainer.add(createFunctionalityActivities7CreationTool());
-		
+
 		return paletteContainer;
 	}
 

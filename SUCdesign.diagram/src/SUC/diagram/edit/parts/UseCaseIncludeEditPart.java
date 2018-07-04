@@ -76,7 +76,6 @@ public class UseCaseIncludeEditPart extends ConnectionNodeEditPart implements IT
 		 * @generated
 		 */
 		public UseCaseIncludeFigure() {
-			this.setLineWidth(2);
 			this.setForegroundColor(ColorConstants.black);
 			this.setBackgroundColor(ColorConstants.black);
 
@@ -104,7 +103,6 @@ public class UseCaseIncludeEditPart extends ConnectionNodeEditPart implements IT
 		 */
 		private RotatableDecoration createTargetDecoration() {
 			PolylineDecoration df = new PolylineDecoration();
-			df.setLineWidth(2);
 			return df;
 		}
 

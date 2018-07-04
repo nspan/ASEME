@@ -66,7 +66,6 @@ public class RoleRole_activitiesEditPart extends ConnectionNodeEditPart implemen
 		 * @generated
 		 */
 		public RoleRole_activitiesFigure() {
-			this.setLineWidth(2);
 			this.setForegroundColor(ColorConstants.black);
 			this.setBackgroundColor(ColorConstants.black);
 

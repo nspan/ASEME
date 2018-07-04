@@ -66,7 +66,6 @@ public class ActorMy_goalEditPart extends ConnectionNodeEditPart implements ITre
 		 * @generated
 		 */
 		public ActorMy_goalFigure() {
-			this.setLineWidth(2);
 			this.setForegroundColor(ColorConstants.black);
 			this.setBackgroundColor(ColorConstants.black);
 

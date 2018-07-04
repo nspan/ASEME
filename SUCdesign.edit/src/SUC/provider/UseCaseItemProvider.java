@@ -149,7 +149,7 @@ public class UseCaseItemProvider
 				 getString("_UI_PropertyDescriptor_description", "_UI_UseCase_specified_by_feature", "_UI_UseCase_type"),
 				 SUCPackage.Literals.USE_CASE__SPECIFIED_BY,
 				 true,
-				 false,
+				 true,
 				 false,
 				 ItemPropertyDescriptor.GENERIC_VALUE_IMAGE,
 				 null,

@@ -2,12 +2,12 @@ Manifest-Version: 1.0
 Bundle-ManifestVersion: 2
 Bundle-Name: %pluginName
 Bundle-SymbolicName: SAGdesign.diagram; singleton:=true
-Bundle-Version: 2.2.0
+Bundle-Version: 1.0.0.qualifier
 Bundle-ClassPath: .
 Bundle-Activator: SAG.diagram.part.SAGDiagramEditorPlugin
 Bundle-Vendor: %providerName
 Bundle-Localization: plugin
-Export-Package: SAG.diagram.edit.parts, 
+Export-Package: SAG.diagram.edit.parts,
  SAG.diagram.part,
  SAG.diagram.providers
 Require-Bundle: org.eclipse.core.runtime,
@@ -36,6 +36,8 @@ Require-Bundle: org.eclipse.core.runtime,
  org.eclipse.gmf.runtime.draw2d.ui;visibility:=reexport,
  SAGdesign;visibility:=reexport,
  SAGdesign.edit;visibility:=reexport,
- org.eclipse.gef;visibility:=reexport
+ org.eclipse.gef;visibility:=reexport,
+ org.eclipse.gmf.runtime.diagram.ui.printing,
+ org.eclipse.gmf.runtime.diagram.ui.printing.render
 Bundle-ActivationPolicy: lazy
-Bundle-RequiredExecutionEnvironment: JavaSE-1.8
+Bundle-RequiredExecutionEnvironment: JavaSE-1.6

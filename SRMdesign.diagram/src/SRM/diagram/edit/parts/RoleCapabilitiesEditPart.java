@@ -66,7 +66,6 @@ public class RoleCapabilitiesEditPart extends ConnectionNodeEditPart implements 
 		 * @generated
 		 */
 		public RoleCapabilitiesFigure() {
-			this.setLineWidth(2);
 			this.setForegroundColor(ColorConstants.black);
 			this.setBackgroundColor(ColorConstants.black);
 

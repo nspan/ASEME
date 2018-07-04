@@ -189,10 +189,10 @@ public class ParticipantEditPart extends ShapeNodeEditPart {
 	*/
 	protected NodeFigure createNodeFigure() {
 		NodeFigure figure = createNodePlate();
-		
+
 		Label tooltip = new Label("You can edit multiline attributes from the properties view ");
 		figure.setToolTip(tooltip);
-		
+
 		figure.setLayoutManager(new StackLayout());
 		IFigure shape = createNodeShape();
 		figure.add(shape);
@@ -306,7 +306,6 @@ public class ParticipantEditPart extends ShapeNodeEditPart {
 
 			this.setLayoutManager(layoutThis);
 
-			this.setLineWidth(2);
 			this.setForegroundColor(THIS_FORE);
 			this.setBackgroundColor(THIS_BACK);
 			createContents();

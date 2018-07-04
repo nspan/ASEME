@@ -18,7 +18,6 @@
       <actualFigure
           xsi:type="gmfgraph:PolylineConnection"
           name="ActorMy_goalFigure"
-          lineWidth="2"
           targetDecoration="//@figures.0/@figures.0">
         <foregroundColor
             xsi:type="gmfgraph:ConstantColor"
@@ -33,7 +32,6 @@
       <actualFigure
           xsi:type="gmfgraph:PolylineConnection"
           name="GoalDependeeFigure"
-          lineWidth="2"
           targetDecoration="//@figures.0/@figures.1">
         <foregroundColor
             xsi:type="gmfgraph:ConstantColor"
@@ -50,8 +48,7 @@
         name="ActorFigureCustom">
       <actualFigure
           xsi:type="gmfgraph:Ellipse"
-          name="ActorFigureCustom"
-          lineWidth="2">
+          name="ActorFigureCustom">
         <foregroundColor
             xsi:type="gmfgraph:RGBColor"/>
         <backgroundColor
@@ -82,7 +79,6 @@
       <actualFigure
           xsi:type="gmfgraph:RoundedRectangle"
           name="GoalFigureCustom"
-          lineWidth="2"
           cornerWidth="15"
           cornerHeight="15">
         <layout

@@ -103,7 +103,7 @@ public class ActivityItemProvider
 				 getString("_UI_PropertyDescriptor_description", "_UI_Activity_functionality_feature", "_UI_Activity_type"),
 				 SRMPackage.Literals.ACTIVITY__FUNCTIONALITY,
 				 true,
-				 false,
+				 true,
 				 true,
 				 null,
 				 null,

@@ -277,7 +277,6 @@ public class RoleEditPart extends ShapeNodeEditPart {
 
 			this.setLayoutManager(layoutThis);
 
-			this.setLineWidth(2);
 			this.setForegroundColor(ColorConstants.black);
 			createContents();
 		}

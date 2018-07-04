@@ -20,7 +20,8 @@
       <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference SUC.ecore#//UseCase/participant"/>
       <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference SUC.ecore#//UseCase/include"/>
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute SUC.ecore#//UseCase/name"/>
-      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute SUC.ecore#//UseCase/specified_by"/>
+      <genFeatures createChild="false" propertyCategory="" propertyMultiLine="true"
+          ecoreFeature="ecore:EAttribute SUC.ecore#//UseCase/specified_by"/>
     </genClasses>
     <genClasses ecoreClass="SUC.ecore#//Role">
       <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference SUC.ecore#//Role/participates_in"/>

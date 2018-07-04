@@ -83,7 +83,7 @@ public class GoalItemProvider
 				 getString("_UI_PropertyDescriptor_description", "_UI_Goal_requirements_feature", "_UI_Goal_type"),
 				 SAGPackage.Literals.GOAL__REQUIREMENTS,
 				 true,
-				 false,
+				 true,
 				 false,
 				 ItemPropertyDescriptor.GENERIC_VALUE_IMAGE,
 				 null,

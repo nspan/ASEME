@@ -14,7 +14,7 @@
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute SAG.ecore#//Actor/name"/>
     </genClasses>
     <genClasses ecoreClass="SAG.ecore#//Goal">
-      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute SAG.ecore#//Goal/requirements"/>
+      <genFeatures createChild="false" propertyMultiLine="true" ecoreFeature="ecore:EAttribute SAG.ecore#//Goal/requirements"/>
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute SAG.ecore#//Goal/name"/>
       <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference SAG.ecore#//Goal/depender"/>
       <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference SAG.ecore#//Goal/dependee"/>

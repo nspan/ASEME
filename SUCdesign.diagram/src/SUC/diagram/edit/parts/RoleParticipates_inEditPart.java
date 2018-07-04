@@ -66,7 +66,6 @@ public class RoleParticipates_inEditPart extends ConnectionNodeEditPart implemen
 		 * @generated
 		 */
 		public RoleParticipates_inFigure() {
-			this.setLineWidth(2);
 			this.setForegroundColor(ColorConstants.black);
 
 			setTargetDecoration(createTargetDecoration());
@@ -77,7 +76,6 @@ public class RoleParticipates_inEditPart extends ConnectionNodeEditPart implemen
 		 */
 		private RotatableDecoration createTargetDecoration() {
 			PolylineDecoration df = new PolylineDecoration();
-			df.setLineWidth(2);
 			return df;
 		}
 

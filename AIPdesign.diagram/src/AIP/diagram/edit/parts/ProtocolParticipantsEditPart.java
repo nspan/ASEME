@@ -66,7 +66,6 @@ public class ProtocolParticipantsEditPart extends ConnectionNodeEditPart impleme
 		 * @generated
 		 */
 		public ProtocolParticipantsFigure() {
-			this.setLineWidth(2);
 			this.setForegroundColor(ColorConstants.black);
 			this.setBackgroundColor(ColorConstants.black);
 
