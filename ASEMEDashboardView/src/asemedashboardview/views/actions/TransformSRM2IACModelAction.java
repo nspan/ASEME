@@ -1,54 +1,30 @@
 package asemedashboardview.views.actions;
 
-import java.io.File;
-import java.io.FileOutputStream;
 import java.io.IOException;
-import java.util.HashMap;
-import java.util.Hashtable;
-import java.util.Iterator;
 import java.util.LinkedList;
-import java.util.List;
-import java.util.Map;
-import java.util.StringTokenizer;
-import java.util.regex.Matcher;
-import java.util.regex.Pattern;
 
-import org.eclipse.core.resources.IFile;
 import org.eclipse.core.resources.IResource;
 import org.eclipse.core.runtime.CoreException;
-import org.eclipse.core.runtime.IPath;
 import org.eclipse.emf.common.ui.URIEditorInput;
 import org.eclipse.emf.common.util.URI;
 import org.eclipse.emf.ecore.resource.Resource;
-import org.eclipse.emf.ecore.resource.ResourceSet;
-import org.eclipse.emf.ecore.resource.impl.ResourceSetImpl;
-import org.eclipse.emf.ecore.xmi.XMLResource;
-import org.eclipse.emf.ecore.xmi.impl.XMIResourceFactoryImpl;
 import org.eclipse.gmf.runtime.diagram.core.services.ViewService;
 import org.eclipse.gmf.runtime.notation.Diagram;
 import org.eclipse.jface.dialogs.MessageDialog;
 import org.eclipse.ui.PartInitException;
 import org.eclipse.ui.PlatformUI;
 
-import statechart.Model;
-import statechart.StatechartPackage;
-import statechart.diagram.edit.parts.ModelEditPart;
-import statechart.diagram.part.StateChartDiagramEditorPlugin;
-import AIP.AIPPackage;
-import AIP.AIPmodel;
-import SRM.SRMPackage;
 import SRM.SRMmodel;
-import SRM.diagram.edit.parts.SRMmodelEditPart;
 import SRM.diagram.part.SRMDiagramEditor;
-import SRM.diagram.part.SRMDiagramEditorPlugin;
 import SRM.diagram.part.SRMDiagramEditorUtil;
-import SUC.diagram.part.SUCDiagramEditorUtil;
-import aseme.transformations.AIP2EAC;
 import aseme.transformations.AsemeModelSaveHelper;
 import aseme.transformations.SRM2IAC;
 import asemedashboardview.views.ASEMEAction;
 import asemedashboardview.views.ASEMEFacade;
 import asemedashboardview.views.ASEMEState;
+import statechart.Model;
+import statechart.diagram.edit.parts.ModelEditPart;
+import statechart.diagram.part.StateChartDiagramEditorPlugin;
 
 public class TransformSRM2IACModelAction implements ASEMEAction {
 	
@@ -79,25 +55,25 @@ public class TransformSRM2IACModelAction implements ASEMEAction {
 		ASEMEState state = context.getState(); 
 		URI srm = state.getSRM();
 		
-		ResourceSet resourceSet = new ResourceSetImpl();
-		// Register the appropriate resource factory to handle all file
-		// extensions.
-		//
-				
-		resourceSet
-				.getResourceFactoryRegistry()
-				.getExtensionToFactoryMap()
-				.put(Resource.Factory.Registry.DEFAULT_EXTENSION,
-						new XMIResourceFactoryImpl());
-		
-		// Register the package to ensure it is available during loading.
-		//
-		resourceSet.getPackageRegistry().put(SRMPackage.eNS_URI, SRMPackage.eINSTANCE);
-		resourceSet.getPackageRegistry().put(StatechartPackage.eNS_URI, StatechartPackage.eINSTANCE);
+//		ResourceSet resourceSet = new ResourceSetImpl();
+//		// Register the appropriate resource factory to handle all file
+//		// extensions.
+//		//
+//				
+//		resourceSet
+//				.getResourceFactoryRegistry()
+//				.getExtensionToFactoryMap()
+//				.put(Resource.Factory.Registry.DEFAULT_EXTENSION,
+//						new XMIResourceFactoryImpl());
+//		
+//		// Register the package to ensure it is available during loading.
+//		//
+//		resourceSet.getPackageRegistry().put(SRMPackage.eNS_URI, SRMPackage.eINSTANCE);
+//		resourceSet.getPackageRegistry().put(StatechartPackage.eNS_URI, StatechartPackage.eINSTANCE);
 		
 		// load SRM model
 					
-		Resource resource = resourceSet.getResource(state.getSRM(), true);	
+		Resource resource = AsemeModelSaveHelper.staticResourceSet.getResource(state.getSRM(), true);	
 		SRMmodel srmModel = (SRMmodel) resource.getContents().get(0);
 					
 		

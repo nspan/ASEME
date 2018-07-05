@@ -8,22 +8,17 @@ import org.eclipse.emf.common.ui.URIEditorInput;
 import org.eclipse.emf.common.util.Diagnostic;
 import org.eclipse.emf.common.util.URI;
 import org.eclipse.emf.ecore.resource.Resource;
-import org.eclipse.emf.ecore.resource.ResourceSet;
-import org.eclipse.emf.ecore.resource.impl.ResourceSetImpl;
 import org.eclipse.emf.ecore.util.Diagnostician;
-import org.eclipse.emf.ecore.xmi.impl.XMIResourceFactoryImpl;
 import org.eclipse.gmf.runtime.diagram.core.services.ViewService;
 import org.eclipse.gmf.runtime.notation.Diagram;
 import org.eclipse.jface.dialogs.MessageDialog;
 import org.eclipse.ui.PartInitException;
 import org.eclipse.ui.PlatformUI;
 
-import AIP.AIPPackage;
 import AIP.AIPmodel;
 import AIP.diagram.edit.parts.AIPmodelEditPart;
 import AIP.diagram.part.AIPDiagramEditor;
 import AIP.diagram.part.AIPDiagramEditorPlugin;
-import SUC.SUCPackage;
 import SUC.SUCmodel;
 import aseme.transformations.AsemeModelSaveHelper;
 import aseme.transformations.SUC2AIP;
@@ -90,19 +85,23 @@ public class TransformSUC2AIPModelAction implements ASEMEAction {
 			}
 		}
 
-		ResourceSet resourceSet = new ResourceSetImpl();
-
-		resourceSet.getResourceFactoryRegistry().getExtensionToFactoryMap()
-				.put(Resource.Factory.Registry.DEFAULT_EXTENSION, new XMIResourceFactoryImpl());
-
-		// Register the package to ensure it is available during loading.
+		// ResourceSet resourceSet = new ResourceSetImpl();
 		//
-		resourceSet.getPackageRegistry().put(SUCPackage.eNS_URI, SUCPackage.eINSTANCE);
-		resourceSet.getPackageRegistry().put(AIPPackage.eNS_URI, AIPPackage.eINSTANCE);
+		// resourceSet.getResourceFactoryRegistry().getExtensionToFactoryMap()
+		// .put(Resource.Factory.Registry.DEFAULT_EXTENSION, new
+		// XMIResourceFactoryImpl());
+		//
+		// // Register the package to ensure it is available during loading.
+		// //
+		// resourceSet.getPackageRegistry().put(SUCPackage.eNS_URI,
+		// SUCPackage.eINSTANCE);
+		// resourceSet.getPackageRegistry().put(AIPPackage.eNS_URI,
+		// AIPPackage.eINSTANCE);
 
 		// load SUC model
 
-		Resource resource = resourceSet.getResource(state.getSUC(), true);
+		Resource resource = AsemeModelSaveHelper.staticResourceSet.getResource(state.getSUC(), true); // resourceSet.getResource(state.getSUC(),
+																										// true);
 		SUCmodel sucModel = (SUCmodel) resource.getContents().get(0);
 
 		try {

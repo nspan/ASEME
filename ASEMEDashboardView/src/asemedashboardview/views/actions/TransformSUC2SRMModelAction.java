@@ -7,24 +7,18 @@ import javax.swing.JOptionPane;
 import org.eclipse.emf.common.ui.URIEditorInput;
 import org.eclipse.emf.common.util.URI;
 import org.eclipse.emf.ecore.resource.Resource;
-import org.eclipse.emf.ecore.resource.ResourceSet;
-import org.eclipse.emf.ecore.resource.impl.ResourceSetImpl;
-import org.eclipse.emf.ecore.xmi.impl.XMIResourceFactoryImpl;
 import org.eclipse.gmf.runtime.diagram.core.services.ViewService;
 import org.eclipse.gmf.runtime.notation.Diagram;
 import org.eclipse.jface.dialogs.MessageDialog;
 import org.eclipse.ui.PartInitException;
 import org.eclipse.ui.PlatformUI;
 
-import AIP.AIPPackage;
 import AIP.AIPmodel;
 import SRM.SRMFactory;
-import SRM.SRMPackage;
 import SRM.SRMmodel;
 import SRM.diagram.edit.parts.SRMmodelEditPart;
 import SRM.diagram.part.SRMDiagramEditor;
 import SRM.diagram.part.SRMDiagramEditorPlugin;
-import SUC.SUCPackage;
 import SUC.SUCmodel;
 import aseme.transformations.AsemeModelSaveHelper;
 import aseme.transformations.SUC2SRM;
@@ -44,7 +38,6 @@ public class TransformSUC2SRMModelAction implements ASEMEAction {
 	@Override
 	public boolean isEnabled() {
 		ASEMEState state = context.getState();
-		// TODO : Verify if AIP also needs to be enabled
 		if (state.getSUC() == null) {
 			return false;
 		}
@@ -92,16 +85,21 @@ public class TransformSUC2SRMModelAction implements ASEMEAction {
 			}
 		}
 
-		ResourceSet resourceSet = new ResourceSetImpl();
-		resourceSet.getResourceFactoryRegistry().getExtensionToFactoryMap()
-				.put(Resource.Factory.Registry.DEFAULT_EXTENSION, new XMIResourceFactoryImpl());
+		// ResourceSet resourceSet = new ResourceSetImpl();
+		// resourceSet.getResourceFactoryRegistry().getExtensionToFactoryMap()
+		// .put(Resource.Factory.Registry.DEFAULT_EXTENSION, new
+		// XMIResourceFactoryImpl());
+		//
+		// resourceSet.getPackageRegistry().put(SUCPackage.eNS_URI,
+		// SUCPackage.eINSTANCE);
+		// resourceSet.getPackageRegistry().put(SRMPackage.eNS_URI,
+		// SRMPackage.eINSTANCE);
+		//
+		// resourceSet.getPackageRegistry().put(AIPPackage.eNS_URI,
+		// AIPPackage.eINSTANCE);
 
-		resourceSet.getPackageRegistry().put(SUCPackage.eNS_URI, SUCPackage.eINSTANCE);
-		resourceSet.getPackageRegistry().put(SRMPackage.eNS_URI, SRMPackage.eINSTANCE);
-
-		resourceSet.getPackageRegistry().put(AIPPackage.eNS_URI, AIPPackage.eINSTANCE);
-
-		Resource resource = resourceSet.getResource(suc, true);
+		Resource resource = AsemeModelSaveHelper.staticResourceSet.getResource(suc, true); // resourceSet.getResource(suc,
+																							// true);
 		SUCmodel sucModel = (SUCmodel) resource.getContents().get(0);
 
 		// Resource newResource = resourceSet.createResource(state.getSRM());
@@ -123,9 +121,9 @@ public class TransformSUC2SRMModelAction implements ASEMEAction {
 		}
 
 		if (aip != null) {
-			Resource aipResource = resourceSet.getResource(aip, true);// resourceSet.getResource(URI.createPlatformResourceURI(temp.getFullPath().toString(),
-																		// true),
-																		// true);
+			Resource aipResource = AsemeModelSaveHelper.staticResourceSet.getResource(aip, true);// resourceSet.getResource(URI.createPlatformResourceURI(temp.getFullPath().toString(),
+			// true),
+			// true);
 			AIPmodel aipModel = (AIPmodel) aipResource.getContents().get(0);
 
 			try {
@@ -142,7 +140,7 @@ public class TransformSUC2SRMModelAction implements ASEMEAction {
 
 		URI diag = test.trimFileExtension().appendFileExtension("fg");
 		this.createDiagram(srmModel, diag);
-		
+
 		MessageDialog.openConfirm(context.getShell(), "SUC2SRM transformation",
 				"Output : " + srm.toPlatformString(isEnabled()));
 

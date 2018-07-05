@@ -1,58 +1,28 @@
 package asemedashboardview.views.actions;
 
-import java.io.File;
-import java.io.FileOutputStream;
-import java.util.HashMap;
-import java.util.Hashtable;
-import java.util.Iterator;
 import java.util.LinkedList;
-import java.util.List;
-import java.util.Map;
-import java.util.StringTokenizer;
-import java.util.regex.Matcher;
-import java.util.regex.Pattern;
 
-import org.eclipse.core.resources.IFile;
-import org.eclipse.core.resources.IProject;
 import org.eclipse.core.resources.IResource;
 import org.eclipse.core.runtime.CoreException;
-import org.eclipse.core.runtime.IAdaptable;
-import org.eclipse.core.runtime.IPath;
 import org.eclipse.emf.common.util.URI;
 import org.eclipse.emf.ecore.resource.Resource;
 import org.eclipse.emf.ecore.resource.ResourceSet;
 import org.eclipse.emf.ecore.resource.impl.ResourceSetImpl;
-import org.eclipse.emf.ecore.xmi.XMLResource;
 import org.eclipse.emf.ecore.xmi.impl.XMIResourceFactoryImpl;
 import org.eclipse.gmf.runtime.diagram.core.services.ViewService;
 import org.eclipse.gmf.runtime.notation.Diagram;
 import org.eclipse.jface.dialogs.MessageDialog;
-import org.eclipse.jface.viewers.IStructuredSelection;
-import org.eclipse.ui.IWorkbenchWindow;
-import org.eclipse.ui.PlatformUI;
 
-import statechart.Model;
-import statechart.Node;
-import statechart.StatechartFactory;
-import statechart.StatechartPackage;
-import statechart.Transition;
-import statechart.diagram.edit.parts.ModelEditPart;
-import statechart.diagram.part.StateChartDiagramEditorPlugin;
 import AIP.AIPPackage;
 import AIP.AIPmodel;
-import AIP.Participant;
-import AIP.Protocol;
-import SAG.Actor;
-import SAG.SAGPackage;
-import SAG.SAGmodel;
-import SRM.SRMFactory;
-import SRM.SRMmodel;
-import SUC.SUCPackage;
 import aseme.transformations.AIP2EAC;
 import aseme.transformations.AsemeModelSaveHelper;
 import asemedashboardview.views.ASEMEAction;
 import asemedashboardview.views.ASEMEFacade;
 import asemedashboardview.views.ASEMEState;
+import statechart.Model;
+import statechart.diagram.edit.parts.ModelEditPart;
+import statechart.diagram.part.StateChartDiagramEditorPlugin;
 
 
 

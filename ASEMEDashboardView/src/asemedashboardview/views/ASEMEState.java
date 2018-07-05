@@ -3,7 +3,6 @@ package asemedashboardview.views;
 import java.util.HashSet;
 import java.util.Set;
 
-import org.eclipse.core.resources.IFile;
 import org.eclipse.core.resources.IProject;
 import org.eclipse.core.resources.ProjectScope;
 import org.eclipse.core.runtime.IStatus;
@@ -168,52 +167,52 @@ public final class ASEMEState {
 		write(GG_KEY, gg);
 	}
 
-	public void setSAG(IFile file) {
-		sag = getURI(file);
-		write(SAG_KEY, sag);
-	}
+//	public void setSAG(IFile file) {
+//		sag = getURI(file);
+//		write(SAG_KEY, sag);
+//	}
+//
+//	public void setSUC(IFile file) {
+//		suc = getURI(file);
+//		write(SUC_KEY, suc);
+//	}
+//	
+//	public void setAIP(IFile file) {
+//		aip = getURI(file);
+//		write(AIP_KEY, aip);
+//	}
+//
+//	public void setSRM(IFile file) {
+//		srm = getURI(file);
+//		write(SRM_KEY, srm);
+//	}
+//
+//	public void setEAC(IFile file) {
+//		eac = getURI(file);
+//		write(EAC_KEY, eac);
+//	}
+//
+//	public void setIAC(IFile file) {
+//		iac = getURI(file);
+//		write(IAC_KEY, iac);
+//	}
+//
+//	public void setJADE(IFile file) {
+//		jade = getURI(file);
+//		write(JADE_KEY, jade);
+//	}
+//	
+//	public void setGG(IFile file) {
+//		gg = getURI(file);
+//		write(GG_KEY, gg);
+//	}
 
-	public void setSUC(IFile file) {
-		suc = getURI(file);
-		write(SUC_KEY, suc);
-	}
-	
-	public void setAIP(IFile file) {
-		aip = getURI(file);
-		write(AIP_KEY, aip);
-	}
-
-	public void setSRM(IFile file) {
-		srm = getURI(file);
-		write(SRM_KEY, srm);
-	}
-
-	public void setEAC(IFile file) {
-		eac = getURI(file);
-		write(EAC_KEY, eac);
-	}
-
-	public void setIAC(IFile file) {
-		iac = getURI(file);
-		write(IAC_KEY, iac);
-	}
-
-	public void setJADE(IFile file) {
-		jade = getURI(file);
-		write(JADE_KEY, jade);
-	}
-	
-	public void setGG(IFile file) {
-		gg = getURI(file);
-		write(GG_KEY, gg);
-	}
-
-	private static URI getURI(IFile file) {
-		if (file == null) {
-			return null;
-		}
-		return URI.createPlatformResourceURI(file.getFullPath().toString(), true);
-	}
+//	private static URI getURI(IFile file) {
+//		if (file == null) {
+//			return null;
+//		}
+//		return URI.createPlatformResourceURI(file.getFullPath().toString(), true);
+//	}
 
 	public int getModelsCount() {
 		return 7;

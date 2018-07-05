@@ -7,10 +7,7 @@ import javax.swing.JOptionPane;
 import org.eclipse.emf.common.ui.URIEditorInput;
 import org.eclipse.emf.common.util.URI;
 import org.eclipse.emf.ecore.resource.Resource;
-import org.eclipse.emf.ecore.resource.ResourceSet;
-import org.eclipse.emf.ecore.resource.impl.ResourceSetImpl;
 import org.eclipse.emf.ecore.util.Diagnostician;
-import org.eclipse.emf.ecore.xmi.impl.XMIResourceFactoryImpl;
 import org.eclipse.gmf.runtime.diagram.core.services.ViewService;
 import org.eclipse.gmf.runtime.notation.Diagram;
 import org.eclipse.jface.dialogs.MessageDialog;
@@ -18,7 +15,6 @@ import org.eclipse.ui.PartInitException;
 import org.eclipse.ui.PlatformUI;
 
 import SAG.SAGmodel;
-import SUC.SUCPackage;
 import SUC.SUCmodel;
 import SUC.diagram.edit.parts.SUCmodelEditPart;
 import SUC.diagram.part.SUCDiagramEditor;
@@ -90,38 +86,35 @@ public class TransformSAG2SUCModelAction implements ASEMEAction {
 			}
 		}
 
-		ResourceSet resourceSet = new ResourceSetImpl();
+		// ResourceSet resourceSet = new ResourceSetImpl();
 		// Register the appropriate resource factory to handle all file
 		// extensions.
 		//
 
-		resourceSet.getResourceFactoryRegistry().getExtensionToFactoryMap()
-				.put(Resource.Factory.Registry.DEFAULT_EXTENSION, new XMIResourceFactoryImpl());
+		// resourceSet.getResourceFactoryRegistry().getExtensionToFactoryMap()
+		// .put(Resource.Factory.Registry.DEFAULT_EXTENSION, new
+		// XMIResourceFactoryImpl());
 
 		// Register the package to ensure it is available during loading.
 		//
-		resourceSet.getPackageRegistry().put(SUCPackage.eNS_URI, SUCPackage.eINSTANCE);
+		// resourceSet.getPackageRegistry().put(SUCPackage.eNS_URI,
+		// SUCPackage.eINSTANCE);
 
 		// load SUC model
 
-		Resource resource = resourceSet.getResource(state.getSAG(), true);
+		Resource resource = AsemeModelSaveHelper.staticResourceSet.getResource(state.getSAG(), true); // resourceSet.getResource(state.getSAG(),
+																										// true);
 		SAGmodel sagModel = (SAGmodel) resource.getContents().get(0);
 
 		try {
 			SUCmodel sucm = SAG2SUC.transformSag2Suc(sagModel);
-			// MessageDialog.openInformation(context.getShell(), "Info",
-			// "Transformation return" );
-			AsemeModelSaveHelper.saveURI(sucm, suc);
 
-			// MessageDialog.openInformation(context.getShell(), "Info", "saved
-			// SUC" );
+			AsemeModelSaveHelper.saveURI(sucm, suc);
 
 			URI diag = suc.trimFileExtension().appendFileExtension("sucd");
 
-			// MessageDialog.openInformation(context.getShell(), "Hmm", "After
-			// URI, Before createDiagram" );
 			this.createDiagram(sucm, diag);
-			
+
 			MessageDialog.openConfirm(context.getShell(), "SAG2SUC transformation",
 					"Output : " + suc.toPlatformString(isEnabled()));
 
@@ -131,13 +124,13 @@ public class TransformSAG2SUCModelAction implements ASEMEAction {
 			// e);
 			// ErrorDialog.openError(context.getShell(), "SAG2SUC Error",
 			// Diagnostician.INSTANCE.validate(sagModel).getMessage(), null);
+			state.setSUC(null);
 			boolean diagn = Diagnostician.INSTANCE.validate(sagModel,
 					Diagnostician.INSTANCE.createDefaultDiagnostic(sagModel));
 			if (!diagn) {
 				MessageDialog.openError(context.getShell(), "Error", "Error in validating SAG model");
 			} else {
-				// MessageDialog.openError(context.getShell(), "Error", "Eimai
-				// sto else" );
+				MessageDialog.openError(context.getShell(), "Error", "something went wrong");
 			}
 		}
 
@@ -155,7 +148,6 @@ public class TransformSAG2SUCModelAction implements ASEMEAction {
 			PlatformUI.getWorkbench().getActiveWorkbenchWindow().getActivePage().openEditor(new URIEditorInput(diag),
 					SUCDiagramEditor.ID);
 		} catch (PartInitException e) {
-			// TODO Auto-generated catch block
 			MessageDialog.openError(context.getShell(), "Error", "Error in opening diagram");
 		}
 	}
