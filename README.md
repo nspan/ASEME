@@ -12,7 +12,7 @@ Necessary applications and packages:
 
 Project Outline :
 
-  This project is a collection of many plugin projects and according to Rich Client Platform (RCP) architechture.
+  This project is a collection of many plugin projects and according to Rich Client Platform (RCP) architecture.
 
   Each of the AMOLA metamodels is implemented as a EMF model and has its own GMF editor.
   So, there are 4 projects for each model, the MetamodelNameDesign (SAGDesign, SUCDesign etc.) that contains 
